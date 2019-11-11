@@ -1,0 +1,263 @@
+<html><head><title>category_theory.equivalence</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="category_theory.equivalence">      <h4>category_theory.equivalence</h4><code>Π (C : Type u₁) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ u₂ v₁ v₂)</code>
+<div class="indent"><p><p>We define an equivalence as a (half)-adjoint equivalence, a pair of functors with
+ a unit and counit which are natural isomorphisms and the triangle law <code>Fη ≫ εF = 1</code>, or in other
+ words the composite <code>F ⟶ FGF ⟶ F</code> is the identity.</p>
+
+<p>The triangle equation is written as a family of equalities between morphisms, it is more
+ complicated if we write it as an equality of natural transformations, because then we would have
+ to insert natural transformations like <code>F ⟶ F1</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.unit">      <h4>category_theory.equivalence.unit</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), 𝟭 C ⟶ e.functor ⋙ e.inverse</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.counit">      <h4>category_theory.equivalence.counit</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), e.inverse ⋙ e.functor ⟶ 𝟭 D</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.unit_inv">      <h4>category_theory.equivalence.unit_inv</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), e.functor ⋙ e.inverse ⟶ 𝟭 C</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.counit_inv">      <h4>category_theory.equivalence.counit_inv</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), 𝟭 D ⟶ e.inverse ⋙ e.functor</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.unit_def">      <h4>category_theory.equivalence.unit_def</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), (e.unit_iso).hom = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit">category_theory.equivalence.unit</a> e</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.counit_def">      <h4>category_theory.equivalence.counit_def</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), (e.counit_iso).hom = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit">category_theory.equivalence.counit</a> e</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.unit_inv_def">      <h4>category_theory.equivalence.unit_inv_def</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), (e.unit_iso).inv = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit_inv">category_theory.equivalence.unit_inv</a> e</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.counit_inv_def">      <h4>category_theory.equivalence.counit_inv_def</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), (e.counit_iso).inv = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit_inv">category_theory.equivalence.counit_inv</a> e</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.functor_unit_comp">      <h4>category_theory.equivalence.functor_unit_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (X : C),
+  (e.functor).map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit">category_theory.equivalence.unit</a> e).app X) ≫
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit">category_theory.equivalence.counit</a> e).app ((e.functor).obj X) =
+    𝟙 ((e.functor).obj X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.counit_inv_functor_comp">      <h4>category_theory.equivalence.counit_inv_functor_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (X : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit_inv">category_theory.equivalence.counit_inv</a> e).app ((e.functor).obj X) ≫
+      (e.functor).map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit_inv">category_theory.equivalence.unit_inv</a> e).app X) =
+    𝟙 ((e.functor).obj X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.functor_unit">      <h4>category_theory.equivalence.functor_unit</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (X : C),
+  (e.functor).map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit">category_theory.equivalence.unit</a> e).app X) =
+    (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit_inv">category_theory.equivalence.counit_inv</a> e).app ((e.functor).obj X)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.counit_functor">      <h4>category_theory.equivalence.counit_functor</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (X : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit">category_theory.equivalence.counit</a> e).app ((e.functor).obj X) =
+    (e.functor).map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit_inv">category_theory.equivalence.unit_inv</a> e).app X)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.unit_inverse_comp">      <h4>category_theory.equivalence.unit_inverse_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (Y : D),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit">category_theory.equivalence.unit</a> e).app ((e.inverse).obj Y) ≫
+      (e.inverse).map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit">category_theory.equivalence.counit</a> e).app Y) =
+    𝟙 ((e.inverse).obj Y)</code>
+<div class="indent"><p><p>The other triangle equality. The proof follows the following proof in Globular:
+ http://globular.science/1905.001</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.inverse_counit_inv_comp">      <h4>category_theory.equivalence.inverse_counit_inv_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (Y : D),
+  (e.inverse).map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit_inv">category_theory.equivalence.counit_inv</a> e).app Y) ≫
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit_inv">category_theory.equivalence.unit_inv</a> e).app ((e.inverse).obj Y) =
+    𝟙 ((e.inverse).obj Y)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.unit_inverse">      <h4>category_theory.equivalence.unit_inverse</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (Y : D),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit">category_theory.equivalence.unit</a> e).app ((e.inverse).obj Y) =
+    (e.inverse).map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit_inv">category_theory.equivalence.counit_inv</a> e).app Y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.inverse_counit">      <h4>category_theory.equivalence.inverse_counit</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (Y : D),
+  (e.inverse).map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit">category_theory.equivalence.counit</a> e).app Y) =
+    (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit_inv">category_theory.equivalence.unit_inv</a> e).app ((e.inverse).obj Y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.fun_inv_map">      <h4>category_theory.equivalence.fun_inv_map</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (X Y : D) (f : X ⟶ Y),
+  (e.functor).map ((e.inverse).map f) =
+    (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit">category_theory.equivalence.counit</a> e).app X ≫ f ≫ (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit_inv">category_theory.equivalence.counit_inv</a> e).app Y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.inv_fun_map">      <h4>category_theory.equivalence.inv_fun_map</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D) (X Y : C) (f : X ⟶ Y),
+  (e.inverse).map ((e.functor).map f) =
+    (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit_inv">category_theory.equivalence.unit_inv</a> e).app X ≫ f ≫ (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit">category_theory.equivalence.unit</a> e).app Y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.adjointify_η">      <h4>category_theory.equivalence.adjointify_η</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F : C ⥤ D}
+{G : D ⥤ C}, (𝟭 C ≅ F ⋙ G) → (G ⋙ F ≅ 𝟭 D) → (𝟭 C ≅ F ⋙ G)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.adjointify_η_ε">      <h4>category_theory.equivalence.adjointify_η_ε</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (η : 𝟭 C ≅ F ⋙ G) (ε : G ⋙ F ≅ 𝟭 D) (X : C),
+  F.map (((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.adjointify_η">category_theory.equivalence.adjointify_η</a> η ε).hom).app X) ≫ (ε.hom).app (F.obj X) = 𝟙 (F.obj X)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.mk">      <h4>category_theory.equivalence.mk</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+(G : D ⥤ C), (𝟭 C ≅ F ⋙ G) → (G ⋙ F ≅ 𝟭 D) → (C ≌ D)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.refl">      <h4>category_theory.equivalence.refl</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], C ≌ C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.symm">      <h4>category_theory.equivalence.symm</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  (C ≌ D) → (D ≌ C)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.trans">      <h4>category_theory.equivalence.trans</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E], (C ≌ D) → (D ≌ E) → (C ≌ E)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.fun_inv_id_assoc">      <h4>category_theory.equivalence.fun_inv_id_assoc</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (e : C ≌ D) (F : C ⥤ E), e.functor ⋙ e.inverse ⋙ F ≅ F</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.fun_inv_id_assoc_hom_app">      <h4>category_theory.equivalence.fun_inv_id_assoc_hom_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (e : C ≌ D) (F : C ⥤ E) (X : C),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.fun_inv_id_assoc">category_theory.equivalence.fun_inv_id_assoc</a> e F).hom).app X =
+    F.map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit_inv">category_theory.equivalence.unit_inv</a> e).app X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.fun_inv_id_assoc_inv_app">      <h4>category_theory.equivalence.fun_inv_id_assoc_inv_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (e : C ≌ D) (F : C ⥤ E) (X : C),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.fun_inv_id_assoc">category_theory.equivalence.fun_inv_id_assoc</a> e F).inv).app X = F.map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.unit">category_theory.equivalence.unit</a> e).app X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.inv_fun_id_assoc">      <h4>category_theory.equivalence.inv_fun_id_assoc</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (e : C ≌ D) (F : D ⥤ E), e.inverse ⋙ e.functor ⋙ F ≅ F</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.inv_fun_id_assoc_hom_app">      <h4>category_theory.equivalence.inv_fun_id_assoc_hom_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (e : C ≌ D) (F : D ⥤ E) (X : D),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.inv_fun_id_assoc">category_theory.equivalence.inv_fun_id_assoc</a> e F).hom).app X = F.map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit">category_theory.equivalence.counit</a> e).app X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.equivalence.inv_fun_id_assoc_inv_app">      <h4>category_theory.equivalence.inv_fun_id_assoc_inv_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (e : C ≌ D) (F : D ⥤ E) (X : D),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.inv_fun_id_assoc">category_theory.equivalence.inv_fun_id_assoc</a> e F).inv).app X =
+    F.map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.equivalence.counit_inv">category_theory.equivalence.counit_inv</a> e).app X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.is_equivalence">      <h4>category_theory.is_equivalence</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C ⥤ D → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ u₂ v₁ v₂)</code>
+<div class="indent"><p><p>A functor that is part of a (half) adjoint equivalence</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.is_equivalence.of_equivalence">      <h4>category_theory.is_equivalence.of_equivalence</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(F : C ≌ D), <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> (F.functor)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.is_equivalence.of_equivalence_inverse">      <h4>category_theory.is_equivalence.of_equivalence_inverse</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(F : C ≌ D), <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> (F.inverse)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.is_equivalence.mk">      <h4>category_theory.is_equivalence.mk</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F : C ⥤ D}
+(G : D ⥤ C), (𝟭 C ≅ F ⋙ G) → (G ⋙ F ≅ 𝟭 D) → <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.as_equivalence">      <h4>category_theory.functor.as_equivalence</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F], C ≌ D</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.is_equivalence_refl">      <h4>category_theory.functor.is_equivalence_refl</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> (𝟭 C)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.functor.inv">      <h4>category_theory.functor.inv</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F], D ⥤ C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.is_equivalence_inv">      <h4>category_theory.functor.is_equivalence_inv</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.inv">category_theory.functor.inv</a> F)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.functor.fun_inv_id">      <h4>category_theory.functor.fun_inv_id</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F], F ⋙ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.inv">category_theory.functor.inv</a> F ≅ 𝟭 C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.inv_fun_id">      <h4>category_theory.functor.inv_fun_id</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.inv">category_theory.functor.inv</a> F ⋙ F ≅ 𝟭 D</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.is_equivalence_trans">      <h4>category_theory.functor.is_equivalence_trans</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (F : C ⥤ D) (G : D ⥤ E)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> G],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> (F ⋙ G)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.is_equivalence.fun_inv_map">      <h4>category_theory.is_equivalence.fun_inv_map</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(F : C ⥤ D) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F] (X Y : D) (f : X ⟶ Y),
+  F.map ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.inv">category_theory.functor.inv</a> F).map f) =
+    ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.inv_fun_id">category_theory.functor.inv_fun_id</a> F).hom).app X ≫ f ≫ ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.inv_fun_id">category_theory.functor.inv_fun_id</a> F).inv).app Y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.is_equivalence.inv_fun_map">      <h4>category_theory.is_equivalence.inv_fun_map</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(F : C ⥤ D) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F] (X Y : C) (f : X ⟶ Y),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.inv">category_theory.functor.inv</a> F).map (F.map f) =
+    ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.fun_inv_id">category_theory.functor.fun_inv_id</a> F).hom).app X ≫ f ≫ ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.fun_inv_id">category_theory.functor.fun_inv_id</a> F).inv).app Y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.is_equivalence.functor_unit_comp">      <h4>category_theory.is_equivalence.functor_unit_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(E : C ⥤ D) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> E] (Y : C),
+  E.map (((category_theory.is_equivalence.unit_iso E).hom).app Y) ≫
+      ((category_theory.is_equivalence.counit_iso E).hom).app (E.obj Y) =
+    𝟙 (E.obj ((𝟭 C).obj Y))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.is_equivalence.counit_inv_functor_comp">      <h4>category_theory.is_equivalence.counit_inv_functor_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(E : C ⥤ D) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> E] (Y : C),
+  ((category_theory.is_equivalence.counit_iso E).inv).app (E.obj Y) ≫
+      E.map (((category_theory.is_equivalence.unit_iso E).inv).app Y) =
+    𝟙 ((𝟭 D).obj (E.obj Y))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.ess_surj">      <h4>category_theory.ess_surj</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C ⥤ D → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ u₂ v₂)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.obj_preimage">      <h4>category_theory.functor.obj_preimage</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.ess_surj">category_theory.ess_surj</a> F], D → C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.fun_obj_preimage_iso">      <h4>category_theory.functor.fun_obj_preimage_iso</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.ess_surj">category_theory.ess_surj</a> F] (d : D), F.obj (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.obj_preimage">category_theory.functor.obj_preimage</a> F d) ≅ d</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.ess_surj_of_equivalence">      <h4>category_theory.equivalence.ess_surj_of_equivalence</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.ess_surj">category_theory.ess_surj</a> F</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.faithful_of_equivalence">      <h4>category_theory.equivalence.faithful_of_equivalence</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(F : C ⥤ D) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/fully_faithful.html#category_theory.faithful">category_theory.faithful</a> F</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.equivalence.full_of_equivalence">      <h4>category_theory.equivalence.full_of_equivalence</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/fully_faithful.html#category_theory.full">category_theory.full</a> F</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.equivalence.equivalence_of_fully_faithfully_ess_surj">      <h4>category_theory.equivalence.equivalence_of_fully_faithfully_ess_surj</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/fully_faithful.html#category_theory.full">category_theory.full</a> F] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/fully_faithful.html#category_theory.faithful">category_theory.faithful</a> F] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.ess_surj">category_theory.ess_surj</a> F],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> F</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

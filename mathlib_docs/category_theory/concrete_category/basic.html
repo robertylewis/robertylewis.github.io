@@ -1,0 +1,96 @@
+<html><head><title>category_theory.concrete_category.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Concrete categories</h1>
+
+<p>A concrete category is a category <code>C</code> with a fixed faithful functor
+<code>forget : C ⥤ Type*</code>.  We define concrete categories using <code>class
+concrete_category</code>.  In particular, we impose no restrictions on the
+carrier type <code>C</code>, so <code>Type</code> is a concrete category with the identity
+forgetful functor.</p>
+
+<p>Each concrete category <code>C</code> comes with a canonical faithful functor
+<code>forget C : C ⥤ Type*</code>.  We say that a concrete category <code>C</code> admits a
+<em>forgetful functor</em> to a concrete category <code>D</code>, if it has a functor
+<code>forget₂ C D : C ⥤ D</code> such that <code>(forget₂ C D) ⋙ (forget D) = forget
+C</code>, see <code>class has_forget₂</code>.  Due to <code>faithful.div_comp</code>, it suffices
+to verify that <code>forget₂.obj</code> and <code>forget₂.map</code> agree with the equality
+above; then <code>forget₂</code> will satisfy the functor laws automatically, see
+<code>has_forget₂.mk'</code>.</p>
+
+<p>Two classes helping construct concrete categories in the two most
+common cases are provided in the files <code>bundled_hom</code> and
+<code>unbundled_hom</code>, see their documentation for details.</p>
+
+<h2>References</h2>
+
+<p>See [Ahrens and Lumsdaine, <em>Displayed Categories</em>][ahrens2017] for
+related work.</p>
+</div><div class="entry"><a id="category_theory.concrete_category">      <h4>category_theory.concrete_category</h4><code>Type (u+1) → Type (u+1)</code>
+<div class="indent"><p><p>A concrete category is a category <code>C</code> with a fixed faithful functor <code>forget : C ⥤ Type</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.forget">      <h4>category_theory.forget</h4><code>Π (C : Type (u+1)) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C], C ⥤ Type u</code>
+<div class="indent"><p><p>The forgetful functor from a concrete category to <code>Type u</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.concrete_category.has_coe_to_sort">      <h4>category_theory.concrete_category.has_coe_to_sort</h4><code>Π (C : Type (u+1)) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe_to_sort">has_coe_to_sort</a> C</code>
+<div class="indent"><p><p>Provide a coercion to <code>Type u</code> for a concrete category. This is not marked as an instance
+as it could potentially apply to every type, and so is too expensive in typeclass search.</p>
+
+<p>You can use it on particular examples as:
+<code>lean
+instance : has_coe_to_sort X := concrete_category.has_coe_to_sort X
+</code></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.forget_obj_eq_coe">      <h4>category_theory.forget_obj_eq_coe</h4><code>∀ {C : Type (u+1)} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] {X : C}, (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.forget">category_theory.forget</a> C).obj X = ↥X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.concrete_category.has_coe_to_fun">      <h4>category_theory.concrete_category.has_coe_to_fun</h4><code>Π {C : Type (u+1)} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] {X Y : C}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (X ⟶ Y)</code>
+<div class="indent"><p><p>Usually a bundled hom structure already has a coercion to function
+that works with different universes. So we don't use this as a global instance.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.forget_map_eq_coe">      <h4>category_theory.forget_map_eq_coe</h4><code>∀ {C : Type (u+1)} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] {X Y : C} (f : X ⟶ Y),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.forget">category_theory.forget</a> C).map f = ⇑f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.coe_id">      <h4>category_theory.coe_id</h4><code>∀ {C : Type (u+1)} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] {X : C} (x : ↥X), ⇑(𝟙 X) x = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.coe_comp">      <h4>category_theory.coe_comp</h4><code>∀ {C : Type (u+1)} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) (x : ↥X),
+  ⇑(f ≫ g) x = ⇑g (⇑f x)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.concrete_category.types">      <h4>category_theory.concrete_category.types</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> (Type u)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.has_forget₂">      <h4>category_theory.has_forget₂</h4><code>Π (C D : Type (u+1)) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> D],
+  Type (u+1)</code>
+<div class="indent"><p><p><code>has_forget₂ C D</code>, where <code>C</code> and <code>D</code> are both concrete categories, provides a functor
+<code>forget₂ C D : C ⥤ C</code> and a proof that <code>forget₂ ⋙ (forget D) = forget C</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.forget₂">      <h4>category_theory.forget₂</h4><code>Π (C D : Type (u+1)) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> D]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.has_forget₂">category_theory.has_forget₂</a> C D], C ⥤ D</code>
+<div class="indent"><p><p>The forgetful functor <code>C ⥤ D</code> between concrete categories for which we have an instance
+<code>has_forget₂ C</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.forget_faithful">      <h4>category_theory.forget_faithful</h4><code>∀ (C D : Type (u+1)) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> D]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.has_forget₂">category_theory.has_forget₂</a> C D], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/fully_faithful.html#category_theory.faithful">category_theory.faithful</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.forget₂">category_theory.forget₂</a> C D)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.induced_category.concrete_category">      <h4>category_theory.induced_category.concrete_category</h4><code>Π {C D : Type (u+1)} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> D] (f : C → D),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/full_subcategory.html#category_theory.induced_category">category_theory.induced_category</a> D f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.induced_category.has_forget₂">      <h4>category_theory.induced_category.has_forget₂</h4><code>Π {C D : Type (u+1)} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> D] (f : C → D),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.has_forget₂">category_theory.has_forget₂</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/full_subcategory.html#category_theory.induced_category">category_theory.induced_category</a> D f) D</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.has_forget₂.mk'">      <h4>category_theory.has_forget₂.mk'</h4><code>Π {C D : Type (u+1)} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> D]
+(obj : C → D),
+  (∀ (X : C), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.forget">category_theory.forget</a> D).obj (obj X) = (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.forget">category_theory.forget</a> C).obj X) →
+  Π (map : Π {X Y : C}, (X ⟶ Y) → (obj X ⟶ obj Y)),
+    (∀ {X Y : C} {f : X ⟶ Y}, (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.forget">category_theory.forget</a> D).map (map f) == (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.forget">category_theory.forget</a> C).map f) →
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.has_forget₂">category_theory.has_forget₂</a> C D</code>
+<div class="indent"><p><p>In order to construct a “partially forgetting” functor, we do not need to verify functor laws;
+it suffices to ensure that compositions agree with <code>forget₂ C D ⋙ forget D = forget C</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.has_forget_to_Type">      <h4>category_theory.has_forget_to_Type</h4><code>Π (C : Type (u+1)) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> C], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/concrete_category/basic.html#category_theory.has_forget₂">category_theory.has_forget₂</a> C (Type u)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div></body></html>

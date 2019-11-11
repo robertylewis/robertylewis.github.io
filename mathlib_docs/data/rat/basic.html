@@ -1,0 +1,391 @@
+<html><head><title>data.rat.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Basics for the Rational Numbers</h1>
+
+<h2>Summary</h2>
+
+<p>We define a rational number <code>q</code> as a structure <code>{ num, denom, pos, cop }</code>, where
+- <code>num</code> is the numerator of <code>q</code>,
+- <code>denom</code> is the denominator of <code>q</code>,
+- <code>pos</code> is a proof that <code>denom &gt; 0</code>, and
+- <code>cop</code> is a proof <code>num</code> and <code>denom</code> are coprime.</p>
+
+<p>We then define the expected (discrete) field structure on <code>ℚ</code> and prove basic lemmas about it.
+Moreoever, we provide the expected casts from <code>ℕ</code> and <code>ℤ</code> into <code>ℚ</code>, i.e. <code>(↑n : ℚ) = n / 1</code>.</p>
+
+<h2>Main Definitions</h2>
+
+<ul>
+<li><code>rat</code> is the structure encoding <code>ℚ</code>.</li>
+<li><code>rat.mk n d</code> constructs a rational number <code>q = n / d</code> from <code>n d : ℤ</code>.</li>
+</ul>
+
+<h2>Notations</h2>
+
+<ul>
+<li><code>/.</code> is infix notation for <code>rat.mk</code>.</li>
+</ul>
+
+<h2>Tags</h2>
+
+<p>rat, rationals, field, ℚ, numerator, denominator, num, denom</p>
+</div><div class="entry"><a id="rat">      <h4>rat</h4><code>Type</code>
+<div class="indent"><p><p><code>rat</code>, or <code>ℚ</code>, is the type of rational numbers. It is defined
+ as the set of pairs ⟨n, d⟩ of integers such that <code>d</code> is positive and <code>n</code> and
+ <code>d</code> are coprime. This representation is preferred to the quotient
+ because without periodic reduction, the numerator and denominator can grow
+ exponentially (for example, adding 1/2 to itself repeatedly).</p>
+</p>       </div>
+</div><div class="entry"><a id="rat.repr">      <h4>rat.repr</h4><code>ℚ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.has_repr">      <h4>rat.has_repr</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/repr.html#has_repr">has_repr</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.has_to_string">      <h4>rat.has_to_string</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/to_string.html#has_to_string">has_to_string</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.has_to_format">      <h4>rat.has_to_format</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/format.html#has_to_format">has_to_format</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.encodable">      <h4>rat.encodable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.of_int">      <h4>rat.of_int</h4><code>ℤ → ℚ</code>
+<div class="indent"><p><p>Embed an integer as a rational number</p>
+</p>       </div>
+</div><div class="entry"><a id="rat.has_zero">      <h4>rat.has_zero</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.has_one">      <h4>rat.has_one</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.inhabited">      <h4>rat.inhabited</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.mk_pnat">      <h4>rat.mk_pnat</h4><code>ℤ → ℕ+ → ℚ</code>
+<div class="indent"><p><p>Form the quotient <code>n / d</code> where <code>n:ℤ</code> and <code>d:ℕ+</code> (not necessarily coprime)</p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_nat">      <h4>rat.mk_nat</h4><code>ℤ → ℕ → ℚ</code>
+<div class="indent"><p><p>Form the quotient <code>n / d</code> where <code>n:ℤ</code> and <code>d:ℕ</code>. In the case <code>d = 0</code>, we
+ define <code>n / 0 = 0</code> by convention.</p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk">      <h4>rat.mk</h4><code>ℤ → ℤ → ℚ</code>
+<div class="indent"><p><p>Form the quotient <code>n / d</code> where <code>n d : ℤ</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_pnat_eq">      <h4>rat.mk_pnat_eq</h4><code>∀ (n : ℤ) (d : ℕ) (h : 0 < d), <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk_pnat">rat.mk_pnat</a> n ⟨d, h⟩ = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n ↑d</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_nat_eq">      <h4>rat.mk_nat_eq</h4><code>∀ (n : ℤ) (d : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk_nat">rat.mk_nat</a> n d = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n ↑d</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_zero">      <h4>rat.mk_zero</h4><code>∀ (n : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.zero_mk_pnat">      <h4>rat.zero_mk_pnat</h4><code>∀ (n : ℕ+), <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk_pnat">rat.mk_pnat</a> 0 n = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.zero_mk_nat">      <h4>rat.zero_mk_nat</h4><code>∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk_nat">rat.mk_nat</a> 0 n = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.zero_mk">      <h4>rat.zero_mk</h4><code>∀ (n : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> 0 n = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.mk_eq_zero">      <h4>rat.mk_eq_zero</h4><code>∀ {a b : ℤ}, b ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b = 0 ↔ a = 0)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.mk_eq">      <h4>rat.mk_eq</h4><code>∀ {a b c d : ℤ}, b ≠ 0 → d ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> c d ↔ a * d = c * b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.div_mk_div_cancel_left">      <h4>rat.div_mk_div_cancel_left</h4><code>∀ {a b c : ℤ}, c ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (a * c) (b * c) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.num_denom">      <h4>rat.num_denom</h4><code>∀ {a : ℚ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (a.num) ↑(a.denom) = a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.num_denom'">      <h4>rat.num_denom'</h4><code>∀ {n : ℤ} {d : ℕ} {h : 0 < d} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.coprime">nat.coprime</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> n) d},
+  {<a href="/home/rob/lean/mathlib/scripts/html_out/data/num/basic.html#num">num</a> := n, denom := d, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#pos">pos</a> := h, cop := c} = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n ↑d</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.of_int_eq_mk">      <h4>rat.of_int_eq_mk</h4><code>∀ (z : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.of_int">rat.of_int</a> z = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> z 1</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.num_denom_cases_on">      <h4>rat.num_denom_cases_on</h4><code>Π {C : ℚ → Sort u} (a : ℚ),
+  (Π (n : ℤ) (d : ℕ), 0 < d → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.coprime">nat.coprime</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> n) d → C (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n ↑d)) → C a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.num_denom_cases_on'">      <h4>rat.num_denom_cases_on'</h4><code>Π {C : ℚ → Sort u} (a : ℚ), (Π (n : ℤ) (d : ℕ), d ≠ 0 → C (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n ↑d)) → C a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.num_dvd">      <h4>rat.num_dvd</h4><code>∀ (a : ℤ) {b : ℤ}, b ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b).num ∣ a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.denom_dvd">      <h4>rat.denom_dvd</h4><code>∀ (a b : ℤ), ↑((<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b).denom) ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.add">      <h4>rat.add</h4><code>ℚ → ℚ → ℚ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.has_add">      <h4>rat.has_add</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_add">has_add</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.lift_binop_eq">      <h4>rat.lift_binop_eq</h4><code>∀ (f : ℚ → ℚ → ℚ) (f₁ f₂ : ℤ → ℤ → ℤ → ℤ → ℤ),
+  (∀ {n₁ : ℤ} {d₁ : ℕ} {h₁ : 0 < d₁} {c₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.coprime">nat.coprime</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> n₁) d₁} {n₂ : ℤ}
+   {d₂ : ℕ} {h₂ : 0 < d₂} {c₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.coprime">nat.coprime</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> n₂) d₂},
+     f {<a href="/home/rob/lean/mathlib/scripts/html_out/data/num/basic.html#num">num</a> := n₁, denom := d₁, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#pos">pos</a> := h₁, cop := c₁} {<a href="/home/rob/lean/mathlib/scripts/html_out/data/num/basic.html#num">num</a> := n₂, denom := d₂, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#pos">pos</a> := h₂, cop := c₂} =
+       <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (f₁ n₁ ↑d₁ n₂ ↑d₂) (f₂ n₁ ↑d₁ n₂ ↑d₂)) →
+  (∀ {n₁ d₁ n₂ d₂ : ℤ}, d₁ ≠ 0 → d₂ ≠ 0 → f₂ n₁ d₁ n₂ d₂ ≠ 0) →
+  ∀ (a b c d : ℤ),
+    b ≠ 0 →
+    d ≠ 0 →
+    (∀ {n₁ d₁ n₂ d₂ : ℤ},
+       a * d₁ = n₁ * b →
+       c * d₂ = n₂ * d → f₁ n₁ d₁ n₂ d₂ * f₂ a b c d = f₁ a b c d * f₂ n₁ d₁ n₂ d₂) →
+    f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> c d) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (f₁ a b c d) (f₂ a b c d)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.add_def">      <h4>rat.add_def</h4><code>∀ {a b c d : ℤ}, b ≠ 0 → d ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b + <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> c d = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (a * d + c * b) (b * d)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.neg">      <h4>rat.neg</h4><code>ℚ → ℚ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.has_neg">      <h4>rat.has_neg</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_neg">has_neg</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.neg_def">      <h4>rat.neg_def</h4><code>∀ {a b : ℤ}, -rat.mk a b = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (-a) b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.mul">      <h4>rat.mul</h4><code>ℚ → ℚ → ℚ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.has_mul">      <h4>rat.has_mul</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.mul_def">      <h4>rat.mul_def</h4><code>∀ {a b c d : ℤ}, b ≠ 0 → d ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b * <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> c d = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (a * c) (b * d)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.inv">      <h4>rat.inv</h4><code>ℚ → ℚ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.has_inv">      <h4>rat.has_inv</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_inv">has_inv</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.inv_def">      <h4>rat.inv_def</h4><code>∀ {a b : ℤ}, (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b)⁻¹ = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> b a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.add_zero">      <h4>rat.add_zero</h4><code>∀ (a : ℚ), a + 0 = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.zero_add">      <h4>rat.zero_add</h4><code>∀ (a : ℚ), 0 + a = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.add_comm">      <h4>rat.add_comm</h4><code>∀ (a b : ℚ), a + b = b + a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.add_assoc">      <h4>rat.add_assoc</h4><code>∀ (a b c : ℚ), a + b + c = a + (b + c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.add_left_neg">      <h4>rat.add_left_neg</h4><code>∀ (a : ℚ), -a + a = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_one">      <h4>rat.mul_one</h4><code>∀ (a : ℚ), a * 1 = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.one_mul">      <h4>rat.one_mul</h4><code>∀ (a : ℚ), 1 * a = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_comm">      <h4>rat.mul_comm</h4><code>∀ (a b : ℚ), a * b = b * a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_assoc">      <h4>rat.mul_assoc</h4><code>∀ (a b c : ℚ), a * b * c = a * (b * c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.add_mul">      <h4>rat.add_mul</h4><code>∀ (a b c : ℚ), (a + b) * c = a * c + b * c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_add">      <h4>rat.mul_add</h4><code>∀ (a b c : ℚ), a * (b + c) = a * b + a * c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.zero_ne_one">      <h4>rat.zero_ne_one</h4><code>0 ≠ 1</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_inv_cancel">      <h4>rat.mul_inv_cancel</h4><code>∀ (a : ℚ), a ≠ 0 → a * a⁻¹ = 1</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.inv_mul_cancel">      <h4>rat.inv_mul_cancel</h4><code>∀ (a : ℚ), a ≠ 0 → a⁻¹ * a = 1</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.decidable_eq">      <h4>rat.decidable_eq</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.discrete_field">      <h4>rat.discrete_field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/field.html#discrete_field">discrete_field</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.field">      <h4>rat.field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/field.html#field">field</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.division_ring">      <h4>rat.division_ring</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/field.html#division_ring">division_ring</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.integral_domain">      <h4>rat.integral_domain</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.nonzero_comm_ring">      <h4>rat.nonzero_comm_ring</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#nonzero_comm_ring">nonzero_comm_ring</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.comm_ring">      <h4>rat.comm_ring</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.comm_semiring">      <h4>rat.comm_semiring</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.semiring">      <h4>rat.semiring</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#semiring">semiring</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.add_comm_group">      <h4>rat.add_comm_group</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.add_group">      <h4>rat.add_group</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_group">add_group</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.add_comm_monoid">      <h4>rat.add_comm_monoid</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_monoid">add_comm_monoid</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.add_monoid">      <h4>rat.add_monoid</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.add_left_cancel_semigroup">      <h4>rat.add_left_cancel_semigroup</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_left_cancel_semigroup">add_left_cancel_semigroup</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.add_right_cancel_semigroup">      <h4>rat.add_right_cancel_semigroup</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_right_cancel_semigroup">add_right_cancel_semigroup</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.add_comm_semigroup">      <h4>rat.add_comm_semigroup</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_semigroup">add_comm_semigroup</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.add_semigroup">      <h4>rat.add_semigroup</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_semigroup">add_semigroup</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.comm_monoid">      <h4>rat.comm_monoid</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#comm_monoid">comm_monoid</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.monoid">      <h4>rat.monoid</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.comm_semigroup">      <h4>rat.comm_semigroup</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#comm_semigroup">comm_semigroup</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.semigroup">      <h4>rat.semigroup</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.sub_def">      <h4>rat.sub_def</h4><code>∀ {a b c d : ℤ}, b ≠ 0 → d ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> a b - <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> c d = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (a * d - c * b) (b * d)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.denom_neg_eq_denom">      <h4>rat.denom_neg_eq_denom</h4><code>∀ (q : ℚ), (-q).denom = q.denom</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.num_neg_eq_neg_num">      <h4>rat.num_neg_eq_neg_num</h4><code>∀ (q : ℚ), (-q).num = -q.num</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.num_zero">      <h4>rat.num_zero</h4><code>0.num = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.zero_of_num_zero">      <h4>rat.zero_of_num_zero</h4><code>∀ {q : ℚ}, q.num = 0 → q = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.zero_iff_num_zero">      <h4>rat.zero_iff_num_zero</h4><code>∀ {q : ℚ}, q = 0 ↔ q.num = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.num_ne_zero_of_ne_zero">      <h4>rat.num_ne_zero_of_ne_zero</h4><code>∀ {q : ℚ}, q ≠ 0 → q.num ≠ 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.num_one">      <h4>rat.num_one</h4><code>1.num = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.denom_one">      <h4>rat.denom_one</h4><code>1.denom = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="rat.denom_ne_zero">      <h4>rat.denom_ne_zero</h4><code>∀ (q : ℚ), q.denom ≠ 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.eq_iff_mul_eq_mul">      <h4>rat.eq_iff_mul_eq_mul</h4><code>∀ {p q : ℚ}, p = q ↔ p.num * ↑(q.denom) = q.num * ↑(p.denom)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_num_ne_zero_of_ne_zero">      <h4>rat.mk_num_ne_zero_of_ne_zero</h4><code>∀ {q : ℚ} {n d : ℤ}, q ≠ 0 → q = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n d → n ≠ 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_denom_ne_zero_of_ne_zero">      <h4>rat.mk_denom_ne_zero_of_ne_zero</h4><code>∀ {q : ℚ} {n d : ℤ}, q ≠ 0 → q = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n d → d ≠ 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_ne_zero_of_ne_zero">      <h4>rat.mk_ne_zero_of_ne_zero</h4><code>∀ {n d : ℤ}, n ≠ 0 → d ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n d ≠ 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_num_denom">      <h4>rat.mul_num_denom</h4><code>∀ (q r : ℚ), q * r = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (q.num * r.num) ↑(q.denom * r.denom)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.div_num_denom">      <h4>rat.div_num_denom</h4><code>∀ (q r : ℚ), q / r = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (q.num * ↑(r.denom)) (↑(q.denom) * r.num)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.num_denom_mk">      <h4>rat.num_denom_mk</h4><code>∀ {q : ℚ} {n d : ℤ},
+  n ≠ 0 → d ≠ 0 → q = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n d → (∃ (c : ℤ), n = c * q.num ∧ d = c * ↑(q.denom))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_pnat_num">      <h4>rat.mk_pnat_num</h4><code>∀ (n : ℤ) (d : ℕ+), (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk_pnat">rat.mk_pnat</a> n d).num = n / ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> n) ↑d)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_pnat_denom">      <h4>rat.mk_pnat_denom</h4><code>∀ (n : ℤ) (d : ℕ+), (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk_pnat">rat.mk_pnat</a> n d).denom = ↑d / <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> n) ↑d</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_num">      <h4>rat.mul_num</h4><code>∀ (q₁ q₂ : ℚ),
+  (q₁ * q₂).num = q₁.num * q₂.num / ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (q₁.num * q₂.num)) (q₁.denom * q₂.denom))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_denom">      <h4>rat.mul_denom</h4><code>∀ (q₁ q₂ : ℚ),
+  (q₁ * q₂).denom = q₁.denom * q₂.denom / <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (q₁.num * q₂.num)) (q₁.denom * q₂.denom)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_self_num">      <h4>rat.mul_self_num</h4><code>∀ (q : ℚ), (q * q).num = q.num * q.num</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_self_denom">      <h4>rat.mul_self_denom</h4><code>∀ (q : ℚ), (q * q).denom = q.denom * q.denom</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.add_num_denom">      <h4>rat.add_num_denom</h4><code>∀ (q r : ℚ), q + r = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> (q.num * ↑(r.denom) + ↑(q.denom) * r.num) (↑(q.denom) * ↑(r.denom))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.coe_int_eq_mk">      <h4>rat.coe_int_eq_mk</h4><code>∀ (z : ℤ), ↑z = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> z 1</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mk_eq_div">      <h4>rat.mk_eq_div</h4><code>∀ (n d : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n d = ↑n / ↑d</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.coe_int_eq_of_int">      <h4>rat.coe_int_eq_of_int</h4><code>∀ (z : ℤ), ↑z = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.of_int">rat.of_int</a> z</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.coe_int_num">      <h4>rat.coe_int_num</h4><code>∀ (n : ℤ), ↑n.num = n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp, elim_cast</div>
+</div><div class="entry"><a id="rat.coe_int_denom">      <h4>rat.coe_int_denom</h4><code>∀ (n : ℤ), ↑n.denom = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp, elim_cast</div>
+</div><div class="entry"><a id="rat.coe_int_num_of_denom_eq_one">      <h4>rat.coe_int_num_of_denom_eq_one</h4><code>∀ {q : ℚ}, q.denom = 1 → ↑(q.num) = q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.can_lift">      <h4>rat.can_lift</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/tactic/lift.html#can_lift">can_lift</a> ℚ ℤ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.coe_nat_eq_mk">      <h4>rat.coe_nat_eq_mk</h4><code>∀ (n : ℕ), ↑n = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> ↑n 1</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.coe_nat_num">      <h4>rat.coe_nat_num</h4><code>∀ (n : ℕ), ↑n.num = ↑n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp, elim_cast</div>
+</div><div class="entry"><a id="rat.coe_nat_denom">      <h4>rat.coe_nat_denom</h4><code>∀ (n : ℕ), ↑n.denom = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp, elim_cast</div>
+</div><div class="entry"><a id="rat.inv_def'">      <h4>rat.inv_def'</h4><code>∀ {q : ℚ}, q⁻¹ = ↑(q.denom) / ↑(q.num)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="rat.mul_own_denom_eq_num">      <h4>rat.mul_own_denom_eq_num</h4><code>∀ {q : ℚ}, q * ↑(q.denom) = ↑(q.num)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div></body></html>

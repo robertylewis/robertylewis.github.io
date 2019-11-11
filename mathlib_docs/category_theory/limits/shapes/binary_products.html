@@ -1,0 +1,325 @@
+<html><head><title>category_theory.limits.shapes.binary_products</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Binary (co)products</h1>
+
+<p>We define a category <code>walking_pair</code>, which is the index category
+for a binary (co)product diagram. A convenience method <code>pair X Y</code>
+constructs the functor from the walking pair, hitting the given objects.</p>
+
+<p>We define <code>prod X Y</code> and <code>coprod X Y</code> as limits and colimits of such functors.</p>
+
+<p>Typeclasses <code>has_binary_products</code> and <code>has_binary_coproducts</code> assert the existence
+of (co)limits shaped as walking pairs.</p>
+</div><div class="entry"><a id="category_theory.limits.walking_pair">      <h4>category_theory.limits.walking_pair</h4><code>Type v</code>
+<div class="indent"><p><p>The type of objects for the diagram indexing a binary (co)product.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.walking_pair.decidable_eq">      <h4>category_theory.limits.walking_pair.decidable_eq</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.walking_pair">category_theory.limits.walking_pair</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.limits.fintype_walking_pair">      <h4>category_theory.limits.fintype_walking_pair</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.walking_pair">category_theory.limits.walking_pair</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.limits.pair_function">      <h4>category_theory.limits.pair_function</h4><code>Π {C : Type u}, C → C → <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.walking_pair">category_theory.limits.walking_pair</a> → C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.pair">      <h4>category_theory.limits.pair</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C],
+  C → C → <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/discrete_category.html#category_theory.discrete">category_theory.discrete</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.walking_pair">category_theory.limits.walking_pair</a> ⥤ C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.pair_obj_left">      <h4>category_theory.limits.pair_obj_left</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (X Y : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y).obj category_theory.limits.walking_pair.left = X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.pair_obj_right">      <h4>category_theory.limits.pair_obj_right</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (X Y : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y).obj category_theory.limits.walking_pair.right = Y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.map_pair">      <h4>category_theory.limits.map_pair</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {W X Y Z : C},
+  (W ⟶ Y) → (X ⟶ Z) → (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> W X ⟶ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> Y Z)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.map_pair_left">      <h4>category_theory.limits.map_pair_left</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {W X Y Z : C} (f : W ⟶ Y) (g : X ⟶ Z),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.map_pair">category_theory.limits.map_pair</a> f g).app category_theory.limits.walking_pair.left = f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.map_pair_right">      <h4>category_theory.limits.map_pair_right</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {W X Y Z : C} (f : W ⟶ Y) (g : X ⟶ Z),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.map_pair">category_theory.limits.map_pair</a> f g).app category_theory.limits.walking_pair.right = g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.binary_fan">      <h4>category_theory.limits.binary_fan</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], C → C → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.binary_cofan">      <h4>category_theory.limits.binary_cofan</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], C → C → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.binary_fan.mk">      <h4>category_theory.limits.binary_fan.mk</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y P : C},
+  (P ⟶ X) → (P ⟶ Y) → <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.binary_fan">category_theory.limits.binary_fan</a> X Y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.binary_cofan.mk">      <h4>category_theory.limits.binary_cofan.mk</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y P : C},
+  (X ⟶ P) → (Y ⟶ P) → <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.binary_cofan">category_theory.limits.binary_cofan</a> X Y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.binary_fan.mk_π_app_left">      <h4>category_theory.limits.binary_fan.mk_π_app_left</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y P : C} (π₁ : P ⟶ X) (π₂ : P ⟶ Y),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.binary_fan.mk">category_theory.limits.binary_fan.mk</a> π₁ π₂).π).app category_theory.limits.walking_pair.left = π₁</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.binary_fan.mk_π_app_right">      <h4>category_theory.limits.binary_fan.mk_π_app_right</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y P : C} (π₁ : P ⟶ X) (π₂ : P ⟶ Y),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.binary_fan.mk">category_theory.limits.binary_fan.mk</a> π₁ π₂).π).app category_theory.limits.walking_pair.right = π₂</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.binary_cofan.mk_π_app_left">      <h4>category_theory.limits.binary_cofan.mk_π_app_left</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y P : C} (ι₁ : X ⟶ P) (ι₂ : Y ⟶ P),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.binary_cofan.mk">category_theory.limits.binary_cofan.mk</a> ι₁ ι₂).ι).app category_theory.limits.walking_pair.left = ι₁</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.binary_cofan.mk_π_app_right">      <h4>category_theory.limits.binary_cofan.mk_π_app_right</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y P : C} (ι₁ : X ⟶ P) (ι₂ : Y ⟶ P),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.binary_cofan.mk">category_theory.limits.binary_cofan.mk</a> ι₁ ι₂).ι).app category_theory.limits.walking_pair.right = ι₂</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod">      <h4>category_theory.limits.prod</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (X Y : C)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_limit">category_theory.limits.has_limit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y)], C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod">      <h4>category_theory.limits.coprod</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (X Y : C)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_colimit">category_theory.limits.has_colimit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y)], C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.fst">      <h4>category_theory.limits.prod.fst</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y : C}
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_limit">category_theory.limits.has_limit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y)], X⨯Y ⟶ X</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.snd">      <h4>category_theory.limits.prod.snd</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y : C}
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_limit">category_theory.limits.has_limit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y)], X⨯Y ⟶ Y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.inl">      <h4>category_theory.limits.coprod.inl</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y : C}
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_colimit">category_theory.limits.has_colimit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y)], X ⟶ X⨿Y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.inr">      <h4>category_theory.limits.coprod.inr</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y : C}
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_colimit">category_theory.limits.has_colimit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y)], Y ⟶ X⨿Y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.lift">      <h4>category_theory.limits.prod.lift</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {W X Y : C}
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_limit">category_theory.limits.has_limit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y)],
+  (W ⟶ X) → (W ⟶ Y) → (W ⟶ X⨯Y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.desc">      <h4>category_theory.limits.coprod.desc</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {W X Y : C}
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_colimit">category_theory.limits.has_colimit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.pair">category_theory.limits.pair</a> X Y)],
+  (X ⟶ W) → (Y ⟶ W) → (X⨿Y ⟶ W)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.map">      <h4>category_theory.limits.prod.map</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {W X Y Z : C}
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_limits_of_shape">category_theory.limits.has_limits_of_shape</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/discrete_category.html#category_theory.discrete">category_theory.discrete</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.walking_pair">category_theory.limits.walking_pair</a>) C],
+  (W ⟶ Y) → (X ⟶ Z) → (W⨯X ⟶ Y⨯Z)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.map">      <h4>category_theory.limits.coprod.map</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {W X Y Z : C}
+[_inst_1 :
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/limits.html#category_theory.limits.has_colimits_of_shape">category_theory.limits.has_colimits_of_shape</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/discrete_category.html#category_theory.discrete">category_theory.discrete</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.walking_pair">category_theory.limits.walking_pair</a>) C],
+  (W ⟶ Y) → (X ⟶ Z) → (W⨿X ⟶ Y⨿Z)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.has_binary_products">      <h4>category_theory.limits.has_binary_products</h4><code>Π (C : Type u) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.has_binary_coproducts">      <h4>category_theory.limits.has_binary_coproducts</h4><code>Π (C : Type u) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.category_theory.limits.has_binary_products">      <h4>category_theory.limits.category_theory.limits.has_binary_products</h4><code>Π (C : Type u) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/finite_products.html#category_theory.limits.has_finite_products">category_theory.limits.has_finite_products</a> C],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.limits.category_theory.limits.has_binary_coproducts">      <h4>category_theory.limits.category_theory.limits.has_binary_coproducts</h4><code>Π (C : Type u) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/finite_products.html#category_theory.limits.has_finite_coproducts">category_theory.limits.has_finite_coproducts</a> C],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.limits.prod.braiding">      <h4>category_theory.limits.prod.braiding</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C] (P Q : C),
+  P⨯Q ≅ Q⨯P</code>
+<div class="indent"><p><p>The braiding isomorphism which swaps a binary product.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.braiding_hom">      <h4>category_theory.limits.prod.braiding_hom</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C] (P Q : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.braiding">category_theory.limits.prod.braiding</a> P Q).hom =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.lift">category_theory.limits.prod.lift</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.snd">category_theory.limits.prod.snd</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.fst">category_theory.limits.prod.fst</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.braiding_inv">      <h4>category_theory.limits.prod.braiding_inv</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C] (P Q : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.braiding">category_theory.limits.prod.braiding</a> P Q).inv =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.lift">category_theory.limits.prod.lift</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.snd">category_theory.limits.prod.snd</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.fst">category_theory.limits.prod.fst</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.symmetry">      <h4>category_theory.limits.prod.symmetry</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C] (P Q : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.braiding">category_theory.limits.prod.braiding</a> P Q).hom ≫ (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.braiding">category_theory.limits.prod.braiding</a> Q P).hom = 𝟙 (P⨯Q)</code>
+<div class="indent"><p><p>The braiding isomorphism is symmetric.</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.associator_inv">      <h4>category_theory.limits.prod.associator_inv</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+(P Q R : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> P Q R).inv =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.lift">category_theory.limits.prod.lift</a>
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.lift">category_theory.limits.prod.lift</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.fst">category_theory.limits.prod.fst</a>
+         (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.snd">category_theory.limits.prod.snd</a> ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.fst">category_theory.limits.prod.fst</a>))
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.snd">category_theory.limits.prod.snd</a> ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.snd">category_theory.limits.prod.snd</a>)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.associator_hom">      <h4>category_theory.limits.prod.associator_hom</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+(P Q R : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> P Q R).hom =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.lift">category_theory.limits.prod.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.fst">category_theory.limits.prod.fst</a> ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.fst">category_theory.limits.prod.fst</a>)
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.lift">category_theory.limits.prod.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.fst">category_theory.limits.prod.fst</a> ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.snd">category_theory.limits.prod.snd</a>)
+         <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.snd">category_theory.limits.prod.snd</a>)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.associator">      <h4>category_theory.limits.prod.associator</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+(P Q R : C), P⨯Q⨯R ≅ P⨯(Q⨯R)</code>
+<div class="indent"><p><p>The associator isomorphism for binary products.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.pentagon">      <h4>category_theory.limits.prod.pentagon</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+(W X Y Z : C),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.map">category_theory.limits.prod.map</a> ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> W X Y).hom) (𝟙 Z) ≫
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> W (X⨯Y) Z).hom ≫
+        <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.map">category_theory.limits.prod.map</a> (𝟙 W) ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> X Y Z).hom) =
+    (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> (W⨯X) Y Z).hom ≫
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> W X (Y⨯Z)).hom</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.associator_naturality">      <h4>category_theory.limits.prod.associator_naturality</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+{X₁ X₂ X₃ Y₁ Y₂ Y₃ : C} (f₁ : X₁ ⟶ Y₁) (f₂ : X₂ ⟶ Y₂) (f₃ : X₃ ⟶ Y₃),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.map">category_theory.limits.prod.map</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.map">category_theory.limits.prod.map</a> f₁ f₂) f₃ ≫
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> Y₁ Y₂ Y₃).hom =
+    (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> X₁ X₂ X₃).hom ≫
+      <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.map">category_theory.limits.prod.map</a> f₁ (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.map">category_theory.limits.prod.map</a> f₂ f₃)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.left_unitor_hom">      <h4>category_theory.limits.prod.left_unitor_hom</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_terminal">category_theory.limits.has_terminal</a> C] (P : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.left_unitor">category_theory.limits.prod.left_unitor</a> P).hom = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.snd">category_theory.limits.prod.snd</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.left_unitor">      <h4>category_theory.limits.prod.left_unitor</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_terminal">category_theory.limits.has_terminal</a> C] (P : C), ⊤_ C⨯P ≅ P</code>
+<div class="indent"><p><p>The left unitor isomorphism for binary products with the terminal object.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.left_unitor_inv">      <h4>category_theory.limits.prod.left_unitor_inv</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_terminal">category_theory.limits.has_terminal</a> C] (P : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.left_unitor">category_theory.limits.prod.left_unitor</a> P).inv =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.lift">category_theory.limits.prod.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.terminal.from">category_theory.limits.terminal.from</a> P) (𝟙 P)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.right_unitor_inv">      <h4>category_theory.limits.prod.right_unitor_inv</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_terminal">category_theory.limits.has_terminal</a> C] (P : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.right_unitor">category_theory.limits.prod.right_unitor</a> P).inv =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.lift">category_theory.limits.prod.lift</a> (𝟙 P) (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.terminal.from">category_theory.limits.terminal.from</a> P)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.right_unitor_hom">      <h4>category_theory.limits.prod.right_unitor_hom</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_terminal">category_theory.limits.has_terminal</a> C] (P : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.right_unitor">category_theory.limits.prod.right_unitor</a> P).hom = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.fst">category_theory.limits.prod.fst</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.prod.right_unitor">      <h4>category_theory.limits.prod.right_unitor</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_terminal">category_theory.limits.has_terminal</a> C] (P : C), P⨯⊤_ C ≅ P</code>
+<div class="indent"><p><p>The right unitor isomorphism for binary products with the terminal object.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.prod.triangle">      <h4>category_theory.limits.prod.triangle</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_products">category_theory.limits.has_binary_products</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_terminal">category_theory.limits.has_terminal</a> C] (X Y : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.associator">category_theory.limits.prod.associator</a> X (⊤_ C) Y).hom ≫
+      <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.map">category_theory.limits.prod.map</a> (𝟙 X) ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.left_unitor">category_theory.limits.prod.left_unitor</a> Y).hom) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.map">category_theory.limits.prod.map</a> ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.prod.right_unitor">category_theory.limits.prod.right_unitor</a> X).hom) (𝟙 Y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.braiding_inv">      <h4>category_theory.limits.coprod.braiding_inv</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+(P Q : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.braiding">category_theory.limits.coprod.braiding</a> P Q).inv =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.desc">category_theory.limits.coprod.desc</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inr">category_theory.limits.coprod.inr</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inl">category_theory.limits.coprod.inl</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.braiding_hom">      <h4>category_theory.limits.coprod.braiding_hom</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+(P Q : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.braiding">category_theory.limits.coprod.braiding</a> P Q).hom =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.desc">category_theory.limits.coprod.desc</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inr">category_theory.limits.coprod.inr</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inl">category_theory.limits.coprod.inl</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.braiding">      <h4>category_theory.limits.coprod.braiding</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+(P Q : C), P⨿Q ≅ Q⨿P</code>
+<div class="indent"><p><p>The braiding isomorphism which swaps a binary coproduct.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.symmetry">      <h4>category_theory.limits.coprod.symmetry</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+(P Q : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.braiding">category_theory.limits.coprod.braiding</a> P Q).hom ≫ (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.braiding">category_theory.limits.coprod.braiding</a> Q P).hom = 𝟙 (P⨿Q)</code>
+<div class="indent"><p><p>The braiding isomorphism is symmetric.</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.associator">      <h4>category_theory.limits.coprod.associator</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+(P Q R : C), P⨿Q⨿R ≅ P⨿(Q⨿R)</code>
+<div class="indent"><p><p>The associator isomorphism for binary coproducts.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.associator_hom">      <h4>category_theory.limits.coprod.associator_hom</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+(P Q R : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> P Q R).hom =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.desc">category_theory.limits.coprod.desc</a>
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.desc">category_theory.limits.coprod.desc</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inl">category_theory.limits.coprod.inl</a>
+         (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inl">category_theory.limits.coprod.inl</a> ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inr">category_theory.limits.coprod.inr</a>))
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inr">category_theory.limits.coprod.inr</a> ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inr">category_theory.limits.coprod.inr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.associator_inv">      <h4>category_theory.limits.coprod.associator_inv</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+(P Q R : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> P Q R).inv =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.desc">category_theory.limits.coprod.desc</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inl">category_theory.limits.coprod.inl</a> ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inl">category_theory.limits.coprod.inl</a>)
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.desc">category_theory.limits.coprod.desc</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inr">category_theory.limits.coprod.inr</a> ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inl">category_theory.limits.coprod.inl</a>)
+         <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inr">category_theory.limits.coprod.inr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.pentagon">      <h4>category_theory.limits.coprod.pentagon</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+(W X Y Z : C),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.map">category_theory.limits.coprod.map</a> ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> W X Y).hom) (𝟙 Z) ≫
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> W (X⨿Y) Z).hom ≫
+        <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.map">category_theory.limits.coprod.map</a> (𝟙 W) ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> X Y Z).hom) =
+    (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> (W⨿X) Y Z).hom ≫
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> W X (Y⨿Z)).hom</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.associator_naturality">      <h4>category_theory.limits.coprod.associator_naturality</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+{X₁ X₂ X₃ Y₁ Y₂ Y₃ : C} (f₁ : X₁ ⟶ Y₁) (f₂ : X₂ ⟶ Y₂) (f₃ : X₃ ⟶ Y₃),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.map">category_theory.limits.coprod.map</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.map">category_theory.limits.coprod.map</a> f₁ f₂) f₃ ≫
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> Y₁ Y₂ Y₃).hom =
+    (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> X₁ X₂ X₃).hom ≫
+      <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.map">category_theory.limits.coprod.map</a> f₁ (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.map">category_theory.limits.coprod.map</a> f₂ f₃)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.left_unitor_inv">      <h4>category_theory.limits.coprod.left_unitor_inv</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_initial">category_theory.limits.has_initial</a> C] (P : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.left_unitor">category_theory.limits.coprod.left_unitor</a> P).inv = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inr">category_theory.limits.coprod.inr</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.left_unitor">      <h4>category_theory.limits.coprod.left_unitor</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_initial">category_theory.limits.has_initial</a> C] (P : C), ⊥_ C⨿P ≅ P</code>
+<div class="indent"><p><p>The left unitor isomorphism for binary coproducts with the initial object.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.left_unitor_hom">      <h4>category_theory.limits.coprod.left_unitor_hom</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_initial">category_theory.limits.has_initial</a> C] (P : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.left_unitor">category_theory.limits.coprod.left_unitor</a> P).hom =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.desc">category_theory.limits.coprod.desc</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.initial.to">category_theory.limits.initial.to</a> P) (𝟙 P)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.right_unitor_inv">      <h4>category_theory.limits.coprod.right_unitor_inv</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_initial">category_theory.limits.has_initial</a> C] (P : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.right_unitor">category_theory.limits.coprod.right_unitor</a> P).inv = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.inl">category_theory.limits.coprod.inl</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.right_unitor_hom">      <h4>category_theory.limits.coprod.right_unitor_hom</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_initial">category_theory.limits.has_initial</a> C] (P : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.right_unitor">category_theory.limits.coprod.right_unitor</a> P).hom =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.desc">category_theory.limits.coprod.desc</a> (𝟙 P) (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.initial.to">category_theory.limits.initial.to</a> P)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.limits.coprod.right_unitor">      <h4>category_theory.limits.coprod.right_unitor</h4><code>Π {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_initial">category_theory.limits.has_initial</a> C] (P : C), P⨿⊥_ C ≅ P</code>
+<div class="indent"><p><p>The right unitor isomorphism for binary coproducts with the initial object.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.limits.coprod.triangle">      <h4>category_theory.limits.coprod.triangle</h4><code>∀ {C : Type u} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.has_binary_coproducts">category_theory.limits.has_binary_coproducts</a> C]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/terminal.html#category_theory.limits.has_initial">category_theory.limits.has_initial</a> C] (X Y : C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.associator">category_theory.limits.coprod.associator</a> X (⊥_ C) Y).hom ≫
+      <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.map">category_theory.limits.coprod.map</a> (𝟙 X) ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.left_unitor">category_theory.limits.coprod.left_unitor</a> Y).hom) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.map">category_theory.limits.coprod.map</a> ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/limits/shapes/binary_products.html#category_theory.limits.coprod.right_unitor">category_theory.limits.coprod.right_unitor</a> X).hom) (𝟙 Y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

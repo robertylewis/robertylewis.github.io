@@ -1,0 +1,333 @@
+<html><head><title>analysis.normed_space.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="has_norm">      <h4>has_norm</h4><code>Type u_5 → Type u_5</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_group">      <h4>normed_group</h4><code>Type u_5 → Type u_5</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_group.of_add_dist">      <h4>normed_group.of_add_dist</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/basic.html#metric_space">metric_space</a> α],
+  (∀ (x : α), ∥x∥ = has_dist.dist x 0) →
+  (∀ (x y z : α), has_dist.dist x y ≤ has_dist.dist (x + z) (y + z)) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α</code>
+<div class="indent"><p><p>Construct a normed group from a translation invariant distance</p>
+</p>       </div>
+</div><div class="entry"><a id="normed_group.of_add_dist'">      <h4>normed_group.of_add_dist'</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/basic.html#metric_space">metric_space</a> α],
+  (∀ (x : α), ∥x∥ = has_dist.dist x 0) →
+  (∀ (x y z : α), has_dist.dist (x + z) (y + z) ≤ has_dist.dist x y) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α</code>
+<div class="indent"><p><p>Construct a normed group from a translation invariant distance</p>
+</p>       </div>
+</div><div class="entry"><a id="normed_group.core">      <h4>normed_group.core</h4><code>Π (α : Type u_5) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> α], Type</code>
+<div class="indent"><p><p>A normed group can be built from a norm that satisfies algebraic properties. This is
+formalised in this structure.</p>
+</p>       </div>
+</div><div class="entry"><a id="normed_group.of_core">      <h4>normed_group.of_core</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group.core">normed_group.core</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="dist_eq_norm">      <h4>dist_eq_norm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g h : α), has_dist.dist g h = ∥g - h∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="dist_zero_right">      <h4>dist_zero_right</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g : α), has_dist.dist g 0 = ∥g∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="norm_triangle">      <h4>norm_triangle</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g h : α), ∥g + h∥ ≤ ∥g∥ + ∥h∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_nonneg">      <h4>norm_nonneg</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g : α), 0 ≤ ∥g∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="norm_eq_zero">      <h4>norm_eq_zero</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g : α), ∥g∥ = 0 ↔ g = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_zero">      <h4>norm_zero</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], ∥0∥ = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="norm_triangle_sum">      <h4>norm_triangle_sum</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] {β : Type u_2} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> β) (f : β → α),
+  ∥finset.sum s f∥ ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (a : β), ∥f a∥)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_pos_iff">      <h4>norm_pos_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g : α), 0 < ∥g∥ ↔ g ≠ 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_le_zero_iff">      <h4>norm_le_zero_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g : α), ∥g∥ ≤ 0 ↔ g = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_neg">      <h4>norm_neg</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g : α), ∥-g∥ = ∥g∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="norm_reverse_triangle'">      <h4>norm_reverse_triangle'</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (a b : α), ∥a∥ - ∥b∥ ≤ ∥a - b∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_reverse_triangle">      <h4>norm_reverse_triangle</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (a b : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#abs">abs</a> (∥a∥ - ∥b∥) ≤ ∥a - b∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_triangle_sub">      <h4>norm_triangle_sub</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] {a b : α}, ∥a - b∥ ≤ ∥a∥ + ∥b∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="abs_norm_sub_norm_le">      <h4>abs_norm_sub_norm_le</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g h : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#abs">abs</a> (∥g∥ - ∥h∥) ≤ ∥g - h∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="dist_norm_norm_le">      <h4>dist_norm_norm_le</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g h : α), has_dist.dist ∥g∥ ∥h∥ ≤ ∥g - h∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_sub_rev">      <h4>norm_sub_rev</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g h : α), ∥g - h∥ = ∥h - g∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ball_0_eq">      <h4>ball_0_eq</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (ε : ℝ), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/basic.html#metric.ball">metric.ball</a> 0 ε = {x : α | ∥x∥ < ε}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_group.tendsto_nhds_zero">      <h4>normed_group.tendsto_nhds_zero</h4><code>∀ {α : Type u_1} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] {f : γ → α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0) ↔ ∀ (ε : ℝ), ε > 0 → {x : γ | ∥f x∥ < ε} ∈ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nnnorm">      <h4>nnnorm</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/nnreal.html#nnreal">nnreal</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="coe_nnnorm">      <h4>coe_nnnorm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a) = ∥a∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nndist_eq_nnnorm">      <h4>nndist_eq_nnnorm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (a b : α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/basic.html#nndist">nndist</a> a b = <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (a - b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nnnorm_eq_zero">      <h4>nnnorm_eq_zero</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a = 0 ↔ a = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nnnorm_zero">      <h4>nnnorm_zero</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nnnorm_triangle">      <h4>nnnorm_triangle</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g h : α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (g + h) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g + <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> h</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nnnorm_neg">      <h4>nnnorm_neg</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g : α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (-g) = <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nndist_nnnorm_nnnorm_le">      <h4>nndist_nnnorm_nnnorm_le</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (g h : α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/basic.html#nndist">nndist</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g) (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> h) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (g - h)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="prod.normed_group">      <h4>prod.normed_group</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> (α × β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="norm_fst_le">      <h4>norm_fst_le</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] (x : α × β),
+  ∥x.fst∥ ≤ ∥x∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_snd_le">      <h4>norm_snd_le</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] (x : α × β),
+  ∥x.snd∥ ≤ ∥x∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.normed_group">      <h4>fintype.normed_group</h4><code>Π {ι : Type u_4} {π : ι → Type u_1} [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ι] [_inst_4 : Π (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> (π i)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> (Π (b : ι), π b)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="tendsto_iff_norm_tendsto_zero">      <h4>tendsto_iff_norm_tendsto_zero</h4><code>∀ {β : Type u_2} {ι : Type u_4} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] {f : ι → β} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> ι} {b : β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f a (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> b) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (e : ι), ∥f e - b∥) a (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_zero_iff_norm_tendsto_zero">      <h4>tendsto_zero_iff_norm_tendsto_zero</h4><code>∀ {β : Type u_2} {γ : Type u_3} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] {f : γ → β} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f a (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (e : γ), ∥f e∥) a (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="lim_norm">      <h4>lim_norm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (g : α), ∥g - x∥) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="lim_norm_zero">      <h4>lim_norm_zero</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (g : α), ∥g∥) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="continuous_norm">      <h4>continuous_norm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> (λ (g : α), ∥g∥)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="continuous_nnnorm">      <h4>continuous_nnnorm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_uniform_group">      <h4>normed_uniform_group</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/uniform_group.html#uniform_add_group">uniform_add_group</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_top_monoid">      <h4>normed_top_monoid</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/monoid.html#topological_add_monoid">topological_add_monoid</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_top_group">      <h4>normed_top_group</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/group.html#topological_add_group">topological_add_group</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_ring">      <h4>normed_ring</h4><code>Type u_5 → Type u_5</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_ring.to_normed_group">      <h4>normed_ring.to_normed_group</h4><code>Π {α : Type u_1} [β : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="norm_mul_le">      <h4>norm_mul_le</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α] (a b : α), ∥a * b∥ ≤ ∥a∥ * ∥b∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_pow_le">      <h4>norm_pow_le</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α] (a : α) {n : ℕ}, 0 < n → ∥a ^ n∥ ≤ ∥a∥ ^ n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="prod.normed_ring">      <h4>prod.normed_ring</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> (α × β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_ring_top_monoid">      <h4>normed_ring_top_monoid</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/monoid.html#topological_monoid">topological_monoid</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_top_ring">      <h4>normed_top_ring</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/ring.html#topological_ring">topological_ring</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_field">      <h4>normed_field</h4><code>Type u_5 → Type u_5</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nondiscrete_normed_field">      <h4>nondiscrete_normed_field</h4><code>Type u_5 → Type u_5</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_field.to_normed_ring">      <h4>normed_field.to_normed_ring</h4><code>Π {α : Type u_1} [i : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_field.norm_one">      <h4>normed_field.norm_one</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α], ∥1∥ = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="normed_field.norm_mul">      <h4>normed_field.norm_mul</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] (a b : α), ∥a * b∥ = ∥a∥ * ∥b∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="normed_field.normed_field.is_monoid_hom_norm">      <h4>normed_field.normed_field.is_monoid_hom_norm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> has_norm.norm</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_field.norm_pow">      <h4>normed_field.norm_pow</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] (a : α) (n : ℕ), ∥a ^ n∥ = ∥a∥ ^ n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="normed_field.norm_prod">      <h4>normed_field.norm_prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> β) (f : β → α),
+  ∥finset.prod s f∥ = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> s (λ (b : β), ∥f b∥)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="normed_field.norm_div">      <h4>normed_field.norm_div</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] (a b : α), ∥a / b∥ = ∥a∥ / ∥b∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="normed_field.norm_inv">      <h4>normed_field.norm_inv</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] (a : α), ∥a⁻¹∥ = ∥a∥⁻¹</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="normed_field.norm_fpow">      <h4>normed_field.norm_fpow</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] (a : α) (n : ℤ), ∥a ^ n∥ = ∥a∥ ^ n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="normed_field.exists_one_lt_norm">      <h4>normed_field.exists_one_lt_norm</h4><code>∀ (α : Type u_1) [i : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> α], ∃ (x : α), 1 < ∥x∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_field.exists_norm_lt_one">      <h4>normed_field.exists_norm_lt_one</h4><code>∀ (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> α], ∃ (x : α), 0 < ∥x∥ ∧ ∥x∥ < 1</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_field.normed_field">      <h4>normed_field.normed_field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> ℝ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="normed_field.nondiscrete_normed_field">      <h4>normed_field.nondiscrete_normed_field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℝ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="real.norm_eq_abs">      <h4>real.norm_eq_abs</h4><code>∀ (r : ℝ), ∥r∥ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#abs">abs</a> r</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_norm">      <h4>norm_norm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (x : α), ∥∥x∥∥ = ∥x∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nnnorm_norm">      <h4>nnnorm_norm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> ∥a∥ = <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="int.normed_ring">      <h4>int.normed_ring</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_ring">normed_ring</a> ℤ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="int.norm_cast_real">      <h4>int.norm_cast_real</h4><code>∀ (m : ℤ), ∥↑m∥ = ∥m∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: elim_cast</div>
+</div><div class="entry"><a id="rat.normed_field">      <h4>rat.normed_field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.nondiscrete_normed_field">      <h4>rat.nondiscrete_normed_field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℚ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rat.norm_cast_real">      <h4>rat.norm_cast_real</h4><code>∀ (r : ℚ), ∥↑r∥ = ∥r∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp, elim_cast</div>
+</div><div class="entry"><a id="int.norm_cast_rat">      <h4>int.norm_cast_rat</h4><code>∀ (m : ℤ), ∥↑m∥ = ∥m∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp, elim_cast</div>
+</div><div class="entry"><a id="normed_space">      <h4>normed_space</h4><code>Π (α : Type u_5) (β : Type u_6) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u_5 u_6)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_field.to_normed_space">      <h4>normed_field.to_normed_space</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="norm_smul">      <h4>norm_smul</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α β] (s : α) (x : β), ∥s • x∥ = ∥s∥ * ∥x∥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nnnorm_smul">      <h4>nnnorm_smul</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α β] (s : α) (x : β), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (s • x) = <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> s * <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_smul">      <h4>tendsto_smul</h4><code>∀ {α : Type u_1} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] {F : Type u_6} [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> F]
+[_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α F] {f : γ → α} {g : γ → F} {e : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> γ} {s : α} {b : F},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> s) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> g e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> b) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (x : γ), f x • g x) e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (s • b))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_smul_const">      <h4>tendsto_smul_const</h4><code>∀ {α : Type u_1} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] {F : Type u_6} [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> F]
+[_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α F] {g : γ → F} {e : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> γ} (s : α) {b : F},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> g e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> b) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (x : γ), s • g x) e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (s • b))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="normed_space.topological_vector_space">      <h4>normed_space.topological_vector_space</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] {E : Type u_5} [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> E] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α E],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/module.html#topological_vector_space">topological_vector_space</a> α E</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="rescale_to_shell">      <h4>rescale_to_shell</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] {E : Type u_5} [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> E] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α E]
+{c : α},
+  1 < ∥c∥ →
+  ∀ {ε : ℝ},
+    0 < ε →
+    ∀ {x : E},
+      x ≠ 0 →
+      (∃ (d : α),
+         d ≠ 0 ∧
+           ∥d • x∥ ≤ ε ∧ ε / ∥c∥ ≤ ∥d • x∥ ∧ ∥d∥⁻¹ ≤ ε⁻¹ * ∥c∥ * ∥x∥)</code>
+<div class="indent"><p><p>If there is a scalar <code>c</code> with <code>∥c∥&gt;1</code>, then any element can be moved by scalar multiplication to
+any shell of width <code>∥c∥</code>. Also recap information on the norm of the rescaling element that shows
+up in applications.</p>
+</p>       </div>
+</div><div class="entry"><a id="prod.normed_space">      <h4>prod.normed_space</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] {E : Type u_5} {F : Type u_6} [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> E]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α E] [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> F] [_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α F], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α (E × F)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.normed_space">      <h4>fintype.normed_space</h4><code>Π {α : Type u_1} {ι : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> α] {E : ι → Type u_2} [_inst_7 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ι]
+[_inst_8 : Π (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> (E i)] [_inst_9 : Π (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α (E i)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> α (Π (i : ι), E i)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="summable_iff_vanishing_norm">      <h4>summable_iff_vanishing_norm</h4><code>∀ {α : Type u_1} {ι : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {f : ι → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/infinite_sum.html#summable">summable</a> f ↔
+    ∀ (ε : ℝ), ε > 0 → (∃ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> ι), ∀ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> ι), <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/lattice.html#disjoint">disjoint</a> t s → ∥finset.sum t f∥ < ε)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="summable_of_norm_bounded">      <h4>summable_of_norm_bounded</h4><code>∀ {α : Type u_1} {ι : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {f : ι → α}
+(g : ι → ℝ), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/infinite_sum.html#summable">summable</a> g → (∀ (i : ι), ∥f i∥ ≤ g i) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/infinite_sum.html#summable">summable</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="summable_of_summable_norm">      <h4>summable_of_summable_norm</h4><code>∀ {α : Type u_1} {ι : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {f : ι → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/infinite_sum.html#summable">summable</a> (λ (a : ι), ∥f a∥) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/infinite_sum.html#summable">summable</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="norm_tsum_le_tsum_norm">      <h4>norm_tsum_le_tsum_norm</h4><code>∀ {α : Type u_1} {ι : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {f : ι → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/algebra/infinite_sum.html#summable">summable</a> (λ (i : ι), ∥f i∥) → (∥(∑ (i : ι), f i)∥ ≤ ∑ (i : ι), ∥f i∥)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="complex.normed_field">      <h4>complex.normed_field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> ℂ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="complex.nondiscrete_normed_field">      <h4>complex.nondiscrete_normed_field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℂ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="complex.norm_real">      <h4>complex.norm_real</h4><code>∀ (r : ℝ), ∥↑r∥ = ∥r∥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="complex.norm_rat">      <h4>complex.norm_rat</h4><code>∀ (r : ℚ), ∥↑r∥ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#abs">abs</a> ↑r</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="complex.norm_nat">      <h4>complex.norm_nat</h4><code>∀ (n : ℕ), ∥↑n∥ = ↑n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="complex.norm_int">      <h4>complex.norm_int</h4><code>∀ {n : ℤ}, ∥↑n∥ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#abs">abs</a> ↑n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="complex.norm_int_of_nonneg">      <h4>complex.norm_int_of_nonneg</h4><code>∀ {n : ℤ}, 0 ≤ n → ∥↑n∥ = ↑n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

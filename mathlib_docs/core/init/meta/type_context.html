@@ -1,0 +1,159 @@
+<html><head><title>core.init.meta.type_context</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="tactic.unsafe.type_context">      <h4>tactic.unsafe.type_context</h4><code>Type → Type</code>
+<div class="indent"><p><p>A monad that exposes the functionality of the C++ class <code>type_context</code>.
+   The idea is that the methods in <code>tco</code> are more powerful but <em>unsafe</em> in the
+   sense that you can create terms that do not typecheck or that are infinitely descending.
+   Under the hood, <code>tco</code> is implemented as a reader monad, with a mutable <code>type_context</code> object.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.bind">      <h4>tactic.unsafe.type_context.bind</h4><code>Π {α β : Type},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α → (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.pure">      <h4>tactic.unsafe.type_context.pure</h4><code>Π {α : Type}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.fail">      <h4>tactic.unsafe.type_context.fail</h4><code>Π {α : Type}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/format.html#format">format</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.failure">      <h4>tactic.unsafe.type_context.failure</h4><code>Π {α : Type}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.monad">      <h4>tactic.unsafe.type_context.monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.monad_fail">      <h4>tactic.unsafe.type_context.monad_fail</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad_fail.html#monad_fail">monad_fail</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.get_env">      <h4>tactic.unsafe.type_context.get_env</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.whnf">      <h4>tactic.unsafe.type_context.whnf</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.is_def_eq">      <h4>tactic.unsafe.type_context.is_def_eq</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> bool.ff → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.unify">      <h4>tactic.unsafe.type_context.unify</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> bool.ff → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.infer">      <h4>tactic.unsafe.type_context.infer</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Infer the type of the given expr. Inferring the type does not mean that it typechecks.
+   Will fail if type can't be inferred.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.is_stuck">      <h4>tactic.unsafe.type_context.is_stuck</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p>A stuck expression <code>e</code> is an expression that <em>would</em> reduce,
+except that a metavariable is present that prevents the reduction.
+Returns the metavariable which is causing the stuckage.
+For example, <code>@has_add.add nat ?m a b</code> can't project because <code>?m</code> is not given.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.push_local">      <h4>tactic.unsafe.type_context.push_local</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#binder_info">binder_info</a> binder_info.default → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Add a local to the tc local context.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.pop_local">      <h4>tactic.unsafe.type_context.pop_local</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.get_local_context">      <h4>tactic.unsafe.type_context.get_local_context</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/local_context.html#local_context">local_context</a></code>
+<div class="indent"><p><p>Get the local context of the type_context.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.mk_mvar">      <h4>tactic.unsafe.type_context.mk_mvar</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/local_context.html#local_context">local_context</a>) option.none → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Create and declare a new metavariable. If the local context is not given then it will use the current local context.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.fold_mvars">      <h4>tactic.unsafe.type_context.fold_mvars</h4><code>Π {α : Type}, (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α) → α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α</code>
+<div class="indent"><p><p>Iterate over all mvars in the mvar context.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.list_mvars">      <h4>tactic.unsafe.type_context.list_mvars</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.assign">      <h4>tactic.unsafe.type_context.assign</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p>Set the mvar to the following assignments.
+   Works for temporary metas too.
+   [WARNING] <code>assign</code> does not perform certain checks:
+    - No typecheck is done before assignment.
+    - If the metavariable is already assigned this will clobber the assignment.
+    - It will not stop you from assigning an metavariable to itself or creating cycles of metavariable assignments.
+      These will manifest as 'deep recursion' exceptions when <code>instantiate_mvars</code> is used.
+    - It is not checked whether the assignment uses local constants outside the declaration's context.
+   You can avoid the unsafety by using <code>unify</code> instead.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.level.assign">      <h4>tactic.unsafe.type_context.level.assign</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.is_declared">      <h4>tactic.unsafe.type_context.is_declared</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Returns true if the given expression is a declared local constant or a declared metavariable.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.is_assigned">      <h4>tactic.unsafe.type_context.is_assigned</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.get_context">      <h4>tactic.unsafe.type_context.get_context</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/local_context.html#local_context">local_context</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.get_assignment">      <h4>tactic.unsafe.type_context.get_assignment</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Get the expression that is assigned to the given mvar expression. Fails if given a</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.instantiate_mvars">      <h4>tactic.unsafe.type_context.instantiate_mvars</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.level.instantiate_mvars">      <h4>tactic.unsafe.type_context.level.instantiate_mvars</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.is_tmp_mvar">      <h4>tactic.unsafe.type_context.is_tmp_mvar</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.is_regular_mvar">      <h4>tactic.unsafe.type_context.is_regular_mvar</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.tmp_mode">      <h4>tactic.unsafe.type_context.tmp_mode</h4><code>Π {α : Type}, ℕ → ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α</code>
+<div class="indent"><p><p>Run the given <code>type_context</code> monad in a temporary mvar scope.
+Doing this twice will push the old tmp_mvar assignments to a stack.
+So it is safe to do this whether or not you are already in tmp mode.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.in_tmp_mode">      <h4>tactic.unsafe.type_context.in_tmp_mode</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Returns true when in temp mode.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.tmp_is_assigned">      <h4>tactic.unsafe.type_context.tmp_is_assigned</h4><code>ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.tmp_get_assignment">      <h4>tactic.unsafe.type_context.tmp_get_assignment</h4><code>ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.level.tmp_is_assigned">      <h4>tactic.unsafe.type_context.level.tmp_is_assigned</h4><code>ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.level.tmp_get_assignment">      <h4>tactic.unsafe.type_context.level.tmp_get_assignment</h4><code>ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.to_tmp_mvars">      <h4>tactic.unsafe.type_context.to_tmp_mvars</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p>Replace each metavariable in the given expression with a temporary metavariable.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.mk_tmp_mvar">      <h4>tactic.unsafe.type_context.mk_tmp_mvar</h4><code>ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.level.mk_tmp_mvar">      <h4>tactic.unsafe.type_context.level.mk_tmp_mvar</h4><code>ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.try">      <h4>tactic.unsafe.type_context.try</h4><code>Π {α : Type}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α)</code>
+<div class="indent"><p><p>Run the provided type_context within a backtracking scope.
+   This means that any changes to the metavariable context will not be committed if the
+   inner monad fails.
+   is not affected by <code>try</code>. Any unpopped locals will be present after the <code>try</code> even if the inner <code>type_context</code> failed.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.orelse">      <h4>tactic.unsafe.type_context.orelse</h4><code>Π {α : Type}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.type_context_alternative">      <h4>tactic.unsafe.type_context.type_context_alternative</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/alternative.html#alternative">alternative</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.run">      <h4>tactic.unsafe.type_context.run</h4><code>Π {α : Type},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> tactic.transparency.semireducible → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.trace">      <h4>tactic.unsafe.type_context.trace</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/format.html#has_to_format">has_to_format</a> α], α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.print_mvars">      <h4>tactic.unsafe.type_context.print_mvars</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unsafe.type_context.get_fun_info">      <h4>tactic.unsafe.type_context.get_fun_info</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> ℕ) option.none → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/type_context.html#tactic.unsafe.type_context">tactic.unsafe.type_context</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/fun_info.html#fun_info">fun_info</a></code>
+<div class="indent"><p><p>Same as tactic.get<em>fun</em>info</p>
+</p>       </div>
+</div></body></html>

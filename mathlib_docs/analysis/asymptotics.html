@@ -1,0 +1,422 @@
+<html><head><title>analysis.asymptotics</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="asymptotics.is_O">      <h4>asymptotics.is_O</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ],
+  (α → β) → (α → γ) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o">      <h4>asymptotics.is_o</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ],
+  (α → β) → (α → γ) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_refl">      <h4>asymptotics.is_O_refl</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] (f : α → β) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f f l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.comp">      <h4>asymptotics.is_O.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l →
+  ∀ {δ : Type u_4} (k : δ → α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (f ∘ k) (g ∘ k) (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> k l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.comp">      <h4>asymptotics.is_o.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l →
+  ∀ {δ : Type u_4} (k : δ → α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (f ∘ k) (g ∘ k) (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> k l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.mono">      <h4>asymptotics.is_O.mono</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l₁ l₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, l₁ ≤ l₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l₁</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.mono">      <h4>asymptotics.is_o.mono</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l₁ l₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, l₁ ≤ l₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l₁</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.to_is_O">      <h4>asymptotics.is_o.to_is_O</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.trans">      <h4>asymptotics.is_O.trans</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> δ] {f : α → β} {g : α → γ} {k : α → δ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> g k l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f k l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.trans_is_O">      <h4>asymptotics.is_o.trans_is_O</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> δ] {f : α → β} {g : α → γ} {k : α → δ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> g k l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f k l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.trans_is_o">      <h4>asymptotics.is_O.trans_is_o</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> δ] {f : α → β} {g : α → γ} {k : α → δ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> g k l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f k l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.trans">      <h4>asymptotics.is_o.trans</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> δ] {f : α → β} {g : α → γ} {k : α → δ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> g k l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f k l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_join">      <h4>asymptotics.is_o_join</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l₁ l₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l₁ → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g (l₁ ⊔ l₂)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_congr">      <h4>asymptotics.is_O_congr</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  {x : α | f₁ x = f₂ x} ∈ l →
+  {x : α | g₁ x = g₂ x} ∈ l → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g₁ l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g₂ l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_congr">      <h4>asymptotics.is_o_congr</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  {x : α | f₁ x = f₂ x} ∈ l →
+  {x : α | g₁ x = g₂ x} ∈ l → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g₁ l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g₂ l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.congr">      <h4>asymptotics.is_O.congr</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  (∀ (x : α), f₁ x = f₂ x) →
+  (∀ (x : α), g₁ x = g₂ x) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g₁ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g₂ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.congr">      <h4>asymptotics.is_o.congr</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  (∀ (x : α), f₁ x = f₂ x) →
+  (∀ (x : α), g₁ x = g₂ x) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g₁ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g₂ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_congr_left">      <h4>asymptotics.is_O_congr_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  {x : α | f₁ x = f₂ x} ∈ l → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_congr_left">      <h4>asymptotics.is_o_congr_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  {x : α | f₁ x = f₂ x} ∈ l → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.congr_left">      <h4>asymptotics.is_O.congr_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  (∀ (x : α), f₁ x = f₂ x) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.congr_left">      <h4>asymptotics.is_o.congr_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  (∀ (x : α), f₁ x = f₂ x) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_congr_right">      <h4>asymptotics.is_O_congr_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  {x : α | g₁ x = g₂ x} ∈ l → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g₁ l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g₂ l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_congr_right">      <h4>asymptotics.is_o_congr_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  {x : α | g₁ x = g₂ x} ∈ l → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g₁ l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g₂ l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.congr_right">      <h4>asymptotics.is_O.congr_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  (∀ (x : α), g₁ x = g₂ x) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g₁ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g₂ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.congr_right">      <h4>asymptotics.is_o.congr_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  (∀ (x : α), g₁ x = g₂ x) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g₁ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g₂ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_norm_right">      <h4>asymptotics.is_O_norm_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), ∥g x∥) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_o_norm_right">      <h4>asymptotics.is_o_norm_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), ∥g x∥) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_O_neg_right">      <h4>asymptotics.is_O_neg_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), -g x) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_o_neg_right">      <h4>asymptotics.is_o_neg_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), -g x) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_O_iff">      <h4>asymptotics.is_O_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l ↔ ∃ (c : ℝ), {x : α | ∥f x∥ ≤ c * ∥g x∥} ∈ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_join">      <h4>asymptotics.is_O_join</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β}
+{g : α → γ} {l₁ l₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l₁ → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g (l₁ ⊔ l₂)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.prod_rightl">      <h4>asymptotics.is_O.prod_rightl</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> δ] {f : α → β} {g₁ : α → γ} {g₂ : α → δ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g₁ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), (g₁ x, g₂ x)) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.prod_rightr">      <h4>asymptotics.is_O.prod_rightr</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> δ] {f : α → β} {g₁ : α → γ} {g₂ : α → δ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g₂ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), (g₁ x, g₂ x)) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.prod_rightl">      <h4>asymptotics.is_o.prod_rightl</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> δ] {f : α → β} {g₁ : α → γ} {g₂ : α → δ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g₁ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), (g₁ x, g₂ x)) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.prod_rightr">      <h4>asymptotics.is_o.prod_rightr</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> δ] {f : α → β} {g₁ : α → γ} {g₂ : α → δ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g₂ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), (g₁ x, g₂ x)) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_norm_left">      <h4>asymptotics.is_O_norm_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), ∥f x∥) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_o_norm_left">      <h4>asymptotics.is_o_norm_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), ∥f x∥) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_O_neg_left">      <h4>asymptotics.is_O_neg_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), -f x) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_o_neg_left">      <h4>asymptotics.is_o_neg_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f : α → β}
+{g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), -f x) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_O.add">      <h4>asymptotics.is_O.add</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₁ x + f₂ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.add">      <h4>asymptotics.is_o.add</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x + f₂ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.sub">      <h4>asymptotics.is_O.sub</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₁ x - f₂ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.sub">      <h4>asymptotics.is_o.sub</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x - f₂ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_comm">      <h4>asymptotics.is_O_comm</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₁ x - f₂ x) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₂ x - f₁ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.symm">      <h4>asymptotics.is_O.symm</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₁ x - f₂ x) g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₂ x - f₁ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.tri">      <h4>asymptotics.is_O.tri</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ f₃ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₁ x - f₂ x) g l →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₂ x - f₃ x) g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₁ x - f₃ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.congr_of_sub">      <h4>asymptotics.is_O.congr_of_sub</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₁ x - f₂ x) g l → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_comm">      <h4>asymptotics.is_o_comm</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x - f₂ x) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₂ x - f₁ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.symm">      <h4>asymptotics.is_o.symm</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x - f₂ x) g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₂ x - f₁ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.tri">      <h4>asymptotics.is_o.tri</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ f₃ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x - f₂ x) g l →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₂ x - f₃ x) g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x - f₃ x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.congr_of_sub">      <h4>asymptotics.is_o.congr_of_sub</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ]
+{f₁ f₂ : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x - f₂ x) g l → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_prod_left">      <h4>asymptotics.is_O_prod_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> δ] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f₁ : α → β} {f₂ : α → δ} {g : α → γ}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), (f₁ x, f₂ x)) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g l ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_o_prod_left">      <h4>asymptotics.is_o_prod_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> δ] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> γ] {f₁ : α → β} {f₂ : α → δ} {g : α → γ}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), (f₁ x, f₂ x)) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g l ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g l</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="asymptotics.is_O_zero">      <h4>asymptotics.is_O_zero</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+(g : α → γ) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), 0) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_refl_left">      <h4>asymptotics.is_O_refl_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f x - f x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_zero_right_iff">      <h4>asymptotics.is_O_zero_right_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), 0) l ↔ {x : α | f x = 0} ∈ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_zero">      <h4>asymptotics.is_o_zero</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+(g : α → γ) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), 0) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_refl_left">      <h4>asymptotics.is_o_refl_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f x - f x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_zero_right_iff">      <h4>asymptotics.is_o_zero_right_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), 0) l ↔ {x : α | f x = 0} ∈ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_const_one">      <h4>asymptotics.is_O_const_one</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ] (c : β)
+(l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), c) (λ (x : α), 1) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_const_mul_left">      <h4>asymptotics.is_O_const_mul_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l → ∀ (c : β), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), c * f x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_const_mul_left_iff">      <h4>asymptotics.is_O_const_mul_left_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : β},
+  c ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), c * f x) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_const_mul_left">      <h4>asymptotics.is_o_const_mul_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l → ∀ (c : β), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), c * f x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_const_mul_left_iff">      <h4>asymptotics.is_o_const_mul_left_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : β},
+  c ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), c * f x) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_of_is_O_const_mul_right">      <h4>asymptotics.is_O_of_is_O_const_mul_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), c * g x) l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_const_mul_right_iff">      <h4>asymptotics.is_O_const_mul_right_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : γ},
+  c ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), c * g x) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_of_is_o_const_mul_right">      <h4>asymptotics.is_o_of_is_o_const_mul_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), c * g x) l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_const_mul_right">      <h4>asymptotics.is_o_const_mul_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : γ},
+  c ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), c * g x) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_one_iff">      <h4>asymptotics.is_o_one_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), 1) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_one_of_tendsto">      <h4>asymptotics.is_O_one_of_tendsto</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {y : β}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> y) → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), 1) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O.trans_tendsto">      <h4>asymptotics.is_O.trans_tendsto</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> g l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o.trans_tendsto">      <h4>asymptotics.is_o.trans_tendsto</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ]
+{f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> g l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_mul">      <h4>asymptotics.is_O_mul</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f₁ f₂ : α → β} {g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g₁ l →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g₂ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), f₁ x * f₂ x) (λ (x : α), g₁ x * g₂ x) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_mul_left">      <h4>asymptotics.is_o_mul_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f₁ f₂ : α → β} {g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₁ g₁ l →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g₂ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x * f₂ x) (λ (x : α), g₁ x * g₂ x) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_mul_right">      <h4>asymptotics.is_o_mul_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f₁ f₂ : α → β} {g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g₁ l →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f₂ g₂ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x * f₂ x) (λ (x : α), g₁ x * g₂ x) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_mul">      <h4>asymptotics.is_o_mul</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> γ]
+{f₁ f₂ : α → β} {g₁ g₂ : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₁ g₁ l →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f₂ g₂ l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), f₁ x * f₂ x) (λ (x : α), g₁ x * g₂ x) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_const_smul_left">      <h4>asymptotics.is_O_const_smul_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {K : Type u_5} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β} {g : α → γ}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l → ∀ (c : K), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), c • f x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_const_smul_left_iff">      <h4>asymptotics.is_O_const_smul_left_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {K : Type u_5} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β} {g : α → γ}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : K}, c ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), c • f x) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_const_smul_left">      <h4>asymptotics.is_o_const_smul_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {K : Type u_5} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β} {g : α → γ}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l → ∀ (c : K), <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), c • f x) g l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_const_smul_left_iff">      <h4>asymptotics.is_o_const_smul_left_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {K : Type u_5} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] {f : α → β} {g : α → γ}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : K}, c ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), c • f x) g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_const_smul_right">      <h4>asymptotics.is_O_const_smul_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {K : Type u_5} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K γ] {f : α → β} {g : α → γ}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : K}, c ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f (λ (x : α), c • g x) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_const_smul_right">      <h4>asymptotics.is_o_const_smul_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {K : Type u_5} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K γ] {f : α → β} {g : α → γ}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {c : K}, c ≠ 0 → (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f (λ (x : α), c • g x) l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_O_smul">      <h4>asymptotics.is_O_smul</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {K : Type u_5} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K γ]
+{k : α → K} {f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_O">asymptotics.is_O</a> (λ (x : α), k x • f x) (λ (x : α), k x • g x) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_smul">      <h4>asymptotics.is_o_smul</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {K : Type u_5} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> γ] [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K γ]
+{k : α → K} {f : α → β} {g : α → γ} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> (λ (x : α), k x • f x) (λ (x : α), k x • g x) l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.tendsto_nhds_zero_of_is_o">      <h4>asymptotics.tendsto_nhds_zero_of_is_o</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] {f g : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (x : α), f x / g x) l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="asymptotics.is_o_iff_tendsto">      <h4>asymptotics.is_o_iff_tendsto</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> β] {f g : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  (∀ (x : α), g x = 0 → f x = 0) →
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/asymptotics.html#asymptotics.is_o">asymptotics.is_o</a> f g l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (x : α), f x / g x) l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> 0))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

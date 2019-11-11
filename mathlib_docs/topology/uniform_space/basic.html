@@ -1,0 +1,508 @@
+<html><head><title>topology.uniform_space.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="id_rel">      <h4>id_rel</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)</code>
+<div class="indent"><p><p>The identity relation, or the graph of the identity function</p>
+</p>       </div>
+</div><div class="entry"><a id="mem_id_rel">      <h4>mem_id_rel</h4><code>∀ {α : Type u_1} {a b : α}, (a, b) ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#id_rel">id_rel</a> ↔ a = b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="id_rel_subset">      <h4>id_rel_subset</h4><code>∀ {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#id_rel">id_rel</a> ⊆ s ↔ ∀ (a : α), (a, a) ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="comp_rel">      <h4>comp_rel</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)</code>
+<div class="indent"><p><p>The composition of relations</p>
+</p>       </div>
+</div><div class="entry"><a id="mem_comp_rel">      <h4>mem_comp_rel</h4><code>∀ {α : Type u_1} {r₁ r₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)} {x y : α},
+  (x, y) ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> r₁ r₂ ↔ ∃ (z : α), (x, z) ∈ r₁ ∧ (z, y) ∈ r₂</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="swap_id_rel">      <h4>swap_id_rel</h4><code>∀ {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/prod.html#prod.swap">prod.swap</a> '' <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#id_rel">id_rel</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#id_rel">id_rel</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="monotone_comp_rel">      <h4>monotone_comp_rel</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#preorder">preorder</a> β] {f g : β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#monotone">monotone</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#monotone">monotone</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#monotone">monotone</a> (λ (x : β), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> (f x) (g x))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="prod_mk_mem_comp_rel">      <h4>prod_mk_mem_comp_rel</h4><code>∀ {α : Type u_1} {a b c : α} {s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)}, (a, c) ∈ s → (c, b) ∈ t → (a, b) ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> s t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="id_comp_rel">      <h4>id_comp_rel</h4><code>∀ {α : Type u_1} {r : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#id_rel">id_rel</a> r = r</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="comp_rel_assoc">      <h4>comp_rel_assoc</h4><code>∀ {α : Type u_1} {r s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> r s) t = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> r (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> s t)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.core">      <h4>uniform_space.core</h4><code>Type u → Type u</code>
+<div class="indent"><p><p>This core description of a uniform space is outside of the type class hierarchy. It is useful
+ for constructions of uniform spaces, when the topology is derived from the uniform space.</p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.core.mk'">      <h4>uniform_space.core.mk'</h4><code>Π {α : Type u} (U : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> (α × α)),
+  (∀ (r : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), r ∈ U → ∀ (x : α), (x, x) ∈ r) →
+  (∀ (r : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), r ∈ U → {p : α × α | <a href="/home/rob/lean/mathlib/scripts/html_out/data/prod.html#prod.swap">prod.swap</a> p ∈ r} ∈ U) →
+  (∀ (r : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), r ∈ U → (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : t ∈ U), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> t t ⊆ r)) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core">uniform_space.core</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.core.to_topological_space">      <h4>uniform_space.core.to_topological_space</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core">uniform_space.core</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α</code>
+<div class="indent"><p><p>A uniform space generates a topological space</p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.core_eq">      <h4>uniform_space.core_eq</h4><code>∀ {α : Type u_1} {u₁ u₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core">uniform_space.core</a> α}, u₁.uniformity = u₂.uniformity → u₁ = u₂</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space">      <h4>uniform_space</h4><code>Type u → Type u</code>
+<div class="indent"><p><p>A uniform space is a generalization of the "uniform" topological aspects of a
+ metric space. It consists of a filter on <code>α × α</code> called the "uniformity", which
+ satisfies properties analogous to the reflexivity, symmetry, and triangle properties
+ of a metric.</p>
+
+<p>A metric space has a natural uniformity, and a uniform space has a natural topology.
+ A topological group also has a natural uniformity, even when it is not metrizable.</p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.mk'">      <h4>uniform_space.mk'</h4><code>Π {α : Type u_1} (t : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α) (c : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core">uniform_space.core</a> α),
+  (∀ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+     topological_space.is_open t s ↔
+       ∀ (x : α), x ∈ s → {p : α × α | p.fst = x → p.snd ∈ s} ∈ c.uniformity) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.of_core">      <h4>uniform_space.of_core</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core">uniform_space.core</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.of_core_eq">      <h4>uniform_space.of_core_eq</h4><code>Π {α : Type u} (u : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core">uniform_space.core</a> α) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α),
+  t = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core.to_topological_space">uniform_space.core.to_topological_space</a> u → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.to_core_to_topological_space">      <h4>uniform_space.to_core_to_topological_space</h4><code>∀ {α : Type u_1} (u : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core.to_topological_space">uniform_space.core.to_topological_space</a> (uniform_space.to_core α) = uniform_space.to_topological_space α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space_eq">      <h4>uniform_space_eq</h4><code>∀ {α : Type u_1} {u₁ u₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α},
+  (uniform_space.to_core α).uniformity = (uniform_space.to_core α).uniformity → u₁ = u₂</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: ext</div>
+</div><div class="entry"><a id="uniform_space.of_core_eq_to_core">      <h4>uniform_space.of_core_eq_to_core</h4><code>∀ {α : Type u_1} (u : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α)
+(h : t = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core.to_topological_space">uniform_space.core.to_topological_space</a> (uniform_space.to_core α)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.of_core_eq">uniform_space.of_core_eq</a> (uniform_space.to_core α) t h = u</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity">      <h4>uniformity</h4><code>Π (α : Type u) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> (α × α)</code>
+<div class="indent"><p><p>The uniformity is a filter on α × α (inferred from an ambient uniform space
+ structure on α).</p>
+</p>       </div>
+</div><div class="entry"><a id="is_open_uniformity">      <h4>is_open_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s ↔ ∀ (x : α), x ∈ s → {p : α × α | p.fst = x → p.snd ∈ s} ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="refl_le_uniformity">      <h4>refl_le_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.principal">filter.principal</a> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#id_rel">id_rel</a> ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="refl_mem_uniformity">      <h4>refl_mem_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {x : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)}, s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α → (x, x) ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="symm_le_uniformity">      <h4>symm_le_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/prod.html#prod.swap">prod.swap</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="comp_le_uniformity">      <h4>comp_le_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift'">filter.lift'</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> s s) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_swap_uniformity">      <h4>tendsto_swap_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/prod.html#prod.swap">prod.swap</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_const_uniformity">      <h4>tendsto_const_uniformity</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a : α} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (_x : β), (a, a)) f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="comp_mem_uniformity_sets">      <h4>comp_mem_uniformity_sets</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α → (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : t ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> t t ⊆ s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="symm_of_uniformity">      <h4>symm_of_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
+  (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : t ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α), (∀ (a b : α), (a, b) ∈ t → (b, a) ∈ t) ∧ t ⊆ s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="comp_symm_of_uniformity">      <h4>comp_symm_of_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
+  (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : t ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α),
+     (∀ {a b : α}, (a, b) ∈ t → (b, a) ∈ t) ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> t t ⊆ s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity_le_symm">      <h4>uniformity_le_symm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/prod.html#prod.swap">prod.swap</a> <$> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity_eq_symm">      <h4>uniformity_eq_symm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α = <a href="/home/rob/lean/mathlib/scripts/html_out/data/prod.html#prod.swap">prod.swap</a> <$> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity_lift_le_swap">      <h4>uniformity_lift_le_swap</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {g : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#monotone">monotone</a> g →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/prod.html#prod.swap">prod.swap</a> ⁻¹' s)) ≤ f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) g ≤ f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity_lift_le_comp">      <h4>uniformity_lift_le_comp</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#monotone">monotone</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> s s)) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="comp_le_uniformity3">      <h4>comp_le_uniformity3</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift'">filter.lift'</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> s (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> s s)) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_nhds_uniformity_iff">      <h4>mem_nhds_uniformity_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {x : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x ↔ {p : α × α | p.fst = x → p.snd ∈ s} ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nhds_eq_comap_uniformity">      <h4>nhds_eq_comap_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {x : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x = <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> (prod.mk x) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nhds_eq_uniformity">      <h4>nhds_eq_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {x : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x = <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift'">filter.lift'</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), {y : α | (x, y) ∈ s})</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_nhds_left">      <h4>mem_nhds_left</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] (x : α) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α → {y : α | (x, y) ∈ s} ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_nhds_right">      <h4>mem_nhds_right</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] (y : α) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α → {x : α | (x, y) ∈ s} ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_right_nhds_uniformity">      <h4>tendsto_right_nhds_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (a' : α), (a', a)) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_left_nhds_uniformity">      <h4>tendsto_left_nhds_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (a' : α), (a, a')) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="lift_nhds_left">      <h4>lift_nhds_left</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {x : α} {g : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#monotone">monotone</a> g →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x) g = <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), g {y : α | (x, y) ∈ s})</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="lift_nhds_right">      <h4>lift_nhds_right</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {x : α} {g : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#monotone">monotone</a> g →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x) g = <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), g {y : α | (y, x) ∈ s})</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nhds_nhds_eq_uniformity_uniformity_prod">      <h4>nhds_nhds_eq_uniformity_uniformity_prod</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.prod">filter.prod</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> b) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift">filter.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)
+      (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)),
+         <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift'">filter.lift'</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)
+           (λ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.prod">set.prod</a> {y : α | (y, a) ∈ s} {y : α | (b, y) ∈ t}))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nhds_eq_uniformity_prod">      <h4>nhds_eq_uniformity_prod</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (a, b) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift'">filter.lift'</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (λ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.prod">set.prod</a> {y : α | (y, a) ∈ s} {y : α | (b, y) ∈ s})</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nhdset_of_mem_uniformity">      <h4>nhdset_of_mem_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {d : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)),
+  d ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
+  (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)),
+     <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> t ∧
+       s ⊆ t ∧ t ⊆ {p : α × α | ∃ (x y : α), (p.fst, x) ∈ d ∧ (x, y) ∈ s ∧ (y, p.snd) ∈ d})</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closure_eq_inter_uniformity">      <h4>closure_eq_inter_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#closure">closure</a> t = ⋂ (d : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : d ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> d (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#comp_rel">comp_rel</a> t d)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity_eq_uniformity_closure">      <h4>uniformity_eq_uniformity_closure</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α = <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift'">filter.lift'</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#closure">closure</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity_eq_uniformity_interior">      <h4>uniformity_eq_uniformity_interior</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α = <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/lift.html#filter.lift'">filter.lift'</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#interior">interior</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="interior_mem_uniformity">      <h4>interior_mem_uniformity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#interior">interior</a> s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_uniformity_is_closed">      <h4>mem_uniformity_is_closed</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α → (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : t ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> t ∧ t ⊆ s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous">      <h4>uniform_continuous</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β], (α → β) → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_def">      <h4>uniform_continuous_def</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f ↔
+    ∀ (r : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (β × β)), r ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> β → {x : α × α | (f (x.fst), f (x.snd)) ∈ r} ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_of_const">      <h4>uniform_continuous_of_const</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {c : α → β},
+  (∀ (a b : α), c a = c b) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_id">      <h4>uniform_continuous_id</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_const">      <h4>uniform_continuous_const</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {b : β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (a : α), b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous.comp">      <h4>uniform_continuous.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ] {g : β → γ} {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (g ∘ f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.partial_order">      <h4>uniform_space.partial_order</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#partial_order">partial_order</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="uniform_space.lattice.has_Inf">      <h4>uniform_space.lattice.has_Inf</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/complete_lattice.html#lattice.has_Inf">lattice.has_Inf</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="uniform_space.lattice.has_top">      <h4>uniform_space.lattice.has_top</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#lattice.has_top">lattice.has_top</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="uniform_space.lattice.has_bot">      <h4>uniform_space.lattice.has_bot</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#lattice.has_bot">lattice.has_bot</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="uniform_space.lattice.complete_lattice">      <h4>uniform_space.lattice.complete_lattice</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/complete_lattice.html#lattice.complete_lattice">lattice.complete_lattice</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="infi_uniformity">      <h4>infi_uniformity</h4><code>∀ {α : Type u_1} {ι : Sort u_2} {u : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α},
+  (uniform_space.to_core α).uniformity = ⨅ (i : ι), (uniform_space.to_core α).uniformity</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inf_uniformity">      <h4>inf_uniformity</h4><code>∀ {α : Type u_1} {u v : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α},
+  (uniform_space.to_core α).uniformity =
+    (uniform_space.to_core α).uniformity ⊓ (uniform_space.to_core α).uniformity</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inhabited_uniform_space">      <h4>inhabited_uniform_space</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="uniform_space.comap">      <h4>uniform_space.comap</h4><code>Π {α : Type u_1} {β : Type u_2}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α</code>
+<div class="indent"><p><p>Given <code>f : α → β</code> and a uniformity <code>u</code> on <code>β</code>, the inverse image of <code>u</code> under <code>f</code>
+ is the inverse image in the filter sense of the induced function <code>α × α → β × β</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space_comap_id">      <h4>uniform_space_comap_id</h4><code>∀ {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.comap">uniform_space.comap</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.comap_comap_comp">      <h4>uniform_space.comap_comap_comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [uγ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.comap">uniform_space.comap</a> (g ∘ f) uγ = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.comap">uniform_space.comap</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.comap">uniform_space.comap</a> g uγ)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_iff">      <h4>uniform_continuous_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [uα : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [uβ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f ↔ uα ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.comap">uniform_space.comap</a> f uβ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_comap">      <h4>uniform_continuous_comap</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α → β} [u : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_comap">      <h4>to_topological_space_comap</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α → β} {u : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β},
+  uniform_space.to_topological_space α = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/order.html#topological_space.induced">topological_space.induced</a> f (uniform_space.to_topological_space β)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_comap'">      <h4>uniform_continuous_comap'</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {f : γ → β} {g : α → γ} [v : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[u : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (f ∘ g) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> g</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_mono">      <h4>to_topological_space_mono</h4><code>∀ {α : Type u_1} {u₁ u₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α},
+  u₁ ≤ u₂ → uniform_space.to_topological_space α ≤ uniform_space.to_topological_space α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous.continuous">      <h4>uniform_continuous.continuous</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_bot">      <h4>to_topological_space_bot</h4><code>∀ {α : Type u_1}, uniform_space.to_topological_space α = ⊥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_top">      <h4>to_topological_space_top</h4><code>∀ {α : Type u_1}, uniform_space.to_topological_space α = ⊤</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_infi">      <h4>to_topological_space_infi</h4><code>∀ {α : Type u_1} {ι : Sort u_2} {u : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α},
+  uniform_space.to_topological_space α = ⨅ (i : ι), uniform_space.to_topological_space α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_Inf">      <h4>to_topological_space_Inf</h4><code>∀ {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α)},
+  uniform_space.to_topological_space α =
+    ⨅ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α) (H : i ∈ s), uniform_space.to_topological_space α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_inf">      <h4>to_topological_space_inf</h4><code>∀ {α : Type u_1} {u v : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α},
+  uniform_space.to_topological_space α =
+    uniform_space.to_topological_space α ⊓ uniform_space.to_topological_space α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="empty.uniform_space">      <h4>empty.uniform_space</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#empty">empty</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="unit.uniform_space">      <h4>unit.uniform_space</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="bool.uniform_space">      <h4>bool.uniform_space</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="nat.uniform_space">      <h4>nat.uniform_space</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> ℕ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="int.uniform_space">      <h4>int.uniform_space</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> ℤ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="subtype.uniform_space">      <h4>subtype.uniform_space</h4><code>Π {α : Type u_1} {p : α → Prop} [t : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#subtype">subtype</a> p)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="uniformity_subtype">      <h4>uniformity_subtype</h4><code>∀ {α : Type u_1} {p : α → Prop} [t : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#subtype">subtype</a> p) = <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> (λ (q : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#subtype">subtype</a> p × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#subtype">subtype</a> p), ((q.fst).val, (q.snd).val)) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_subtype_val">      <h4>uniform_continuous_subtype_val</h4><code>∀ {α : Type u_1} {p : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> subtype.val</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_subtype_mk">      <h4>uniform_continuous_subtype_mk</h4><code>∀ {α : Type u_1} {β : Type u_2} {p : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+{f : β → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f → ∀ (h : ∀ (x : β), p (f x)), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (x : β), ⟨f x, _⟩)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_of_uniform_continuous_subtype">      <h4>tendsto_of_uniform_continuous_subtype</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : α → β}
+{s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} {a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (x : ↥s), f (x.val)) → s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (f a))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="prod.uniform_space">      <h4>prod.uniform_space</h4><code>Π {α : Type u_1} {β : Type u_2} [u₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [u₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> (α × β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="uniformity_prod">      <h4>uniformity_prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> (α × β) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> (λ (p : (α × β) × α × β), ((p.fst).fst, (p.snd).fst)) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) ⊓
+      <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> (λ (p : (α × β) × α × β), ((p.fst).snd, (p.snd).snd)) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> β)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity_prod_eq_prod">      <h4>uniformity_prod_eq_prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> (α × β) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> (λ (p : (α × α) × β × β), (((p.fst).fst, (p.snd).fst), (p.fst).snd, (p.snd).snd))
+      (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.prod">filter.prod</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> β))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_map_sets_iff'">      <h4>mem_map_sets_iff'</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {m : α → β} {t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β},
+  t ∈ (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> m f).sets ↔ ∃ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : s ∈ f), m '' s ⊆ t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_uniformity_of_uniform_continuous_invarant">      <h4>mem_uniformity_of_uniform_continuous_invarant</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)} {f : α → α → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (p : α × α), f (p.fst) (p.snd)) →
+  s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
+  (∃ (u : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : u ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α), ∀ (a b c : α), (a, b) ∈ u → (f a c, f b c) ∈ s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_uniform_prod">      <h4>mem_uniform_prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [t₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [t₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)}
+{b : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (β × β)},
+  a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> β →
+  {p : (α × β) × α × β | ((p.fst).fst, (p.snd).fst) ∈ a ∧ ((p.fst).snd, (p.snd).snd) ∈ b} ∈
+    <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> (α × β)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_prod_uniformity_fst">      <h4>tendsto_prod_uniformity_fst</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (p : (α × β) × α × β), ((p.fst).fst, (p.snd).fst)) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> (α × β)) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tendsto_prod_uniformity_snd">      <h4>tendsto_prod_uniformity_snd</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (p : (α × β) × α × β), ((p.fst).snd, (p.snd).snd)) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> (α × β)) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> β)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_fst">      <h4>uniform_continuous_fst</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (p : α × β), p.fst)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous_snd">      <h4>uniform_continuous_snd</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (p : α × β), p.snd)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous.prod_mk">      <h4>uniform_continuous.prod_mk</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ] {f₁ : α → β} {f₂ : α → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f₁ → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (a : α), (f₁ a, f₂ a))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous.prod_mk_left">      <h4>uniform_continuous.prod_mk_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ] {f : α × β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f → ∀ (b : β), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (a : α), f (a, b))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous.prod_mk_right">      <h4>uniform_continuous.prod_mk_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ] {f : α × β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f → ∀ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (λ (b : β), f (a, b))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_prod">      <h4>to_topological_space_prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [u : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [v : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  uniform_space.to_topological_space (α × β) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/constructions.html#prod.topological_space">prod.topological_space</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous₂">      <h4>uniform_continuous₂</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ], (α → β → γ) → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous₂_def">      <h4>uniform_continuous₂_def</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ] (f : α → β → γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous₂">uniform_continuous₂</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/logic/function.html#function.uncurry'">function.uncurry'</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous₂_curry">      <h4>uniform_continuous₂_curry</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ] (f : α × β → γ), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous₂">uniform_continuous₂</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.curry">function.curry</a> f) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_continuous₂.comp">      <h4>uniform_continuous₂.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> δ] {f : α → β → γ}
+{g : γ → δ}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous₂">uniform_continuous₂</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous₂">uniform_continuous₂</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/logic/function.html#function.bicompr">function.bicompr</a> g f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="to_topological_space_subtype">      <h4>to_topological_space_subtype</h4><code>∀ {α : Type u_1} [u : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {p : α → Prop},
+  uniform_space.to_topological_space (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#subtype">subtype</a> p) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/constructions.html#subtype.topological_space">subtype.topological_space</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="uniform_space.core.sum">      <h4>uniform_space.core.sum</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core">uniform_space.core</a> (α ⊕ β)</code>
+<div class="indent"><p><p>Uniformity on a disjoint union. Entourages of the diagonal in the union are obtained
+by taking independently an entourage of the diagonal in the first part, and an entourage of
+the diagonal in the second part.</p>
+</p>       </div>
+</div><div class="entry"><a id="union_mem_uniformity_sum">      <h4>union_mem_uniformity_sum</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)},
+  a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
+  ∀ {b : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (β × β)},
+    b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> β →
+    (λ (p : α × α), (sum.inl (p.fst), sum.inl (p.snd))) '' a ∪
+        (λ (p : β × β), (sum.inr (p.fst), sum.inr (p.snd))) '' b ∈
+      uniform_space.core.sum.uniformity</code>
+<div class="indent"><p><p>The union of an entourage of the diagonal in each set of a disjoint union is again an entourage of the diagonal.</p>
+</p>       </div>
+</div><div class="entry"><a id="uniformity_sum_of_open_aux">      <h4>uniformity_sum_of_open_aux</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α ⊕ β)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s →
+  ∀ {x : α ⊕ β},
+    x ∈ s → {p : (α ⊕ β) × (α ⊕ β) | p.fst = x → p.snd ∈ s} ∈ uniform_space.core.sum.uniformity</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_of_uniformity_sum_aux">      <h4>open_of_uniformity_sum_aux</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α ⊕ β)},
+  (∀ (x : α ⊕ β),
+     x ∈ s → {p : (α ⊕ β) × (α ⊕ β) | p.fst = x → p.snd ∈ s} ∈ uniform_space.core.sum.uniformity) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="sum.uniform_space">      <h4>sum.uniform_space</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> (α ⊕ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="sum.uniformity">      <h4>sum.uniformity</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> (α ⊕ β) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> (λ (p : α × α), (sum.inl (p.fst), sum.inl (p.snd))) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α) ⊔
+      <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> (λ (p : β × β), (sum.inr (p.fst), sum.inr (p.snd))) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> β)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="lebesgue_number_lemma">      <h4>lebesgue_number_lemma</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} {ι : Sort u_1} {c : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/subset_properties.html#compact">compact</a> s →
+  (∀ (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (c i)) →
+  (s ⊆ ⋃ (i : ι), c i) →
+  (∃ (n : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : n ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α),
+     ∀ (x : α), x ∈ s → (∃ (i : ι), {y : α | (x, y) ∈ n} ⊆ c i))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="lebesgue_number_lemma_sUnion">      <h4>lebesgue_number_lemma_sUnion</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/subset_properties.html#compact">compact</a> s →
+  (∀ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), t ∈ c → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> t) →
+  s ⊆ ⋃₀ c →
+  (∃ (n : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)) (H : n ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α),
+     ∀ (x : α), x ∈ s → (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : t ∈ c), ∀ (y : α), (x, y) ∈ n → y ∈ t))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

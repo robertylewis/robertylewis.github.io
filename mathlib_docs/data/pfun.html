@@ -1,0 +1,469 @@
+<html><head><title>data.pfun</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="roption">      <h4>roption</h4><code>Type u → Type u</code>
+<div class="indent"><p><p><code>roption α</code> is the type of "partial values" of type <code>α</code>. It
+ is similar to <code>option α</code> except the domain condition can be an
+ arbitrary proposition, not necessarily decidable.</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.to_option">      <h4>roption.to_option</h4><code>Π {α : Type u_1} (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (o.dom)], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><p>Convert an <code>roption α</code> with a decidable domain to an option</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.ext'">      <h4>roption.ext'</h4><code>∀ {α : Type u_1} {o p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α},
+  (o.dom ↔ p.dom) → (∀ (h₁ : o.dom) (h₂ : p.dom), o.get h₁ = p.get h₂) → o = p</code>
+<div class="indent"><p><p><code>roption</code> extensionality</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.eta">      <h4>roption.eta</h4><code>∀ {α : Type u_1} (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α), {dom := o.dom, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/state.html#get">get</a> := λ (h : o.dom), o.get h} = o</code>
+<div class="indent"><p><p><code>roption</code> eta expansion</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.mem">      <h4>roption.mem</h4><code>Π {α : Type u_1}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α → Prop</code>
+<div class="indent"><p><p><code>a ∈ o</code> means that <code>o</code> is defined and equal to <code>a</code></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.has_mem">      <h4>roption.has_mem</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mem">has_mem</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="roption.mem_eq">      <h4>roption.mem_eq</h4><code>∀ {α : Type u_1} (a : α) (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α), a ∈ o = ∃ (h : o.dom), o.get h = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.dom_iff_mem">      <h4>roption.dom_iff_mem</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α}, o.dom ↔ ∃ (y : α), y ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.get_mem">      <h4>roption.get_mem</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} (h : o.dom), o.get h ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.ext">      <h4>roption.ext</h4><code>∀ {α : Type u_1} {o p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α}, (∀ (a : α), a ∈ o ↔ a ∈ p) → o = p</code>
+<div class="indent"><p><p><code>roption</code> extensionality</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.none">      <h4>roption.none</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α</code>
+<div class="indent"><p><p>The <code>none</code> value in <code>roption</code> has a <code>false</code> domain and an empty function.</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.not_mem_none">      <h4>roption.not_mem_none</h4><code>∀ {α : Type u_1} (a : α), a ∉ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.some">      <h4>roption.some</h4><code>Π {α : Type u_1}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α</code>
+<div class="indent"><p><p>The <code>some a</code> value in <code>roption</code> has a <code>true</code> domain and the
+ function returns <code>a</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.mem_unique">      <h4>roption.mem_unique</h4><code>∀ {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/logic/relator.html#relator.left_unique">relator.left_unique</a> has_mem.mem</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.get_eq_of_mem">      <h4>roption.get_eq_of_mem</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {a : α}, a ∈ o → ∀ (h' : o.dom), o.get h' = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.get_some">      <h4>roption.get_some</h4><code>∀ {α : Type u_1} {a : α} (ha : (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a).dom), (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a).get ha = a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.mem_some">      <h4>roption.mem_some</h4><code>∀ {α : Type u_1} (a : α), a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.mem_some_iff">      <h4>roption.mem_some_iff</h4><code>∀ {α : Type u_1} {a b : α}, b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a ↔ b = a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.eq_some_iff">      <h4>roption.eq_some_iff</h4><code>∀ {α : Type u_1} {a : α} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α}, o = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a ↔ a ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.eq_none_iff">      <h4>roption.eq_none_iff</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α}, o = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a> ↔ ∀ (a : α), a ∉ o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.eq_none_iff'">      <h4>roption.eq_none_iff'</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α}, o = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a> ↔ ¬o.dom</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.some_ne_none">      <h4>roption.some_ne_none</h4><code>∀ {α : Type u_1} (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> x ≠ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.ne_none_iff">      <h4>roption.ne_none_iff</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α}, o ≠ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a> ↔ ∃ (x : α), o = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.some_inj">      <h4>roption.some_inj</h4><code>∀ {α : Type u_1} {a b : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> b ↔ a = b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.some_get">      <h4>roption.some_get</h4><code>∀ {α : Type u_1} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} (ha : a.dom), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> (a.get ha) = a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.get_eq_iff_eq_some">      <h4>roption.get_eq_iff_eq_some</h4><code>∀ {α : Type u_1} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {ha : a.dom} {b : α}, a.get ha = b ↔ a = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.none_decidable">      <h4>roption.none_decidable</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (roption.none.dom)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="roption.some_decidable">      <h4>roption.some_decidable</h4><code>Π {α : Type u_1} (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> ((<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a).dom)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="roption.get_or_else">      <h4>roption.get_or_else</h4><code>Π {α : Type u_1} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (a.dom)], α → α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.get_or_else_none">      <h4>roption.get_or_else_none</h4><code>∀ {α : Type u_1} (d : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.get_or_else">roption.get_or_else</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a> d = d</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.get_or_else_some">      <h4>roption.get_or_else_some</h4><code>∀ {α : Type u_1} (a d : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.get_or_else">roption.get_or_else</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a) d = a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.mem_to_option">      <h4>roption.mem_to_option</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (o.dom)] {a : α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.to_option">roption.to_option</a> o ↔ a ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.of_option">      <h4>roption.of_option</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α</code>
+<div class="indent"><p><p>Convert an <code>option α</code> into an <code>roption α</code></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.mem_of_option">      <h4>roption.mem_of_option</h4><code>∀ {α : Type u_1} {a : α} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.of_option">roption.of_option</a> o ↔ a ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.of_option_dom">      <h4>roption.of_option_dom</h4><code>∀ {α : Type u_1} (o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.of_option">roption.of_option</a> o).dom ↔ ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> o)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.of_option_eq_get">      <h4>roption.of_option_eq_get</h4><code>∀ {α : Type u_1} (o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.of_option">roption.of_option</a> o = {dom := ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> o), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/state.html#get">get</a> := <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.get">option.get</a> o}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.has_coe">      <h4>roption.has_coe</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="roption.mem_coe">      <h4>roption.mem_coe</h4><code>∀ {α : Type u_1} {a : α} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, a ∈ ↑o ↔ a ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.coe_none">      <h4>roption.coe_none</h4><code>∀ {α : Type u_1}, ↑option.none = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.coe_some">      <h4>roption.coe_some</h4><code>∀ {α : Type u_1} (a : α), ↑(option.some a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.induction_on">      <h4>roption.induction_on</h4><code>∀ {α : Type u_1} {P : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α → Prop} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α),
+  P <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a> → (∀ (a : α), P (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a)) → P a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.of_option_decidable">      <h4>roption.of_option_decidable</h4><code>Π {α : Type u_1} (o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> ((<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.of_option">roption.of_option</a> o).dom)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="roption.to_of_option">      <h4>roption.to_of_option</h4><code>∀ {α : Type u_1} (o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.to_option">roption.to_option</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.of_option">roption.of_option</a> o) = o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.of_to_option">      <h4>roption.of_to_option</h4><code>∀ {α : Type u_1} (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (o.dom)], <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.of_option">roption.of_option</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.to_option">roption.to_option</a> o) = o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.equiv_option">      <h4>roption.equiv_option</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α ≃ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.assert">      <h4>roption.assert</h4><code>Π {α : Type u_1} (p : Prop), (p → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α</code>
+<div class="indent"><p><p><code>assert p f</code> is a bind-like operation which appends an additional condition
+ <code>p</code> to the domain and uses <code>f</code> to produce the value.</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.bind">      <h4>roption.bind</h4><code>Π {α : Type u_1} {β : Type u_2}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α → (α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β</code>
+<div class="indent"><p><p>The bind operation has value <code>g (f.get)</code>, and is defined when all the
+ parts are defined.</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.map">      <h4>roption.map</h4><code>Π {α : Type u_1} {β : Type u_2}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β</code>
+<div class="indent"><p><p>The map operation for <code>roption</code> just maps the value and maintains the same domain.</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.mem_map">      <h4>roption.mem_map</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {a : α}, a ∈ o → f a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.mem_map_iff">      <h4>roption.mem_map_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) {o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {b : β},
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f o ↔ ∃ (a : α) (H : a ∈ o), f a = b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.map_none">      <h4>roption.map_none</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.map_some">      <h4>roption.map_some</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> (f a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.mem_assert">      <h4>roption.mem_assert</h4><code>∀ {α : Type u_1} {p : Prop} {f : p → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {a : α} (h : p), a ∈ f h → a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.assert">roption.assert</a> p f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.mem_assert_iff">      <h4>roption.mem_assert_iff</h4><code>∀ {α : Type u_1} {p : Prop} {f : p → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {a : α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.assert">roption.assert</a> p f ↔ ∃ (h : p), a ∈ f h</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.mem_bind">      <h4>roption.mem_bind</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {g : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β} {a : α} {b : β},
+  a ∈ f → b ∈ g a → b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> f g</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.mem_bind_iff">      <h4>roption.mem_bind_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {g : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β} {b : β},
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> f g ↔ ∃ (a : α) (H : a ∈ f), b ∈ g a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.bind_none">      <h4>roption.bind_none</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a> f = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.none">roption.none</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.bind_some">      <h4>roption.bind_some</h4><code>∀ {α : Type u_1} {β : Type u_2} (a : α) (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a) f = f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.bind_some_eq_map">      <h4>roption.bind_some_eq_map</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> x (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> ∘ f) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.bind_assoc">      <h4>roption.bind_assoc</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) (g : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β) (k : β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> f g) k = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> f (λ (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> (g x) k)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.bind_map">      <h4>roption.bind_map</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} (f : α → β) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) (g : β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f x) g = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> x (λ (y : α), g (f y))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.map_bind">      <h4>roption.map_bind</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) (g : β → γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> x f) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> x (λ (y : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> g (f y))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.map_map">      <h4>roption.map_map</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} (g : β → γ) (f : α → β) (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f o) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> (g ∘ f) o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.monad">      <h4>roption.monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="roption.is_lawful_monad">      <h4>roption.is_lawful_monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="roption.map_id'">      <h4>roption.map_id'</h4><code>∀ {α : Type u_1} {f : α → α}, (∀ (x : α), f x = x) → ∀ (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f o = o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.bind_some_right">      <h4>roption.bind_some_right</h4><code>∀ {α : Type u_1} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> x <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.ret_eq_some">      <h4>roption.ret_eq_some</h4><code>∀ {α : Type u_1} (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#return">return</a> a = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.map_eq_map">      <h4>roption.map_eq_map</h4><code>∀ {α β : Type u_1} (f : α → β) (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α), f <$> o = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.map">roption.map</a> f o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.bind_eq_bind">      <h4>roption.bind_eq_bind</h4><code>∀ {α β : Type u_1} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) (g : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β), f >>= g = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> f g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.monad_fail">      <h4>roption.monad_fail</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad_fail.html#monad_fail">monad_fail</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="roption.restrict">      <h4>roption.restrict</h4><code>Π {α : Type u_1} (p : Prop) (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α), (p → o.dom) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.mem_restrict">      <h4>roption.mem_restrict</h4><code>∀ {α : Type u_1} (p : Prop) (o : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α) (h : p → o.dom) (a : α),
+  a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.restrict">roption.restrict</a> p o h ↔ p ∧ a ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="roption.unwrap">      <h4>roption.unwrap</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α → α</code>
+<div class="indent"><p><p><code>unwrap o</code> gets the value at <code>o</code>, ignoring the condition.
+ (This function is unsound.)</p>
+</p>       </div>
+</div><div class="entry"><a id="roption.assert_defined">      <h4>roption.assert_defined</h4><code>∀ {α : Type u_1} {p : Prop} {f : p → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} (h : p), (f h).dom → (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.assert">roption.assert</a> p f).dom</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.bind_defined">      <h4>roption.bind_defined</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {g : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β} (h : f.dom),
+  (g (f.get h)).dom → (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> f g).dom</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="roption.bind_dom">      <h4>roption.bind_dom</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> α} {g : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption">roption</a> β},
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.bind">roption.bind</a> f g).dom ↔ ∃ (h : f.dom), (g (f.get h)).dom</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pfun">      <h4>pfun</h4><code>Type u_1 → Type u_2 → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u_1 u_2)</code>
+<div class="indent"><p><p><code>pfun α β</code>, or <code>α →. β</code>, is the type of partial functions from
+ <code>α</code> to <code>β</code>. It is defined as <code>α → roption β</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.dom">      <h4>pfun.dom</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α</code>
+<div class="indent"><p><p>The domain of a partial function</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.mem_dom">      <h4>pfun.mem_dom</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (x : α), x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f ↔ ∃ (y : β), y ∈ f x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.dom_eq">      <h4>pfun.dom_eq</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f = {x : α | ∃ (y : β), y ∈ f x}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.fn">      <h4>pfun.fn</h4><code>Π {α : Type u_1} {β : Type u_2} (f : α →. β) (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f x → β</code>
+<div class="indent"><p><p>Evaluate a partial function</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.eval_opt">      <h4>pfun.eval_opt</h4><code>Π {α : Type u_1} {β : Type u_2} (f : α →. β) [D : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f)], α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β</code>
+<div class="indent"><p><p>Evaluate a partial function to return an <code>option</code></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.ext'">      <h4>pfun.ext'</h4><code>∀ {α : Type u_1} {β : Type u_2} {f g : α →. β},
+  (∀ (a : α), a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f ↔ a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> g) →
+  (∀ (a : α) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f a) (q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> g a), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fn">pfun.fn</a> f a p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fn">pfun.fn</a> g a q) → f = g</code>
+<div class="indent"><p><p>Partial function extensionality</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.ext">      <h4>pfun.ext</h4><code>∀ {α : Type u_1} {β : Type u_2} {f g : α →. β}, (∀ (a : α) (b : β), b ∈ f a ↔ b ∈ g a) → f = g</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.as_subtype">      <h4>pfun.as_subtype</h4><code>Π {α : Type u_1} {β : Type u_2} (f : α →. β), {x // <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f x} → β</code>
+<div class="indent"><p><p>Turn a partial function into a function out of a subtype</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.equiv_subtype">      <h4>pfun.equiv_subtype</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β) ≃ Σ (p : α → Prop), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#subtype">subtype</a> p → β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.as_subtype_eq_of_mem">      <h4>pfun.as_subtype_eq_of_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α →. β} {x : α} {y : β},
+  y ∈ f x → ∀ (domx : x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.as_subtype">pfun.as_subtype</a> f ⟨x, domx⟩ = y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.lift">      <h4>pfun.lift</h4><code>Π {α : Type u_1} {β : Type u_2}, (α → β) → α →. β</code>
+<div class="indent"><p><p>Turn a total function into a partial function</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.has_coe">      <h4>pfun.has_coe</h4><code>Π {α : Type u_1} {β : Type u_2}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> (α → β) (α →. β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pfun.lift_eq_coe">      <h4>pfun.lift_eq_coe</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.lift">pfun.lift</a> f = ↑f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pfun.coe_val">      <h4>pfun.coe_val</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (a : α), ↑f a = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#roption.some">roption.some</a> (f a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pfun.graph">      <h4>pfun.graph</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × β)</code>
+<div class="indent"><p><p>The graph of a partial function is the set of pairs
+ <code>(x, f x)</code> where <code>x</code> is in the domain of <code>f</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.graph'">      <h4>pfun.graph'</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/rel.html#rel">rel</a> α β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.ran">      <h4>pfun.ran</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β</code>
+<div class="indent"><p><p>The range of a partial function is the set of values
+ <code>f x</code> where <code>x</code> is in the domain of <code>f</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.restrict">      <h4>pfun.restrict</h4><code>Π {α : Type u_1} {β : Type u_2} (f : α →. β) {p : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, p ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f → α →. β</code>
+<div class="indent"><p><p>Restrict a partial function to a smaller domain.</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.mem_restrict">      <h4>pfun.mem_restrict</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α →. β} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (h : s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f) (a : α) (b : β),
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.restrict">pfun.restrict</a> f h a ↔ a ∈ s ∧ b ∈ f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pfun.res">      <h4>pfun.res</h4><code>Π {α : Type u_1} {β : Type u_2}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → α →. β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.mem_res">      <h4>pfun.mem_res</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (a : α) (b : β),
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.res">pfun.res</a> f s a ↔ a ∈ s ∧ f a = b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.res_univ">      <h4>pfun.res_univ</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.res">pfun.res</a> f <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> = ↑f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.dom_iff_graph">      <h4>pfun.dom_iff_graph</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (x : α),
+  x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f ↔ ∃ (y : β), (x, y) ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.graph">pfun.graph</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.lift_graph">      <h4>pfun.lift_graph</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α → β} {a : α} {b : β}, (a, b) ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.graph">pfun.graph</a> ↑f ↔ f a = b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.pure">      <h4>pfun.pure</h4><code>Π {α : Type u_1} {β : Type u_2}, β → α →. β</code>
+<div class="indent"><p><p>The monad <code>pure</code> function, the total constant <code>x</code> function</p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.bind">      <h4>pfun.bind</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3}, (α →. β) → (β → α →. γ) → α →. γ</code>
+<div class="indent"><p><p>The monad <code>bind</code> function, pointwise <code>roption.bind</code></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.map">      <h4>pfun.map</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3}, (β → γ) → (α →. β) → α →. γ</code>
+<div class="indent"><p><p>The monad <code>map</code> function, pointwise <code>roption.map</code></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.monad">      <h4>pfun.monad</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun">pfun</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pfun.is_lawful_monad">      <h4>pfun.is_lawful_monad</h4><code>∀ {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun">pfun</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pfun.pure_defined">      <h4>pfun.pure_defined</h4><code>∀ {α : Type u_1} {β : Type u_2} (p : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (x : β), p ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.pure">pfun.pure</a> x)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.bind_defined">      <h4>pfun.bind_defined</h4><code>∀ {α : Type u_1} {β γ : Type u_2} (p : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) {f : α →. β} {g : β → α →. γ},
+  p ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f → (∀ (x : β), p ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> (g x)) → p ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> (f >>= g)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.fix">      <h4>pfun.fix</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β ⊕ α) → α →. β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.dom_of_mem_fix">      <h4>pfun.dom_of_mem_fix</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α →. β ⊕ α} {a : α} {b : β}, b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fix">pfun.fix</a> f a → (f a).dom</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.mem_fix_iff">      <h4>pfun.mem_fix_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α →. β ⊕ α} {a : α} {b : β},
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fix">pfun.fix</a> f a ↔ sum.inl b ∈ f a ∨ ∃ (a' : α), sum.inr a' ∈ f a ∧ b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fix">pfun.fix</a> f a'</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.fix_induction">      <h4>pfun.fix_induction</h4><code>Π {α : Type u_1} {β : Type u_2} {f : α →. β ⊕ α} {b : β} {C : α → Sort u_3} {a : α},
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fix">pfun.fix</a> f a →
+  (Π (a : α), b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fix">pfun.fix</a> f a → (Π (a' : α), b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fix">pfun.fix</a> f a' → sum.inr a' ∈ f a → C a') → C a) →
+  C a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.image">      <h4>pfun.image</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.image_def">      <h4>pfun.image_def</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f s = {y : β | ∃ (x : α) (H : x ∈ s), y ∈ f x}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.mem_image">      <h4>pfun.mem_image</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (y : β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  y ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f s ↔ ∃ (x : α) (H : x ∈ s), y ∈ f x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.image_mono">      <h4>pfun.image_mono</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) {s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, s ⊆ t → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.image_inter">      <h4>pfun.image_inter</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f (s ∩ t) ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f s ∩ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.image_union">      <h4>pfun.image_union</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f (s ∪ t) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f s ∪ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.image">pfun.image</a> f t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage">      <h4>pfun.preimage</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_def">      <h4>pfun.preimage_def</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s = {x : α | ∃ (y : β) (H : y ∈ s), y ∈ f x}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.mem_preimage">      <h4>pfun.mem_preimage</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β) (x : α),
+  x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s ↔ ∃ (y : β) (H : y ∈ s), y ∈ f x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_subset_dom">      <h4>pfun.preimage_subset_dom</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_mono">      <h4>pfun.preimage_mono</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) {s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β}, s ⊆ t → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_inter">      <h4>pfun.preimage_inter</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f (s ∩ t) ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s ∩ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_union">      <h4>pfun.preimage_union</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f (s ∪ t) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s ∪ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_univ">      <h4>pfun.preimage_univ</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.core">      <h4>pfun.core</h4><code>Π {α : Type u_1} {β : Type u_2}, (α →. β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.core_def">      <h4>pfun.core_def</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f s = {x : α | ∀ (y : β), y ∈ f x → y ∈ s}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.mem_core">      <h4>pfun.mem_core</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (x : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f s ↔ ∀ (y : β), y ∈ f x → y ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.compl_dom_subset_core">      <h4>pfun.compl_dom_subset_core</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β), -pfun.dom f ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.core_mono">      <h4>pfun.core_mono</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) {s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β}, s ⊆ t → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.core_inter">      <h4>pfun.core_inter</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f (s ∩ t) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f s ∩ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.mem_core_res">      <h4>pfun.mem_core_res</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β) (x : α),
+  x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.res">pfun.res</a> f s) t ↔ x ∈ s → f x ∈ t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.core_res">      <h4>pfun.core_res</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.res">pfun.res</a> f s) t = -s ∪ f ⁻¹' t</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.core_restrict">      <h4>pfun.core_restrict</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> ↑f s = f ⁻¹' s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_subset_core">      <h4>pfun.preimage_subset_core</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_eq">      <h4>pfun.preimage_eq</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f s ∩ <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.core_eq">      <h4>pfun.core_eq</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.core">pfun.core</a> f s = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s ∪ -pfun.dom f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pfun.preimage_as_subtype">      <h4>pfun.preimage_as_subtype</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α →. β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.as_subtype">pfun.as_subtype</a> f ⁻¹' s = subtype.val ⁻¹' <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.preimage">pfun.preimage</a> f s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

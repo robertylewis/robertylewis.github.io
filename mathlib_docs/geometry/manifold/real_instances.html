@@ -1,0 +1,87 @@
+<html><head><title>geometry.manifold.real_instances</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Constructing examples of manifolds over ℝ</h1>
+
+<p>We introduce the necessary bits to be able to define manifolds modelled over ℝ^n, boundaryless
+or with boundary or with corners. As a concrete example, we construct explicitly the manifold with
+boundary structure on the real interval [x, y].</p>
+
+<p>More specifically, we introduce
+* <code>euclidean_space n</code> for a model vector space of dimension <code>n</code>.
+* <code>model_with_corners ℝ (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</code> for the model space used
+to define <code>n</code>-dimensional real manifolds with boundary
+* <code>model_with_corners ℝ (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</code> for the model space used
+to define <code>n</code>-dimensional real manifolds with corners</p>
+
+<h2>Implementation notes</h2>
+
+<p>The manifold structure on the interval [x, y] = Icc x y requires the assumption <code>x &lt; y</code>. We
+introduce a dummy class <code>lt_class x y</code> for this, to make such an assumption available to typeclass
+search. This should hopefully not be necessary any more in Lean 4.</p>
+</div><div class="entry"><a id="euclidean_space">      <h4>euclidean_space</h4><code>ℕ → Type</code>
+<div class="indent"><p><p>The space ℝ^n. Note that the name is slightly misleading, as we only need a normed space
+structure on ℝ^n, but the one we use here is the sup norm and not the euclidean one -- this is not
+a problem for the manifold applications, but should probably be refactored at some point.</p>
+</p>       </div>
+</div><div class="entry"><a id="euclidean_half_space">      <h4>euclidean_half_space</h4><code>Π (n : ℕ) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n)], Type</code>
+<div class="indent"><p><p>The half-space in ℝ^n, used to model manifolds with boundary. We only define it when <code>1 ≤ n</code>, as the
+definition only makes sense in this case.</p>
+</p>       </div>
+</div><div class="entry"><a id="euclidean_quadrant">      <h4>euclidean_quadrant</h4><code>ℕ → Type</code>
+<div class="indent"><p><p>The quadrant in ℝ^n, used to model manifolds with corners, made of all vectors with nonnegative
+coordinates.</p>
+</p>       </div>
+</div><div class="entry"><a id="euclidean_space.vector_space">      <h4>euclidean_space.vector_space</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/module.html#vector_space">vector_space</a> ℝ (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="euclidean_space.normed_group">      <h4>euclidean_space.normed_group</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="euclidean_space.normed_space">      <h4>euclidean_space.normed_space</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> ℝ (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="euclidean_half_space.topological_space">      <h4>euclidean_half_space.topological_space</h4><code>Π {n : ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n)], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="euclidean_quadrant.topological_space">      <h4>euclidean_quadrant.topological_space</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="euclidean_space.finite_dimensional">      <h4>euclidean_space.finite_dimensional</h4><code>∀ {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/linear_algebra/finite_dimensional.html#finite_dimensional">finite_dimensional</a> ℝ (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="findim_euclidean_space">      <h4>findim_euclidean_space</h4><code>∀ {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/linear_algebra/finite_dimensional.html#finite_dimensional.findim">finite_dimensional.findim</a> ℝ (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) = n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="range_half_space">      <h4>range_half_space</h4><code>∀ (n : ℕ) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> (λ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n), x.val) = {y : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | 0 ≤ y 0}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="range_quadrant">      <h4>range_quadrant</h4><code>∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> (λ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n), x.val) = {y : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | ∀ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), 0 ≤ y i}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="model_with_corners_euclidean_half_space">      <h4>model_with_corners_euclidean_half_space</h4><code>Π (n : ℕ) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n)], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> ℝ (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</code>
+<div class="indent"><p><p>Definition of the model with corners (euclidean<em>space n, euclidean</em>half_space n), used as a
+model for manifolds with boundary.</p>
+</p>       </div>
+</div><div class="entry"><a id="model_with_corners_euclidean_quadrant">      <h4>model_with_corners_euclidean_quadrant</h4><code>Π (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> ℝ (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</code>
+<div class="indent"><p><p>Definition of the model with corners (euclidean<em>space n, euclidean</em>quadrant n), used as a
+model for manifolds with corners</p>
+</p>       </div>
+</div><div class="entry"><a id="lt_class">      <h4>lt_class</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_lt">has_lt</a> α], α → α → Prop</code>
+<div class="indent"><p><p>Dummy class to make an assumption such as <code>x &lt; y</code> available to typeclass search. Such an
+assumption is used to define a manifold structure on [x, y] when <code>x &lt; y</code>. Should be fixed in Lean 4.</p>
+</p>       </div>
+</div><div class="entry"><a id="Icc_left_chart">      <h4>Icc_left_chart</h4><code>Π (x y : ℝ) [h : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/intervals.html#set.Icc">set.Icc</a> x y) (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</code>
+<div class="indent"><p><p>The left chart for the topological space [x, y], defined on [x,y) and sending x to 0 in
+<code>euclidean_half_space 1</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="Icc_right_chart">      <h4>Icc_right_chart</h4><code>Π (x y : ℝ) [h : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/intervals.html#set.Icc">set.Icc</a> x y) (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</code>
+<div class="indent"><p><p>The right chart for the topological space [x, y], defined on (x,y] and sending y to 0 in
+<code>euclidean_half_space 1</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="Icc_manifold">      <h4>Icc_manifold</h4><code>Π (x y : ℝ) [h : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1) ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/intervals.html#set.Icc">set.Icc</a> x y)</code>
+<div class="indent"><p><p>Manifold with boundary structure on [x, y], using only two charts.</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="Icc_smooth_manifold">      <h4>Icc_smooth_manifold</h4><code>∀ (x y : ℝ) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/smooth_manifold_with_corners.html#smooth_manifold_with_corners">smooth_manifold_with_corners</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/real_instances.html#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a> 1) ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/intervals.html#set.Icc">set.Icc</a> x y)</code>
+<div class="indent"><p><p>The manifold structure on [x, y] is smooth.</p>
+</p>       Attributes: instance</div>
+</div></body></html>

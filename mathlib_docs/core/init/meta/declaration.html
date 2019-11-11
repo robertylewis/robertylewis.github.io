@@ -1,0 +1,87 @@
+<html><head><title>core.init.meta.declaration</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="reducibility_hints">      <h4>reducibility_hints</h4><code>Type</code>
+<div class="indent"><p><p>Reducibility hints are used in the convertibility checker.
+When trying to solve a constraint such a</p>
+
+<pre><code>       (f ...) =?= (g ...)
+</code></pre>
+
+<p>where f and g are definitions, the checker has to decide which one will be unfolded.
+  If      f (g) is opaque,     then g (f) is unfolded if it is also not marked as opaque,
+  Else if f (g) is abbrev,     then f (g) is unfolded if g (f) is also not marked as abbrev,
+  Else if f and g are regular, then we unfold the one with the biggest definitional height.
+  Otherwise both are unfolded.</p>
+
+<p>The arguments of the <code>regular</code> constructor are: the definitional height and the flag <code>self_opt</code>.</p>
+
+<p>The definitional height is by default computed by the kernel. It only takes into account
+other regular definitions used in a definition. When creating declarations using meta-programming,
+we can specify the definitional depth manually.</p>
+
+<p>For definitions marked as regular, we also have a hint for constraints such as</p>
+
+<pre><code>      (f a) =?= (f b)
+</code></pre>
+
+<p>if self_opt == true, then checker will first try to solve (a =?= b), only if it fails,
+it unfolds f.</p>
+
+<p>Remark: the hint only affects performance. None of the hints prevent the kernel from unfolding a
+declaration during type checking.</p>
+
+<p>Remark: the reducibility<em>hints are not related to the attributes: reducible/irrelevance/semireducible.
+These attributes are used by the elaborator. The reducibility</em>hints are used by the kernel (and elaborator).
+Moreover, the reducibility_hints cannot be changed after a declaration is added to the kernel.</p>
+</p>       </div>
+</div><div class="entry"><a id="declaration">      <h4>declaration</h4><code>Type</code>
+<div class="indent"><p><p>Reflect a C++ declaration object. The VM replaces it with the C++ implementation.</p>
+</p>       </div>
+</div><div class="entry"><a id="mk_definition">      <h4>mk_definition</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.to_name">      <h4>declaration.to_name</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.univ_params">      <h4>declaration.univ_params</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.type">      <h4>declaration.type</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.value">      <h4>declaration.value</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.value_task">      <h4>declaration.value_task</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/task.html#task">task</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.is_trusted">      <h4>declaration.is_trusted</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.update_type">      <h4>declaration.update_type</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.update_name">      <h4>declaration.update_name</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.update_value">      <h4>declaration.update_value</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.update_value_task">      <h4>declaration.update_value_task</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/task.html#task">task</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.map_value">      <h4>declaration.map_value</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.to_definition">      <h4>declaration.to_definition</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.is_definition">      <h4>declaration.is_definition</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.instantiate_type_univ_params">      <h4>declaration.instantiate_type_univ_params</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Instantiate a universe polymorphic declaration type with the given universes.</p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.instantiate_value_univ_params">      <h4>declaration.instantiate_value_univ_params</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Instantiate a universe polymorphic declaration value with the given universes.</p>
+</p>       </div>
+</div></body></html>

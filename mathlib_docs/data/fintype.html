@@ -1,0 +1,544 @@
+<html><head><title>data.fintype</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="fintype">      <h4>fintype</h4><code>Type u_4 → Type u_4</code>
+<div class="indent"><p><p><code>fintype α</code> means that <code>α</code> is finite, i.e. there are only
+ finitely many distinct elements of type <code>α</code>. The evidence of this
+ is a finset <code>elems</code> (a list up to permutation without duplicates),
+ together with a proof that everything of type <code>α</code> is in the list.</p>
+</p>       </div>
+</div><div class="entry"><a id="finset.univ">      <h4>finset.univ</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α</code>
+<div class="indent"><p><p><code>univ</code> is the universal finite set of type <code>finset α</code> implied from
+ the assumption <code>fintype α</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="finset.mem_univ">      <h4>finset.mem_univ</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (x : α), x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="finset.mem_univ_val">      <h4>finset.mem_univ_val</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (x : α), x ∈ finset.univ.val</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="finset.coe_univ">      <h4>finset.coe_univ</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], ↑finset.univ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="finset.subset_univ">      <h4>finset.subset_univ</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α), s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="finset.eq_univ_iff_forall">      <h4>finset.eq_univ_iff_forall</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α}, s = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> ↔ ∀ (x : α), x ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.decidable_pi_fintype">      <h4>fintype.decidable_pi_fintype</h4><code>Π {α : Type u_1} {β : α → Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> (β a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> (Π (a : α), β a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.decidable_forall_fintype">      <h4>fintype.decidable_forall_fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {p : α → Prop} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (∀ (a : α), p a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.decidable_exists_fintype">      <h4>fintype.decidable_exists_fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {p : α → Prop} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (∃ (a : α), p a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.decidable_eq_equiv_fintype">      <h4>fintype.decidable_eq_equiv_fintype</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> (α ≃ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.decidable_injective_fintype">      <h4>fintype.decidable_injective_fintype</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.decidable_surjective_fintype">      <h4>fintype.decidable_surjective_fintype</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.surjective">function.surjective</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.decidable_bijective_fintype">      <h4>fintype.decidable_bijective_fintype</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.decidable_left_inverse_fintype">      <h4>fintype.decidable_left_inverse_fintype</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (f : α → β) (g : β → α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.right_inverse">function.right_inverse</a> f g)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.decidable_right_inverse_fintype">      <h4>fintype.decidable_right_inverse_fintype</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] (f : α → β) (g : β → α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.left_inverse">function.left_inverse</a> f g)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.of_multiset">      <h4>fintype.of_multiset</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset">multiset</a> α), (∀ (x : α), x ∈ s) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α</code>
+<div class="indent"><p><p>Construct a proof of <code>fintype α</code> from a universal multiset</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.of_list">      <h4>fintype.of_list</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), (∀ (x : α), x ∈ l) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α</code>
+<div class="indent"><p><p>Construct a proof of <code>fintype α</code> from a universal list</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.exists_univ_list">      <h4>fintype.exists_univ_list</h4><code>∀ (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], ∃ (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.nodup">list.nodup</a> l ∧ ∀ (x : α), x ∈ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card">      <h4>fintype.card</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], ℕ</code>
+<div class="indent"><p><p><code>card α</code> is the number of elements in <code>α</code>, defined when <code>α</code> is a fintype.</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.equiv_fin">      <h4>fintype.equiv_fin</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/quot.html#trunc">trunc</a> (α ≃ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α))</code>
+<div class="indent"><p><p>There is (computably) a bijection between <code>α</code> and <code>fin n</code> where
+ <code>n = card α</code>. Since it is not unique, and depends on which permutation
+ of the universe list is used, the bijection is wrapped in <code>trunc</code> to
+ preserve computability.</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.exists_equiv_fin">      <h4>fintype.exists_equiv_fin</h4><code>∀ (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], ∃ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#nonempty">nonempty</a> (α ≃ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.subsingleton">      <h4>fintype.subsingleton</h4><code>∀ (α : Type u_1), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#subsingleton">subsingleton</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.subtype">      <h4>fintype.subtype</h4><code>Π {α : Type u_1} {p : α → Prop} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α), (∀ (x : α), x ∈ s ↔ p x) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> {x // p x}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.subtype_card">      <h4>fintype.subtype_card</h4><code>∀ {α : Type u_1} {p : α → Prop} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α) (H : ∀ (x : α), x ∈ s ↔ p x),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> {x // p x} = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_of_subtype">      <h4>fintype.card_of_subtype</h4><code>∀ {α : Type u_1} {p : α → Prop} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α),
+  (∀ (x : α), x ∈ s ↔ p x) → ∀ [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> {x // p x}], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> {x // p x} = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.of_finset">      <h4>fintype.of_finset</h4><code>Π {α : Type u_1} {p : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α), (∀ (x : α), x ∈ s ↔ x ∈ p) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ↥p</code>
+<div class="indent"><p><p>Construct a fintype from a finset with the same elements.</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_of_finset">      <h4>fintype.card_of_finset</h4><code>∀ {α : Type u_1} {p : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α) (H : ∀ (x : α), x ∈ s ↔ x ∈ p),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> ↥p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_of_finset'">      <h4>fintype.card_of_finset'</h4><code>∀ {α : Type u_1} {p : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α),
+  (∀ (x : α), x ∈ s ↔ x ∈ p) → ∀ [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ↥p], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> ↥p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.of_bijective">      <h4>fintype.of_bijective</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β</code>
+<div class="indent"><p><p>If <code>f : α → β</code> is a bijection and <code>α</code> is a fintype, then <code>β</code> is also a fintype.</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.of_surjective">      <h4>fintype.of_surjective</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] (f : α → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.surjective">function.surjective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β</code>
+<div class="indent"><p><p>If <code>f : α → β</code> is a surjection and <code>α</code> is a fintype, then <code>β</code> is also a fintype.</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.of_injective">      <h4>fintype.of_injective</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β] (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.of_equiv">      <h4>fintype.of_equiv</h4><code>Π {β : Type u_2} (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], α ≃ β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β</code>
+<div class="indent"><p><p>If <code>f : α ≃ β</code> and <code>α</code> is a fintype, then <code>β</code> is also a fintype.</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.of_equiv_card">      <h4>fintype.of_equiv_card</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (f : α ≃ β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> β = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_congr">      <h4>fintype.card_congr</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β],
+  α ≃ β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_eq">      <h4>fintype.card_eq</h4><code>∀ {α : Type u_1} {β : Type u_2} [F : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [G : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> β ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#nonempty">nonempty</a> (α ≃ β)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.of_subsingleton">      <h4>fintype.of_subsingleton</h4><code>Π {α : Type u_1}, α → Π [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#subsingleton">subsingleton</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.univ_of_subsingleton">      <h4>fintype.univ_of_subsingleton</h4><code>∀ {α : Type u_1} (a : α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#subsingleton">subsingleton</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.singleton">finset.singleton</a> a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_of_subsingleton">      <h4>fintype.card_of_subsingleton</h4><code>∀ {α : Type u_1} (a : α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#subsingleton">subsingleton</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_eq_sum_ones">      <h4>fintype.card_eq_sum_ones</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> (λ (_x : α), 1)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="set.to_finset">      <h4>set.to_finset</h4><code>Π {α : Type u_1} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ↥s], <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α</code>
+<div class="indent"><p><p>Construct a finset enumerating a set <code>s</code>, given a <code>fintype</code> instance.</p>
+</p>       </div>
+</div><div class="entry"><a id="set.mem_to_finset">      <h4>set.mem_to_finset</h4><code>∀ {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ↥s] {a : α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#set.to_finset">set.to_finset</a> s ↔ a ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="set.mem_to_finset_val">      <h4>set.mem_to_finset_val</h4><code>∀ {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ↥s] {a : α}, a ∈ (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#set.to_finset">set.to_finset</a> s).val ↔ a ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="finset.card_univ">      <h4>finset.card_univ</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="finset.card_univ_diff">      <h4>finset.card_univ_diff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> \ s) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α - <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fin.fintype">      <h4>fin.fintype</h4><code>Π (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_fin">      <h4>fintype.card_fin</h4><code>∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n) = n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="unique.fintype">      <h4>unique.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/logic/unique.html#unique">unique</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="univ_unique">      <h4>univ_unique</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/logic/unique.html#unique">unique</a> α] [f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> = {<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#default">default</a> α}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="empty.fintype">      <h4>empty.fintype</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#empty">empty</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.univ_empty">      <h4>fintype.univ_empty</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> = ∅</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_empty">      <h4>fintype.card_empty</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#empty">empty</a> = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pempty.fintype">      <h4>pempty.fintype</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> <a href="/home/rob/lean/mathlib/scripts/html_out/logic/basic.html#pempty">pempty</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.univ_pempty">      <h4>fintype.univ_pempty</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> = ∅</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_pempty">      <h4>fintype.card_pempty</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> <a href="/home/rob/lean/mathlib/scripts/html_out/logic/basic.html#pempty">pempty</a> = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="unit.fintype">      <h4>unit.fintype</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.univ_unit">      <h4>fintype.univ_unit</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> = {()}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_unit">      <h4>fintype.card_unit</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a> = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="punit.fintype">      <h4>punit.fintype</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#punit">punit</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.univ_punit">      <h4>fintype.univ_punit</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> = {punit.star}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_punit">      <h4>fintype.card_punit</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#punit">punit</a> = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="bool.fintype">      <h4>bool.fintype</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.univ_bool">      <h4>fintype.univ_bool</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> = {bool.ff, bool.tt}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="units_int.fintype">      <h4>units_int.fintype</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> ℤ)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="additive.fintype">      <h4>additive.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/type_tags.html#additive">additive</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="multiplicative.fintype">      <h4>multiplicative.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/type_tags.html#multiplicative">multiplicative</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_units_int">      <h4>fintype.card_units_int</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> ℤ) = 2</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_bool">      <h4>fintype.card_bool</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> = 2</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="finset.insert_none">      <h4>finset.insert_none</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="finset.mem_insert_none">      <h4>finset.mem_insert_none</h4><code>∀ {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, o ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.insert_none">finset.insert_none</a> s ↔ ∀ (a : α), a ∈ o → a ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="finset.some_mem_insert_none">      <h4>finset.some_mem_insert_none</h4><code>∀ {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α} {a : α}, option.some a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.insert_none">finset.insert_none</a> s ↔ a ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.fintype">      <h4>option.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_option">      <h4>fintype.card_option</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α + 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="sigma.fintype">      <h4>sigma.fintype</h4><code>Π {α : Type u_1} (β : α → Type u_2) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (β a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#sigma">sigma</a> β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_sigma">      <h4>fintype.card_sigma</h4><code>∀ {α : Type u_1} (β : α → Type u_2) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (β a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#sigma">sigma</a> β) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> (λ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (β a))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="prod.fintype">      <h4>prod.fintype</h4><code>Π (α : Type u_1) (β : Type u_2) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (α × β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_prod">      <h4>fintype.card_prod</h4><code>∀ (α : Type u_1) (β : Type u_2) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (α × β) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α * <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> β</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.fintype_prod_left">      <h4>fintype.fintype_prod_left</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (α × β)] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#nonempty">nonempty</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.fintype_prod_right">      <h4>fintype.fintype_prod_right</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (α × β)] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#nonempty">nonempty</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ulift.fintype">      <h4>ulift.fintype</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ulift">ulift</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_ulift">      <h4>fintype.card_ulift</h4><code>∀ (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ulift">ulift</a> α) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="sum.fintype">      <h4>sum.fintype</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (α ⊕ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_sum">      <h4>fintype.card_sum</h4><code>∀ (α : Type u_1) (β : Type u_2) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (α ⊕ β) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α + <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> β</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_le_of_injective">      <h4>fintype.card_le_of_injective</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β] (f : α → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_eq_one_iff">      <h4>fintype.card_eq_one_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α = 1 ↔ ∃ (x : α), ∀ (y : α), y = x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_eq_zero_iff">      <h4>fintype.card_eq_zero_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α = 0 ↔ α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#false">false</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_pos_iff">      <h4>fintype.card_pos_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], 0 < <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#nonempty">nonempty</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_le_one_iff">      <h4>fintype.card_le_one_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α ≤ 1 ↔ ∀ (a b : α), a = b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.exists_ne_of_one_lt_card">      <h4>fintype.exists_ne_of_one_lt_card</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], 1 < <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α → ∀ (a : α), ∃ (b : α), b ≠ a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.injective_iff_surjective">      <h4>fintype.injective_iff_surjective</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {f : α → α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.surjective">function.surjective</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.injective_iff_bijective">      <h4>fintype.injective_iff_bijective</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {f : α → α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.surjective_iff_bijective">      <h4>fintype.surjective_iff_bijective</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {f : α → α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.surjective">function.surjective</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.injective_iff_surjective_of_equiv">      <h4>fintype.injective_iff_surjective_of_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {f : α → β},
+  α ≃ β → (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.surjective">function.surjective</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="list.subtype.fintype">      <h4>list.subtype.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> {x // x ∈ l}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="multiset.subtype.fintype">      <h4>multiset.subtype.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset">multiset</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> {x // x ∈ s}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="finset.subtype.fintype">      <h4>finset.subtype.fintype</h4><code>Π {α : Type u_1} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> {x // x ∈ s}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="finset_coe.fintype">      <h4>finset_coe.fintype</h4><code>Π {α : Type u_1} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ↥↑s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_coe">      <h4>fintype.card_coe</h4><code>∀ {α : Type u_1} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> ↥↑s = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="plift.fintype">      <h4>plift.fintype</h4><code>Π (p : Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> p], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#plift">plift</a> p)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="Prop.fintype">      <h4>Prop.fintype</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> Prop</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="set_fintype">      <h4>set_fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> s], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ↥s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pi.fintype">      <h4>pi.fintype</h4><code>Π {α : Type u_1} {β : α → Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α]
+[_inst_3 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (β a)], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (Π (a : α), β a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_pi">      <h4>fintype.card_pi</h4><code>∀ {α : Type u_1} {β : α → Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α]
+[f : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (β a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (Π (a : α), β a) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> (λ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (β a))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="fintype.card_fun">      <h4>fintype.card_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (α → β) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> β ^ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="d_array.fintype">      <h4>d_array.fintype</h4><code>Π {n : ℕ} {α : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n → Type u_1} [_inst_1 : Π (n : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (α n)], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array">d_array</a> n α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="array.fintype">      <h4>array.fintype</h4><code>Π {n : ℕ} {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="vector.fintype">      <h4>vector.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/vector.html#vector">vector</a> α n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="card_vector">      <h4>card_vector</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/vector.html#vector">vector</a> α n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α ^ n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="quotient.fintype">      <h4>quotient.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> α) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_equiv.equiv],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/quot.html#quotient">quotient</a> s)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="finset.fintype">      <h4>finset.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="subtype.fintype">      <h4>subtype.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (p : α → Prop) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> {x // p x}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_subtype_le">      <h4>fintype.card_subtype_le</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (p : α → Prop) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> {x // p x} ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_subtype_lt">      <h4>fintype.card_subtype_lt</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] {p : α → Prop} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p] {x : α},
+  ¬p x → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> {x // p x} < <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="psigma.fintype">      <h4>psigma.fintype</h4><code>Π {α : Type u_1} {β : α → Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (β a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (Σ' (a : α), β a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="psigma.fintype_prop_left">      <h4>psigma.fintype_prop_left</h4><code>Π {α : Prop} {β : α → Type u_1} [_inst_1 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (β a)] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (Σ' (a : α), β a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="psigma.fintype_prop_right">      <h4>psigma.fintype_prop_right</h4><code>Π {α : Type u_1} {β : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (β a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (Σ' (a : α), β a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="psigma.fintype_prop_prop">      <h4>psigma.fintype_prop_prop</h4><code>Π {α : Prop} {β : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (β a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (Σ' (a : α), β a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="set.fintype">      <h4>set.fintype</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pfun_fintype">      <h4>pfun_fintype</h4><code>Π (p : Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> p] (α : p → Type u_1) [_inst_2 : Π (hp : p), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (α hp)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (Π (hp : p), α hp)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="quotient.fin_choice_aux">      <h4>quotient.fin_choice_aux</h4><code>Π {ι : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> ι] {α : ι → Type u_2} [S : Π (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> (α i)] (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ι),
+  (Π (i : ι), i ∈ l → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/quot.html#quotient">quotient</a> (S i)) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/quot.html#quotient">quotient</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/quot.html#pi_setoid">pi_setoid</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quotient.fin_choice_aux_eq">      <h4>quotient.fin_choice_aux_eq</h4><code>∀ {ι : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> ι] {α : ι → Type u_2} [S : Π (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> (α i)] (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ι)
+(f : Π (i : ι), i ∈ l → α i), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#quotient.fin_choice_aux">quotient.fin_choice_aux</a> l (λ (i : ι) (h : i ∈ l), ⟦f i h⟧) = ⟦f⟧</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quotient.fin_choice">      <h4>quotient.fin_choice</h4><code>Π {ι : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ι] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> ι] {α : ι → Type u_2}
+[S : Π (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> (α i)], (Π (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/quot.html#quotient">quotient</a> (S i)) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/quot.html#quotient">quotient</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/quot.html#pi_setoid">pi_setoid</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quotient.fin_choice_eq">      <h4>quotient.fin_choice_eq</h4><code>∀ {ι : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ι] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> ι] {α : ι → Type u_2}
+[_inst_3 : Π (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> (α i)] (f : Π (i : ι), α i), <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#quotient.fin_choice">quotient.fin_choice</a> (λ (i : ι), ⟦f i⟧) = ⟦f⟧</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="finset.sum_attach_univ">      <h4>finset.sum_attach_univ</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_monoid">add_comm_monoid</a> β]
+(f : {a // a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a>} → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.attach">finset.attach</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a>) (λ (x : {x // x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a>}), f x) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> (λ (x : α), f ⟨x, _⟩)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="finset.prod_attach_univ">      <h4>finset.prod_attach_univ</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#comm_monoid">comm_monoid</a> β]
+(f : {a // a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a>} → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.attach">finset.attach</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a>) (λ (x : {x // x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a>}), f x) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#finset.univ">finset.univ</a> (λ (x : α), f ⟨x, _⟩)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="perms_of_list">      <h4>perms_of_list</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="length_perms_of_list">      <h4>length_perms_of_list</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#perms_of_list">perms_of_list</a> l) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/basic.html#nat.fact">nat.fact</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_perms_of_list_of_mem">      <h4>mem_perms_of_list_of_mem</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> α},
+  (∀ (x : α), ⇑f x ≠ x → x ∈ l) → f ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#perms_of_list">perms_of_list</a> l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_of_mem_perms_of_list">      <h4>mem_of_mem_perms_of_list</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> α},
+  f ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#perms_of_list">perms_of_list</a> l → ∀ {x : α}, ⇑f x ≠ x → x ∈ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_perms_of_list_iff">      <h4>mem_perms_of_list_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> α},
+  f ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#perms_of_list">perms_of_list</a> l ↔ ∀ {x : α}, ⇑f x ≠ x → x ∈ l</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nodup_perms_of_list">      <h4>nodup_perms_of_list</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.nodup">list.nodup</a> l → <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.nodup">list.nodup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#perms_of_list">perms_of_list</a> l)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="perms_of_finset">      <h4>perms_of_finset</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_perms_of_finset_iff">      <h4>mem_perms_of_finset_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> α},
+  f ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#perms_of_finset">perms_of_finset</a> s ↔ ∀ {x : α}, ⇑f x ≠ x → x ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="card_perms_of_finset">      <h4>card_perms_of_finset</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#perms_of_finset">perms_of_finset</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/basic.html#nat.fact">nat.fact</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype_perm">      <h4>fintype_perm</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="equiv.fintype">      <h4>equiv.fintype</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> (α ≃ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="fintype.card_perm">      <h4>fintype.card_perm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> α) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/basic.html#nat.fact">nat.fact</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.card_equiv">      <h4>fintype.card_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β], α ≃ β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> (α ≃ β) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/basic.html#nat.fact">nat.fact</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.card">fintype.card</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.choose_x">      <h4>fintype.choose_x</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (p : α → Prop) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p],
+  (∃! (a : α), p a) → {a // p a}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.choose">      <h4>fintype.choose</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (p : α → Prop) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p],
+  (∃! (a : α), p a) → α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.choose_spec">      <h4>fintype.choose_spec</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] (p : α → Prop) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p]
+(hp : ∃! (a : α), p a), p (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.choose">fintype.choose</a> p hp)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.bij_inv">      <h4>fintype.bij_inv</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] {f : α → β}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> f → β → α</code>
+<div class="indent"><p><p><code>
+</code>bij<em>inv f<code>is the unique inverse to a bijection</code>f<code>. This acts
+  as a computable alternative to</code>function.inv</em>fun`.</p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.left_inverse_bij_inv">      <h4>fintype.left_inverse_bij_inv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] {f : α → β} (f_bij : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> f),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.left_inverse">function.left_inverse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.bij_inv">fintype.bij_inv</a> f_bij) f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.right_inverse_bij_inv">      <h4>fintype.right_inverse_bij_inv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] {f : α → β} (f_bij : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> f),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.right_inverse">function.right_inverse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.bij_inv">fintype.bij_inv</a> f_bij) f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.bijective_bij_inv">      <h4>fintype.bijective_bij_inv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> β]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] {f : α → β} (f_bij : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> f), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype.bij_inv">fintype.bij_inv</a> f_bij)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.well_founded_of_trans_of_irrefl">      <h4>fintype.well_founded_of_trans_of_irrefl</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] (r : α → α → Prop) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_trans">is_trans</a> α r]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_irrefl">is_irrefl</a> α r], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/wf.html#well_founded">well_founded</a> r</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.preorder.well_founded">      <h4>fintype.preorder.well_founded</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#preorder">preorder</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/wf.html#well_founded">well_founded</a> has_lt.lt</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="fintype.linear_order.is_well_order">      <h4>fintype.linear_order.is_well_order</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#linear_order">linear_order</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α has_lt.lt</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="infinite">      <h4>infinite</h4><code>Type u_4 → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="not_nonempty_fintype">      <h4>not_nonempty_fintype</h4><code>∀ {α : Type u_1}, ¬nonempty (<a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="infinite.exists_not_mem_finset">      <h4>infinite.exists_not_mem_finset</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> α), ∃ (x : α), x ∉ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="infinite.nonempty">      <h4>infinite.nonempty</h4><code>∀ (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#nonempty">nonempty</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="infinite.of_injective">      <h4>infinite.of_injective</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> β] (f : β → α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="infinite.of_surjective">      <h4>infinite.of_surjective</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> β] (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.surjective">function.surjective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="infinite.nat_embedding">      <h4>infinite.nat_embedding</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> α], ℕ ↪ α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.infinite">      <h4>nat.infinite</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> ℕ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="int.infinite">      <h4>int.infinite</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#infinite">infinite</a> ℤ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div></body></html>

@@ -1,0 +1,72 @@
+<html><head><title>category_theory.functor_category</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="category_theory.functor.category">      <h4>category_theory.functor.category</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> (C ⥤ D)</code>
+<div class="indent"><p><p><code>functor.category C D</code> gives the category structure on functors and natural transformations
+between categories <code>C</code> and <code>D</code>.</p>
+
+<p>Notice that if <code>C</code> and <code>D</code> are both small categories at the same universe level,
+this is another small category at that level.
+However if <code>C</code> and <code>D</code> are both large categories at the same universe level,
+this is a small category at the next higher level.</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.nat_trans.vcomp_eq_comp">      <h4>category_theory.nat_trans.vcomp_eq_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F G H : C ⥤ D} (α : F ⟶ G) (β : G ⟶ H), <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/natural_transformation.html#category_theory.nat_trans.vcomp">category_theory.nat_trans.vcomp</a> α β = α ≫ β</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.nat_trans.congr_app">      <h4>category_theory.nat_trans.congr_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F G : C ⥤ D} {α β : F ⟶ G}, α = β → ∀ (X : C), α.app X = β.app X</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.nat_trans.id_app">      <h4>category_theory.nat_trans.id_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(F : C ⥤ D) (X : C), (𝟙 F).app X = 𝟙 (F.obj X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.nat_trans.comp_app">      <h4>category_theory.nat_trans.comp_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F G H : C ⥤ D} (α : F ⟶ G) (β : G ⟶ H) (X : C), (α ≫ β).app X = α.app X ≫ β.app X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.nat_trans.app_naturality">      <h4>category_theory.nat_trans.app_naturality</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] {F G : C ⥤ D ⥤ E} (T : F ⟶ G) (X : C) {Y Z : D} (f : Y ⟶ Z),
+  (F.obj X).map f ≫ (T.app X).app Z = (T.app X).app Y ≫ (G.obj X).map f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.nat_trans.naturality_app">      <h4>category_theory.nat_trans.naturality_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] {F G : C ⥤ D ⥤ E} (T : F ⟶ G) (Z : D) {X Y : C} (f : X ⟶ Y),
+  (F.map f).app Z ≫ (T.app Y).app Z = (T.app X).app Z ≫ (G.map f).app Z</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.nat_trans.hcomp">      <h4>category_theory.nat_trans.hcomp</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] {F G : C ⥤ D} {H I : D ⥤ E},
+  (F ⟶ G) → (H ⟶ I) → (F ⋙ H ⟶ G ⋙ I)</code>
+<div class="indent"><p><p><code>hcomp α β</code> is the horizontal composition of natural transformations.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.nat_trans.hcomp_app">      <h4>category_theory.nat_trans.hcomp_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] {F G : C ⥤ D} {H I : D ⥤ E} (α : F ⟶ G) (β : H ⟶ I)
+(X : C), (α ◫ β).app X = β.app (F.obj X) ≫ I.map (α.app X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.nat_trans.exchange">      <h4>category_theory.nat_trans.exchange</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] {F G H : C ⥤ D} {I J K : D ⥤ E} (α : F ⟶ G) (β : G ⟶ H)
+(γ : I ⟶ J) (δ : J ⟶ K), (α ≫ β) ◫ (γ ≫ δ) = α ◫ γ ≫ β ◫ δ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.flip">      <h4>category_theory.functor.flip</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E], C ⥤ D ⥤ E → D ⥤ C ⥤ E</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.flip_obj_obj">      <h4>category_theory.functor.flip_obj_obj</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (F : C ⥤ D ⥤ E) (c : C) (d : D),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/functor_category.html#category_theory.functor.flip">category_theory.functor.flip</a> F).obj d).obj c = (F.obj c).obj d</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.flip_obj_map">      <h4>category_theory.functor.flip_obj_map</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (F : C ⥤ D ⥤ E) {c c' : C} (f : c ⟶ c') (d : D),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/functor_category.html#category_theory.functor.flip">category_theory.functor.flip</a> F).obj d).map f = (F.map f).app d</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.flip_map_app">      <h4>category_theory.functor.flip_map_app</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (F : C ⥤ D ⥤ E) {d d' : D} (f : d ⟶ d') (c : C),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/functor_category.html#category_theory.functor.flip">category_theory.functor.flip</a> F).map f).app c = (F.obj c).map f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div></body></html>

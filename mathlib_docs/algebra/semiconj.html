@@ -1,0 +1,167 @@
+<html><head><title>algebra.semiconj</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Semiconjugate elements of a semigroup</h1>
+
+<h2>Main definitions</h2>
+
+<p>We say that <code>x</code> is semiconjugate to <code>y</code> by <code>a</code> (<code>semiconj_by a x y</code>), if <code>a * x = y * a</code>.
+In this file we  provide operations on <code>semiconj_by _ _ _</code>.</p>
+
+<p>In the names of these operations, we treat <code>a</code> as the “left” argument,
+and both <code>x</code> and <code>y</code> as “right” arguments. This way most names in this
+file agree with the names of the corresponding lemmas for <code>commute a b
+= <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a b b</code>. As a side effect, some lemmas have only <code>_right</code>
+version.</p>
+
+<p>Lean does not immediately recognise these terms as equations,
+so for rewriting we need syntax like <code>rw [(h.pow_right 5).eq]</code>
+rather than just <code>rw [h.pow_right 5]</code>.</p>
+</div><div class="entry"><a id="semiconj_by">      <h4>semiconj_by</h4><code>Π {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> M], M → M → M → Prop</code>
+<div class="indent"><p><p><code>x</code> is semiconjugate to <code>y</code> by <code>a</code>, if <code>a * x = y * a</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.eq">      <h4>semiconj_by.eq</h4><code>∀ {S : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> S] {a x y : S}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → a * x = y * a</code>
+<div class="indent"><p><p>Equality behind <code>semiconj_by a x y</code>; useful for rewriting.</p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.mul_right">      <h4>semiconj_by.mul_right</h4><code>∀ {S : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> S] {a x y x' y' : S},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x' y' → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (x * x') (y * y')</code>
+<div class="indent"><p><p>If <code>a</code> semiconjugates <code>x</code> to <code>y</code> and <code>x'</code> to <code>y'</code>,
+then it semiconjugates <code>x * x'</code> to <code>y * y'</code>.</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.mul_left">      <h4>semiconj_by.mul_left</h4><code>∀ {S : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> S] {a b x y z : S},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a y z → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> b x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (a * b) x z</code>
+<div class="indent"><p><p>If both <code>a</code> and <code>b</code> semiconjugate <code>x</code> to <code>y</code>, then so does <code>a * b</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.one_right">      <h4>semiconj_by.one_right</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] (a : M), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a 1 1</code>
+<div class="indent"><p><p>Any element semiconjugates <code>1</code> to <code>1</code>.</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.one_left">      <h4>semiconj_by.one_left</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] (x : M), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> 1 x x</code>
+<div class="indent"><p><p>One semiconjugates any element to itself.</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.units_inv_right">      <h4>semiconj_by.units_inv_right</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a : M} {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a ↑x ↑y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a ↑x⁻¹ ↑y⁻¹</code>
+<div class="indent"><p><p>If <code>a</code> semiconjugates a unit <code>x</code> to a unit <code>y</code>, then it semiconjugates <code>x⁻¹</code> to <code>y⁻¹</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.units_inv_right_iff">      <h4>semiconj_by.units_inv_right_iff</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a : M} {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a ↑x⁻¹ ↑y⁻¹ ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a ↑x ↑y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.units_inv_symm_left">      <h4>semiconj_by.units_inv_symm_left</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M} {x y : M}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑a⁻¹ y x</code>
+<div class="indent"><p><p>If a unit <code>a</code> semiconjugates <code>x</code> to <code>y</code>, then <code>a⁻¹</code> semiconjugates <code>y</code> to <code>x</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.units_inv_symm_left_iff">      <h4>semiconj_by.units_inv_symm_left_iff</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M} {x y : M}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑a⁻¹ y x ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑a x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.map">      <h4>semiconj_by.map</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {N : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> N] (f : M →* N) {a x y : M},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (⇑f a) (⇑f x) (⇑f y)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.units_coe">      <h4>semiconj_by.units_coe</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑a ↑x ↑y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.units_of_coe">      <h4>semiconj_by.units_of_coe</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑a ↑x ↑y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.units_coe_iff">      <h4>semiconj_by.units_coe_iff</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑a ↑x ↑y ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.pow_right">      <h4>semiconj_by.pow_right</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a x y : M}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → ∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (x ^ n) (y ^ n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.units_gpow_right">      <h4>semiconj_by.units_gpow_right</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] {a : M} {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a ↑x ↑y → ∀ (m : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a ↑(x ^ m) ↑(y ^ m)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.units_conj_mk">      <h4>semiconj_by.units_conj_mk</h4><code>∀ {M : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> M] (a : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> M) (x : M), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑a x (↑a * x * ↑a⁻¹)</code>
+<div class="indent"><p><p><code>a</code> semiconjugates <code>x</code> to <code>a * x * a⁻¹</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.inv_right_iff">      <h4>semiconj_by.inv_right_iff</h4><code>∀ {G : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> G] {a x y : G}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x⁻¹ y⁻¹ ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.inv_right">      <h4>semiconj_by.inv_right</h4><code>∀ {G : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> G] {a x y : G}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x⁻¹ y⁻¹</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.inv_symm_left_iff">      <h4>semiconj_by.inv_symm_left_iff</h4><code>∀ {G : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> G] {a x y : G}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a⁻¹ y x ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.inv_symm_left">      <h4>semiconj_by.inv_symm_left</h4><code>∀ {G : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> G] {a x y : G}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a⁻¹ y x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.inv_inv_symm">      <h4>semiconj_by.inv_inv_symm</h4><code>∀ {G : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> G] {a x y : G}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a⁻¹ y⁻¹ x⁻¹</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.inv_inv_symm_iff">      <h4>semiconj_by.inv_inv_symm_iff</h4><code>∀ {G : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> G] {a x y : G}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a⁻¹ y⁻¹ x⁻¹ ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.conj_mk">      <h4>semiconj_by.conj_mk</h4><code>∀ {G : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> G] (a x : G), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x (a * x * a⁻¹)</code>
+<div class="indent"><p><p><code>a</code> semiconjugates <code>x</code> to <code>a * x * a⁻¹</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.gpow_right">      <h4>semiconj_by.gpow_right</h4><code>∀ {G : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> G] {a x y : G}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → ∀ (m : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (x ^ m) (y ^ m)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.add_right">      <h4>semiconj_by.add_right</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#distrib">distrib</a> R] {a x y x' y' : R},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x' y' → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (x + x') (y + y')</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.add_left">      <h4>semiconj_by.add_left</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#distrib">distrib</a> R] {a b x y : R},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> b x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (a + b) x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.zero_right">      <h4>semiconj_by.zero_right</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#mul_zero_class">mul_zero_class</a> R] (a : R), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a 0 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.zero_left">      <h4>semiconj_by.zero_left</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#mul_zero_class">mul_zero_class</a> R] (x y : R), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> 0 x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.smul_right">      <h4>semiconj_by.smul_right</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#semiring">semiring</a> R] {a x y : R},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → ∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#add_monoid.smul">add_monoid.smul</a> n x) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#add_monoid.smul">add_monoid.smul</a> n y)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.smul_left">      <h4>semiconj_by.smul_left</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#semiring">semiring</a> R] {a x y : R},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → ∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#add_monoid.smul">add_monoid.smul</a> n a) x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.smul_smul">      <h4>semiconj_by.smul_smul</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#semiring">semiring</a> R] {a x y : R},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → ∀ (m n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#add_monoid.smul">add_monoid.smul</a> m a) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#add_monoid.smul">add_monoid.smul</a> n x) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#add_monoid.smul">add_monoid.smul</a> n y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.cast_nat_right">      <h4>semiconj_by.cast_nat_right</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#semiring">semiring</a> R] (a : R) (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a ↑n ↑n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.cast_nat_left">      <h4>semiconj_by.cast_nat_left</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#semiring">semiring</a> R] (n : ℕ) (x : R), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> ↑n x x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.neg_right">      <h4>semiconj_by.neg_right</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a x y : R}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (-x) (-y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.neg_right_iff">      <h4>semiconj_by.neg_right_iff</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a x y : R}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (-x) (-y) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.neg_left">      <h4>semiconj_by.neg_left</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a x y : R}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (-a) x y</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="semiconj_by.neg_left_iff">      <h4>semiconj_by.neg_left_iff</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a x y : R}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (-a) x y ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.neg_one_right">      <h4>semiconj_by.neg_one_right</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] (a : R), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (-1) (-1)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.neg_one_left">      <h4>semiconj_by.neg_one_left</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] (x : R), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (-1) x x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.sub_right">      <h4>semiconj_by.sub_right</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a x y x' y' : R},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x' y' → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (x - x') (y - y')</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.sub_left">      <h4>semiconj_by.sub_left</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a b x y : R}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> b x y → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (a - b) x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.gsmul_right">      <h4>semiconj_by.gsmul_right</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a x y : R},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → ∀ (m : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#gsmul">gsmul</a> m x) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#gsmul">gsmul</a> m y)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.gsmul_left">      <h4>semiconj_by.gsmul_left</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a x y : R}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → ∀ (m : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#gsmul">gsmul</a> m a) x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="semiconj_by.gsmul_gsmul">      <h4>semiconj_by.gsmul_gsmul</h4><code>∀ {R : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> R] {a x y : R},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> a x y → ∀ (m n : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/semiconj.html#semiconj_by">semiconj_by</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#gsmul">gsmul</a> m a) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#gsmul">gsmul</a> n x) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#gsmul">gsmul</a> n y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

@@ -1,0 +1,70 @@
+<html><head><title>data.option.defs</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="option.has_mem">      <h4>option.has_mem</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mem">has_mem</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.mem_def">      <h4>option.mem_def</h4><code>∀ {α : Type u_1} {a : α} {b : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, a ∈ b ↔ b = option.some a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.is_none_iff_eq_none">      <h4>option.is_none_iff_eq_none</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_none">option.is_none</a> o = bool.tt ↔ o = option.none</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.some_inj">      <h4>option.some_inj</h4><code>∀ {α : Type u_1} {a b : α}, option.some a = option.some b ↔ a = b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.decidable_eq_none">      <h4>option.decidable_eq_none</h4><code>Π {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (o = option.none)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.decidable_forall_mem">      <h4>option.decidable_forall_mem</h4><code>Π {α : Type u_1} {p : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p] (o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (∀ (a : α), a ∈ o → p a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.decidable_exists_mem">      <h4>option.decidable_exists_mem</h4><code>Π {α : Type u_1} {p : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p] (o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (∃ (a : α) (H : a ∈ o), p a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.iget">      <h4>option.iget</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → α</code>
+<div class="indent"><p><p>inhabited <code>get</code> function. Returns <code>a</code> if the input is <code>some a</code>,
+ otherwise returns <code>default</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="option.iget_some">      <h4>option.iget_some</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> α] {a : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.iget">option.iget</a> (option.some a) = a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.guard">      <h4>option.guard</h4><code>Π {α : Type u_1} (p : α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p], α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><p><code>guard p a</code> returns <code>some a</code> if <code>p a</code> holds, otherwise <code>none</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="option.filter">      <h4>option.filter</h4><code>Π {α : Type u_1} (p : α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><p><code>filter p o</code> returns <code>some a</code> if <code>o</code> is <code>some a</code>
+ and <code>p a</code> holds, otherwise <code>none</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="option.to_list">      <h4>option.to_list</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.mem_to_list">      <h4>option.mem_to_list</h4><code>∀ {α : Type u_1} {a : α} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.to_list">option.to_list</a> o ↔ a ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.lift_or_get">      <h4>option.lift_or_get</h4><code>Π {α : Type u_1}, (α → α → α) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.lift_or_get_comm">      <h4>option.lift_or_get_comm</h4><code>∀ {α : Type u_1} (f : α → α → α) [h : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_commutative">is_commutative</a> α f], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_commutative">is_commutative</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.lift_or_get">option.lift_or_get</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.lift_or_get_assoc">      <h4>option.lift_or_get_assoc</h4><code>∀ {α : Type u_1} (f : α → α → α) [h : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_associative">is_associative</a> α f], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_associative">is_associative</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.lift_or_get">option.lift_or_get</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.lift_or_get_idem">      <h4>option.lift_or_get_idem</h4><code>∀ {α : Type u_1} (f : α → α → α) [h : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_idempotent">is_idempotent</a> α f], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_idempotent">is_idempotent</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.lift_or_get">option.lift_or_get</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.lift_or_get_is_left_id">      <h4>option.lift_or_get_is_left_id</h4><code>∀ {α : Type u_1} (f : α → α → α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_left_id">is_left_id</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.lift_or_get">option.lift_or_get</a> f) option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.lift_or_get_is_right_id">      <h4>option.lift_or_get_is_right_id</h4><code>∀ {α : Type u_1} (f : α → α → α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_right_id">is_right_id</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.lift_or_get">option.lift_or_get</a> f) option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="option.rel">      <h4>option.rel</h4><code>Π {α : Type u_1} {β : Type u_2}, (α → β → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.traverse">      <h4>option.traverse</h4><code>Π {F : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] {α : Type u_1} {β : Type u},
+  (α → F β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → F (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

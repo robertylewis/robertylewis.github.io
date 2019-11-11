@@ -1,0 +1,209 @@
+<html><head><title>set_theory.cofinality</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="order.cof">      <h4>order.cof</h4><code>Π {α : Type u_1} (r : α → α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> α r], <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a></code>
+<div class="indent"><p><p>Cofinality of a reflexive order <code>≼</code>. This is the smallest cardinality
+ of a subset <code>S : set α</code> such that <code>∀ a, ∃ b ∈ S, a ≼ b</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="order.cof_le">      <h4>order.cof_le</h4><code>∀ {α : Type u_1} (r : α → α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> α r] {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  (∀ (a : α), ∃ (b : α) (H : b ∈ S), r a b) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#order.cof">order.cof</a> r ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥S</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="order.le_cof">      <h4>order.le_cof</h4><code>∀ {α : Type u_1} {r : α → α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> α r] (c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>),
+  c ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#order.cof">order.cof</a> r ↔ ∀ {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, (∀ (a : α), ∃ (b : α) (H : b ∈ S), r a b) → c ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥S</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="order_iso.cof.aux">      <h4>order_iso.cof.aux</h4><code>∀ {α : Type u} {β : Type v} {r : α → α → Prop} {s : β → β → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> α r]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> β s], r ≃o s → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.lift">cardinal.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#order.cof">order.cof</a> r) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.lift">cardinal.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#order.cof">order.cof</a> s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="order_iso.cof">      <h4>order_iso.cof</h4><code>∀ {α : Type u} {β : Type v} {r : α → α → Prop} {s : β → β → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> α r]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> β s], r ≃o s → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.lift">cardinal.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#order.cof">order.cof</a> r) = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.lift">cardinal.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#order.cof">order.cof</a> s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="strict_order.cof">      <h4>strict_order.cof</h4><code>Π {α : Type u_1} (r : α → α → Prop) [h : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_irrefl">is_irrefl</a> α r], <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof">      <h4>ordinal.cof</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a></code>
+<div class="indent"><p><p>Cofinality of an ordinal. This is the smallest cardinal of a
+ subset <code>S</code> of the ordinal which is unbounded, in the sense
+ <code>∀ a, ∃ b ∈ S, ¬(b &gt; a)</code>. It is defined for all ordinals, but
+ <code>cof 0 = 0</code> and <code>cof (succ o) = 1</code>, so it is only really
+ interesting on limit ordinals (when it is an infinite cardinal).</p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_type">      <h4>ordinal.cof_type</h4><code>∀ {α : Type u_1} (r : α → α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> r) = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#strict_order.cof">strict_order.cof</a> r</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.le_cof_type">      <h4>ordinal.le_cof_type</h4><code>∀ {α : Type u_1} {r : α → α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r] {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>},
+  c ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> r) ↔
+    ∀ (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), (∀ (a : α), ∃ (b : α) (H : b ∈ S), ¬r b a) → c ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥S</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_type_le">      <h4>ordinal.cof_type_le</h4><code>∀ {α : Type u_1} {r : α → α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r] (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  (∀ (a : α), ∃ (b : α) (H : b ∈ S), ¬r b a) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> r) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥S</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.lt_cof_type">      <h4>ordinal.lt_cof_type</h4><code>∀ {α : Type u_1} {r : α → α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r] (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥S < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> r) → (∃ (a : α), ∀ (b : α), b ∈ S → r b a)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_eq">      <h4>ordinal.cof_eq</h4><code>∀ {α : Type u_1} (r : α → α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r],
+  ∃ (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+    (∀ (a : α), ∃ (b : α) (H : b ∈ S), ¬r b a) ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥S = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> r)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.ord_cof_eq">      <h4>ordinal.ord_cof_eq</h4><code>∀ {α : Type u_1} (r : α → α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r],
+  ∃ (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+    (∀ (a : α), ∃ (b : α) (H : b ∈ S), ¬r b a) ∧
+      <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/order/order_iso.html#subrel">subrel</a> r S) = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> r))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.lift_cof">      <h4>ordinal.lift_cof</h4><code>∀ (o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.lift">cardinal.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> o) = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.lift">ordinal.lift</a> o)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_le_card">      <h4>ordinal.cof_le_card</h4><code>∀ (o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> o ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.card">ordinal.card</a> o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_ord_le">      <h4>ordinal.cof_ord_le</h4><code>∀ (c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> c) ≤ c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_zero">      <h4>ordinal.cof_zero</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="ordinal.cof_eq_zero">      <h4>ordinal.cof_eq_zero</h4><code>∀ {o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> o = 0 ↔ o = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="ordinal.cof_succ">      <h4>ordinal.cof_succ</h4><code>∀ (o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.succ">ordinal.succ</a> o) = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="ordinal.cof_eq_one_iff_is_succ">      <h4>ordinal.cof_eq_one_iff_is_succ</h4><code>∀ {o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> o = 1 ↔ ∃ (a : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>), o = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.succ">ordinal.succ</a> a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="ordinal.cof_add">      <h4>ordinal.cof_add</h4><code>∀ (a b : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>), b ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (a + b) = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="ordinal.cof_cof">      <h4>ordinal.cof_cof</h4><code>∀ (o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> o)) = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="ordinal.omega_le_cof">      <h4>ordinal.omega_le_cof</h4><code>∀ {o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a> ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> o ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.is_limit">ordinal.is_limit</a> o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_omega">      <h4>ordinal.cof_omega</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.omega">ordinal.omega</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="ordinal.cof_eq'">      <h4>ordinal.cof_eq'</h4><code>∀ {α : Type u_1} (r : α → α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.is_limit">ordinal.is_limit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> r) →
+  (∃ (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+     (∀ (a : α), ∃ (b : α) (H : b ∈ S), r a b) ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥S = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.type">ordinal.type</a> r))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_sup_le_lift">      <h4>ordinal.cof_sup_le_lift</h4><code>∀ {ι : Type u_1} (f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>),
+  (∀ (i : ι), f i < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.sup">ordinal.sup</a> f) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.sup">ordinal.sup</a> f) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.lift">cardinal.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ι)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_sup_le">      <h4>ordinal.cof_sup_le</h4><code>∀ {ι : Type u} (f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>),
+  (∀ (i : ι), f i < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.sup">ordinal.sup</a> f) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.sup">ordinal.sup</a> f) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ι</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_bsup_le_lift">      <h4>ordinal.cof_bsup_le_lift</h4><code>∀ {o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>} (f : Π (a : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>), a < o → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>),
+  (∀ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>) (h : i < o), f i h < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.bsup">ordinal.bsup</a> o f) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.bsup">ordinal.bsup</a> o f) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.lift">cardinal.lift</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.card">ordinal.card</a> o)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_bsup_le">      <h4>ordinal.cof_bsup_le</h4><code>∀ {o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>} (f : Π (a : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>), a < o → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>),
+  (∀ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>) (h : i < o), f i h < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.bsup">ordinal.bsup</a> o f) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.bsup">ordinal.bsup</a> o f) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.card">ordinal.card</a> o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.cof_univ">      <h4>ordinal.cof_univ</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.univ">ordinal.univ</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.univ">cardinal.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="ordinal.sup_lt_ord">      <h4>ordinal.sup_lt_ord</h4><code>∀ {ι : Type u} (f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>) {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ι < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> c → (∀ (i : ι), f i < c) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.sup">ordinal.sup</a> f < c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.sup_lt">      <h4>ordinal.sup_lt</h4><code>∀ {ι : Type u} (f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>) {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ι < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> c) → (∀ (i : ι), f i < c) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.sup">cardinal.sup</a> f < c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.unbounded_of_unbounded_sUnion">      <h4>ordinal.unbounded_of_unbounded_sUnion</h4><code>∀ {α : Type u_1} (r : α → α → Prop) [wo : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#unbounded">unbounded</a> r (⋃₀ s) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥s < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#strict_order.cof">strict_order.cof</a> r → (∃ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : x ∈ s), <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#unbounded">unbounded</a> r x)</code>
+<div class="indent"><p><p>If the union of s is unbounded and s is smaller than the cofinality, then s has an unbounded member</p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.unbounded_of_unbounded_Union">      <h4>ordinal.unbounded_of_unbounded_Union</h4><code>∀ {α β : Type u} (r : α → α → Prop) [wo : <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#is_well_order">is_well_order</a> α r] (s : β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#unbounded">unbounded</a> r (⋃ (x : β), s x) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> β < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#strict_order.cof">strict_order.cof</a> r → (∃ (x : β), <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#unbounded">unbounded</a> r (s x))</code>
+<div class="indent"><p><p>If the union of s is unbounded and s is smaller than the cofinality, then s has an unbounded member</p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.infinite_pigeonhole">      <h4>ordinal.infinite_pigeonhole</h4><code>∀ {β α : Type u} (f : β → α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a> ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> β →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> α < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> β)) →
+  (∃ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥(f ⁻¹' {a}) = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> β)</code>
+<div class="indent"><p><p>The infinite pigeonhole principle</p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.infinite_pigeonhole_card">      <h4>ordinal.infinite_pigeonhole_card</h4><code>∀ {β α : Type u} (f : β → α) (θ : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>),
+  θ ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> β →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a> ≤ θ →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> α < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> θ) → (∃ (a : α), θ ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥(f ⁻¹' {a}))</code>
+<div class="indent"><p><p>pigeonhole principle for a cardinality below the cardinality of the domain</p>
+</p>       </div>
+</div><div class="entry"><a id="ordinal.infinite_pigeonhole_set">      <h4>ordinal.infinite_pigeonhole_set</h4><code>∀ {β α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β} (f : ↥s → α) (θ : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>),
+  θ ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥s →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a> ≤ θ →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> α < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> θ) →
+  (∃ (a : α) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β) (h : t ⊆ s),
+     θ ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ↥t ∧ ∀ ⦃x : β⦄ (hx : x ∈ t), f ⟨x, _⟩ = a)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.is_limit">      <h4>cardinal.is_limit</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a> → Prop</code>
+<div class="indent"><p><p>A cardinal is a limit if it is not zero or a successor
+ cardinal. Note that <code>ω</code> is a limit cardinal by this definition.</p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.is_strong_limit">      <h4>cardinal.is_strong_limit</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a> → Prop</code>
+<div class="indent"><p><p>A cardinal is a strong limit if it is not zero and it is
+ closed under powersets. Note that <code>ω</code> is a strong limit by this definition.</p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.is_strong_limit.is_limit">      <h4>cardinal.is_strong_limit.is_limit</h4><code>∀ {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_strong_limit">cardinal.is_strong_limit</a> c → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_limit">cardinal.is_limit</a> c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.is_regular">      <h4>cardinal.is_regular</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a> → Prop</code>
+<div class="indent"><p><p>A cardinal is regular if it is infinite and it equals its own cofinality.</p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.cof_is_regular">      <h4>cardinal.cof_is_regular</h4><code>∀ {o : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.is_limit">ordinal.is_limit</a> o → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_regular">cardinal.is_regular</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> o)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.omega_is_regular">      <h4>cardinal.omega_is_regular</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_regular">cardinal.is_regular</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.succ_is_regular">      <h4>cardinal.succ_is_regular</h4><code>∀ {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a> ≤ c → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_regular">cardinal.is_regular</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.succ">cardinal.succ</a> c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.sup_lt_ord_of_is_regular">      <h4>cardinal.sup_lt_ord_of_is_regular</h4><code>∀ {ι : Type u} (f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal">ordinal</a>) {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_regular">cardinal.is_regular</a> c →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ι < c → (∀ (i : ι), f i < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> c) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#ordinal.sup">ordinal.sup</a> f < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.sup_lt_of_is_regular">      <h4>cardinal.sup_lt_of_is_regular</h4><code>∀ {ι : Type u} (f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>) {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_regular">cardinal.is_regular</a> c → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ι < c → (∀ (i : ι), f i < c) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.sup">cardinal.sup</a> f < c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.sum_lt_of_is_regular">      <h4>cardinal.sum_lt_of_is_regular</h4><code>∀ {ι : Type u} (f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>) {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_regular">cardinal.is_regular</a> c → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.mk">cardinal.mk</a> ι < c → (∀ (i : ι), f i < c) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.sum">cardinal.sum</a> f < c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.is_inaccessible">      <h4>cardinal.is_inaccessible</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a> → Prop</code>
+<div class="indent"><p><p>A cardinal is inaccessible if it is an
+ uncountable regular strong limit cardinal.</p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.is_inaccessible.mk">      <h4>cardinal.is_inaccessible.mk</h4><code>∀ {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a> < c →
+  c ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> c) → (∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>), x < c → 2 ^ x < c) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_inaccessible">cardinal.is_inaccessible</a> c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.univ_inaccessible">      <h4>cardinal.univ_inaccessible</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#cardinal.is_inaccessible">cardinal.is_inaccessible</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.univ">cardinal.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.lt_power_cof">      <h4>cardinal.lt_power_cof</h4><code>∀ {c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a> ≤ c → c < c ^ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="cardinal.lt_cof_power">      <h4>cardinal.lt_cof_power</h4><code>∀ {a b : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal">cardinal</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cardinal.html#cardinal.omega">cardinal.omega</a> ≤ a → 1 < b → a < <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/cofinality.html#ordinal.cof">ordinal.cof</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/ordinal.html#cardinal.ord">cardinal.ord</a> (b ^ a))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

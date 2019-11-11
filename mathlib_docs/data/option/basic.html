@@ -1,0 +1,160 @@
+<html><head><title>data.option.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="option.get_mem">      <h4>option.get_mem</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} (h : ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> o)), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.get">option.get</a> h ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.get_of_mem">      <h4>option.get_of_mem</h4><code>∀ {α : Type u_1} {a : α} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} (h : ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> o)), a ∈ o → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.get">option.get</a> h = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.not_mem_none">      <h4>option.not_mem_none</h4><code>∀ {α : Type u_1} (a : α), a ∉ option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.some_get">      <h4>option.some_get</h4><code>∀ {α : Type u_1} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} (h : ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> x)), option.some (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.get">option.get</a> h) = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.get_some">      <h4>option.get_some</h4><code>∀ {α : Type u_1} (x : α) (h : ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (option.some x))), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.get">option.get</a> h = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.mem_unique">      <h4>option.mem_unique</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} {a b : α}, a ∈ o → b ∈ o → a = b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.injective_some">      <h4>option.injective_some</h4><code>∀ (α : Type u_1), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> option.some</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.injective_map">      <h4>option.injective_map</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α → β}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> f)</code>
+<div class="indent"><p><p><code>option.map f</code> is injective if <code>f</code> is injective.</p>
+</p>       </div>
+</div><div class="entry"><a id="option.ext">      <h4>option.ext</h4><code>∀ {α : Type u_1} {o₁ o₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, (∀ (a : α), a ∈ o₁ ↔ a ∈ o₂) → o₁ = o₂</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: ext</div>
+</div><div class="entry"><a id="option.eq_none_iff_forall_not_mem">      <h4>option.eq_none_iff_forall_not_mem</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, o = option.none ↔ ∀ (a : α), a ∉ o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.none_bind">      <h4>option.none_bind</h4><code>∀ {α β : Type u_1} (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β), option.none >>= f = option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.some_bind">      <h4>option.some_bind</h4><code>∀ {α β : Type u_1} (a : α) (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β), option.some a >>= f = f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.none_bind'">      <h4>option.none_bind'</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> option.none f = option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.some_bind'">      <h4>option.some_bind'</h4><code>∀ {α : Type u_1} {β : Type u_2} (a : α) (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> (option.some a) f = f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.bind_some">      <h4>option.bind_some</h4><code>∀ {α : Type u_1} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), x >>= option.some = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.bind_eq_some">      <h4>option.bind_eq_some</h4><code>∀ {α β : Type u_1} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} {f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β} {b : β},
+  x >>= f = option.some b ↔ ∃ (a : α), x = option.some a ∧ f a = option.some b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.bind_eq_some'">      <h4>option.bind_eq_some'</h4><code>∀ {α : Type u_1} {β : Type u_2} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} {f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β} {b : β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> x f = option.some b ↔ ∃ (a : α), x = option.some a ∧ f a = option.some b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.bind_eq_none'">      <h4>option.bind_eq_none'</h4><code>∀ {α : Type u_1} {β : Type u_2} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} {f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> o f = option.none ↔ ∀ (b : β) (a : α), a ∈ o → b ∉ f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.bind_eq_none">      <h4>option.bind_eq_none</h4><code>∀ {α β : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} {f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β},
+  o >>= f = option.none ↔ ∀ (b : β) (a : α), a ∈ o → b ∉ f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.bind_comm">      <h4>option.bind_comm</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {f : α → β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> γ} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (b : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> a (λ (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> b (f x)) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> b (λ (y : β), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> a (λ (x : α), f x y))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.bind_assoc">      <h4>option.bind_assoc</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β) (g : β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> x f) g = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> x (λ (y : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> (f y) g)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.map_none">      <h4>option.map_none</h4><code>∀ {α β : Type u_1} {f : α → β}, f <$> option.none = option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.map_some">      <h4>option.map_some</h4><code>∀ {α β : Type u_1} {a : α} {f : α → β}, f <$> option.some a = option.some (f a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.map_none'">      <h4>option.map_none'</h4><code>∀ {α : Type u_1} {β : Type u_2} {f : α → β}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> f option.none = option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.map_some'">      <h4>option.map_some'</h4><code>∀ {α : Type u_1} {β : Type u_2} {a : α} {f : α → β}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> f (option.some a) = option.some (f a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.map_eq_some">      <h4>option.map_eq_some</h4><code>∀ {α β : Type u_1} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} {f : α → β} {b : β},
+  f <$> x = option.some b ↔ ∃ (a : α), x = option.some a ∧ f a = b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.map_eq_some'">      <h4>option.map_eq_some'</h4><code>∀ {α : Type u_1} {β : Type u_2} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} {f : α → β} {b : β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> f x = option.some b ↔ ∃ (a : α), x = option.some a ∧ f a = b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.map_id'">      <h4>option.map_id'</h4><code>∀ {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.seq_some">      <h4>option.seq_some</h4><code>∀ {α β : Type u_1} {a : α} {f : α → β}, option.some f <*> option.some a = option.some (f a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.some_orelse'">      <h4>option.some_orelse'</h4><code>∀ {α : Type u_1} (a : α) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.orelse">option.orelse</a> (option.some a) x = option.some a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.some_orelse">      <h4>option.some_orelse</h4><code>∀ {α : Type u_1} (a : α) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), (option.some a <|> x) = option.some a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.none_orelse'">      <h4>option.none_orelse'</h4><code>∀ {α : Type u_1} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.orelse">option.orelse</a> option.none x = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.none_orelse">      <h4>option.none_orelse</h4><code>∀ {α : Type u_1} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), (option.none <|> x) = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.orelse_none'">      <h4>option.orelse_none'</h4><code>∀ {α : Type u_1} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.orelse">option.orelse</a> x option.none = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.orelse_none">      <h4>option.orelse_none</h4><code>∀ {α : Type u_1} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), (x <|> option.none) = x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.is_some_none">      <h4>option.is_some_none</h4><code>∀ {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> option.none = bool.ff</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.is_some_some">      <h4>option.is_some_some</h4><code>∀ {α : Type u_1} {a : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (option.some a) = bool.tt</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.is_some_iff_exists">      <h4>option.is_some_iff_exists</h4><code>∀ {α : Type u_1} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> x) ↔ ∃ (a : α), x = option.some a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.is_none_none">      <h4>option.is_none_none</h4><code>∀ {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_none">option.is_none</a> option.none = bool.tt</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.is_none_some">      <h4>option.is_none_some</h4><code>∀ {α : Type u_1} {a : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_none">option.is_none</a> (option.some a) = bool.ff</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.not_is_some">      <h4>option.not_is_some</h4><code>∀ {α : Type u_1} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> a = bool.ff ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_none">option.is_none</a> a = bool.tt</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.eq_some_iff_get_eq">      <h4>option.eq_some_iff_get_eq</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α} {a : α}, o = option.some a ↔ ∃ (h : ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> o)), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.get">option.get</a> h = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.not_is_some_iff_eq_none">      <h4>option.not_is_some_iff_eq_none</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, ¬↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> o) ↔ o = option.none</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.ne_none_iff_is_some">      <h4>option.ne_none_iff_is_some</h4><code>∀ {α : Type u_1} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, o ≠ option.none ↔ ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> o)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.iget_mem">      <h4>option.iget_mem</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> α] {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> o) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.iget">option.iget</a> o ∈ o</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.iget_of_mem">      <h4>option.iget_of_mem</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> α] {a : α} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α}, a ∈ o → <a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.iget">option.iget</a> o = a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="option.guard_eq_some">      <h4>option.guard_eq_some</h4><code>∀ {α : Type u_1} {p : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p] {a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.guard">option.guard</a> p a = option.some b ↔ a = b ∧ p a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.guard_eq_some'">      <h4>option.guard_eq_some'</h4><code>∀ {p : Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> p] (u : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/alternative.html#guard">guard</a> p = option.some u ↔ p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="option.lift_or_get_choice">      <h4>option.lift_or_get_choice</h4><code>∀ {α : Type u_1} {f : α → α → α},
+  (∀ (a b : α), f a b = a ∨ f a b = b) →
+  ∀ (o₁ o₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.lift_or_get">option.lift_or_get</a> f o₁ o₂ = o₁ ∨ <a href="/home/rob/lean/mathlib/scripts/html_out/data/option/defs.html#option.lift_or_get">option.lift_or_get</a> f o₁ o₂ = o₂</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

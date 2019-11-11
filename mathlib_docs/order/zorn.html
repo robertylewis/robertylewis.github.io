@@ -1,0 +1,124 @@
+<html><head><title>order.zorn</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="zorn.chain">      <h4>zorn.chain</h4><code>Π {α : Type u}, (α → α → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → Prop</code>
+<div class="indent"><p><p>A chain is a subset <code>c</code> satisfying
+ <code>x ≺ y ∨ x = y ∨ y ≺ x</code> for all <code>x y ∈ c</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain.total_of_refl">      <h4>zorn.chain.total_of_refl</h4><code>∀ {α : Type u} {r : α → α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> α r] {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → ∀ {x y : α}, x ∈ c → y ∈ c → r x y ∨ r y x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain.directed">      <h4>zorn.chain.directed</h4><code>∀ {α : Type u} {r : α → α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> α r] {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → ∀ {x y : α}, x ∈ c → y ∈ c → (∃ (z : α), z ∈ c ∧ r x z ∧ r y z)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain.mono">      <h4>zorn.chain.mono</h4><code>∀ {α : Type u} {r : α → α → Prop} {c c' : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, c' ⊆ c → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c'</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain.directed_on">      <h4>zorn.chain.directed_on</h4><code>∀ {α : Type u} {r : α → α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/classes.html#is_refl">is_refl</a> α r] {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → <a href="/home/rob/lean/mathlib/scripts/html_out/order/basic.html#directed_on">directed_on</a> r c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_insert">      <h4>zorn.chain_insert</h4><code>∀ {α : Type u} {r : α → α → Prop} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} {a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → (∀ (b : α), b ∈ c → b ≠ a → r a b ∨ r b a) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#insert">insert</a> a c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.super_chain">      <h4>zorn.super_chain</h4><code>Π {α : Type u} {r : α → α → Prop}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.is_max_chain">      <h4>zorn.is_max_chain</h4><code>Π {α : Type u} {r : α → α → Prop}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.succ_chain">      <h4>zorn.succ_chain</h4><code>Π {α : Type u} {r : α → α → Prop}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.succ_spec">      <h4>zorn.succ_spec</h4><code>∀ {α : Type u} {r : α → α → Prop} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  (∃ (c' : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.super_chain">zorn.super_chain</a> c c') → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.super_chain">zorn.super_chain</a> c (<a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.succ_chain">zorn.succ_chain</a> c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_succ">      <h4>zorn.chain_succ</h4><code>∀ {α : Type u} {r : α → α → Prop} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r (<a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.succ_chain">zorn.succ_chain</a> c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.super_of_not_max">      <h4>zorn.super_of_not_max</h4><code>∀ {α : Type u} {r : α → α → Prop} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → ¬zorn.is_max_chain c → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.super_chain">zorn.super_chain</a> c (<a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.succ_chain">zorn.succ_chain</a> c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.succ_increasing">      <h4>zorn.succ_increasing</h4><code>∀ {α : Type u} {r : α → α → Prop} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, c ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.succ_chain">zorn.succ_chain</a> c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_closure">      <h4>zorn.chain_closure</h4><code>Π {α : Type u} {r : α → α → Prop}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_closure_empty">      <h4>zorn.chain_closure_empty</h4><code>∀ {α : Type u} {r : α → α → Prop}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a> ∅</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_closure_closure">      <h4>zorn.chain_closure_closure</h4><code>∀ {α : Type u} {r : α → α → Prop}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a> (⋃₀ <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_closure_total">      <h4>zorn.chain_closure_total</h4><code>∀ {α : Type u} {r : α → α → Prop} {c₁ c₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a> c₁ → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a> c₂ → c₁ ⊆ c₂ ∨ c₂ ⊆ c₁</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_closure_succ_fixpoint">      <h4>zorn.chain_closure_succ_fixpoint</h4><code>∀ {α : Type u} {r : α → α → Prop} {c₁ c₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a> c₁ → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a> c₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.succ_chain">zorn.succ_chain</a> c₂ = c₂ → c₁ ⊆ c₂</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_closure_succ_fixpoint_iff">      <h4>zorn.chain_closure_succ_fixpoint_iff</h4><code>∀ {α : Type u} {r : α → α → Prop} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a> c → (<a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.succ_chain">zorn.succ_chain</a> c = c ↔ c = ⋃₀ <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain_chain_closure">      <h4>zorn.chain_chain_closure</h4><code>∀ {α : Type u} {r : α → α → Prop} {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain_closure">zorn.chain_closure</a> c → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.max_chain">      <h4>zorn.max_chain</h4><code>Π {α : Type u} {r : α → α → Prop}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.max_chain_spec">      <h4>zorn.max_chain_spec</h4><code>∀ {α : Type u} {r : α → α → Prop}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.is_max_chain">zorn.is_max_chain</a> <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.max_chain">zorn.max_chain</a></code>
+<div class="indent"><p><p>Hausdorff's maximality principle</p>
+
+<p>There exists a maximal totally ordered subset of <code>α</code>.
+Note that we do not require <code>α</code> to be partially ordered by <code>r</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.exists_maximal_of_chains_bounded">      <h4>zorn.exists_maximal_of_chains_bounded</h4><code>∀ {α : Type u} {r : α → α → Prop},
+  (∀ (c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → (∃ (ub : α), ∀ (a : α), a ∈ c → r a ub)) →
+  (∀ {a b c : α}, r a b → r b c → r a c) → (∃ (m : α), ∀ (a : α), r m a → r a m)</code>
+<div class="indent"><p><p>Zorn's lemma</p>
+
+<p>If every chain has an upper bound, then there is a maximal element</p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.zorn_partial_order">      <h4>zorn.zorn_partial_order</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#partial_order">partial_order</a> α],
+  (∀ (c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> has_le.le c → (∃ (ub : α), ∀ (a : α), a ∈ c → a ≤ ub)) →
+  (∃ (m : α), ∀ (a : α), m ≤ a → a = m)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.zorn_partial_order₀">      <h4>zorn.zorn_partial_order₀</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#partial_order">partial_order</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  (∀ (c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+     c ⊆ s →
+     <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> has_le.le c →
+     ∀ (y : α), y ∈ c → (∃ (ub : α) (H : ub ∈ s), ∀ (z : α), z ∈ c → z ≤ ub)) →
+  ∀ (x : α), x ∈ s → (∃ (m : α) (H : m ∈ s), x ≤ m ∧ ∀ (z : α), z ∈ s → m ≤ z → z = m)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.zorn_subset">      <h4>zorn.zorn_subset</h4><code>∀ {α : Type u} (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α)),
+  (∀ (c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α)),
+     c ⊆ S →
+     <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> has_subset.subset c → (∃ (ub : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : ub ∈ S), ∀ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), s ∈ c → s ⊆ ub)) →
+  (∃ (m : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : m ∈ S), ∀ (a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), a ∈ S → m ⊆ a → a = m)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.zorn_subset₀">      <h4>zorn.zorn_subset₀</h4><code>∀ {α : Type u} (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α)),
+  (∀ (c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α)),
+     c ⊆ S →
+     <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> has_subset.subset c →
+     c ≠ ∅ → (∃ (ub : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : ub ∈ S), ∀ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), s ∈ c → s ⊆ ub)) →
+  ∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+    x ∈ S → (∃ (m : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : m ∈ S), x ⊆ m ∧ ∀ (a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), a ∈ S → m ⊆ a → a = m)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain.total">      <h4>zorn.chain.total</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#preorder">preorder</a> α] {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> has_le.le c → ∀ {x y : α}, x ∈ c → y ∈ c → x ≤ y ∨ y ≤ x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="zorn.chain.image">      <h4>zorn.chain.image</h4><code>∀ {α : Type u_1} {β : Type u_2} (r : α → α → Prop) (s : β → β → Prop) (f : α → β),
+  (∀ (x y : α), r x y → s (f x) (f y)) → ∀ {c : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> r c → <a href="/home/rob/lean/mathlib/scripts/html_out/order/zorn.html#zorn.chain">zorn.chain</a> s (f '' c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

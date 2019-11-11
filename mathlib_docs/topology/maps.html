@@ -1,0 +1,270 @@
+<html><head><title>topology.maps</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Specific classes of maps between topological spaces</h1>
+
+<p>This file introduces the following properties of a map <code>f : X → Y</code> between topological spaces:</p>
+
+<ul>
+<li><code>is_open_map f</code> means the image of an open set under <code>f</code> is open.</li>
+<li><code>is_closed_map f</code> means the image of a closed set under <code>f</code> is closed.</li>
+</ul>
+
+<p>(Open and closed maps need not be continuous.)</p>
+
+<ul>
+<li><code>inducing f</code> means the topology on <code>X</code> is the one induced via <code>f</code> from the topology on <code>Y</code>.
+These behave like embeddings except they need not be injective. Instead, points of <code>X</code> which
+are identified by <code>f</code> are also indistinguishable in the topology on <code>X</code>.</li>
+<li><code>embedding f</code> means <code>f</code> is inducing and also injective. Equivalently, <code>f</code> identifies <code>X</code> with
+a subspace of <code>Y</code>.</li>
+<li><code>open_embedding f</code> means <code>f</code> is an embedding with open image, so it identifies <code>X</code> with an
+open subspace of <code>Y</code>. Equivalently, <code>f</code> is an embedding and an open map.</li>
+<li><p><code>closed_embedding f</code> similarly means <code>f</code> is an embedding with closed image, so it identifies
+<code>X</code> with a closed subspace of <code>Y</code>. Equivalently, <code>f</code> is an embedding and a closed map.</p></li>
+<li><p><code>quotient_map f</code> is the dual condition to <code>embedding f</code>: <code>f</code> is surjective and the topology
+on <code>Y</code> is the one coinduced via <code>f</code> from the topology on <code>X</code>. Equivalently, <code>f</code> identifies
+<code>Y</code> with a quotient of <code>X</code>. Quotient maps are also sometimes known as identification maps.</p></li>
+</ul>
+
+<h2>References</h2>
+
+<ul>
+<li>https://en.wikipedia.org/wiki/Open<em>and</em>closed_maps</li>
+<li>https://en.wikipedia.org/wiki/Embedding#General_topology</li>
+<li>https://en.wikipedia.org/wiki/Quotient<em>space</em>(topology)#Quotient_map</li>
+</ul>
+
+<h2>Tags</h2>
+
+<p>open map, closed map, embedding, quotient map, identification map</p>
+</div><div class="entry"><a id="inducing">      <h4>inducing</h4><code>Π {α : Type u_1} {β : Type u_2} [tα : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [tβ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β], (α → β) → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing_id">      <h4>inducing_id</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing.comp">      <h4>inducing.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> (g ∘ f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing_of_inducing_compose">      <h4>inducing_of_inducing_compose</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> (g ∘ f) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing_open">      <h4>inducing_open</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β}
+{s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> f) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (f '' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing_is_closed">      <h4>inducing_is_closed</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β}
+{s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> f) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> (f '' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing.nhds_eq_comap">      <h4>inducing.nhds_eq_comap</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> f → ∀ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a = <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (f a))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing.map_nhds_eq">      <h4>inducing.map_nhds_eq</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> f → ∀ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> f ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (f a) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (f a)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing.tendsto_nhds_iff">      <h4>inducing.tendsto_nhds_iff</h4><code>∀ {β : Type u_2} {γ : Type u_3} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {ι : Type u_1}
+{f : ι → β} {g : β → γ} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> ι} {b : β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> g → (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f a (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> b) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (g ∘ f) a (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (g b)))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing.continuous_iff">      <h4>inducing.continuous_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> g → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> (g ∘ f))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="inducing.continuous">      <h4>inducing.continuous</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#inducing">inducing</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding">      <h4>embedding</h4><code>Π {α : Type u_1} {β : Type u_2} [tα : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [tβ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β], (α → β) → Prop</code>
+<div class="indent"><p><p>A function between topological spaces is an embedding if it is injective,
+ and for all <code>s : set α</code>, <code>s</code> is open iff it is the preimage of an open set.</p>
+</p>       </div>
+</div><div class="entry"><a id="embedding.mk'">      <h4>embedding.mk'</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] (f : α → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → (∀ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (f a)) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding_id">      <h4>embedding_id</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding.comp">      <h4>embedding.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> (g ∘ f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding_of_embedding_compose">      <h4>embedding_of_embedding_compose</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> (g ∘ f) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding_open">      <h4>embedding_open</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β}
+{s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> f) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (f '' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding_is_closed">      <h4>embedding_is_closed</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β}
+{s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> f) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> (f '' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding.map_nhds_eq">      <h4>embedding.map_nhds_eq</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f → ∀ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> f ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (f a) → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (f a)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding.tendsto_nhds_iff">      <h4>embedding.tendsto_nhds_iff</h4><code>∀ {β : Type u_2} {γ : Type u_3} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {ι : Type u_1}
+{f : ι → β} {g : β → γ} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> ι} {b : β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> g → (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f a (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> b) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (g ∘ f) a (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (g b)))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding.continuous_iff">      <h4>embedding.continuous_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> g → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> (g ∘ f))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding.continuous">      <h4>embedding.continuous</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="embedding.closure_eq_preimage_closure_image">      <h4>embedding.closure_eq_preimage_closure_image</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {e : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> e → ∀ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#closure">closure</a> s = e ⁻¹' <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#closure">closure</a> (e '' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quotient_map">      <h4>quotient_map</h4><code>Π {α : Type u_1} {β : Type u_2} [tα : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [tβ : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β], (α → β) → Prop</code>
+<div class="indent"><p><p>A function between topological spaces is a quotient map if it is surjective,
+ and for all <code>s : set β</code>, <code>s</code> is open iff its preimage is an open set.</p>
+</p>       </div>
+</div><div class="entry"><a id="quotient_map.id">      <h4>quotient_map.id</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quotient_map.comp">      <h4>quotient_map.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> (g ∘ f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quotient_map.of_quotient_map_compose">      <h4>quotient_map.of_quotient_map_compose</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> (g ∘ f) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> g</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quotient_map.continuous_iff">      <h4>quotient_map.continuous_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> f → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> g ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> (g ∘ f))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quotient_map.continuous">      <h4>quotient_map.continuous</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_open_map">      <h4>is_open_map</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  (α → β) → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_open_map_iff_nhds_le">      <h4>is_open_map_iff_nhds_le</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] (f : α → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> f ↔ ∀ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (f a) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_open_map.id">      <h4>is_open_map.id</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_open_map.comp">      <h4>is_open_map.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> (g ∘ f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_open_map.of_inverse">      <h4>is_open_map.of_inverse</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β}
+{f' : β → α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f' → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.left_inverse">function.left_inverse</a> f f' → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.right_inverse">function.right_inverse</a> f f' → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_open_map.to_quotient_map">      <h4>is_open_map.to_quotient_map</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.surjective">function.surjective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#quotient_map">quotient_map</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_closed_map">      <h4>is_closed_map</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  (α → β) → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_closed_map.id">      <h4>is_closed_map.id</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_closed_map">is_closed_map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_closed_map.comp">      <h4>is_closed_map.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_closed_map">is_closed_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_closed_map">is_closed_map</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_closed_map">is_closed_map</a> (g ∘ f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_closed_map.of_inverse">      <h4>is_closed_map.of_inverse</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β}
+{f' : β → α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f' → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.left_inverse">function.left_inverse</a> f f' → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.right_inverse">function.right_inverse</a> f f' → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_closed_map">is_closed_map</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding">      <h4>open_embedding</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  (α → β) → Prop</code>
+<div class="indent"><p><p>An open embedding is an embedding with open image.</p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding.open_iff_image_open">      <h4>open_embedding.open_iff_image_open</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> f → ∀ {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (f '' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding.is_open_map">      <h4>open_embedding.is_open_map</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding.continuous">      <h4>open_embedding.continuous</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding.open_iff_preimage_open">      <h4>open_embedding.open_iff_preimage_open</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> f → ∀ {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β}, s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> f → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (f ⁻¹' s))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding_of_embedding_open">      <h4>open_embedding_of_embedding_open</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding_of_continuous_injective_open">      <h4>open_embedding_of_continuous_injective_open</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_open_map">is_open_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding_id">      <h4>open_embedding_id</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="open_embedding.comp">      <h4>open_embedding.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#open_embedding">open_embedding</a> (g ∘ f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding">      <h4>closed_embedding</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  (α → β) → Prop</code>
+<div class="indent"><p><p>A closed embedding is an embedding with closed image.</p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding.continuous">      <h4>closed_embedding.continuous</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding.closed_iff_image_closed">      <h4>closed_embedding.closed_iff_image_closed</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> f → ∀ {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> s ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> (f '' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding.is_closed_map">      <h4>closed_embedding.is_closed_map</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_closed_map">is_closed_map</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding.closed_iff_preimage_closed">      <h4>closed_embedding.closed_iff_preimage_closed</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> f → ∀ {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β}, s ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> f → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> s ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> (f ⁻¹' s))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding_of_embedding_closed">      <h4>closed_embedding_of_embedding_closed</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#embedding">embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_closed_map">is_closed_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding_of_continuous_injective_closed">      <h4>closed_embedding_of_continuous_injective_closed</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous">continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#is_closed_map">is_closed_map</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding_id">      <h4>closed_embedding_id</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="closed_embedding.comp">      <h4>closed_embedding.comp</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {f : α → β} {g : β → γ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/maps.html#closed_embedding">closed_embedding</a> (g ∘ f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

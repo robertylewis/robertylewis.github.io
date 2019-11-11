@@ -1,0 +1,37 @@
+<html><head><title>topology.uniform_space.absolute_value</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Uniform structure induced by an absolute value</h1>
+
+<p>We build a uniform space structure on a commutative ring <code>R</code> equipped with an absolute value into
+a linear ordered field <code>𝕜</code>. Of course in the case <code>R</code> is <code>ℚ</code>, <code>ℝ</code> or <code>ℂ</code> and
+<code>𝕜 = ℝ</code>, we get the same thing as the metric space construction, and the general construction
+follows exactly the same path.</p>
+
+<h2>Implementation details</h2>
+
+<p>Note that we import <code>data.real.cau_seq</code> because this is where absolute values are defined, but
+the current file does not depend on real numbers. TODO: extract absolute values from that
+<code>data.real</code> folder.</p>
+
+<h2>References</h2>
+
+<ul>
+<li>[N. Bourbaki, <em>Topologie générale</em>][bourbaki1966]</li>
+</ul>
+
+<h2>Tags</h2>
+
+<p>absolute value, uniform spaces</p>
+</div><div class="entry"><a id="is_absolute_value.uniform_space_core">      <h4>is_absolute_value.uniform_space_core</h4><code>Π {𝕜 : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> 𝕜] {R : Type u_2} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]
+(abv : R → 𝕜) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/cau_seq.html#is_absolute_value">is_absolute_value</a> abv], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space.core">uniform_space.core</a> R</code>
+<div class="indent"><p><p>The uniformity coming from an absolute value.</p>
+</p>       </div>
+</div><div class="entry"><a id="is_absolute_value.uniform_space">      <h4>is_absolute_value.uniform_space</h4><code>Π {𝕜 : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> 𝕜] {R : Type u_2} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]
+(abv : R → 𝕜) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/cau_seq.html#is_absolute_value">is_absolute_value</a> abv], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> R</code>
+<div class="indent"><p><p>The uniform structure coming from an absolute value.</p>
+</p>       </div>
+</div><div class="entry"><a id="is_absolute_value.mem_uniformity">      <h4>is_absolute_value.mem_uniformity</h4><code>∀ {𝕜 : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> 𝕜] {R : Type u_2} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]
+(abv : R → 𝕜) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/cau_seq.html#is_absolute_value">is_absolute_value</a> abv] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (R × R)},
+  s ∈ (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/absolute_value.html#is_absolute_value.uniform_space_core">is_absolute_value.uniform_space_core</a> abv).uniformity ↔
+    ∃ (ε : 𝕜) (H : ε > 0), ∀ {a b : R}, abv (b - a) < ε → (a, b) ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

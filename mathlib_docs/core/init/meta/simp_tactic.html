@@ -1,0 +1,637 @@
+<html><head><title>core.init.meta.simp_tactic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="simp.default_max_steps">      <h4>simp.default_max_steps</h4><code>ℕ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mk_simp_attr_decl_name">      <h4>mk_simp_attr_decl_name</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Prefix the given <code>attr_name</code> with <code>"simp_attr"</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas">      <h4>simp_lemmas</h4><code>Type</code>
+<div class="indent"><p><p>Simp lemmas are used by the "simplifier" family of tactics.
+<code>simp_lemmas</code> is essentially a pair of tables <code>rb_map (expr_type × name) (priority_list simp_lemma)</code>.
+One of the tables is for congruences and one is for everything else.
+An individual simp lemma is:
+- A kind which can be <code>Refl</code>, <code>Simp</code> or <code>Congr</code>.
+- A pair of <code>expr</code>s <code>l ~&gt; r</code>. The rb map is indexed by the name of <code>get_app_fn(l)</code>.
+- A proof that <code>l = r</code> or <code>l ↔ r</code>.
+- A list of the metavariables that must be filled before the proof can be applied.
+- A priority number</p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.mk">      <h4>simp_lemmas.mk</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p>Make a new table of simp lemmas</p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.join">      <h4>simp_lemmas.join</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p>Merge the simp_lemma tables.</p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.erase">      <h4>simp_lemmas.erase</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p>Remove the given lemmas from the table. Use the names of the lemmas.</p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.mk_default">      <h4>simp_lemmas.mk_default</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p>Makes the default simp_lemmas table which is composed of all lemmas tagged with <code>simp</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.add">      <h4>simp_lemmas.add</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p>Add a simplification lemma by an expression <code>p</code>. Some conditions on <code>p</code> must hold for it to be added, see list below.
+If your lemma is not being added, you can see the reasons by setting <code>set_option trace.simp_lemmas true</code>.</p>
+
+<ul>
+<li><code>p</code> must have the type <code>Π (h₁ : _) ... (hₙ : _), LHS ~ RHS</code> for some reflexive, transitive relation (usually <code>=</code>).</li>
+<li>Any of the hypotheses <code>hᵢ</code> should either be present in <code>LHS</code> or otherwise a <code>Prop</code> or a typeclass instance.</li>
+<li><code>LHS</code> should not occur within <code>RHS</code>.</li>
+<li><code>LHS</code> should not occur within a hypothesis <code>hᵢ</code>.</li>
+</ul>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.add_simp">      <h4>simp_lemmas.add_simp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p>Add a simplification lemma by it's declaration name. See <code>simp_lemmas.add</code> for more information.</p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.add_congr">      <h4>simp_lemmas.add_congr</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p>Adds a congruence simp lemma to simp_lemmas.
+A congruence simp lemma is a lemma that breaks the simplification down into separate problems.
+For example, to simplify <code>a ∧ b</code> to <code>c ∧ d</code>, we should try to simp <code>a</code> to <code>c</code> and <code>b</code> to <code>d</code>.
+For examples of congruence simp lemmas look for lemmas with the <code>@[congr]</code> attribute.
+<code>lean
+lemma if_simp_congr ... (h_c : b ↔ c) (h_t : x = u) (h_e : y = v) : ite b x y = ite c u v := ...
+lemma imp_congr_right (h : a → (b ↔ c)) : (a → b) ↔ (a → c) := ...
+lemma and_congr (h₁ : a ↔ c) (h₂ : b ↔ d) : (a ∧ b) ↔ (c ∧ d) := ...
+</code></p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.append">      <h4>simp_lemmas.append</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.rewrite">      <h4>simp_lemmas.rewrite</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>) <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.failed">tactic.failed</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> (name.mk_string \"eq\" name.anonymous) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> tactic.transparency.reducible → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p><code>simp_lemmas.rewrite s e prove R</code> apply a simplification lemma from 's'</p>
+
+<ul>
+<li>'e'     is the expression to be "simplified"</li>
+<li>'prove' is used to discharge proof obligations.</li>
+<li>'r'     is the equivalence relation being used (e.g., 'eq', 'iff')</li>
+<li><p>'md'    is the transparency; how aggresively should the simplifier perform reductions.</p>
+
+<p>Result (new<em>e, pr) is the new expression 'new</em>e' and a proof (pr : e R new_e)</p></li>
+</ul>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.rewrites">      <h4>simp_lemmas.rewrites</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>) <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.failed">tactic.failed</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> (name.mk_string \"eq\" name.anonymous) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> tactic.transparency.reducible → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.drewrite">      <h4>simp_lemmas.drewrite</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> tactic.transparency.reducible → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>simp_lemmas.drewrite s e</code> tries to rewrite 'e' using only refl lemmas in 's'</p>
+</p>       </div>
+</div><div class="entry"><a id="is_valid_simp_lemma_cnst">      <h4>is_valid_simp_lemma_cnst</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="is_valid_simp_lemma">      <h4>is_valid_simp_lemma</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.pp">      <h4>simp_lemmas.pp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/format.html#format">format</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.has_to_tactic_format">      <h4>simp_lemmas.has_to_tactic_format</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#has_to_tactic_format">has_to_tactic_format</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="tactic.revert_and_transform">      <h4>tactic.revert_and_transform</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p>Revert a local constant, change its type using <code>transform</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.get_eqn_lemmas_for">      <h4>tactic.get_eqn_lemmas_for</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>)</code>
+<div class="indent"><p><p><code>get_eqn_lemmas_for deps d</code> returns the automatically generated equational lemmas for definition d.
+  If deps is tt, then lemmas for automatically generated auxiliary declarations used to define d are also included.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dsimp_config">      <h4>tactic.dsimp_config</h4><code>Type</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="simp_lemmas.dsimplify">      <h4>simp_lemmas.dsimplify</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.dsimp_config">tactic.dsimp_config</a>
+  {md := tactic.transparency.reducible,
+   max_steps := simp.default_max_steps,
+   canonize_instances := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   eta := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   unfold_reducible := bool.ff,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>(Definitional) Simplify the given expression using <em>only</em> reflexivity equality lemmas from the given set of lemmas.
+  The resulting expression is definitionally equal to the input.</p>
+
+<p>The list <code>u</code> contains defintions to be delta-reduced, and projections to be reduced.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dsimplify_core">      <h4>tactic.dsimplify_core</h4><code>Π {α : Type},
+  α →
+  (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a>)) →
+  (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a>)) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.dsimp_config">tactic.dsimp_config</a>
+    {md := tactic.transparency.reducible,
+     max_steps := simp.default_max_steps,
+     canonize_instances := bool.tt,
+     single_pass := bool.ff,
+     fail_if_unchanged := bool.tt,
+     eta := bool.tt,
+     zeta := bool.tt,
+     beta := bool.tt,
+     proj := bool.tt,
+     iota := bool.tt,
+     unfold_reducible := bool.ff,
+     memoize := bool.tt} →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dsimplify">      <h4>tactic.dsimplify</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a>)) → (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a>)) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.get_simp_lemmas_or_default">      <h4>tactic.get_simp_lemmas_or_default</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dsimp_target">      <h4>tactic.dsimp_target</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a>) option.none →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.dsimp_config">tactic.dsimp_config</a>
+  {md := tactic.transparency.reducible,
+   max_steps := simp.default_max_steps,
+   canonize_instances := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   eta := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   unfold_reducible := bool.ff,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dsimp_hyp">      <h4>tactic.dsimp_hyp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a>) option.none →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.dsimp_config">tactic.dsimp_config</a>
+  {md := tactic.transparency.reducible,
+   max_steps := simp.default_max_steps,
+   canonize_instances := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   eta := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   unfold_reducible := bool.ff,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dunfold_head">      <h4>tactic.dunfold_head</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> tactic.transparency.instances → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Tries to unfold <code>e</code> if it is a constant or a constant application.
+   Remark: this is not a recursive procedure.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dunfold_config">      <h4>tactic.dunfold_config</h4><code>Type</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dunfold">      <h4>tactic.dunfold</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.dunfold_config">tactic.dunfold_config</a>
+  {to_dsimp_config := {md := tactic.transparency.instances,
+                       max_steps := simp.default_max_steps,
+                       canonize_instances := bool.tt,
+                       single_pass := bool.ff,
+                       fail_if_unchanged := bool.tt,
+                       eta := bool.tt,
+                       zeta := bool.tt,
+                       beta := bool.tt,
+                       proj := bool.tt,
+                       iota := bool.tt,
+                       unfold_reducible := bool.ff,
+                       memoize := bool.tt}} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dunfold_target">      <h4>tactic.dunfold_target</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.dunfold_config">tactic.dunfold_config</a>
+  {to_dsimp_config := {md := tactic.transparency.instances,
+                       max_steps := simp.default_max_steps,
+                       canonize_instances := bool.tt,
+                       single_pass := bool.ff,
+                       fail_if_unchanged := bool.tt,
+                       eta := bool.tt,
+                       zeta := bool.tt,
+                       beta := bool.tt,
+                       proj := bool.tt,
+                       iota := bool.tt,
+                       unfold_reducible := bool.ff,
+                       memoize := bool.tt}} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.dunfold_hyp">      <h4>tactic.dunfold_hyp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.dunfold_config">tactic.dunfold_config</a>
+  {to_dsimp_config := {md := tactic.transparency.instances,
+                       max_steps := simp.default_max_steps,
+                       canonize_instances := bool.tt,
+                       single_pass := bool.ff,
+                       fail_if_unchanged := bool.tt,
+                       eta := bool.tt,
+                       zeta := bool.tt,
+                       beta := bool.tt,
+                       proj := bool.tt,
+                       iota := bool.tt,
+                       unfold_reducible := bool.ff,
+                       memoize := bool.tt}} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.delta_config">      <h4>tactic.delta_config</h4><code>Type</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.delta">      <h4>tactic.delta</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.delta_config">tactic.delta_config</a> {max_steps := simp.default_max_steps, visit_instances := bool.tt} → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Delta reduce the given constant names</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.delta_target">      <h4>tactic.delta_target</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.delta_config">tactic.delta_config</a> {max_steps := simp.default_max_steps, visit_instances := bool.tt} → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.delta_hyp">      <h4>tactic.delta_hyp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.delta_config">tactic.delta_config</a> {max_steps := simp.default_max_steps, visit_instances := bool.tt} → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unfold_proj_config">      <h4>tactic.unfold_proj_config</h4><code>Type</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unfold_proj">      <h4>tactic.unfold_proj</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> tactic.transparency.instances → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>If <code>e</code> is a projection application, try to unfold it, otherwise fail.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unfold_projs">      <h4>tactic.unfold_projs</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.unfold_proj_config">tactic.unfold_proj_config</a>
+  {to_dsimp_config := {md := tactic.transparency.instances,
+                       max_steps := simp.default_max_steps,
+                       canonize_instances := bool.tt,
+                       single_pass := bool.ff,
+                       fail_if_unchanged := bool.tt,
+                       eta := bool.tt,
+                       zeta := bool.tt,
+                       beta := bool.tt,
+                       proj := bool.tt,
+                       iota := bool.tt,
+                       unfold_reducible := bool.ff,
+                       memoize := bool.tt}} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unfold_projs_target">      <h4>tactic.unfold_projs_target</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.unfold_proj_config">tactic.unfold_proj_config</a>
+  {to_dsimp_config := {md := tactic.transparency.instances,
+                       max_steps := simp.default_max_steps,
+                       canonize_instances := bool.tt,
+                       single_pass := bool.ff,
+                       fail_if_unchanged := bool.tt,
+                       eta := bool.tt,
+                       zeta := bool.tt,
+                       beta := bool.tt,
+                       proj := bool.tt,
+                       iota := bool.tt,
+                       unfold_reducible := bool.ff,
+                       memoize := bool.tt}} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.unfold_projs_hyp">      <h4>tactic.unfold_projs_hyp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.unfold_proj_config">tactic.unfold_proj_config</a>
+  {to_dsimp_config := {md := tactic.transparency.instances,
+                       max_steps := simp.default_max_steps,
+                       canonize_instances := bool.tt,
+                       single_pass := bool.ff,
+                       fail_if_unchanged := bool.tt,
+                       eta := bool.tt,
+                       zeta := bool.tt,
+                       beta := bool.tt,
+                       proj := bool.tt,
+                       iota := bool.tt,
+                       unfold_reducible := bool.ff,
+                       memoize := bool.tt}} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_config">      <h4>tactic.simp_config</h4><code>Type</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simplify">      <h4>tactic.simplify</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+  {max_steps := simp.default_max_steps,
+   contextual := bool.ff,
+   lift_eq := bool.tt,
+   canonize_instances := bool.tt,
+   canonize_proofs := bool.ff,
+   use_axioms := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   eta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   iota_eqn := bool.ff,
+   constructor_eq := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> (name.mk_string \"eq\" name.anonymous) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>) <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.failed">tactic.failed</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p><code>simplify s e cfg r prove</code> simplify <code>e</code> using <code>s</code> using bottom-up traversal.
+<code>discharger</code> is a tactic for dischaging new subgoals created by the simplifier.
+ If it fails, the simplifier tries to discharge the subgoal by simplifying it to <code>true</code>.</p>
+
+<p>The parameter <code>to_unfold</code> specifies definitions that should be delta-reduced,
+ and projection applications that should be unfolded.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_target">      <h4>tactic.simp_target</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+  {max_steps := simp.default_max_steps,
+   contextual := bool.ff,
+   lift_eq := bool.tt,
+   canonize_instances := bool.tt,
+   canonize_proofs := bool.ff,
+   use_axioms := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   eta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   iota_eqn := bool.ff,
+   constructor_eq := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>) <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.failed">tactic.failed</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_hyp">      <h4>tactic.simp_hyp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+  {max_steps := simp.default_max_steps,
+   contextual := bool.ff,
+   lift_eq := bool.tt,
+   canonize_instances := bool.tt,
+   canonize_proofs := bool.ff,
+   use_axioms := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   eta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   iota_eqn := bool.ff,
+   constructor_eq := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>) <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.failed">tactic.failed</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.ext_simplify_core">      <h4>tactic.ext_simplify_core</h4><code>Π {α : Type},
+  α →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a> →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+  (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> α) →
+  (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a>)) →
+  (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a>)) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p><code>ext_simplify_core a c s discharger pre post r e</code>:</p>
+
+<ul>
+<li><code>a : α</code> - initial user data</li>
+<li><code>c : simp_config</code> - simp configuration options</li>
+<li><code>s : simp_lemmas</code> - the set of simp_lemmas to use. Remark: the simplification lemmas are not applied automatically like in the simplify tactic. The caller must use them at pre/post.</li>
+<li><code>discharger : α → tactic α</code> - tactic for dischaging hypothesis in conditional rewriting rules. The argument 'α' is the current user data.</li>
+<li><code>pre a s r p e</code> is invoked before visiting the children of subterm 'e'.
+<ul>
+<li>arguments:</li>
+<li><code>a</code> is the current user data</li>
+<li><code>s</code> is the updated set of lemmas if 'contextual' is <code>tt</code>,</li>
+<li><code>r</code> is the simplification relation being used, </li>
+<li><code>p</code> is the "parent" expression (if there is one).</li>
+<li><code>e</code> is the current subexpression in question.</li>
+<li>if it succeeds the result is <code>(new_a, new_e, new_pr, flag)</code> where</li>
+<li><code>new_a</code> is the new value for the user data</li>
+<li><code>new_e</code> is a new expression s.t. <code>r e new_e</code></li>
+<li><code>new_pr</code> is a proof for <code>e r new_e</code>, If it is none, the proof is assumed to be by reflexivity</li>
+<li><code>flag</code>  if tt <code>new_e</code> children should be visited, and <code>post</code> invoked.</li>
+</ul></li>
+<li><code>(post a s r p e)</code> is invoked after visiting the children of subterm <code>e</code>,
+The output is similar to <code>(pre a r s p e)</code>, but the 'flag' indicates whether the new expression should be revisited or not.</li>
+<li><code>r</code> is the simplification relation. Usually <code>=</code> or <code>↔</code>.</li>
+<li><code>e</code> is the input expression to be simplified.</li>
+</ul>
+
+<p>The method returns <code>(a,e,pr)</code> where</p>
+
+<ul>
+<li><code>a</code> is the final user data</li>
+<li><code>e</code> is the new expression</li>
+<li><code>pr</code> is the proof that the given expression equals the input expression.</li>
+</ul>
+</p>       </div>
+</div><div class="entry"><a id="tactic.collect_ctx_simps">      <h4>tactic.collect_ctx_simps</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.intro1_aux">      <h4>tactic.intro1_aux</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_intros_config">      <h4>tactic.simp_intros_config</h4><code>Type</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_intros_aux">      <h4>tactic.simp_intros_aux</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_intros">      <h4>tactic.simp_intros</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_intros_config">tactic.simp_intros_config</a>
+  {to_simp_config := {max_steps := simp.default_max_steps,
+                      contextual := bool.ff,
+                      lift_eq := bool.tt,
+                      canonize_instances := bool.tt,
+                      canonize_proofs := bool.ff,
+                      use_axioms := bool.tt,
+                      zeta := bool.tt,
+                      beta := bool.tt,
+                      eta := bool.tt,
+                      proj := bool.tt,
+                      iota := bool.tt,
+                      iota_eqn := bool.ff,
+                      constructor_eq := bool.tt,
+                      single_pass := bool.ff,
+                      fail_if_unchanged := bool.tt,
+                      memoize := bool.tt},
+   use_hyps := bool.ff} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.mk_eq_simp_ext">      <h4>tactic.mk_eq_simp_ext</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.to_simp_lemmas">      <h4>tactic.to_simp_lemmas</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.mk_simp_attr">      <h4>tactic.mk_simp_attr</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.get_user_simp_lemmas">      <h4>tactic.get_user_simp_lemmas</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><h3>Example usage:</h3>
+
+<p>``<code>lean
+-- make a new simp attribute called "my_reduction"
+run_cmd mk_simp_attr</code>my<em>reduction
+-- Add "my</em>reduction" attributes to these if-reductions
+attribute [my<em>reduction] if</em>pos if<em>neg dif</em>pos dif_neg</p>
+
+<p>-- will return the simp_lemmas with the <code>my_reduction</code> attribute.</p>
+
+<h1>eval get<em>user</em>simp<em>lemmas `my</em>reduction</h1>
+
+<p>```</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.join_user_simp_lemmas_core">      <h4>tactic.join_user_simp_lemmas_core</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.join_user_simp_lemmas">      <h4>tactic.join_user_simp_lemmas</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.norm_num">      <h4>tactic.norm_num</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p>Normalize numerical expression, returns a pair (n, pr) where n is the resultant numeral,
+  and pr is a proof that the input argument is equal to n.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simplify_top_down">      <h4>tactic.simplify_top_down</h4><code>Π {α : Type},
+  α →
+  (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+    {max_steps := simp.default_max_steps,
+     contextual := bool.ff,
+     lift_eq := bool.tt,
+     canonize_instances := bool.tt,
+     canonize_proofs := bool.ff,
+     use_axioms := bool.tt,
+     zeta := bool.tt,
+     beta := bool.tt,
+     eta := bool.tt,
+     proj := bool.tt,
+     iota := bool.tt,
+     iota_eqn := bool.ff,
+     constructor_eq := bool.tt,
+     single_pass := bool.ff,
+     fail_if_unchanged := bool.tt,
+     memoize := bool.tt} →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_top_down">      <h4>tactic.simp_top_down</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+  {max_steps := simp.default_max_steps,
+   contextual := bool.ff,
+   lift_eq := bool.tt,
+   canonize_instances := bool.tt,
+   canonize_proofs := bool.ff,
+   use_axioms := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   eta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   iota_eqn := bool.ff,
+   constructor_eq := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simplify_bottom_up">      <h4>tactic.simplify_bottom_up</h4><code>Π {α : Type},
+  α →
+  (α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+    {max_steps := simp.default_max_steps,
+     contextual := bool.ff,
+     lift_eq := bool.tt,
+     canonize_instances := bool.tt,
+     canonize_proofs := bool.ff,
+     use_axioms := bool.tt,
+     zeta := bool.tt,
+     beta := bool.tt,
+     eta := bool.tt,
+     proj := bool.tt,
+     iota := bool.tt,
+     iota_eqn := bool.ff,
+     constructor_eq := bool.tt,
+     single_pass := bool.ff,
+     fail_if_unchanged := bool.tt,
+     memoize := bool.tt} →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_bottom_up">      <h4>tactic.simp_bottom_up</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+  {max_steps := simp.default_max_steps,
+   contextual := bool.ff,
+   lift_eq := bool.tt,
+   canonize_instances := bool.tt,
+   canonize_proofs := bool.ff,
+   use_axioms := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   eta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   iota_eqn := bool.ff,
+   constructor_eq := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.non_dep_prop_hyps">      <h4>tactic.non_dep_prop_hyps</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_all_entry">      <h4>tactic.simp_all_entry</h4><code>Type</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.simp_all">      <h4>tactic.simp_all</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+  {max_steps := simp.default_max_steps,
+   contextual := bool.ff,
+   lift_eq := bool.tt,
+   canonize_instances := bool.tt,
+   canonize_proofs := bool.ff,
+   use_axioms := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   eta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   iota_eqn := bool.ff,
+   constructor_eq := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>) <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.failed">tactic.failed</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.trace_algebra_info">      <h4>tactic.trace_algebra_info</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="simp_attr.norm">      <h4>simp_attr.norm</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

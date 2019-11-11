@@ -1,0 +1,168 @@
+<html><head><title>category_theory.products.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="category_theory.prod">      <h4>category_theory.prod</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> (C × D)</code>
+<div class="indent"><p><p><code>prod C D</code> gives the cartesian product of two categories.</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.prod_id">      <h4>category_theory.prod_id</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (X : C)
+(Y : D), 𝟙 (X, Y) = (𝟙 X, 𝟙 Y)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod_comp">      <h4>category_theory.prod_comp</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {P Q R : C}
+{S T U : D} (f : (P, S) ⟶ (Q, T)) (g : (Q, T) ⟶ (R, U)), f ≫ g = (f.fst ≫ g.fst, f.snd ≫ g.snd)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod_id_fst">      <h4>category_theory.prod_id_fst</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X : C × D), (𝟙 X).fst = 𝟙 (X.fst)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod_id_snd">      <h4>category_theory.prod_id_snd</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X : C × D), (𝟙 X).snd = 𝟙 (X.snd)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod_comp_fst">      <h4>category_theory.prod_comp_fst</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{X Y Z : C × D} (f : X ⟶ Y) (g : Y ⟶ Z), (f ≫ g).fst = f.fst ≫ g.fst</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod_comp_snd">      <h4>category_theory.prod_comp_snd</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{X Y Z : C × D} (f : X ⟶ Y) (g : Y ⟶ Z), (f ≫ g).snd = f.snd ≫ g.snd</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.uniform_prod">      <h4>category_theory.uniform_prod</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₁) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> (C × D)</code>
+<div class="indent"><p><p><code>prod.category.uniform C D</code> is an additional instance specialised so both factors have the same universe levels. This helps typeclass resolution.</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.prod.inl_map">      <h4>category_theory.prod.inl_map</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (Z : D)
+(X Y : C) (f : X ⟶ Y), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.inl">category_theory.prod.inl</a> C D Z).map f = (f, 𝟙 Z)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.inl_obj">      <h4>category_theory.prod.inl_obj</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (Z : D)
+(X : C), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.inl">category_theory.prod.inl</a> C D Z).obj X = (X, Z)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.inl">      <h4>category_theory.prod.inl</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  D → C ⥤ C × D</code>
+<div class="indent"><p><p><code>inl C Z</code> is the functor <code>X ↦ (X, Z)</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.prod.inr_map">      <h4>category_theory.prod.inr_map</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (Z : C)
+(X Y : D) (f : X ⟶ Y), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.inr">category_theory.prod.inr</a> C D Z).map f = (𝟙 Z, f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.inr_obj">      <h4>category_theory.prod.inr_obj</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (Z : C)
+(X : D), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.inr">category_theory.prod.inr</a> C D Z).obj X = (Z, X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.inr">      <h4>category_theory.prod.inr</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C → D ⥤ C × D</code>
+<div class="indent"><p><p><code>inr D Z</code> is the functor <code>X ↦ (Z, X)</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.prod.fst">      <h4>category_theory.prod.fst</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D], C × D ⥤ C</code>
+<div class="indent"><p><p><code>fst</code> is the functor <code>(X, Y) ↦ X</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.prod.fst_map">      <h4>category_theory.prod.fst_map</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X Y : C × D) (f : X ⟶ Y), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.fst">category_theory.prod.fst</a> C D).map f = f.fst</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.fst_obj">      <h4>category_theory.prod.fst_obj</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X : C × D), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.fst">category_theory.prod.fst</a> C D).obj X = X.fst</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.snd_obj">      <h4>category_theory.prod.snd_obj</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X : C × D), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.snd">category_theory.prod.snd</a> C D).obj X = X.snd</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.snd_map">      <h4>category_theory.prod.snd_map</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X Y : C × D) (f : X ⟶ Y), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.snd">category_theory.prod.snd</a> C D).map f = f.snd</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.snd">      <h4>category_theory.prod.snd</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D], C × D ⥤ D</code>
+<div class="indent"><p><p><code>snd</code> is the functor <code>(X, Y) ↦ Y</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.prod.swap">      <h4>category_theory.prod.swap</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C × D ⥤ D × C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.prod.swap_obj">      <h4>category_theory.prod.swap_obj</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X : C × D), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.swap">category_theory.prod.swap</a> C D).obj X = (X.snd, X.fst)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.swap_map">      <h4>category_theory.prod.swap_map</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(_x _x_1 : C × D) (f : _x ⟶ _x_1), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.swap">category_theory.prod.swap</a> C D).map f = (f.snd, f.fst)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.symmetry_hom_app">      <h4>category_theory.prod.symmetry_hom_app</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X : C × D), ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.symmetry">category_theory.prod.symmetry</a> C D).hom).app X = 𝟙 X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.symmetry_inv_app">      <h4>category_theory.prod.symmetry_inv_app</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(X : C × D), ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.symmetry">category_theory.prod.symmetry</a> C D).inv).app X = 𝟙 X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.prod.symmetry">      <h4>category_theory.prod.symmetry</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.swap">category_theory.prod.swap</a> C D ⋙ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.swap">category_theory.prod.swap</a> D C ≅ 𝟭 (C × D)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.prod.braiding">      <h4>category_theory.prod.braiding</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C × D ≌ D × C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.prod.swap_is_equivalence">      <h4>category_theory.prod.swap_is_equivalence</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.prod.swap">category_theory.prod.swap</a> C D)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.evaluation_obj_obj">      <h4>category_theory.evaluation_obj_obj</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (X : C)
+(F : C ⥤ D), ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.evaluation">category_theory.evaluation</a> C D).obj X).obj F = F.obj X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.evaluation_map_app">      <h4>category_theory.evaluation_map_app</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (X Y : C)
+(f : X ⟶ Y) (F : C ⥤ D), ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.evaluation">category_theory.evaluation</a> C D).map f).app F = F.map f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.evaluation_obj_map">      <h4>category_theory.evaluation_obj_map</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (X : C)
+(F G : C ⥤ D) (α : F ⟶ G), ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.evaluation">category_theory.evaluation</a> C D).obj X).map α = α.app X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.evaluation">      <h4>category_theory.evaluation</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C ⥤ (C ⥤ D) ⥤ D</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.evaluation_uncurried">      <h4>category_theory.evaluation_uncurried</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C × (C ⥤ D) ⥤ D</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.evaluation_uncurried_map">      <h4>category_theory.evaluation_uncurried_map</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(x y : C × (C ⥤ D)) (f : x ⟶ y),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.evaluation_uncurried">category_theory.evaluation_uncurried</a> C D).map f = (x.snd).map (f.fst) ≫ (f.snd).app (y.fst)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.evaluation_uncurried_obj">      <h4>category_theory.evaluation_uncurried_obj</h4><code>∀ (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(p : C × (C ⥤ D)), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.evaluation_uncurried">category_theory.evaluation_uncurried</a> C D).obj p = (p.snd).obj (p.fst)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.prod_obj">      <h4>category_theory.functor.prod_obj</h4><code>∀ {A : Type u₁} [𝒜 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> A] {B : Type u₂} [ℬ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> B]
+{C : Type u₃} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₄} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : A ⥤ B)
+(G : C ⥤ D) (X : A × C), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.functor.prod">category_theory.functor.prod</a> F G).obj X = (F.obj (X.fst), G.obj (X.snd))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.prod">      <h4>category_theory.functor.prod</h4><code>Π {A : Type u₁} [𝒜 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> A] {B : Type u₂} [ℬ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> B]
+{C : Type u₃} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₄} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  A ⥤ B → C ⥤ D → A × C ⥤ B × D</code>
+<div class="indent"><p><p>The cartesian product of two functors.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.prod_map">      <h4>category_theory.functor.prod_map</h4><code>∀ {A : Type u₁} [𝒜 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> A] {B : Type u₂} [ℬ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> B]
+{C : Type u₃} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₄} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (F : A ⥤ B)
+(G : C ⥤ D) (_x _x_1 : A × C) (f : _x ⟶ _x_1),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.functor.prod">category_theory.functor.prod</a> F G).map f = (F.map (f.fst), G.map (f.snd))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.nat_trans.prod_app">      <h4>category_theory.nat_trans.prod_app</h4><code>∀ {A : Type u₁} [𝒜 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> A] {B : Type u₂} [ℬ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> B]
+{C : Type u₃} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₄} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F G : A ⥤ B}
+{H I : C ⥤ D} (α : F ⟶ G) (β : H ⟶ I) (X : A × C),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.nat_trans.prod">category_theory.nat_trans.prod</a> α β).app X = (α.app (X.fst), β.app (X.snd))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.nat_trans.prod">      <h4>category_theory.nat_trans.prod</h4><code>Π {A : Type u₁} [𝒜 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> A] {B : Type u₂} [ℬ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> B]
+{C : Type u₃} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₄} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F G : A ⥤ B}
+{H I : C ⥤ D}, (F ⟶ G) → (H ⟶ I) → (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.functor.prod">category_theory.functor.prod</a> F H ⟶ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/products/basic.html#category_theory.functor.prod">category_theory.functor.prod</a> G I)</code>
+<div class="indent"><p><p>The cartesian product of two natural transformations.</p>
+</p>       </div>
+</div></body></html>

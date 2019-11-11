@@ -1,0 +1,48 @@
+<html><head><title>category_theory.functor</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="category_theory.functor">      <h4>category_theory.functor</h4><code>Π (C : Type u₁) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (D : Type u₂) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> v₁ v₂ u₁ u₂)</code>
+<div class="indent"><p><p><code>functor C D</code> represents a functor between categories <code>C</code> and <code>D</code>.</p>
+
+<p>To apply a functor <code>F</code> to an object use <code>F.obj X</code>, and to a morphism use <code>F.map f</code>.</p>
+
+<p>The axiom <code>map_id_lemma</code> expresses preservation of identities, and
+<code>map_comp_lemma</code> expresses functoriality.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.id">      <h4>category_theory.functor.id</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], C ⥤ C</code>
+<div class="indent"><p><p><code>𝟭 C</code> is the identity functor on a category <code>C</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.id_obj">      <h4>category_theory.functor.id_obj</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (X : C), (𝟭 C).obj X = X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.id_map">      <h4>category_theory.functor.id_map</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {X Y : C} (f : X ⟶ Y), (𝟭 C).map f = f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.comp">      <h4>category_theory.functor.comp</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E], C ⥤ D → D ⥤ E → C ⥤ E</code>
+<div class="indent"><p><p><code>F ⋙ G</code> is the composition of a functor <code>F</code> and a functor <code>G</code> (<code>F</code> first, then <code>G</code>).</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.comp_obj">      <h4>category_theory.functor.comp_obj</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (F : C ⥤ D) (G : D ⥤ E) (X : C),
+  (F ⋙ G).obj X = G.obj (F.obj X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.comp_map">      <h4>category_theory.functor.comp_map</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (F : C ⥤ D) (G : D ⥤ E) (X Y : C) (f : X ⟶ Y),
+  (F ⋙ G).map f = G.map (F.map f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.comp_id">      <h4>category_theory.functor.comp_id</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(F : C ⥤ D), F ⋙ 𝟭 D = F</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.id_comp">      <h4>category_theory.functor.id_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(F : C ⥤ D), 𝟭 C ⋙ F = F</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.ulift_down">      <h4>category_theory.functor.ulift_down</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ulift">ulift</a> C ⥤ C</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.functor.ulift_up">      <h4>category_theory.functor.ulift_up</h4><code>Π (C : Type u₁) [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], C ⥤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ulift">ulift</a> C</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div></body></html>

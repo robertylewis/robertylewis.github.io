@@ -1,0 +1,33 @@
+<html><head><title>tactic.fin_cases</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="tactic.guard_mem_fin">      <h4>tactic.guard_mem_fin</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Checks that the expression looks like <code>x ∈ A</code> for <code>A : finset α</code>, <code>multiset α</code> or <code>A : list α</code>,
+   and returns the type α.</p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.expr_list_to_list_expr">      <h4>tactic.expr_list_to_list_expr</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.fin_cases_at_aux">      <h4>tactic.fin_cases_at_aux</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.fin_cases_at">      <h4>tactic.fin_cases_at</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.interactive.fin_cases">      <h4>tactic.interactive.fin_cases</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> hyp →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/alternative.html#optional">optional</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> \"with\" *> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p><code>fin_cases h</code> performs case analysis on a hypothesis of the form
+<code>h : A</code>, where <code>[fintype A]</code> is available, or
+<code>h ∈ A</code>, where <code>A : finset X</code>, <code>A : multiset X</code> or <code>A : list X</code>.</p>
+
+<p><code>fin_cases *</code> performs case analysis on all suitable hypotheses.</p>
+
+<p>As an example, in
+<code>lean
+example (f : ℕ → Prop) (p : fin 3) (h0 : f 0) (h1 : f 1) (h2 : f 2) : f p.val :=
+begin
+  fin_cases *; simp,
+  all_goals { assumption }
+end
+</code>
+after <code>fin_cases p; simp</code>, there are three goals, <code>f 0</code>, <code>f 1</code>, and <code>f 2</code>.</p>
+</p>       </div>
+</div></body></html>

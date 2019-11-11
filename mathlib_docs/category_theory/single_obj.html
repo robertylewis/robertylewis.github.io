@@ -1,0 +1,97 @@
+<html><head><title>category_theory.single_obj</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Single-object category</h1>
+
+<p>Single object category with a given monoid of endomorphisms.  It is defined to facilitate transfering
+some definitions and lemmas (e.g., conjugacy etc.) from category theory to monoids and groups.</p>
+
+<h2>Main definitions</h2>
+
+<p>Given a type <code>α</code> with a monoid structure, <code>single_obj α</code> is <code>unit</code> type with <code>category</code> structure
+such that <code>End (single_obj α).star</code> is the monoid <code>α</code>.  This can be extended to a functor <code>Mon ⥤
+Cat</code>.</p>
+
+<p>If <code>α</code> is a group, then <code>single_obj α</code> is a groupoid.</p>
+
+<p>An element <code>x : α</code> can be reinterpreted as an element of <code>End (single_obj.star α)</code> using
+<code>single_obj.to_End</code>.</p>
+
+<h2>Implementation notes</h2>
+
+<ul>
+<li><p><code>category_struct.comp</code> on <code>End (single_obj.star α)</code> is <code>flip (*)</code>, not <code>(*)</code>. This way
+multiplication on <code>End</code> agrees with the multiplication on <code>α</code>.</p></li>
+<li><p>By default, Lean puts instances into <code>category_theory</code> namespace instead of
+<code>category_theory.single_obj</code>, so we give all names explicitly.</p></li>
+</ul>
+</div><div class="entry"><a id="category_theory.single_obj">      <h4>category_theory.single_obj</h4><code>Type u → Type</code>
+<div class="indent"><p><p>Type tag on <code>unit</code> used to define single-object categories and groupoids.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.single_obj.category_struct">      <h4>category_theory.single_obj.category_struct</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category_struct">category_theory.category_struct</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> α)</code>
+<div class="indent"><p><p>One and <code>flip (*)</code> become <code>id</code> and <code>comp</code> for morphisms of the single object category.</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.single_obj.category">      <h4>category_theory.single_obj.category</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> α)</code>
+<div class="indent"><p><p>Monoid laws become category laws for the single object category.</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.single_obj.groupoid">      <h4>category_theory.single_obj.groupoid</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/groupoid.html#category_theory.groupoid">category_theory.groupoid</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> α)</code>
+<div class="indent"><p><p>Groupoid structure on <code>single_obj α</code></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.single_obj.star">      <h4>category_theory.single_obj.star</h4><code>Π (α : Type u), <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.single_obj.to_End">      <h4>category_theory.single_obj.to_End</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α], α ≃* <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/endomorphism.html#category_theory.End">category_theory.End</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.star">category_theory.single_obj.star</a> α)</code>
+<div class="indent"><p><p>The endomorphisms monoid of the only object in <code>single_obj α</code> is equivalent to the original
+    monoid α.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.single_obj.to_End_def">      <h4>category_theory.single_obj.to_End_def</h4><code>∀ (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] (x : α), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.to_End">category_theory.single_obj.to_End</a> α) x = x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.single_obj.map_hom">      <h4>category_theory.single_obj.map_hom</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> β],
+  (α →* β) ≃ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> α ⥤ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> β</code>
+<div class="indent"><p><p>There is a 1-1 correspondence between monoid homomorphisms <code>α → β</code> and functors between the
+   corresponding single-object categories. It means that <code>single_obj</code> is a fully faithful
+   functor.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.single_obj.map_hom_id">      <h4>category_theory.single_obj.map_hom_id</h4><code>∀ (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α],
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.map_hom">category_theory.single_obj.map_hom</a> α α) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#monoid_hom.id">monoid_hom.id</a> α) = 𝟭 (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.single_obj.map_hom_comp">      <h4>category_theory.single_obj.map_hom_comp</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> β] (f : α →* β) {γ : Type w}
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> γ] (g : β →* γ),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.map_hom">category_theory.single_obj.map_hom</a> α γ) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#monoid_hom.comp">monoid_hom.comp</a> g f) =
+    ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.map_hom">category_theory.single_obj.map_hom</a> α β) f ⋙ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.map_hom">category_theory.single_obj.map_hom</a> β γ) g</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="monoid_hom.to_functor">      <h4>monoid_hom.to_functor</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> β],
+  (α →* β) → <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> α ⥤ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> β</code>
+<div class="indent"><p><p>Reinterpret a monoid homomorphism <code>f : α → β</code> as a functor <code>(single_obj α) ⥤ (single_obj β)</code>.
+See also <code>category_theory.single_obj.map_hom</code> for an equivalence between these types.</p>
+</p>       </div>
+</div><div class="entry"><a id="monoid_hom.id_to_functor">      <h4>monoid_hom.id_to_functor</h4><code>∀ (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#monoid_hom.to_functor">monoid_hom.to_functor</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#monoid_hom.id">monoid_hom.id</a> α) = 𝟭 (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj">category_theory.single_obj</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="monoid_hom.comp_to_functor">      <h4>monoid_hom.comp_to_functor</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> β] (f : α →* β) {γ : Type w}
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> γ] (g : β →* γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#monoid_hom.to_functor">monoid_hom.to_functor</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#monoid_hom.comp">monoid_hom.comp</a> g f) = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#monoid_hom.to_functor">monoid_hom.to_functor</a> f ⋙ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#monoid_hom.to_functor">monoid_hom.to_functor</a> g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="units.to_Aut">      <h4>units.to_Aut</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> α ≃* <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/endomorphism.html#category_theory.Aut">category_theory.Aut</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.star">category_theory.single_obj.star</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="units.to_Aut_hom">      <h4>units.to_Aut_hom</h4><code>∀ (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> α),
+  (⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#units.to_Aut">units.to_Aut</a> α) x).hom = ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.to_End">category_theory.single_obj.to_End</a> α) ↑x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="units.to_Aut_inv">      <h4>units.to_Aut_inv</h4><code>∀ (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/units.html#units">units</a> α),
+  (⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#units.to_Aut">units.to_Aut</a> α) x).inv = ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#category_theory.single_obj.to_End">category_theory.single_obj.to_End</a> α) ↑x⁻¹</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="Mon.to_Cat">      <h4>Mon.to_Cat</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/algebra/category/Mon/basic.html#Mon">Mon</a> ⥤ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/Cat.html#category_theory.Cat">category_theory.Cat</a></code>
+<div class="indent"><p><p>The fully faithful functor from <code>Mon</code> to <code>Cat</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="Mon.to_Cat_full">      <h4>Mon.to_Cat_full</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/fully_faithful.html#category_theory.full">category_theory.full</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#Mon.to_Cat">Mon.to_Cat</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="Mon.to_Cat_faithful">      <h4>Mon.to_Cat_faithful</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/fully_faithful.html#category_theory.faithful">category_theory.faithful</a> <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/single_obj.html#Mon.to_Cat">Mon.to_Cat</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div></body></html>

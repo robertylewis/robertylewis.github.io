@@ -1,0 +1,360 @@
+<html><head><title>measure_theory.l1_space</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Integrable functions and L1 space</h1>
+
+<p>In the first part of this file, the predicate <code>integrable</code> is defined and basic properties of
+integrable functions are proved.</p>
+
+<p>In the second part, the space L1 of equivalence classes of integrable functions under the relation
+of being almost everywhere equal is defined as a subspace of the space L0. See the file
+<code>src/measure_theory/ae_eq_fun.lean</code> for information on L0 space.</p>
+
+<h2>Notation</h2>
+
+<ul>
+<li><p><code>α →₁ β</code> is the type of L1 space, where <code>α</code> is a <code>measure_space</code> and <code>β</code> is a <code>normed_group</code> with
+a <code>second_countable_topology</code>. <code>f : α →ₘ β</code> is a "function" in L1. In comments, <code>[f]</code> is also used
+to denote an L1 function.</p>
+
+<p><code>₁</code> can be typed as <code>\1</code>.</p></li>
+</ul>
+
+<h2>Main definitions</h2>
+
+<ul>
+<li><p>Let <code>f : α → β</code> be a function, where <code>α</code> is a <code>measure_space</code> and <code>β</code> a <code>normed_group</code>.
+Then <code>f</code> is called <code>integrable</code> if <code>(∫⁻ a, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (f a)) &lt; ⊤</code> holds.</p></li>
+<li><p>The space L1 is defined as a subspace of L0 :
+An <code>ae_eq_fun</code> <code>[f] : α →ₘ β</code> is in the space L1 if <code>edist [f] 0 &lt; ⊤</code>, which means
+<code>(∫⁻ a, edist (f a) 0) &lt; ⊤</code> if we expand the definition of <code>edist</code> in L0.</p></li>
+</ul>
+
+<h2>Main statements</h2>
+
+<p>L1, as a subspace, inherits most of the structures of L0.</p>
+
+<h2>Implementation notes</h2>
+
+<p>Maybe <code>integrable f</code> should be mean <code>(∫⁻ a, edist (f a) 0) &lt; ⊤</code>, so that <code>integrable</code> and
+<code>ae_eq_fun.integrable</code> are more aligned. But in the end one can use the lemma
+<code>lintegral_nnnorm_eq_lintegral_edist : (∫⁻ a, <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (f a)) = (∫⁻ a, edist (f a) 0)</code> to switch the
+two forms.</p>
+
+<h2>Tags</h2>
+
+<p>integrable, function space, l1</p>
+</div><div class="entry"><a id="measure_theory.integrable">      <h4>measure_theory.integrable</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β],
+  (α → β) → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.integrable_of_ae_eq">      <h4>measure_theory.integrable_of_ae_eq</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+{f g : α → β}, <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f → (∀ₘ (a : α), f a = g a) → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> g</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.integrable_iff_of_ae_eq">      <h4>measure_theory.integrable_iff_of_ae_eq</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+(f g : α → β), (∀ₘ (a : α), f a = g a) → (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> g)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.lintegral_nnnorm_eq_lintegral_edist">      <h4>measure_theory.lintegral_nnnorm_eq_lintegral_edist</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] (f : α → β),
+  (∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (f a))) = ∫⁻ (a : α), has_edist.edist (f a) 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.integrable_iff_lintegral_edist">      <h4>measure_theory.integrable_iff_lintegral_edist</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] (f : α → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f ↔ (∫⁻ (a : α), has_edist.edist (f a) 0) < ⊤</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.lintegral_edist_triangle">      <h4>measure_theory.lintegral_edist_triangle</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {f g h : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> g →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> h →
+  ((∫⁻ (a : α), has_edist.edist (f a) (g a)) ≤
+     (∫⁻ (a : α), has_edist.edist (f a) (h a)) + ∫⁻ (a : α), has_edist.edist (g a) (h a))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.lintegral_edist_lt_top">      <h4>measure_theory.lintegral_edist_lt_top</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {f g : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> g → (∫⁻ (a : α), has_edist.edist (f a) (g a)) < ⊤</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.lintegral_nnnorm_zero">      <h4>measure_theory.lintegral_nnnorm_zero</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β],
+  (∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> 0)) = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="measure_theory.integrable_zero">      <h4>measure_theory.integrable_zero</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.lintegral_nnnorm_add">      <h4>measure_theory.lintegral_nnnorm_add</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+{f g : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> g →
+  ((∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (f a)) + ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (g a))) =
+     (∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (f a))) + ∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (g a)))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.integrable_add">      <h4>measure_theory.integrable_add</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+{f g : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> (f + g)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.lintegral_nnnorm_neg">      <h4>measure_theory.lintegral_nnnorm_neg</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] {f : α → β},
+  (∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> ((-f) a))) = ∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (f a))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.integrable_neg">      <h4>measure_theory.integrable_neg</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> (-f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.integrable_sub">      <h4>measure_theory.integrable_sub</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+{f g : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> (f - g)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.integrable_norm">      <h4>measure_theory.integrable_norm</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> (λ (a : α), ∥f a∥)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.integrable_smul">      <h4>measure_theory.integrable_smul</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β] {K : Type u_1}
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] {c : K} {f : α → β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> (c • f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.integrable">      <h4>measure_theory.ae_eq_fun.integrable</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], (α →ₘ β) → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.integrable_mk">      <h4>measure_theory.ae_eq_fun.integrable_mk</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α → β) (hf : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/ae_eq_fun.html#measure_theory.ae_eq_fun.mk">measure_theory.ae_eq_fun.mk</a> f hf) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.integrable_to_fun">      <h4>measure_theory.ae_eq_fun.integrable_to_fun</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α →ₘ β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/ae_eq_fun.html#measure_theory.ae_eq_fun.to_fun">measure_theory.ae_eq_fun.to_fun</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.integrable_zero">      <h4>measure_theory.ae_eq_fun.integrable_zero</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.integrable_add">      <h4>measure_theory.ae_eq_fun.integrable_add</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {f g : α →ₘ β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> (f + g)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.integrable_neg">      <h4>measure_theory.ae_eq_fun.integrable_neg</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {f : α →ₘ β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> (-f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.integrable_sub">      <h4>measure_theory.ae_eq_fun.integrable_sub</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {f g : α →ₘ β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> (f - g)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.is_add_subgroup">      <h4>measure_theory.ae_eq_fun.is_add_subgroup</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/subgroup.html#is_add_subgroup">is_add_subgroup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/emetric_space.html#emetric.ball">emetric.ball</a> 0 ⊤)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.ae_eq_fun.integrable_smul">      <h4>measure_theory.ae_eq_fun.integrable_smul</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] {c : K} {f : α →ₘ β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.ae_eq_fun.integrable">measure_theory.ae_eq_fun.integrable</a> (c • f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1">      <h4>measure_theory.l1</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] (β : Type v) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p><p>The space of equivalence classes of integrable (and measurable) functions, where two integrable
+   functions are equivalent if they agree almost everywhere, i.e., they differ on a set of measure
+   <code>0</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.mk">      <h4>measure_theory.l1.mk</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f → α →₁ β</code>
+<div class="indent"><p><p>Construct the equivalence class <code>[f]</code> of a measurable and integrable function <code>f</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.to_fun">      <h4>measure_theory.l1.to_fun</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], (α →₁ β) → α → β</code>
+<div class="indent"><p><p>Find a representative of an L1 function <code>[f]</code></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.measurable">      <h4>measure_theory.l1.measurable</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α →₁ β), <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.integrable">      <h4>measure_theory.l1.integrable</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α →₁ β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.mk_eq_mk">      <h4>measure_theory.l1.mk_eq_mk</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α → β) (hfm : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f)
+(hfi : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f) (hgm : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> g) (hgi : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> g),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> f hfm hfi = <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> g hgm hgi ↔ ∀ₘ (a : α), f a = g a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="measure_theory.l1.ext_iff">      <h4>measure_theory.l1.ext_iff</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α →₁ β) (f' g' : α → β)
+(hfm' : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f') (hfi' : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f') (hgm' : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> g')
+(hgi' : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> g'),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> f' hfm' hfi' = f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> g' hgm' hgi' = g → (f = g ↔ ∀ₘ (a : α), f' a = g' a)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.all_ae_mk_to_fun">      <h4>measure_theory.l1.all_ae_mk_to_fun</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α → β) (hfm : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f)
+(hfi : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f), ∀ₘ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> f hfm hfi) a = f a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.self_eq_mk">      <h4>measure_theory.l1.self_eq_mk</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α →₁ β),
+  f = <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f) _ _</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.emetric_space">      <h4>measure_theory.l1.emetric_space</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/emetric_space.html#emetric_space">emetric_space</a> (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.metric_space">      <h4>measure_theory.l1.metric_space</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/basic.html#metric_space">metric_space</a> (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.add_comm_group">      <h4>measure_theory.l1.add_comm_group</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.zero_def">      <h4>measure_theory.l1.zero_def</h4><code>∀ (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] (β : Type v) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], 0 = ⟨0, _⟩</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.zero_to_fun">      <h4>measure_theory.l1.zero_to_fun</h4><code>∀ (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] (β : Type v) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], ∀ₘ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> 0 a = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.mk_zero">      <h4>measure_theory.l1.mk_zero</h4><code>∀ (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] (β : Type v) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> 0 <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable_const">measurable_const</a> <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable_zero">measure_theory.integrable_zero</a> = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.add_def">      <h4>measure_theory.l1.add_def</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α →₁ β), f + g = ⟨f.val + g.val, _⟩</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.mk_add">      <h4>measure_theory.l1.mk_add</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α → β) (hfm : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> (λ (a : α), f a))
+(hfi : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f) (hgm : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> (λ (a : α), g a)) (hgi : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> g),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> (f + g) _ _ = <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> f hfm hfi + <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> g hgm hgi</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.add_to_fun">      <h4>measure_theory.l1.add_to_fun</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α →₁ β),
+  ∀ₘ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> (f + g) a = <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f a + <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> g a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.neg_mk">      <h4>measure_theory.l1.neg_mk</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α → β) (hfm : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f)
+(hfi : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f), -measure_theory.l1.mk f hfm hfi = <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> (-f) _ _</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.neg_to_fun">      <h4>measure_theory.l1.neg_to_fun</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α →₁ β),
+  ∀ₘ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> (-f) a = -measure_theory.l1.to_fun f a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.sub_to_fun">      <h4>measure_theory.l1.sub_to_fun</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α →₁ β),
+  ∀ₘ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> (f - g) a = <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f a - <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> g a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.dist_def">      <h4>measure_theory.l1.dist_def</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α →₁ β),
+  has_dist.dist f g = <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/ennreal.html#ennreal.to_real">ennreal.to_real</a> (has_edist.edist (f.val) (g.val))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.dist_to_fun">      <h4>measure_theory.l1.dist_to_fun</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α →₁ β),
+  has_dist.dist f g =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/ennreal.html#ennreal.to_real">ennreal.to_real</a> (∫⁻ (x : α), has_edist.edist (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f x) (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> g x))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.has_norm">      <h4>measure_theory.l1.has_norm</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#has_norm">has_norm</a> (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.norm_def">      <h4>measure_theory.l1.norm_def</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α →₁ β),
+  ∥f∥ = <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/ennreal.html#ennreal.to_real">ennreal.to_real</a> (has_edist.edist (f.val) 0)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.norm_mk">      <h4>measure_theory.l1.norm_mk</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α → β) (hfm : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f)
+(hfi : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f),
+  ∥measure_theory.l1.mk f hfm hfi∥ = <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/ennreal.html#ennreal.to_real">ennreal.to_real</a> (∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (f a)))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.norm_to_fun">      <h4>measure_theory.l1.norm_to_fun</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f : α →₁ β),
+  ∥f∥ = <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/ennreal.html#ennreal.to_real">ennreal.to_real</a> (∫⁻ (a : α), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f a)))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.normed_group">      <h4>measure_theory.l1.normed_group</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.lintegral_edist_to_fun_lt_top">      <h4>measure_theory.l1.lintegral_edist_to_fun_lt_top</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] (f g : α →₁ β),
+  (∫⁻ (a : α), has_edist.edist (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f a) (<a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> g a)) < ⊤</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.smul">      <h4>measure_theory.l1.smul</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β], K → (α →₁ β) → α →₁ β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.has_scalar">      <h4>measure_theory.l1.has_scalar</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β], <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#has_scalar">has_scalar</a> K (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.smul_def">      <h4>measure_theory.l1.smul_def</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] (k : K) (f : α →₁ β), k • f = ⟨k • f.val, _⟩</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.smul_mk">      <h4>measure_theory.l1.smul_mk</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] (f : α → β) (hfm : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measurable_space.html#measurable">measurable</a> f) (hfi : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.integrable">measure_theory.integrable</a> f) (k : K),
+  k • <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> f hfm hfi = <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.mk">measure_theory.l1.mk</a> (k • f) _ _</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.smul_to_fun">      <h4>measure_theory.l1.smul_to_fun</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β] (c : K) (f : α →₁ β),
+  ∀ₘ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> (c • f) a = c • <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/l1_space.html#measure_theory.l1.to_fun">measure_theory.l1.to_fun</a> f a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="measure_theory.l1.semimodule">      <h4>measure_theory.l1.semimodule</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/module.html#semimodule">semimodule</a> K (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.module">      <h4>measure_theory.l1.module</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/module.html#module">module</a> K (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.vector_space">      <h4>measure_theory.l1.vector_space</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/module.html#vector_space">vector_space</a> K (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="measure_theory.l1.normed_space">      <h4>measure_theory.l1.normed_space</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/measure_theory/measure_space.html#measure_theory.measure_space">measure_theory.measure_space</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_group">normed_group</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/bases.html#topological_space.second_countable_topology">topological_space.second_countable_topology</a> β] {K : Type u_1} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_field">normed_field</a> K]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K β], <a href="/home/rob/lean/mathlib/scripts/html_out/analysis/normed_space/basic.html#normed_space">normed_space</a> K (α →₁ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div></body></html>

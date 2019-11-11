@@ -1,0 +1,54 @@
+<html><head><title>data.nat.fib</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>The Fibonacci Sequence</h1>
+
+<h2>Summary</h2>
+
+<p>Definition of the Fibonacci sequence <code>F₀ = 0, F₁ = 1, Fₙ₊₂ = Fₙ + Fₙ₊₁</code>.</p>
+
+<h2>Main Definitions</h2>
+
+<ul>
+<li><code>fib</code> returns the stream of Fibonacci numbers.</li>
+</ul>
+
+<h2>Main Statements</h2>
+
+<ul>
+<li><code>fib_succ_succ</code> shows that <code>fib</code> indeed satisfies the Fibonacci recurrence <code>Fₙ₊₂ = Fₙ + Fₙ₊₁.</code>.</li>
+</ul>
+
+<h2>Implementation Notes</h2>
+
+<p>For efficiency purposes, the sequence is defined using <code>stream.iterate</code>.</p>
+
+<h2>Tags</h2>
+
+<p>fib, fibonacci</p>
+</div><div class="entry"><a id="nat.fib">      <h4>nat.fib</h4><code>ℕ → ℕ</code>
+<div class="indent"><p><p>Implementation of the fibonacci sequence satisfying
+<code>fib 0 = 0, fib 1 = 1, fib (n + 2) = fib n + fib (n + 1)</code>.</p>
+
+<p><em>Note:</em> We use a stream iterator for better performance when compared to the naive recursive
+implementation.</p>
+</p>       </div>
+</div><div class="entry"><a id="nat.fib_zero">      <h4>nat.fib_zero</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nat.fib_one">      <h4>nat.fib_one</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> 1 = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nat.fib_succ_succ">      <h4>nat.fib_succ_succ</h4><code>∀ {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> (n + 2) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> n + <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> (n + 1)</code>
+<div class="indent"><p><p>Shows that <code>fib</code> indeed satisfies the Fibonacci recurrence <code>Fₙ₊₂ = Fₙ + Fₙ₊₁.</code></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.fib_pos">      <h4>nat.fib_pos</h4><code>∀ {n : ℕ}, 0 < n → 0 < <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.fib_le_fib_succ">      <h4>nat.fib_le_fib_succ</h4><code>∀ {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> n ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> (n + 1)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.fib_mono">      <h4>nat.fib_mono</h4><code>∀ {n m : ℕ}, n ≤ m → <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> n ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> m</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.le_fib_self">      <h4>nat.le_fib_self</h4><code>∀ {n : ℕ}, 5 ≤ n → n ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/fib.html#nat.fib">nat.fib</a> n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

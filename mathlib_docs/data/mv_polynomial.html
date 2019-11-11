@@ -1,0 +1,773 @@
+<html><head><title>data.mv_polynomial</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="mv_polynomial">      <h4>mv_polynomial</h4><code>Type u_1 → Π (α : Type u_2) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u_1 u_2)</code>
+<div class="indent"><p><p>Multivariate polynomial, where <code>σ</code> is the index set of the variables and
+ <code>α</code> is the coefficient ring</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.decidable_eq_mv_polynomial">      <h4>mv_polynomial.decidable_eq_mv_polynomial</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> σ] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.has_zero">      <h4>mv_polynomial.has_zero</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.has_one">      <h4>mv_polynomial.has_one</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.has_add">      <h4>mv_polynomial.has_add</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_add">has_add</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.has_mul">      <h4>mv_polynomial.has_mul</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.comm_semiring">      <h4>mv_polynomial.comm_semiring</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.monomial">      <h4>mv_polynomial.monomial</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], (σ →₀ ℕ) → α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α</code>
+<div class="indent"><p><p><code>monomial s a</code> is the monomial <code>a * X^s</code></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.C">      <h4>mv_polynomial.C</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α</code>
+<div class="indent"><p><p><code>C a</code> is the constant polynomial with value <code>a</code></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.X">      <h4>mv_polynomial.X</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], σ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α</code>
+<div class="indent"><p><p><code>X n</code> is the polynomial with value X_n</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.C_0">      <h4>mv_polynomial.C_0</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.C_1">      <h4>mv_polynomial.C_1</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> 1 = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.C_mul_monomial">      <h4>mv_polynomial.C_mul_monomial</h4><code>∀ {α : Type u} {σ : Type u_1} {a a' : α} {s : σ →₀ ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a' = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s (a * a')</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.C_add">      <h4>mv_polynomial.C_add</h4><code>∀ {α : Type u} {σ : Type u_1} {a a' : α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (a + a') = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a + <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a'</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.C_mul">      <h4>mv_polynomial.C_mul</h4><code>∀ {α : Type u} {σ : Type u_1} {a a' : α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (a * a') = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a'</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.C_pow">      <h4>mv_polynomial.C_pow</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (a : α) (n : ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (a ^ n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a ^ n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.is_semiring_hom">      <h4>mv_polynomial.is_semiring_hom</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.C_eq_coe_nat">      <h4>mv_polynomial.C_eq_coe_nat</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> ↑n = ↑n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.X_pow_eq_single">      <h4>mv_polynomial.X_pow_eq_single</h4><code>∀ {α : Type u} {σ : Type u_1} {e : ℕ} {n : σ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n ^ e = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.single">finsupp.single</a> n e) 1</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.monomial_add_single">      <h4>mv_polynomial.monomial_add_single</h4><code>∀ {α : Type u} {σ : Type u_1} {a : α} {e : ℕ} {n : σ} {s : σ →₀ ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> (s + <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.single">finsupp.single</a> n e) a = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n ^ e</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.monomial_single_add">      <h4>mv_polynomial.monomial_single_add</h4><code>∀ {α : Type u} {σ : Type u_1} {a : α} {e : ℕ} {n : σ} {s : σ →₀ ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.single">finsupp.single</a> n e + s) a = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n ^ e * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.monomial_eq">      <h4>mv_polynomial.monomial_eq</h4><code>∀ {α : Type u} {σ : Type u_1} {a : α} {s : σ →₀ ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.prod">finsupp.prod</a> s (λ (n : σ) (e : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n ^ e)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.induction_on">      <h4>mv_polynomial.induction_on</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {M : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → Prop}
+(p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  (∀ (a : α), M (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a)) →
+  (∀ (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α), M p → M q → M (p + q)) →
+  (∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (n : σ), M p → M (p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n)) → M p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.hom_eq_hom">      <h4>mv_polynomial.hom_eq_hom</h4><code>∀ {α : Type u} {γ : Type w} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#semiring">semiring</a> γ]
+(f g : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> g →
+  (∀ (a : α), f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a)) →
+  (∀ (n : σ), f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) = g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n)) → ∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α), f p = g p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.is_id">      <h4>mv_polynomial.is_id</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f →
+  (∀ (a : α), f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) →
+  (∀ (n : σ), f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) → ∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α), f p = p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.coeff">      <h4>mv_polynomial.coeff</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], (σ →₀ ℕ) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → α</code>
+<div class="indent"><p><p>The coefficient of the monomial <code>m</code> in the multi-variable polynomial <code>p</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.ext">      <h4>mv_polynomial.ext</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  (∀ (m : σ →₀ ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m q) → p = q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.ext_iff">      <h4>mv_polynomial.ext_iff</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  (∀ (m : σ →₀ ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m q) ↔ p = q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.coeff_add">      <h4>mv_polynomial.coeff_add</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m : σ →₀ ℕ) (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (p + q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m p + <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_zero">      <h4>mv_polynomial.coeff_zero</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m : σ →₀ ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_zero_X">      <h4>mv_polynomial.coeff_zero_X</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (i : σ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> 0 (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> i) = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff.is_add_monoid_hom">      <h4>mv_polynomial.coeff.is_add_monoid_hom</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m : σ →₀ ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#is_add_monoid_hom">is_add_monoid_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_sum">      <h4>mv_polynomial.coeff_sum</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {X : Type u_2} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> X)
+(f : X → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (m : σ →₀ ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s f) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (x : X), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (f x))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.monic_monomial_eq">      <h4>mv_polynomial.monic_monomial_eq</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m : σ →₀ ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> m 1 = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.prod">finsupp.prod</a> m (λ (n : σ) (e : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n ^ e)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.coeff_monomial">      <h4>mv_polynomial.coeff_monomial</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m n : σ →₀ ℕ) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> n a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (n = m) a 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_C">      <h4>mv_polynomial.coeff_C</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m : σ →₀ ℕ) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (0 = m) a 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_X_pow">      <h4>mv_polynomial.coeff_X_pow</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (i : σ) (m : σ →₀ ℕ) (k : ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> i ^ k) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.single">finsupp.single</a> i k = m) 1 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.coeff_X'">      <h4>mv_polynomial.coeff_X'</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (i : σ) (m : σ →₀ ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> i) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.single">finsupp.single</a> i 1 = m) 1 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.coeff_X">      <h4>mv_polynomial.coeff_X</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (i : σ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.single">finsupp.single</a> i 1) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> i) = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_C_mul">      <h4>mv_polynomial.coeff_C_mul</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m : σ →₀ ℕ) (a : α) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a * p) = a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_mul">      <h4>mv_polynomial.coeff_mul</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (n : σ →₀ ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> n (p * q) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> ((<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.antidiagonal">finsupp.antidiagonal</a> n).support)
+      (λ (x : (σ →₀ ℕ) × (σ →₀ ℕ)), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> (x.fst) p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> (x.snd) q)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.coeff_mul_X">      <h4>mv_polynomial.coeff_mul_X</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m : σ →₀ ℕ) (s : σ) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> (m + <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.single">finsupp.single</a> s 1) (p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_mul_X'">      <h4>mv_polynomial.coeff_mul_X'</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (m : σ →₀ ℕ) (s : σ) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> s) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (s ∈ m.support) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> (m - <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.single">finsupp.single</a> s 1) p) 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂">      <h4>mv_polynomial.eval₂</h4><code>Π {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β],
+  (α → β) → (σ → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → β</code>
+<div class="indent"><p><p>Evaluate a polynomial <code>p</code> given a valuation <code>g</code> of all the variables
+ and a ring hom <code>f</code> from the scalar ring to the target</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_zero">      <h4>mv_polynomial.eval₂_zero</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_add">      <h4>mv_polynomial.eval₂_add</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α}
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β] (f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (p + q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g p + <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_monomial">      <h4>mv_polynomial.eval₂_monomial</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} {a : α} {s : σ →₀ ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β] (f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a) = f a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.prod">finsupp.prod</a> s (λ (n : σ) (e : ℕ), g n ^ e)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_C">      <h4>mv_polynomial.eval₂_C</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_one">      <h4>mv_polynomial.eval₂_one</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g 1 = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_X">      <h4>mv_polynomial.eval₂_X</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (n : σ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) = g n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_mul_monomial">      <h4>mv_polynomial.eval₂_mul_monomial</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α}
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β] (f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] {s : σ →₀ ℕ} {a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g p * f a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.prod">finsupp.prod</a> s (λ (n : σ) (e : ℕ), g n ^ e)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_mul">      <h4>mv_polynomial.eval₂_mul</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α}
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β] (f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] {p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (p * q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_pow">      <h4>mv_polynomial.eval₂_pow</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] {p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α} {n : ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (p ^ n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g p ^ n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂.is_semiring_hom">      <h4>mv_polynomial.eval₂.is_semiring_hom</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_comp_left">      <h4>mv_polynomial.eval₂_comp_left</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+{γ : Type u_2} [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> γ] (k : β → γ) [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> k] (f : α → β)
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (g : σ → β) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  k (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> (k ∘ f) (k ∘ g) p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_eta">      <h4>mv_polynomial.eval₂_eta</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> p = p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_congr">      <h4>mv_polynomial.eval₂_congr</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α}
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β] (f : α → β) (g₁ g₂ : σ → β),
+  (∀ {i : σ} {c : σ →₀ ℕ}, i ∈ c.support → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> c p ≠ 0 → g₁ i = g₂ i) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g₁ p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g₂ p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_prod">      <h4>mv_polynomial.eval₂_prod</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> γ) (p : γ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> s p) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> s (λ (x : γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (p x))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_sum">      <h4>mv_polynomial.eval₂_sum</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> γ) (p : γ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s p) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (x : γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (p x))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_assoc">      <h4>mv_polynomial.eval₂_assoc</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) (g : σ → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (q : γ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)
+(p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f (λ (t : γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (q t)) p =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> q p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval">      <h4>mv_polynomial.eval</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], (σ → α) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → α</code>
+<div class="indent"><p><p>Evaluate a polynomial <code>p</code> given a valuation <code>f</code> of all the variables</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval_zero">      <h4>mv_polynomial.eval_zero</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {f : σ → α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval_add">      <h4>mv_polynomial.eval_add</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α} {f : σ → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f (p + q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f p + <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval_monomial">      <h4>mv_polynomial.eval_monomial</h4><code>∀ {α : Type u} {σ : Type u_1} {a : α} {s : σ →₀ ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {f : σ → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a) = a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.prod">finsupp.prod</a> s (λ (n : σ) (e : ℕ), f n ^ e)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval_C">      <h4>mv_polynomial.eval_C</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {f : σ → α} (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval_X">      <h4>mv_polynomial.eval_X</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {f : σ → α} (n : σ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) = f n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval_mul">      <h4>mv_polynomial.eval_mul</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α} {f : σ → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f (p * q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.eval.is_semiring_hom">      <h4>mv_polynomial.eval.is_semiring_hom</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {f : σ → α}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.eval_assoc">      <h4>mv_polynomial.eval_assoc</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {τ : Type u_2} (f : σ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> τ α)
+(g : τ → α) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> g ∘ f) p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> f p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.map">      <h4>mv_polynomial.map</h4><code>Π {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β],
+  (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ β</code>
+<div class="indent"><p><p><code>map f p</code> maps a polynomial <code>p</code> across a ring hom <code>f</code></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.map_monomial">      <h4>mv_polynomial.map_monomial</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (s : σ →₀ ℕ) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s (f a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map_C">      <h4>mv_polynomial.map_C</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (f a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map_X">      <h4>mv_polynomial.map_X</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (n : σ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map_one">      <h4>mv_polynomial.map_one</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f 1 = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map_add">      <h4>mv_polynomial.map_add</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (p + q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p + <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map_mul">      <h4>mv_polynomial.map_mul</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (p * q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map_pow">      <h4>mv_polynomial.map_pow</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (n : ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (p ^ n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p ^ n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map.is_semiring_hom">      <h4>mv_polynomial.map.is_semiring_hom</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.map_id">      <h4>mv_polynomial.map_id</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> p = p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.map_map">      <h4>mv_polynomial.map_map</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> γ] (g : β → γ) [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> g]
+(p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> (g ∘ f) p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_eq_eval_map">      <h4>mv_polynomial.eval₂_eq_eval_map</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (g : σ → β) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_comp_right">      <h4>mv_polynomial.eval₂_comp_right</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+{γ : Type u_2} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> γ] (k : β → γ) [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> k] (f : α → β)
+[_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (g : σ → β) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  k (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> k (k ∘ g) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.map_eval₂">      <h4>mv_polynomial.map_eval₂</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {δ : Type x} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (g : γ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> δ α) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> g p) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f ∘ g) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.coeff_map">      <h4>mv_polynomial.coeff_map</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (m : σ →₀ ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p) = f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.map_injective">      <h4>mv_polynomial.map_injective</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees">      <h4>mv_polynomial.degrees</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset">multiset</a> σ</code>
+<div class="indent"><p><p>The maximal degrees of each variable in a multi-variable polynomial, expressed as a multiset.</p>
+
+<p>(For example, <code>degrees (x^2 * y + y^3)</code> would be <code>{x, x, y, y, y}</code>.)</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_monomial">      <h4>mv_polynomial.degrees_monomial</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (s : σ →₀ ℕ) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.to_multiset">finsupp.to_multiset</a> s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_monomial_eq">      <h4>mv_polynomial.degrees_monomial_eq</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (s : σ →₀ ℕ) (a : α),
+  a ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.to_multiset">finsupp.to_multiset</a> s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_C">      <h4>mv_polynomial.degrees_C</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_X">      <h4>mv_polynomial.degrees_X</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (n : σ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) ≤ {n}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_zero">      <h4>mv_polynomial.degrees_zero</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_one">      <h4>mv_polynomial.degrees_one</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> 1 = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_add">      <h4>mv_polynomial.degrees_add</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (p + q) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> p ⊔ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_sum">      <h4>mv_polynomial.degrees_sum</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {ι : Type u_2} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> ι)
+(f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s f) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.sup">finset.sup</a> s (λ (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (f i))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_mul">      <h4>mv_polynomial.degrees_mul</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (p * q) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> p + <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_prod">      <h4>mv_polynomial.degrees_prod</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {ι : Type u_2} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> ι)
+(f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> s f) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (f i))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_pow">      <h4>mv_polynomial.degrees_pow</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (n : ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (p ^ n) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#add_monoid.smul">add_monoid.smul</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.vars">      <h4>mv_polynomial.vars</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> σ</code>
+<div class="indent"><p><p><code>vars p</code> is the set of variables appearing in the polynomial <code>p</code></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.vars_0">      <h4>mv_polynomial.vars_0</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.vars">mv_polynomial.vars</a> 0 = ∅</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.vars_monomial">      <h4>mv_polynomial.vars_monomial</h4><code>∀ {α : Type u} {σ : Type u_1} {a : α} {s : σ →₀ ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  a ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.vars">mv_polynomial.vars</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> s a) = s.support</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.vars_C">      <h4>mv_polynomial.vars_C</h4><code>∀ {α : Type u} {σ : Type u_1} {a : α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.vars">mv_polynomial.vars</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = ∅</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.vars_X">      <h4>mv_polynomial.vars_X</h4><code>∀ {α : Type u} {σ : Type u_1} {n : σ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  0 ≠ 1 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.vars">mv_polynomial.vars</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) = {n}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.degree_of">      <h4>mv_polynomial.degree_of</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], σ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → ℕ</code>
+<div class="indent"><p><p><code>degree_of n p</code> gives the highest power of X_n that appears in <code>p</code></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree">      <h4>mv_polynomial.total_degree</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α → ℕ</code>
+<div class="indent"><p><p><code>total_degree p</code> gives the maximum |s| over the monomials X^s in <code>p</code></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_eq">      <h4>mv_polynomial.total_degree_eq</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.sup">finset.sup</a> (p.support) (λ (m : σ →₀ ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset.card">multiset.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.to_multiset">finsupp.to_multiset</a> m))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_le_degrees_card">      <h4>mv_polynomial.total_degree_le_degrees_card</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> p ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset.card">multiset.card</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_C">      <h4>mv_polynomial.total_degree_C</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_zero">      <h4>mv_polynomial.total_degree_zero</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_one">      <h4>mv_polynomial.total_degree_one</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> 1 = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_add">      <h4>mv_polynomial.total_degree_add</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (a b : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> (a + b) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> a) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_mul">      <h4>mv_polynomial.total_degree_mul</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (a b : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> (a * b) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> a + <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_list_prod">      <h4>mv_polynomial.total_degree_list_prod</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.prod">list.prod</a> s) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.sum">list.sum</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.map">list.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_multiset_prod">      <h4>mv_polynomial.total_degree_multiset_prod</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset">multiset</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset.prod">multiset.prod</a> s) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset.sum">multiset.sum</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/multiset.html#multiset.map">multiset.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_finset_prod">      <h4>mv_polynomial.total_degree_finset_prod</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {ι : Type u_2} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> ι)
+(f : ι → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> s f) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (i : ι), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> (f i))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.ring">      <h4>mv_polynomial.ring</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.comm_ring">      <h4>mv_polynomial.comm_ring</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.has_scalar">      <h4>mv_polynomial.has_scalar</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#has_scalar">has_scalar</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.module">      <h4>mv_polynomial.module</h4><code>Π {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/module.html#module">module</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.C.is_ring_hom">      <h4>mv_polynomial.C.is_ring_hom</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.C_sub">      <h4>mv_polynomial.C_sub</h4><code>∀ {α : Type u} (σ : Type u_1) (a a' : α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (a - a') = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a - <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a'</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.C_neg">      <h4>mv_polynomial.C_neg</h4><code>∀ {α : Type u} (σ : Type u_1) (a : α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (-a) = -mv_polynomial.C a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff_sub">      <h4>mv_polynomial.coeff_sub</h4><code>∀ {α : Type u} (σ : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (m : σ →₀ ℕ) (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m (p - q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m p - <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.coeff.is_add_group_hom">      <h4>mv_polynomial.coeff.is_add_group_hom</h4><code>∀ {α : Type u} (σ : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (m : σ →₀ ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#is_add_group_hom">is_add_group_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.coeff">mv_polynomial.coeff</a> m)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.C_mul'">      <h4>mv_polynomial.C_mul'</h4><code>∀ {α : Type u} {σ : Type u_1} (a : α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a * p = a • p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.smul_eq_C_mul">      <h4>mv_polynomial.smul_eq_C_mul</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (a : α),
+  a • p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a * p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.smul_eval">      <h4>mv_polynomial.smul_eval</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (x : σ → α) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (s : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> x (s • p) = s * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> x p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.degrees_neg">      <h4>mv_polynomial.degrees_neg</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (-p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.degrees_sub">      <h4>mv_polynomial.degrees_sub</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> (p - q) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> p ⊔ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.degrees">mv_polynomial.degrees</a> q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂.is_ring_hom">      <h4>mv_polynomial.eval₂.is_ring_hom</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β] (f : α → β)
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> f] (g : σ → β), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_sub">      <h4>mv_polynomial.eval₂_sub</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)
+{q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β] (f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> f] (g : σ → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (p - q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g p - <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_neg">      <h4>mv_polynomial.eval₂_neg</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β] (f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> f] (g : σ → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (-p) = -mv_polynomial.eval₂ f g p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.hom_C">      <h4>mv_polynomial.hom_C</h4><code>∀ {β : Type v} {σ : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β] (f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ ℤ → β) [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> f]
+(n : ℤ), f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> n) = ↑n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_hom_X">      <h4>mv_polynomial.eval₂_hom_X</h4><code>∀ {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β] {α : Type u} (c : ℤ → β) [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> c]
+(f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> α ℤ → β) [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> f] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> α ℤ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> c (f ∘ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a>) x = f x</code>
+<div class="indent"><p><p>A ring homomorphism f : Z[X<em>1, X</em>2, ...] → R
+is determined by the evaluations f(X<em>1), f(X</em>2), ...</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.hom_equiv">      <h4>mv_polynomial.hom_equiv</h4><code>Π {β : Type v} {σ : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β], (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ ℤ →+* β) ≃ (σ → β)</code>
+<div class="indent"><p><p>Ring homomorphisms out of integer polynomials on a type <code>σ</code> are the same as
+functions out of the type <code>σ</code>,</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval.is_ring_hom">      <h4>mv_polynomial.eval.is_ring_hom</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (f : σ → α), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.eval_sub">      <h4>mv_polynomial.eval_sub</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) {q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α}
+(f : σ → α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f (p - q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f p - <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval_neg">      <h4>mv_polynomial.eval_neg</h4><code>∀ {α : Type u} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α) (f : σ → α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> f (-p) = -mv_polynomial.eval f p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map.is_ring_hom">      <h4>mv_polynomial.map.is_ring_hom</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β] (f : α → β)
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> f], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.map_sub">      <h4>mv_polynomial.map_sub</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)
+{q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β] (f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> f],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (p - q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p - <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.map_neg">      <h4>mv_polynomial.map_neg</h4><code>∀ {α : Type u} {β : Type v} {σ : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> σ α)
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> β] (f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> f], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (-p) = -mv_polynomial.map f p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename">      <h4>mv_polynomial.rename</h4><code>Π {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  (β → γ) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α</code>
+<div class="indent"><p><p>Rename all the variables in a multivariable polynomial.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.rename.is_semiring_hom">      <h4>mv_polynomial.rename.is_semiring_hom</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.rename_C">      <h4>mv_polynomial.rename_C</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_X">      <h4>mv_polynomial.rename_X</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (b : β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> b) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> (f b)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_zero">      <h4>mv_polynomial.rename_zero</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f 0 = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_one">      <h4>mv_polynomial.rename_one</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f 1 = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_add">      <h4>mv_polynomial.rename_add</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f (p + q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f p + <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_sub">      <h4>mv_polynomial.rename_sub</h4><code>∀ {β : Type v} {γ : Type w} {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (f : β → γ) (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f (p - q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f p - <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_mul">      <h4>mv_polynomial.rename_mul</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (p q : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f (p * q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f p * <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f q</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_pow">      <h4>mv_polynomial.rename_pow</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α)
+(n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f (p ^ n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f p ^ n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.map_rename">      <h4>mv_polynomial.map_rename</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {δ : Type x} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (g : γ → δ) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> g p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.map">mv_polynomial.map</a> f p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.rename_rename">      <h4>mv_polynomial.rename_rename</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {δ : Type x} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (g : γ → δ)
+(p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> (g ∘ f) p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_id">      <h4>mv_polynomial.rename_id</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> p = p</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="mv_polynomial.rename_monomial">      <h4>mv_polynomial.rename_monomial</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (p : β →₀ ℕ) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> p a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.monomial">mv_polynomial.monomial</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.map_domain">finsupp.map_domain</a> f p) a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.rename_eq">      <h4>mv_polynomial.rename_eq</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f p = <a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.map_domain">finsupp.map_domain</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finsupp.html#finsupp.map_domain">finsupp.map_domain</a> f) p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.injective_rename">      <h4>mv_polynomial.injective_rename</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.total_degree_rename_le">      <h4>mv_polynomial.total_degree_rename_le</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (f : β → γ) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f p) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.total_degree">mv_polynomial.total_degree</a> p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_rename">      <h4>mv_polynomial.eval₂_rename</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {δ : Type x} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (k : γ → δ) (g : δ → β) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> k p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f (g ∘ k) p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.rename_eval₂">      <h4>mv_polynomial.rename_eval₂</h4><code>∀ {α : Type u} {γ : Type w} {δ : Type x} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (k : γ → δ) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α)
+(g : δ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> k (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (g ∘ k) p) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> k ∘ g) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> k p)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.rename_prodmk_eval₂">      <h4>mv_polynomial.rename_prodmk_eval₂</h4><code>∀ {α : Type u} {γ : Type w} {δ : Type x} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α) (d : δ)
+(g : γ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> (prod.mk d) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> g p) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (λ (x : γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> (prod.mk d) (g x)) p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_rename_prodmk">      <h4>mv_polynomial.eval₂_rename_prodmk</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {δ : Type x} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> β]
+(f : α → β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α) (g : δ × γ → β) (d : δ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> (prod.mk d) p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> f (λ (i : γ), g (d, i)) p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval_rename_prodmk">      <h4>mv_polynomial.eval_rename_prodmk</h4><code>∀ {α : Type u} {γ : Type w} {δ : Type x} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α)
+(g : δ × γ → α) (d : δ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> (prod.mk d) p) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval">mv_polynomial.eval</a> (λ (i : γ), g (d, i)) p</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.eval₂_cast_comp">      <h4>mv_polynomial.eval₂_cast_comp</h4><code>∀ {β : Type u} {γ : Type v} (f : γ → β) {α : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (c : ℤ → α)
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> c] (g : β → α) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ ℤ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> c (g ∘ f) x = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.eval₂">mv_polynomial.eval₂</a> c g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f x)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.rename.is_ring_hom">      <h4>mv_polynomial.rename.is_ring_hom</h4><code>∀ {β : Type v} {γ : Type w} {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] (f : β → γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_ring_hom">is_ring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.rename">mv_polynomial.rename</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.pempty_ring_equiv">      <h4>mv_polynomial.pempty_ring_equiv</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> <a href="/home/rob/lean/mathlib/scripts/html_out/logic/basic.html#pempty">pempty</a> α ≃+* α</code>
+<div class="indent"><p><p>The ring isomorphism between multivariable polynomials in no variables and the ground ring.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.punit_ring_equiv">      <h4>mv_polynomial.punit_ring_equiv</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#punit">punit</a> α ≃+* <a href="/home/rob/lean/mathlib/scripts/html_out/data/polynomial.html#polynomial">polynomial</a> α</code>
+<div class="indent"><p><p>The ring isomorphism between multivariable polynomials in a single variable and
+polynomials over the ground ring.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.ring_equiv_of_equiv">      <h4>mv_polynomial.ring_equiv_of_equiv</h4><code>Π (α : Type u) {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  β ≃ γ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α ≃+* <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α</code>
+<div class="indent"><p><p>The ring isomorphism between multivariable polynomials induced by an equivalence of the variables.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.ring_equiv_congr">      <h4>mv_polynomial.ring_equiv_congr</h4><code>Π (α : Type u) {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> γ],
+  α ≃+* γ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α ≃+* <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β γ</code>
+<div class="indent"><p><p>The ring isomorphism between multivariable polynomials induced by a ring isomorphism of the ground ring.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.sum_to_iter">      <h4>mv_polynomial.sum_to_iter</h4><code>Π (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> (β ⊕ γ) α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α)</code>
+<div class="indent"><p><p>The function from multivariable polynomials in a sum of two types,
+to multivariable polynomials in one of the types,
+with coefficents in multivariable polynomials in the other type.</p>
+
+<p>See <code>sum_ring_equiv</code> for the ring isomorphism.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.is_semiring_hom_C_C">      <h4>mv_polynomial.is_semiring_hom_C_C</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> ∘ <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a>)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.is_semiring_hom_sum_to_iter">      <h4>mv_polynomial.is_semiring_hom_sum_to_iter</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.sum_to_iter">mv_polynomial.sum_to_iter</a> α β γ)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.sum_to_iter_C">      <h4>mv_polynomial.sum_to_iter_C</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.sum_to_iter">mv_polynomial.sum_to_iter</a> α β γ (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.sum_to_iter_Xl">      <h4>mv_polynomial.sum_to_iter_Xl</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (b : β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.sum_to_iter">mv_polynomial.sum_to_iter</a> α β γ (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> (sum.inl b)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.sum_to_iter_Xr">      <h4>mv_polynomial.sum_to_iter_Xr</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (c : γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.sum_to_iter">mv_polynomial.sum_to_iter</a> α β γ (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> (sum.inr c)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.iter_to_sum">      <h4>mv_polynomial.iter_to_sum</h4><code>Π (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> (β ⊕ γ) α</code>
+<div class="indent"><p><p>The function from multivariable polynomials in one type,
+with coefficents in multivariable polynomials in another type,
+to multivariable polynomials in the sum of the two types.</p>
+
+<p>See <code>sum_ring_equiv</code> for the ring isomorphism.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.is_semiring_hom_iter_to_sum">      <h4>mv_polynomial.is_semiring_hom_iter_to_sum</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.iter_to_sum">mv_polynomial.iter_to_sum</a> α β γ)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="mv_polynomial.iter_to_sum_C_C">      <h4>mv_polynomial.iter_to_sum_C_C</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.iter_to_sum">mv_polynomial.iter_to_sum</a> α β γ (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.iter_to_sum_X">      <h4>mv_polynomial.iter_to_sum_X</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (b : β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.iter_to_sum">mv_polynomial.iter_to_sum</a> α β γ (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> b) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> (sum.inl b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.iter_to_sum_C_X">      <h4>mv_polynomial.iter_to_sum_C_X</h4><code>∀ (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] (c : γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.iter_to_sum">mv_polynomial.iter_to_sum</a> α β γ (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> c)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> (sum.inr c)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.mv_polynomial_equiv_mv_polynomial">      <h4>mv_polynomial.mv_polynomial_equiv_mv_polynomial</h4><code>Π (α : Type u) (β : Type v) (γ : Type w) (δ : Type x) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> δ]
+(f : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ δ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> f →
+  Π (g : <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ δ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α),
+    <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/ring.html#is_semiring_hom">is_semiring_hom</a> g →
+    (∀ (a : δ), f (g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) →
+    (∀ (n : γ), f (g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) →
+    (∀ (a : α), g (f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.C">mv_polynomial.C</a> a) →
+    (∀ (n : β), g (f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial.X">mv_polynomial.X</a> n) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α ≃+* <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ δ</code>
+<div class="indent"><p><p>A helper function for <code>sum_ring_equiv</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.sum_ring_equiv">      <h4>mv_polynomial.sum_ring_equiv</h4><code>Π (α : Type u) (β : Type v) (γ : Type w) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> (β ⊕ γ) α ≃+* <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> γ α)</code>
+<div class="indent"><p><p>The ring isomorphism between multivariable polynomials in a sum of two types,
+and multivariable polynomials in one of the types,
+with coefficents in multivariable polynomials in the other type.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.option_equiv_left">      <h4>mv_polynomial.option_equiv_left</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β) α ≃+* <a href="/home/rob/lean/mathlib/scripts/html_out/data/polynomial.html#polynomial">polynomial</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β α)</code>
+<div class="indent"><p><p>The ring isomorphism between multivariable polynomials in <code>option β</code> and
+polynomials with coefficients in <code>mv_polynomial β α</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="mv_polynomial.option_equiv_right">      <h4>mv_polynomial.option_equiv_right</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β) α ≃+* <a href="/home/rob/lean/mathlib/scripts/html_out/data/mv_polynomial.html#mv_polynomial">mv_polynomial</a> β (<a href="/home/rob/lean/mathlib/scripts/html_out/data/polynomial.html#polynomial">polynomial</a> α)</code>
+<div class="indent"><p><p>The ring isomorphism between multivariable polynomials in <code>option β</code> and
+multivariable polynomials with coefficients in polynomials.</p>
+</p>       </div>
+</div></body></html>

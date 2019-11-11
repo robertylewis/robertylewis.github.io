@@ -1,0 +1,214 @@
+<html><head><title>ring_theory.multiplicity</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="nat.find_le">      <h4>nat.find_le</h4><code>∀ {p q : ℕ → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> q],
+  (∀ (n : ℕ), q n → p n) → ∀ (hp : ∃ (n : ℕ), p n) (hq : ∃ (n : ℕ), q n), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/lemmas.html#nat.find">nat.find</a> hp ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/lemmas.html#nat.find">nat.find</a> hq</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity">      <h4>multiplicity</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd], α → α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/enat.html#enat">enat</a></code>
+<div class="indent"><p><p><code>multiplicity a b</code> returns the largest natural number <code>n</code> such that
+ <code>a ^ n ∣ b</code>, as an <code>enat</code> or natural with infinity. If <code>∀ n, a ^ n ∣ b</code>,
+ then it returns <code>⊤</code></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite">      <h4>multiplicity.finite</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α], α → α → Prop</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_iff_dom">      <h4>multiplicity.finite_iff_dom</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b ↔ (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b).dom</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_def">      <h4>multiplicity.finite_def</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b ↔ ∃ (n : ℕ), ¬a ^ (n + 1) ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.int.coe_nat_multiplicity.reversed">      <h4>multiplicity.int.coe_nat_multiplicity.reversed</h4><code>∀ (a b : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑a ↑b = <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.int.coe_nat_multiplicity">      <h4>multiplicity.int.coe_nat_multiplicity</h4><code>∀ (a b : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b = <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑a ↑b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: move_cast</div>
+</div><div class="entry"><a id="multiplicity.not_finite_iff_forall">      <h4>multiplicity.not_finite_iff_forall</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {a b : α}, ¬multiplicity.finite a b ↔ ∀ (n : ℕ), a ^ n ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.not_unit_of_finite">      <h4>multiplicity.not_unit_of_finite</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {a b : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b → ¬is_unit a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.ne_zero_of_finite">      <h4>multiplicity.ne_zero_of_finite</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {a b : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b → b ≠ 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_of_finite_mul_left">      <h4>multiplicity.finite_of_finite_mul_left</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {a b c : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a (b * c) → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_of_finite_mul_right">      <h4>multiplicity.finite_of_finite_mul_right</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] {a b c : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a (b * c) → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.pow_dvd_of_le_multiplicity">      <h4>multiplicity.pow_dvd_of_le_multiplicity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {k : ℕ},
+  ↑k ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b → a ^ k ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.pow_multiplicity_dvd">      <h4>multiplicity.pow_multiplicity_dvd</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α}
+(h : <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b), a ^ (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b).get h ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.is_greatest">      <h4>multiplicity.is_greatest</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {m : ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b < ↑m → ¬a ^ m ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.is_greatest'">      <h4>multiplicity.is_greatest'</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {m : ℕ}
+(h : <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b), (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b).get h < m → ¬a ^ m ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.unique">      <h4>multiplicity.unique</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {k : ℕ},
+  a ^ k ∣ b → ¬a ^ (k + 1) ∣ b → ↑k = <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.unique'">      <h4>multiplicity.unique'</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {k : ℕ},
+  a ^ k ∣ b → ∀ (hsucc : ¬a ^ (k + 1) ∣ b), k = (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b).get _</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.le_multiplicity_of_pow_dvd">      <h4>multiplicity.le_multiplicity_of_pow_dvd</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {k : ℕ},
+  a ^ k ∣ b → ↑k ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.pow_dvd_iff_le_multiplicity">      <h4>multiplicity.pow_dvd_iff_le_multiplicity</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {k : ℕ},
+  a ^ k ∣ b ↔ ↑k ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.multiplicity_lt_iff_neg_dvd">      <h4>multiplicity.multiplicity_lt_iff_neg_dvd</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {k : ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b < ↑k ↔ ¬a ^ k ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.eq_some_iff">      <h4>multiplicity.eq_some_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α} {n : ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b = ↑n ↔ a ^ n ∣ b ∧ ¬a ^ (n + 1) ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.eq_top_iff">      <h4>multiplicity.eq_top_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b = ⊤ ↔ ∀ (n : ℕ), a ^ n ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.zero">      <h4>multiplicity.zero</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a 0 = ⊤</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="multiplicity.one_right">      <h4>multiplicity.one_right</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a : α},
+  ¬is_unit a → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a 1 = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.get_one_right">      <h4>multiplicity.get_one_right</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a : α}
+(ha : <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a 1), (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a 1).get ha = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="multiplicity.one_left">      <h4>multiplicity.one_left</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] (b : α), <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> 1 b = ⊤</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="multiplicity.multiplicity_unit">      <h4>multiplicity.multiplicity_unit</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a : α} (b : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#is_unit">is_unit</a> a → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b = ⊤</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="multiplicity.multiplicity_eq_zero_of_not_dvd">      <h4>multiplicity.multiplicity_eq_zero_of_not_dvd</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α},
+  ¬a ∣ b → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.eq_top_iff_not_finite">      <h4>multiplicity.eq_top_iff_not_finite</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b = ⊤ ↔ ¬multiplicity.finite a b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.multiplicity_le_multiplicity_iff">      <h4>multiplicity.multiplicity_le_multiplicity_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b c d : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> c d ↔ ∀ (n : ℕ), a ^ n ∣ b → c ^ n ∣ d</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.min_le_multiplicity_add">      <h4>multiplicity.min_le_multiplicity_add</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#min">min</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a) (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a + b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.dvd_of_multiplicity_pos">      <h4>multiplicity.dvd_of_multiplicity_pos</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_semiring">comm_semiring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a b : α},
+  0 < <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b → a ∣ b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_nat_iff">      <h4>multiplicity.finite_nat_iff</h4><code>∀ {a b : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b ↔ a ≠ 1 ∧ 0 < b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_int_iff_nat_abs_finite">      <h4>multiplicity.finite_int_iff_nat_abs_finite</h4><code>∀ {a b : ℤ}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> a) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_int_iff">      <h4>multiplicity.finite_int_iff</h4><code>∀ {a b : ℤ}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a b ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> a ≠ 1 ∧ b ≠ 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.decidable_nat">      <h4>multiplicity.decidable_nat</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> (λ (a b : ℕ), (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b).dom)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="multiplicity.decidable_int">      <h4>multiplicity.decidable_int</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> (λ (a b : ℤ), (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b).dom)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="multiplicity.neg">      <h4>multiplicity.neg</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] (a b : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a (-b) = <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="multiplicity.multiplicity_add_of_gt">      <h4>multiplicity.multiplicity_add_of_gt</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b < <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a + b) = <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.multiplicity_sub_of_gt">      <h4>multiplicity.multiplicity_sub_of_gt</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b < <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a - b) = <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.multiplicity_add_eq_min">      <h4>multiplicity.multiplicity_add_eq_min</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a ≠ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a + b) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#min">min</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a) (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.multiplicity_self">      <h4>multiplicity.multiplicity_self</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a : α},
+  ¬is_unit a → a ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a a = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="multiplicity.get_multiplicity_self">      <h4>multiplicity.get_multiplicity_self</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {a : α}
+(ha : <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> a a), (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> a a).get ha = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="multiplicity.finite_mul_aux">      <h4>multiplicity.finite_mul_aux</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p → ∀ {n m : ℕ} {a b : α}, ¬p ^ (n + 1) ∣ a → ¬p ^ (m + 1) ∣ b → ¬p ^ (n + m + 1) ∣ a * b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_mul">      <h4>multiplicity.finite_mul</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p a → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p b → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p (a * b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_mul_iff">      <h4>multiplicity.finite_mul_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p → (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p (a * b) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p a ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p b)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finite_pow">      <h4>multiplicity.finite_pow</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p → ∀ {k : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p a → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p (a ^ k)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.mul'">      <h4>multiplicity.mul'</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a b : α} (hp : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p)
+(h : (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a * b)).dom), (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a * b)).get h = (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a).get _ + (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b).get _</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.mul">      <h4>multiplicity.mul</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a b : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a * b) = <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a + <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.finset.prod">      <h4>multiplicity.finset.prod</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {β : Type u_2}
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] {p : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p →
+  ∀ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> β) (f : β → α),
+    <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.prod">finset.prod</a> s f) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (x : β), <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (f x))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.pow'">      <h4>multiplicity.pow'</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a : α} (hp : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p)
+(ha : <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> p a) {k : ℕ}, (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a ^ k)).get _ = k * (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a).get ha</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.pow">      <h4>multiplicity.pow</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p → ∀ {k : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (a ^ k) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group_power.html#add_monoid.smul">add_monoid.smul</a> k (<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.multiplicity_pow_self">      <h4>multiplicity.multiplicity_pow_self</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p : α},
+  p ≠ 0 → ¬is_unit p → ∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (p ^ n) = ↑n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity.multiplicity_pow_self_of_prime">      <h4>multiplicity.multiplicity_pow_self_of_prime</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#integral_domain">integral_domain</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_dvd.dvd] {p : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/associated.html#prime">prime</a> p → ∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p (p ^ n) = ↑n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="multiplicity_eq_zero_of_coprime">      <h4>multiplicity_eq_zero_of_coprime</h4><code>∀ {p a b : ℕ}, p ≠ 1 → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p b → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.coprime">nat.coprime</a> a b → <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> p a = 0</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

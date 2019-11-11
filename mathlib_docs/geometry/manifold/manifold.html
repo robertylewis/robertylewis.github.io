@@ -1,0 +1,215 @@
+<html><head><title>geometry.manifold.manifold</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Manifolds</h1>
+
+<p>A manifold is a topological space M locally modelled on a model space H, i.e., the manifold is
+covered by open subsets on which there are local homeomorphisms (the charts) going to H. If the
+changes of charts satisfy some additional property (for instance if they are smooth), then M
+inherits additional structure (it makes sense to talk about smooth manifolds). There are therefore
+two different ingredients in a manifold:
+* the set of charts, which is data
+* the fact that changes of charts belong to some group (in fact groupoid), which is additional Prop.</p>
+
+<p>We separate these two parts in the definition: the manifold structure is just the set of charts, and
+then the different smoothness requirements (smooth manifold, orientable manifold, contact manifold,
+and so on) are additional properties of these charts. These properties are formalized through the
+notion of structure groupoid, i.e., a set of local homeomorphisms stable under composition and
+inverse, to which the change of coordinates should belong.</p>
+
+<h2>Main definitions</h2>
+
+<p><code>structure_groupoid H</code>   : a subset of local homeomorphisms of <code>H</code> stable under composition, inverse
+                           and restriction (ex: local diffeos)
+<code>pregroupoid H</code>          : a subset of local homeomorphisms of <code>H</code> stable under composition and
+                           restriction, but not inverse (ex: smooth maps)
+<code>groupoid_of_pregroupoid</code>: construct a groupoid from a pregroupoid, by requiring that a map and its
+                           inverse both belong to the pregroupoid (ex: construct diffeos from smooth
+                           maps)
+<code>continuous_groupoid H</code>  : the groupoid of all local homeomorphisms of <code>H</code></p>
+
+<p><code>manifold H M</code>           : manifold structure on M modelled on H, given by an atlas of local
+                           homeomorphisms from M to H whose sources cover M. This is a type class.
+<code>has_groupoid M G</code>       : when <code>G</code> is a structure groupoid on <code>H</code> and <code>M</code> is a manifold modelled on
+                           <code>H</code>, require that all coordinate changes belong to <code>G</code>. This is a type
+                           class
+<code>atlas H M</code>              : when <code>M</code> is a manifold modelled on <code>H</code>, the atlas of this manifold
+                           structure, i.e., the set of charts
+<code>structomorph G M M'</code>    : the set of diffeomorphisms between the manifolds M and M' for the
+                           groupoid G. We avoid the word diffeomorphisms, keeping it for the
+                           smooth category.</p>
+
+<p>As a basic example, we give the instance
+<code>instance <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold_model_space">manifold_model_space</a> (H : Type*) [<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H H</code>
+saying that a topological space is a manifold over itself, with the identity as unique chart. This
+manifold structure is compatible with any groupoid.</p>
+
+<h2>Implementation notes</h2>
+
+<p>The atlas in a manifold is <em>not</em> a maximal atlas in general: the notion of maximality depends on the
+groupoid one considers, and changing groupoids changes the maximal atlas. With the current
+formalization, it makes sense first to choose the atlas, and then to ask whether this precise atlas
+defines a smooth manifold, an orientable manifold, and so on. A consequence is that structomorphisms
+between M and M' do <em>not</em> induce a bijection between the atlases of M and M': the definition is only
+that, read in charts, the structomorphism locally belongs to the groupoid under consideration.
+(This is equivalent to inducing a bijection between elements of the maximal atlas). A consequence
+is that the invariance under structomorphisms of properties defined in terms of the atlas is not
+obvious in general, and could require some work in theory (amounting to the fact that these
+properties only depend on the maximal atlas, for instance). In practice, this does not create any
+real difficulty.</p>
+
+<p>We use the letter <code>H</code> for the model space thinking of the case of manifolds with boundary, where the
+model space is a half space.</p>
+
+<p>Manifolds are sometimes defined as topological spaces with an atlas of local diffeomorphisms, and
+sometimes as spaces with an atlas from which a topology is deduced. We use the former approach:
+otherwise, there would be an instance from manifolds to topological spaces, which means that any
+instance search for topological spaces would try to find manifold structures involving a yet
+unknown model space, leading to problems. However, we also introduce the latter approach,
+through a structure <code>manifold_core</code> making it possible to construct a topology out of a set of local
+equivs with compatibility conditions (but we do not register it as an instance).</p>
+
+<p>In the definition of a manifold, the model space is written as an explicit parameter as there can be
+several model spaces for a given topological space. For instance, a complex manifold (modelled over
+ℂ^n) will also be seen sometimes as a real manifold modelled over ℝ^(2n).</p>
+</div><div class="entry"><a id="structure_groupoid">      <h4>structure_groupoid</h4><code>Π (H : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], Type u</code>
+<div class="indent"><p><p>A structure groupoid is a set of local homeomorphisms of a topological space stable under
+composition and inverse. They appear in the definition of the smoothness class of a manifold.</p>
+</p>       </div>
+</div><div class="entry"><a id="structure_groupoid.has_mem">      <h4>structure_groupoid.has_mem</h4><code>Π {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mem">has_mem</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H) (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="structure_groupoid.partial_order">      <h4>structure_groupoid.partial_order</h4><code>Π {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#partial_order">partial_order</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</code>
+<div class="indent"><p><p>Partial order on the set of groupoids, given by inclusion of the members of the groupoid</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="id_groupoid">      <h4>id_groupoid</h4><code>Π (H : Type u) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</code>
+<div class="indent"><p><p>The trivial groupoid, containing only the identity (and maps with empty source, as this is
+necessary from the definition)</p>
+</p>       </div>
+</div><div class="entry"><a id="structure_groupoid.lattice.order_bot">      <h4>structure_groupoid.lattice.order_bot</h4><code>Π {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#lattice.order_bot">lattice.order_bot</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</code>
+<div class="indent"><p><p>Every structure groupoid contains the identity groupoid</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pregroupoid">      <h4>pregroupoid</h4><code>Π (H : Type u_4) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], Type u_4</code>
+<div class="indent"><p><p>To construct a groupoid, one may consider classes of local homeos such that both the function
+and its inverse have some property. If this property is stable under composition,
+one gets a groupoid. <code>pregroupoid</code> bundles the properties needed for this construction, with the
+groupoid of smooth functions with smooth inverses as an application.</p>
+</p>       </div>
+</div><div class="entry"><a id="pregroupoid.groupoid">      <h4>pregroupoid.groupoid</h4><code>Π {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H → <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</code>
+<div class="indent"><p><p>Construct a groupoid of local homeos for which the map and its inverse have some property,
+from a pregroupoid asserting that this property is stable under composition.</p>
+</p>       </div>
+</div><div class="entry"><a id="mem_groupoid_of_pregroupoid">      <h4>mem_groupoid_of_pregroupoid</h4><code>∀ {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (PG : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H) (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H),
+  e ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG ↔
+    PG.property ((e.to_local_equiv).to_fun) ((e.to_local_equiv).source) ∧
+      PG.property ((e.to_local_equiv).inv_fun) ((e.to_local_equiv).target)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="groupoid_of_pregroupoid_le">      <h4>groupoid_of_pregroupoid_le</h4><code>∀ {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (PG₁ PG₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H),
+  (∀ (f : H → H) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> H), PG₁.property f s → PG₂.property f s) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG₁ ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG₂</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="mem_pregroupoid_of_eq_on_source">      <h4>mem_pregroupoid_of_eq_on_source</h4><code>∀ {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (PG : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H) {e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H},
+  e ≈ e' →
+  PG.property ((e.to_local_equiv).to_fun) ((e.to_local_equiv).source) →
+  PG.property ((e'.to_local_equiv).to_fun) ((e'.to_local_equiv).source)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="continuous_groupoid">      <h4>continuous_groupoid</h4><code>Π (H : Type u_1) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</code>
+<div class="indent"><p><p>The groupoid of all local homeomorphisms on a topological space H</p>
+</p>       </div>
+</div><div class="entry"><a id="structure_groupoid.lattice.order_top">      <h4>structure_groupoid.lattice.order_top</h4><code>Π {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#lattice.order_top">lattice.order_top</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</code>
+<div class="indent"><p><p>Every structure groupoid is contained in the groupoid of all local homeomorphisms</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="manifold">      <h4>manifold</h4><code>Π (H : Type u_4) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (M : Type u_5) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u_4 u_5)</code>
+<div class="indent"><p><p>A manifold is a topological space endowed with an atlas, i.e., a set of local homeomorphisms
+taking value in a model space H, called charts, such that the domains of the charts cover the whole
+space. We express the covering property by chosing for each x a member <code>chart_at x</code> of the atlas
+containing x in its source: in the smooth case, this is convenient to construct the tangent bundle
+in an efficient way.
+The model space is written as an explicit parameter as there can be several model spaces for a
+given topological space. For instance, a complex manifold (modelled over ℂ^n) will also be seen
+sometimes as a real manifold over ℝ^(2n).</p>
+</p>       </div>
+</div><div class="entry"><a id="manifold_model_space">      <h4>manifold_model_space</h4><code>Π (H : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H H</code>
+<div class="indent"><p><p>Any space is a manifold modelled over itself, by just using the identity chart</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="model_space_atlas">      <h4>model_space_atlas</h4><code>∀ {H : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] {e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H},
+  e ∈ manifold.atlas H H ↔ e = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> H</code>
+<div class="indent"><p><p>In the trivial manifold structure of a space modelled over itself through the identity, the
+atlas members are just the identity</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="chart_at_model_space_eq">      <h4>chart_at_model_space_eq</h4><code>∀ {H : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] {x : H}, manifold.chart_at H x = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> H</code>
+<div class="indent"><p><p>In the model space, chart_at is always the identity</p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="manifold_core">      <h4>manifold_core</h4><code>Π (H : Type u_4) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], Type u_5 → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u_4 u_5)</code>
+<div class="indent"><p><p>Sometimes, one may want to construct a manifold structure on a space which does not yet have
+a topological structure, where the topology would come from the charts. For this, one needs charts
+that are only local equivs, and continuity properties for their composition.
+This is formalised in <code>manifold_core</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="manifold_core.to_topological_space">      <h4>manifold_core.to_topological_space</h4><code>Π {H : Type u} {M : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M</code>
+<div class="indent"><p><p>Topology generated by a set of charts on a Type.</p>
+</p>       </div>
+</div><div class="entry"><a id="manifold_core.open_source'">      <h4>manifold_core.open_source'</h4><code>∀ {H : Type u} {M : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (c : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M) {e : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H},
+  e ∈ c.atlas → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (e.source)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="manifold_core.open_target">      <h4>manifold_core.open_target</h4><code>∀ {H : Type u} {M : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (c : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M) {e : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H},
+  e ∈ c.atlas → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> (e.target)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="manifold_core.local_homeomorph">      <h4>manifold_core.local_homeomorph</h4><code>Π {H : Type u} {M : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (c : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M) (e : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H),
+  e ∈ c.atlas → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="manifold_core.to_manifold">      <h4>manifold_core.to_manifold</h4><code>Π {H : Type u} {M : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (c : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M), <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="has_groupoid">      <h4>has_groupoid</h4><code>Π {H : Type u_4} [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (M : Type u_5) [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M]
+[_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H → Prop</code>
+<div class="indent"><p><p>A manifold has an atlas in a groupoid G if the change of coordinates belong to the groupoid</p>
+</p>       </div>
+</div><div class="entry"><a id="has_groupoid_of_le">      <h4>has_groupoid_of_le</h4><code>∀ {H : Type u} {M : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M]
+{G₁ G₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}, <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G₁ → G₁ ≤ G₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G₂</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="has_groupoid_of_pregroupoid">      <h4>has_groupoid_of_pregroupoid</h4><code>∀ {H : Type u} {M : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M]
+(PG : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H),
+  (∀ {e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H},
+     e ∈ manifold.atlas H M →
+     e' ∈ manifold.atlas H M →
+     PG.property (((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e').to_local_equiv).to_fun)
+       (((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e').to_local_equiv).source)) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="has_groupoid_model_space">      <h4>has_groupoid_model_space</h4><code>∀ (H : Type u_1) [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] (G : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H), <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> H G</code>
+<div class="indent"><p><p>The trivial manifold structure on the model space is compatible with any groupoid</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="has_groupoid_continuous_groupoid">      <h4>has_groupoid_continuous_groupoid</h4><code>∀ {H : Type u} {M : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M (<a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#continuous_groupoid">continuous_groupoid</a> H)</code>
+<div class="indent"><p><p>Any manifold structure is compatible with the groupoid of all local homeomorphisms</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="structomorph">      <h4>structomorph</h4><code>Π {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H →
+  Π (M : Type u_4) (M' : Type u_5) [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M] [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M']
+  [_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M] [_inst_7 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M'], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u_4 u_5)</code>
+<div class="indent"><p><p>A G-diffeomorphism between two manifolds is a homeomorphism which, when read in the charts,
+belongs to G. We avoid the word diffeomorph as it is too related to the smooth category, and use
+structomorph instead.</p>
+</p>       </div>
+</div><div class="entry"><a id="structomorph.refl">      <h4>structomorph.refl</h4><code>Π {H : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] {G : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H} (M : Type u_1)
+[_inst_8 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M] [_inst_9 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M] [_inst_10 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G], <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M</code>
+<div class="indent"><p><p>The identity is a diffeomorphism of any manifold, for any groupoid.</p>
+</p>       </div>
+</div><div class="entry"><a id="structomorph.symm">      <h4>structomorph.symm</h4><code>Π {H : Type u} {M : Type u_1} {M' : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M'] {G : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H} [_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M'],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M' → <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structomorph">structomorph</a> G M' M</code>
+<div class="indent"><p><p>The inverse of a structomorphism is a structomorphism</p>
+</p>       </div>
+</div><div class="entry"><a id="structomorph.trans">      <h4>structomorph.trans</h4><code>Π {H : Type u} {M : Type u_1} {M' : Type u_2} {M'' : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> H]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M']
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> M''] {G : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H} [_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M'] [_inst_7 : <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#manifold">manifold</a> H M''],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M' → <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structomorph">structomorph</a> G M' M'' → <a href="/home/rob/lean/mathlib/scripts/html_out/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M''</code>
+<div class="indent"><p><p>The composition of structomorphisms is a structomorphism</p>
+</p>       </div>
+</div></body></html>

@@ -1,0 +1,371 @@
+<html><head><title>meta.expr</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Additional operations on expr and related types</h1>
+
+<p>This file defines basic operations on the types expr, name, declaration, level, environment.</p>
+
+<p>This file is mostly for non-tactics. Tactics should generally be placed in <code>tactic.core</code>.</p>
+
+<p>## Tags
+ expr, name, declaration, level, environment, meta, metaprogramming, tactic</p>
+</div><div class="entry"><a id="binder_info.inhabited">      <h4>binder_info.inhabited</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#binder_info">binder_info</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="binder_info.brackets">      <h4>binder_info.brackets</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#binder_info">binder_info</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a></code>
+<div class="indent"><p><p>The brackets corresponding to a given binder_info.</p>
+</p>       </div>
+</div><div class="entry"><a id="name.map_prefix">      <h4>name.map_prefix</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Find the largest prefix <code>n</code> of a <code>name</code> such that <code>f n ≠ none</code>, then replace this prefix
+with the value of <code>f n</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="name.deinternalize_field">      <h4>name.deinternalize_field</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>If <code>nm</code> is a simple name (having only one string component) starting with <code>_</code>, then <code>deinternalize_field nm</code> removes the underscore. Otherwise, it does nothing.</p>
+</p>       </div>
+</div><div class="entry"><a id="name.get_nth_prefix">      <h4>name.get_nth_prefix</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p><code>get_nth_prefix nm n</code> removes the last <code>n</code> components from <code>nm</code></p>
+</p>       </div>
+</div><div class="entry"><a id="name.pop_nth_prefix">      <h4>name.pop_nth_prefix</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Pops the top <code>n</code> prefixes from the given name.</p>
+</p>       </div>
+</div><div class="entry"><a id="name.pop_prefix">      <h4>name.pop_prefix</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Pop the prefix of a name</p>
+</p>       </div>
+</div><div class="entry"><a id="name.from_components">      <h4>name.from_components</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Build a name from components. For example <code>from_components ["foo","bar"]</code> becomes
+ <code>`foo.bar</code></p>
+</p>       </div>
+</div><div class="entry"><a id="name.sanitize_name">      <h4>name.sanitize_name</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p><code>name</code>s can contain numeral pieces, which are not legal names
+ when typed/passed directly to the parser. We turn an arbitrary
+ name into a legal identifier name by turning the numbers to strings.</p>
+</p>       </div>
+</div><div class="entry"><a id="name.append_suffix">      <h4>name.append_suffix</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Append a string to the last component of a name</p>
+</p>       </div>
+</div><div class="entry"><a id="name.head">      <h4>name.head</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a></code>
+<div class="indent"><p><p>The first component of a name, turning a number to a string</p>
+</p>       </div>
+</div><div class="entry"><a id="name.is_private">      <h4>name.is_private</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Tests whether the first component of a name is <code>"_private"</code></p>
+</p>       </div>
+</div><div class="entry"><a id="name.last">      <h4>name.last</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a></code>
+<div class="indent"><p><p>Get the last component of a name, and convert it to a string.</p>
+</p>       </div>
+</div><div class="entry"><a id="name.length">      <h4>name.length</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → ℕ</code>
+<div class="indent"><p><p>Returns the number of characters used to print all the string components of a name,
+ including periods between name segments. Ignores numerical parts of a name.</p>
+</p>       </div>
+</div><div class="entry"><a id="name.has_prefix">      <h4>name.has_prefix</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Checks whether <code>nm</code> has a prefix (including itself) such that P is true</p>
+</p>       </div>
+</div><div class="entry"><a id="name.add_prime">      <h4>name.add_prime</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Appends <code>'</code> to the end of a name.</p>
+</p>       </div>
+</div><div class="entry"><a id="name.last_string">      <h4>name.last_string</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="level.nonzero">      <h4>level.nonzero</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Tests whether a universe level is non-zero for all assignments of its variables</p>
+</p>       </div>
+</div><div class="entry"><a id="binder">      <h4>binder</h4><code>Type</code>
+<div class="indent"><p><p>The type of binders containing a name, the binding info and the binding type</p>
+</p>       </div>
+</div><div class="entry"><a id="binder.decidable_eq">      <h4>binder.decidable_eq</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> <a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="binder.to_string">      <h4>binder.to_string</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a></code>
+<div class="indent"><p><p>Turn a binder into a string. Uses expr.to_string for the type.</p>
+</p>       </div>
+</div><div class="entry"><a id="binder.inhabited">      <h4>binder.inhabited</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> <a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="binder.has_to_string">      <h4>binder.has_to_string</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/to_string.html#has_to_string">has_to_string</a> <a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="binder.has_to_format">      <h4>binder.has_to_format</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/format.html#has_to_format">has_to_format</a> <a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="binder.has_to_tactic_format">      <h4>binder.has_to_tactic_format</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#has_to_tactic_format">has_to_tactic_format</a> <a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="nat.mk_numeral">      <h4>nat.mk_numeral</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>nat.mk_numeral n</code> embeds <code>n</code> as a numeral expression inside a type with 0, 1, and +.
+<code>type</code>: an expression representing the target type. This must live in Type 0.
+<code>has_zero</code>, <code>has_one</code>, <code>has_add</code>: expressions of the type <code>has_zero %%type</code>, etc.</p>
+</p>       </div>
+</div><div class="entry"><a id="int.mk_numeral">      <h4>int.mk_numeral</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → ℤ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>int.mk_numeral z</code> embeds <code>z</code> as a numeral expression inside a type with 0, 1, +, and -.
+<code>type</code>: an expression representing the target type. This must live in Type 0.
+<code>has_zero</code>, <code>has_one</code>, <code>has_add</code>, <code>has_neg</code>: expressions of the type <code>has_zero %%type</code>, etc.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.to_pos_nat">      <h4>expr.to_pos_nat</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> ℕ</code>
+<div class="indent"><p><p>Turns an expression into a positive natural number, assuming it is only built up from
+ <code>has_one.one</code>, <code>bit0</code> and <code>bit1</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.to_nat">      <h4>expr.to_nat</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> ℕ</code>
+<div class="indent"><p><p>Turns an expression into a natural number, assuming it is only built up from
+ <code>has_one.one</code>, <code>bit0</code>, <code>bit1</code> and <code>has_zero.zero</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.to_int">      <h4>expr.to_int</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> ℤ</code>
+<div class="indent"><p><p>Turns an expression into a integer, assuming it is only built up from
+ <code>has_one.one</code>, <code>bit0</code>, <code>bit1</code>, <code>has_zero.zero</code> and a optionally a single <code>has_neg.neg</code> as head.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.replace_with">      <h4>expr.replace_with</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>replace_with e s s'</code> replaces ocurrences of <code>s</code> with <code>s'</code> in <code>e</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.apply_replacement_fun">      <h4>expr.apply_replacement_fun</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Apply a function to each constant (inductive type, defined function etc) in an expression.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.is_mvar">      <h4>expr.is_mvar</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Tests whether an expression is a meta-variable.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.is_sort">      <h4>expr.is_sort</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Tests whether an expression is a sort.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.to_implicit">      <h4>expr.to_implicit</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>If <code>e</code> is a local constant, <code>to_implicit e</code> changes the binder info of <code>e</code> to <code>implicit</code>.
+See also <code>to_implicit_binder</code>, which also changes lambdas and pis.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.to_implicit_binder">      <h4>expr.to_implicit_binder</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>If <code>e</code> is a local constant, lamda, or pi expression, <code>to_implicit_binder e</code> changes the binder
+info of <code>e</code> to <code>implicit</code>. See also <code>to_implicit</code>, which only changes local constants.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.list_local_consts">      <h4>expr.list_local_consts</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Returns a list of all local constants in an expression (without duplicates).</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.list_constant">      <h4>expr.list_constant</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/rb_map.html#name_set">name_set</a></code>
+<div class="indent"><p><p>Returns a name_set of all constants in an expression.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.list_meta_vars">      <h4>expr.list_meta_vars</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Returns a list of all meta-variables in an expression (without duplicates).</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.list_names_with_prefix">      <h4>expr.list_names_with_prefix</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/rb_map.html#name_set">name_set</a></code>
+<div class="indent"><p><p>Returns a name_set of all constants in an expression starting with a certain prefix.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.contains_constant">      <h4>expr.contains_constant</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → Π (p : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Returns true if <code>e</code> contains a name <code>n</code> where <code>p n</code> is true.
+ Returns <code>true</code> if <code>p name.anonymous</code> is true</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.is_num_eq">      <h4>expr.is_num_eq</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>is<em>num</em>eq n1 n2 returns true if n1 and n2 are both numerals with the same numeral structure,
+ignoring differences in type and type class arguments.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.simp">      <h4>expr.simp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.simp_config">tactic.simp_config</a>
+  {max_steps := simp.default_max_steps,
+   contextual := bool.ff,
+   lift_eq := bool.tt,
+   canonize_instances := bool.tt,
+   canonize_proofs := bool.ff,
+   use_axioms := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   eta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   iota_eqn := bool.ff,
+   constructor_eq := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>) <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic.failed">tactic.failed</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> bool.ff →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive.html#tactic.simp_arg_type">tactic.simp_arg_type</a>) list.nil → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p>Simplifies the expression <code>t</code> with the specified options.
+ The result is <code>(new_e, pr)</code> with the new expression <code>new_e</code> and a proof
+ <code>pr : e = new_e</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.dsimp">      <h4>expr.dsimp</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#tactic.dsimp_config">tactic.dsimp_config</a>
+  {md := tactic.transparency.reducible,
+   max_steps := simp.default_max_steps,
+   canonize_instances := bool.tt,
+   single_pass := bool.ff,
+   fail_if_unchanged := bool.tt,
+   eta := bool.tt,
+   zeta := bool.tt,
+   beta := bool.tt,
+   proj := bool.tt,
+   iota := bool.tt,
+   unfold_reducible := bool.ff,
+   memoize := bool.tt} →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> bool.ff →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) list.nil → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive.html#tactic.simp_arg_type">tactic.simp_arg_type</a>) list.nil → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Definitionally simplifies the expression <code>t</code> with the specified options.
+ The result is the simplified expression.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.pi_arity_aux">      <h4>expr.pi_arity_aux</h4><code>ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → ℕ</code>
+<div class="indent"><p><p>Auxilliary definition for <code>expr.pi_arity</code></p>
+</p>       </div>
+</div><div class="entry"><a id="expr.pi_arity">      <h4>expr.pi_arity</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → ℕ</code>
+<div class="indent"><p><p>The arity of a pi-type. Does not perform any reduction of the expression.
+ In one application this was ~30 times quicker than <code>tactic.get_pi_arity</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.binding_names">      <h4>expr.binding_names</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Get the names of the bound variables by a sequence of pis or lambdas.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.reduce_let">      <h4>expr.reduce_let</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>head-reduce a single let expression</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.reduce_lets">      <h4>expr.reduce_lets</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>head-reduce all let expressions</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.instantiate_lambdas">      <h4>expr.instantiate_lambdas</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Instantiate lambdas in the second argument by expressions from the first.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.instantiate_lambdas_or_apps">      <h4>expr.instantiate_lambdas_or_apps</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>instantiate_lambdas_or_apps es e</code> instantiates lambdas in <code>e</code> by expressions from <code>es</code>.
+If the length of <code>es</code> is larger than the number of lambdas in <code>e</code>,
+then the term is applied to the remaining terms.
+Also reduces head let-expressions in <code>e</code>, including those after instantiating all lambdas.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.pi_codomain">      <h4>expr.pi_codomain</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Get the codomain/target of a pi-type.
+ This definition doesn't Instantiate bound variables, and therefore produces a term that is open.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.pi_binders_aux">      <h4>expr.pi_binders_aux</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Auxilliary defintion for <code>pi_binders</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.pi_binders">      <h4>expr.pi_binders</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#binder">binder</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Get the binders and codomain of a pi-type.
+ This definition doesn't Instantiate bound variables, and therefore produces a term that is open.
+ The.tactic <code>get_pi_binders</code> in <code>tactic.core</code> does the same, but also instantiates the
+ free variables</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.get_app_fn_args_aux">      <h4>expr.get_app_fn_args_aux</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>Auxilliary defintion for <code>get_app_fn_args</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.get_app_fn_args">      <h4>expr.get_app_fn_args</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p>A combination of <code>get_app_fn</code> and <code>get_app_args</code>: lists both the
+ function and its arguments of an application</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.drop_pis">      <h4>expr.drop_pis</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>drop_pis es e</code> instantiates the pis in <code>e</code> with the expressions from <code>es</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.mk_op_lst">      <h4>expr.mk_op_lst</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>mk_op_lst op empty [x1, x2, ...]</code> is defined as <code>op x1 (op x2 ...)</code>.
+ Returns <code>empty</code> if the list is empty.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.mk_and_lst">      <h4>expr.mk_and_lst</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>mk_and_lst [x1, x2, ...]</code> is defined as <code>x1 ∧ (x2 ∧ ...)</code>, or <code>true</code> if the list is empty.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.mk_or_lst">      <h4>expr.mk_or_lst</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>mk_or_lst [x1, x2, ...]</code> is defined as <code>x1 ∨ (x2 ∨ ...)</code>, or <code>false</code> if the list is empty.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.local_binding_info">      <h4>expr.local_binding_info</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#binder_info">binder_info</a></code>
+<div class="indent"><p><p><code>local_binding_info e</code> returns the binding info of <code>e</code> if <code>e</code> is a local constant.
+Otherwise returns <code>binder_info.default</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.local_binder_info">      <h4>expr.local_binder_info</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#binder_info">binder_info</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="expr.is_default_local">      <h4>expr.is_default_local</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p><code>is_default_local e</code> tests whether <code>e</code> is a local constant with binder info
+<code>binder_info.default</code></p>
+</p>       </div>
+</div><div class="entry"><a id="environment.in_current_file'">      <h4>environment.in_current_file'</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Tests whether a name is declared in the current file. Fixes an error in <code>in_current_file</code>
+ which returns <code>tt</code> for the four names <code>quot, quot.mk, quot.lift, quot.ind</code></p>
+</p>       </div>
+</div><div class="entry"><a id="environment.is_structure_like">      <h4>environment.is_structure_like</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (ℕ × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>)</code>
+<div class="indent"><p><p>Tests whether <code>n</code> is an inductive type with one constructor without indices.
+ If so, returns the number of paramaters and the name of the constructor.
+ Otherwise, returns <code>none</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.is_structure">      <h4>environment.is_structure</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Tests whether <code>n</code> is a structure.
+ It will first test whether <code>n</code> is structure-like and then test that the first projection is
+ defined in the environment and is a projection.</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.get_projections">      <h4>environment.get_projections</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>)</code>
+<div class="indent"><p><p>Get all projections of the structure <code>n</code>. Returns <code>none</code> if <code>n</code> is not structure-like.
+ If <code>n</code> is not a structure, but is structure-like, this does not check whether the names
+ are existing declarations.</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.is_ginductive'">      <h4>environment.is_ginductive'</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Tests whether <code>nm</code> is a generalized inductive type that is not a normal inductive type.
+ Note that <code>is_ginductive</code> returns <code>tt</code> even on regular inductive types.
+ This returns <code>tt</code> if <code>nm</code> is (part of a) mutually defined inductive type or a nested inductive
+ type.</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.decl_filter_map">      <h4>environment.decl_filter_map</h4><code>Π {α : Type}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α</code>
+<div class="indent"><p><p>For all declarations <code>d</code> where <code>f d = some x</code> this adds <code>x</code> to the returned list.</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.decl_map">      <h4>environment.decl_map</h4><code>Π {α : Type}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → α) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α</code>
+<div class="indent"><p><p>Maps <code>f</code> to all declarations in the environment.</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.get_decls">      <h4>environment.get_decls</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p>Lists all declarations in the environment</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.get_trusted_decls">      <h4>environment.get_trusted_decls</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p>Lists all trusted (non-meta) declarations in the environment</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.get_decl_names">      <h4>environment.get_decl_names</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a></code>
+<div class="indent"><p><p>Lists the name of all declarations in the environment</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.mfold">      <h4>environment.mfold</h4><code>Π {α : Type} {m : Type → Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → α → (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → α → m α) → m α</code>
+<div class="indent"><p><p>Fold a monad over all declarations in the environment.</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.mfilter">      <h4>environment.mfilter</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a>)</code>
+<div class="indent"><p><p>Filters all declarations in the environment.</p>
+</p>       </div>
+</div><div class="entry"><a id="environment.is_prefix_of_file">      <h4>environment.is_prefix_of_file</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Checks whether <code>s</code> is a prefix of the file where <code>n</code> is declared.
+ This is used to check whether <code>n</code> is declared in mathlib, where <code>s</code> is the mathlib directory.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.is_eta_expansion_of">      <h4>expr.is_eta_expansion_of</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p><code>is_eta_expansion_of args univs l</code> checks whether for all elements <code>(nm, pr)</code> in <code>l</code> we have
+ <code>pr = nm.{univs} args</code>.
+ Used in <code>is_eta_expansion</code>, where <code>l</code> consists of the projections and the fields of the value we
+ want to eta-reduce.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.is_eta_expansion_test">      <h4>expr.is_eta_expansion_test</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p><p><code>is_eta_expansion_test l</code> checks whether there is a list of expresions <code>args</code> such that for all
+ elements <code>(nm, pr)</code> in <code>l</code> we have <code>pr = nm args</code>. If so, returns the last element of <code>args</code>.
+ Used in <code>is_eta_expansion</code>, where <code>l</code> consists of the projections and the fields of the value we
+ want to eta-reduce.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.is_eta_expansion_aux">      <h4>expr.is_eta_expansion_aux</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p><code>is_eta_expansion_aux val l</code> checks whether <code>val</code> can be eta-reduced to an expression <code>e</code>.
+ Here <code>l</code> is intended to consists of the projections and the fields of <code>val</code>.
+ This tactic calls <code>is_eta_expansion_test l</code>, but first removes all proofs from the list <code>l</code> and
+ afterward checks whether the retulting expression <code>e</code> unifies with <code>val</code>.
+ This last check is necessary, because <code>val</code> and <code>e</code> might have different types.</p>
+</p>       </div>
+</div><div class="entry"><a id="expr.is_eta_expansion">      <h4>expr.is_eta_expansion</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p><p><code>is_eta_expansion val</code> checks whether there is an expression <code>e</code> such that <code>val</code> is the
+ eta-expansion of <code>e</code>.
+ With eta-expansion we here mean the eta-expansion of a structure, not of a function.
+ For example, the eta-expansion of <code>x : α × β</code> is <code>⟨x.1, x.2⟩</code>.
+ This assumes that <code>val</code> is a fully-applied application of the constructor of a structure.</p>
+
+<p>This is useful to reduce expressions generated by the notation
+   <code>{ field_1 := _, ..other_structure }</code>
+ If <code>other_structure</code> is itself a field of the structure, then the elaborator will insert an
+ eta-expanded version of <code>other_structure</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.update_with_fun">      <h4>declaration.update_with_fun</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.in_current_file">      <h4>declaration.in_current_file</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Checks whether the declaration is declared in the current file.
+ This is a simple wrapper around <code>environment.in_current_file'</code>
+ Use <code>environment.in_current_file'</code> instead if performance matters.</p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.is_theorem">      <h4>declaration.is_theorem</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Checks whether a declaration is a theorem</p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.is_constant">      <h4>declaration.is_constant</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Checks whether a declaration is a constant</p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.is_axiom">      <h4>declaration.is_axiom</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Checks whether a declaration is a axiom</p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.is_auto_generated">      <h4>declaration.is_auto_generated</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/environment.html#environment">environment</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p>Checks whether a declaration is automatically generated in the environment.
+ There is no cheap way to check whether a declaration in the namespace of a generalized
+ inductive type is automatically generated, so for now we say that all of them are automatically
+ generated.</p>
+</p>       </div>
+</div><div class="entry"><a id="declaration.univ_levels">      <h4>declaration.univ_levels</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/declaration.html#declaration">declaration</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/level.html#level">level</a></code>
+<div class="indent"><p><p>Returns the list of universe levels of a declaration.</p>
+</p>       </div>
+</div></body></html>

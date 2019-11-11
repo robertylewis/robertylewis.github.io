@@ -1,0 +1,57 @@
+<html><head><title>data.int.gcd</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="nat.xgcd_aux">      <h4>nat.xgcd_aux</h4><code>ℕ → ℤ → ℤ → ℕ → ℤ → ℤ → ℕ × ℤ × ℤ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.xgcd_zero_left">      <h4>nat.xgcd_zero_left</h4><code>∀ {s t : ℤ} {r' : ℕ} {s' t' : ℤ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> 0 s t r' s' t' = (r', s', t')</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nat.xgcd_aux_rec">      <h4>nat.xgcd_aux_rec</h4><code>∀ {r : ℕ} {s t : ℤ} {r' : ℕ} {s' t' : ℤ},
+  0 < r → <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> r s t r' s' t' = <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> (r' % r) (s' - ↑r' / ↑r * s) (t' - ↑r' / ↑r * t) r s t</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nat.xgcd">      <h4>nat.xgcd</h4><code>ℕ → ℕ → ℤ × ℤ</code>
+<div class="indent"><p><p>Use the extended GCD algorithm to generate the <code>a</code> and <code>b</code> values
+ satisfying <code>gcd x y = x * a + y * b</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="nat.gcd_a">      <h4>nat.gcd_a</h4><code>ℕ → ℕ → ℤ</code>
+<div class="indent"><p><p>The extended GCD <code>a</code> value in the equation <code>gcd x y = x * a + y * b</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="nat.gcd_b">      <h4>nat.gcd_b</h4><code>ℕ → ℕ → ℤ</code>
+<div class="indent"><p><p>The extended GCD <code>b</code> value in the equation <code>gcd x y = x * a + y * b</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="nat.xgcd_aux_fst">      <h4>nat.xgcd_aux_fst</h4><code>∀ (x y : ℕ) (s t s' t' : ℤ), (<a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> x s t y s' t').fst = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> x y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="nat.xgcd_aux_val">      <h4>nat.xgcd_aux_val</h4><code>∀ (x y : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> x 1 0 y 0 1 = (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> x y, <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.xgcd">nat.xgcd</a> x y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.xgcd_val">      <h4>nat.xgcd_val</h4><code>∀ (x y : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.xgcd">nat.xgcd</a> x y = (<a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.gcd_a">nat.gcd_a</a> x y, <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.gcd_b">nat.gcd_b</a> x y)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.xgcd_aux_P">      <h4>nat.xgcd_aux_P</h4><code>∀ (a b : ℕ) {r r' : ℕ} {s t s' t' : ℤ},
+  P a b (r, s, t) → P a b (r', s', t') → P a b (<a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> r s t r' s' t')</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="nat.gcd_eq_gcd_ab">      <h4>nat.gcd_eq_gcd_ab</h4><code>∀ (a b : ℕ), ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> a b) = ↑a * <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.gcd_a">nat.gcd_a</a> a b + ↑b * <a href="/home/rob/lean/mathlib/scripts/html_out/data/int/gcd.html#nat.gcd_b">nat.gcd_b</a> a b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="int.nat_abs_div">      <h4>int.nat_abs_div</h4><code>∀ (a b : ℤ), b ∣ a → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (a / b) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> a / <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="int.nat_abs_dvd_abs_iff">      <h4>int.nat_abs_dvd_abs_iff</h4><code>∀ {i j : ℤ}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> i ∣ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> j ↔ i ∣ j</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="int.succ_dvd_or_succ_dvd_of_succ_sum_dvd_mul">      <h4>int.succ_dvd_or_succ_dvd_of_succ_sum_dvd_mul</h4><code>∀ {p : ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p →
+  ∀ {m n : ℤ} {k l : ℕ},
+    ↑(p ^ k) ∣ m →
+    ↑(p ^ l) ∣ n → ↑(p ^ (k + l + 1)) ∣ m * n → ↑(p ^ (k + 1)) ∣ m ∨ ↑(p ^ (l + 1)) ∣ n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="int.dvd_of_mul_dvd_mul_left">      <h4>int.dvd_of_mul_dvd_mul_left</h4><code>∀ {i j k : ℤ}, k ≠ 0 → k * i ∣ k * j → i ∣ j</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="int.dvd_of_mul_dvd_mul_right">      <h4>int.dvd_of_mul_dvd_mul_right</h4><code>∀ {i j k : ℤ}, k ≠ 0 → i * k ∣ j * k → i ∣ j</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

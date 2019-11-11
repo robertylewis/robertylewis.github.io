@@ -1,0 +1,59 @@
+<html><head><title>tactic.wlog</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="tactic.wlog">      <h4>tactic.wlog</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tactic.interactive.wlog">      <h4>tactic.interactive.wlog</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/alternative.html#optional">optional</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/alternative.html#optional">optional</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> \":\" *> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/alternative.html#optional">optional</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> \":=\" *> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a>
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/alternative.html#optional">optional</a>
+     (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> \"using\" *>
+        (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.types.list_of">interactive.types.list_of</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) <|>
+           (λ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>), [x]) <$> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>))) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a>)
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/tactic/solve_by_elim.html#tactic.solve_by_elim">tactic.solve_by_elim</a> <|> <a href="/home/rob/lean/mathlib/scripts/html_out/tactic/tauto.html#tactic.tautology">tactic.tautology</a> bool.tt <|> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/smt/smt_tactic.html#using_smt">using_smt</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/smt/smt_tactic.html#smt_tactic.intros">smt_tactic.intros</a> >> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/smt/interactive.html#smt_tactic.solve_goals">smt_tactic.solve_goals</a>))) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><p>Without loss of generality: reduces to one goal under variables permutations.</p>
+
+<p>Given a goal of the form <code>g xs</code>, a predicate <code>p</code> over a set of variables, as well as variable
+permutations <code>xs_i</code>. Then <code>wlog</code> produces goals of the form</p>
+
+<p>The case goal, i.e. the permutation <code>xs_i</code> covers all possible cases:
+  <code>⊢ p xs_0 ∨ ⋯ ∨ p xs_n</code>
+The main goal, i.e. the goal reduced to <code>xs_0</code>:
+  <code>(h : p xs_0) ⊢ g xs_0</code>
+The invariant goals, i.e. <code>g</code> is invariant under <code>xs_i</code>:
+  <code>(h : p xs_i) (this : g xs_0) ⊢ gs xs_i</code></p>
+
+<p>Either the permutation is provided, or a proof of the disjunction is provided to compute the
+permutation. The disjunction need to be in assoc normal form, e.g. <code>p₀ ∨ (p₁ ∨ p₂)</code>. In many cases
+the invariant goals can be solved by AC rewriting using <code>cc</code> etc.</p>
+
+<p>Example:
+  On a state <code>(n m : ℕ) ⊢ p n m</code> the tactic <code>wlog h : n ≤ m using [n m, m n]</code> produces the following
+  states:
+    <code>(n m : ℕ) ⊢ n ≤ m ∨ m ≤ n</code>
+    <code>(n m : ℕ) (h : n ≤ m) ⊢ p n m</code>
+    <code>(n m : ℕ) (h : m ≤ n) (this : p n m) ⊢ p m n</code></p>
+
+<p><code>wlog</code> supports different calling conventions. The name <code>h</code> is used to give a name to the introduced
+case hypothesis. If the name is avoided, the default will be <code>case</code>.</p>
+
+<p>(1) <code>wlog : p xs0 using [xs0, …, xsn]</code>
+  Results in the case goal <code>p xs0 ∨ ⋯ ∨ ps xsn</code>, the main goal <code>(case : p xs0) ⊢ g xs0</code> and the
+  invariance goals <code>(case : p xsi) (this : g xs0) ⊢ g xsi</code>.</p>
+
+<p>(2) <code>wlog : p xs0 := r using xs0</code>
+  The expression <code>r</code> is a proof of the shape <code>p xs0 ∨ ⋯ ∨ p xsi</code>, it is also used to compute the
+  variable permutations.</p>
+
+<p>(3) <code>wlog := r using xs0</code>
+  The expression <code>r</code> is a proof of the shape <code>p xs0 ∨ ⋯ ∨ p xsi</code>, it is also used to compute the
+  variable permutations. This is not as stable as (2), for example <code>p</code> cannot be a disjunction.</p>
+
+<p>(4) <code>wlog : R x y using x y</code> and <code>wlog : R x y</code>
+  Produces the case <code>R x y ∨ R y x</code>. If <code>R</code> is ≤, then the disjunction discharged using linearity.
+  If <code>using x y</code> is avoided then <code>x</code> and <code>y</code> are the last two variables appearing in the
+  expression <code>R x y</code>.</p>
+</p>       </div>
+</div></body></html>

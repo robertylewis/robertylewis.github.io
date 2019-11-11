@@ -1,0 +1,229 @@
+<html><head><title>data.equiv.encodable</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="encodable">      <h4>encodable</h4><code>Type u_1 → Type u_1</code>
+<div class="indent"><p><p>An encodable type is a "constructively countable" type. This is where
+ we have an explicit injection <code>encode : α → nat</code> and a partial inverse
+ <code>decode : nat → option α</code>. This makes the range of <code>encode</code> decidable,
+ although it is not decidable if <code>α</code> is finite or not.</p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.encode_injective">      <h4>encodable.encode_injective</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> encodable.encode</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.decidable_eq_of_encodable">      <h4>encodable.decidable_eq_of_encodable</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.of_left_injection">      <h4>encodable.of_left_injection</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] (f : β → α) (finv : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β),
+  (∀ (b : β), finv (f b) = option.some b) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.of_left_inverse">      <h4>encodable.of_left_inverse</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] (f : β → α) (finv : α → β),
+  (∀ (b : β), finv (f b) = b) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.of_equiv">      <h4>encodable.of_equiv</h4><code>Π {β : Type u_2} (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], β ≃ α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.encode_of_equiv">      <h4>encodable.encode_of_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] (e : β ≃ α) (b : β),
+  encodable.encode b = encodable.encode (⇑e b)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_of_equiv">      <h4>encodable.decode_of_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] (e : β ≃ α) (n : ℕ),
+  encodable.decode β n = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> e) (encodable.decode α n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.nat">      <h4>encodable.nat</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> ℕ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.encode_nat">      <h4>encodable.encode_nat</h4><code>∀ (n : ℕ), encodable.encode n = n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_nat">      <h4>encodable.decode_nat</h4><code>∀ (n : ℕ), encodable.decode ℕ n = option.some n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.empty">      <h4>encodable.empty</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#empty">empty</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.unit">      <h4>encodable.unit</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#punit">punit</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.encode_star">      <h4>encodable.encode_star</h4><code>encodable.encode punit.star = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_unit_zero">      <h4>encodable.decode_unit_zero</h4><code>encodable.decode <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#punit">punit</a> 0 = option.some punit.star</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_unit_succ">      <h4>encodable.decode_unit_succ</h4><code>∀ (n : ℕ), encodable.decode <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#punit">punit</a> (nat.succ n) = option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.option">      <h4>encodable.option</h4><code>Π {α : Type u_1} [h : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.encode_none">      <h4>encodable.encode_none</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], encodable.encode option.none = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.encode_some">      <h4>encodable.encode_some</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] (a : α), encodable.encode (option.some a) = nat.succ (encodable.encode a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_option_zero">      <h4>encodable.decode_option_zero</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], encodable.decode (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) 0 = option.some option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_option_succ">      <h4>encodable.decode_option_succ</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] (n : ℕ),
+  encodable.decode (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) (nat.succ n) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> option.some (encodable.decode α n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode2">      <h4>encodable.decode2</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.mem_decode2'">      <h4>encodable.mem_decode2'</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] {n : ℕ} {a : α},
+  a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable.decode2">encodable.decode2</a> α n ↔ a ∈ encodable.decode α n ∧ encodable.encode a = n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.mem_decode2">      <h4>encodable.mem_decode2</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] {n : ℕ} {a : α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable.decode2">encodable.decode2</a> α n ↔ encodable.encode a = n</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.decode2_is_partial_inv">      <h4>encodable.decode2_is_partial_inv</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/logic/function.html#function.is_partial_inv">function.is_partial_inv</a> encodable.encode (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable.decode2">encodable.decode2</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.decode2_inj">      <h4>encodable.decode2_inj</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] {n : ℕ} {a₁ a₂ : α},
+  a₁ ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable.decode2">encodable.decode2</a> α n → a₂ ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable.decode2">encodable.decode2</a> α n → a₁ = a₂</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.encodek2">      <h4>encodable.encodek2</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable.decode2">encodable.decode2</a> α (encodable.encode a) = option.some a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.decidable_range_encode">      <h4>encodable.decidable_range_encode</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> encodable.encode)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.equiv_range_encode">      <h4>encodable.equiv_range_encode</h4><code>Π (α : Type u_1) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], α ≃ ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.range">set.range</a> encodable.encode)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.encode_sum">      <h4>encodable.encode_sum</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β], α ⊕ β → ℕ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.decode_sum">      <h4>encodable.decode_sum</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β], ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (α ⊕ β)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.sum">      <h4>encodable.sum</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (α ⊕ β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.encode_inl">      <h4>encodable.encode_inl</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β] (a : α),
+  encodable.encode (sum.inl a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bit0">bit0</a> (encodable.encode a)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.encode_inr">      <h4>encodable.encode_inr</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β] (b : β),
+  encodable.encode (sum.inr b) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bit1">bit1</a> (encodable.encode b)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_sum_val">      <h4>encodable.decode_sum_val</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β] (n : ℕ),
+  encodable.decode (α ⊕ β) n = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable.decode_sum">encodable.decode_sum</a> n</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.bool">      <h4>encodable.bool</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.encode_tt">      <h4>encodable.encode_tt</h4><code>encodable.encode bool.tt = 1</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.encode_ff">      <h4>encodable.encode_ff</h4><code>encodable.encode bool.ff = 0</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_zero">      <h4>encodable.decode_zero</h4><code>encodable.decode <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> 0 = option.some bool.ff</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_one">      <h4>encodable.decode_one</h4><code>encodable.decode <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> 1 = option.some bool.tt</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.decode_ge_two">      <h4>encodable.decode_ge_two</h4><code>∀ (n : ℕ), 2 ≤ n → encodable.decode <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#bool">bool</a> n = option.none</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.encode_sigma">      <h4>encodable.encode_sigma</h4><code>Π {α : Type u_1} {γ : α → Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (γ a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#sigma">sigma</a> γ → ℕ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.decode_sigma">      <h4>encodable.decode_sigma</h4><code>Π {α : Type u_1} {γ : α → Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (γ a)],
+  ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#sigma">sigma</a> γ)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.sigma">      <h4>encodable.sigma</h4><code>Π {α : Type u_1} {γ : α → Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (γ a)],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#sigma">sigma</a> γ)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.decode_sigma_val">      <h4>encodable.decode_sigma_val</h4><code>∀ {α : Type u_1} {γ : α → Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (γ a)] (n : ℕ),
+  encodable.decode (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#sigma">sigma</a> γ) n =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> (encodable.decode α ((<a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/pairing.html#nat.unpair">nat.unpair</a> n).fst))
+      (λ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> (sigma.mk a) (encodable.decode (γ a) ((<a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/pairing.html#nat.unpair">nat.unpair</a> n).snd)))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.encode_sigma_val">      <h4>encodable.encode_sigma_val</h4><code>∀ {α : Type u_1} {γ : α → Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (γ a)] (a : α)
+(b : γ a), encodable.encode ⟨a, b⟩ = <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/pairing.html#nat.mkpair">nat.mkpair</a> (encodable.encode a) (encodable.encode b)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.prod">      <h4>encodable.prod</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (α × β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.decode_prod_val">      <h4>encodable.decode_prod_val</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β] (n : ℕ),
+  encodable.decode (α × β) n =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.bind">option.bind</a> (encodable.decode α ((<a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/pairing.html#nat.unpair">nat.unpair</a> n).fst))
+      (λ (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> (prod.mk a) (encodable.decode β ((<a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/pairing.html#nat.unpair">nat.unpair</a> n).snd)))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.encode_prod_val">      <h4>encodable.encode_prod_val</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β] (a : α) (b : β),
+  encodable.encode (a, b) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/pairing.html#nat.mkpair">nat.mkpair</a> (encodable.encode a) (encodable.encode b)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="encodable.encode_subtype">      <h4>encodable.encode_subtype</h4><code>Π {α : Type u_1} {P : α → Prop} [encA : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], {a // P a} → ℕ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.decode_subtype">      <h4>encodable.decode_subtype</h4><code>Π {α : Type u_1} {P : α → Prop} [encA : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [decP : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> P], ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> {a // P a}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.subtype">      <h4>encodable.subtype</h4><code>Π {α : Type u_1} {P : α → Prop} [encA : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [decP : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> P], <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> {a // P a}</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.fin">      <h4>encodable.fin</h4><code>Π (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.int">      <h4>encodable.int</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> ℤ</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.ulift">      <h4>encodable.ulift</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ulift">ulift</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.plift">      <h4>encodable.plift</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#plift">plift</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="encodable.of_inj">      <h4>encodable.of_inj</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> β] (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.choose_x">      <h4>encodable.choose_x</h4><code>Π {α : Type u_1} {p : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p],
+  (∃ (x : α), p x) → {a // p a}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.choose">      <h4>encodable.choose</h4><code>Π {α : Type u_1} {p : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p], (∃ (x : α), p x) → α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.choose_spec">      <h4>encodable.choose_spec</h4><code>∀ {α : Type u_1} {p : α → Prop} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p] (h : ∃ (x : α), p x),
+  p (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable.choose">encodable.choose</a> h)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.axiom_of_choice">      <h4>encodable.axiom_of_choice</h4><code>∀ {α : Type u_1} {β : α → Type u_2} {R : Π (x : α), β x → Prop} [_inst_1 : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (β a)]
+[_inst_2 : Π (x : α) (y : β x), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (R x y)],
+  (∀ (x : α), ∃ (y : β x), R x y) → (∃ (f : Π (a : α), β a), ∀ (x : α), R x (f x))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="encodable.skolem">      <h4>encodable.skolem</h4><code>∀ {α : Type u_1} {β : α → Type u_2} {P : Π (x : α), β x → Prop} [c : Π (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (β a)]
+[d : Π (x : α) (y : β x), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (P x y)],
+  (∀ (x : α), ∃ (y : β x), P x y) ↔ ∃ (f : Π (a : α), β a), ∀ (x : α), P x (f x)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quot.rep">      <h4>quot.rep</h4><code>Π {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_equiv.equiv] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/quot.html#quotient">quotient</a> s → α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quot.rep_spec">      <h4>quot.rep_spec</h4><code>∀ {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_equiv.equiv] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α] (q : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/quot.html#quotient">quotient</a> s),
+  ⟦quot.rep q⟧ = q</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="quot.encodable_quotient">      <h4>quot.encodable_quotient</h4><code>Π {α : Type u_1} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> α} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> has_equiv.equiv] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/encodable.html#encodable">encodable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/quot.html#quotient">quotient</a> s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

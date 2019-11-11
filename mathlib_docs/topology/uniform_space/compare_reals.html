@@ -1,0 +1,79 @@
+<html><head><title>topology.uniform_space.compare_reals</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Comparison of Cauchy reals and Bourbaki reals</h1>
+
+<p>In <code>data.real.basic</code> real numbers are defined using the so called Cauchy construction (although
+it is due to Georg Cantor). More precisely, this construction applies to commutative rings equipped
+with an absolute value with values in a linear ordered field.</p>
+
+<p>On the other hand, in the <code>uniform_space</code> folder, we construct completions of general uniform
+spaces, which allows to construct the Bourbaki real numbers. In this file we build uniformly
+continuous bijections from Cauchy reals to Bourbaki reals and back. This is a cross sanity check of
+both constructions. Of course those two constructions are variations on the completion idea, simply
+with different level of generality. Comparing with Dedekind cuts or quasi-morphisms would be of a
+completely different nature.</p>
+
+<p>Note that <code>metric_space/cau_seq_filter</code> also relates the notions of Cauchy sequences in metric
+spaces and Cauchy filters in general uniform spaces, and <code>metric_space/completion</code> makes sure
+the completion (as a uniform space) of a metric space is a metric space.</p>
+
+<p>Historical note: mathlib used to define real numbers in an intermediate way, using completion
+of uniform spaces but extending multiplication in an ad-hoc way.</p>
+
+<p>TODO:
+* Upgrade this isomorphism to a topological ring isomorphism.
+* Do the same comparison for p-adic numbers</p>
+
+<h2>Implementation notes</h2>
+
+<p>The heavy work is done in <code>topology/uniform_space/abstract_completion</code> which provides an abstract
+caracterization of completions of uniform spaces, and isomorphisms between them. The only work left
+here is to prove the uniform space structure coming from the absolute value on ℚ (with values in ℚ,
+not referring to ℝ) coincides with the one coming from the metric space structure (which of course
+does use ℝ).</p>
+
+<h2>References</h2>
+
+<ul>
+<li>[N. Bourbaki, <em>Topologie générale</em>][bourbaki1966]</li>
+</ul>
+
+<h2>Tags</h2>
+
+<p>real numbers, completion, uniform spaces</p>
+</div><div class="entry"><a id="rat.uniform_space_eq">      <h4>rat.uniform_space_eq</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/absolute_value.html#is_absolute_value.uniform_space">is_absolute_value.uniform_space</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#abs">abs</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/metric_space/basic.html#metric_space.to_uniform_space'">metric_space.to_uniform_space'</a></code>
+<div class="indent"><p><p>The metric space uniform structure on ℚ (which presupposes the existence
+of real numbers) agrees with the one coming directly from (abs : ℚ → ℚ).</p>
+</p>       </div>
+</div><div class="entry"><a id="rational_cau_seq_pkg">      <h4>rational_cau_seq_pkg</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/abstract_completion.html#abstract_completion">abstract_completion</a> ℚ</code>
+<div class="indent"><p><p>Cauchy reals packaged as a completion of ℚ using the absolute value route.</p>
+</p>       </div>
+</div><div class="entry"><a id="compare_reals.Q.comm_ring_1">      <h4>compare_reals.Q.comm_ring_1</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/compare_reals.html#compare_reals.Q">compare_reals.Q</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="compare_reals.Q">      <h4>compare_reals.Q</h4><code>Type</code>
+<div class="indent"><p><p>Type wrapper around ℚ to make sure the absolute value uniform space instance is picked up
+instead of the metric space one. We proved in rat.uniform<em>space</em>eq that they are equal,
+but they are not definitionaly equal, so it would confuse the type class system (and probably
+also human readers).</p>
+</p>       </div>
+</div><div class="entry"><a id="compare_reals.uniform_space">      <h4>compare_reals.uniform_space</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/compare_reals.html#compare_reals.Q">compare_reals.Q</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="compare_reals.Bourbakiℝ">      <h4>compare_reals.Bourbakiℝ</h4><code>Type</code>
+<div class="indent"><p><p>Real numbers constructed as in Bourbaki.</p>
+</p>       </div>
+</div><div class="entry"><a id="compare_reals.bourbaki.uniform_space">      <h4>compare_reals.bourbaki.uniform_space</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/compare_reals.html#compare_reals.Bourbakiℝ">compare_reals.Bourbakiℝ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="compare_reals.Bourbaki_pkg">      <h4>compare_reals.Bourbaki_pkg</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/abstract_completion.html#abstract_completion">abstract_completion</a> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/compare_reals.html#compare_reals.Q">compare_reals.Q</a></code>
+<div class="indent"><p><p>Bourbaki reals packaged as a completion of Q using the general theory.</p>
+</p>       </div>
+</div><div class="entry"><a id="compare_reals.compare_equiv">      <h4>compare_reals.compare_equiv</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/compare_reals.html#compare_reals.Bourbakiℝ">compare_reals.Bourbakiℝ</a> ≃ ℝ</code>
+<div class="indent"><p><p>The equivalence between Bourbaki and Cauchy reals</p>
+</p>       </div>
+</div><div class="entry"><a id="compare_reals.compare_uc">      <h4>compare_reals.compare_uc</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> ⇑compare_reals.compare_equiv</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="compare_reals.compare_uc_symm">      <h4>compare_reals.compare_uc_symm</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/compare_reals.html#compare_reals.compare_equiv">compare_reals.compare_equiv</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

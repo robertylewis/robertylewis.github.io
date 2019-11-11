@@ -1,0 +1,35 @@
+<html><head><title>category.monad.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Monad</h1>
+
+<h2>Attributes</h2>
+
+<ul>
+<li>ext</li>
+<li>functor_norm</li>
+<li>monad_norm</li>
+</ul>
+
+<h2>Implementation Details</h2>
+
+<p>Set of rewrite rules and automation for monads in general and
+<code>reader_t</code>, <code>state_t</code>, <code>except_t</code> and <code>option_t</code> in particular.</p>
+
+<p>The rewrite rules for monads are carefully chosen so that <code>simp with
+functor_norm</code> will not introduce monadic vocabulary in a context where
+applicatives would do just fine but will handle monadic notation
+already present in an expression.</p>
+
+<p>In a context where monadic reasoning is desired <code>simp with monad_norm</code>
+will translate functor and applicative notation into monad notation
+and use regular <code>functor_norm</code> rules as well.</p>
+
+<h2>Tags</h2>
+
+<p>functor, applicative, monad, simp</p>
+</div><div class="entry"><a id="simp_attr.monad_norm">      <h4>simp_attr.monad_norm</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a>)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="map_eq_bind_pure_comp">      <h4>map_eq_bind_pure_comp</h4><code>∀ (m : Type u → Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m] {α β : Type u} (f : α → β)
+(x : m α), f <$> x = x >>= has_pure.pure ∘ f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

@@ -1,0 +1,241 @@
+<html><head><title>data.pequiv</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="pequiv">      <h4>pequiv</h4><code>Type u → Type v → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p><p>A <code>pequiv</code> is a partial equivalence, a representation of a bijection between a subset
+ of <code>α</code> and a subset of <code>β</code></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.has_coe_to_fun">      <h4>pequiv.has_coe_to_fun</h4><code>Π {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (α ≃. β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pequiv.coe_mk_apply">      <h4>pequiv.coe_mk_apply</h4><code>∀ {α : Type u} {β : Type v} (f₁ : α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β) (f₂ : β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α)
+(h : ∀ (a : α) (b : β), a ∈ f₂ b ↔ b ∈ f₁ a) (x : α),
+  ⇑{to_fun := f₁, inv_fun := f₂, inv := h} x = f₁ x</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.ext">      <h4>pequiv.ext</h4><code>∀ {α : Type u} {β : Type v} {f g : α ≃. β}, (∀ (x : α), ⇑f x = ⇑g x) → f = g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: ext</div>
+</div><div class="entry"><a id="pequiv.ext_iff">      <h4>pequiv.ext_iff</h4><code>∀ {α : Type u} {β : Type v} {f g : α ≃. β}, f = g ↔ ∀ (x : α), ⇑f x = ⇑g x</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.refl">      <h4>pequiv.refl</h4><code>Π (α : Type u_1), α ≃. α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.symm">      <h4>pequiv.symm</h4><code>Π {α : Type u} {β : Type v}, (α ≃. β) → β ≃. α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.mem_iff_mem">      <h4>pequiv.mem_iff_mem</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β) {a : α} {b : β}, a ∈ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) b ↔ b ∈ ⇑f a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.eq_some_iff">      <h4>pequiv.eq_some_iff</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β) {a : α} {b : β},
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) b = option.some a ↔ ⇑f a = option.some b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.trans">      <h4>pequiv.trans</h4><code>Π {α : Type u} {β : Type v} {γ : Type w}, (α ≃. β) → (β ≃. γ) → α ≃. γ</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.refl_apply">      <h4>pequiv.refl_apply</h4><code>∀ {α : Type u} (a : α), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α) a = option.some a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.symm_refl">      <h4>pequiv.symm_refl</h4><code>∀ {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.symm_refl_apply">      <h4>pequiv.symm_refl_apply</h4><code>∀ {α : Type u} (a : α), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α)) a = option.some a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.symm_symm">      <h4>pequiv.symm_symm</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) = f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.symm_symm_apply">      <h4>pequiv.symm_symm_apply</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β) (a : α), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f)) a = ⇑f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.symm_injective">      <h4>pequiv.symm_injective</h4><code>∀ {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.trans_assoc">      <h4>pequiv.trans_assoc</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {δ : Type x} (f : α ≃. β) (g : β ≃. γ) (h : γ ≃. δ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f g) h = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> g h)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.mem_trans">      <h4>pequiv.mem_trans</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (f : α ≃. β) (g : β ≃. γ) (a : α) (c : γ),
+  c ∈ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f g) a ↔ ∃ (b : β), b ∈ ⇑f a ∧ c ∈ ⇑g b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.trans_eq_some">      <h4>pequiv.trans_eq_some</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (f : α ≃. β) (g : β ≃. γ) (a : α) (c : γ),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f g) a = option.some c ↔ ∃ (b : β), ⇑f a = option.some b ∧ ⇑g b = option.some c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.trans_eq_none">      <h4>pequiv.trans_eq_none</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (f : α ≃. β) (g : β ≃. γ) (a : α),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f g) a = option.none ↔ ∀ (b : β) (c : γ), b ∉ ⇑f a ∨ c ∉ ⇑g b</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.refl_trans">      <h4>pequiv.refl_trans</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α) f = f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.trans_refl">      <h4>pequiv.trans_refl</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> β) = f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.refl_trans_apply">      <h4>pequiv.refl_trans_apply</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β) (a : α), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α) f) a = ⇑f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.trans_refl_apply">      <h4>pequiv.trans_refl_apply</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β) (a : α), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> β)) a = ⇑f a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.inj">      <h4>pequiv.inj</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β) {a₁ a₂ : α} {b : β},
+  b ∈ ⇑f a₁ → b ∈ ⇑f a₂ → a₁ = a₂</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.injective_of_forall_ne_is_some">      <h4>pequiv.injective_of_forall_ne_is_some</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β) (a₂ : α),
+  (∀ (a₁ : α), a₁ ≠ a₂ → ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (⇑f a₁))) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> ⇑f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.injective_of_forall_is_some">      <h4>pequiv.injective_of_forall_is_some</h4><code>∀ {α : Type u} {β : Type v} {f : α ≃. β},
+  (∀ (a : α), ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (⇑f a))) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.injective">function.injective</a> ⇑f</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.of_set">      <h4>pequiv.of_set</h4><code>Π {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> s], α ≃. α</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.mem_of_set_self_iff">      <h4>pequiv.mem_of_set_self_iff</h4><code>∀ {α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> s] {a : α}, a ∈ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> s) a ↔ a ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.mem_of_set_iff">      <h4>pequiv.mem_of_set_iff</h4><code>∀ {α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> s] {a b : α},
+  a ∈ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> s) b ↔ a = b ∧ a ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.of_set_eq_some_self_iff">      <h4>pequiv.of_set_eq_some_self_iff</h4><code>∀ {α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} {h : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> s} {a : α}, ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> s) a = option.some a ↔ a ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.of_set_eq_some_iff">      <h4>pequiv.of_set_eq_some_iff</h4><code>∀ {α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} {h : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> s} {a b : α},
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> s) b = option.some a ↔ a = b ∧ a ∈ s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.of_set_symm">      <h4>pequiv.of_set_symm</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> s], <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.of_set_univ">      <h4>pequiv.of_set_univ</h4><code>∀ {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.of_set_eq_refl">      <h4>pequiv.of_set_eq_refl</h4><code>∀ {α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> s], <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> s = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α ↔ s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.symm_trans_rev">      <h4>pequiv.symm_trans_rev</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (f : α ≃. β) (g : β ≃. γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f g) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> g) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.trans_symm">      <h4>pequiv.trans_symm</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> {a : α | ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (⇑f a))}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.symm_trans">      <h4>pequiv.symm_trans</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) f = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.of_set">pequiv.of_set</a> {b : β | ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) b))}</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.trans_symm_eq_iff_forall_is_some">      <h4>pequiv.trans_symm_eq_iff_forall_is_some</h4><code>∀ {α : Type u} {β : Type v} {f : α ≃. β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α ↔ ∀ (a : α), ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (⇑f a))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.lattice.has_bot">      <h4>pequiv.lattice.has_bot</h4><code>Π {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#lattice.has_bot">lattice.has_bot</a> (α ≃. β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pequiv.bot_apply">      <h4>pequiv.bot_apply</h4><code>∀ {α : Type u} {β : Type v} (a : α), ⇑⊥ a = option.none</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.symm_bot">      <h4>pequiv.symm_bot</h4><code>∀ {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> ⊥ = ⊥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.trans_bot">      <h4>pequiv.trans_bot</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (f : α ≃. β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f ⊥ = ⊥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.bot_trans">      <h4>pequiv.bot_trans</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (f : β ≃. γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> ⊥ f = ⊥</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.is_some_symm_get">      <h4>pequiv.is_some_symm_get</h4><code>∀ {α : Type u} {β : Type v} (f : α ≃. β) {a : α} (h : ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (⇑f a))),
+  ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.get">option.get</a> h)))</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.single">      <h4>pequiv.single</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β], α → β → α ≃. β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.mem_single">      <h4>pequiv.mem_single</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] (a : α) (b : β),
+  b ∈ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b) a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.mem_single_iff">      <h4>pequiv.mem_single_iff</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] (a₁ a₂ : α)
+(b₁ b₂ : β), b₁ ∈ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a₂ b₂) a₁ ↔ a₁ = a₂ ∧ b₁ = b₂</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.symm_single">      <h4>pequiv.symm_single</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] (a : α) (b : β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> b a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.single_apply">      <h4>pequiv.single_apply</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] (a : α) (b : β),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b) a = option.some b</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.symm_single_apply">      <h4>pequiv.symm_single_apply</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] (a : α) (b : β),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b)) b = option.some a</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.single_apply_of_ne">      <h4>pequiv.single_apply_of_ne</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β] {a₁ a₂ : α},
+  a₁ ≠ a₂ → ∀ (b : β), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a₁ b) a₂ = option.none</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.single_trans_of_mem">      <h4>pequiv.single_trans_of_mem</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> γ] (a : α) {b : β} {c : γ} {f : β ≃. γ},
+  c ∈ ⇑f b → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b) f = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.trans_single_of_mem">      <h4>pequiv.trans_single_of_mem</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> γ] {a : α} {b : β} (c : γ) {f : α ≃. β},
+  b ∈ ⇑f a → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> b c) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a c</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.single_trans_single">      <h4>pequiv.single_trans_single</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> γ] (a : α) (b : β) (c : γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> b c) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a c</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.single_subsingleton_eq_refl">      <h4>pequiv.single_subsingleton_eq_refl</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#subsingleton">subsingleton</a> α] (a b : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="pequiv.trans_single_of_eq_none">      <h4>pequiv.trans_single_of_eq_none</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> γ] {b : β} (c : γ) {f : α ≃. β},
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> f) b = option.none → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> b c) = ⊥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.single_trans_of_eq_none">      <h4>pequiv.single_trans_of_eq_none</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> γ] (a : α) {b : β} {f : β ≃. γ},
+  ⇑f b = option.none → <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b) f = ⊥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.single_trans_single_of_ne">      <h4>pequiv.single_trans_single_of_ne</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> γ] {b₁ b₂ : β},
+  b₁ ≠ b₂ → ∀ (a : α) (c : γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> a b₁) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.single">pequiv.single</a> b₂ c) = ⊥</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.partial_order">      <h4>pequiv.partial_order</h4><code>Π {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#partial_order">partial_order</a> (α ≃. β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pequiv.le_def">      <h4>pequiv.le_def</h4><code>∀ {α : Type u} {β : Type v} {f g : α ≃. β}, f ≤ g ↔ ∀ (a : α) (b : β), b ∈ ⇑f a → b ∈ ⇑g a</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="pequiv.lattice.order_bot">      <h4>pequiv.lattice.order_bot</h4><code>Π {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#lattice.order_bot">lattice.order_bot</a> (α ≃. β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="pequiv.lattice.semilattice_inf_bot">      <h4>pequiv.lattice.semilattice_inf_bot</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#lattice.semilattice_inf_bot">lattice.semilattice_inf_bot</a> (α ≃. β)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="equiv.to_pequiv">      <h4>equiv.to_pequiv</h4><code>Π {α : Type u_1} {β : Type u_2}, α ≃ β → α ≃. β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="equiv.to_pequiv_refl">      <h4>equiv.to_pequiv_refl</h4><code>∀ {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#equiv.to_pequiv">equiv.to_pequiv</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.refl">equiv.refl</a> α) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.refl">pequiv.refl</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="equiv.to_pequiv_trans">      <h4>equiv.to_pequiv_trans</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} (f : α ≃ β) (g : β ≃ γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#equiv.to_pequiv">equiv.to_pequiv</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.trans">equiv.trans</a> f g) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.trans">pequiv.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#equiv.to_pequiv">equiv.to_pequiv</a> f) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#equiv.to_pequiv">equiv.to_pequiv</a> g)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="equiv.to_pequiv_symm">      <h4>equiv.to_pequiv_symm</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α ≃ β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#equiv.to_pequiv">equiv.to_pequiv</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> f) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#pequiv.symm">pequiv.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pequiv.html#equiv.to_pequiv">equiv.to_pequiv</a> f)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

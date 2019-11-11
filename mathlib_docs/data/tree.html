@@ -1,0 +1,45 @@
+<html><head><title>data.tree</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Binary tree</h1>
+
+<p>Provides binary tree storage for values of any type, with O(lg n) retrieval.
+See also <code>data.rbtree</code> for red-black trees - this version allows more operations
+to be defined and is better suited for in-kernel computation.</p>
+
+<h2>References</h2>
+
+<p>https://leanprover-community.github.io/archive/113488general/62193tacticquestion.html</p>
+</div><div class="entry"><a id="tree.has_reflect">      <h4>tree.has_reflect</h4><code>Π (α : Type) [a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/has_reflect.html#has_reflect">has_reflect</a> α] [a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#reflected">reflected</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/has_reflect.html#has_reflect">has_reflect</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="tree">      <h4>tree</h4><code>Type u → Type u</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tree.repr">      <h4>tree.repr</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/repr.html#has_repr">has_repr</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a></code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="tree.has_repr">      <h4>tree.has_repr</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/repr.html#has_repr">has_repr</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/repr.html#has_repr">has_repr</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> α)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="tree.of_rbnode">      <h4>tree.of_rbnode</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/rbtree/basic.html#rbnode">rbnode</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> α</code>
+<div class="indent"><p><p>Makes a <code>tree α</code> out of a red-black tree.</p>
+</p>       </div>
+</div><div class="entry"><a id="tree.index_of">      <h4>tree.index_of</h4><code>Π {α : Type u} (lt : α → α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_rel">decidable_rel</a> lt], α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/num/basic.html#pos_num">pos_num</a></code>
+<div class="indent"><p><p>Finds the index of an element in the tree assuming the tree has been
+constructed according to the provided decidable order on its elements.
+If it hasn't, the result will be incorrect. If it has, but the element
+is not in the tree, returns none.</p>
+</p>       </div>
+</div><div class="entry"><a id="tree.get">      <h4>tree.get</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/num/basic.html#pos_num">pos_num</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><p>Retrieves an element uniquely determined by a <code>pos_num</code> from the tree,
+taking the following path to get to the element:
+- <code>bit0</code> - go to left child
+- <code>bit1</code> - go to right child
+- <code>one</code> - retrieve from here</p>
+</p>       </div>
+</div><div class="entry"><a id="tree.get_or_else">      <h4>tree.get_or_else</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/num/basic.html#pos_num">pos_num</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> α → α → α</code>
+<div class="indent"><p><p>Retrieves an element from the tree, or the provided default value
+if the index is invalid. See <code>tree.get</code>.</p>
+</p>       </div>
+</div><div class="entry"><a id="tree.map">      <h4>tree.map</h4><code>Π {α : Type u} {β : Type u_1}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/tree.html#tree">tree</a> β</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

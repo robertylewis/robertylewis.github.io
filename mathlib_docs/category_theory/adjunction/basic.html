@@ -1,0 +1,161 @@
+<html><head><title>category_theory.adjunction.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="entry"><a id="category_theory.adjunction">      <h4>category_theory.adjunction</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C ⥤ D → D ⥤ C → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ u₂ v₁ v₂)</code>
+<div class="indent"><p><p><code>F ⊣ G</code> represents the data of an adjunction between two functors
+<code>F : C ⥤ D</code> and <code>G : D ⥤ C</code>. <code>F</code> is the left adjoint and <code>G</code> is the right adjoint.</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.is_left_adjoint">      <h4>category_theory.is_left_adjoint</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C ⥤ D → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ u₂ v₁ v₂)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.is_right_adjoint">      <h4>category_theory.is_right_adjoint</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  D ⥤ C → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ u₂ v₁ v₂)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.left_adjoint">      <h4>category_theory.left_adjoint</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (R : D ⥤ C)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/adjunction/basic.html#category_theory.is_right_adjoint">category_theory.is_right_adjoint</a> R], C ⥤ D</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.right_adjoint">      <h4>category_theory.right_adjoint</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (L : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/adjunction/basic.html#category_theory.is_left_adjoint">category_theory.is_left_adjoint</a> L], D ⥤ C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.hom_equiv_naturality_left_symm">      <h4>category_theory.adjunction.hom_equiv_naturality_left_symm</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X' X : C} {Y : D} (f : X' ⟶ X) (g : X ⟶ G.obj Y),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> (adj.hom_equiv X' Y)) (f ≫ g) = F.map f ≫ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> (adj.hom_equiv X Y)) g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.hom_equiv_naturality_left">      <h4>category_theory.adjunction.hom_equiv_naturality_left</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X' X : C} {Y : D} (f : X' ⟶ X) (g : F.obj X ⟶ Y),
+  ⇑(adj.hom_equiv X' Y) (F.map f ≫ g) = f ≫ ⇑(adj.hom_equiv X Y) g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.hom_equiv_naturality_right">      <h4>category_theory.adjunction.hom_equiv_naturality_right</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X : C} {Y Y' : D} (f : F.obj X ⟶ Y) (g : Y ⟶ Y'),
+  ⇑(adj.hom_equiv X Y') (f ≫ g) = ⇑(adj.hom_equiv X Y) f ≫ G.map g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.hom_equiv_naturality_right_symm">      <h4>category_theory.adjunction.hom_equiv_naturality_right_symm</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X : C} {Y Y' : D} (f : X ⟶ G.obj Y) (g : Y ⟶ Y'),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> (adj.hom_equiv X Y')) (f ≫ G.map g) = ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> (adj.hom_equiv X Y)) f ≫ g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.left_triangle">      <h4>category_theory.adjunction.left_triangle</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/whiskering.html#category_theory.whisker_right">category_theory.whisker_right</a> (adj.unit) F ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/whiskering.html#category_theory.whisker_left">category_theory.whisker_left</a> F (adj.counit) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/natural_transformation.html#category_theory.nat_trans.id">category_theory.nat_trans.id</a> (𝟭 C ⋙ F)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.right_triangle">      <h4>category_theory.adjunction.right_triangle</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/whiskering.html#category_theory.whisker_left">category_theory.whisker_left</a> G (adj.unit) ≫ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/whiskering.html#category_theory.whisker_right">category_theory.whisker_right</a> (adj.counit) G =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/natural_transformation.html#category_theory.nat_trans.id">category_theory.nat_trans.id</a> (G ⋙ 𝟭 C)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.left_triangle_components_assoc">      <h4>category_theory.adjunction.left_triangle_components_assoc</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X : C} {X' : D} (f' : (𝟭 D).obj (F.obj X) ⟶ X'),
+  F.map ((adj.unit).app X) ≫ (adj.counit).app (F.obj X) ≫ f' = f'</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.left_triangle_components">      <h4>category_theory.adjunction.left_triangle_components</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X : C},
+  F.map ((adj.unit).app X) ≫ (adj.counit).app (F.obj X) = 𝟙 (F.obj X)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.right_triangle_components">      <h4>category_theory.adjunction.right_triangle_components</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {Y : D},
+  (adj.unit).app (G.obj Y) ≫ G.map ((adj.counit).app Y) = 𝟙 (G.obj Y)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.right_triangle_components_assoc">      <h4>category_theory.adjunction.right_triangle_components_assoc</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {Y : D} {X' : C} (f' : G.obj ((𝟭 D).obj Y) ⟶ X'),
+  (adj.unit).app (G.obj Y) ≫ G.map ((adj.counit).app Y) ≫ f' = f'</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.counit_naturality_assoc">      <h4>category_theory.adjunction.counit_naturality_assoc</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X Y : D} (f : X ⟶ Y) {X' : D} (f' : (𝟭 D).obj Y ⟶ X'),
+  F.map (G.map f) ≫ (adj.counit).app Y ≫ f' = (adj.counit).app X ≫ f ≫ f'</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.counit_naturality">      <h4>category_theory.adjunction.counit_naturality</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X Y : D} (f : X ⟶ Y),
+  F.map (G.map f) ≫ (adj.counit).app Y = (adj.counit).app X ≫ f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.unit_naturality_assoc">      <h4>category_theory.adjunction.unit_naturality_assoc</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X Y : C} (f : X ⟶ Y) {X' : C} (f' : G.obj (F.obj Y) ⟶ X'),
+  (adj.unit).app X ≫ G.map (F.map f) ≫ f' = f ≫ (adj.unit).app Y ≫ f'</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.unit_naturality">      <h4>category_theory.adjunction.unit_naturality</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : F ⊣ G) {X Y : C} (f : X ⟶ Y),
+  (adj.unit).app X ≫ G.map (F.map f) = f ≫ (adj.unit).app Y</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.core_hom_equiv">      <h4>category_theory.adjunction.core_hom_equiv</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C ⥤ D → D ⥤ C → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ u₂ v₁ v₂)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.core_hom_equiv.hom_equiv_naturality_left">      <h4>category_theory.adjunction.core_hom_equiv.hom_equiv_naturality_left</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/adjunction/basic.html#category_theory.adjunction.core_hom_equiv">category_theory.adjunction.core_hom_equiv</a> F G) {X' X : C} {Y : D} (f : X' ⟶ X)
+(g : F.obj X ⟶ Y), ⇑(adj.hom_equiv X' Y) (F.map f ≫ g) = f ≫ ⇑(adj.hom_equiv X Y) g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.core_hom_equiv.hom_equiv_naturality_right_symm">      <h4>category_theory.adjunction.core_hom_equiv.hom_equiv_naturality_right_symm</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+{F : C ⥤ D} {G : D ⥤ C} (adj : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/adjunction/basic.html#category_theory.adjunction.core_hom_equiv">category_theory.adjunction.core_hom_equiv</a> F G) {X : C} {Y Y' : D} (f : X ⟶ G.obj Y)
+(g : Y ⟶ Y'), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> (adj.hom_equiv X Y')) (f ≫ G.map g) = ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.symm">equiv.symm</a> (adj.hom_equiv X Y)) f ≫ g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.adjunction.core_unit_counit">      <h4>category_theory.adjunction.core_unit_counit</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D],
+  C ⥤ D → D ⥤ C → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ u₂ v₁ v₂)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.mk_of_hom_equiv">      <h4>category_theory.adjunction.mk_of_hom_equiv</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F : C ⥤ D}
+{G : D ⥤ C}, <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/adjunction/basic.html#category_theory.adjunction.core_hom_equiv">category_theory.adjunction.core_hom_equiv</a> F G → (F ⊣ G)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.mk_of_unit_counit">      <h4>category_theory.adjunction.mk_of_unit_counit</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F : C ⥤ D}
+{G : D ⥤ C}, <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/adjunction/basic.html#category_theory.adjunction.core_unit_counit">category_theory.adjunction.core_unit_counit</a> F G → (F ⊣ G)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.id">      <h4>category_theory.adjunction.id</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C], 𝟭 C ⊣ 𝟭 C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.comp">      <h4>category_theory.adjunction.comp</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F : C ⥤ D}
+{G : D ⥤ C} {E : Type u₃} [ℰ : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> E] (H : D ⥤ E) (I : E ⥤ D),
+  (F ⊣ G) → (H ⊣ I) → (F ⋙ H ⊣ I ⋙ G)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.left_adjoint_of_equiv">      <h4>category_theory.adjunction.left_adjoint_of_equiv</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {G : D ⥤ C}
+{F_obj : C → D} (e : Π (X : C) (Y : D), (F_obj X ⟶ Y) ≃ (X ⟶ G.obj Y)),
+  (∀ (X : C) (Y Y' : D) (g : Y ⟶ Y') (h : F_obj X ⟶ Y), ⇑(e X Y') (h ≫ g) = ⇑(e X Y) h ≫ G.map g) →
+  C ⥤ D</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.adjunction_of_equiv_left">      <h4>category_theory.adjunction.adjunction_of_equiv_left</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {G : D ⥤ C}
+{F_obj : C → D} (e : Π (X : C) (Y : D), (F_obj X ⟶ Y) ≃ (X ⟶ G.obj Y))
+(he : ∀ (X : C) (Y Y' : D) (g : Y ⟶ Y') (h : F_obj X ⟶ Y), ⇑(e X Y') (h ≫ g) = ⇑(e X Y) h ≫ G.map g),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/adjunction/basic.html#category_theory.adjunction.left_adjoint_of_equiv">category_theory.adjunction.left_adjoint_of_equiv</a> e he ⊣ G</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.right_adjoint_of_equiv">      <h4>category_theory.adjunction.right_adjoint_of_equiv</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F : C ⥤ D}
+{G_obj : D → C} (e : Π (X : C) (Y : D), (F.obj X ⟶ Y) ≃ (X ⟶ G_obj Y)),
+  (∀ (X' X : C) (Y : D) (f : X' ⟶ X) (g : F.obj X ⟶ Y), ⇑(e X' Y) (F.map f ≫ g) = f ≫ ⇑(e X Y) g) →
+  D ⥤ C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.adjunction.adjunction_of_equiv_right">      <h4>category_theory.adjunction.adjunction_of_equiv_right</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] {F : C ⥤ D}
+{G_obj : D → C} (e : Π (X : C) (Y : D), (F.obj X ⟶ Y) ≃ (X ⟶ G_obj Y))
+(he : ∀ (X' X : C) (Y : D) (f : X' ⟶ X) (g : F.obj X ⟶ Y), ⇑(e X' Y) (F.map f ≫ g) = f ≫ ⇑(e X Y) g),
+  F ⊣ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/adjunction/basic.html#category_theory.adjunction.right_adjoint_of_equiv">category_theory.adjunction.right_adjoint_of_equiv</a> e he</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.equivalence.to_adjunction">      <h4>category_theory.equivalence.to_adjunction</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D]
+(e : C ≌ D), e.functor ⊣ e.inverse</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.functor.adjunction">      <h4>category_theory.functor.adjunction</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {D : Type u₂} [𝒟 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> D] (E : C ⥤ D)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.is_equivalence">category_theory.is_equivalence</a> E], E ⊣ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/equivalence.html#category_theory.functor.inv">category_theory.functor.inv</a> E</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div></body></html>

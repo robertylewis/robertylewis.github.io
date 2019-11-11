@@ -1,0 +1,95 @@
+<html><head><title>category_theory.monad.algebra</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Eilenberg-Moore algebras for a monad</h1>
+
+<p>This file defines Eilenberg-Moore algebras for a monad, and provides the category instance for them.
+Further it defines the adjoint pair of free and forgetful functors, respectively
+from and to the original category.</p>
+
+<h2>References</h2>
+
+<ul>
+<li>[Riehl, <em>Category theory in context</em>, Section 5.2.4][riehl2017]</li>
+</ul>
+</div><div class="entry"><a id="category_theory.monad.algebra">      <h4>category_theory.monad.algebra</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T],
+  Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u₁ v₁)</code>
+<div class="indent"><p><p>An Eilenberg-Moore algebra for a monad <code>T</code>.
+   cf Definition 5.2.3 in [Riehl][riehl2017].</p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.monad.algebra.hom">      <h4>category_theory.monad.algebra.hom</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T → <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T → Type v₁</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.monad.algebra.hom.ext">      <h4>category_theory.monad.algebra.hom.ext</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+{A B : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T} (f g : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> A B), f.f = g.f → f = g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: ext</div>
+</div><div class="entry"><a id="category_theory.monad.algebra.hom.id_f">      <h4>category_theory.monad.algebra.hom.id_f</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+(A : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom.id">category_theory.monad.algebra.hom.id</a> A).f = 𝟙 (A.A)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.algebra.hom.id">      <h4>category_theory.monad.algebra.hom.id</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+(A : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T), <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> A A</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.monad.algebra.hom.comp_f">      <h4>category_theory.monad.algebra.hom.comp_f</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+{P Q R : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> P Q)
+(g : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> Q R), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom.comp">category_theory.monad.algebra.hom.comp</a> f g).f = f.f ≫ g.f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.algebra.hom.comp">      <h4>category_theory.monad.algebra.hom.comp</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+{P Q R : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> P Q →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> Q R → <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> P R</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.monad.algebra.EilenbergMoore_to_category_struct_to_has_hom_hom">      <h4>category_theory.monad.algebra.EilenbergMoore_to_category_struct_to_has_hom_hom</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+(A B : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T), (A ⟶ B) = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> A B</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.algebra.EilenbergMoore">      <h4>category_theory.monad.algebra.EilenbergMoore</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T)</code>
+<div class="indent"><p><p>The category of Eilenberg-Moore algebras for a monad.
+   cf Definition 5.2.4 in [Riehl][riehl2017].</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="category_theory.monad.algebra.EilenbergMoore_to_category_struct_id">      <h4>category_theory.monad.algebra.EilenbergMoore_to_category_struct_id</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+(A : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T), 𝟙 A = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom.id">category_theory.monad.algebra.hom.id</a> A</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.algebra.EilenbergMoore_to_category_struct_comp">      <h4>category_theory.monad.algebra.EilenbergMoore_to_category_struct_comp</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] {T : C ⥤ C} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+{P Q R : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> P Q)
+(g : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom">category_theory.monad.algebra.hom</a> Q R), f ≫ g = <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra.hom.comp">category_theory.monad.algebra.hom.comp</a> f g</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.forget">      <h4>category_theory.monad.forget</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T ⥤ C</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.monad.forget_map">      <h4>category_theory.monad.forget_map</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+(A B : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T) (f : A ⟶ B), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.forget">category_theory.monad.forget</a> T).map f = f.f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.forget_obj">      <h4>category_theory.monad.forget_obj</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T]
+(A : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T), (<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.forget">category_theory.monad.forget</a> T).obj A = A.A</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.free">      <h4>category_theory.monad.free</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T],
+  C ⥤ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.algebra">category_theory.monad.algebra</a> T</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="category_theory.monad.free_map_f">      <h4>category_theory.monad.free_map_f</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T] (X Y : C)
+(f : X ⟶ Y), ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.free">category_theory.monad.free</a> T).map f).f = T.map f</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.free_obj_A">      <h4>category_theory.monad.free_obj_A</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T] (X : C),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.free">category_theory.monad.free</a> T).obj X).A = T.obj X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.free_obj_a">      <h4>category_theory.monad.free_obj_a</h4><code>∀ {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T] (X : C),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.free">category_theory.monad.free</a> T).obj X).a = (μ_ T).app X</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="category_theory.monad.adj">      <h4>category_theory.monad.adj</h4><code>Π {C : Type u₁} [𝒞 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/category/default.html#category_theory.category">category_theory.category</a> C] (T : C ⥤ C) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/basic.html#category_theory.monad">category_theory.monad</a> T],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.free">category_theory.monad.free</a> T ⊣ <a href="/home/rob/lean/mathlib/scripts/html_out/category_theory/monad/algebra.html#category_theory.monad.forget">category_theory.monad.forget</a> T</code>
+<div class="indent"><p><p>The adjunction between the free and forgetful constructions for Eilenberg-Moore algebras for a monad.
+   cf Lemma 5.2.8 of [Riehl][riehl2017].</p>
+</p>       </div>
+</div></body></html>

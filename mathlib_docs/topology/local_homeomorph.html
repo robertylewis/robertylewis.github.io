@@ -1,0 +1,542 @@
+<html><head><title>topology.local_homeomorph</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Local homeomorphisms</h1>
+
+<p>This file defines homeomorphisms between open subsets of topological spaces. An element <code>e</code> of
+<code>local_homeomorph α β</code> is an extension of <code>local_equiv α β</code>, i.e., it is a pair of functions
+<code>e.to_fun</code> and <code>e.inv_fun</code>, inverse of each other on the sets <code>e.source</code> and <code>e.target</code>.
+Additionally, we require that these sets are open, and that the functions are continuous on them.
+Equivalently, they are homeomorphisms there.</p>
+
+<p>Contrary to equivs, we do not register the coercion to functions and we use explicitly to<em>fun and
+inv</em>fun: coercions create unification problems for manifolds.</p>
+
+<h2>Main definitions</h2>
+
+<p><code>homeomorph.to_local_homeomorph</code>: associating a local homeomorphism to a homeomorphism, with
+                                  source = target = univ
+<code>local_homeomorph.symm</code>  : the inverse of a local homeomorphism
+<code>local_homeomorph.trans</code> : the composition of two local homeomorphisms
+<code>local_homeomorph.refl</code>  : the identity local homeomorphism
+<code>local_homeomorph.of_set</code>: the identity on a set <code>s</code>
+<code>eq_on_source</code>           : equivalence relation describing the "right" notion of equality for local
+                           homeomorphisms</p>
+
+<h2>Implementation notes</h2>
+
+<p>Most statements are copied from their local_equiv versions, although some care is required
+especially when restricting to subsets, as these should be open subsets.</p>
+
+<p>For design notes, see <code>local_equiv.lean</code>.</p>
+</div><div class="entry"><a id="local_homeomorph">      <h4>local_homeomorph</h4><code>Π (α : Type u_5) (β : Type u_6) [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u_5 u_6)</code>
+<div class="indent"><p><p>local homeomorphisms, defined on open subsets of the space</p>
+</p>       </div>
+</div><div class="entry"><a id="homeomorph.to_local_homeomorph">      <h4>homeomorph.to_local_homeomorph</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  α ≃ₜ β → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β</code>
+<div class="indent"><p><p>A homeomorphism induces a local homeomorphism on the whole space</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.eq_of_local_equiv_eq">      <h4>local_homeomorph.eq_of_local_equiv_eq</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β}, e.to_local_equiv = e'.to_local_equiv → e = e'</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.ext">      <h4>local_homeomorph.ext</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β),
+  (∀ (x : α), (e.to_local_equiv).to_fun x = (e'.to_local_equiv).to_fun x) →
+  (∀ (x : β), (e.to_local_equiv).inv_fun x = (e'.to_local_equiv).inv_fun x) →
+  (e.to_local_equiv).source = (e'.to_local_equiv).source → e = e'</code>
+<div class="indent"><p><p>Two local homeomorphisms are equal when they have equal to<em>fun, inv</em>fun and source. It is not
+sufficient to have equal to<em>fun and source, as this only determines inv</em>fun on the target. This
+would only be true for a weaker notion of equality, arguably the right one, called <code>eq_on_source</code>.</p>
+</p>       Attributes: ext</div>
+</div><div class="entry"><a id="local_homeomorph.symm">      <h4>local_homeomorph.symm</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β α</code>
+<div class="indent"><p><p>The inverse of a local homeomorphism</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.symm_to_local_equiv">      <h4>local_homeomorph.symm_to_local_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e).to_local_equiv = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.symm">local_equiv.symm</a> (e.to_local_equiv)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.symm_to_fun">      <h4>local_homeomorph.symm_to_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e).to_local_equiv).to_fun = (e.to_local_equiv).inv_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.symm_inv_fun">      <h4>local_homeomorph.symm_inv_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e).to_local_equiv).inv_fun = (e.to_local_equiv).to_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.symm_source">      <h4>local_homeomorph.symm_source</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e).to_local_equiv).source = (e.to_local_equiv).target</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.symm_target">      <h4>local_homeomorph.symm_target</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e).to_local_equiv).target = (e.to_local_equiv).source</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.symm_symm">      <h4>local_homeomorph.symm_symm</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) = e</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.continuous_at_to_fun">      <h4>local_homeomorph.continuous_at_to_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {x : α}, x ∈ (e.to_local_equiv).source → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous_at">continuous_at</a> ((e.to_local_equiv).to_fun) x</code>
+<div class="indent"><p><p>A local homeomorphism is continuous at any point of its source</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.continuous_at_inv_fun">      <h4>local_homeomorph.continuous_at_inv_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {x : β}, x ∈ (e.to_local_equiv).target → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous_at">continuous_at</a> ((e.to_local_equiv).inv_fun) x</code>
+<div class="indent"><p><p>A local homeomorphism inverse is continuous at any point of its target</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.preimage_interior">      <h4>local_homeomorph.preimage_interior</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β),
+  (e.to_local_equiv).source ∩ (e.to_local_equiv).to_fun ⁻¹' <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#interior">interior</a> s =
+    (e.to_local_equiv).source ∩ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#interior">interior</a> ((e.to_local_equiv).to_fun ⁻¹' s)</code>
+<div class="indent"><p><p>Preimage of interior or interior of preimage coincide for local homeomorphisms, when restricted
+to the source.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.image_open_of_open">      <h4>local_homeomorph.image_open_of_open</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s → s ⊆ (e.to_local_equiv).source → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> ((e.to_local_equiv).to_fun '' s)</code>
+<div class="indent"><p><p>The image of an open set in the source is open.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.restr_open">      <h4>local_homeomorph.restr_open</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β → Π (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β</code>
+<div class="indent"><p><p>Restricting a local homeomorphism <code>e</code> to <code>e.source ∩ s</code> when <code>s</code> is open. This is sometimes hard
+to use because of the openness assumption, but it has the advantage that when it can
+be used then its local<em>equiv is defeq to local</em>equiv.restr</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.restr_open_source">      <h4>local_homeomorph.restr_open_source</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr_open">local_homeomorph.restr_open</a> e s hs).to_local_equiv).source = (e.to_local_equiv).source ∩ s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.restr_open_to_local_equiv">      <h4>local_homeomorph.restr_open_to_local_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr_open">local_homeomorph.restr_open</a> e s hs).to_local_equiv = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.restr">local_equiv.restr</a> (e.to_local_equiv) s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.restr">      <h4>local_homeomorph.restr</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β</code>
+<div class="indent"><p><p>Restricting a local homeomorphism <code>e</code> to <code>e.source ∩ interior s</code>. We use the interior to make
+sure that the restriction is well defined whatever the set s, since local homeomorphisms are by
+definition defined on open sets. In applications where <code>s</code> is open, this coincides with the
+restriction of local equivalences</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.restr_to_fun">      <h4>local_homeomorph.restr_to_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s).to_local_equiv).to_fun = (e.to_local_equiv).to_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.restr_inv_fun">      <h4>local_homeomorph.restr_inv_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s).to_local_equiv).inv_fun = (e.to_local_equiv).inv_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.restr_source">      <h4>local_homeomorph.restr_source</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s).to_local_equiv).source = (e.to_local_equiv).source ∩ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#interior">interior</a> s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.restr_target">      <h4>local_homeomorph.restr_target</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s).to_local_equiv).target =
+    (e.to_local_equiv).target ∩ (e.to_local_equiv).inv_fun ⁻¹' <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#interior">interior</a> s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.restr_to_local_equiv">      <h4>local_homeomorph.restr_to_local_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s).to_local_equiv = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.restr">local_equiv.restr</a> (e.to_local_equiv) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#interior">interior</a> s)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.restr_source'">      <h4>local_homeomorph.restr_source'</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s → ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s).to_local_equiv).source = (e.to_local_equiv).source ∩ s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.restr_to_local_equiv'">      <h4>local_homeomorph.restr_to_local_equiv'</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s).to_local_equiv = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.restr">local_equiv.restr</a> (e.to_local_equiv) s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.restr_eq_of_source_subset">      <h4>local_homeomorph.restr_eq_of_source_subset</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, (e.to_local_equiv).source ⊆ s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s = e</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.restr_univ">      <h4>local_homeomorph.restr_univ</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> = e</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.restr_source_inter">      <h4>local_homeomorph.restr_source_inter</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e ((e.to_local_equiv).source ∩ s) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.refl">      <h4>local_homeomorph.refl</h4><code>Π (α : Type u_1) [_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α α</code>
+<div class="indent"><p><p>The identity on the whole space as a local homeomorphism.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.refl_source">      <h4>local_homeomorph.refl_source</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α).to_local_equiv).source = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.refl_target">      <h4>local_homeomorph.refl_target</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α).to_local_equiv).target = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.refl_symm">      <h4>local_homeomorph.refl_symm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.refl_to_fun">      <h4>local_homeomorph.refl_to_fun</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α).to_local_equiv).to_fun = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.refl_inv_fun">      <h4>local_homeomorph.refl_inv_fun</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α).to_local_equiv).inv_fun = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.refl_local_equiv">      <h4>local_homeomorph.refl_local_equiv</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α], (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α).to_local_equiv = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.refl">local_equiv.refl</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.of_set">      <h4>local_homeomorph.of_set</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α α</code>
+<div class="indent"><p><p>The identity local equiv on a set <code>s</code></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.of_set_source">      <h4>local_homeomorph.of_set_source</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs).to_local_equiv).source = s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.of_set_target">      <h4>local_homeomorph.of_set_target</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs).to_local_equiv).target = s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.of_set_to_fun">      <h4>local_homeomorph.of_set_to_fun</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs).to_local_equiv).to_fun = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.of_set_inv_fun">      <h4>local_homeomorph.of_set_inv_fun</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs).to_local_equiv).inv_fun = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.of_set_symm">      <h4>local_homeomorph.of_set_symm</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.of_set_to_local_equiv">      <h4>local_homeomorph.of_set_to_local_equiv</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs).to_local_equiv = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.of_set">local_equiv.of_set</a> s</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.trans'">      <h4>local_homeomorph.trans'</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  (e.to_local_equiv).target = (e'.to_local_equiv).source → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α γ</code>
+<div class="indent"><p><p>Composition of two local homeomorphisms when the target of the first and the source of
+the second coincide.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans">      <h4>local_homeomorph.trans</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α γ</code>
+<div class="indent"><p><p>Composing two local homeomorphisms, by restricting to the maximal domain where their
+composition is well defined.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_to_local_equiv">      <h4>local_homeomorph.trans_to_local_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.trans">local_equiv.trans</a> (e.to_local_equiv) (e'.to_local_equiv)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.trans_to_fun">      <h4>local_homeomorph.trans_to_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).to_fun = (e'.to_local_equiv).to_fun ∘ (e.to_local_equiv).to_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.trans_inv_fun">      <h4>local_homeomorph.trans_inv_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).inv_fun = (e.to_local_equiv).inv_fun ∘ (e'.to_local_equiv).inv_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.trans_symm_eq_symm_trans_symm">      <h4>local_homeomorph.trans_symm_eq_symm_trans_symm</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e') =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e') (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_source">      <h4>local_homeomorph.trans_source</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).source =
+    (e.to_local_equiv).source ∩ (e.to_local_equiv).to_fun ⁻¹' (e'.to_local_equiv).source</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_source'">      <h4>local_homeomorph.trans_source'</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).source =
+    (e.to_local_equiv).source ∩
+      (e.to_local_equiv).to_fun ⁻¹' ((e.to_local_equiv).target ∩ (e'.to_local_equiv).source)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_source''">      <h4>local_homeomorph.trans_source''</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).source =
+    (e.to_local_equiv).inv_fun '' ((e.to_local_equiv).target ∩ (e'.to_local_equiv).source)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.image_trans_source">      <h4>local_homeomorph.image_trans_source</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  (e.to_local_equiv).to_fun '' ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).source =
+    (e.to_local_equiv).target ∩ (e'.to_local_equiv).source</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_target">      <h4>local_homeomorph.trans_target</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).target =
+    (e'.to_local_equiv).target ∩ (e'.to_local_equiv).inv_fun ⁻¹' (e.to_local_equiv).target</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_target'">      <h4>local_homeomorph.trans_target'</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).target =
+    (e'.to_local_equiv).target ∩
+      (e'.to_local_equiv).inv_fun ⁻¹' ((e'.to_local_equiv).source ∩ (e.to_local_equiv).target)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_target''">      <h4>local_homeomorph.trans_target''</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).target =
+    (e'.to_local_equiv).to_fun '' ((e'.to_local_equiv).source ∩ (e.to_local_equiv).target)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.inv_image_trans_target">      <h4>local_homeomorph.inv_image_trans_target</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ),
+  (e'.to_local_equiv).inv_fun '' ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e').to_local_equiv).target =
+    (e'.to_local_equiv).source ∩ (e.to_local_equiv).target</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_assoc">      <h4>local_homeomorph.trans_assoc</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> δ]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ) (e'' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> γ δ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e') e'' = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e' e'')</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_refl">      <h4>local_homeomorph.trans_refl</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> β) = e</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.refl_trans">      <h4>local_homeomorph.refl_trans</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α) e = e</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.trans_of_set">      <h4>local_homeomorph.trans_of_set</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e ((e.to_local_equiv).to_fun ⁻¹' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_of_set'">      <h4>local_homeomorph.trans_of_set'</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e ((e.to_local_equiv).source ∩ (e.to_local_equiv).to_fun ⁻¹' s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.of_set_trans">      <h4>local_homeomorph.of_set_trans</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs) e = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.of_set_trans'">      <h4>local_homeomorph.of_set_trans'</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} (hs : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_open">is_open</a> s),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> s hs) e = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e ((e.to_local_equiv).source ∩ s)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.restr_trans">      <h4>local_homeomorph.restr_trans</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s) e' = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e') s</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.eq_on_source">      <h4>local_homeomorph.eq_on_source</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β → Prop</code>
+<div class="indent"><p><p><code>eq_on_source e e'</code> means that <code>e</code> and <code>e'</code> have the same source, and coincide there. They
+should really be considered the same local equiv.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.eq_on_source_iff">      <h4>local_homeomorph.eq_on_source_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.eq_on_source">local_homeomorph.eq_on_source</a> e e' ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.eq_on_source">local_equiv.eq_on_source</a> (e.to_local_equiv) (e'.to_local_equiv)</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.setoid">      <h4>local_homeomorph.setoid</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β)</code>
+<div class="indent"><p><p><code>eq_on_source</code> is an equivalence relation</p>
+</p>       Attributes: instance</div>
+</div><div class="entry"><a id="local_homeomorph.eq_on_source_refl">      <h4>local_homeomorph.eq_on_source_refl</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β), e ≈ e</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.eq_on_source_symm">      <h4>local_homeomorph.eq_on_source_symm</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β}, e ≈ e' → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e ≈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e'</code>
+<div class="indent"><p><p>If two local homeomorphisms are equivalent, so are their inverses</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.source_eq_of_eq_on_source">      <h4>local_homeomorph.source_eq_of_eq_on_source</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β}, e ≈ e' → (e.to_local_equiv).source = (e'.to_local_equiv).source</code>
+<div class="indent"><p><p>Two equivalent local homeomorphisms have the same source</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.target_eq_of_eq_on_source">      <h4>local_homeomorph.target_eq_of_eq_on_source</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β}, e ≈ e' → (e.to_local_equiv).target = (e'.to_local_equiv).target</code>
+<div class="indent"><p><p>Two equivalent local homeomorphisms have the same target</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.apply_eq_of_eq_on_source">      <h4>local_homeomorph.apply_eq_of_eq_on_source</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β},
+  e ≈ e' →
+  ∀ {x : α}, x ∈ (e.to_local_equiv).source → (e.to_local_equiv).to_fun x = (e'.to_local_equiv).to_fun x</code>
+<div class="indent"><p><p>Two equivalent local homeomorphisms have coinciding <code>to_fun</code> on the source</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.inv_apply_eq_of_eq_on_source">      <h4>local_homeomorph.inv_apply_eq_of_eq_on_source</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β},
+  e ≈ e' →
+  ∀ {x : β}, x ∈ (e.to_local_equiv).target → (e.to_local_equiv).inv_fun x = (e'.to_local_equiv).inv_fun x</code>
+<div class="indent"><p><p>Two equivalent local homeomorphisms have coinciding <code>inv_fun</code> on the target</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.eq_on_source_trans">      <h4>local_homeomorph.eq_on_source_trans</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] {e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β} {f f' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> β γ},
+  e ≈ e' → f ≈ f' → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e f ≈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e' f'</code>
+<div class="indent"><p><p>Composition of local homeomorphisms respects equivalence</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.eq_on_source_restr">      <h4>local_homeomorph.eq_on_source_restr</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β},
+  e ≈ e' → ∀ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s ≈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e' s</code>
+<div class="indent"><p><p>Restriction of local homeomorphisms respects equivalence</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_self_symm">      <h4>local_homeomorph.trans_self_symm</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) ≈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> ((e.to_local_equiv).source) _</code>
+<div class="indent"><p><p>Composition of a local homeomorphism and its inverse is equivalent to the restriction of the
+identity to the source</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.trans_symm_self">      <h4>local_homeomorph.trans_symm_self</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e ≈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.of_set">local_homeomorph.of_set</a> ((e.to_local_equiv).target) _</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.eq_of_eq_on_source_univ">      <h4>local_homeomorph.eq_of_eq_on_source_univ</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+{e e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β},
+  e ≈ e' → (e.to_local_equiv).source = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> → (e.to_local_equiv).target = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> → e = e'</code>
+<div class="indent"><p><p></p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.prod">      <h4>local_homeomorph.prod</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> δ],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> γ δ → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> (α × γ) (β × δ)</code>
+<div class="indent"><p><p>The product of two local homeomorphisms, as a local homeomorphism on the product space.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.prod_to_local_equiv">      <h4>local_homeomorph.prod_to_local_equiv</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> δ]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> γ δ),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.prod">local_homeomorph.prod</a> e e').to_local_equiv = <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/local_equiv.html#local_equiv.prod">local_equiv.prod</a> (e.to_local_equiv) (e'.to_local_equiv)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.prod_source">      <h4>local_homeomorph.prod_source</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> δ]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> γ δ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.prod">local_homeomorph.prod</a> e e').to_local_equiv).source =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.prod">set.prod</a> ((e.to_local_equiv).source) ((e'.to_local_equiv).source)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.prod_target">      <h4>local_homeomorph.prod_target</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> δ]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> γ δ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.prod">local_homeomorph.prod</a> e e').to_local_equiv).target =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.prod">set.prod</a> ((e.to_local_equiv).target) ((e'.to_local_equiv).target)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.prod_to_fun">      <h4>local_homeomorph.prod_to_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> δ]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> γ δ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.prod">local_homeomorph.prod</a> e e').to_local_equiv).to_fun =
+    λ (p : α × γ), ((e.to_local_equiv).to_fun (p.fst), (e'.to_local_equiv).to_fun (p.snd))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.prod_inv_fun">      <h4>local_homeomorph.prod_inv_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} {δ : Type u_4} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> δ]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (e' : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> γ δ),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.prod">local_homeomorph.prod</a> e e').to_local_equiv).inv_fun =
+    λ (p : β × δ), ((e.to_local_equiv).inv_fun (p.fst), (e'.to_local_equiv).inv_fun (p.snd))</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.continuous_within_at_iff_continuous_within_at_comp_right">      <h4>local_homeomorph.continuous_within_at_iff_continuous_within_at_comp_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {f : β → γ} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β} {x : β},
+  x ∈ (e.to_local_equiv).target →
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#continuous_within_at">continuous_within_at</a> f s x ↔
+     <a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#continuous_within_at">continuous_within_at</a> (f ∘ (e.to_local_equiv).to_fun) ((e.to_local_equiv).to_fun ⁻¹' s)
+       ((e.to_local_equiv).inv_fun x))</code>
+<div class="indent"><p><p>Continuity within a set at a point can be read under right composition with a local
+homeomorphism, if the point is in its target</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.continuous_at_iff_continuous_at_comp_right">      <h4>local_homeomorph.continuous_at_iff_continuous_at_comp_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {f : β → γ} {x : β},
+  x ∈ (e.to_local_equiv).target →
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous_at">continuous_at</a> f x ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous_at">continuous_at</a> (f ∘ (e.to_local_equiv).to_fun) ((e.to_local_equiv).inv_fun x))</code>
+<div class="indent"><p><p>Continuity at a point can be read under right composition with a local homeomorphism, if the
+point is in its target</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.continuous_on_iff_continuous_on_comp_right">      <h4>local_homeomorph.continuous_on_iff_continuous_on_comp_right</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {f : β → γ} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β},
+  s ⊆ (e.to_local_equiv).target →
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#continuous_on">continuous_on</a> f s ↔
+     <a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#continuous_on">continuous_on</a> (f ∘ (e.to_local_equiv).to_fun) ((e.to_local_equiv).source ∩ (e.to_local_equiv).to_fun ⁻¹' s))</code>
+<div class="indent"><p><p>A function is continuous on a set if and only if its composition with a local homeomorphism
+on the right is continuous on the corresponding set.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.continuous_within_at_iff_continuous_within_at_comp_left">      <h4>local_homeomorph.continuous_within_at_iff_continuous_within_at_comp_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {f : γ → α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> γ} {x : γ},
+  f x ∈ (e.to_local_equiv).source →
+  f ⁻¹' (e.to_local_equiv).source ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#nhds_within">nhds_within</a> x s →
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#continuous_within_at">continuous_within_at</a> f s x ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#continuous_within_at">continuous_within_at</a> ((e.to_local_equiv).to_fun ∘ f) s x)</code>
+<div class="indent"><p><p>Continuity within a set at a point can be read under left composition with a local
+homeomorphism if a neighborhood of the initial point is sent to the source of the local
+homeomorphism</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.continuous_at_iff_continuous_at_comp_left">      <h4>local_homeomorph.continuous_at_iff_continuous_at_comp_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {f : γ → α} {x : γ},
+  f ⁻¹' (e.to_local_equiv).source ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x →
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous_at">continuous_at</a> f x ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#continuous_at">continuous_at</a> ((e.to_local_equiv).to_fun ∘ f) x)</code>
+<div class="indent"><p><p>Continuity at a point can be read under left composition with a local homeomorphism if a
+neighborhood of the initial point is sent to the source of the local homeomorphism</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.continuous_on_iff_continuous_on_comp_left">      <h4>local_homeomorph.continuous_on_iff_continuous_on_comp_left</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) {f : γ → α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> γ},
+  s ⊆ f ⁻¹' (e.to_local_equiv).source → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#continuous_on">continuous_on</a> f s ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/continuous_on.html#continuous_on">continuous_on</a> ((e.to_local_equiv).to_fun ∘ f) s)</code>
+<div class="indent"><p><p>A function is continuous on a set if and only if its composition with a local homeomorphism
+on the left is continuous on the corresponding set.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.to_homeomorph_of_source_eq_univ_target_eq_univ">      <h4>local_homeomorph.to_homeomorph_of_source_eq_univ_target_eq_univ</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β),
+  (e.to_local_equiv).source = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> → (e.to_local_equiv).target = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> → α ≃ₜ β</code>
+<div class="indent"><p><p>If a local homeomorphism has source and target equal to univ, then it induces a homeomorphism
+between the whole spaces, expressed in this definition.</p>
+</p>       </div>
+</div><div class="entry"><a id="local_homeomorph.to_homeomorph_to_fun">      <h4>local_homeomorph.to_homeomorph_to_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (h : (e.to_local_equiv).source = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a>) (h' : (e.to_local_equiv).target = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a>),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.to_homeomorph_of_source_eq_univ_target_eq_univ">local_homeomorph.to_homeomorph_of_source_eq_univ_target_eq_univ</a> e h h').to_equiv).to_fun = (e.to_local_equiv).to_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="local_homeomorph.to_homeomorph_inv_fun">      <h4>local_homeomorph.to_homeomorph_inv_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> α β) (h : (e.to_local_equiv).source = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a>) (h' : (e.to_local_equiv).target = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a>),
+  ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.to_homeomorph_of_source_eq_univ_target_eq_univ">local_homeomorph.to_homeomorph_of_source_eq_univ_target_eq_univ</a> e h h').to_equiv).inv_fun =
+    (e.to_local_equiv).inv_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="homeomorph.to_local_homeomorph_source">      <h4>homeomorph.to_local_homeomorph_source</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : α ≃ₜ β), ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> e).to_local_equiv).source = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="homeomorph.to_local_homeomorph_target">      <h4>homeomorph.to_local_homeomorph_target</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : α ≃ₜ β), ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> e).to_local_equiv).target = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a></code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="homeomorph.to_local_homeomorph_to_fun">      <h4>homeomorph.to_local_homeomorph_to_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : α ≃ₜ β), ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> e).to_local_equiv).to_fun = (e.to_equiv).to_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="homeomorph.to_local_homeomorph_inv_fun">      <h4>homeomorph.to_local_homeomorph_inv_fun</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : α ≃ₜ β), ((<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> e).to_local_equiv).inv_fun = (e.to_equiv).inv_fun</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="homeomorph.refl_to_local_homeomorph">      <h4>homeomorph.refl_to_local_homeomorph</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/homeomorph.html#homeomorph.refl">homeomorph.refl</a> α) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> α</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="homeomorph.symm_to_local_homeomorph">      <h4>homeomorph.symm_to_local_homeomorph</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+(e : α ≃ₜ β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/homeomorph.html#homeomorph.symm">homeomorph.symm</a> e) = <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> e)</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div><div class="entry"><a id="homeomorph.trans_to_local_homeomorph">      <h4>homeomorph.trans_to_local_homeomorph</h4><code>∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#topological_space">topological_space</a> γ] (e : α ≃ₜ β) (e' : β ≃ₜ γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/homeomorph.html#homeomorph.trans">homeomorph.trans</a> e e') =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> e) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> e')</code>
+<div class="indent"><p><p></p>
+</p>       Attributes: simp</div>
+</div></body></html>
