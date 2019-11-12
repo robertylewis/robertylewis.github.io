@@ -1,74 +1,74 @@
-<html><head><title>category.traversable.equiv</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="equiv.map">      <h4>equiv.map</h4><code>Π {t t' : Type u → Type u},
-  (Π (α : Type u), t α ≃ t' α) → Π [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t] {α β : Type u}, (α → β) → t' α → t' β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.functor">      <h4>equiv.functor</h4><code>Π {t t' : Type u → Type u}, (Π (α : Type u), t α ≃ t' α) → Π [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t], <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.id_map">      <h4>equiv.id_map</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t] {α : Type u} (x : t' α), <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> x = x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.comp_map">      <h4>equiv.comp_map</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t] {α β γ : Type u} (g : α → β) (h : β → γ) (x : t' α),
-  <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv (h ∘ g) x = <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv h (<a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv g x)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.is_lawful_functor">      <h4>equiv.is_lawful_functor</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t], <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.is_lawful_functor'">      <h4>equiv.is_lawful_functor'</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t] [F : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t'],
-  (∀ {α β : Type u} (f : α → β), functor.map f = <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv f) →
-  (∀ {α β : Type u} (f : β), functor.map_const f = (<a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv ∘ <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> α) f) →
-  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.traverse">      <h4>equiv.traverse</h4><code>Π {t t' : Type u → Type u},
+<!DOCTYPE html><html lang="en"><head><title>category.traversable.equiv</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="def"><a id="equiv.map"></a>      <h4>equiv.map</h4><code>Π {t t' : Type u → Type u},
+  (Π (α : Type u), t α ≃ t' α) → Π [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> t] {α β : Type u}, (α → β) → t' α → t' β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="equiv.functor"></a>      <h4>equiv.functor</h4><code>Π {t t' : Type u → Type u}, (Π (α : Type u), t α ≃ t' α) → Π [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> t], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> t'</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="equiv.id_map"></a>      <h4>equiv.id_map</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t] {α : Type u} (x : t' α), <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> x = x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="equiv.comp_map"></a>      <h4>equiv.comp_map</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t] {α β γ : Type u} (g : α → β) (h : β → γ) (x : t' α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv (h ∘ g) x = <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv h (<a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv g x)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="equiv.is_lawful_functor"></a>      <h4>equiv.is_lawful_functor</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t'</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="equiv.is_lawful_functor'"></a>      <h4>equiv.is_lawful_functor'</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t] [F : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> t'],
+  (∀ {α β : Type u} (f : α → β), functor.map f = <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv f) →
+  (∀ {α β : Type u} (f : β), functor.map_const f = (<a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv ∘ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.const">function.const</a> α) f) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t'</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="equiv.traverse"></a>      <h4>equiv.traverse</h4><code>Π {t t' : Type u → Type u},
   (Π (α : Type u), t α ≃ t' α) →
-  Π [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t] {m : Type u → Type u} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type u},
+  Π [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t] {m : Type u → Type u} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type u},
     (α → m β) → t' α → m (t' β)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.traversable">      <h4>equiv.traversable</h4><code>Π {t t' : Type u → Type u}, (Π (α : Type u), t α ≃ t' α) → Π [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t], <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.id_traverse">      <h4>equiv.id_traverse</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] {α : Type u} (x : t' α), <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> x = x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.traverse_eq_map_id">      <h4>equiv.traverse_eq_map_id</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] {α β : Type u} (f : α → β) (x : t' α),
-  <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> ∘ f) x = <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> (<a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv f x)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.comp_traverse">      <h4>equiv.comp_traverse</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] {F G : Type u → Type u} [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]
-[_inst_5 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] [_inst_6 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] {α β γ : Type u} (f : β → F γ)
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="equiv.traversable"></a>      <h4>equiv.traversable</h4><code>Π {t t' : Type u → Type u}, (Π (α : Type u), t α ≃ t' α) → Π [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t], <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t'</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="equiv.id_traverse"></a>      <h4>equiv.id_traverse</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] {α : Type u} (x : t' α), <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv <a href="/home/rob/lean/mathlib/scripts/html_out/category/functor.html#id.mk">id.mk</a> x = x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="equiv.traverse_eq_map_id"></a>      <h4>equiv.traverse_eq_map_id</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] {α β : Type u} (f : α → β) (x : t' α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv (<a href="/home/rob/lean/mathlib/scripts/html_out/category/functor.html#id.mk">id.mk</a> ∘ f) x = <a href="/home/rob/lean/mathlib/scripts/html_out/category/functor.html#id.mk">id.mk</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv f x)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="equiv.comp_traverse"></a>      <h4>equiv.comp_traverse</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] {F G : Type u → Type u} [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> G]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] [_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] {α β γ : Type u} (f : β → F γ)
 (g : α → G β) (x : t' α),
-  <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> ∘ functor.map f ∘ g) x =
-    <a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> (<a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv f <$> <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv g x)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.naturality">      <h4>equiv.naturality</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] {F G : Type u → Type u} [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]
-[_inst_5 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] [_inst_6 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)
-{α β : Type u} (f : α → F β) (x : t' α), ⇑η (<a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv f x) = <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv (⇑η ∘ f) x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.is_lawful_traversable">      <h4>equiv.is_lawful_traversable</h4><code>Π {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t], <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.is_lawful_traversable'">      <h4>equiv.is_lawful_traversable'</h4><code>Π {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] [_i : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t'],
-  (∀ {α β : Type u} (f : α → β), functor.map f = <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv f) →
-  (∀ {α β : Type u} (f : β), functor.map_const f = (<a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv ∘ <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> α) f) →
-  (∀ {F : Type u → Type u} [_inst_7 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_8 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] {α β : Type u}
-   (f : α → F β), traversable.traverse f = <a href="https://robertylewis.com/mathlib_docs/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv f) →
-  <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv (<a href="/home/rob/lean/mathlib/scripts/html_out/category/functor.html#functor.comp.mk">functor.comp.mk</a> ∘ functor.map f ∘ g) x =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/category/functor.html#functor.comp.mk">functor.comp.mk</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv f <$> <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv g x)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="equiv.naturality"></a>      <h4>equiv.naturality</h4><code>∀ {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] {F G : Type u → Type u} [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> G]
+[_inst_5 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] [_inst_6 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)
+{α β : Type u} (f : α → F β) (x : t' α), ⇑η (<a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv f x) = <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv (⇑η ∘ f) x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="equiv.is_lawful_traversable"></a>      <h4>equiv.is_lawful_traversable</h4><code>Π {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t], <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t'</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="equiv.is_lawful_traversable'"></a>      <h4>equiv.is_lawful_traversable'</h4><code>Π {t t' : Type u → Type u} (eqv : Π (α : Type u), t α ≃ t' α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t] [_i : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t'],
+  (∀ {α β : Type u} (f : α → β), functor.map f = <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv f) →
+  (∀ {α β : Type u} (f : β), functor.map_const f = (<a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.map">equiv.map</a> eqv ∘ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.const">function.const</a> α) f) →
+  (∀ {F : Type u → Type u} [_inst_7 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_8 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] {α β : Type u}
+   (f : α → F β), traversable.traverse f = <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/equiv.html#equiv.traverse">equiv.traverse</a> eqv f) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t'</code>
+<div class="indent"><p></p>
+       </div>
 </div></body></html>

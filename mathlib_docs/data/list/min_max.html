@@ -1,195 +1,195 @@
-<html><head><title>data.list.min_max</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="list.argmax₂">      <h4>list.argmax₂</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β], (α → β) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α → α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α</code>
-<div class="indent"><p><p>Auxiliary definition to define <code>argmax</code></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmax">      <h4>list.argmax</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β], (α → β) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α</code>
-<div class="indent"><p><p><code>argmax f l</code> returns <code>some a</code>, where <code>a</code> of <code>l</code> that maximises <code>f a</code>. If there are <code>a b</code> such that
+<!DOCTYPE html><html lang="en"><head><title>data.list.min_max</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="def"><a id="list.argmax₂"></a>      <h4>list.argmax₂</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β], (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p>Auxiliary definition to define <code>argmax</code></p>
+       </div>
+</div><div class="def"><a id="list.argmax"></a>      <h4>list.argmax</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β], (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><code>argmax f l</code> returns <code>some a</code>, where <code>a</code> of <code>l</code> that maximises <code>f a</code>. If there are <code>a b</code> such that
  <code>f a = f b</code>, it returns whichever of <code>a</code> or <code>b</code> comes first in the list.
  <code>argmax f []</code> = none`</p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmin">      <h4>list.argmin</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β], (α → β) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α</code>
-<div class="indent"><p><p><code>argmin f l</code> returns <code>some a</code>, where <code>a</code> of <code>l</code> that minimises <code>f a</code>. If there are <code>a b</code> such that
+       </div>
+</div><div class="def"><a id="list.argmin"></a>      <h4>list.argmin</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β], (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p><code>argmin f l</code> returns <code>some a</code>, where <code>a</code> of <code>l</code> that minimises <code>f a</code>. If there are <code>a b</code> such that
  <code>f a = f b</code>, it returns whichever of <code>a</code> or <code>b</code> comes first in the list.
  <code>argmin f []</code> = none`</p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmax_two_self">      <h4>list.argmax_two_self</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax₂">list.argmax₂</a> f (option.some a) a = ↑a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.argmax_nil">      <h4>list.argmax_nil</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f list.nil = option.none</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.argmin_nil">      <h4>list.argmin_nil</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f list.nil = option.none</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.argmax_singleton">      <h4>list.argmax_singleton</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {a : α},
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f [a] = option.some a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.argmin_singleton">      <h4>list.argmin_singleton</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {a : α},
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f [a] = ↑a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.foldl_argmax₂_eq_none">      <h4>list.foldl_argmax₂_eq_none</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} {o : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldl">list.foldl</a> (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax₂">list.argmax₂</a> f) o l = option.none ↔ l = list.nil ∧ o = option.none</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.argmax_mem">      <h4>list.argmax_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} {m : α},
-  m ∈ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f l → m ∈ l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmin_mem">      <h4>list.argmin_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} {m : α},
-  m ∈ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f l → m ∈ l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmax_eq_none">      <h4>list.argmax_eq_none</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f l = option.none ↔ l = list.nil</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.argmin_eq_none">      <h4>list.argmin_eq_none</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f l = option.none ↔ l = list.nil</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.le_argmax_of_mem">      <h4>list.le_argmax_of_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {a m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  a ∈ l → m ∈ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f l → f a ≤ f m</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmin_le_of_mem">      <h4>list.argmin_le_of_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {a m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  a ∈ l → m ∈ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f l → f m ≤ f a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmax_concat">      <h4>list.argmax_concat</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f (l ++ [a]) =
-    option.cases_on (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f l) (option.some a) (λ (c : α), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (f a ≤ f c) (option.some c) (option.some a))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmin_concat">      <h4>list.argmin_concat</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f (l ++ [a]) =
-    option.cases_on (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f l) (option.some a) (λ (c : α), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (f c ≤ f a) (option.some c) (option.some a))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmax_cons">      <h4>list.argmax_cons</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f (a :: l) =
-    option.cases_on (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f l) (option.some a) (λ (c : α), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (f c ≤ f a) (option.some a) (option.some c))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmin_cons">      <h4>list.argmin_cons</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f (a :: l) =
-    option.cases_on (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f l) (option.some a) (λ (c : α), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (f a ≤ f c) (option.some a) (option.some c))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.index_of_argmax">      <h4>list.index_of_argmax</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
-{l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} {m : α},
-  m ∈ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f l → ∀ {a : α}, a ∈ l → f m ≤ f a → <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.index_of_argmin">      <h4>list.index_of_argmin</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
-{l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} {m : α},
-  m ∈ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f l → ∀ {a : α}, a ∈ l → f a ≤ f m → <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.mem_argmax_iff">      <h4>list.mem_argmax_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
-{m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  m ∈ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f l ↔
+       </div>
+</div><div class="thm"><a id="list.argmax_two_self"></a>      <h4>list.argmax_two_self</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax₂">list.argmax₂</a> f (option.some a) a = ↑a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.argmax_nil"></a>      <h4>list.argmax_nil</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f list.nil = option.none</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.argmin_nil"></a>      <h4>list.argmin_nil</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f list.nil = option.none</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.argmax_singleton"></a>      <h4>list.argmax_singleton</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f [a] = option.some a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.argmin_singleton"></a>      <h4>list.argmin_singleton</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {a : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f [a] = ↑a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.foldl_argmax₂_eq_none"></a>      <h4>list.foldl_argmax₂_eq_none</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {o : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.foldl">list.foldl</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax₂">list.argmax₂</a> f) o l = option.none ↔ l = list.nil ∧ o = option.none</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.argmax_mem"></a>      <h4>list.argmax_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {m : α},
+  m ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f l → m ∈ l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmin_mem"></a>      <h4>list.argmin_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {m : α},
+  m ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f l → m ∈ l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmax_eq_none"></a>      <h4>list.argmax_eq_none</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f l = option.none ↔ l = list.nil</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.argmin_eq_none"></a>      <h4>list.argmin_eq_none</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f l = option.none ↔ l = list.nil</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.le_argmax_of_mem"></a>      <h4>list.le_argmax_of_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {a m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  a ∈ l → m ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f l → f a ≤ f m</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmin_le_of_mem"></a>      <h4>list.argmin_le_of_mem</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] {f : α → β} {a m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  a ∈ l → m ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f l → f m ≤ f a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmax_concat"></a>      <h4>list.argmax_concat</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f (l ++ [a]) =
+    option.cases_on (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f l) (option.some a) (λ (c : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (f a ≤ f c) (option.some c) (option.some a))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmin_concat"></a>      <h4>list.argmin_concat</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f (l ++ [a]) =
+    option.cases_on (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f l) (option.some a) (λ (c : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (f c ≤ f a) (option.some c) (option.some a))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmax_cons"></a>      <h4>list.argmax_cons</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f (a :: l) =
+    option.cases_on (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f l) (option.some a) (λ (c : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (f c ≤ f a) (option.some a) (option.some c))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmin_cons"></a>      <h4>list.argmin_cons</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] (f : α → β) (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f (a :: l) =
+    option.cases_on (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f l) (option.some a) (λ (c : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (f a ≤ f c) (option.some a) (option.some c))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.index_of_argmax"></a>      <h4>list.index_of_argmax</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {m : α},
+  m ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f l → ∀ {a : α}, a ∈ l → f m ≤ f a → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.index_of_argmin"></a>      <h4>list.index_of_argmin</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
+{l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {m : α},
+  m ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f l → ∀ {a : α}, a ∈ l → f a ≤ f m → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.mem_argmax_iff"></a>      <h4>list.mem_argmax_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
+{m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  m ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f l ↔
     m ∈ l ∧
       (∀ (a : α), a ∈ l → f a ≤ f m) ∧
-        ∀ (a : α), a ∈ l → f m ≤ f a → <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmax_eq_some_iff">      <h4>list.argmax_eq_some_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
-{m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmax">list.argmax</a> f l = option.some m ↔
+        ∀ (a : α), a ∈ l → f m ≤ f a → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmax_eq_some_iff"></a>      <h4>list.argmax_eq_some_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
+{m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmax">list.argmax</a> f l = option.some m ↔
     m ∈ l ∧
       (∀ (a : α), a ∈ l → f a ≤ f m) ∧
-        ∀ (a : α), a ∈ l → f m ≤ f a → <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.mem_argmin_iff">      <h4>list.mem_argmin_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
-{m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  m ∈ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f l ↔
+        ∀ (a : α), a ∈ l → f m ≤ f a → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.mem_argmin_iff"></a>      <h4>list.mem_argmin_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
+{m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  m ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f l ↔
     m ∈ l ∧
       (∀ (a : α), a ∈ l → f m ≤ f a) ∧
-        ∀ (a : α), a ∈ l → f a ≤ f m → <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.argmin_eq_some_iff">      <h4>list.argmin_eq_some_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
-{m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.argmin">list.argmin</a> f l = option.some m ↔
+        ∀ (a : α), a ∈ l → f a ≤ f m → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.argmin_eq_some_iff"></a>      <h4>list.argmin_eq_some_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> β] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α] {f : α → β}
+{m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.argmin">list.argmin</a> f l = option.some m ↔
     m ∈ l ∧
       (∀ (a : α), a ∈ l → f m ≤ f a) ∧
-        ∀ (a : α), a ∈ l → f a ≤ f m → <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.maximum">      <h4>list.maximum</h4><code>Π {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_bot">with_bot</a> α</code>
-<div class="indent"><p><p><code>maximum l</code> returns an <code>with_bot α</code>, the largest element of <code>l</code> for nonempty lists, and <code>⊥</code> for
+        ∀ (a : α), a ∈ l → f a ≤ f m → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> m l ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.index_of">list.index_of</a> a l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="list.maximum"></a>      <h4>list.maximum</h4><code>Π {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#with_bot">with_bot</a> α</code>
+<div class="indent"><p><code>maximum l</code> returns an <code>with_bot α</code>, the largest element of <code>l</code> for nonempty lists, and <code>⊥</code> for
 <code>[]</code></p>
-</p>       </div>
-</div><div class="entry"><a id="list.minimum">      <h4>list.minimum</h4><code>Π {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_top">with_top</a> α</code>
-<div class="indent"><p><p><code>minimum l</code> returns an <code>with_top α</code>, the smallest element of <code>l</code> for nonempty lists, and <code>⊤</code> for
+       </div>
+</div><div class="def"><a id="list.minimum"></a>      <h4>list.minimum</h4><code>Π {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/order/bounded_lattice.html#with_top">with_top</a> α</code>
+<div class="indent"><p><code>minimum l</code> returns an <code>with_top α</code>, the smallest element of <code>l</code> for nonempty lists, and <code>⊤</code> for
 <code>[]</code></p>
-</p>       </div>
-</div><div class="entry"><a id="list.maximum_nil">      <h4>list.maximum_nil</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α], <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> list.nil = ⊥</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.minimum_nil">      <h4>list.minimum_nil</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α], <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> list.nil = ⊤</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.maximum_singleton">      <h4>list.maximum_singleton</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α), <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> [a] = ↑a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.minimum_singleton">      <h4>list.minimum_singleton</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α), <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> [a] = ↑a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.maximum_mem">      <h4>list.maximum_mem</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} {m : α}, <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> l = ↑m → m ∈ l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.minimum_mem">      <h4>list.minimum_mem</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} {m : α}, <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> l = ↑m → m ∈ l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.maximum_eq_none">      <h4>list.maximum_eq_none</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}, <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> l = option.none ↔ l = list.nil</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.minimum_eq_none">      <h4>list.minimum_eq_none</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}, <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> l = option.none ↔ l = list.nil</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list.le_maximum_of_mem">      <h4>list.le_maximum_of_mem</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {a m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  a ∈ l → <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> l = ↑m → a ≤ m</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.minimum_le_of_mem">      <h4>list.minimum_le_of_mem</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {a m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  a ∈ l → <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> l = ↑m → m ≤ a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.le_maximum_of_mem'">      <h4>list.le_maximum_of_mem'</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {a : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}, a ∈ l → ↑a ≤ <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.le_minimum_of_mem'">      <h4>list.le_minimum_of_mem'</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {a : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}, a ∈ l → <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> l ≤ ↑a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.maximum_concat">      <h4>list.maximum_concat</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> (l ++ [a]) = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> l) ↑a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.minimum_concat">      <h4>list.minimum_concat</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> (l ++ [a]) = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#min">min</a> (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> l) ↑a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.maximum_cons">      <h4>list.maximum_cons</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> (a :: l) = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> ↑a (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> l)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.minimum_cons">      <h4>list.minimum_cons</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> (a :: l) = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#min">min</a> ↑a (<a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> l)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.maximum_eq_coe_iff">      <h4>list.maximum_eq_coe_iff</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.maximum">list.maximum</a> l = ↑m ↔ m ∈ l ∧ ∀ (a : α), a ∈ l → a ≤ m</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list.minimum_eq_coe_iff">      <h4>list.minimum_eq_coe_iff</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {m : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/data/list/min_max.html#list.minimum">list.minimum</a> l = ↑m ↔ m ∈ l ∧ ∀ (a : α), a ∈ l → m ≤ a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
+       </div>
+</div><div class="thm"><a id="list.maximum_nil"></a>      <h4>list.maximum_nil</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> list.nil = ⊥</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.minimum_nil"></a>      <h4>list.minimum_nil</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> list.nil = ⊤</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.maximum_singleton"></a>      <h4>list.maximum_singleton</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> [a] = ↑a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.minimum_singleton"></a>      <h4>list.minimum_singleton</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> [a] = ↑a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.maximum_mem"></a>      <h4>list.maximum_mem</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {m : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> l = ↑m → m ∈ l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.minimum_mem"></a>      <h4>list.minimum_mem</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} {m : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> l = ↑m → m ∈ l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.maximum_eq_none"></a>      <h4>list.maximum_eq_none</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> l = option.none ↔ l = list.nil</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.minimum_eq_none"></a>      <h4>list.minimum_eq_none</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> l = option.none ↔ l = list.nil</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list.le_maximum_of_mem"></a>      <h4>list.le_maximum_of_mem</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {a m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  a ∈ l → <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> l = ↑m → a ≤ m</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.minimum_le_of_mem"></a>      <h4>list.minimum_le_of_mem</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {a m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  a ∈ l → <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> l = ↑m → m ≤ a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.le_maximum_of_mem'"></a>      <h4>list.le_maximum_of_mem'</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {a : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α}, a ∈ l → ↑a ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.le_minimum_of_mem'"></a>      <h4>list.le_minimum_of_mem'</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {a : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α}, a ∈ l → <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> l ≤ ↑a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.maximum_concat"></a>      <h4>list.maximum_concat</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> (l ++ [a]) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> l) ↑a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.minimum_concat"></a>      <h4>list.minimum_concat</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> (l ++ [a]) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#min">min</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> l) ↑a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.maximum_cons"></a>      <h4>list.maximum_cons</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> (a :: l) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> ↑a (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> l)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.minimum_cons"></a>      <h4>list.minimum_cons</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> (a :: l) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#min">min</a> ↑a (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> l)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.maximum_eq_coe_iff"></a>      <h4>list.maximum_eq_coe_iff</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.maximum">list.maximum</a> l = ↑m ↔ m ∈ l ∧ ∀ (a : α), a ∈ l → a ≤ m</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list.minimum_eq_coe_iff"></a>      <h4>list.minimum_eq_coe_iff</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α] {m : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/min_max.html#list.minimum">list.minimum</a> l = ↑m ↔ m ∈ l ∧ ∀ (a : α), a ∈ l → m ≤ a</code>
+<div class="indent"><p></p>
+       </div>
 </div></body></html>

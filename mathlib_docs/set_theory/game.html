@@ -1,14 +1,14 @@
-<html><head><title>set_theory.game</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Combinatorial games.</h1>
+<!DOCTYPE html><html lang="en"><head><title>set_theory.game</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><h1>Combinatorial games.</h1>
 
 <p>In this file we define the quotient of pre-games by the equivalence relation <code>p ≈ q ↔ p ≤ q ∧ q ≤
 p</code>, and construct an instance <code>add_comm_group game</code>, as well as an instance <code>partial_order game</code>
 (although note carefully the warning that the <code>&lt;</code> field in this instance is not the usual relation
 on combinatorial games).</p>
-</div><div class="entry"><a id="pgame.setoid">      <h4>pgame.setoid</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/data/setoid.html#setoid">setoid</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/pgame.html#pgame">pgame</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game">      <h4>game</h4><code>Type (u_1+1)</code>
-<div class="indent"><p><p>The type of combinatorial games. In ZFC, a combinatorial game is constructed from
+</div><div class="def"><a id="pgame.setoid"></a>      <h4>pgame.setoid</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/pgame.html#pgame">pgame</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="game"></a>      <h4>game</h4><code>Type (u_1+1)</code>
+<div class="indent"><p>The type of combinatorial games. In ZFC, a combinatorial game is constructed from
  two sets of combinatorial games that have been constructed at an earlier
  stage. To do this in type theory, we say that a combinatorial pre-game is built
  inductively from two families of combinatorial games indexed over any type
@@ -16,83 +16,83 @@ on combinatorial games).</p>
  reflecting that it is a proper class in ZFC.
  A combinatorial game is then constructed by quotienting by the equivalence
  <code>x ≈ y ↔ x ≤ y ∧ y ≤ x</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="game.le">      <h4>game.le</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a> → Prop</code>
-<div class="indent"><p><p>The relation <code>x ≤ y</code> on games.</p>
-</p>       </div>
-</div><div class="entry"><a id="game.has_le">      <h4>game.has_le</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le">has_le</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.le_refl">      <h4>game.le_refl</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), x ≤ x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.le_trans">      <h4>game.le_trans</h4><code>∀ (x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), x ≤ y → y ≤ z → x ≤ z</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.le_antisymm">      <h4>game.le_antisymm</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), x ≤ y → y ≤ x → x = y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.lt">      <h4>game.lt</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a> → Prop</code>
-<div class="indent"><p><p>The relation <code>x &lt; y</code> on games.</p>
-</p>       </div>
-</div><div class="entry"><a id="game.not_le">      <h4>game.not_le</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>}, ¬x ≤ y ↔ <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game.lt">game.lt</a> y x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.has_zero">      <h4>game.has_zero</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.has_one">      <h4>game.has_one</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.neg">      <h4>game.neg</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p>The negation of <code>{L | R}</code> is <code>{-R | -L}</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="game.has_neg">      <h4>game.has_neg</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg">has_neg</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.add">      <h4>game.add</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p>The sum of <code>x = {xL | xR}</code> and <code>y = {yL | yR}</code> is <code>{xL + y, x + yL | xR + y, x + yR}</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="game.has_add">      <h4>game.has_add</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add">has_add</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.add_assoc">      <h4>game.add_assoc</h4><code>∀ (x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), x + y + z = x + (y + z)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.add_semigroup">      <h4>game.add_semigroup</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_semigroup">add_semigroup</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.add_zero">      <h4>game.add_zero</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), x + 0 = x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.zero_add">      <h4>game.zero_add</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), 0 + x = x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.add_monoid">      <h4>game.add_monoid</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.add_left_neg">      <h4>game.add_left_neg</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), -x + x = 0</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.add_group">      <h4>game.add_group</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_group">add_group</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.add_comm">      <h4>game.add_comm</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), x + y = y + x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.add_comm_semigroup">      <h4>game.add_comm_semigroup</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_semigroup">add_comm_semigroup</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.add_comm_group">      <h4>game.add_comm_group</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="game.add_le_add_left">      <h4>game.add_le_add_left</h4><code>∀ (a b : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), a ≤ b → ∀ (c : <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a>), c + a ≤ c + b</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="game.game_partial_order">      <h4>game.game_partial_order</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p>The <code>&lt;</code> operation provided by this partial order is not the usual <code>&lt;</code> on games!</p>
-</p>       </div>
-</div><div class="entry"><a id="game.ordered_comm_group_game">      <h4>game.ordered_comm_group_game</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#ordered_comm_group">ordered_comm_group</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/game.html#game">game</a></code>
-<div class="indent"><p><p>The <code>&lt;</code> operation provided by this <code>ordered_comm_group</code> is not the usual <code>&lt;</code> on games!</p>
-</p>       </div>
+       </div>
+</div><div class="def"><a id="game.le"></a>      <h4>game.le</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a> → Prop</code>
+<div class="indent"><p>The relation <code>x ≤ y</code> on games.</p>
+       </div>
+</div><div class="def"><a id="game.has_le"></a>      <h4>game.has_le</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_le">has_le</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="game.le_refl"></a>      <h4>game.le_refl</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), x ≤ x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="game.le_trans"></a>      <h4>game.le_trans</h4><code>∀ (x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), x ≤ y → y ≤ z → x ≤ z</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="game.le_antisymm"></a>      <h4>game.le_antisymm</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), x ≤ y → y ≤ x → x = y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="game.lt"></a>      <h4>game.lt</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a> → Prop</code>
+<div class="indent"><p>The relation <code>x &lt; y</code> on games.</p>
+       </div>
+</div><div class="thm"><a id="game.not_le"></a>      <h4>game.not_le</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>}, ¬x ≤ y ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game.lt">game.lt</a> y x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="game.has_zero"></a>      <h4>game.has_zero</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="game.has_one"></a>      <h4>game.has_one</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="game.neg"></a>      <h4>game.neg</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p>The negation of <code>{L | R}</code> is <code>{-R | -L}</code>.</p>
+       </div>
+</div><div class="def"><a id="game.has_neg"></a>      <h4>game.has_neg</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_neg">has_neg</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="game.add"></a>      <h4>game.add</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p>The sum of <code>x = {xL | xR}</code> and <code>y = {yL | yR}</code> is <code>{xL + y, x + yL | xR + y, x + yR}</code>.</p>
+       </div>
+</div><div class="def"><a id="game.has_add"></a>      <h4>game.has_add</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_add">has_add</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="game.add_assoc"></a>      <h4>game.add_assoc</h4><code>∀ (x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), x + y + z = x + (y + z)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="game.add_semigroup"></a>      <h4>game.add_semigroup</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_semigroup">add_semigroup</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="game.add_zero"></a>      <h4>game.add_zero</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), x + 0 = x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="game.zero_add"></a>      <h4>game.zero_add</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), 0 + x = x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="game.add_monoid"></a>      <h4>game.add_monoid</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="game.add_left_neg"></a>      <h4>game.add_left_neg</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), -x + x = 0</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="game.add_group"></a>      <h4>game.add_group</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_group">add_group</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="game.add_comm"></a>      <h4>game.add_comm</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), x + y = y + x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="game.add_comm_semigroup"></a>      <h4>game.add_comm_semigroup</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_semigroup">add_comm_semigroup</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="game.add_comm_group"></a>      <h4>game.add_comm_group</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="game.add_le_add_left"></a>      <h4>game.add_le_add_left</h4><code>∀ (a b : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), a ≤ b → ∀ (c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a>), c + a ≤ c + b</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="game.game_partial_order"></a>      <h4>game.game_partial_order</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/order.html#partial_order">partial_order</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p>The <code>&lt;</code> operation provided by this partial order is not the usual <code>&lt;</code> on games!</p>
+       </div>
+</div><div class="def"><a id="game.ordered_comm_group_game"></a>      <h4>game.ordered_comm_group_game</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ordered_group.html#ordered_comm_group">ordered_comm_group</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/game.html#game">game</a></code>
+<div class="indent"><p>The <code>&lt;</code> operation provided by this <code>ordered_comm_group</code> is not the usual <code>&lt;</code> on games!</p>
+       </div>
 </div></body></html>

@@ -1,4 +1,4 @@
-<html><head><title>data.padics.padic_norm</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>p-adic norm</h1>
+<!DOCTYPE html><html lang="en"><head><title>data.padics.padic_norm</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><h1>p-adic norm</h1>
 
 <p>This file defines the p-adic valuation and the p-adic norm on ℚ.</p>
 
@@ -29,131 +29,131 @@ by taking (prime p) as a type class argument.</p>
 <h2>Tags</h2>
 
 <p>p-adic, p adic, padic, norm, valuation</p>
-</div><div class="entry"><a id="padic_val_rat">      <h4>padic_val_rat</h4><code>ℕ → ℚ → ℤ</code>
-<div class="indent"><p><p>For <code>p ≠ 1</code>, the p-adic valuation of an integer <code>z ≠ 0</code> is the largest natural number <code>n</code> such that
+</div><div class="def"><a id="padic_val_rat"></a>      <h4>padic_val_rat</h4><code>ℕ → ℚ → ℤ</code>
+<div class="indent"><p>For <code>p ≠ 1</code>, the p-adic valuation of an integer <code>z ≠ 0</code> is the largest natural number <code>n</code> such that
 p^n divides z.</p>
 
 <p><code>padic_val_rat</code> defines the valuation of a rational <code>q</code> to be the valuation of <code>q.num</code> minus the
 valuation of <code>q.denom</code>.
 If <code>q = 0</code> or <code>p = 1</code>, then <code>padic_val_rat p q</code> defaults to 0.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat_def">      <h4>padic_val_rat_def</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ} (hq : q ≠ 0),
-  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q = ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p (q.num)).get _) - ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p ↑(q.denom)).get _)</code>
-<div class="indent"><p><p>A simplification of the definition of <code>padic_val_rat p q</code> when <code>q ≠ 0</code> and <code>p</code> is prime.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.neg">      <h4>padic_val_rat.neg</h4><code>∀ {p : ℕ} (q : ℚ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (-q) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</code>
-<div class="indent"><p><p><code>padic_val_rat p q</code> is symmetric in <code>q</code>.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_val_rat.one">      <h4>padic_val_rat.one</h4><code>∀ {p : ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p 1 = 0</code>
-<div class="indent"><p><p><code>padic_val_rat p 1</code> is 0 for any <code>p</code>.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_val_rat.padic_val_rat_self">      <h4>padic_val_rat.padic_val_rat_self</h4><code>∀ {p : ℕ}, 1 < p → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p ↑p = 1</code>
-<div class="indent"><p><p>For <code>p ≠ 0, p ≠ 1,</code>padic<em>val</em>rat p p` is 1.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_val_rat.padic_val_rat_of_int">      <h4>padic_val_rat.padic_val_rat_of_int</h4><code>∀ {p : ℕ} (z : ℤ) (hp : p ≠ 1) (hz : z ≠ 0), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p ↑z = ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p z).get _)</code>
-<div class="indent"><p><p>The p-adic value of an integer <code>z ≠ 0</code> is the multiplicity of <code>p</code> in <code>z</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.finite_int_prime_iff">      <h4>padic_val_rat.finite_int_prime_iff</h4><code>∀ {p : ℕ} [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {a : ℤ}, <a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> ↑p a ↔ a ≠ 0</code>
-<div class="indent"><p><p>The multiplicity of <code>p : ℕ</code> in <code>a : ℤ</code> is finite exactly when <code>a ≠ 0</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.defn">      <h4>padic_val_rat.defn</h4><code>∀ (p : ℕ) [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ} {n d : ℤ} (hqz : q ≠ 0) (qdf : q = <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n d),
-  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q = ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p n).get _) - ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p d).get _)</code>
-<div class="indent"><p><p>A rewrite lemma for <code>padic_val_rat p q</code> when <code>q</code> is expressed in terms of <code>rat.mk</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.mul">      <h4>padic_val_rat.mul</h4><code>∀ (p : ℕ) [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
-  q ≠ 0 → r ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q * r) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q + <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r</code>
-<div class="indent"><p><p>A rewrite lemma for <code>padic_val_rat p (q * r)</code> with conditions <code>q ≠ 0</code>, <code>r ≠ 0</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.pow">      <h4>padic_val_rat.pow</h4><code>∀ (p : ℕ) [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ},
-  q ≠ 0 → ∀ {k : ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q ^ k) = ↑k * <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</code>
-<div class="indent"><p><p>A rewrite lemma for <code>padic_val_rat p (q^k) with condition</code>q ≠ 0`.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.inv">      <h4>padic_val_rat.inv</h4><code>∀ (p : ℕ) [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ}, q ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q⁻¹ = -padic_val_rat p q</code>
-<div class="indent"><p><p>A rewrite lemma for <code>padic_val_rat p (q⁻¹)</code> with condition <code>q ≠ 0</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.div">      <h4>padic_val_rat.div</h4><code>∀ (p : ℕ) [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
-  q ≠ 0 → r ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q / r) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q - <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r</code>
-<div class="indent"><p><p>A rewrite lemma for <code>padic_val_rat p (q / r)</code> with conditions <code>q ≠ 0</code>, <code>r ≠ 0</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.padic_val_rat_le_padic_val_rat_iff">      <h4>padic_val_rat.padic_val_rat_le_padic_val_rat_iff</h4><code>∀ (p : ℕ) [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {n₁ n₂ d₁ d₂ : ℤ},
+       </div>
+</div><div class="thm"><a id="padic_val_rat_def"></a>      <h4>padic_val_rat_def</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ} (hq : q ≠ 0),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q = ↑((<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p (q.num)).get _) - ↑((<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p ↑(q.denom)).get _)</code>
+<div class="indent"><p>A simplification of the definition of <code>padic_val_rat p q</code> when <code>q ≠ 0</code> and <code>p</code> is prime.</p>
+       </div>
+</div><div class="thm"><a id="padic_val_rat.neg"></a>      <h4>padic_val_rat.neg</h4><code>∀ {p : ℕ} (q : ℚ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (-q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</code>
+<div class="indent"><p><code>padic_val_rat p q</code> is symmetric in <code>q</code>.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_val_rat.one"></a>      <h4>padic_val_rat.one</h4><code>∀ {p : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p 1 = 0</code>
+<div class="indent"><p><code>padic_val_rat p 1</code> is 0 for any <code>p</code>.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_val_rat.padic_val_rat_self"></a>      <h4>padic_val_rat.padic_val_rat_self</h4><code>∀ {p : ℕ}, 1 < p → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p ↑p = 1</code>
+<div class="indent"><p>For <code>p ≠ 0, p ≠ 1,</code>padic<em>val</em>rat p p` is 1.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_val_rat.padic_val_rat_of_int"></a>      <h4>padic_val_rat.padic_val_rat_of_int</h4><code>∀ {p : ℕ} (z : ℤ) (hp : p ≠ 1) (hz : z ≠ 0), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p ↑z = ↑((<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p z).get _)</code>
+<div class="indent"><p>The p-adic value of an integer <code>z ≠ 0</code> is the multiplicity of <code>p</code> in <code>z</code>.</p>
+       </div>
+</div><div class="thm"><a id="padic_val_rat.finite_int_prime_iff"></a>      <h4>padic_val_rat.finite_int_prime_iff</h4><code>∀ {p : ℕ} [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {a : ℤ}, <a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> ↑p a ↔ a ≠ 0</code>
+<div class="indent"><p>The multiplicity of <code>p : ℕ</code> in <code>a : ℤ</code> is finite exactly when <code>a ≠ 0</code>.</p>
+       </div>
+</div><div class="thm"><a id="padic_val_rat.defn"></a>      <h4>padic_val_rat.defn</h4><code>∀ (p : ℕ) [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ} {n d : ℤ} (hqz : q ≠ 0) (qdf : q = <a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n d),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q = ↑((<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p n).get _) - ↑((<a href="/home/rob/lean/mathlib/scripts/html_out/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p d).get _)</code>
+<div class="indent"><p>A rewrite lemma for <code>padic_val_rat p q</code> when <code>q</code> is expressed in terms of <code>rat.mk</code>.</p>
+       </div>
+</div><div class="thm"><a id="padic_val_rat.mul"></a>      <h4>padic_val_rat.mul</h4><code>∀ (p : ℕ) [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
+  q ≠ 0 → r ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q * r) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q + <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r</code>
+<div class="indent"><p>A rewrite lemma for <code>padic_val_rat p (q * r)</code> with conditions <code>q ≠ 0</code>, <code>r ≠ 0</code>.</p>
+       </div>
+</div><div class="thm"><a id="padic_val_rat.pow"></a>      <h4>padic_val_rat.pow</h4><code>∀ (p : ℕ) [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ},
+  q ≠ 0 → ∀ {k : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q ^ k) = ↑k * <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</code>
+<div class="indent"><p>A rewrite lemma for <code>padic_val_rat p (q^k) with condition</code>q ≠ 0`.</p>
+       </div>
+</div><div class="thm"><a id="padic_val_rat.inv"></a>      <h4>padic_val_rat.inv</h4><code>∀ (p : ℕ) [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ}, q ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q⁻¹ = -padic_val_rat p q</code>
+<div class="indent"><p>A rewrite lemma for <code>padic_val_rat p (q⁻¹)</code> with condition <code>q ≠ 0</code>.</p>
+       </div>
+</div><div class="thm"><a id="padic_val_rat.div"></a>      <h4>padic_val_rat.div</h4><code>∀ (p : ℕ) [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
+  q ≠ 0 → r ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q / r) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q - <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r</code>
+<div class="indent"><p>A rewrite lemma for <code>padic_val_rat p (q / r)</code> with conditions <code>q ≠ 0</code>, <code>r ≠ 0</code>.</p>
+       </div>
+</div><div class="thm"><a id="padic_val_rat.padic_val_rat_le_padic_val_rat_iff"></a>      <h4>padic_val_rat.padic_val_rat_le_padic_val_rat_iff</h4><code>∀ (p : ℕ) [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {n₁ n₂ d₁ d₂ : ℤ},
   n₁ ≠ 0 →
   n₂ ≠ 0 →
   d₁ ≠ 0 →
   d₂ ≠ 0 →
-  (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n₁ d₁) ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n₂ d₂) ↔
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n₁ d₁) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="/home/rob/lean/mathlib/scripts/html_out/data/rat/basic.html#rat.mk">rat.mk</a> n₂ d₂) ↔
      ∀ (n : ℕ), ↑p ^ n ∣ n₁ * d₂ → ↑p ^ n ∣ n₂ * d₁)</code>
-<div class="indent"><p><p>A condition for <code>padic_val_rat p (n₁ / d₁) ≤ padic_val_rat p (n₂ / d₂),
+<div class="indent"><p>A condition for <code>padic_val_rat p (n₁ / d₁) ≤ padic_val_rat p (n₂ / d₂),
 in terms of divisibility by</code>p^n`.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.le_padic_val_rat_add_of_le">      <h4>padic_val_rat.le_padic_val_rat_add_of_le</h4><code>∀ (p : ℕ) [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
+       </div>
+</div><div class="thm"><a id="padic_val_rat.le_padic_val_rat_add_of_le"></a>      <h4>padic_val_rat.le_padic_val_rat_add_of_le</h4><code>∀ (p : ℕ) [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
   q ≠ 0 →
-  r ≠ 0 → q + r ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q + r)</code>
-<div class="indent"><p><p>Sufficient conditions to show that the p-adic valuation of <code>q</code> is less than or equal to the
+  r ≠ 0 → q + r ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q + r)</code>
+<div class="indent"><p>Sufficient conditions to show that the p-adic valuation of <code>q</code> is less than or equal to the
 p-adic vlauation of <code>q + r</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_val_rat.min_le_padic_val_rat_add">      <h4>padic_val_rat.min_le_padic_val_rat_add</h4><code>∀ (p : ℕ) [p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
-  q ≠ 0 → r ≠ 0 → q + r ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#min">min</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r) ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q + r)</code>
-<div class="indent"><p><p>The minimum of the valuations of <code>q</code> and <code>r</code> is less than or equal to the valuation of <code>q + r</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm">      <h4>padic_norm</h4><code>ℕ → ℚ → ℚ</code>
-<div class="indent"><p><p>If <code>q ≠ 0</code>, the p-adic norm of a rational <code>q</code> is <code>p ^ (-(padic_val_rat p q))</code>.
+       </div>
+</div><div class="thm"><a id="padic_val_rat.min_le_padic_val_rat_add"></a>      <h4>padic_val_rat.min_le_padic_val_rat_add</h4><code>∀ (p : ℕ) [p_prime : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
+  q ≠ 0 → r ≠ 0 → q + r ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#min">min</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q + r)</code>
+<div class="indent"><p>The minimum of the valuations of <code>q</code> and <code>r</code> is less than or equal to the valuation of <code>q + r</code>.</p>
+       </div>
+</div><div class="def"><a id="padic_norm"></a>      <h4>padic_norm</h4><code>ℕ → ℚ → ℚ</code>
+<div class="indent"><p>If <code>q ≠ 0</code>, the p-adic norm of a rational <code>q</code> is <code>p ^ (-(padic_val_rat p q))</code>.
 If <code>q = 0</code>, the p-adic norm of <code>q</code> is 0.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.eq_fpow_of_nonzero">      <h4>padic_norm.eq_fpow_of_nonzero</h4><code>∀ (p : ℕ) {q : ℚ}, q ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = ↑p ^ -padic_val_rat p q</code>
-<div class="indent"><p><p>Unfolds the definition of the p-adic norm of <code>q</code> when <code>q ≠ 0</code>.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_norm.nonneg">      <h4>padic_norm.nonneg</h4><code>∀ (p : ℕ) (q : ℚ), 0 ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q</code>
-<div class="indent"><p><p>The p-adic norm is nonnegative.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.zero">      <h4>padic_norm.zero</h4><code>∀ (p : ℕ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p 0 = 0</code>
-<div class="indent"><p><p>The p-adic norm of 0 is 0.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_norm.one">      <h4>padic_norm.one</h4><code>∀ (p : ℕ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p 1 = 1</code>
-<div class="indent"><p><p>The p-adic norm of 1 is 1.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_norm.image">      <h4>padic_norm.image</h4><code>∀ (p : ℕ) {q : ℚ}, q ≠ 0 → (∃ (n : ℤ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = ↑p ^ -n)</code>
-<div class="indent"><p><p>The image of <code>padic_norm p</code> is {0} ∪ {p^(-n) | n ∈ ℤ}.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.nonzero">      <h4>padic_norm.nonzero</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ}, q ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q ≠ 0</code>
-<div class="indent"><p><p>If <code>q ≠ 0</code>, then <code>padic_norm p q ≠ 0</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.neg">      <h4>padic_norm.neg</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] (q : ℚ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (-q) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q</code>
-<div class="indent"><p><p><code>padic_norm p</code> is symmetric.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_norm.zero_of_padic_norm_eq_zero">      <h4>padic_norm.zero_of_padic_norm_eq_zero</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ}, <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = 0 → q = 0</code>
-<div class="indent"><p><p>If the p-adic norm of <code>q</code> is 0, then <code>q</code> is 0.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.mul">      <h4>padic_norm.mul</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] (q r : ℚ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q * r) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q * <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</code>
-<div class="indent"><p><p>The p-adic norm is multiplicative.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_norm.div">      <h4>padic_norm.div</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] (q r : ℚ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q / r) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q / <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</code>
-<div class="indent"><p><p>The p-adic norm respects division.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="padic_norm.of_int">      <h4>padic_norm.of_int</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] (z : ℤ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p ↑z ≤ 1</code>
-<div class="indent"><p><p>The p-adic norm of an integer is at most 1.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.nonarchimedean">      <h4>padic_norm.nonarchimedean</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ}, <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</code>
-<div class="indent"><p><p>The p-adic norm is nonarchimedean: the norm of <code>p + q</code> is at most the max of the norm of <code>p</code> and
+       </div>
+</div><div class="thm"><a id="padic_norm.eq_fpow_of_nonzero"></a>      <h4>padic_norm.eq_fpow_of_nonzero</h4><code>∀ (p : ℕ) {q : ℚ}, q ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = ↑p ^ -padic_val_rat p q</code>
+<div class="indent"><p>Unfolds the definition of the p-adic norm of <code>q</code> when <code>q ≠ 0</code>.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_norm.nonneg"></a>      <h4>padic_norm.nonneg</h4><code>∀ (p : ℕ) (q : ℚ), 0 ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q</code>
+<div class="indent"><p>The p-adic norm is nonnegative.</p>
+       </div>
+</div><div class="thm"><a id="padic_norm.zero"></a>      <h4>padic_norm.zero</h4><code>∀ (p : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p 0 = 0</code>
+<div class="indent"><p>The p-adic norm of 0 is 0.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_norm.one"></a>      <h4>padic_norm.one</h4><code>∀ (p : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p 1 = 1</code>
+<div class="indent"><p>The p-adic norm of 1 is 1.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_norm.image"></a>      <h4>padic_norm.image</h4><code>∀ (p : ℕ) {q : ℚ}, q ≠ 0 → (∃ (n : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = ↑p ^ -n)</code>
+<div class="indent"><p>The image of <code>padic_norm p</code> is {0} ∪ {p^(-n) | n ∈ ℤ}.</p>
+       </div>
+</div><div class="thm"><a id="padic_norm.nonzero"></a>      <h4>padic_norm.nonzero</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ}, q ≠ 0 → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q ≠ 0</code>
+<div class="indent"><p>If <code>q ≠ 0</code>, then <code>padic_norm p q ≠ 0</code>.</p>
+       </div>
+</div><div class="thm"><a id="padic_norm.neg"></a>      <h4>padic_norm.neg</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] (q : ℚ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (-q) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q</code>
+<div class="indent"><p><code>padic_norm p</code> is symmetric.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_norm.zero_of_padic_norm_eq_zero"></a>      <h4>padic_norm.zero_of_padic_norm_eq_zero</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q : ℚ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = 0 → q = 0</code>
+<div class="indent"><p>If the p-adic norm of <code>q</code> is 0, then <code>q</code> is 0.</p>
+       </div>
+</div><div class="thm"><a id="padic_norm.mul"></a>      <h4>padic_norm.mul</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] (q r : ℚ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q * r) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q * <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</code>
+<div class="indent"><p>The p-adic norm is multiplicative.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_norm.div"></a>      <h4>padic_norm.div</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] (q r : ℚ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q / r) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q / <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</code>
+<div class="indent"><p>The p-adic norm respects division.</p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="padic_norm.of_int"></a>      <h4>padic_norm.of_int</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] (z : ℤ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p ↑z ≤ 1</code>
+<div class="indent"><p>The p-adic norm of an integer is at most 1.</p>
+       </div>
+</div><div class="thm"><a id="padic_norm.nonarchimedean"></a>      <h4>padic_norm.nonarchimedean</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</code>
+<div class="indent"><p>The p-adic norm is nonarchimedean: the norm of <code>p + q</code> is at most the max of the norm of <code>p</code> and
 the norm of <code>q</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.triangle_ineq">      <h4>padic_norm.triangle_ineq</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] (q r : ℚ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q + <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</code>
-<div class="indent"><p><p>The p-adic norm respects the triangle inequality: the norm of <code>p + q</code> is at most the norm of <code>p</code>
+       </div>
+</div><div class="thm"><a id="padic_norm.triangle_ineq"></a>      <h4>padic_norm.triangle_ineq</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] (q r : ℚ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q + <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</code>
+<div class="indent"><p>The p-adic norm respects the triangle inequality: the norm of <code>p + q</code> is at most the norm of <code>p</code>
 plus the norm of <code>q</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.sub">      <h4>padic_norm.sub</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ}, <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q - r) ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</code>
-<div class="indent"><p><p>The p-adic norm of a difference is at most the max of each component. Restates the archimedean
+       </div>
+</div><div class="thm"><a id="padic_norm.sub"></a>      <h4>padic_norm.sub</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q - r) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</code>
+<div class="indent"><p>The p-adic norm of a difference is at most the max of each component. Restates the archimedean
 property of the p-adic norm.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.add_eq_max_of_ne">      <h4>padic_norm.add_eq_max_of_ne</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
-  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q ≠ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</code>
-<div class="indent"><p><p>If the p-adic norms of <code>q</code> and <code>r</code> are different, then the norm of <code>q + r</code> is equal to the max of
+       </div>
+</div><div class="thm"><a id="padic_norm.add_eq_max_of_ne"></a>      <h4>padic_norm.add_eq_max_of_ne</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {q r : ℚ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q ≠ <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</code>
+<div class="indent"><p>If the p-adic norms of <code>q</code> and <code>r</code> are different, then the norm of <code>q + r</code> is equal to the max of
 the norms of <code>q</code> and <code>r</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="padic_norm.is_absolute_value">      <h4>padic_norm.is_absolute_value</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p], <a href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html#is_absolute_value">is_absolute_value</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p)</code>
-<div class="indent"><p><p>The p-adic norm is an absolute value: positive-definite and multiplicative, satisfying the triangle
+       </div>
+</div><div class="def"><a id="padic_norm.is_absolute_value"></a>      <h4>padic_norm.is_absolute_value</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p], <a href="/home/rob/lean/mathlib/scripts/html_out/data/real/cau_seq.html#is_absolute_value">is_absolute_value</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p)</code>
+<div class="indent"><p>The p-adic norm is an absolute value: positive-definite and multiplicative, satisfying the triangle
 inequality.</p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="padic_norm.le_of_dvd">      <h4>padic_norm.le_of_dvd</h4><code>∀ (p : ℕ) [hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p] {n : ℕ} {z : ℤ}, ↑(p ^ n) ∣ z → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p ↑z ≤ ↑p ^ -↑n</code>
-<div class="indent"><p><p>If <code>p^n</code> divides an integer <code>z</code>, then the p-adic norm of <code>z</code> is at most <code>p^(-n)</code>.</p>
-</p>       </div>
+       Attributes: instance</div>
+</div><div class="thm"><a id="padic_norm.le_of_dvd"></a>      <h4>padic_norm.le_of_dvd</h4><code>∀ (p : ℕ) [hp : <a href="/home/rob/lean/mathlib/scripts/html_out/data/nat/prime.html#nat.prime">nat.prime</a> p] {n : ℕ} {z : ℤ}, ↑(p ^ n) ∣ z → <a href="/home/rob/lean/mathlib/scripts/html_out/data/padics/padic_norm.html#padic_norm">padic_norm</a> p ↑z ≤ ↑p ^ -↑n</code>
+<div class="indent"><p>If <code>p^n</code> divides an integer <code>z</code>, then the p-adic norm of <code>z</code> is at most <code>p^(-n)</code>.</p>
+       </div>
 </div></body></html>

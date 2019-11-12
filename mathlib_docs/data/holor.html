@@ -1,4 +1,4 @@
-<html><head><title>data.holor</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Basic properties of holors</h1>
+<!DOCTYPE html><html lang="en"><head><title>data.holor</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><h1>Basic properties of holors</h1>
 
 <p>Holors are indexed collections of tensor coefficients. Confusingly,
 they are often called tensors in physics and in the neural network
@@ -8,7 +8,7 @@ community.</p>
 holor is specified by a <code>list ℕ</code>, whose length is called the dimension
 of the holor.</p>
 
-<p>The tensor product of <code>x₁ : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₁</code> and <code>x₂ : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₂</code> is the
+<p>The tensor product of <code>x₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₁</code> and <code>x₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₂</code> is the
 holor given by <code>(x₁ ⊗ x₂) (i₁ ++ i₂) = x₁ i₁ * x₂ i₂</code>. A holor is "of
 rank at most 1" if it is a tensor product of one-dimensional holors.
 The CP rank of a holor <code>x</code> is the smallest N such that <code>x</code> is the sum
@@ -21,191 +21,191 @@ of N holors of rank at most 1.</p>
 <ul>
 <li>https://en.wikipedia.org/wiki/Tensor<em>rank</em>decomposition</li>
 </ul>
-</div><div class="entry"><a id="holor_index">      <h4>holor_index</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ → Type</code>
-<div class="indent"><p><p><code>holor_index ds</code> is the type of valid index tuples to identify an entry of a holor of dimensions <code>ds</code></p>
-</p>       </div>
-</div><div class="entry"><a id="holor_index.take">      <h4>holor_index.take</h4><code>Π {ds₂ ds₁ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂) → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> ds₁</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor_index.drop">      <h4>holor_index.drop</h4><code>Π {ds₂ ds₁ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂) → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> ds₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor_index.cast_type">      <h4>holor_index.cast_type</h4><code>∀ {ds₁ ds₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (is : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ) (eq_1 : ds₁ = ds₂) (h : <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.forall₂">list.forall₂</a> has_lt.lt is ds₁),
-  (<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#cast">cast</a> _ ⟨is, h⟩).val = is</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor_index.assoc_right">      <h4>holor_index.assoc_right</h4><code>Π {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃) → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ (ds₂ ++ ds₃))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor_index.assoc_left">      <h4>holor_index.assoc_left</h4><code>Π {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ (ds₂ ++ ds₃)) → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor_index.take_take">      <h4>holor_index.take_take</h4><code>∀ {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (t : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃)),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.take">holor_index.take</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.assoc_right">holor_index.assoc_right</a> t) = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.take">holor_index.take</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.take">holor_index.take</a> t)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor_index.drop_take">      <h4>holor_index.drop_take</h4><code>∀ {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (t : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃)),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.take">holor_index.take</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.drop">holor_index.drop</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.assoc_right">holor_index.assoc_right</a> t)) = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.drop">holor_index.drop</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.take">holor_index.take</a> t)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor_index.drop_drop">      <h4>holor_index.drop_drop</h4><code>∀ {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (t : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃)),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.drop">holor_index.drop</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.drop">holor_index.drop</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.assoc_right">holor_index.assoc_right</a> t)) = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index.drop">holor_index.drop</a> t</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor">      <h4>holor</h4><code>Type u → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ → Type u</code>
-<div class="indent"><p><p>Holor (indexed collections of tensor coefficients)</p>
-</p>       </div>
-</div><div class="entry"><a id="holor.inhabited">      <h4>holor.inhabited</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.has_zero">      <h4>holor.has_zero</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.has_add">      <h4>holor.has_add</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add">has_add</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add">has_add</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.has_neg">      <h4>holor.has_neg</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg">has_neg</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg">has_neg</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.add_semigroup">      <h4>holor.add_semigroup</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_semigroup">add_semigroup</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_semigroup">add_semigroup</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.add_comm_semigroup">      <h4>holor.add_comm_semigroup</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_semigroup">add_comm_semigroup</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_semigroup">add_comm_semigroup</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.add_monoid">      <h4>holor.add_monoid</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.add_comm_monoid">      <h4>holor.add_comm_monoid</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_monoid">add_comm_monoid</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_monoid">add_comm_monoid</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.add_group">      <h4>holor.add_group</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_group">add_group</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_group">add_group</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.add_comm_group">      <h4>holor.add_comm_group</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.has_scalar">      <h4>holor.has_scalar</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α], <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#has_scalar">has_scalar</a> α (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.module">      <h4>holor.module</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α], <a href="https://robertylewis.com/mathlib_docs/algebra/module.html#module">module</a> α (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.vector_space">      <h4>holor.vector_space</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/field.html#discrete_field">discrete_field</a> α], <a href="https://robertylewis.com/mathlib_docs/algebra/module.html#vector_space">vector_space</a> α (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="holor.mul">      <h4>holor.mul</h4><code>Π {α : Type} {ds₁ ds₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [s : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α],
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₁ → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₂ → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (ds₁ ++ ds₂)</code>
-<div class="indent"><p><p>The tensor product of two holors.</p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cast_type">      <h4>holor.cast_type</h4><code>∀ {α : Type} {ds₁ ds₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (eq_1 : ds₁ = ds₂) (a : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₁),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#cast">cast</a> _ a = λ (t : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> ds₂), a (<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#cast">cast</a> _ t)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.assoc_right">      <h4>holor.assoc_right</h4><code>Π {α : Type} {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (ds₁ ++ ds₂ ++ ds₃) → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (ds₁ ++ (ds₂ ++ ds₃))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.assoc_left">      <h4>holor.assoc_left</h4><code>Π {α : Type} {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (ds₁ ++ (ds₂ ++ ds₃)) → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (ds₁ ++ ds₂ ++ ds₃)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.mul_assoc0">      <h4>holor.mul_assoc0</h4><code>∀ {α : Type} {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> α] (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₁) (y : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₂)
-(z : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₃), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x y) z = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.assoc_left">holor.assoc_left</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> y z))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.mul_assoc">      <h4>holor.mul_assoc</h4><code>∀ {α : Type} {ds₁ ds₂ ds₃ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> α] (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₁) (y : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₂)
-(z : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₃), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x y) z == <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> y z)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.mul_left_distrib">      <h4>holor.mul_left_distrib</h4><code>∀ {α : Type} {ds₁ ds₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#distrib">distrib</a> α] (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₁) (y z : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₂),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x (y + z) = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x y + <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x z</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.mul_right_distrib">      <h4>holor.mul_right_distrib</h4><code>∀ {α : Type} {ds₁ ds₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#distrib">distrib</a> α] (x y : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₁) (z : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₂),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> (x + y) z = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x z + <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> y z</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.zero_mul">      <h4>holor.zero_mul</h4><code>∀ {ds₁ ds₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} {α : Type} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α] (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₂), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> 0 x = 0</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="holor.mul_zero">      <h4>holor.mul_zero</h4><code>∀ {ds₁ ds₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} {α : Type} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α] (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds₁), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x 0 = 0</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="holor.mul_scalar_mul">      <h4>holor.mul_scalar_mul</h4><code>∀ {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α list.nil) (y : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x y = x ⟨list.nil ℕ, _⟩ • y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.slice">      <h4>holor.slice</h4><code>Π {α : Type} {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (d :: ds) → Π (i : ℕ), i < d → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds</code>
-<div class="indent"><p><p>A slice is a subholor consisting of all entries with initial index i.</p>
-</p>       </div>
-</div><div class="entry"><a id="holor.unit_vec">      <h4>holor.unit_vec</h4><code>Π {α : Type} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> α] (d : ℕ), ℕ → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α [d]</code>
-<div class="indent"><p><p>The 1-dimensional "unit" holor with 1 in the <code>j</code>th position.</p>
-</p>       </div>
-</div><div class="entry"><a id="holor.holor_index_cons_decomp">      <h4>holor.holor_index_cons_decomp</h4><code>∀ {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (p : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (d :: ds) → Prop) (t : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor_index">holor_index</a> (d :: ds)),
-  (∀ (i : ℕ) (is : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ) (h : t.val = i :: is), p ⟨i :: is, _⟩) → p t</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.slice_eq">      <h4>holor.slice_eq</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (x y : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (d :: ds)), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> x = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> y → x = y</code>
-<div class="indent"><p><p>Two holors are equal if all their slices are equal.</p>
-</p>       </div>
-</div><div class="entry"><a id="holor.slice_unit_vec_mul">      <h4>holor.slice_unit_vec_mul</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α] {i j : ℕ} (hid : i < d) (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.unit_vec">holor.unit_vec</a> d j) x) i hid = <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (i = j) x 0</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.slice_add">      <h4>holor.slice_add</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add">has_add</a> α] (i : ℕ) (hid : i < d) (x y : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (d :: ds)),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> x i hid + <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> y i hid = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> (x + y) i hid</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.slice_zero">      <h4>holor.slice_zero</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> α] (i : ℕ) (hid : i < d), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> 0 i hid = 0</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.slice_sum">      <h4>holor.slice_sum</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_monoid">add_comm_monoid</a> α] {β : Type} (i : ℕ) (hid : i < d)
-(s : <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset">finset</a> β) (f : β → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (d :: ds)),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (x : β), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> (f x) i hid) = <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> s f) i hid</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.sum_unit_vec_mul_slice">      <h4>holor.sum_unit_vec_mul_slice</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α] (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α (d :: ds)),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.attach">finset.attach</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.range">finset.range</a> d))
-      (λ (i : {x // x ∈ <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.range">finset.range</a> d}), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.unit_vec">holor.unit_vec</a> d (i.val)) (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.slice">holor.slice</a> x (i.val) _)) =
+</div><div class="def"><a id="holor_index"></a>      <h4>holor_index</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ → Type</code>
+<div class="indent"><p><code>holor_index ds</code> is the type of valid index tuples to identify an entry of a holor of dimensions <code>ds</code></p>
+       </div>
+</div><div class="def"><a id="holor_index.take"></a>      <h4>holor_index.take</h4><code>Π {ds₂ ds₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> ds₁</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="holor_index.drop"></a>      <h4>holor_index.drop</h4><code>Π {ds₂ ds₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> ds₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor_index.cast_type"></a>      <h4>holor_index.cast_type</h4><code>∀ {ds₁ ds₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (is : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ) (eq_1 : ds₁ = ds₂) (h : <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.forall₂">list.forall₂</a> has_lt.lt is ds₁),
+  (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#cast">cast</a> _ ⟨is, h⟩).val = is</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="holor_index.assoc_right"></a>      <h4>holor_index.assoc_right</h4><code>Π {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ (ds₂ ++ ds₃))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="holor_index.assoc_left"></a>      <h4>holor_index.assoc_left</h4><code>Π {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ (ds₂ ++ ds₃)) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor_index.take_take"></a>      <h4>holor_index.take_take</h4><code>∀ {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (t : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.take">holor_index.take</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.assoc_right">holor_index.assoc_right</a> t) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.take">holor_index.take</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.take">holor_index.take</a> t)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor_index.drop_take"></a>      <h4>holor_index.drop_take</h4><code>∀ {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (t : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.take">holor_index.take</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.drop">holor_index.drop</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.assoc_right">holor_index.assoc_right</a> t)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.drop">holor_index.drop</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.take">holor_index.take</a> t)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor_index.drop_drop"></a>      <h4>holor_index.drop_drop</h4><code>∀ {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (t : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (ds₁ ++ ds₂ ++ ds₃)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.drop">holor_index.drop</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.drop">holor_index.drop</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.assoc_right">holor_index.assoc_right</a> t)) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index.drop">holor_index.drop</a> t</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="holor"></a>      <h4>holor</h4><code>Type u → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ → Type u</code>
+<div class="indent"><p>Holor (indexed collections of tensor coefficients)</p>
+       </div>
+</div><div class="def"><a id="holor.inhabited"></a>      <h4>holor.inhabited</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.has_zero"></a>      <h4>holor.has_zero</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.has_add"></a>      <h4>holor.has_add</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_add">has_add</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_add">has_add</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.has_neg"></a>      <h4>holor.has_neg</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_neg">has_neg</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_neg">has_neg</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.add_semigroup"></a>      <h4>holor.add_semigroup</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_semigroup">add_semigroup</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_semigroup">add_semigroup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.add_comm_semigroup"></a>      <h4>holor.add_comm_semigroup</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_semigroup">add_comm_semigroup</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_semigroup">add_comm_semigroup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.add_monoid"></a>      <h4>holor.add_monoid</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.add_comm_monoid"></a>      <h4>holor.add_comm_monoid</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_monoid">add_comm_monoid</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_monoid">add_comm_monoid</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.add_group"></a>      <h4>holor.add_group</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_group">add_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_group">add_group</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.add_comm_group"></a>      <h4>holor.add_comm_group</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_group">add_comm_group</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.has_scalar"></a>      <h4>holor.has_scalar</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#has_scalar">has_scalar</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.module"></a>      <h4>holor.module</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/module.html#module">module</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.vector_space"></a>      <h4>holor.vector_space</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/field.html#discrete_field">discrete_field</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/module.html#vector_space">vector_space</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="holor.mul"></a>      <h4>holor.mul</h4><code>Π {α : Type} {ds₁ ds₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₁ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (ds₁ ++ ds₂)</code>
+<div class="indent"><p>The tensor product of two holors.</p>
+       </div>
+</div><div class="thm"><a id="holor.cast_type"></a>      <h4>holor.cast_type</h4><code>∀ {α : Type} {ds₁ ds₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (eq_1 : ds₁ = ds₂) (a : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₁),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#cast">cast</a> _ a = λ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> ds₂), a (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#cast">cast</a> _ t)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="holor.assoc_right"></a>      <h4>holor.assoc_right</h4><code>Π {α : Type} {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (ds₁ ++ ds₂ ++ ds₃) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (ds₁ ++ (ds₂ ++ ds₃))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="holor.assoc_left"></a>      <h4>holor.assoc_left</h4><code>Π {α : Type} {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (ds₁ ++ (ds₂ ++ ds₃)) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (ds₁ ++ ds₂ ++ ds₃)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.mul_assoc0"></a>      <h4>holor.mul_assoc0</h4><code>∀ {α : Type} {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₁) (y : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₂)
+(z : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₃), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x y) z = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.assoc_left">holor.assoc_left</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> y z))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.mul_assoc"></a>      <h4>holor.mul_assoc</h4><code>∀ {α : Type} {ds₁ ds₂ ds₃ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₁) (y : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₂)
+(z : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₃), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x y) z == <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> y z)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.mul_left_distrib"></a>      <h4>holor.mul_left_distrib</h4><code>∀ {α : Type} {ds₁ ds₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#distrib">distrib</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₁) (y z : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₂),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x (y + z) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x y + <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x z</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.mul_right_distrib"></a>      <h4>holor.mul_right_distrib</h4><code>∀ {α : Type} {ds₁ ds₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#distrib">distrib</a> α] (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₁) (z : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₂),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> (x + y) z = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x z + <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> y z</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.zero_mul"></a>      <h4>holor.zero_mul</h4><code>∀ {ds₁ ds₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} {α : Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₂), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> 0 x = 0</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="holor.mul_zero"></a>      <h4>holor.mul_zero</h4><code>∀ {ds₁ ds₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} {α : Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds₁), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x 0 = 0</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="holor.mul_scalar_mul"></a>      <h4>holor.mul_scalar_mul</h4><code>∀ {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α list.nil) (y : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x y = x ⟨list.nil ℕ, _⟩ • y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="holor.slice"></a>      <h4>holor.slice</h4><code>Π {α : Type} {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (d :: ds) → Π (i : ℕ), i < d → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds</code>
+<div class="indent"><p>A slice is a subholor consisting of all entries with initial index i.</p>
+       </div>
+</div><div class="def"><a id="holor.unit_vec"></a>      <h4>holor.unit_vec</h4><code>Π {α : Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> α] (d : ℕ), ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α [d]</code>
+<div class="indent"><p>The 1-dimensional "unit" holor with 1 in the <code>j</code>th position.</p>
+       </div>
+</div><div class="thm"><a id="holor.holor_index_cons_decomp"></a>      <h4>holor.holor_index_cons_decomp</h4><code>∀ {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (p : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (d :: ds) → Prop) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor_index">holor_index</a> (d :: ds)),
+  (∀ (i : ℕ) (is : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ) (h : t.val = i :: is), p ⟨i :: is, _⟩) → p t</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.slice_eq"></a>      <h4>holor.slice_eq</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (d :: ds)), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> x = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> y → x = y</code>
+<div class="indent"><p>Two holors are equal if all their slices are equal.</p>
+       </div>
+</div><div class="thm"><a id="holor.slice_unit_vec_mul"></a>      <h4>holor.slice_unit_vec_mul</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α] {i j : ℕ} (hid : i < d) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.unit_vec">holor.unit_vec</a> d j) x) i hid = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#ite">ite</a> (i = j) x 0</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.slice_add"></a>      <h4>holor.slice_add</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_add">has_add</a> α] (i : ℕ) (hid : i < d) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (d :: ds)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> x i hid + <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> y i hid = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> (x + y) i hid</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.slice_zero"></a>      <h4>holor.slice_zero</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> α] (i : ℕ) (hid : i < d), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> 0 i hid = 0</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.slice_sum"></a>      <h4>holor.slice_sum</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_comm_monoid">add_comm_monoid</a> α] {β : Type} (i : ℕ) (hid : i < d)
+(s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> β) (f : β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (d :: ds)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (x : β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> (f x) i hid) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s f) i hid</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.sum_unit_vec_mul_slice"></a>      <h4>holor.sum_unit_vec_mul_slice</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α (d :: ds)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.attach">finset.attach</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.range">finset.range</a> d))
+      (λ (i : {x // x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.range">finset.range</a> d}), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.unit_vec">holor.unit_vec</a> d (i.val)) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.slice">holor.slice</a> x (i.val) _)) =
     x</code>
-<div class="indent"><p><p>The original holor can be recovered from its slices by multiplying with unit vectors and summing up.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="holor.cprank_max1">      <h4>holor.cprank_max1</h4><code>Π {α : Type} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds → Prop</code>
-<div class="indent"><p><p><code>cprank_max1 x</code> means <code>x</code> has CP rank at most 1, that is,
+<div class="indent"><p>The original holor can be recovered from its slices by multiplying with unit vectors and summing up.</p>
+       Attributes: simp</div>
+</div><div class="cnst"><a id="holor.cprank_max1"></a>      <h4>holor.cprank_max1</h4><code>Π {α : Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds → Prop</code>
+<div class="indent"><p><code>cprank_max1 x</code> means <code>x</code> has CP rank at most 1, that is,
  it is the tensor product of 1-dimensional holors.</p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank_max">      <h4>holor.cprank_max</h4><code>Π {α : Type} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> α], ℕ → Π {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ}, <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds → Prop</code>
-<div class="indent"><p><p><code>cprank_max N x</code> means <code>x</code> has CP rank at most <code>N</code>, that is,
+       </div>
+</div><div class="cnst"><a id="holor.cprank_max"></a>      <h4>holor.cprank_max</h4><code>Π {α : Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> α], ℕ → Π {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds → Prop</code>
+<div class="indent"><p><code>cprank_max N x</code> means <code>x</code> has CP rank at most <code>N</code>, that is,
  it can be written as the sum of N holors of rank at most 1.</p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank_max_nil">      <h4>holor.cprank_max_nil</h4><code>∀ {α : Type} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> α] (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α list.nil), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> 1 x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank_max_1">      <h4>holor.cprank_max_1</h4><code>∀ {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> α] {x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds},
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max1">holor.cprank_max1</a> x → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> 1 x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank_max_add">      <h4>holor.cprank_max_add</h4><code>∀ {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> α] {m n : ℕ} {x y : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds},
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> m x → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> n y → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> (m + n) (x + y)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank_max_mul">      <h4>holor.cprank_max_mul</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α] (n : ℕ) (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α [d]) (y : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds),
-  <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> n y → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> n (<a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.mul">holor.mul</a> x y)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank_max_sum">      <h4>holor.cprank_max_sum</h4><code>∀ {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α] {β : Type u_1} {n : ℕ} (s : <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset">finset</a> β) (f : β → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds),
-  (∀ (x : β), x ∈ s → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> n (f x)) → <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.card">finset.card</a> s * n) (<a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> s f)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank_max_upper_bound">      <h4>holor.cprank_max_upper_bound</h4><code>∀ {α : Type} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α] {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank_max">holor.cprank_max</a> (<a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.prod">list.prod</a> ds) x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank">      <h4>holor.cprank</h4><code>Π {α : Type} {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α], <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds → ℕ</code>
-<div class="indent"><p><p>The CP rank of a holor <code>x</code>: the smallest N such that
+       </div>
+</div><div class="thm"><a id="holor.cprank_max_nil"></a>      <h4>holor.cprank_max_nil</h4><code>∀ {α : Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> α] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α list.nil), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> 1 x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.cprank_max_1"></a>      <h4>holor.cprank_max_1</h4><code>∀ {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> α] {x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max1">holor.cprank_max1</a> x → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> 1 x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.cprank_max_add"></a>      <h4>holor.cprank_max_add</h4><code>∀ {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> α] {m n : ℕ} {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> m x → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> n y → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> (m + n) (x + y)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.cprank_max_mul"></a>      <h4>holor.cprank_max_mul</h4><code>∀ {α : Type} {d : ℕ} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α] (n : ℕ) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α [d]) (y : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> n y → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.mul">holor.mul</a> x y)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.cprank_max_sum"></a>      <h4>holor.cprank_max_sum</h4><code>∀ {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α] {β : Type u_1} {n : ℕ} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset">finset</a> β) (f : β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds),
+  (∀ (x : β), x ∈ s → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> n (f x)) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/finset.html#finset.card">finset.card</a> s * n) (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/big_operators.html#finset.sum">finset.sum</a> s f)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="holor.cprank_max_upper_bound"></a>      <h4>holor.cprank_max_upper_bound</h4><code>∀ {α : Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α] {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank_max">holor.cprank_max</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.prod">list.prod</a> ds) x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="holor.cprank"></a>      <h4>holor.cprank</h4><code>Π {α : Type} {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds → ℕ</code>
+<div class="indent"><p>The CP rank of a holor <code>x</code>: the smallest N such that
  <code>x</code> can be written as the sum of N holors of rank at most 1.</p>
-</p>       </div>
-</div><div class="entry"><a id="holor.cprank_upper_bound">      <h4>holor.cprank_upper_bound</h4><code>∀ {α : Type} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α] {ds : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℕ} (x : <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor">holor</a> α ds), <a href="https://robertylewis.com/mathlib_docs/data/holor.html#holor.cprank">holor.cprank</a> x ≤ <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.prod">list.prod</a> ds</code>
-<div class="indent"><p><p></p>
-</p>       </div>
+       </div>
+</div><div class="thm"><a id="holor.cprank_upper_bound"></a>      <h4>holor.cprank_upper_bound</h4><code>∀ {α : Type} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#ring">ring</a> α] {ds : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> ℕ} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor">holor</a> α ds), <a href="/home/rob/lean/mathlib/scripts/html_out/data/holor.html#holor.cprank">holor.cprank</a> x ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.prod">list.prod</a> ds</code>
+<div class="indent"><p></p>
+       </div>
 </div></body></html>

@@ -1,534 +1,534 @@
-<html><head><title>number_theory.dioph</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="int.eq_nat_abs_iff_mul">      <h4>int.eq_nat_abs_iff_mul</h4><code>∀ (x : ℤ) (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> x = n ↔ (x - ↑n) * (x + ↑n) = 0</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="fin2">      <h4>fin2</h4><code>ℕ → Type</code>
-<div class="indent"><p><p>An alternate definition of <code>fin n</code> defined as an inductive type
+<!DOCTYPE html><html lang="en"><head><title>number_theory.dioph</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="thm"><a id="int.eq_nat_abs_iff_mul"></a>      <h4>int.eq_nat_abs_iff_mul</h4><code>∀ (x : ℤ) (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> x = n ↔ (x - ↑n) * (x + ↑n) = 0</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="cnst"><a id="fin2"></a>      <h4>fin2</h4><code>ℕ → Type</code>
+<div class="indent"><p>An alternate definition of <code>fin n</code> defined as an inductive type
  instead of a subtype of <code>nat</code>. This is useful for its induction
  principle and different definitional equalities.</p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.cases'">      <h4>fin2.cases'</h4><code>Π {n : ℕ} {C : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (nat.succ n) → Sort u},
-  C fin2.fz → (Π (n_1 : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n), C (fin2.fs n_1)) → Π (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (nat.succ n)), C i</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.elim0">      <h4>fin2.elim0</h4><code>Π {C : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> 0 → Sort u} (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> 0), C i</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.to_nat">      <h4>fin2.to_nat</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n → ℕ</code>
-<div class="indent"><p><p>convert a <code>fin2</code> into a <code>nat</code></p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.opt_of_nat">      <h4>fin2.opt_of_nat</h4><code>Π {n : ℕ}, ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n)</code>
-<div class="indent"><p><p>convert a <code>nat</code> into a <code>fin2</code> if it is in range</p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.add">      <h4>fin2.add</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n → Π (k : ℕ), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (n + k)</code>
-<div class="indent"><p><p><code>i + k : fin2 (n + k)</code> when <code>i : fin2 n</code> and <code>k : ℕ</code></p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.left">      <h4>fin2.left</h4><code>Π (k : ℕ) {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (k + n)</code>
-<div class="indent"><p><p><code>left k</code> is the embedding <code>fin2 n → fin2 (k + n)</code></p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.insert_perm">      <h4>fin2.insert_perm</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n</code>
-<div class="indent"><p><p><code>insert_perm a</code> is a permutation of <code>fin2 n</code> with the following properties:
+       </div>
+</div><div class="def"><a id="fin2.cases'"></a>      <h4>fin2.cases'</h4><code>Π {n : ℕ} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (nat.succ n) → Sort u},
+  C fin2.fz → (Π (n_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n), C (fin2.fs n_1)) → Π (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (nat.succ n)), C i</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="fin2.elim0"></a>      <h4>fin2.elim0</h4><code>Π {C : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> 0 → Sort u} (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> 0), C i</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="fin2.to_nat"></a>      <h4>fin2.to_nat</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n → ℕ</code>
+<div class="indent"><p>convert a <code>fin2</code> into a <code>nat</code></p>
+       </div>
+</div><div class="def"><a id="fin2.opt_of_nat"></a>      <h4>fin2.opt_of_nat</h4><code>Π {n : ℕ}, ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n)</code>
+<div class="indent"><p>convert a <code>nat</code> into a <code>fin2</code> if it is in range</p>
+       </div>
+</div><div class="def"><a id="fin2.add"></a>      <h4>fin2.add</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n → Π (k : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (n + k)</code>
+<div class="indent"><p><code>i + k : fin2 (n + k)</code> when <code>i : fin2 n</code> and <code>k : ℕ</code></p>
+       </div>
+</div><div class="def"><a id="fin2.left"></a>      <h4>fin2.left</h4><code>Π (k : ℕ) {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (k + n)</code>
+<div class="indent"><p><code>left k</code> is the embedding <code>fin2 n → fin2 (k + n)</code></p>
+       </div>
+</div><div class="def"><a id="fin2.insert_perm"></a>      <h4>fin2.insert_perm</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n</code>
+<div class="indent"><p><code>insert_perm a</code> is a permutation of <code>fin2 n</code> with the following properties:
  * <code>insert_perm a i = i+1</code> if <code>i &lt; a</code>
  * <code>insert_perm a a = 0</code>
  * <code>insert_perm a i = i</code> if <code>i &gt; a</code></p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.remap_left">      <h4>fin2.remap_left</h4><code>Π {m n : ℕ}, (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> m → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n) → Π (k : ℕ), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (m + k) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (n + k)</code>
-<div class="indent"><p><p><code>remap_left f k : fin2 (m + k) → fin2 (n + k)</code> applies the function
+       </div>
+</div><div class="def"><a id="fin2.remap_left"></a>      <h4>fin2.remap_left</h4><code>Π {m n : ℕ}, (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> m → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n) → Π (k : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (m + k) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (n + k)</code>
+<div class="indent"><p><code>remap_left f k : fin2 (m + k) → fin2 (n + k)</code> applies the function
  <code>f : fin2 m → fin2 n</code> to inputs less than <code>m</code>, and leaves the right part
  on the right (that is, <code>remap_left f k (m + i) = n + i</code>).</p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.is_lt">      <h4>fin2.is_lt</h4><code>ℕ → ℕ → Type</code>
-<div class="indent"><p><p>This is a simple type class inference prover for proof obligations
+       </div>
+</div><div class="cnst"><a id="fin2.is_lt"></a>      <h4>fin2.is_lt</h4><code>ℕ → ℕ → Type</code>
+<div class="indent"><p>This is a simple type class inference prover for proof obligations
  of the form <code>m &lt; n</code> where <code>m n : ℕ</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="fin2.is_lt.zero">      <h4>fin2.is_lt.zero</h4><code>Π (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> 0 (nat.succ n)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="fin2.is_lt.succ">      <h4>fin2.is_lt.succ</h4><code>Π (m n : ℕ) [l : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> m n], <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> (nat.succ m) (nat.succ n)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="fin2.of_nat'">      <h4>fin2.of_nat'</h4><code>Π {n : ℕ} (m : ℕ) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> m n], <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n</code>
-<div class="indent"><p><p>Use type class inference to infer the boundedness proof, so that we
+       </div>
+</div><div class="def"><a id="fin2.is_lt.zero"></a>      <h4>fin2.is_lt.zero</h4><code>Π (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> 0 (nat.succ n)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="fin2.is_lt.succ"></a>      <h4>fin2.is_lt.succ</h4><code>Π (m n : ℕ) [l : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> m n], <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> (nat.succ m) (nat.succ n)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="fin2.of_nat'"></a>      <h4>fin2.of_nat'</h4><code>Π {n : ℕ} (m : ℕ) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> m n], <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n</code>
+<div class="indent"><p>Use type class inference to infer the boundedness proof, so that we
  can directly convert a <code>nat</code> into a <code>fin2 n</code>. This supports
  notation like <code>&amp;1 : fin 3</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3">      <h4>vector3</h4><code>Type u → ℕ → Type u</code>
-<div class="indent"><p><p>Alternate definition of <code>vector</code> based on <code>fin2</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.nil">      <h4>vector3.nil</h4><code>Π {α : Type u_1}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α 0</code>
-<div class="indent"><p><p>The empty vector</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.cons">      <h4>vector3.cons</h4><code>Π {α : Type u_1} {n : ℕ}, α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n)</code>
-<div class="indent"><p><p>The vector cons operation</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.cons_fz">      <h4>vector3.cons_fz</h4><code>∀ {α : Type u_1} {n : ℕ} (a : α) (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), (a :: v) fin2.fz = a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.cons_fs">      <h4>vector3.cons_fs</h4><code>∀ {α : Type u_1} {n : ℕ} (a : α) (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n) (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n), (a :: v) (fin2.fs i) = v i</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.nth">      <h4>vector3.nth</h4><code>Π {α : Type u_1} {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → α</code>
-<div class="indent"><p><p>Get the <code>i</code>th element of a vector</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.of_fn">      <h4>vector3.of_fn</h4><code>Π {α : Type u_1} {n : ℕ}, (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n → α) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n</code>
-<div class="indent"><p><p>Construct a vector from a function on <code>fin2</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.head">      <h4>vector3.head</h4><code>Π {α : Type u_1} {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → α</code>
-<div class="indent"><p><p>Get the head of a nonempty vector.</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.tail">      <h4>vector3.tail</h4><code>Π {α : Type u_1} {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n</code>
-<div class="indent"><p><p>Get the tail of a nonempty vector.</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.eq_nil">      <h4>vector3.eq_nil</h4><code>∀ {α : Type u_1} (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α 0), v = <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.cons_head_tail">      <h4>vector3.cons_head_tail</h4><code>∀ {α : Type u_1} {n : ℕ} (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n)), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.head">vector3.head</a> v :: <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.tail">vector3.tail</a> v = v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.nil_elim">      <h4>vector3.nil_elim</h4><code>Π {α : Type u_1} {C : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α 0 → Sort u}, C <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a> → Π (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α 0), C v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.cons_elim">      <h4>vector3.cons_elim</h4><code>Π {α : Type u_1} {n : ℕ} {C : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → Sort u},
-  (Π (a : α) (t : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), C (a :: t)) → Π (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n)), C v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.cons_elim_cons">      <h4>vector3.cons_elim_cons</h4><code>∀ {α : Type u_1} {n : ℕ} {C : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → Sort u_2}
-{H : Π (a : α) (t : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), C (a :: t)} {a : α} {t : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.cons_elim">vector3.cons_elim</a> H (a :: t) = H a t</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.rec_on">      <h4>vector3.rec_on</h4><code>Π {α : Type u_1} {C : Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → Sort u} {n : ℕ} (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n),
-  C <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a> → (Π {n : ℕ} (a : α) (w : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), C w → C (a :: w)) → C v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.rec_on_nil">      <h4>vector3.rec_on_nil</h4><code>∀ {α : Type u_1} {C : Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → Sort u_2} {H0 : C <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a>}
-{Hs : Π {n : ℕ} (a : α) (w : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), C w → C (a :: w)}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.rec_on">vector3.rec_on</a> <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a> H0 Hs = H0</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.rec_on_cons">      <h4>vector3.rec_on_cons</h4><code>∀ {α : Type u_1} {C : Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → Sort u_2} {H0 : C <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a>}
-{Hs : Π {n : ℕ} (a : α) (w : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), C w → C (a :: w)} {n : ℕ} {a : α} {v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.rec_on">vector3.rec_on</a> (a :: v) H0 Hs = Hs a v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.rec_on">vector3.rec_on</a> v H0 Hs)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.append">      <h4>vector3.append</h4><code>Π {α : Type u_1} {m : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α m → Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (n + m)</code>
-<div class="indent"><p><p>Append two vectors</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.append_nil">      <h4>vector3.append_nil</h4><code>∀ {α : Type u_1} {n : ℕ} (w : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.append">vector3.append</a> <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a> w = w</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.append_cons">      <h4>vector3.append_cons</h4><code>∀ {α : Type u_1} (a : α) {m : ℕ} (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α m) {n : ℕ} (w : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.append">vector3.append</a> (a :: v) w = a :: <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.append">vector3.append</a> v w</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.append_left">      <h4>vector3.append_left</h4><code>∀ {α : Type u_1} {m : ℕ} (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> m) (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α m) {n : ℕ} (w : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.append">vector3.append</a> v w (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.left">fin2.left</a> n i) = v i</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.append_add">      <h4>vector3.append_add</h4><code>∀ {α : Type u_1} {m : ℕ} (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α m) {n : ℕ} (w : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n) (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.append">vector3.append</a> v w (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.add">fin2.add</a> i m) = w i</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.insert">      <h4>vector3.insert</h4><code>Π {α : Type u_1}, α → Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (nat.succ n) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n)</code>
-<div class="indent"><p><p>Insert <code>a</code> into <code>v</code> at index <code>i</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="vector3.insert_fz">      <h4>vector3.insert_fz</h4><code>∀ {α : Type u_1} (a : α) {n : ℕ} (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.insert">vector3.insert</a> a v fin2.fz = a :: v</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.insert_fs">      <h4>vector3.insert_fs</h4><code>∀ {α : Type u_1} (a : α) {n : ℕ} (b : α) (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n) (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (nat.succ n)),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.insert">vector3.insert</a> a (b :: v) (fin2.fs i) = b :: <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.insert">vector3.insert</a> a v i</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector3.append_insert">      <h4>vector3.append_insert</h4><code>∀ {α : Type u_1} (a : α) {k : ℕ} (t : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α k) {n : ℕ} (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n) (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> (nat.succ n))
+       </div>
+</div><div class="def"><a id="vector3"></a>      <h4>vector3</h4><code>Type u → ℕ → Type u</code>
+<div class="indent"><p>Alternate definition of <code>vector</code> based on <code>fin2</code>.</p>
+       </div>
+</div><div class="def"><a id="vector3.nil"></a>      <h4>vector3.nil</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α 0</code>
+<div class="indent"><p>The empty vector</p>
+       </div>
+</div><div class="def"><a id="vector3.cons"></a>      <h4>vector3.cons</h4><code>Π {α : Type u_1} {n : ℕ}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n)</code>
+<div class="indent"><p>The vector cons operation</p>
+       </div>
+</div><div class="thm"><a id="vector3.cons_fz"></a>      <h4>vector3.cons_fz</h4><code>∀ {α : Type u_1} {n : ℕ} (a : α) (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), (a :: v) fin2.fz = a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector3.cons_fs"></a>      <h4>vector3.cons_fs</h4><code>∀ {α : Type u_1} {n : ℕ} (a : α) (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n) (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n), (a :: v) (fin2.fs i) = v i</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="vector3.nth"></a>      <h4>vector3.nth</h4><code>Π {α : Type u_1} {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → α</code>
+<div class="indent"><p>Get the <code>i</code>th element of a vector</p>
+       </div>
+</div><div class="def"><a id="vector3.of_fn"></a>      <h4>vector3.of_fn</h4><code>Π {α : Type u_1} {n : ℕ}, (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n → α) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n</code>
+<div class="indent"><p>Construct a vector from a function on <code>fin2</code>.</p>
+       </div>
+</div><div class="def"><a id="vector3.head"></a>      <h4>vector3.head</h4><code>Π {α : Type u_1} {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → α</code>
+<div class="indent"><p>Get the head of a nonempty vector.</p>
+       </div>
+</div><div class="def"><a id="vector3.tail"></a>      <h4>vector3.tail</h4><code>Π {α : Type u_1} {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n</code>
+<div class="indent"><p>Get the tail of a nonempty vector.</p>
+       </div>
+</div><div class="thm"><a id="vector3.eq_nil"></a>      <h4>vector3.eq_nil</h4><code>∀ {α : Type u_1} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α 0), v = <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="vector3.cons_head_tail"></a>      <h4>vector3.cons_head_tail</h4><code>∀ {α : Type u_1} {n : ℕ} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n)), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.head">vector3.head</a> v :: <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.tail">vector3.tail</a> v = v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="vector3.nil_elim"></a>      <h4>vector3.nil_elim</h4><code>Π {α : Type u_1} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α 0 → Sort u}, C <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a> → Π (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α 0), C v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="vector3.cons_elim"></a>      <h4>vector3.cons_elim</h4><code>Π {α : Type u_1} {n : ℕ} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → Sort u},
+  (Π (a : α) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), C (a :: t)) → Π (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n)), C v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="vector3.cons_elim_cons"></a>      <h4>vector3.cons_elim_cons</h4><code>∀ {α : Type u_1} {n : ℕ} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → Sort u_2}
+{H : Π (a : α) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), C (a :: t)} {a : α} {t : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.cons_elim">vector3.cons_elim</a> H (a :: t) = H a t</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="vector3.rec_on"></a>      <h4>vector3.rec_on</h4><code>Π {α : Type u_1} {C : Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → Sort u} {n : ℕ} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n),
+  C <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a> → (Π {n : ℕ} (a : α) (w : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), C w → C (a :: w)) → C v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="vector3.rec_on_nil"></a>      <h4>vector3.rec_on_nil</h4><code>∀ {α : Type u_1} {C : Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → Sort u_2} {H0 : C <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a>}
+{Hs : Π {n : ℕ} (a : α) (w : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), C w → C (a :: w)}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.rec_on">vector3.rec_on</a> <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a> H0 Hs = H0</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector3.rec_on_cons"></a>      <h4>vector3.rec_on_cons</h4><code>∀ {α : Type u_1} {C : Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → Sort u_2} {H0 : C <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a>}
+{Hs : Π {n : ℕ} (a : α) (w : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), C w → C (a :: w)} {n : ℕ} {a : α} {v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.rec_on">vector3.rec_on</a> (a :: v) H0 Hs = Hs a v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.rec_on">vector3.rec_on</a> v H0 Hs)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="vector3.append"></a>      <h4>vector3.append</h4><code>Π {α : Type u_1} {m : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α m → Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (n + m)</code>
+<div class="indent"><p>Append two vectors</p>
+       </div>
+</div><div class="thm"><a id="vector3.append_nil"></a>      <h4>vector3.append_nil</h4><code>∀ {α : Type u_1} {n : ℕ} (w : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.append">vector3.append</a> <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a> w = w</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector3.append_cons"></a>      <h4>vector3.append_cons</h4><code>∀ {α : Type u_1} (a : α) {m : ℕ} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α m) {n : ℕ} (w : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.append">vector3.append</a> (a :: v) w = a :: <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.append">vector3.append</a> v w</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector3.append_left"></a>      <h4>vector3.append_left</h4><code>∀ {α : Type u_1} {m : ℕ} (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> m) (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α m) {n : ℕ} (w : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.append">vector3.append</a> v w (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.left">fin2.left</a> n i) = v i</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector3.append_add"></a>      <h4>vector3.append_add</h4><code>∀ {α : Type u_1} {m : ℕ} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α m) {n : ℕ} (w : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n) (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.append">vector3.append</a> v w (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.add">fin2.add</a> i m) = w i</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="vector3.insert"></a>      <h4>vector3.insert</h4><code>Π {α : Type u_1}, α → Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (nat.succ n) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n)</code>
+<div class="indent"><p>Insert <code>a</code> into <code>v</code> at index <code>i</code>.</p>
+       </div>
+</div><div class="thm"><a id="vector3.insert_fz"></a>      <h4>vector3.insert_fz</h4><code>∀ {α : Type u_1} (a : α) {n : ℕ} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.insert">vector3.insert</a> a v fin2.fz = a :: v</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector3.insert_fs"></a>      <h4>vector3.insert_fs</h4><code>∀ {α : Type u_1} (a : α) {n : ℕ} (b : α) (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n) (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (nat.succ n)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.insert">vector3.insert</a> a (b :: v) (fin2.fs i) = b :: <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.insert">vector3.insert</a> a v i</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector3.append_insert"></a>      <h4>vector3.append_insert</h4><code>∀ {α : Type u_1} (a : α) {k : ℕ} (t : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α k) {n : ℕ} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n) (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> (nat.succ n))
 (e : nat.succ n + k = nat.succ (n + k)),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.insert">vector3.insert</a> a (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.append">vector3.append</a> t v) (eq.rec_on e (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.add">fin2.add</a> i k)) =
-    eq.rec_on e (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.append">vector3.append</a> t (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.insert">vector3.insert</a> a v i))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector_ex">      <h4>vector_ex</h4><code>Π {α : Type u_1} (k : ℕ), (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α k → Prop) → Prop</code>
-<div class="indent"><p><p>"Curried" exists, i.e. ∃ x1 ... xn, f [x1, ..., xn]</p>
-</p>       </div>
-</div><div class="entry"><a id="vector_all">      <h4>vector_all</h4><code>Π {α : Type u_1} (k : ℕ), (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α k → Prop) → Prop</code>
-<div class="indent"><p><p>"Curried" forall, i.e. ∀ x1 ... xn, f [x1, ..., xn]</p>
-</p>       </div>
-</div><div class="entry"><a id="exists_vector_zero">      <h4>exists_vector_zero</h4><code>∀ {α : Type u_1} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α 0 → Prop), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#Exists">Exists</a> f ↔ f <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="exists_vector_succ">      <h4>exists_vector_succ</h4><code>∀ {α : Type u_1} {n : ℕ} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → Prop),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#Exists">Exists</a> f ↔ ∃ (x : α) (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), f (x :: v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector_ex_iff_exists">      <h4>vector_ex_iff_exists</h4><code>∀ {α : Type u_1} {n : ℕ} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → Prop), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_ex">vector_ex</a> n f ↔ <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#Exists">Exists</a> f</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector_all_iff_forall">      <h4>vector_all_iff_forall</h4><code>∀ {α : Type u_1} {n : ℕ} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → Prop), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_all">vector_all</a> n f ↔ ∀ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), f v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector_allp">      <h4>vector_allp</h4><code>Π {α : Type u_1}, (α → Prop) → Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n → Prop</code>
-<div class="indent"><p><p><code>vector_allp p v</code> is equivalent to <code>∀ i, p (v i)</code>, but unfolds directly to a conjunction,
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.insert">vector3.insert</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.append">vector3.append</a> t v) (eq.rec_on e (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.add">fin2.add</a> i k)) =
+    eq.rec_on e (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.append">vector3.append</a> t (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.insert">vector3.insert</a> a v i))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="vector_ex"></a>      <h4>vector_ex</h4><code>Π {α : Type u_1} (k : ℕ), (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α k → Prop) → Prop</code>
+<div class="indent"><p>"Curried" exists, i.e. ∃ x1 ... xn, f [x1, ..., xn]</p>
+       </div>
+</div><div class="def"><a id="vector_all"></a>      <h4>vector_all</h4><code>Π {α : Type u_1} (k : ℕ), (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α k → Prop) → Prop</code>
+<div class="indent"><p>"Curried" forall, i.e. ∀ x1 ... xn, f [x1, ..., xn]</p>
+       </div>
+</div><div class="thm"><a id="exists_vector_zero"></a>      <h4>exists_vector_zero</h4><code>∀ {α : Type u_1} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α 0 → Prop), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#Exists">Exists</a> f ↔ f <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="exists_vector_succ"></a>      <h4>exists_vector_succ</h4><code>∀ {α : Type u_1} {n : ℕ} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α (nat.succ n) → Prop),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#Exists">Exists</a> f ↔ ∃ (x : α) (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), f (x :: v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="vector_ex_iff_exists"></a>      <h4>vector_ex_iff_exists</h4><code>∀ {α : Type u_1} {n : ℕ} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → Prop), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_ex">vector_ex</a> n f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#Exists">Exists</a> f</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="vector_all_iff_forall"></a>      <h4>vector_all_iff_forall</h4><code>∀ {α : Type u_1} {n : ℕ} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → Prop), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_all">vector_all</a> n f ↔ ∀ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), f v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="vector_allp"></a>      <h4>vector_allp</h4><code>Π {α : Type u_1}, (α → Prop) → Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n → Prop</code>
+<div class="indent"><p><code>vector_allp p v</code> is equivalent to <code>∀ i, p (v i)</code>, but unfolds directly to a conjunction,
  i.e. <code>vector_allp p [0, 1, 2] = p 0 ∧ p 1 ∧ p 2</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="vector_allp_nil">      <h4>vector_allp_nil</h4><code>∀ {α : Type u_1} (p : α → Prop), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> p <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a> = <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#true">true</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector_allp_singleton">      <h4>vector_allp_singleton</h4><code>∀ {α : Type u_1} (p : α → Prop) (x : α), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> p (x :: <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3.nil">vector3.nil</a>) = p x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector_allp_cons">      <h4>vector_allp_cons</h4><code>∀ {α : Type u_1} (p : α → Prop) {n : ℕ} (x : α) (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> p (x :: v) ↔ p x ∧ <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> p v</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="vector_allp_iff_forall">      <h4>vector_allp_iff_forall</h4><code>∀ {α : Type u_1} (p : α → Prop) {n : ℕ} (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> p v ↔ ∀ (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n), p (v i)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="vector_allp.imp">      <h4>vector_allp.imp</h4><code>∀ {α : Type u_1} {p q : α → Prop},
-  (∀ (x : α), p x → q x) → ∀ {n : ℕ} {v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> α n}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> p v → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> q v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list_all">      <h4>list_all</h4><code>Π {α : Type u_1}, (α → Prop) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → Prop</code>
-<div class="indent"><p><p><code>list_all p l</code> is equivalent to <code>∀ a ∈ l, p a</code>, but unfolds directly to a conjunction,
+       </div>
+</div><div class="thm"><a id="vector_allp_nil"></a>      <h4>vector_allp_nil</h4><code>∀ {α : Type u_1} (p : α → Prop), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> p <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#true">true</a></code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector_allp_singleton"></a>      <h4>vector_allp_singleton</h4><code>∀ {α : Type u_1} (p : α → Prop) (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> p (x :: <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3.nil">vector3.nil</a>) = p x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector_allp_cons"></a>      <h4>vector_allp_cons</h4><code>∀ {α : Type u_1} (p : α → Prop) {n : ℕ} (x : α) (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> p (x :: v) ↔ p x ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> p v</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="vector_allp_iff_forall"></a>      <h4>vector_allp_iff_forall</h4><code>∀ {α : Type u_1} (p : α → Prop) {n : ℕ} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> p v ↔ ∀ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n), p (v i)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="vector_allp.imp"></a>      <h4>vector_allp.imp</h4><code>∀ {α : Type u_1} {p q : α → Prop},
+  (∀ (x : α), p x → q x) → ∀ {n : ℕ} {v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> α n}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> p v → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> q v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="list_all"></a>      <h4>list_all</h4><code>Π {α : Type u_1}, (α → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → Prop</code>
+<div class="indent"><p><code>list_all p l</code> is equivalent to <code>∀ a ∈ l, p a</code>, but unfolds directly to a conjunction,
  i.e. <code>list_all p [0, 1, 2] = p 0 ∧ p 1 ∧ p 2</code>.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list_all_cons">      <h4>list_all_cons</h4><code>∀ {α : Type u_1} (p : α → Prop) (x : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> p (x :: l) ↔ p x ∧ <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> p l</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list_all_iff_forall">      <h4>list_all_iff_forall</h4><code>∀ {α : Type u_1} (p : α → Prop) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> p l ↔ ∀ (x : α), x ∈ l → p x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list_all.imp">      <h4>list_all.imp</h4><code>∀ {α : Type u_1} {p q : α → Prop},
-  (∀ (x : α), p x → q x) → ∀ {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> p l → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> q l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="list_all_map">      <h4>list_all_map</h4><code>∀ {α : Type u_1} {β : Type u_2} {p : β → Prop} (f : α → β) {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> p (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> f l) ↔ <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> (p ∘ f) l</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="list_all_congr">      <h4>list_all_congr</h4><code>∀ {α : Type u_1} {p q : α → Prop},
-  (∀ (x : α), p x ↔ q x) → ∀ {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> p l ↔ <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> q l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="decidable_list_all">      <h4>decidable_list_all</h4><code>Π {α : Type u_1} (p : α → Prop) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_pred">decidable_pred</a> p] (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> p l)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="is_poly">      <h4>is_poly</h4><code>Π {α : Sort u_1}, ((α → ℕ) → ℤ) → Prop</code>
-<div class="indent"><p><p>A predicate asserting that a function is a multivariate integer polynomial.
+       Attributes: simp</div>
+</div><div class="thm"><a id="list_all_cons"></a>      <h4>list_all_cons</h4><code>∀ {α : Type u_1} (p : α → Prop) (x : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> p (x :: l) ↔ p x ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> p l</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list_all_iff_forall"></a>      <h4>list_all_iff_forall</h4><code>∀ {α : Type u_1} (p : α → Prop) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> p l ↔ ∀ (x : α), x ∈ l → p x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list_all.imp"></a>      <h4>list_all.imp</h4><code>∀ {α : Type u_1} {p q : α → Prop},
+  (∀ (x : α), p x → q x) → ∀ {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> p l → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> q l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="list_all_map"></a>      <h4>list_all_map</h4><code>∀ {α : Type u_1} {β : Type u_2} {p : β → Prop} (f : α → β) {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> p (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.map">list.map</a> f l) ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> (p ∘ f) l</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="list_all_congr"></a>      <h4>list_all_congr</h4><code>∀ {α : Type u_1} {p q : α → Prop},
+  (∀ (x : α), p x ↔ q x) → ∀ {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> p l ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> q l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="decidable_list_all"></a>      <h4>decidable_list_all</h4><code>Π {α : Type u_1} (p : α → Prop) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_pred">decidable_pred</a> p] (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> p l)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="cnst"><a id="is_poly"></a>      <h4>is_poly</h4><code>Π {α : Sort u_1}, ((α → ℕ) → ℤ) → Prop</code>
+<div class="indent"><p>A predicate asserting that a function is a multivariate integer polynomial.
  (We are being a bit lazy here by allowing many representations for multiplication,
  rather than only allowing monomials and addition, but the definition is equivalent
  and this is easier to use.)</p>
-</p>       </div>
-</div><div class="entry"><a id="poly">      <h4>poly</h4><code>Type u → Type u</code>
-<div class="indent"><p><p>The type of multivariate integer polynomials</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.has_coe_to_fun">      <h4>poly.has_coe_to_fun</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="poly.isp">      <h4>poly.isp</h4><code>∀ {α : Type u} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#is_poly">is_poly</a> ⇑f</code>
-<div class="indent"><p><p>The underlying function of a <code>poly</code> is a polynomial</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.ext">      <h4>poly.ext</h4><code>∀ {α : Type u} {f g : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α}, (∀ (x : α → ℕ), ⇑f x = ⇑g x) → f = g</code>
-<div class="indent"><p><p>Extensionality for <code>poly α</code></p>
-</p>       </div>
-</div><div class="entry"><a id="poly.subst">      <h4>poly.subst</h4><code>Π {α : Type u} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α) (g : (α → ℕ) → ℤ), (∀ (x : α → ℕ), ⇑f x = g x) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>Construct a <code>poly</code> given an extensionally equivalent <code>poly</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.subst_eval">      <h4>poly.subst_eval</h4><code>∀ {α : Type u} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α) (g : (α → ℕ) → ℤ) (e : ∀ (x : α → ℕ), ⇑f x = g x) (x : α → ℕ),
-  ⇑(<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.subst">poly.subst</a> f g e) x = g x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.proj">      <h4>poly.proj</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>The <code>i</code>th projection function, <code>x_i</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.proj_eval">      <h4>poly.proj_eval</h4><code>∀ {α : Type u} (i : α) (x : α → ℕ), ⇑(<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.proj">poly.proj</a> i) x = ↑(x i)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.const">      <h4>poly.const</h4><code>Π {α : Type u}, ℤ → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>The constant function with value <code>n : ℤ</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.const_eval">      <h4>poly.const_eval</h4><code>∀ {α : Type u} (n : ℤ) (x : α → ℕ), ⇑(<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.const">poly.const</a> n) x = n</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.zero">      <h4>poly.zero</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>The zero polynomial</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.has_zero">      <h4>poly.has_zero</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="poly.zero_eval">      <h4>poly.zero_eval</h4><code>∀ {α : Type u} (x : α → ℕ), ⇑0 x = 0</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.one">      <h4>poly.one</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>The zero polynomial</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.has_one">      <h4>poly.has_one</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="poly.one_eval">      <h4>poly.one_eval</h4><code>∀ {α : Type u} (x : α → ℕ), ⇑1 x = 1</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.sub">      <h4>poly.sub</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>Subtraction of polynomials</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.has_sub">      <h4>poly.has_sub</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub">has_sub</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="poly.sub_eval">      <h4>poly.sub_eval</h4><code>∀ {α : Type u} (f g : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α) (x : α → ℕ), ⇑(f - g) x = ⇑f x - ⇑g x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.neg">      <h4>poly.neg</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>Negation of a polynomial</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.has_neg">      <h4>poly.has_neg</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg">has_neg</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="poly.neg_eval">      <h4>poly.neg_eval</h4><code>∀ {α : Type u} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α) (x : α → ℕ), (⇑-f) x = -⇑f x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.add">      <h4>poly.add</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>Addition of polynomials</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.has_add">      <h4>poly.has_add</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add">has_add</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="poly.add_eval">      <h4>poly.add_eval</h4><code>∀ {α : Type u} (f g : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α) (x : α → ℕ), ⇑(f + g) x = ⇑f x + ⇑g x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.mul">      <h4>poly.mul</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>Multiplication of polynomials</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.has_mul">      <h4>poly.has_mul</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="poly.mul_eval">      <h4>poly.mul_eval</h4><code>∀ {α : Type u} (f g : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α) (x : α → ℕ), ⇑(f * g) x = ⇑f x * ⇑g x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="poly.comm_ring">      <h4>poly.comm_ring</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="poly.induction">      <h4>poly.induction</h4><code>∀ {α : Type u} {C : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → Prop},
-  (∀ (i : α), C (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.proj">poly.proj</a> i)) →
-  (∀ (n : ℤ), C (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.const">poly.const</a> n)) →
-  (∀ (f g : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α), C f → C g → C (f - g)) →
-  (∀ (f g : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α), C f → C g → C (f * g)) → ∀ (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α), C f</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="poly.sumsq">      <h4>poly.sumsq</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α</code>
-<div class="indent"><p><p>The sum of squares of a list of polynomials. This is relevant for
+       </div>
+</div><div class="def"><a id="poly"></a>      <h4>poly</h4><code>Type u → Type u</code>
+<div class="indent"><p>The type of multivariate integer polynomials</p>
+       </div>
+</div><div class="def"><a id="poly.has_coe_to_fun"></a>      <h4>poly.has_coe_to_fun</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="poly.isp"></a>      <h4>poly.isp</h4><code>∀ {α : Type u} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#is_poly">is_poly</a> ⇑f</code>
+<div class="indent"><p>The underlying function of a <code>poly</code> is a polynomial</p>
+       </div>
+</div><div class="thm"><a id="poly.ext"></a>      <h4>poly.ext</h4><code>∀ {α : Type u} {f g : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α}, (∀ (x : α → ℕ), ⇑f x = ⇑g x) → f = g</code>
+<div class="indent"><p>Extensionality for <code>poly α</code></p>
+       </div>
+</div><div class="def"><a id="poly.subst"></a>      <h4>poly.subst</h4><code>Π {α : Type u} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α) (g : (α → ℕ) → ℤ), (∀ (x : α → ℕ), ⇑f x = g x) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>Construct a <code>poly</code> given an extensionally equivalent <code>poly</code>.</p>
+       </div>
+</div><div class="thm"><a id="poly.subst_eval"></a>      <h4>poly.subst_eval</h4><code>∀ {α : Type u} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α) (g : (α → ℕ) → ℤ) (e : ∀ (x : α → ℕ), ⇑f x = g x) (x : α → ℕ),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.subst">poly.subst</a> f g e) x = g x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.proj"></a>      <h4>poly.proj</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>The <code>i</code>th projection function, <code>x_i</code>.</p>
+       </div>
+</div><div class="thm"><a id="poly.proj_eval"></a>      <h4>poly.proj_eval</h4><code>∀ {α : Type u} (i : α) (x : α → ℕ), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.proj">poly.proj</a> i) x = ↑(x i)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.const"></a>      <h4>poly.const</h4><code>Π {α : Type u}, ℤ → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>The constant function with value <code>n : ℤ</code>.</p>
+       </div>
+</div><div class="thm"><a id="poly.const_eval"></a>      <h4>poly.const_eval</h4><code>∀ {α : Type u} (n : ℤ) (x : α → ℕ), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.const">poly.const</a> n) x = n</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.zero"></a>      <h4>poly.zero</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>The zero polynomial</p>
+       </div>
+</div><div class="def"><a id="poly.has_zero"></a>      <h4>poly.has_zero</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_zero">has_zero</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="poly.zero_eval"></a>      <h4>poly.zero_eval</h4><code>∀ {α : Type u} (x : α → ℕ), ⇑0 x = 0</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.one"></a>      <h4>poly.one</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>The zero polynomial</p>
+       </div>
+</div><div class="def"><a id="poly.has_one"></a>      <h4>poly.has_one</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="poly.one_eval"></a>      <h4>poly.one_eval</h4><code>∀ {α : Type u} (x : α → ℕ), ⇑1 x = 1</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.sub"></a>      <h4>poly.sub</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>Subtraction of polynomials</p>
+       </div>
+</div><div class="def"><a id="poly.has_sub"></a>      <h4>poly.has_sub</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_sub">has_sub</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="poly.sub_eval"></a>      <h4>poly.sub_eval</h4><code>∀ {α : Type u} (f g : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α) (x : α → ℕ), ⇑(f - g) x = ⇑f x - ⇑g x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.neg"></a>      <h4>poly.neg</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>Negation of a polynomial</p>
+       </div>
+</div><div class="def"><a id="poly.has_neg"></a>      <h4>poly.has_neg</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_neg">has_neg</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="poly.neg_eval"></a>      <h4>poly.neg_eval</h4><code>∀ {α : Type u} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α) (x : α → ℕ), (⇑-f) x = -⇑f x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.add"></a>      <h4>poly.add</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>Addition of polynomials</p>
+       </div>
+</div><div class="def"><a id="poly.has_add"></a>      <h4>poly.has_add</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_add">has_add</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="poly.add_eval"></a>      <h4>poly.add_eval</h4><code>∀ {α : Type u} (f g : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α) (x : α → ℕ), ⇑(f + g) x = ⇑f x + ⇑g x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.mul"></a>      <h4>poly.mul</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>Multiplication of polynomials</p>
+       </div>
+</div><div class="def"><a id="poly.has_mul"></a>      <h4>poly.has_mul</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="poly.mul_eval"></a>      <h4>poly.mul_eval</h4><code>∀ {α : Type u} (f g : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α) (x : α → ℕ), ⇑(f * g) x = ⇑f x * ⇑g x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="poly.comm_ring"></a>      <h4>poly.comm_ring</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/ring.html#comm_ring">comm_ring</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="poly.induction"></a>      <h4>poly.induction</h4><code>∀ {α : Type u} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → Prop},
+  (∀ (i : α), C (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.proj">poly.proj</a> i)) →
+  (∀ (n : ℤ), C (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.const">poly.const</a> n)) →
+  (∀ (f g : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α), C f → C g → C (f - g)) →
+  (∀ (f g : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α), C f → C g → C (f * g)) → ∀ (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α), C f</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="poly.sumsq"></a>      <h4>poly.sumsq</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α</code>
+<div class="indent"><p>The sum of squares of a list of polynomials. This is relevant for
  Diophantine equations, because it means that a list of equations
  can be encoded as a single equation: <code>x = 0 ∧ y = 0 ∧ z = 0</code> is
  equivalent to <code>x^2 + y^2 + z^2 = 0</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.sumsq_nonneg">      <h4>poly.sumsq_nonneg</h4><code>∀ {α : Type u} (x : α → ℕ) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)), 0 ≤ ⇑(<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.sumsq">poly.sumsq</a> l) x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="poly.sumsq_eq_zero">      <h4>poly.sumsq_eq_zero</h4><code>∀ {α : Type u} (x : α → ℕ) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α)),
-  ⇑(<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.sumsq">poly.sumsq</a> l) x = 0 ↔ <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> (λ (a : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α), ⇑a x = 0) l</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="poly.remap">      <h4>poly.remap</h4><code>Π {α : Type u_1} {β : Type u_2}, (α → β) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> β</code>
-<div class="indent"><p><p>Map the index set of variables, replacing <code>x_i</code> with <code>x_(f i)</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="poly.remap_eval">      <h4>poly.remap_eval</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (g : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α) (v : β → ℕ),
-  ⇑(<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.remap">poly.remap</a> f g) v = ⇑g (v ∘ f)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="sum.join">      <h4>sum.join</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Sort u_3}, (α → γ) → (β → γ) → α ⊕ β → γ</code>
-<div class="indent"><p><p>combine two functions into a function on the disjoint union</p>
-</p>       </div>
-</div><div class="entry"><a id="option.cons">      <h4>option.cons</h4><code>Π {α : Type u_1} {β : Sort u_2}, β → (α → β) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α → β</code>
-<div class="indent"><p><p>Functions from <code>option</code> can be combined similarly to <code>vector.cons</code></p>
-</p>       </div>
-</div><div class="entry"><a id="option.cons_head_tail">      <h4>option.cons_head_tail</h4><code>∀ {α : Type u_1} {β : Sort u_2} (v : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α → β), v option.none :: v ∘ option.some = v</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="dioph">      <h4>dioph</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ) → Prop</code>
-<div class="indent"><p><p>A set <code>S ⊆ ℕ^α</code> is diophantine if there exists a polynomial on
+       </div>
+</div><div class="thm"><a id="poly.sumsq_nonneg"></a>      <h4>poly.sumsq_nonneg</h4><code>∀ {α : Type u} (x : α → ℕ) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)), 0 ≤ ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.sumsq">poly.sumsq</a> l) x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="poly.sumsq_eq_zero"></a>      <h4>poly.sumsq_eq_zero</h4><code>∀ {α : Type u} (x : α → ℕ) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α)),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.sumsq">poly.sumsq</a> l) x = 0 ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> (λ (a : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α), ⇑a x = 0) l</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="poly.remap"></a>      <h4>poly.remap</h4><code>Π {α : Type u_1} {β : Type u_2}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> β</code>
+<div class="indent"><p>Map the index set of variables, replacing <code>x_i</code> with <code>x_(f i)</code>.</p>
+       </div>
+</div><div class="thm"><a id="poly.remap_eval"></a>      <h4>poly.remap_eval</h4><code>∀ {α : Type u_1} {β : Type u_2} (f : α → β) (g : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α) (v : β → ℕ),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.remap">poly.remap</a> f g) v = ⇑g (v ∘ f)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="sum.join"></a>      <h4>sum.join</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Sort u_3}, (α → γ) → (β → γ) → α ⊕ β → γ</code>
+<div class="indent"><p>combine two functions into a function on the disjoint union</p>
+       </div>
+</div><div class="def"><a id="option.cons"></a>      <h4>option.cons</h4><code>Π {α : Type u_1} {β : Sort u_2}, β → (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → β</code>
+<div class="indent"><p>Functions from <code>option</code> can be combined similarly to <code>vector.cons</code></p>
+       </div>
+</div><div class="thm"><a id="option.cons_head_tail"></a>      <h4>option.cons_head_tail</h4><code>∀ {α : Type u_1} {β : Sort u_2} (v : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → β), v option.none :: v ∘ option.some = v</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="dioph"></a>      <h4>dioph</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ) → Prop</code>
+<div class="indent"><p>A set <code>S ⊆ ℕ^α</code> is diophantine if there exists a polynomial on
  <code>α ⊕ β</code> such that <code>v ∈ S</code> iff there exists <code>t : ℕ^β</code> with <code>p (v, t) = 0</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.ext">      <h4>dioph.ext</h4><code>∀ {α : Type u} {S S' : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ)}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → (∀ (v : α → ℕ), S v ↔ S' v) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.of_no_dummies">      <h4>dioph.of_no_dummies</h4><code>∀ {α : Type u} (S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ)) (p : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α), (∀ (v : α → ℕ), S v ↔ ⇑p v = 0) → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.inject_dummies_lem">      <h4>dioph.inject_dummies_lem</h4><code>∀ {α β γ : Type u} (f : β → γ) (g : γ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> β),
+       </div>
+</div><div class="thm"><a id="dioph.ext"></a>      <h4>dioph.ext</h4><code>∀ {α : Type u} {S S' : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ)}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → (∀ (v : α → ℕ), S v ↔ S' v) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S'</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.of_no_dummies"></a>      <h4>dioph.of_no_dummies</h4><code>∀ {α : Type u} (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ)) (p : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α), (∀ (v : α → ℕ), S v ↔ ⇑p v = 0) → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.inject_dummies_lem"></a>      <h4>dioph.inject_dummies_lem</h4><code>∀ {α β γ : Type u} (f : β → γ) (g : γ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β),
   (∀ (x : β), g (f x) = option.some x) →
-  ∀ (p : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> (α ⊕ β)) (v : α → ℕ),
-    (∃ (t : β → ℕ), ⇑p (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#sum.join">sum.join</a> v t) = 0) ↔
-      ∃ (t : γ → ℕ), ⇑(<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly.remap">poly.remap</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#sum.join">sum.join</a> sum.inl (sum.inr ∘ f)) p) (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#sum.join">sum.join</a> v t) = 0</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.inject_dummies">      <h4>dioph.inject_dummies</h4><code>∀ {α β γ : Type u} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ)} (f : β → γ) (g : γ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> β),
+  ∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> (α ⊕ β)) (v : α → ℕ),
+    (∃ (t : β → ℕ), ⇑p (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#sum.join">sum.join</a> v t) = 0) ↔
+      ∃ (t : γ → ℕ), ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly.remap">poly.remap</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#sum.join">sum.join</a> sum.inl (sum.inr ∘ f)) p) (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#sum.join">sum.join</a> v t) = 0</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.inject_dummies"></a>      <h4>dioph.inject_dummies</h4><code>∀ {α β γ : Type u} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ)} (f : β → γ) (g : γ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β),
   (∀ (x : β), g (f x) = option.some x) →
-  ∀ (p : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> (α ⊕ β)),
-    (∀ (v : α → ℕ), S v ↔ ∃ (t : β → ℕ), ⇑p (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#sum.join">sum.join</a> v t) = 0) →
-    (∃ (q : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> (α ⊕ γ)), ∀ (v : α → ℕ), S v ↔ ∃ (t : γ → ℕ), ⇑q (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#sum.join">sum.join</a> v t) = 0)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.reindex_dioph">      <h4>dioph.reindex_dioph</h4><code>∀ {α β : Type u} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ)}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → ∀ (f : α → β), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : β → ℕ), S (v ∘ f))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_list_all">      <h4>dioph.dioph_list_all</h4><code>∀ {α : Type u} (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ))),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> l → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#list_all">list_all</a> (λ (S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ)), S v) l)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.and_dioph">      <h4>dioph.and_dioph</h4><code>∀ {α : Type u} {S S' : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ)}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S' → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S v ∧ S' v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.or_dioph">      <h4>dioph.or_dioph</h4><code>∀ {α : Type u} {S S' : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α → ℕ)}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S' → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S v ∨ S' v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_pfun">      <h4>dioph.dioph_pfun</h4><code>Π {α : Type u}, ((α → ℕ) →. ℕ) → Prop</code>
-<div class="indent"><p><p>A partial function is Diophantine if its graph is Diophantine.</p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_fn">      <h4>dioph.dioph_fn</h4><code>Π {α : Type u}, ((α → ℕ) → ℕ) → Prop</code>
-<div class="indent"><p><p>A function is Diophantine if its graph is Diophantine.</p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.reindex_dioph_fn">      <h4>dioph.reindex_dioph_fn</h4><code>∀ {α β : Type u} {f : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → ∀ (g : α → β), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : β → ℕ), f (v ∘ g))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.ex_dioph">      <h4>dioph.ex_dioph</h4><code>∀ {α β : Type u} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α ⊕ β → ℕ)},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), ∃ (x : β → ℕ), S (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#sum.join">sum.join</a> v x))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.ex1_dioph">      <h4>dioph.ex1_dioph</h4><code>∀ {α : Type u} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α → ℕ)}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), ∃ (x : ℕ), S (x :: v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dom_dioph">      <h4>dioph.dom_dioph</h4><code>∀ {α : Type u} {f : (α → ℕ) →. ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#pfun.dom">pfun.dom</a> f)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_fn_iff_pfun">      <h4>dioph.dioph_fn_iff_pfun</h4><code>∀ {α : Type u} (f : (α → ℕ) → ℕ), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f = <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a> ↑f</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.abs_poly_dioph">      <h4>dioph.abs_poly_dioph</h4><code>∀ {α : Type u} (p : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#poly">poly</a> α), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (⇑p v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.proj_dioph">      <h4>dioph.proj_dioph</h4><code>∀ {α : Type u} (i : α), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), v i)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_pfun_comp1">      <h4>dioph.dioph_pfun_comp1</h4><code>∀ {α : Type u} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α → ℕ)},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S →
+  ∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> (α ⊕ β)),
+    (∀ (v : α → ℕ), S v ↔ ∃ (t : β → ℕ), ⇑p (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#sum.join">sum.join</a> v t) = 0) →
+    (∃ (q : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> (α ⊕ γ)), ∀ (v : α → ℕ), S v ↔ ∃ (t : γ → ℕ), ⇑q (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#sum.join">sum.join</a> v t) = 0)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.reindex_dioph"></a>      <h4>dioph.reindex_dioph</h4><code>∀ {α β : Type u} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ)}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → ∀ (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : β → ℕ), S (v ∘ f))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_list_all"></a>      <h4>dioph.dioph_list_all</h4><code>∀ {α : Type u} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ))),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> l → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#list_all">list_all</a> (λ (S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ)), S v) l)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.and_dioph"></a>      <h4>dioph.and_dioph</h4><code>∀ {α : Type u} {S S' : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ)}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S' → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S v ∧ S' v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.or_dioph"></a>      <h4>dioph.or_dioph</h4><code>∀ {α : Type u} {S S' : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α → ℕ)}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S' → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S v ∨ S' v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="dioph.dioph_pfun"></a>      <h4>dioph.dioph_pfun</h4><code>Π {α : Type u}, ((α → ℕ) →. ℕ) → Prop</code>
+<div class="indent"><p>A partial function is Diophantine if its graph is Diophantine.</p>
+       </div>
+</div><div class="def"><a id="dioph.dioph_fn"></a>      <h4>dioph.dioph_fn</h4><code>Π {α : Type u}, ((α → ℕ) → ℕ) → Prop</code>
+<div class="indent"><p>A function is Diophantine if its graph is Diophantine.</p>
+       </div>
+</div><div class="thm"><a id="dioph.reindex_dioph_fn"></a>      <h4>dioph.reindex_dioph_fn</h4><code>∀ {α β : Type u} {f : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → ∀ (g : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : β → ℕ), f (v ∘ g))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.ex_dioph"></a>      <h4>dioph.ex_dioph</h4><code>∀ {α β : Type u} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α ⊕ β → ℕ)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), ∃ (x : β → ℕ), S (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#sum.join">sum.join</a> v x))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.ex1_dioph"></a>      <h4>dioph.ex1_dioph</h4><code>∀ {α : Type u} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → ℕ)}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), ∃ (x : ℕ), S (x :: v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dom_dioph"></a>      <h4>dioph.dom_dioph</h4><code>∀ {α : Type u} {f : (α → ℕ) →. ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_fn_iff_pfun"></a>      <h4>dioph.dioph_fn_iff_pfun</h4><code>∀ {α : Type u} (f : (α → ℕ) → ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f = <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a> ↑f</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.abs_poly_dioph"></a>      <h4>dioph.abs_poly_dioph</h4><code>∀ {α : Type u} (p : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#poly">poly</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (⇑p v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.proj_dioph"></a>      <h4>dioph.proj_dioph</h4><code>∀ {α : Type u} (i : α), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), v i)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_pfun_comp1"></a>      <h4>dioph.dioph_pfun_comp1</h4><code>∀ {α : Type u} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → ℕ)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S →
   ∀ {f : (α → ℕ) →. ℕ},
-    <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), ∃ (h : <a href="https://robertylewis.com/mathlib_docs/data/pfun.html#pfun.dom">pfun.dom</a> f v), S (<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#pfun.fn">pfun.fn</a> f v h :: v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_fn_comp1">      <h4>dioph.dioph_fn_comp1</h4><code>∀ {α : Type u} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α → ℕ)},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → ∀ {f : (α → ℕ) → ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S (f v :: v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_fn_vec_comp1">      <h4>dioph.dioph_fn_vec_comp1</h4><code>∀ {n : ℕ} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ (nat.succ n))},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → ∀ {f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ n → ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ n), S (f v :: v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.vec_ex1_dioph">      <h4>dioph.vec_ex1_dioph</h4><code>∀ (n : ℕ) {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ (nat.succ n))},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ n), ∃ (x : ℕ), S (x :: v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_fn_vec">      <h4>dioph.dioph_fn_vec</h4><code>∀ {n : ℕ} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ n → ℕ),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f ↔ <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ (nat.succ n)), f (v ∘ fin2.fs) = v fin2.fz)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_pfun_vec">      <h4>dioph.dioph_pfun_vec</h4><code>∀ {n : ℕ} (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ n →. ℕ),
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a> f ↔ <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ (nat.succ n)), <a href="https://robertylewis.com/mathlib_docs/data/pfun.html#pfun.graph">pfun.graph</a> f (v ∘ fin2.fs, v fin2.fz))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_fn_compn">      <h4>dioph.dioph_fn_compn</h4><code>∀ {α : Type} {n : ℕ} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α ⊕ <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n → ℕ)},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S →
-  ∀ {f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ((α → ℕ) → ℕ) n},
-    <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#sum.join">sum.join</a> v (λ (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n), f i v)))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_comp">      <h4>dioph.dioph_comp</h4><code>∀ {α : Type} {n : ℕ} {S : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ n)},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> S →
-  ∀ (f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ((α → ℕ) → ℕ) n),
-    <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S (λ (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n), f i v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_fn_comp">      <h4>dioph.dioph_fn_comp</h4><code>∀ {α : Type} {n : ℕ} {f : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ n → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f →
-  ∀ (g : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ((α → ℕ) → ℕ) n),
-    <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector_allp">vector_allp</a> <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f (λ (i : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2">fin2</a> n), g i v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.proj_dioph_of_nat">      <h4>dioph.proj_dioph_of_nat</h4><code>∀ {n : ℕ} (m : ℕ) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> m n], <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ n), v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> m))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.const_dioph">      <h4>dioph.const_dioph</h4><code>∀ {α : Type} (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> (α → ℕ) n)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_comp2">      <h4>dioph.dioph_comp2</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f →
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g →
+    <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), ∃ (h : <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.dom">pfun.dom</a> f v), S (<a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.fn">pfun.fn</a> f v h :: v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_fn_comp1"></a>      <h4>dioph.dioph_fn_comp1</h4><code>∀ {α : Type u} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α → ℕ)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → ∀ {f : (α → ℕ) → ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S (f v :: v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_fn_vec_comp1"></a>      <h4>dioph.dioph_fn_vec_comp1</h4><code>∀ {n : ℕ} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ (nat.succ n))},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → ∀ {f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ n → ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ n), S (f v :: v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.vec_ex1_dioph"></a>      <h4>dioph.vec_ex1_dioph</h4><code>∀ (n : ℕ) {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ (nat.succ n))},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ n), ∃ (x : ℕ), S (x :: v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_fn_vec"></a>      <h4>dioph.dioph_fn_vec</h4><code>∀ {n : ℕ} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ n → ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ (nat.succ n)), f (v ∘ fin2.fs) = v fin2.fz)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_pfun_vec"></a>      <h4>dioph.dioph_pfun_vec</h4><code>∀ {n : ℕ} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ n →. ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a> f ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ (nat.succ n)), <a href="/home/rob/lean/mathlib/scripts/html_out/data/pfun.html#pfun.graph">pfun.graph</a> f (v ∘ fin2.fs, v fin2.fz))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_fn_compn"></a>      <h4>dioph.dioph_fn_compn</h4><code>∀ {α : Type} {n : ℕ} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α ⊕ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n → ℕ)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S →
+  ∀ {f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ((α → ℕ) → ℕ) n},
+    <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#sum.join">sum.join</a> v (λ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n), f i v)))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_comp"></a>      <h4>dioph.dioph_comp</h4><code>∀ {α : Type} {n : ℕ} {S : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ n)},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> S →
+  ∀ (f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ((α → ℕ) → ℕ) n),
+    <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S (λ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n), f i v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_fn_comp"></a>      <h4>dioph.dioph_fn_comp</h4><code>∀ {α : Type} {n : ℕ} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ n → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f →
+  ∀ (g : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ((α → ℕ) → ℕ) n),
+    <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector_allp">vector_allp</a> <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f (λ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2">fin2</a> n), g i v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.proj_dioph_of_nat"></a>      <h4>dioph.proj_dioph_of_nat</h4><code>∀ {n : ℕ} (m : ℕ) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.is_lt">fin2.is_lt</a> m n], <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ n), v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> m))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.const_dioph"></a>      <h4>dioph.const_dioph</h4><code>∀ {α : Type} (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.const">function.const</a> (α → ℕ) n)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_comp2"></a>      <h4>dioph.dioph_comp2</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g →
   ∀ {S : ℕ → ℕ → Prop},
-    <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ 2), S (v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0)) (v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1))) →
-    <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S (f v) (g v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dioph_fn_comp2">      <h4>dioph.dioph_fn_comp2</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f →
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g →
+    <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ 2), S (v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0)) (v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1))) →
+    <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), S (f v) (g v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dioph_fn_comp2"></a>      <h4>dioph.dioph_fn_comp2</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g →
   ∀ {h : ℕ → ℕ → ℕ},
-    <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ 2), h (v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0)) (v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1))) →
-    <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), h (f v) (g v))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.eq_dioph">      <h4>dioph.eq_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v = g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.add_dioph">      <h4>dioph.add_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v + g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.mul_dioph">      <h4>dioph.mul_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v * g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.le_dioph">      <h4>dioph.le_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v ≤ g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.lt_dioph">      <h4>dioph.lt_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v < g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.ne_dioph">      <h4>dioph.ne_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v ≠ g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.sub_dioph">      <h4>dioph.sub_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v - g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.dvd_dioph">      <h4>dioph.dvd_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v ∣ g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.mod_dioph">      <h4>dioph.mod_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v % g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.modeq_dioph">      <h4>dioph.modeq_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f →
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g →
-  ∀ {h : (α → ℕ) → ℕ}, <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> h → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v ≡ g v [MOD h v])</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.div_dioph">      <h4>dioph.div_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v / g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.pell_dioph">      <h4>dioph.pell_dioph</h4><code><a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph">dioph</a>
-  (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ 4),
-     ∃ (h : v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0) > 1),
-       <a href="https://robertylewis.com/mathlib_docs/number_theory/pell.html#pell.xn">pell.xn</a> h (v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1)) = v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 2) ∧ <a href="https://robertylewis.com/mathlib_docs/number_theory/pell.html#pell.yn">pell.yn</a> h (v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1)) = v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 3))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.xn_dioph">      <h4>dioph.xn_dioph</h4><code><a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a>
-  (λ (v : <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#vector3">vector3</a> ℕ 2),
-     {dom := v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0) > 1, <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#get">get</a> := λ (h : v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0) > 1), <a href="https://robertylewis.com/mathlib_docs/number_theory/pell.html#pell.xn">pell.xn</a> h (v (<a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1))})</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="dioph.pow_dioph">      <h4>dioph.pow_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="https://robertylewis.com/mathlib_docs/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v ^ g v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
+    <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ 2), h (v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0)) (v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1))) →
+    <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), h (f v) (g v))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.eq_dioph"></a>      <h4>dioph.eq_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v = g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.add_dioph"></a>      <h4>dioph.add_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v + g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.mul_dioph"></a>      <h4>dioph.mul_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v * g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.le_dioph"></a>      <h4>dioph.le_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v ≤ g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.lt_dioph"></a>      <h4>dioph.lt_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v < g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.ne_dioph"></a>      <h4>dioph.ne_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v ≠ g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.sub_dioph"></a>      <h4>dioph.sub_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v - g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.dvd_dioph"></a>      <h4>dioph.dvd_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v ∣ g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.mod_dioph"></a>      <h4>dioph.mod_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v % g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.modeq_dioph"></a>      <h4>dioph.modeq_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g →
+  ∀ {h : (α → ℕ) → ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> h → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a> (λ (v : α → ℕ), f v ≡ g v [MOD h v])</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.div_dioph"></a>      <h4>dioph.div_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v / g v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.pell_dioph"></a>      <h4>dioph.pell_dioph</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph">dioph</a>
+  (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ 4),
+     ∃ (h : v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0) > 1),
+       <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/pell.html#pell.xn">pell.xn</a> h (v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1)) = v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 2) ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/pell.html#pell.yn">pell.yn</a> h (v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1)) = v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 3))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.xn_dioph"></a>      <h4>dioph.xn_dioph</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_pfun">dioph.dioph_pfun</a>
+  (λ (v : <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#vector3">vector3</a> ℕ 2),
+     {dom := v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0) > 1, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/state.html#get">get</a> := λ (h : v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 0) > 1), <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/pell.html#pell.xn">pell.xn</a> h (v (<a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#fin2.of_nat'">fin2.of_nat'</a> 1))})</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="dioph.pow_dioph"></a>      <h4>dioph.pow_dioph</h4><code>∀ {α : Type} {f g : (α → ℕ) → ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/number_theory/dioph.html#dioph.dioph_fn">dioph.dioph_fn</a> (λ (v : α → ℕ), f v ^ g v)</code>
+<div class="indent"><p></p>
+       </div>
 </div></body></html>

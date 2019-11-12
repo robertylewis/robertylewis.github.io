@@ -1,103 +1,103 @@
-<html><head><title>group_theory.group_action</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="has_scalar">      <h4>has_scalar</h4><code>Type u → Type v → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u v)</code>
-<div class="indent"><p><p>Typeclass for types with a scalar multiplication operation, denoted <code>•</code> (<code>\bu</code>)</p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action">      <h4>mul_action</h4><code>Π (α : Type u), Type v → Π [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α], Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u v)</code>
-<div class="indent"><p><p>Typeclass for multiplictive actions by monoids. This generalizes group actions.</p>
-</p>       </div>
-</div><div class="entry"><a id="mul_smul">      <h4>mul_smul</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] (a₁ a₂ : α) (b : β),
+<!DOCTYPE html><html lang="en"><head><title>group_theory.group_action</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="cnst"><a id="has_scalar"></a>      <h4>has_scalar</h4><code>Type u → Type v → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p>Typeclass for types with a scalar multiplication operation, denoted <code>•</code> (<code>\bu</code>)</p>
+       </div>
+</div><div class="cnst"><a id="mul_action"></a>      <h4>mul_action</h4><code>Π (α : Type u), Type v → Π [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p>Typeclass for multiplictive actions by monoids. This generalizes group actions.</p>
+       </div>
+</div><div class="thm"><a id="mul_smul"></a>      <h4>mul_smul</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] (a₁ a₂ : α) (b : β),
   (a₁ * a₂) • b = a₁ • a₂ • b</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="one_smul">      <h4>one_smul</h4><code>∀ (α : Type u) {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β), 1 • b = b</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="mul_action.orbit">      <h4>mul_action.orbit</h4><code>Π (α : Type u) {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β], β → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.mem_orbit_iff">      <h4>mul_action.mem_orbit_iff</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] {b₁ b₂ : β},
-  b₂ ∈ <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b₁ ↔ ∃ (x : α), x • b₁ = b₂</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="mul_action.mem_orbit">      <h4>mul_action.mem_orbit</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β) (x : α),
-  x • b ∈ <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="mul_action.mem_orbit_self">      <h4>mul_action.mem_orbit_self</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β), b ∈ <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="mul_action.orbit_fintype">      <h4>mul_action.orbit_fintype</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β) [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> α]
-[_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> β], <a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> ↥(<a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="mul_action.stabilizer">      <h4>mul_action.stabilizer</h4><code>Π (α : Type u) {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β], β → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.mem_stabilizer_iff">      <h4>mul_action.mem_stabilizer_iff</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] {b : β} {x : α},
-  x ∈ <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.stabilizer">mul_action.stabilizer</a> α b ↔ x • b = b</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="mul_action.fixed_points">      <h4>mul_action.fixed_points</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β], <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.mem_fixed_points">      <h4>mul_action.mem_fixed_points</h4><code>∀ {α : Type u} (β : Type v) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] {b : β},
-  b ∈ <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.fixed_points">mul_action.fixed_points</a> α β ↔ ∀ (x : α), x • b = b</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="mul_action.mem_fixed_points'">      <h4>mul_action.mem_fixed_points'</h4><code>∀ {α : Type u} (β : Type v) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] {b : β},
-  b ∈ <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.fixed_points">mul_action.fixed_points</a> α β ↔ ∀ (b' : β), b' ∈ <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b → b' = b</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.comp_hom">      <h4>mul_action.comp_hom</h4><code>Π {α : Type u} (β : Type v) {γ : Type w} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> γ]
-(g : γ → α) [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> g], <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> γ β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.to_perm">      <h4>mul_action.to_perm</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β], α → <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.perm">equiv.perm</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.is_group_hom">      <h4>mul_action.is_group_hom</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β],
-  <a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_group_hom">is_group_hom</a> (<a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.to_perm">mul_action.to_perm</a> α β)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="mul_action.bijective">      <h4>mul_action.bijective</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] (g : α),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.bijective">function.bijective</a> (λ (b : β), g • b)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.orbit_eq_iff">      <h4>mul_action.orbit_eq_iff</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] {a b : β},
-  <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α a = <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b ↔ a ∈ <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.is_subgroup">      <h4>mul_action.is_subgroup</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β),
-  <a href="https://robertylewis.com/mathlib_docs/group_theory/subgroup.html#is_subgroup">is_subgroup</a> (<a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.stabilizer">mul_action.stabilizer</a> α b)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="mul_action.orbit_rel">      <h4>mul_action.orbit_rel</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β], <a href="https://robertylewis.com/mathlib_docs/core/init/data/setoid.html#setoid">setoid</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.orbit_equiv_quotient_stabilizer">      <h4>mul_action.orbit_equiv_quotient_stabilizer</h4><code>Π (α : Type u) {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β),
-  ↥(<a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b) ≃ <a href="https://robertylewis.com/mathlib_docs/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> (<a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action.stabilizer">mul_action.stabilizer</a> α b)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.mul_left_cosets">      <h4>mul_action.mul_left_cosets</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] (H : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/group_theory/subgroup.html#is_subgroup">is_subgroup</a> H],
-  α → <a href="https://robertylewis.com/mathlib_docs/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> H → <a href="https://robertylewis.com/mathlib_docs/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> H</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="mul_action.mul_action">      <h4>mul_action.mul_action</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] (H : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/group_theory/subgroup.html#is_subgroup">is_subgroup</a> H], <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> α (<a href="https://robertylewis.com/mathlib_docs/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> H)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="mul_action.mul_left_cosets_comp_subtype_val">      <h4>mul_action.mul_left_cosets_comp_subtype_val</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#group">group</a> α] (H I : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/group_theory/subgroup.html#is_subgroup">is_subgroup</a> H] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/group_theory/subgroup.html#is_subgroup">is_subgroup</a> I],
-  <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#mul_action">mul_action</a> ↥I (<a href="https://robertylewis.com/mathlib_docs/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> H)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="distrib_mul_action">      <h4>distrib_mul_action</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> β], Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u v)</code>
-<div class="indent"><p><p>Typeclass for multiplicative actions on additive structures. This generalizes group modules.</p>
-</p>       </div>
-</div><div class="entry"><a id="smul_add">      <h4>smul_add</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> β] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#distrib_mul_action">distrib_mul_action</a> α β]
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="one_smul"></a>      <h4>one_smul</h4><code>∀ (α : Type u) {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β), 1 • b = b</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="mul_action.orbit"></a>      <h4>mul_action.orbit</h4><code>Π (α : Type u) {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β], β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="mul_action.mem_orbit_iff"></a>      <h4>mul_action.mem_orbit_iff</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] {b₁ b₂ : β},
+  b₂ ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b₁ ↔ ∃ (x : α), x • b₁ = b₂</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="mul_action.mem_orbit"></a>      <h4>mul_action.mem_orbit</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β) (x : α),
+  x • b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="mul_action.mem_orbit_self"></a>      <h4>mul_action.mem_orbit_self</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β), b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="mul_action.orbit_fintype"></a>      <h4>mul_action.orbit_fintype</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> α]
+[_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/data/fintype.html#fintype">fintype</a> ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="mul_action.stabilizer"></a>      <h4>mul_action.stabilizer</h4><code>Π (α : Type u) {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β], β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="mul_action.mem_stabilizer_iff"></a>      <h4>mul_action.mem_stabilizer_iff</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] {b : β} {x : α},
+  x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.stabilizer">mul_action.stabilizer</a> α b ↔ x • b = b</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="mul_action.fixed_points"></a>      <h4>mul_action.fixed_points</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="mul_action.mem_fixed_points"></a>      <h4>mul_action.mem_fixed_points</h4><code>∀ {α : Type u} (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] {b : β},
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.fixed_points">mul_action.fixed_points</a> α β ↔ ∀ (x : α), x • b = b</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="mul_action.mem_fixed_points'"></a>      <h4>mul_action.mem_fixed_points'</h4><code>∀ {α : Type u} (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] {b : β},
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.fixed_points">mul_action.fixed_points</a> α β ↔ ∀ (b' : β), b' ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b → b' = b</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="mul_action.comp_hom"></a>      <h4>mul_action.comp_hom</h4><code>Π {α : Type u} (β : Type v) {γ : Type w} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> γ]
+(g : γ → α) [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> g], <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> γ β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="mul_action.to_perm"></a>      <h4>mul_action.to_perm</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β], α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/equiv/basic.html#equiv.perm">equiv.perm</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="mul_action.is_group_hom"></a>      <h4>mul_action.is_group_hom</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/group/hom.html#is_group_hom">is_group_hom</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.to_perm">mul_action.to_perm</a> α β)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="mul_action.bijective"></a>      <h4>mul_action.bijective</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] (g : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.bijective">function.bijective</a> (λ (b : β), g • b)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="mul_action.orbit_eq_iff"></a>      <h4>mul_action.orbit_eq_iff</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] {a b : β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α a = <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b ↔ a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="mul_action.is_subgroup"></a>      <h4>mul_action.is_subgroup</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/subgroup.html#is_subgroup">is_subgroup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.stabilizer">mul_action.stabilizer</a> α b)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="mul_action.orbit_rel"></a>      <h4>mul_action.orbit_rel</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="mul_action.orbit_equiv_quotient_stabilizer"></a>      <h4>mul_action.orbit_equiv_quotient_stabilizer</h4><code>Π (α : Type u) {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α β] (b : β),
+  ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.orbit">mul_action.orbit</a> α b) ≃ <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action.stabilizer">mul_action.stabilizer</a> α b)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="mul_action.mul_left_cosets"></a>      <h4>mul_action.mul_left_cosets</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] (H : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/subgroup.html#is_subgroup">is_subgroup</a> H],
+  α → <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> H → <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> H</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="mul_action.mul_action"></a>      <h4>mul_action.mul_action</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] (H : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/subgroup.html#is_subgroup">is_subgroup</a> H], <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> H)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="mul_action.mul_left_cosets_comp_subtype_val"></a>      <h4>mul_action.mul_left_cosets_comp_subtype_val</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#group">group</a> α] (H I : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/subgroup.html#is_subgroup">is_subgroup</a> H] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/subgroup.html#is_subgroup">is_subgroup</a> I],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#mul_action">mul_action</a> ↥I (<a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/coset.html#quotient_group.quotient">quotient_group.quotient</a> H)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="cnst"><a id="distrib_mul_action"></a>      <h4>distrib_mul_action</h4><code>Π (α : Type u) (β : Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> β], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p>Typeclass for multiplicative actions on additive structures. This generalizes group modules.</p>
+       </div>
+</div><div class="thm"><a id="smul_add"></a>      <h4>smul_add</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#distrib_mul_action">distrib_mul_action</a> α β]
 (a : α) (b₁ b₂ : β), a • (b₁ + b₂) = a • b₁ + a • b₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="smul_zero">      <h4>smul_zero</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_monoid">add_monoid</a> β] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html#distrib_mul_action">distrib_mul_action</a> α β]
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="smul_zero"></a>      <h4>smul_zero</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#add_monoid">add_monoid</a> β] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/group_theory/group_action.html#distrib_mul_action">distrib_mul_action</a> α β]
 (a : α), a • 0 = 0</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
+<div class="indent"><p></p>
+       Attributes: simp</div>
 </div></body></html>

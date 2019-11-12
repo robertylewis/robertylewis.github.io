@@ -1,4 +1,4 @@
-<html><head><title>tactic.reassoc_axiom</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p>Reformulate category-theoretic axioms in a more associativity-friendly way.</p>
+<!DOCTYPE html><html lang="en"><head><title>tactic.reassoc_axiom</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p>Reformulate category-theoretic axioms in a more associativity-friendly way.</p>
 
 <h2>The <code>reassoc</code> attribute</h2>
 
@@ -37,20 +37,20 @@ class some_class (C : Type) [category C] :=
 <p><code>
 attribute [simp, reassoc] some_class.bar
 </code></p>
-</div><div class="entry"><a id="tactic.get_cat_inst">      <h4>tactic.get_cat_inst</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></code>
-<div class="indent"><p><p>From an expression <code>f ≫ g</code>, extract the expression representing the category instance.</p>
-</p>       </div>
-</div><div class="entry"><a id="tactic.prove_reassoc">      <h4>tactic.prove_reassoc</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</code>
-<div class="indent"><p><p>(internals for <code>@[reassoc]</code>)
+</div><div class="def"><a id="tactic.get_cat_inst"></a>      <h4>tactic.get_cat_inst</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a></code>
+<div class="indent"><p>From an expression <code>f ≫ g</code>, extract the expression representing the category instance.</p>
+       </div>
+</div><div class="def"><a id="tactic.prove_reassoc"></a>      <h4>tactic.prove_reassoc</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a> × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/expr.html#expr">expr</a>)</code>
+<div class="indent"><p>(internals for <code>@[reassoc]</code>)
 Given a lemma of the form <code>f ≫ g = h</code>, proves a new lemma of the form <code>h : ∀ {W} (k), f ≫ (g ≫ k) = h ≫ k</code>,
 and returns the type and proof of this lemma.</p>
-</p>       </div>
-</div><div class="entry"><a id="tactic.reassoc_axiom">      <h4>tactic.reassoc_axiom</h4><code>Π (n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> (<a href="https://robertylewis.com/mathlib_docs/meta/expr.html#name.append_suffix">name.append_suffix</a> n \"_assoc\") → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></code>
-<div class="indent"><p><p>(implementation for <code>@[reassoc]</code>)
+       </div>
+</div><div class="def"><a id="tactic.reassoc_axiom"></a>      <h4>tactic.reassoc_axiom</h4><code>Π (n : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#opt_param">opt_param</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/meta/expr.html#name.append_suffix">name.append_suffix</a> n \"_assoc\") → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p>(implementation for <code>@[reassoc]</code>)
 Given a declaration named <code>n</code> of the form <code>f ≫ g = h</code>, proves a new lemma named <code>n'</code> of the form <code>∀ {W} (k), f ≫ (g ≫ k) = h ≫ k</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="tactic.reassoc_attr">      <h4>tactic.reassoc_attr</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</code>
-<div class="indent"><p><p>On the following lemma:
+       </div>
+</div><div class="def"><a id="tactic.reassoc_attr"></a>      <h4>tactic.reassoc_attr</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#name">name</a>)</code>
+<div class="indent"><p>On the following lemma:
 <code>lean
 @[reassoc]
 lemma foo_bar : foo ≫ bar = foo := ...
@@ -62,32 +62,32 @@ lemma foo_bar_assoc {Z} {x : Y ⟶ Z} : foo ≫ bar ≫ x = foo ≫ x := ...
 </code></p>
 
 <p>The name of <code>foo_bar_assoc</code> can also be selected with @[reassoc new_name]</p>
-</p>       </div>
-</div><div class="entry"><a id="tactic.reassoc_cmd">      <h4>tactic.reassoc_cmd</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> \"reassoc_axiom\") → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser">lean.parser</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></code>
-<div class="indent"><p><p><code>lean
+       </div>
+</div><div class="def"><a id="tactic.reassoc_cmd"></a>      <h4>tactic.reassoc_cmd</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> \"reassoc_axiom\") → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser">lean.parser</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><code>lean
 reassoc_axiom my_axiom
 </code></p>
 
 <p>produces the lemma <code>my_axiom_assoc</code> which transforms a statement of the
 form <code>x ≫ y = z</code> into <code>x ≫ y ≫ k = z ≫ k</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="tactic.interactive.reassoc">      <h4>tactic.interactive.reassoc</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> \"!\")) →
-<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></code>
-<div class="indent"><p><p><code>reassoc h</code>, for assumption <code>h : x ≫ y = z</code>, creates a new assumption <code>h : ∀ {W} (f : Z ⟶ W), x ≫ y ≫ f = z ≫ f</code>.
+       </div>
+</div><div class="def"><a id="tactic.interactive.reassoc"></a>      <h4>tactic.interactive.reassoc</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/alternative.html#optional">optional</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> \"!\")) →
+<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p><code>reassoc h</code>, for assumption <code>h : x ≫ y = z</code>, creates a new assumption <code>h : ∀ {W} (f : Z ⟶ W), x ≫ y ≫ f = z ≫ f</code>.
     <code>reassoc! h</code>, does the same but deletes the initial <code>h</code> assumption.
 (You can also add the attribute <code>@[reassoc]</code> to lemmas to generate new declarations generalized in this way.)</p>
-</p>       </div>
-</div><div class="entry"><a id="tactic.calculated_Prop">      <h4>tactic.calculated_Prop</h4><code>Π {α : Sort u_1}, Prop → α → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="tactic.derive_reassoc_proof">      <h4>tactic.derive_reassoc_proof</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="category_theory.reassoc_of">      <h4>category_theory.reassoc_of</h4><code>∀ {α : Sort u_1} (hh : α) {β : Prop},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/reassoc_axiom.html#tactic.calculated_Prop">tactic.calculated_Prop</a> β hh)
+       </div>
+</div><div class="def"><a id="tactic.calculated_Prop"></a>      <h4>tactic.calculated_Prop</h4><code>Π {α : Sort u_1}, Prop → α → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="tactic.derive_reassoc_proof"></a>      <h4>tactic.derive_reassoc_proof</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/tactic.html#tactic">tactic</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#unit">unit</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="category_theory.reassoc_of"></a>      <h4>category_theory.reassoc_of</h4><code>∀ {α : Sort u_1} (hh : α) {β : Prop},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/meta/name.html#auto_param">auto_param</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/tactic/reassoc_axiom.html#tactic.calculated_Prop">tactic.calculated_Prop</a> β hh)
     (name.mk_string \"derive_reassoc_proof\" (name.mk_string \"tactic\" name.anonymous)) →
   β</code>
-<div class="indent"><p><p>With <code>h : x ≫ y ≫ z = x</code> (with universal quantifiers tolerated),
+<div class="indent"><p>With <code>h : x ≫ y ≫ z = x</code> (with universal quantifiers tolerated),
    <code>reassoc_of h : ∀ {X'} (f : W ⟶ X'), x ≫ y ≫ z ≫ f = x ≫ f</code>.</p>
 
 <p>The type and proof of <code>reassoc_of h</code> is generated by <code>tactic.derive_reassoc_proof</code>
@@ -103,5 +103,5 @@ form <code>x ≫ y = z</code> into <code>x ≫ y ≫ k = z ≫ k</code>.</p>
      rw [h',reassoc_of h],
    end
 </code></p>
-</p>       </div>
+       </div>
 </div></body></html>

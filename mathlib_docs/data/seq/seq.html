@@ -1,406 +1,406 @@
-<html><head><title>data.seq.seq</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="stream.is_seq">      <h4>stream.is_seq</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α) → Prop</code>
-<div class="indent"><p><p>A stream <code>s : option α</code> is a sequence if <code>s.nth n = none</code> implies <code>s.nth (n + 1) = none</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq">      <h4>seq</h4><code>Type u → Type u</code>
-<div class="indent"><p><p><code>seq α</code> is the type of possibly infinite lists (referred here as sequences).
+<!DOCTYPE html><html lang="en"><head><title>data.seq.seq</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="def"><a id="stream.is_seq"></a>      <h4>stream.is_seq</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α) → Prop</code>
+<div class="indent"><p>A stream <code>s : option α</code> is a sequence if <code>s.nth n = none</code> implies <code>s.nth (n + 1) = none</code>.</p>
+       </div>
+</div><div class="def"><a id="seq"></a>      <h4>seq</h4><code>Type u → Type u</code>
+<div class="indent"><p><code>seq α</code> is the type of possibly infinite lists (referred here as sequences).
  It is encoded as an infinite stream of options such that if <code>f n = none</code>, then
  <code>f m = none</code> for all <code>m ≥ n</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq1">      <h4>seq1</h4><code>Type u_1 → Type u_1</code>
-<div class="indent"><p><p><code>seq1 α</code> is the type of nonempty sequences.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.nil">      <h4>seq.nil</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>The empty sequence</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.cons">      <h4>seq.cons</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Prepend an element to a sequence</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.nth">      <h4>seq.nth</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α</code>
-<div class="indent"><p><p>Get the nth element of a sequence (if it exists)</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.terminated_at">      <h4>seq.terminated_at</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → ℕ → Prop</code>
-<div class="indent"><p><p>A sequence has terminated at position <code>n</code> if the value at position <code>n</code> equals <code>none</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.terminated_at_decidable">      <h4>seq.terminated_at_decidable</h4><code>Π {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.terminated_at">seq.terminated_at</a> s n)</code>
-<div class="indent"><p><p>It is decidable whether a sequence terminates at a given position.</p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq.terminates">      <h4>seq.terminates</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → Prop</code>
-<div class="indent"><p><p>A sequence terminates if there is some position <code>n</code> at which it has terminated.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.omap">      <h4>seq.omap</h4><code>Π {α : Type u} {β : Type v} {γ : Type w}, (β → γ) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (α × β) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (α × γ)</code>
-<div class="indent"><p><p>Functorial action of the functor <code>option (α × _)</code></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.head">      <h4>seq.head</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α</code>
-<div class="indent"><p><p>Get the first element of a sequence</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.tail">      <h4>seq.tail</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Get the tail of a sequence (or <code>nil</code> if the sequence is <code>nil</code>)</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.mem">      <h4>seq.mem</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.has_mem">      <h4>seq.has_mem</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> α (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq.le_stable">      <h4>seq.le_stable</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) {m n : ℕ}, m ≤ n → s.val m = option.none → s.val n = option.none</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.terminated_stable">      <h4>seq.terminated_stable</h4><code>∀ {α : Type u} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α} {m n : ℕ}, m ≤ n → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.terminated_at">seq.terminated_at</a> s m → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.terminated_at">seq.terminated_at</a> s n</code>
-<div class="indent"><p><p>If a sequence terminated at position <code>n</code>, it also terminated at <code>m ≥ n</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.ge_stable">      <h4>seq.ge_stable</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) {aₙ : α} {n m : ℕ},
-  m ≤ n → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n = option.some aₙ → (∃ (aₘ : α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s m = option.some aₘ)</code>
-<div class="indent"><p><p>If <code>s.nth n = some aₙ</code> for some value <code>aₙ</code>, then there is also some value <code>aₘ</code> such
+       </div>
+</div><div class="def"><a id="seq1"></a>      <h4>seq1</h4><code>Type u_1 → Type u_1</code>
+<div class="indent"><p><code>seq1 α</code> is the type of nonempty sequences.</p>
+       </div>
+</div><div class="def"><a id="seq.nil"></a>      <h4>seq.nil</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>The empty sequence</p>
+       </div>
+</div><div class="def"><a id="seq.cons"></a>      <h4>seq.cons</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Prepend an element to a sequence</p>
+       </div>
+</div><div class="def"><a id="seq.nth"></a>      <h4>seq.nth</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p>Get the nth element of a sequence (if it exists)</p>
+       </div>
+</div><div class="def"><a id="seq.terminated_at"></a>      <h4>seq.terminated_at</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → ℕ → Prop</code>
+<div class="indent"><p>A sequence has terminated at position <code>n</code> if the value at position <code>n</code> equals <code>none</code>.</p>
+       </div>
+</div><div class="def"><a id="seq.terminated_at_decidable"></a>      <h4>seq.terminated_at_decidable</h4><code>Π {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.terminated_at">seq.terminated_at</a> s n)</code>
+<div class="indent"><p>It is decidable whether a sequence terminates at a given position.</p>
+       Attributes: instance</div>
+</div><div class="def"><a id="seq.terminates"></a>      <h4>seq.terminates</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → Prop</code>
+<div class="indent"><p>A sequence terminates if there is some position <code>n</code> at which it has terminated.</p>
+       </div>
+</div><div class="def"><a id="seq.omap"></a>      <h4>seq.omap</h4><code>Π {α : Type u} {β : Type v} {γ : Type w}, (β → γ) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (α × β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (α × γ)</code>
+<div class="indent"><p>Functorial action of the functor <code>option (α × _)</code></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.head"></a>      <h4>seq.head</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α</code>
+<div class="indent"><p>Get the first element of a sequence</p>
+       </div>
+</div><div class="def"><a id="seq.tail"></a>      <h4>seq.tail</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Get the tail of a sequence (or <code>nil</code> if the sequence is <code>nil</code>)</p>
+       </div>
+</div><div class="def"><a id="seq.mem"></a>      <h4>seq.mem</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="seq.has_mem"></a>      <h4>seq.has_mem</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mem">has_mem</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="seq.le_stable"></a>      <h4>seq.le_stable</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) {m n : ℕ}, m ≤ n → s.val m = option.none → s.val n = option.none</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.terminated_stable"></a>      <h4>seq.terminated_stable</h4><code>∀ {α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α} {m n : ℕ}, m ≤ n → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.terminated_at">seq.terminated_at</a> s m → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.terminated_at">seq.terminated_at</a> s n</code>
+<div class="indent"><p>If a sequence terminated at position <code>n</code>, it also terminated at <code>m ≥ n</code>.</p>
+       </div>
+</div><div class="thm"><a id="seq.ge_stable"></a>      <h4>seq.ge_stable</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) {aₙ : α} {n m : ℕ},
+  m ≤ n → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n = option.some aₙ → (∃ (aₘ : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s m = option.some aₘ)</code>
+<div class="indent"><p>If <code>s.nth n = some aₙ</code> for some value <code>aₙ</code>, then there is also some value <code>aₘ</code> such
 that <code>s.nth = some aₘ</code> for <code>m ≤ n</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.not_mem_nil">      <h4>seq.not_mem_nil</h4><code>∀ {α : Type u} (a : α), a ∉ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.mem_cons">      <h4>seq.mem_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), a ∈ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.mem_cons_of_mem">      <h4>seq.mem_cons_of_mem</h4><code>∀ {α : Type u} (y : α) {a : α} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α}, a ∈ s → a ∈ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> y s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.eq_or_mem_of_mem_cons">      <h4>seq.eq_or_mem_of_mem_cons</h4><code>∀ {α : Type u} {a b : α} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α}, a ∈ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> b s → a = b ∨ a ∈ s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.mem_cons_iff">      <h4>seq.mem_cons_iff</h4><code>∀ {α : Type u} {a b : α} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α}, a ∈ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> b s ↔ a = b ∨ a ∈ s</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.destruct">      <h4>seq.destruct</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)</code>
-<div class="indent"><p><p>Destructor for a sequence, resulting in either <code>none</code> (for <code>nil</code>) or
+       </div>
+</div><div class="thm"><a id="seq.not_mem_nil"></a>      <h4>seq.not_mem_nil</h4><code>∀ {α : Type u} (a : α), a ∉ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.mem_cons"></a>      <h4>seq.mem_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.mem_cons_of_mem"></a>      <h4>seq.mem_cons_of_mem</h4><code>∀ {α : Type u} (y : α) {a : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α}, a ∈ s → a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> y s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.eq_or_mem_of_mem_cons"></a>      <h4>seq.eq_or_mem_of_mem_cons</h4><code>∀ {α : Type u} {a b : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> b s → a = b ∨ a ∈ s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.mem_cons_iff"></a>      <h4>seq.mem_cons_iff</h4><code>∀ {α : Type u} {a b : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> b s ↔ a = b ∨ a ∈ s</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.destruct"></a>      <h4>seq.destruct</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)</code>
+<div class="indent"><p>Destructor for a sequence, resulting in either <code>none</code> (for <code>nil</code>) or
  <code>some (a, s)</code> (for <code>cons a s</code>).</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.destruct_eq_nil">      <h4>seq.destruct_eq_nil</h4><code>∀ {α : Type u} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.destruct">seq.destruct</a> s = option.none → s = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.destruct_eq_cons">      <h4>seq.destruct_eq_cons</h4><code>∀ {α : Type u} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α} {a : α} {s' : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.destruct">seq.destruct</a> s = option.some (a, s') → s = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a s'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.destruct_nil">      <h4>seq.destruct_nil</h4><code>∀ {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.destruct">seq.destruct</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> = option.none</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.destruct_cons">      <h4>seq.destruct_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.destruct">seq.destruct</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a s) = option.some (a, s)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.head_eq_destruct">      <h4>seq.head_eq_destruct</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.head">seq.head</a> s = prod.fst <$> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.destruct">seq.destruct</a> s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.head_nil">      <h4>seq.head_nil</h4><code>∀ {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.head">seq.head</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> = option.none</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.head_cons">      <h4>seq.head_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.head">seq.head</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a s) = option.some a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.tail_nil">      <h4>seq.tail_nil</h4><code>∀ {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.tail">seq.tail</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.tail_cons">      <h4>seq.tail_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.tail">seq.tail</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a s) = s</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.cases_on">      <h4>seq.cases_on</h4><code>Π {α : Type u} {C : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → Sort v} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α),
-  C <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> → (Π (x : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), C (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> x s)) → C s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.mem_rec_on">      <h4>seq.mem_rec_on</h4><code>∀ {α : Type u} {C : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → Prop} {a : α} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α},
-  a ∈ s → (∀ (b : α) (s' : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), a = b ∨ C s' → C (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> b s')) → C s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.corec.F">      <h4>seq.corec.F</h4><code>Π {α : Type u} {β : Type v}, (β → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (α × β)) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> β → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.corec">      <h4>seq.corec</h4><code>Π {α : Type u} {β : Type v}, (β → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (α × β)) → β → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Corecursor for <code>seq α</code> as a coinductive type. Iterates <code>f</code> to produce new elements
+       </div>
+</div><div class="thm"><a id="seq.destruct_eq_nil"></a>      <h4>seq.destruct_eq_nil</h4><code>∀ {α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.destruct">seq.destruct</a> s = option.none → s = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.destruct_eq_cons"></a>      <h4>seq.destruct_eq_cons</h4><code>∀ {α : Type u} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α} {a : α} {s' : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.destruct">seq.destruct</a> s = option.some (a, s') → s = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a s'</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.destruct_nil"></a>      <h4>seq.destruct_nil</h4><code>∀ {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.destruct">seq.destruct</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> = option.none</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.destruct_cons"></a>      <h4>seq.destruct_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.destruct">seq.destruct</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a s) = option.some (a, s)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.head_eq_destruct"></a>      <h4>seq.head_eq_destruct</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.head">seq.head</a> s = prod.fst <$> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.destruct">seq.destruct</a> s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.head_nil"></a>      <h4>seq.head_nil</h4><code>∀ {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.head">seq.head</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> = option.none</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.head_cons"></a>      <h4>seq.head_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.head">seq.head</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a s) = option.some a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.tail_nil"></a>      <h4>seq.tail_nil</h4><code>∀ {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.tail">seq.tail</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a></code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.tail_cons"></a>      <h4>seq.tail_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.tail">seq.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a s) = s</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.cases_on"></a>      <h4>seq.cases_on</h4><code>Π {α : Type u} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → Sort v} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α),
+  C <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> → (Π (x : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), C (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> x s)) → C s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.mem_rec_on"></a>      <h4>seq.mem_rec_on</h4><code>∀ {α : Type u} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → Prop} {a : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α},
+  a ∈ s → (∀ (b : α) (s' : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), a = b ∨ C s' → C (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> b s')) → C s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="seq.corec.F"></a>      <h4>seq.corec.F</h4><code>Π {α : Type u} {β : Type v}, (β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (α × β)) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α × <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="seq.corec"></a>      <h4>seq.corec</h4><code>Π {α : Type u} {β : Type v}, (β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (α × β)) → β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Corecursor for <code>seq α</code> as a coinductive type. Iterates <code>f</code> to produce new elements
  of the sequence until <code>none</code> is obtained.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.corec_eq">      <h4>seq.corec_eq</h4><code>∀ {α : Type u} {β : Type v} (f : β → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (α × β)) (b : β),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.destruct">seq.destruct</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.corec">seq.corec</a> f b) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.omap">seq.omap</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.corec">seq.corec</a> f) (f b)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.of_list">      <h4>seq.of_list</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Embed a list as a sequence</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.coe_list">      <h4>seq.coe_list</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq.bisim_o">      <h4>seq.bisim_o</h4><code>Π {α : Type u}, (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → Prop) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α) → Prop</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.is_bisimulation">      <h4>seq.is_bisimulation</h4><code>Π {α : Type u}, (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → Prop) → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.eq_of_bisim">      <h4>seq.eq_of_bisim</h4><code>∀ {α : Type u} (R : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → Prop),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.is_bisimulation">seq.is_bisimulation</a> R → ∀ {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α}, R s₁ s₂ → s₁ = s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.coinduction">      <h4>seq.coinduction</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.head">seq.head</a> s₁ = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.head">seq.head</a> s₂ →
-  (∀ (β : Type u) (fr : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → β), fr s₁ = fr s₂ → fr (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.tail">seq.tail</a> s₁) = fr (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.tail">seq.tail</a> s₂)) →
+       </div>
+</div><div class="thm"><a id="seq.corec_eq"></a>      <h4>seq.corec_eq</h4><code>∀ {α : Type u} {β : Type v} (f : β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (α × β)) (b : β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.destruct">seq.destruct</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.corec">seq.corec</a> f b) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.omap">seq.omap</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.corec">seq.corec</a> f) (f b)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.of_list"></a>      <h4>seq.of_list</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Embed a list as a sequence</p>
+       </div>
+</div><div class="def"><a id="seq.coe_list"></a>      <h4>seq.coe_list</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="seq.bisim_o"></a>      <h4>seq.bisim_o</h4><code>Π {α : Type u}, (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α) → Prop</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.is_bisimulation"></a>      <h4>seq.is_bisimulation</h4><code>Π {α : Type u}, (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → Prop) → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.eq_of_bisim"></a>      <h4>seq.eq_of_bisim</h4><code>∀ {α : Type u} (R : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → Prop),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.is_bisimulation">seq.is_bisimulation</a> R → ∀ {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α}, R s₁ s₂ → s₁ = s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.coinduction"></a>      <h4>seq.coinduction</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.head">seq.head</a> s₁ = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.head">seq.head</a> s₂ →
+  (∀ (β : Type u) (fr : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → β), fr s₁ = fr s₂ → fr (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.tail">seq.tail</a> s₁) = fr (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.tail">seq.tail</a> s₂)) →
   s₁ = s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.coinduction2">      <h4>seq.coinduction2</h4><code>∀ {α : Type u} {β : Type v} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (f g : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β),
-  (∀ (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α),
-     <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.bisim_o">seq.bisim_o</a> (λ (s1 s2 : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β), ∃ (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), s1 = f s ∧ s2 = g s) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.destruct">seq.destruct</a> (f s))
-       (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.destruct">seq.destruct</a> (g s))) →
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.coinduction2"></a>      <h4>seq.coinduction2</h4><code>∀ {α : Type u} {β : Type v} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (f g : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β),
+  (∀ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α),
+     <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.bisim_o">seq.bisim_o</a> (λ (s1 s2 : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β), ∃ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), s1 = f s ∧ s2 = g s) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.destruct">seq.destruct</a> (f s))
+       (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.destruct">seq.destruct</a> (g s))) →
   f s = g s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.of_stream">      <h4>seq.of_stream</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Embed an infinite stream as a sequence</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.coe_stream">      <h4>seq.coe_stream</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq.of_lazy_list">      <h4>seq.of_lazy_list</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/lazy_list.html#lazy_list">lazy_list</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Embed a <code>lazy_list α</code> as a sequence. Note that even though this
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="seq.of_stream"></a>      <h4>seq.of_stream</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Embed an infinite stream as a sequence</p>
+       </div>
+</div><div class="def"><a id="seq.coe_stream"></a>      <h4>seq.coe_stream</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="seq.of_lazy_list"></a>      <h4>seq.of_lazy_list</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/lazy_list.html#lazy_list">lazy_list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Embed a <code>lazy_list α</code> as a sequence. Note that even though this
  is non-meta, it will produce infinite sequences if used with
  cyclic <code>lazy_list</code>s created by meta constructions.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.coe_lazy_list">      <h4>seq.coe_lazy_list</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/lazy_list.html#lazy_list">lazy_list</a> α) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq.to_lazy_list">      <h4>seq.to_lazy_list</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/lazy_list.html#lazy_list">lazy_list</a> α</code>
-<div class="indent"><p><p>Translate a sequence into a <code>lazy_list</code>. Since <code>lazy_list</code> and <code>list</code>
+       </div>
+</div><div class="def"><a id="seq.coe_lazy_list"></a>      <h4>seq.coe_lazy_list</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/lazy_list.html#lazy_list">lazy_list</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="seq.to_lazy_list"></a>      <h4>seq.to_lazy_list</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/lazy_list.html#lazy_list">lazy_list</a> α</code>
+<div class="indent"><p>Translate a sequence into a <code>lazy_list</code>. Since <code>lazy_list</code> and <code>list</code>
  are isomorphic as non-meta types, this function is necessarily meta.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.force_to_list">      <h4>seq.force_to_list</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α</code>
-<div class="indent"><p><p>Translate a sequence to a list. This function will run forever if
+       </div>
+</div><div class="def"><a id="seq.force_to_list"></a>      <h4>seq.force_to_list</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α</code>
+<div class="indent"><p>Translate a sequence to a list. This function will run forever if
  run on an infinite sequence.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.nats">      <h4>seq.nats</h4><code><a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> ℕ</code>
-<div class="indent"><p><p>The sequence of natural numbers some 0, some 1, ...</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.nats_nth">      <h4>seq.nats_nth</h4><code>∀ (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nats">seq.nats</a> n = option.some n</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.append">      <h4>seq.append</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Append two sequences. If <code>s₁</code> is infinite, then <code>s₁ ++ s₂ = s₁</code>,
+       </div>
+</div><div class="def"><a id="seq.nats"></a>      <h4>seq.nats</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> ℕ</code>
+<div class="indent"><p>The sequence of natural numbers some 0, some 1, ...</p>
+       </div>
+</div><div class="thm"><a id="seq.nats_nth"></a>      <h4>seq.nats_nth</h4><code>∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nats">seq.nats</a> n = option.some n</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.append"></a>      <h4>seq.append</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Append two sequences. If <code>s₁</code> is infinite, then <code>s₁ ++ s₂ = s₁</code>,
  otherwise it puts <code>s₂</code> at the location of the <code>nil</code> in <code>s₁</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.map">      <h4>seq.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β</code>
-<div class="indent"><p><p>Map a function over a sequence.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.join">      <h4>seq.join</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α) → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Flatten a sequence of sequences. (It is required that the
+       </div>
+</div><div class="def"><a id="seq.map"></a>      <h4>seq.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β</code>
+<div class="indent"><p>Map a function over a sequence.</p>
+       </div>
+</div><div class="def"><a id="seq.join"></a>      <h4>seq.join</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Flatten a sequence of sequences. (It is required that the
  sequences be nonempty to ensure productivity; in the case
  of an infinite sequence of <code>nil</code>, the first element is never
  generated.)</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.drop">      <h4>seq.drop</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → ℕ → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Remove the first <code>n</code> elements from the sequence.</p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.take">      <h4>seq.take</h4><code>Π {α : Type u}, ℕ → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α</code>
-<div class="indent"><p><p>Take the first <code>n</code> elements of the sequence (producing a list)</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.split_at">      <h4>seq.split_at</h4><code>Π {α : Type u}, ℕ → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α × <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Split a sequence at <code>n</code>, producing a finite initial segment
+       </div>
+</div><div class="def"><a id="seq.drop"></a>      <h4>seq.drop</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Remove the first <code>n</code> elements from the sequence.</p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.take"></a>      <h4>seq.take</h4><code>Π {α : Type u}, ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α</code>
+<div class="indent"><p>Take the first <code>n</code> elements of the sequence (producing a list)</p>
+       </div>
+</div><div class="def"><a id="seq.split_at"></a>      <h4>seq.split_at</h4><code>Π {α : Type u}, ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α × <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Split a sequence at <code>n</code>, producing a finite initial segment
  and an infinite tail.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.zip_with">      <h4>seq.zip_with</h4><code>Π {α : Type u} {β : Type v} {γ : Type w}, (α → β → γ) → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> γ</code>
-<div class="indent"><p><p>Combine two sequences with a function</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.zip_with_nth_some">      <h4>seq.zip_with_nth_some</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α} {s' : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β} {n : ℕ} {a : α} {b : β},
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n = option.some a →
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s' n = option.some b → ∀ (f : α → β → γ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.zip_with">seq.zip_with</a> f s s') n = option.some (f a b)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.zip_with_nth_none">      <h4>seq.zip_with_nth_none</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α} {s' : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β} {n : ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n = option.none → ∀ (f : α → β → γ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.zip_with">seq.zip_with</a> f s s') n = option.none</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.zip_with_nth_none'">      <h4>seq.zip_with_nth_none'</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α} {s' : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β} {n : ℕ},
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s' n = option.none → ∀ (f : α → β → γ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.zip_with">seq.zip_with</a> f s s') n = option.none</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.zip">      <h4>seq.zip</h4><code>Π {α : Type u} {β : Type v}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (α × β)</code>
-<div class="indent"><p><p>Pair two sequences into a sequence of pairs</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.unzip">      <h4>seq.unzip</h4><code>Π {α : Type u} {β : Type v}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (α × β) → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α × <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> β</code>
-<div class="indent"><p><p>Separate a sequence of pairs into two sequences</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.to_list">      <h4>seq.to_list</h4><code>Π {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), (∃ (n : ℕ), ¬↥(<a href="https://robertylewis.com/mathlib_docs/core/init/data/option/basic.html#option.is_some">option.is_some</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n))) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α</code>
-<div class="indent"><p><p>Convert a sequence which is known to terminate into a list</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.to_stream">      <h4>seq.to_stream</h4><code>Π {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), (∀ (n : ℕ), ↥(<a href="https://robertylewis.com/mathlib_docs/core/init/data/option/basic.html#option.is_some">option.is_some</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n))) → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p>Convert a sequence which is known not to terminate into a stream</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.to_list_or_stream">      <h4>seq.to_list_or_stream</h4><code>Π {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (∃ (n : ℕ), ¬↥(<a href="https://robertylewis.com/mathlib_docs/core/init/data/option/basic.html#option.is_some">option.is_some</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n)))],
-  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α ⊕ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p>Convert a sequence into either a list or a stream depending on whether
+       </div>
+</div><div class="def"><a id="seq.zip_with"></a>      <h4>seq.zip_with</h4><code>Π {α : Type u} {β : Type v} {γ : Type w}, (α → β → γ) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> γ</code>
+<div class="indent"><p>Combine two sequences with a function</p>
+       </div>
+</div><div class="thm"><a id="seq.zip_with_nth_some"></a>      <h4>seq.zip_with_nth_some</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α} {s' : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β} {n : ℕ} {a : α} {b : β},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n = option.some a →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s' n = option.some b → ∀ (f : α → β → γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.zip_with">seq.zip_with</a> f s s') n = option.some (f a b)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.zip_with_nth_none"></a>      <h4>seq.zip_with_nth_none</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α} {s' : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β} {n : ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n = option.none → ∀ (f : α → β → γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.zip_with">seq.zip_with</a> f s s') n = option.none</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.zip_with_nth_none'"></a>      <h4>seq.zip_with_nth_none'</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α} {s' : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β} {n : ℕ},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s' n = option.none → ∀ (f : α → β → γ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.zip_with">seq.zip_with</a> f s s') n = option.none</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="seq.zip"></a>      <h4>seq.zip</h4><code>Π {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (α × β)</code>
+<div class="indent"><p>Pair two sequences into a sequence of pairs</p>
+       </div>
+</div><div class="def"><a id="seq.unzip"></a>      <h4>seq.unzip</h4><code>Π {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (α × β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α × <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> β</code>
+<div class="indent"><p>Separate a sequence of pairs into two sequences</p>
+       </div>
+</div><div class="def"><a id="seq.to_list"></a>      <h4>seq.to_list</h4><code>Π {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), (∃ (n : ℕ), ¬↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n))) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α</code>
+<div class="indent"><p>Convert a sequence which is known to terminate into a list</p>
+       </div>
+</div><div class="def"><a id="seq.to_stream"></a>      <h4>seq.to_stream</h4><code>Π {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), (∀ (n : ℕ), ↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n))) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p>Convert a sequence which is known not to terminate into a stream</p>
+       </div>
+</div><div class="def"><a id="seq.to_list_or_stream"></a>      <h4>seq.to_list_or_stream</h4><code>Π {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable">decidable</a> (∃ (n : ℕ), ¬↥(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.is_some">option.is_some</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n)))],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α ⊕ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p>Convert a sequence into either a list or a stream depending on whether
  it is finite or infinite. (Without decidability of the infiniteness predicate,
  this is not constructively possible.)</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.nil_append">      <h4>seq.nil_append</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> s = s</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.cons_append">      <h4>seq.cons_append</h4><code>∀ {α : Type u} (a : α) (s t : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a s) t = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> s t)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.append_nil">      <h4>seq.append_nil</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> s <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> = s</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.append_assoc">      <h4>seq.append_assoc</h4><code>∀ {α : Type u} (s t u : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> s t) u = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> s (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> t u)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.map_nil">      <h4>seq.map_nil</h4><code>∀ {α : Type u} {β : Type v} (f : α → β), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.map_cons">      <h4>seq.map_cons</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a s) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> (f a) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f s)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.map_id">      <h4>seq.map_id</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> s = s</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.map_tail">      <h4>seq.map_tail</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.tail">seq.tail</a> s) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.tail">seq.tail</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f s)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.map_comp">      <h4>seq.map_comp</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (f : α → β) (g : β → γ) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> (g ∘ f) s = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> g (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.map_append">      <h4>seq.map_append</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s t : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> s t) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f s) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f t)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.map_nth">      <h4>seq.map_nth</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (n : ℕ),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f s) n = <a href="https://robertylewis.com/mathlib_docs/core/init/data/option/basic.html#option.map">option.map</a> f (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.functor">      <h4>seq.functor</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq.is_lawful_functor">      <h4>seq.is_lawful_functor</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq.join_nil">      <h4>seq.join_nil</h4><code>∀ {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.join_cons_nil">      <h4>seq.join_cons_nil</h4><code>∀ {α : Type u} (a : α) (S : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> (a, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> α) S) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> S)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.join_cons_cons">      <h4>seq.join_cons_cons</h4><code>∀ {α : Type u} (a b : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (S : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> (a, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> b s) S) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> (b, s) S))</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.join_cons">      <h4>seq.join_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (S : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> (a, s) S) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> s (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> S))</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.join_append">      <h4>seq.join_append</h4><code>∀ {α : Type u} (S T : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> S T) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> S) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> T)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.of_list_nil">      <h4>seq.of_list_nil</h4><code>∀ {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_list">seq.of_list</a> list.nil = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.of_list_cons">      <h4>seq.of_list_cons</h4><code>∀ {α : Type u} (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_list">seq.of_list</a> (a :: l) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_list">seq.of_list</a> l)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.of_stream_cons">      <h4>seq.of_stream_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_stream">seq.of_stream</a> (a :: s) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_stream">seq.of_stream</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.of_list_append">      <h4>seq.of_list_append</h4><code>∀ {α : Type u} (l l' : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_list">seq.of_list</a> (l ++ l') = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_list">seq.of_list</a> l) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_list">seq.of_list</a> l')</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.of_stream_append">      <h4>seq.of_stream_append</h4><code>∀ {α : Type u} (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_stream">seq.of_stream</a> (l++ₛ s) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_list">seq.of_list</a> l) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.of_stream">seq.of_stream</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.to_list'">      <h4>seq.to_list'</h4><code>Π {α : Type u_1}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/computation.html#computation">computation</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α)</code>
-<div class="indent"><p><p>Convert a sequence into a list, embedded in a computation to allow for
+       </div>
+</div><div class="thm"><a id="seq.nil_append"></a>      <h4>seq.nil_append</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> s = s</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.cons_append"></a>      <h4>seq.cons_append</h4><code>∀ {α : Type u} (a : α) (s t : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a s) t = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> s t)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.append_nil"></a>      <h4>seq.append_nil</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> s <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> = s</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.append_assoc"></a>      <h4>seq.append_assoc</h4><code>∀ {α : Type u} (s t u : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> s t) u = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> s (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> t u)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.map_nil"></a>      <h4>seq.map_nil</h4><code>∀ {α : Type u} {β : Type v} (f : α → β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a></code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.map_cons"></a>      <h4>seq.map_cons</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a s) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> (f a) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f s)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.map_id"></a>      <h4>seq.map_id</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> s = s</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.map_tail"></a>      <h4>seq.map_tail</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.tail">seq.tail</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.tail">seq.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f s)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.map_comp"></a>      <h4>seq.map_comp</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (f : α → β) (g : β → γ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> (g ∘ f) s = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.map_append"></a>      <h4>seq.map_append</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s t : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> s t) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f s) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f t)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.map_nth"></a>      <h4>seq.map_nth</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (n : ℕ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f s) n = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/option/basic.html#option.map">option.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.functor"></a>      <h4>seq.functor</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/functor.html#functor">functor</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="seq.is_lawful_functor"></a>      <h4>seq.is_lawful_functor</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="seq.join_nil"></a>      <h4>seq.join_nil</h4><code>∀ {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a></code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.join_cons_nil"></a>      <h4>seq.join_cons_nil</h4><code>∀ {α : Type u} (a : α) (S : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> (a, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> α) S) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> S)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.join_cons_cons"></a>      <h4>seq.join_cons_cons</h4><code>∀ {α : Type u} (a b : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (S : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> (a, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> b s) S) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> (b, s) S))</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.join_cons"></a>      <h4>seq.join_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (S : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> (a, s) S) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> s (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> S))</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.join_append"></a>      <h4>seq.join_append</h4><code>∀ {α : Type u} (S T : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> S T) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> S) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> T)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.of_list_nil"></a>      <h4>seq.of_list_nil</h4><code>∀ {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_list">seq.of_list</a> list.nil = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a></code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.of_list_cons"></a>      <h4>seq.of_list_cons</h4><code>∀ {α : Type u} (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_list">seq.of_list</a> (a :: l) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_list">seq.of_list</a> l)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.of_stream_cons"></a>      <h4>seq.of_stream_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_stream">seq.of_stream</a> (a :: s) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> a (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_stream">seq.of_stream</a> s)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.of_list_append"></a>      <h4>seq.of_list_append</h4><code>∀ {α : Type u} (l l' : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_list">seq.of_list</a> (l ++ l') = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_list">seq.of_list</a> l) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_list">seq.of_list</a> l')</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.of_stream_append"></a>      <h4>seq.of_stream_append</h4><code>∀ {α : Type u} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_stream">seq.of_stream</a> (l++ₛ s) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_list">seq.of_list</a> l) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.of_stream">seq.of_stream</a> s)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq.to_list'"></a>      <h4>seq.to_list'</h4><code>Π {α : Type u_1}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/computation.html#computation">computation</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α)</code>
+<div class="indent"><p>Convert a sequence into a list, embedded in a computation to allow for
  the possibility of infinite sequences (in which case the computation
  never returns anything).</p>
-</p>       </div>
-</div><div class="entry"><a id="seq.dropn_add">      <h4>seq.dropn_add</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (m n : ℕ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.drop">seq.drop</a> s (m + n) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.drop">seq.drop</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.drop">seq.drop</a> s m) n</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.dropn_tail">      <h4>seq.dropn_tail</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.drop">seq.drop</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.tail">seq.tail</a> s) n = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.drop">seq.drop</a> s (n + 1)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.nth_tail">      <h4>seq.nth_tail</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.tail">seq.tail</a> s) n = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s (n + 1)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.ext">      <h4>seq.ext</h4><code>∀ {α : Type u} (s s' : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), (∀ (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s' n) → s = s'</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: ext</div>
-</div><div class="entry"><a id="seq.head_dropn">      <h4>seq.head_dropn</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.head">seq.head</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.drop">seq.drop</a> s n) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nth">seq.nth</a> s n</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq.mem_map">      <h4>seq.mem_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) {a : α} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α}, a ∈ s → f a ∈ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.exists_of_mem_map">      <h4>seq.exists_of_mem_map</h4><code>∀ {α : Type u} {β : Type v} {f : α → β} {b : β} {s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α},
-  b ∈ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f s → (∃ (a : α), a ∈ s ∧ f a = b)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.of_mem_append">      <h4>seq.of_mem_append</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α} {a : α}, a ∈ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> s₁ s₂ → a ∈ s₁ ∨ a ∈ s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq.mem_append_left">      <h4>seq.mem_append_left</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α} {a : α}, a ∈ s₁ → a ∈ <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.append">seq.append</a> s₁ s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq1.to_seq">      <h4>seq1.to_seq</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α</code>
-<div class="indent"><p><p>Convert a <code>seq1</code> to a sequence.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq1.coe_seq">      <h4>seq1.coe_seq</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α) (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq1.map">      <h4>seq1.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> β</code>
-<div class="indent"><p><p>Map a function on a <code>seq1</code></p>
-</p>       </div>
-</div><div class="entry"><a id="seq1.map_id">      <h4>seq1.map_id</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.map">seq1.map</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> s = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="seq1.join">      <h4>seq1.join</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α) → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α</code>
-<div class="indent"><p><p>Flatten a nonempty sequence of nonempty sequences</p>
-</p>       </div>
-</div><div class="entry"><a id="seq1.join_nil">      <h4>seq1.join_nil</h4><code>∀ {α : Type u} (a : α) (S : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.join">seq1.join</a> ((a, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.nil">seq.nil</a> α), S) = (a, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> S)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.join_cons">      <h4>seq1.join_cons</h4><code>∀ {α : Type u} (a b : α) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α) (S : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.join">seq1.join</a> ((a, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> b s), S) = (a, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.cons">seq.cons</a> (b, s) S))</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.ret">      <h4>seq1.ret</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α</code>
-<div class="indent"><p><p>The <code>return</code> operator for the <code>seq1</code> monad,
+       </div>
+</div><div class="thm"><a id="seq.dropn_add"></a>      <h4>seq.dropn_add</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (m n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.drop">seq.drop</a> s (m + n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.drop">seq.drop</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.drop">seq.drop</a> s m) n</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.dropn_tail"></a>      <h4>seq.dropn_tail</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.drop">seq.drop</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.tail">seq.tail</a> s) n = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.drop">seq.drop</a> s (n + 1)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.nth_tail"></a>      <h4>seq.nth_tail</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.tail">seq.tail</a> s) n = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s (n + 1)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.ext"></a>      <h4>seq.ext</h4><code>∀ {α : Type u} (s s' : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), (∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s' n) → s = s'</code>
+<div class="indent"><p></p>
+       Attributes: ext</div>
+</div><div class="thm"><a id="seq.head_dropn"></a>      <h4>seq.head_dropn</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.head">seq.head</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.drop">seq.drop</a> s n) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nth">seq.nth</a> s n</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq.mem_map"></a>      <h4>seq.mem_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) {a : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α}, a ∈ s → f a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.exists_of_mem_map"></a>      <h4>seq.exists_of_mem_map</h4><code>∀ {α : Type u} {β : Type v} {f : α → β} {b : β} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α},
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f s → (∃ (a : α), a ∈ s ∧ f a = b)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.of_mem_append"></a>      <h4>seq.of_mem_append</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α} {a : α}, a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> s₁ s₂ → a ∈ s₁ ∨ a ∈ s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="seq.mem_append_left"></a>      <h4>seq.mem_append_left</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α} {a : α}, a ∈ s₁ → a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.append">seq.append</a> s₁ s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="seq1.to_seq"></a>      <h4>seq1.to_seq</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α</code>
+<div class="indent"><p>Convert a <code>seq1</code> to a sequence.</p>
+       </div>
+</div><div class="def"><a id="seq1.coe_seq"></a>      <h4>seq1.coe_seq</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α) (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="seq1.map"></a>      <h4>seq1.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> β</code>
+<div class="indent"><p>Map a function on a <code>seq1</code></p>
+       </div>
+</div><div class="thm"><a id="seq1.map_id"></a>      <h4>seq1.map_id</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.map">seq1.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> s = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="seq1.join"></a>      <h4>seq1.join</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α</code>
+<div class="indent"><p>Flatten a nonempty sequence of nonempty sequences</p>
+       </div>
+</div><div class="thm"><a id="seq1.join_nil"></a>      <h4>seq1.join_nil</h4><code>∀ {α : Type u} (a : α) (S : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.join">seq1.join</a> ((a, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.nil">seq.nil</a> α), S) = (a, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> S)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq1.join_cons"></a>      <h4>seq1.join_cons</h4><code>∀ {α : Type u} (a b : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α) (S : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.join">seq1.join</a> ((a, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> b s), S) = (a, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.cons">seq.cons</a> (b, s) S))</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq1.ret"></a>      <h4>seq1.ret</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α</code>
+<div class="indent"><p>The <code>return</code> operator for the <code>seq1</code> monad,
  which produces a singleton sequence.</p>
-</p>       </div>
-</div><div class="entry"><a id="seq1.bind">      <h4>seq1.bind</h4><code>Π {α : Type u} {β : Type v}, <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α → (α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> β) → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> β</code>
-<div class="indent"><p><p>The <code>bind</code> operator for the <code>seq1</code> monad,
+       </div>
+</div><div class="def"><a id="seq1.bind"></a>      <h4>seq1.bind</h4><code>Π {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α → (α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> β) → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> β</code>
+<div class="indent"><p>The <code>bind</code> operator for the <code>seq1</code> monad,
  which maps <code>f</code> on each element of <code>s</code> and appends the results together.
  (Not all of <code>s</code> may be evaluated, because the first few elements of <code>s</code>
  may already produce an infinite result.)</p>
-</p>       </div>
-</div><div class="entry"><a id="seq1.join_map_ret">      <h4>seq1.join_map_ret</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.ret">seq1.ret</a> s) = s</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.bind_ret">      <h4>seq1.bind_ret</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.bind">seq1.bind</a> s (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.ret">seq1.ret</a> ∘ f) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.map">seq1.map</a> f s</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.ret_bind">      <h4>seq1.ret_bind</h4><code>∀ {α : Type u} {β : Type v} (a : α) (f : α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> β), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.bind">seq1.bind</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.ret">seq1.ret</a> a) f = f a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.map_join'">      <h4>seq1.map_join'</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (S : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> f (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> S) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.map">seq1.map</a> f) S)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.map_join">      <h4>seq1.map_join</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (S : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α)),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.map">seq1.map</a> f (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.join">seq1.join</a> S) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.join">seq1.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.map">seq1.map</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.map">seq1.map</a> f) S)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.join_join">      <h4>seq1.join_join</h4><code>∀ {α : Type u} (SS : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq">seq</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α))), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> SS) = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.join">seq.join</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.map">seq.map</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.join">seq1.join</a> SS)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.bind_assoc">      <h4>seq1.bind_assoc</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (s : <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> α) (f : α → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> β) (g : β → <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a> γ),
-  <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.bind">seq1.bind</a> (<a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.bind">seq1.bind</a> s f) g = <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.bind">seq1.bind</a> s (λ (x : α), <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.bind">seq1.bind</a> (f x) g)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="seq1.monad">      <h4>seq1.monad</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="seq1.is_lawful_monad">      <h4>seq1.is_lawful_monad</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1">seq1</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
+       </div>
+</div><div class="thm"><a id="seq1.join_map_ret"></a>      <h4>seq1.join_map_ret</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.ret">seq1.ret</a> s) = s</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq1.bind_ret"></a>      <h4>seq1.bind_ret</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.bind">seq1.bind</a> s (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.ret">seq1.ret</a> ∘ f) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.map">seq1.map</a> f s</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq1.ret_bind"></a>      <h4>seq1.ret_bind</h4><code>∀ {α : Type u} {β : Type v} (a : α) (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> β), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.bind">seq1.bind</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.ret">seq1.ret</a> a) f = f a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq1.map_join'"></a>      <h4>seq1.map_join'</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (S : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> S) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.map">seq1.map</a> f) S)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq1.map_join"></a>      <h4>seq1.map_join</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (S : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.map">seq1.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.join">seq1.join</a> S) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.join">seq1.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.map">seq1.map</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.map">seq1.map</a> f) S)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq1.join_join"></a>      <h4>seq1.join_join</h4><code>∀ {α : Type u} (SS : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq">seq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α))), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> SS) = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.join">seq.join</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq.map">seq.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.join">seq1.join</a> SS)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="seq1.bind_assoc"></a>      <h4>seq1.bind_assoc</h4><code>∀ {α : Type u} {β : Type v} {γ : Type w} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> α) (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> β) (g : β → <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a> γ),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.bind">seq1.bind</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.bind">seq1.bind</a> s f) g = <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.bind">seq1.bind</a> s (λ (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1.bind">seq1.bind</a> (f x) g)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="seq1.monad"></a>      <h4>seq1.monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="seq1.is_lawful_monad"></a>      <h4>seq1.is_lawful_monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/data/seq/seq.html#seq1">seq1</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
 </div></body></html>

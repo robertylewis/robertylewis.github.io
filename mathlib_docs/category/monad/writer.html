@@ -1,66 +1,66 @@
-<html><head><title>category.monad.writer</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="writer_t">      <h4>writer_t</h4><code>Type u → (Type u → Type v) → Type u → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u v)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer">      <h4>writer</h4><code>Type u → Type u → Type u</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.ext">      <h4>writer_t.ext</h4><code>∀ {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] {α : Type u} (x x' : <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m α),
+<!DOCTYPE html><html lang="en"><head><title>category.monad.writer</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="cnst"><a id="writer_t"></a>      <h4>writer_t</h4><code>Type u → (Type u → Type v) → Type u → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u v)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer"></a>      <h4>writer</h4><code>Type u → Type u → Type u</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="writer_t.ext"></a>      <h4>writer_t.ext</h4><code>∀ {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] {α : Type u} (x x' : <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m α),
   x.run = x'.run → x = x'</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: ext</div>
-</div><div class="entry"><a id="writer_t.tell">      <h4>writer_t.tell</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m], ω → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#punit">punit</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.listen">      <h4>writer_t.listen</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] {α : Type u},
-  <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m α → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m (α × ω)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.pass">      <h4>writer_t.pass</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] {α : Type u},
-  <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m (α × (ω → ω)) → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.pure">      <h4>writer_t.pure</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] {α : Type u} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> ω],
-  α → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.bind">      <h4>writer_t.bind</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] {α β : Type u} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> ω],
-  <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m α → (α → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m β) → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.monad">      <h4>writer_t.monad</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> ω] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> ω],
-  <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="writer_t.is_lawful_monad">      <h4>writer_t.is_lawful_monad</h4><code>∀ {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> ω] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m],
-  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="writer_t.lift">      <h4>writer_t.lift</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] {α : Type u} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> ω],
-  m α → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.has_monad_lift">      <h4>writer_t.has_monad_lift</h4><code>Π {ω : Type u} (m : Type u → Type u_1) [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> ω], <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift">has_monad_lift</a> m (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="writer_t.monad_map">      <h4>writer_t.monad_map</h4><code>Π {ω : Type u} {m : Type u → Type u_1} {m' : Type u → Type u_2} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']
-{α : Type u}, (Π {α : Type u}, m α → m' α) → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m α → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m' α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.monad_functor">      <h4>writer_t.monad_functor</h4><code>Π {ω : Type u} (m m' : Type u → Type u_1) [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m'],
-  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor">monad_functor</a> m m' (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m) (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m')</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="writer_t.adapt">      <h4>writer_t.adapt</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] {ω' α : Type u},
-  (ω → ω') → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m α → <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω' m α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.monad_except">      <h4>writer_t.monad_except</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] (ε : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#out_param">out_param</a> (Type u_1)) [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> ω]
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#monad_except">monad_except</a> ε m], <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#monad_except">monad_except</a> ε (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="monad_writer">      <h4>monad_writer</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#out_param">out_param</a> (Type u) → (Type u → Type v) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</code>
-<div class="indent"><p><p>An implementation of <a href="https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Reader-Class.html#t:MonadReader">MonadReader</a>.
+<div class="indent"><p></p>
+       Attributes: ext</div>
+</div><div class="def"><a id="writer_t.tell"></a>      <h4>writer_t.tell</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m], ω → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#punit">punit</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer_t.listen"></a>      <h4>writer_t.listen</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] {α : Type u},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m α → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m (α × ω)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer_t.pass"></a>      <h4>writer_t.pass</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] {α : Type u},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m (α × (ω → ω)) → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer_t.pure"></a>      <h4>writer_t.pure</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] {α : Type u} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> ω],
+  α → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer_t.bind"></a>      <h4>writer_t.bind</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] {α β : Type u} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> ω],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m α → (α → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m β) → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer_t.monad"></a>      <h4>writer_t.monad</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> ω] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> ω],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="writer_t.is_lawful_monad"></a>      <h4>writer_t.is_lawful_monad</h4><code>∀ {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#monoid">monoid</a> ω] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="writer_t.lift"></a>      <h4>writer_t.lift</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] {α : Type u} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> ω],
+  m α → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer_t.has_monad_lift"></a>      <h4>writer_t.has_monad_lift</h4><code>Π {ω : Type u} (m : Type u → Type u_1) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> ω], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#has_monad_lift">has_monad_lift</a> m (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="writer_t.monad_map"></a>      <h4>writer_t.monad_map</h4><code>Π {ω : Type u} {m : Type u → Type u_1} {m' : Type u → Type u_2} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m']
+{α : Type u}, (Π {α : Type u}, m α → m' α) → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m α → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m' α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer_t.monad_functor"></a>      <h4>writer_t.monad_functor</h4><code>Π {ω : Type u} (m m' : Type u → Type u_1) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m'],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#monad_functor">monad_functor</a> m m' (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m) (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m')</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="writer_t.adapt"></a>      <h4>writer_t.adapt</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] {ω' α : Type u},
+  (ω → ω') → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m α → <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω' m α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="writer_t.monad_except"></a>      <h4>writer_t.monad_except</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] (ε : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#out_param">out_param</a> (Type u_1)) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_one">has_one</a> ω]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/except.html#monad_except">monad_except</a> ε m], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/except.html#monad_except">monad_except</a> ε (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="cnst"><a id="monad_writer"></a>      <h4>monad_writer</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#out_param">out_param</a> (Type u) → (Type u → Type v) → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (u+1) v)</code>
+<div class="indent"><p>An implementation of <a href="https://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Reader-Class.html#t:MonadReader">MonadReader</a>.
    It does not contain <code>local</code> because this function cannot be lifted using <code>monad_lift</code>.
    Instead, the <code>monad_reader_adapter</code> class provides the more general <code>adapt_reader</code> function.</p>
 
@@ -69,36 +69,36 @@
    class monad_reader (ρ : out_param (Type u)) (n : Type u → Type u) :=
    (lift {} {α : Type u} : (∀ {m : Type u → Type u} [monad m], reader_t ρ m α) → n α)
 </code></p>
-</p>       </div>
-</div><div class="entry"><a id="writer_t.monad_writer">      <h4>writer_t.monad_writer</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m], <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="reader_t.monad_writer">      <h4>reader_t.monad_writer</h4><code>Π {ω ρ : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω m],
-  <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="swap_right">      <h4>swap_right</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3}, (α × β) × γ → (α × γ) × β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="state_t.monad_writer">      <h4>state_t.monad_writer</h4><code>Π {ω σ : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω m],
-  <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="except_t.pass_aux">      <h4>except_t.pass_aux</h4><code>Π {ε : Type u_1} {α : Type u_2} {ω : Type u_3}, <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except">except</a> ε (α × (ω → ω)) → <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except">except</a> ε α × (ω → ω)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="except_t.monad_writer">      <h4>except_t.monad_writer</h4><code>Π {ω ε : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω m],
-  <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="option_t.pass_aux">      <h4>option_t.pass_aux</h4><code>Π {α : Type u_1} {ω : Type u_2}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (α × (ω → ω)) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> α × (ω → ω)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="option_t.monad_writer">      <h4>option_t.monad_writer</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω m], <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="monad_writer_adapter">      <h4>monad_writer_adapter</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#out_param">out_param</a> (Type u) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#out_param">out_param</a> (Type u) → (Type u → Type v) → (Type u → Type v) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</code>
-<div class="indent"><p><p>Adapt a monad stack, changing the type of its top-most environment.</p>
+       </div>
+</div><div class="def"><a id="writer_t.monad_writer"></a>      <h4>writer_t.monad_writer</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m], <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="reader_t.monad_writer"></a>      <h4>reader_t.monad_writer</h4><code>Π {ω ρ : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω m],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/reader.html#reader_t">reader_t</a> ρ m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="swap_right"></a>      <h4>swap_right</h4><code>Π {α : Type u_1} {β : Type u_2} {γ : Type u_3}, (α × β) × γ → (α × γ) × β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="state_t.monad_writer"></a>      <h4>state_t.monad_writer</h4><code>Π {ω σ : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω m],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/state.html#state_t">state_t</a> σ m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="except_t.pass_aux"></a>      <h4>except_t.pass_aux</h4><code>Π {ε : Type u_1} {α : Type u_2} {ω : Type u_3}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/except.html#except">except</a> ε (α × (ω → ω)) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/except.html#except">except</a> ε α × (ω → ω)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="except_t.monad_writer"></a>      <h4>except_t.monad_writer</h4><code>Π {ω ε : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω m],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/except.html#except_t">except_t</a> ε m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="option_t.pass_aux"></a>      <h4>option_t.pass_aux</h4><code>Π {α : Type u_1} {ω : Type u_2}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> (α × (ω → ω)) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a> α × (ω → ω)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="option_t.monad_writer"></a>      <h4>option_t.monad_writer</h4><code>Π {ω : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω m], <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer">monad_writer</a> ω (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/option.html#option_t">option_t</a> m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="cnst"><a id="monad_writer_adapter"></a>      <h4>monad_writer_adapter</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#out_param">out_param</a> (Type u) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#out_param">out_param</a> (Type u) → (Type u → Type v) → (Type u → Type v) → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (u+1) v)</code>
+<div class="indent"><p>Adapt a monad stack, changing the type of its top-most environment.</p>
 
 <p>This class is comparable to <a href="https://hackage.haskell.org/package/lens-4.15.4/docs/Control-Lens-Zoom.html#t:Magnify">Control.Lens.Magnify</a>, but does not use lenses (why would it), and is derived automatically for any transformer implementing <code>monad_functor</code>.</p>
 
@@ -107,17 +107,17 @@
    class monad_reader_functor (ρ ρ' : out_param (Type u)) (n n' : Type u → Type u) :=
    (map {} {α : Type u} : (∀ {m : Type u → Type u} [monad m], reader_t ρ m α → reader_t ρ' m α) → n α → n' α)
 </code></p>
-</p>       </div>
-</div><div class="entry"><a id="monad_writer_adapter_trans">      <h4>monad_writer_adapter_trans</h4><code>Π {ω ω' : Type u} {m m' n n' : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor">monad_functor</a> m m' n n']
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer_adapter">monad_writer_adapter</a> ω ω' m m'], <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer_adapter">monad_writer_adapter</a> ω ω' n n'</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="writer_t.monad_writer_adapter">      <h4>writer_t.monad_writer_adapter</h4><code>Π {ω ω' : Type u} {m : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m],
-  <a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#monad_writer_adapter">monad_writer_adapter</a> ω ω' (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m) (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω' m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="writer_t.monad_run">      <h4>writer_t.monad_run</h4><code>Π (ω : Type u) (m : Type u → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u u_1)) (out : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#out_param">out_param</a> (Type u → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u u_1)))
-[_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_run">monad_run</a> out m], <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_run">monad_run</a> (λ (α : Type u), out (α × ω)) (<a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
+       </div>
+</div><div class="def"><a id="monad_writer_adapter_trans"></a>      <h4>monad_writer_adapter_trans</h4><code>Π {ω ω' : Type u} {m m' n n' : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#monad_functor">monad_functor</a> m m' n n']
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer_adapter">monad_writer_adapter</a> ω ω' m m'], <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer_adapter">monad_writer_adapter</a> ω ω' n n'</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="writer_t.monad_writer_adapter"></a>      <h4>writer_t.monad_writer_adapter</h4><code>Π {ω ω' : Type u} {m : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> m],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#monad_writer_adapter">monad_writer_adapter</a> ω ω' (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m) (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω' m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="writer_t.monad_run"></a>      <h4>writer_t.monad_run</h4><code>Π (ω : Type u) (m : Type u → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u u_1)) (out : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#out_param">out_param</a> (Type u → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> u u_1)))
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#monad_run">monad_run</a> out m], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#monad_run">monad_run</a> (λ (α : Type u), out (α × ω)) (<a href="/home/rob/lean/mathlib/scripts/html_out/category/monad/writer.html#writer_t">writer_t</a> ω m)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
 </div></body></html>

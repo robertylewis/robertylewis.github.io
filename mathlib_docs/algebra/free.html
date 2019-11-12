@@ -1,301 +1,301 @@
-<html><head><title>algebra.free</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="free_magma">      <h4>free_magma</h4><code>Type u → Type u</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_magma.has_mul">      <h4>free_magma.has_mul</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_magma.induction_on">      <h4>free_magma.induction_on</h4><code>∀ {α : Type u} {C : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α → Prop} (x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α),
-  (∀ (x : α), C (free_magma.of x)) → (∀ (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α), C x → C y → C (x * y)) → C x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_magma.lift">      <h4>free_magma.lift</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> β], (α → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α → β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_magma.lift_of">      <h4>free_magma.lift_of</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> β] (f : α → β) (x : α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.lift">free_magma.lift</a> f (free_magma.of x) = f x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.lift_mul">      <h4>free_magma.lift_mul</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> β] (f : α → β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.lift">free_magma.lift</a> f (x * y) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.lift">free_magma.lift</a> f x * <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.lift">free_magma.lift</a> f y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.lift_unique">      <h4>free_magma.lift_unique</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> β] (f : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α → β),
-  (∀ (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α), f (x * y) = f x * f y) → f = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.lift">free_magma.lift</a> (f ∘ free_magma.of)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_magma.map">      <h4>free_magma.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_magma.map_of">      <h4>free_magma.map_of</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (x : α), <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.map">free_magma.map</a> f (free_magma.of x) = free_magma.of (f x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.map_mul">      <h4>free_magma.map_mul</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.map">free_magma.map</a> f (x * y) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.map">free_magma.map</a> f x * <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.map">free_magma.map</a> f y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.monad">      <h4>free_magma.monad</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_magma.induction_on'">      <h4>free_magma.induction_on'</h4><code>∀ {α : Type u} {C : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α → Prop} (x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α),
-  (∀ (x : α), C (has_pure.pure x)) → (∀ (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α), C x → C y → C (x * y)) → C x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_magma.map_pure">      <h4>free_magma.map_pure</h4><code>∀ {α β : Type u} (f : α → β) (x : α), f <$> has_pure.pure x = has_pure.pure (f x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.map_mul'">      <h4>free_magma.map_mul'</h4><code>∀ {α β : Type u} (f : α → β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α), f <$> (x * y) = f <$> x * f <$> y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.pure_bind">      <h4>free_magma.pure_bind</h4><code>∀ {α β : Type u} (f : α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> β) (x : α), has_pure.pure x >>= f = f x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.mul_bind">      <h4>free_magma.mul_bind</h4><code>∀ {α β : Type u} (f : α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α), x * y >>= f = (x >>= f) * (y >>= f)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.pure_seq">      <h4>free_magma.pure_seq</h4><code>∀ {α β : Type u} {f : α → β} {x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α}, has_pure.pure f <*> x = f <$> x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.mul_seq">      <h4>free_magma.mul_seq</h4><code>∀ {α β : Type u} {f g : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> (α → β)} {x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α}, f * g <*> x = (f <*> x) * (g <*> x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.is_lawful_monad">      <h4>free_magma.is_lawful_monad</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_magma.traverse">      <h4>free_magma.traverse</h4><code>Π {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type u},
-  (α → m β) → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α → m (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> β)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_magma.traversable">      <h4>free_magma.traversable</h4><code><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_magma.traverse_pure">      <h4>free_magma.traverse_pure</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x : α),
+<!DOCTYPE html><html lang="en"><head><title>algebra.free</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="cnst"><a id="free_magma"></a>      <h4>free_magma</h4><code>Type u → Type u</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_magma.has_mul"></a>      <h4>free_magma.has_mul</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="free_magma.induction_on"></a>      <h4>free_magma.induction_on</h4><code>∀ {α : Type u} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α → Prop} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α),
+  (∀ (x : α), C (free_magma.of x)) → (∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α), C x → C y → C (x * y)) → C x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_magma.lift"></a>      <h4>free_magma.lift</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> β], (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α → β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="free_magma.lift_of"></a>      <h4>free_magma.lift_of</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> β] (f : α → β) (x : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.lift">free_magma.lift</a> f (free_magma.of x) = f x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.lift_mul"></a>      <h4>free_magma.lift_mul</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> β] (f : α → β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.lift">free_magma.lift</a> f (x * y) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.lift">free_magma.lift</a> f x * <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.lift">free_magma.lift</a> f y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.lift_unique"></a>      <h4>free_magma.lift_unique</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> β] (f : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α → β),
+  (∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α), f (x * y) = f x * f y) → f = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.lift">free_magma.lift</a> (f ∘ free_magma.of)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_magma.map"></a>      <h4>free_magma.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="free_magma.map_of"></a>      <h4>free_magma.map_of</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.map">free_magma.map</a> f (free_magma.of x) = free_magma.of (f x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.map_mul"></a>      <h4>free_magma.map_mul</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.map">free_magma.map</a> f (x * y) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.map">free_magma.map</a> f x * <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.map">free_magma.map</a> f y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="free_magma.monad"></a>      <h4>free_magma.monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="free_magma.induction_on'"></a>      <h4>free_magma.induction_on'</h4><code>∀ {α : Type u} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α → Prop} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α),
+  (∀ (x : α), C (has_pure.pure x)) → (∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α), C x → C y → C (x * y)) → C x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="free_magma.map_pure"></a>      <h4>free_magma.map_pure</h4><code>∀ {α β : Type u} (f : α → β) (x : α), f <$> has_pure.pure x = has_pure.pure (f x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.map_mul'"></a>      <h4>free_magma.map_mul'</h4><code>∀ {α β : Type u} (f : α → β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α), f <$> (x * y) = f <$> x * f <$> y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.pure_bind"></a>      <h4>free_magma.pure_bind</h4><code>∀ {α β : Type u} (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> β) (x : α), has_pure.pure x >>= f = f x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.mul_bind"></a>      <h4>free_magma.mul_bind</h4><code>∀ {α β : Type u} (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α), x * y >>= f = (x >>= f) * (y >>= f)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.pure_seq"></a>      <h4>free_magma.pure_seq</h4><code>∀ {α β : Type u} {f : α → β} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α}, has_pure.pure f <*> x = f <$> x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.mul_seq"></a>      <h4>free_magma.mul_seq</h4><code>∀ {α β : Type u} {f g : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> (α → β)} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α}, f * g <*> x = (f <*> x) * (g <*> x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="free_magma.is_lawful_monad"></a>      <h4>free_magma.is_lawful_monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="free_magma.traverse"></a>      <h4>free_magma.traverse</h4><code>Π {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type u},
+  (α → m β) → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α → m (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> β)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_magma.traversable"></a>      <h4>free_magma.traversable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="free_magma.traverse_pure"></a>      <h4>free_magma.traverse_pure</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x : α),
   traversable.traverse F (has_pure.pure x) = has_pure.pure <$> F x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.traverse_pure'">      <h4>free_magma.traverse_pure'</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β),
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.traverse_pure'"></a>      <h4>free_magma.traverse_pure'</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β),
   traversable.traverse F ∘ has_pure.pure = λ (x : α), has_pure.pure <$> F x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.traverse_mul">      <h4>free_magma.traverse_mul</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α),
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.traverse_mul"></a>      <h4>free_magma.traverse_mul</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α),
   traversable.traverse F (x * y) = has_mul.mul <$> traversable.traverse F x <*> traversable.traverse F y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.traverse_mul'">      <h4>free_magma.traverse_mul'</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp">function.comp</a> (traversable.traverse F) ∘ has_mul.mul =
-    λ (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α), has_mul.mul <$> traversable.traverse F x <*> traversable.traverse F y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.traverse_eq">      <h4>free_magma.traverse_eq</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.traverse">free_magma.traverse</a> F x = traversable.traverse F x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.mul_map_seq">      <h4>free_magma.mul_map_seq</h4><code>∀ {α : Type u} (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α), has_mul.mul <$> x <*> y = x * y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_magma.is_lawful_traversable">      <h4>free_magma.is_lawful_traversable</h4><code><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_magma.decidable_eq">      <h4>free_magma.decidable_eq</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_magma.repr'">      <h4>free_magma.repr'</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> α], <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_magma.has_repr">      <h4>free_magma.has_repr</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_magma.length">      <h4>free_magma.length</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α → ℕ</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.r">      <h4>magma.free_semigroup.r</h4><code>Π (α : Type u) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α], α → α → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup">      <h4>magma.free_semigroup</h4><code>Π (α : Type u) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α], Type u</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.of">      <h4>magma.free_semigroup.of</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α], α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.induction_on">      <h4>magma.free_semigroup.induction_on</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {C : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α → Prop} (x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α),
-  (∀ (x : α), C (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> x)) → C x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.of_mul_assoc">      <h4>magma.free_semigroup.of_mul_assoc</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] (x y z : α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (x * y * z) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (x * (y * z))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.of_mul_assoc_left">      <h4>magma.free_semigroup.of_mul_assoc_left</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] (w x y z : α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (w * (x * y * z)) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (w * (x * (y * z)))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.of_mul_assoc_right">      <h4>magma.free_semigroup.of_mul_assoc_right</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] (w x y z : α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (w * x * y * z) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (w * (x * y) * z)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.semigroup">      <h4>magma.free_semigroup.semigroup</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="magma.free_semigroup.of_mul">      <h4>magma.free_semigroup.of_mul</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] (x y : α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (x * y) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> x * <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.lift">      <h4>magma.free_semigroup.lift</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β),
-  (∀ (x y : α), f (x * y) = f x * f y) → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α → β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.lift_of">      <h4>magma.free_semigroup.lift_of</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β)
-{hf : ∀ (x y : α), f (x * y) = f x * f y} (x : α), <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> f hf (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> x) = f x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="magma.free_semigroup.lift_mul">      <h4>magma.free_semigroup.lift_mul</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β)
-{hf : ∀ (x y : α), f (x * y) = f x * f y} (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> f hf (x * y) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> f hf x * <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> f hf y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="magma.free_semigroup.lift_unique">      <h4>magma.free_semigroup.lift_unique</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α → β)
-(hf : ∀ (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α), f (x * y) = f x * f y),
-  f = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> (f ∘ <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a>) _</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.map">      <h4>magma.free_semigroup.map</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> β] (f : α → β),
-  (∀ (x y : α), f (x * y) = f x * f y) → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="magma.free_semigroup.map_of">      <h4>magma.free_semigroup.map_of</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> β] (f : α → β)
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.traverse_mul'"></a>      <h4>free_magma.traverse_mul'</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.comp">function.comp</a> (traversable.traverse F) ∘ has_mul.mul =
+    λ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α), has_mul.mul <$> traversable.traverse F x <*> traversable.traverse F y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.traverse_eq"></a>      <h4>free_magma.traverse_eq</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma.traverse">free_magma.traverse</a> F x = traversable.traverse F x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_magma.mul_map_seq"></a>      <h4>free_magma.mul_map_seq</h4><code>∀ {α : Type u} (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α), has_mul.mul <$> x <*> y = x * y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="free_magma.is_lawful_traversable"></a>      <h4>free_magma.is_lawful_traversable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="free_magma.decidable_eq"></a>      <h4>free_magma.decidable_eq</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="free_magma.repr'"></a>      <h4>free_magma.repr'</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/repr.html#has_repr">has_repr</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/string/basic.html#string">string</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_magma.has_repr"></a>      <h4>free_magma.has_repr</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/repr.html#has_repr">has_repr</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/repr.html#has_repr">has_repr</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="free_magma.length"></a>      <h4>free_magma.length</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α → ℕ</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="cnst"><a id="magma.free_semigroup.r"></a>      <h4>magma.free_semigroup.r</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α], α → α → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="magma.free_semigroup"></a>      <h4>magma.free_semigroup</h4><code>Π (α : Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α], Type u</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="magma.free_semigroup.of"></a>      <h4>magma.free_semigroup.of</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α], α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="magma.free_semigroup.induction_on"></a>      <h4>magma.free_semigroup.induction_on</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {C : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α → Prop} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α),
+  (∀ (x : α), C (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> x)) → C x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="magma.free_semigroup.of_mul_assoc"></a>      <h4>magma.free_semigroup.of_mul_assoc</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] (x y z : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (x * y * z) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (x * (y * z))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="magma.free_semigroup.of_mul_assoc_left"></a>      <h4>magma.free_semigroup.of_mul_assoc_left</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] (w x y z : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (w * (x * y * z)) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (w * (x * (y * z)))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="magma.free_semigroup.of_mul_assoc_right"></a>      <h4>magma.free_semigroup.of_mul_assoc_right</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] (w x y z : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (w * x * y * z) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (w * (x * y) * z)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="magma.free_semigroup.semigroup"></a>      <h4>magma.free_semigroup.semigroup</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="magma.free_semigroup.of_mul"></a>      <h4>magma.free_semigroup.of_mul</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] (x y : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (x * y) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> x * <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="magma.free_semigroup.lift"></a>      <h4>magma.free_semigroup.lift</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β),
+  (∀ (x y : α), f (x * y) = f x * f y) → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α → β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="magma.free_semigroup.lift_of"></a>      <h4>magma.free_semigroup.lift_of</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β)
+{hf : ∀ (x y : α), f (x * y) = f x * f y} (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> f hf (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> x) = f x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="magma.free_semigroup.lift_mul"></a>      <h4>magma.free_semigroup.lift_mul</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β)
+{hf : ∀ (x y : α), f (x * y) = f x * f y} (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> f hf (x * y) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> f hf x * <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> f hf y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="magma.free_semigroup.lift_unique"></a>      <h4>magma.free_semigroup.lift_unique</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α → β)
+(hf : ∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α), f (x * y) = f x * f y),
+  f = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.lift">magma.free_semigroup.lift</a> (f ∘ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a>) _</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="magma.free_semigroup.map"></a>      <h4>magma.free_semigroup.map</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> β] (f : α → β),
+  (∀ (x y : α), f (x * y) = f x * f y) → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="magma.free_semigroup.map_of"></a>      <h4>magma.free_semigroup.map_of</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> β] (f : α → β)
 {hf : ∀ (x y : α), f (x * y) = f x * f y} (x : α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.map">magma.free_semigroup.map</a> f hf (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> x) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (f x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="magma.free_semigroup.map_mul">      <h4>magma.free_semigroup.map_mul</h4><code>∀ {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> β] (f : α → β)
-{hf : ∀ (x y : α), f (x * y) = f x * f y} (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.map">magma.free_semigroup.map</a> f hf (x * y) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.map">magma.free_semigroup.map</a> f hf x * <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup.map">magma.free_semigroup.map</a> f hf y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup">      <h4>free_semigroup</h4><code>Type u → Type u</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.semigroup">      <h4>free_semigroup.semigroup</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_semigroup.of">      <h4>free_semigroup.of</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.induction_on">      <h4>free_semigroup.induction_on</h4><code>∀ {α : Type u} {C : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α → Prop} (x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α),
-  (∀ (x : α), C (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x)) →
-  (∀ (x : α) (y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α), C (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x) → C y → C (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x * y)) → C x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.lift'">      <h4>free_semigroup.lift'</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β], (α → β) → α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.lift">      <h4>free_semigroup.lift</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β], (α → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α → β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.lift_of">      <h4>free_semigroup.lift_of</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β) (x : α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x) = f x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.lift_of_mul">      <h4>free_semigroup.lift_of_mul</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β) (x : α) (y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x * y) = f x * <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.lift_mul">      <h4>free_semigroup.lift_mul</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f (x * y) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f x * <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.lift_unique">      <h4>free_semigroup.lift_unique</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α → β),
-  (∀ (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α), f (x * y) = f x * f y) → f = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> (f ∘ <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.of">free_semigroup.of</a>)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.map">      <h4>free_semigroup.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.map_of">      <h4>free_semigroup.map_of</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (x : α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.map">free_semigroup.map</a> f (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.of">free_semigroup.of</a> (f x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.map_mul">      <h4>free_semigroup.map_mul</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.map">free_semigroup.map</a> f (x * y) = <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.map">free_semigroup.map</a> f x * <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.map">free_semigroup.map</a> f y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.monad">      <h4>free_semigroup.monad</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_semigroup.induction_on'">      <h4>free_semigroup.induction_on'</h4><code>∀ {α : Type u} {C : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α → Prop} (x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.map">magma.free_semigroup.map</a> f hf (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> x) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.of">magma.free_semigroup.of</a> (f x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="magma.free_semigroup.map_mul"></a>      <h4>magma.free_semigroup.map_mul</h4><code>∀ {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> α] {β : Type v} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mul">has_mul</a> β] (f : α → β)
+{hf : ∀ (x y : α), f (x * y) = f x * f y} (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.map">magma.free_semigroup.map</a> f hf (x * y) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.map">magma.free_semigroup.map</a> f hf x * <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup.map">magma.free_semigroup.map</a> f hf y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="free_semigroup"></a>      <h4>free_semigroup</h4><code>Type u → Type u</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_semigroup.semigroup"></a>      <h4>free_semigroup.semigroup</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="free_semigroup.of"></a>      <h4>free_semigroup.of</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="free_semigroup.induction_on"></a>      <h4>free_semigroup.induction_on</h4><code>∀ {α : Type u} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α → Prop} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α),
+  (∀ (x : α), C (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x)) →
+  (∀ (x : α) (y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α), C (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x) → C y → C (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x * y)) → C x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_semigroup.lift'"></a>      <h4>free_semigroup.lift'</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β], (α → β) → α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_semigroup.lift"></a>      <h4>free_semigroup.lift</h4><code>Π {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β], (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α → β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="free_semigroup.lift_of"></a>      <h4>free_semigroup.lift_of</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β) (x : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x) = f x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.lift_of_mul"></a>      <h4>free_semigroup.lift_of_mul</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β) (x : α) (y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x * y) = f x * <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.lift_mul"></a>      <h4>free_semigroup.lift_mul</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : α → β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f (x * y) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f x * <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> f y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.lift_unique"></a>      <h4>free_semigroup.lift_unique</h4><code>∀ {α : Type u} {β : Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/group.html#semigroup">semigroup</a> β] (f : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α → β),
+  (∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α), f (x * y) = f x * f y) → f = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.lift">free_semigroup.lift</a> (f ∘ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.of">free_semigroup.of</a>)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_semigroup.map"></a>      <h4>free_semigroup.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="free_semigroup.map_of"></a>      <h4>free_semigroup.map_of</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (x : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.map">free_semigroup.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.of">free_semigroup.of</a> x) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.of">free_semigroup.of</a> (f x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.map_mul"></a>      <h4>free_semigroup.map_mul</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.map">free_semigroup.map</a> f (x * y) = <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.map">free_semigroup.map</a> f x * <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.map">free_semigroup.map</a> f y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="free_semigroup.monad"></a>      <h4>free_semigroup.monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/monad.html#monad">monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="free_semigroup.induction_on'"></a>      <h4>free_semigroup.induction_on'</h4><code>∀ {α : Type u} {C : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α → Prop} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α),
   (∀ (x : α), C (has_pure.pure x)) →
-  (∀ (x : α) (y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α), C (has_pure.pure x) → C y → C (has_pure.pure x * y)) → C x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.map_pure">      <h4>free_semigroup.map_pure</h4><code>∀ {α β : Type u} (f : α → β) (x : α), f <$> has_pure.pure x = has_pure.pure (f x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.map_mul'">      <h4>free_semigroup.map_mul'</h4><code>∀ {α β : Type u} (f : α → β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α), f <$> (x * y) = f <$> x * f <$> y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.pure_bind">      <h4>free_semigroup.pure_bind</h4><code>∀ {α β : Type u} (f : α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> β) (x : α), has_pure.pure x >>= f = f x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.mul_bind">      <h4>free_semigroup.mul_bind</h4><code>∀ {α β : Type u} (f : α → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> β) (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α), x * y >>= f = (x >>= f) * (y >>= f)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.pure_seq">      <h4>free_semigroup.pure_seq</h4><code>∀ {α β : Type u} {f : α → β} {x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α}, has_pure.pure f <*> x = f <$> x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.mul_seq">      <h4>free_semigroup.mul_seq</h4><code>∀ {α β : Type u} {f g : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> (α → β)} {x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α}, f * g <*> x = (f <*> x) * (g <*> x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.is_lawful_monad">      <h4>free_semigroup.is_lawful_monad</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_semigroup.traverse'">      <h4>free_semigroup.traverse'</h4><code>Π {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type u},
-  (α → m β) → α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → m (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> β)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.traverse">      <h4>free_semigroup.traverse</h4><code>Π {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type u},
-  (α → m β) → <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α → m (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> β)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup.traversable">      <h4>free_semigroup.traversable</h4><code><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_semigroup.traverse_pure">      <h4>free_semigroup.traverse_pure</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x : α),
+  (∀ (x : α) (y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α), C (has_pure.pure x) → C y → C (has_pure.pure x * y)) → C x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="free_semigroup.map_pure"></a>      <h4>free_semigroup.map_pure</h4><code>∀ {α β : Type u} (f : α → β) (x : α), f <$> has_pure.pure x = has_pure.pure (f x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.map_mul'"></a>      <h4>free_semigroup.map_mul'</h4><code>∀ {α β : Type u} (f : α → β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α), f <$> (x * y) = f <$> x * f <$> y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.pure_bind"></a>      <h4>free_semigroup.pure_bind</h4><code>∀ {α β : Type u} (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> β) (x : α), has_pure.pure x >>= f = f x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.mul_bind"></a>      <h4>free_semigroup.mul_bind</h4><code>∀ {α β : Type u} (f : α → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> β) (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α), x * y >>= f = (x >>= f) * (y >>= f)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.pure_seq"></a>      <h4>free_semigroup.pure_seq</h4><code>∀ {α β : Type u} {f : α → β} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α}, has_pure.pure f <*> x = f <$> x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.mul_seq"></a>      <h4>free_semigroup.mul_seq</h4><code>∀ {α β : Type u} {f g : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> (α → β)} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α}, f * g <*> x = (f <*> x) * (g <*> x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="free_semigroup.is_lawful_monad"></a>      <h4>free_semigroup.is_lawful_monad</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="free_semigroup.traverse'"></a>      <h4>free_semigroup.traverse'</h4><code>Π {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type u},
+  (α → m β) → α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → m (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> β)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_semigroup.traverse"></a>      <h4>free_semigroup.traverse</h4><code>Π {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type u},
+  (α → m β) → <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α → m (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> β)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="free_semigroup.traversable"></a>      <h4>free_semigroup.traversable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="free_semigroup.traverse_pure"></a>      <h4>free_semigroup.traverse_pure</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x : α),
   traversable.traverse F (has_pure.pure x) = has_pure.pure <$> F x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.traverse_pure'">      <h4>free_semigroup.traverse_pure'</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β),
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.traverse_pure'"></a>      <h4>free_semigroup.traverse_pure'</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β),
   traversable.traverse F ∘ has_pure.pure = λ (x : α), has_pure.pure <$> F x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.traverse_mul">      <h4>free_semigroup.traverse_mul</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β)
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> m] (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α),
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.traverse_mul"></a>      <h4>free_semigroup.traverse_mul</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β)
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> m] (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α),
   traversable.traverse F (x * y) = has_mul.mul <$> traversable.traverse F x <*> traversable.traverse F y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.traverse_mul'">      <h4>free_semigroup.traverse_mul'</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β)
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> m],
-  <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp">function.comp</a> (traversable.traverse F) ∘ has_mul.mul =
-    λ (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α), has_mul.mul <$> traversable.traverse F x <*> traversable.traverse F y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.traverse_eq">      <h4>free_semigroup.traverse_eq</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.traverse">free_semigroup.traverse</a> F x = traversable.traverse F x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.mul_map_seq">      <h4>free_semigroup.mul_map_seq</h4><code>∀ {α : Type u} (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α), has_mul.mul <$> x <*> y = x * y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="free_semigroup.is_lawful_traversable">      <h4>free_semigroup.is_lawful_traversable</h4><code><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_semigroup.decidable_eq">      <h4>free_semigroup.decidable_eq</h4><code>Π {α : Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="free_semigroup_free_magma">      <h4>free_semigroup_free_magma</h4><code>Π (α : Type u), <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α) ≃ <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup">free_semigroup</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="free_semigroup_free_magma_mul">      <h4>free_semigroup_free_magma_mul</h4><code>∀ {α : Type u} (x y : <a href="https://robertylewis.com/mathlib_docs/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma">free_magma</a> α)),
-  ⇑(<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup_free_magma">free_semigroup_free_magma</a> α) (x * y) = ⇑(<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup_free_magma">free_semigroup_free_magma</a> α) x * ⇑(<a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup_free_magma">free_semigroup_free_magma</a> α) y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.traverse_mul'"></a>      <h4>free_semigroup.traverse_mul'</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β)
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> m],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.comp">function.comp</a> (traversable.traverse F) ∘ has_mul.mul =
+    λ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α), has_mul.mul <$> traversable.traverse F x <*> traversable.traverse F y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.traverse_eq"></a>      <h4>free_semigroup.traverse_eq</h4><code>∀ {α β : Type u} {m : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> m] (F : α → m β) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup.traverse">free_semigroup.traverse</a> F x = traversable.traverse F x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="free_semigroup.mul_map_seq"></a>      <h4>free_semigroup.mul_map_seq</h4><code>∀ {α : Type u} (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α), has_mul.mul <$> x <*> y = x * y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="free_semigroup.is_lawful_traversable"></a>      <h4>free_semigroup.is_lawful_traversable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="free_semigroup.decidable_eq"></a>      <h4>free_semigroup.decidable_eq</h4><code>Π {α : Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#decidable_eq">decidable_eq</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="free_semigroup_free_magma"></a>      <h4>free_semigroup_free_magma</h4><code>Π (α : Type u), <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α) ≃ <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup">free_semigroup</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="free_semigroup_free_magma_mul"></a>      <h4>free_semigroup_free_magma_mul</h4><code>∀ {α : Type u} (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#magma.free_semigroup">magma.free_semigroup</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_magma">free_magma</a> α)),
+  ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup_free_magma">free_semigroup_free_magma</a> α) (x * y) = ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup_free_magma">free_semigroup_free_magma</a> α) x * ⇑(<a href="/home/rob/lean/mathlib/scripts/html_out/algebra/free.html#free_semigroup_free_magma">free_semigroup_free_magma</a> α) y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
 </div></body></html>

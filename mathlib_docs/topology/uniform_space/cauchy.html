@@ -1,152 +1,152 @@
-<html><head><title>topology.uniform_space.cauchy</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="cauchy">      <h4>cauchy</h4><code>Π {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α → Prop</code>
-<div class="indent"><p><p>A filter <code>f</code> is Cauchy if for every entourage <code>r</code>, there exists an
+<!DOCTYPE html><html lang="en"><head><title>topology.uniform_space.cauchy</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="def"><a id="cauchy"></a>      <h4>cauchy</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α → Prop</code>
+<div class="indent"><p>A filter <code>f</code> is Cauchy if for every entourage <code>r</code>, there exists an
  <code>s ∈ f</code> such that <code>s × s ⊆ r</code>. This is a generalization of Cauchy
  sequences, because if <code>a : ℕ → α</code> then the filter of sets containing
  cofinitely many of the <code>a n</code> is Cauchy iff <code>a</code> is a Cauchy sequence.</p>
-</p>       </div>
-</div><div class="entry"><a id="is_complete">      <h4>is_complete</h4><code>Π {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_iff">      <h4>cauchy_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f ↔
+       </div>
+</div><div class="def"><a id="is_complete"></a>      <h4>is_complete</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_iff"></a>      <h4>cauchy_iff</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f ↔
     f ≠ ⊥ ∧
-      ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α × α)), s ∈ <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniformity">uniformity</a> α → (∃ (t : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (H : t ∈ f.sets), <a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.prod">set.prod</a> t t ⊆ s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_map_iff">      <h4>cauchy_map_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {l : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> β} {f : β → α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.map">filter.map</a> f l) ↔
-    l ≠ ⊥ ∧ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (p : β × β), (f (p.fst), f (p.snd))) (<a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.prod">filter.prod</a> l l) (<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_downwards">      <h4>cauchy_downwards</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f g : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α}, <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → g ≠ ⊥ → g ≤ f → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> g</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_nhds">      <h4>cauchy_nhds</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a : α}, <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_pure">      <h4>cauchy_pure</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a : α}, <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (has_pure.pure a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="le_nhds_of_cauchy_adhp">      <h4>le_nhds_of_cauchy_adhp</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α} {x : α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → f ⊓ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x ≠ ⊥ → f ≤ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="le_nhds_iff_adhp_of_cauchy">      <h4>le_nhds_iff_adhp_of_cauchy</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α} {x : α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → (f ≤ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x ↔ f ⊓ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x ≠ ⊥)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_map">      <h4>cauchy_map</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α}
-{m : α → β}, <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> m → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.map">filter.map</a> m f)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_comap">      <h4>cauchy_comap</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> β}
+      ∀ (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)), s ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α → (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : t ∈ f.sets), <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/basic.html#set.prod">set.prod</a> t t ⊆ s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_map_iff"></a>      <h4>cauchy_map_iff</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β} {f : β → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> f l) ↔
+    l ≠ ⊥ ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (p : β × β), (f (p.fst), f (p.snd))) (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.prod">filter.prod</a> l l) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_downwards"></a>      <h4>cauchy_downwards</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f g : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → g ≠ ⊥ → g ≤ f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> g</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_nhds"></a>      <h4>cauchy_nhds</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_pure"></a>      <h4>cauchy_pure</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {a : α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (has_pure.pure a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="le_nhds_of_cauchy_adhp"></a>      <h4>le_nhds_of_cauchy_adhp</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {x : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → f ⊓ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x ≠ ⊥ → f ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="le_nhds_iff_adhp_of_cauchy"></a>      <h4>le_nhds_iff_adhp_of_cauchy</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α} {x : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → (f ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x ↔ f ⊓ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x ≠ ⊥)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_map"></a>      <h4>cauchy_map</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}
+{m : α → β}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> m → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> m f)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_comap"></a>      <h4>cauchy_comap</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β}
 {m : α → β},
-  <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.comap">filter.comap</a> (λ (p : α × α), (m (p.fst), m (p.snd))) (<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniformity">uniformity</a> β) ≤ <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.comap">filter.comap</a> m f ≠ ⊥ → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.comap">filter.comap</a> m f)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_seq">      <h4>cauchy_seq</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> β],
+  <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> (λ (p : α × α), (m (p.fst), m (p.snd))) (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> β) ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> m f ≠ ⊥ → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.comap">filter.comap</a> m f)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="cauchy_seq"></a>      <h4>cauchy_seq</h4><code>Π {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> β],
   (β → α) → Prop</code>
-<div class="indent"><p><p>Cauchy sequences. Usually defined on ℕ, but often it is also useful to say that a function
+<div class="indent"><p>Cauchy sequences. Usually defined on ℕ, but often it is also useful to say that a function
 defined on ℝ is Cauchy at +∞ to deduce convergence. Therefore, we define it in a type class that
 is general enough to cover both ℕ and ℝ, which are the main motivating examples.</p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_seq_iff_prod_map">      <h4>cauchy_seq_iff_prod_map</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> β]
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> β] {u : β → α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy_seq">cauchy_seq</a> u ↔ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.map">filter.map</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/prod.html#prod.map">prod.map</a> u u) <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.at_top">filter.at_top</a> ≤ <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="complete_space">      <h4>complete_space</h4><code>Π (α : Type u) [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], Prop</code>
-<div class="indent"><p><p>A complete space is defined here using uniformities. A uniform space
+       </div>
+</div><div class="thm"><a id="cauchy_seq_iff_prod_map"></a>      <h4>cauchy_seq_iff_prod_map</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> β] {u : β → α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy_seq">cauchy_seq</a> u ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/prod.html#prod.map">prod.map</a> u u) <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.at_top">filter.at_top</a> ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="cnst"><a id="complete_space"></a>      <h4>complete_space</h4><code>Π (α : Type u) [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], Prop</code>
+<div class="indent"><p>A complete space is defined here using uniformities. A uniform space
  is complete if every Cauchy filter converges.</p>
-</p>       </div>
-</div><div class="entry"><a id="complete_univ">      <h4>complete_univ</h4><code>∀ {α : Type u} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α], <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#is_complete">is_complete</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.univ">set.univ</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_prod">      <h4>cauchy_prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α}
-{g : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> β}, <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> g → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.prod">filter.prod</a> f g)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="complete_space.prod">      <h4>complete_space.prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> β], <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> (α × β)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="complete_space_of_is_complete_univ">      <h4>complete_space_of_is_complete_univ</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#is_complete">is_complete</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.univ">set.univ</a> → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α</code>
-<div class="indent"><p><p>If <code>univ</code> is complete, the space is a complete space</p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_iff_exists_le_nhds">      <h4>cauchy_iff_exists_le_nhds</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {l : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α},
-  l ≠ ⊥ → (<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> l ↔ ∃ (x : α), l ≤ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_map_iff_exists_tendsto">      <h4>cauchy_map_iff_exists_tendsto</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {l : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> β}
-{f : β → α}, l ≠ ⊥ → (<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.map">filter.map</a> f l) ↔ ∃ (x : α), <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_seq_tendsto_of_complete">      <h4>cauchy_seq_tendsto_of_complete</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> β]
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {u : β → α}, <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy_seq">cauchy_seq</a> u → (∃ (x : α), <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> u <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.at_top">filter.at_top</a> (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x))</code>
-<div class="indent"><p><p>A Cauchy sequence in a complete space converges</p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_seq_tendsto_of_is_complete">      <h4>cauchy_seq_tendsto_of_is_complete</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> β] {K : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#is_complete">is_complete</a> K →
+       </div>
+</div><div class="thm"><a id="complete_univ"></a>      <h4>complete_univ</h4><code>∀ {α : Type u} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#is_complete">is_complete</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_prod"></a>      <h4>cauchy_prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α}
+{g : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> g → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.prod">filter.prod</a> f g)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="complete_space.prod"></a>      <h4>complete_space.prod</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> β], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> (α × β)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="complete_space_of_is_complete_univ"></a>      <h4>complete_space_of_is_complete_univ</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#is_complete">is_complete</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set.univ">set.univ</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α</code>
+<div class="indent"><p>If <code>univ</code> is complete, the space is a complete space</p>
+       </div>
+</div><div class="thm"><a id="cauchy_iff_exists_le_nhds"></a>      <h4>cauchy_iff_exists_le_nhds</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  l ≠ ⊥ → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> l ↔ ∃ (x : α), l ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_map_iff_exists_tendsto"></a>      <h4>cauchy_map_iff_exists_tendsto</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {l : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> β}
+{f : β → α}, l ≠ ⊥ → (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.map">filter.map</a> f l) ↔ ∃ (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_seq_tendsto_of_complete"></a>      <h4>cauchy_seq_tendsto_of_complete</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> β]
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {u : β → α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy_seq">cauchy_seq</a> u → (∃ (x : α), <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> u <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.at_top">filter.at_top</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> x))</code>
+<div class="indent"><p>A Cauchy sequence in a complete space converges</p>
+       </div>
+</div><div class="thm"><a id="cauchy_seq_tendsto_of_is_complete"></a>      <h4>cauchy_seq_tendsto_of_is_complete</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> β] {K : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#is_complete">is_complete</a> K →
   ∀ {u : β → α},
-    (∀ (n : β), u n ∈ K) → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy_seq">cauchy_seq</a> u → (∃ (v : α) (H : v ∈ K), <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> u <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.at_top">filter.at_top</a> (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> v))</code>
-<div class="indent"><p><p>If <code>K</code> is a complete subset, then any cauchy sequence in <code>K</code> converges to a point in <code>K</code></p>
-</p>       </div>
-</div><div class="entry"><a id="le_nhds_lim_of_cauchy">      <h4>le_nhds_lim_of_cauchy</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α] {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → f ≤ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#lim">lim</a> f)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="is_complete_of_is_closed">      <h4>is_complete_of_is_closed</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_closed">is_closed</a> s → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#is_complete">is_complete</a> s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="totally_bounded">      <h4>totally_bounded</h4><code>Π {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → Prop</code>
-<div class="indent"><p><p>A set <code>s</code> is totally bounded if for every entourage <code>d</code> there is a finite
+    (∀ (n : β), u n ∈ K) → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy_seq">cauchy_seq</a> u → (∃ (v : α) (H : v ∈ K), <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.tendsto">filter.tendsto</a> u <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.at_top">filter.at_top</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> v))</code>
+<div class="indent"><p>If <code>K</code> is a complete subset, then any cauchy sequence in <code>K</code> converges to a point in <code>K</code></p>
+       </div>
+</div><div class="thm"><a id="le_nhds_lim_of_cauchy"></a>      <h4>le_nhds_lim_of_cauchy</h4><code>∀ {α : Type u_1} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> α] {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f → f ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#nhds">nhds</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#lim">lim</a> f)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="is_complete_of_is_closed"></a>      <h4>is_complete_of_is_closed</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#is_complete">is_complete</a> s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="totally_bounded"></a>      <h4>totally_bounded</h4><code>Π {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α → Prop</code>
+<div class="indent"><p>A set <code>s</code> is totally bounded if for every entourage <code>d</code> there is a finite
  set of points <code>t</code> such that every element of <code>s</code> is <code>d</code>-near to some element of <code>t</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="totally_bounded_iff_subset">      <h4>totally_bounded_iff_subset</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s ↔
-    ∀ (d : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (α × α)),
-      d ∈ <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
-      (∃ (t : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (H : t ⊆ s), <a href="https://robertylewis.com/mathlib_docs/data/set/finite.html#set.finite">set.finite</a> t ∧ s ⊆ ⋃ (y : α) (H : y ∈ t), {x : α | (x, y) ∈ d})</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="totally_bounded_subset">      <h4>totally_bounded_subset</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α},
-  s₁ ⊆ s₂ → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s₂ → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s₁</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="totally_bounded_empty">      <h4>totally_bounded_empty</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> ∅</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="totally_bounded_closure">      <h4>totally_bounded_closure</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}, <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#closure">closure</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="totally_bounded_image">      <h4>totally_bounded_image</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : α → β}
-{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}, <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> (f '' s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="cauchy_of_totally_bounded_of_ultrafilter">      <h4>cauchy_of_totally_bounded_of_ultrafilter</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α} {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s → <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.is_ultrafilter">filter.is_ultrafilter</a> f → f ≤ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.principal">filter.principal</a> s → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="totally_bounded_iff_filter">      <h4>totally_bounded_iff_filter</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s ↔
-    ∀ (f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α), f ≠ ⊥ → f ≤ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.principal">filter.principal</a> s → (∃ (c : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α) (H : c ≤ f), <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> c)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="totally_bounded_iff_ultrafilter">      <h4>totally_bounded_iff_ultrafilter</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s ↔ ∀ (f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α), <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.is_ultrafilter">filter.is_ultrafilter</a> f → f ≤ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.principal">filter.principal</a> s → <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="compact_iff_totally_bounded_complete">      <h4>compact_iff_totally_bounded_complete</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}, <a href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html#compact">compact</a> s ↔ <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s ∧ <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#is_complete">is_complete</a> s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="complete_of_compact">      <h4>complete_of_compact</h4><code>∀ {α : Type u} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html#compact_space">compact_space</a> α], <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="compact_of_totally_bounded_is_closed">      <h4>compact_of_totally_bounded_is_closed</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_closed">is_closed</a> s → <a href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html#compact">compact</a> s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
+       </div>
+</div><div class="thm"><a id="totally_bounded_iff_subset"></a>      <h4>totally_bounded_iff_subset</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s ↔
+    ∀ (d : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> (α × α)),
+      d ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniformity">uniformity</a> α →
+      (∃ (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α) (H : t ⊆ s), <a href="/home/rob/lean/mathlib/scripts/html_out/data/set/finite.html#set.finite">set.finite</a> t ∧ s ⊆ ⋃ (y : α) (H : y ∈ t), {x : α | (x, y) ∈ d})</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="totally_bounded_subset"></a>      <h4>totally_bounded_subset</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  s₁ ⊆ s₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s₁</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="totally_bounded_empty"></a>      <h4>totally_bounded_empty</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> ∅</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="totally_bounded_closure"></a>      <h4>totally_bounded_closure</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#closure">closure</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="totally_bounded_image"></a>      <h4>totally_bounded_image</h4><code>∀ {α : Type u_1} {β : Type u_2} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> β] {f : α → β}
+{s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_continuous">uniform_continuous</a> f → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> (f '' s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="cauchy_of_totally_bounded_of_ultrafilter"></a>      <h4>cauchy_of_totally_bounded_of_ultrafilter</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.is_ultrafilter">filter.is_ultrafilter</a> f → f ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.principal">filter.principal</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="totally_bounded_iff_filter"></a>      <h4>totally_bounded_iff_filter</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s ↔
+    ∀ (f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α), f ≠ ⊥ → f ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.principal">filter.principal</a> s → (∃ (c : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α) (H : c ≤ f), <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> c)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="totally_bounded_iff_ultrafilter"></a>      <h4>totally_bounded_iff_ultrafilter</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s ↔ ∀ (f : <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter">filter</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.is_ultrafilter">filter.is_ultrafilter</a> f → f ≤ <a href="/home/rob/lean/mathlib/scripts/html_out/order/filter/basic.html#filter.principal">filter.principal</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#cauchy">cauchy</a> f</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="compact_iff_totally_bounded_complete"></a>      <h4>compact_iff_totally_bounded_complete</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α}, <a href="/home/rob/lean/mathlib/scripts/html_out/topology/subset_properties.html#compact">compact</a> s ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#is_complete">is_complete</a> s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="complete_of_compact"></a>      <h4>complete_of_compact</h4><code>∀ {α : Type u} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/subset_properties.html#compact_space">compact_space</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="compact_of_totally_bounded_is_closed"></a>      <h4>compact_of_totally_bounded_is_closed</h4><code>∀ {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/basic.html#uniform_space">uniform_space</a> α] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α] {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/topology/uniform_space/cauchy.html#totally_bounded">totally_bounded</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/basic.html#is_closed">is_closed</a> s → <a href="/home/rob/lean/mathlib/scripts/html_out/topology/subset_properties.html#compact">compact</a> s</code>
+<div class="indent"><p></p>
+       </div>
 </div></body></html>

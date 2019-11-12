@@ -1,525 +1,525 @@
-<html><head><title>set_theory.zfc</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="arity">      <h4>arity</h4><code>Type u → ℕ → Type u</code>
-<div class="indent"><p><p>The type of <code>n</code>-ary functions <code>α → α → ... → α</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet">      <h4>pSet</h4><code>Type (u+1)</code>
-<div class="indent"><p><p>The type of pre-sets in universe <code>u</code>. A pre-set
+<!DOCTYPE html><html lang="en"><head><title>set_theory.zfc</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="def"><a id="arity"></a>      <h4>arity</h4><code>Type u → ℕ → Type u</code>
+<div class="indent"><p>The type of <code>n</code>-ary functions <code>α → α → ... → α</code>.</p>
+       </div>
+</div><div class="cnst"><a id="pSet"></a>      <h4>pSet</h4><code>Type (u+1)</code>
+<div class="indent"><p>The type of pre-sets in universe <code>u</code>. A pre-set
  is a family of pre-sets indexed by a type in <code>Type u</code>.
  The ZFC universe is defined as a quotient of this
  to ensure extensionality.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.type">      <h4>pSet.type</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → Type u</code>
-<div class="indent"><p><p>The underlying type of a pre-set</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.func">      <h4>pSet.func</h4><code>Π (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.type">pSet.type</a> x → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>The underlying pre-set family of a pre-set</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.mk_type_func">      <h4>pSet.mk_type_func</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), pSet.mk (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.type">pSet.type</a> x) (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.func">pSet.func</a> x) = x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.equiv">      <h4>pSet.equiv</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → Prop</code>
-<div class="indent"><p><p>Two pre-sets are extensionally equivalent if every
+       </div>
+</div><div class="def"><a id="pSet.type"></a>      <h4>pSet.type</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → Type u</code>
+<div class="indent"><p>The underlying type of a pre-set</p>
+       </div>
+</div><div class="def"><a id="pSet.func"></a>      <h4>pSet.func</h4><code>Π (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.type">pSet.type</a> x → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>The underlying pre-set family of a pre-set</p>
+       </div>
+</div><div class="thm"><a id="pSet.mk_type_func"></a>      <h4>pSet.mk_type_func</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), pSet.mk (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.type">pSet.type</a> x) (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.func">pSet.func</a> x) = x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.equiv"></a>      <h4>pSet.equiv</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → Prop</code>
+<div class="indent"><p>Two pre-sets are extensionally equivalent if every
  element of the first family is extensionally equivalent to
  some element of the second family and vice-versa.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.equiv.refl">      <h4>pSet.equiv.refl</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.equiv.euc">      <h4>pSet.equiv.euc</h4><code>∀ {x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>} {y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>} {z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> z y → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x z</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.equiv.symm">      <h4>pSet.equiv.symm</h4><code>∀ {x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>} {y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> y x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.equiv.trans">      <h4>pSet.equiv.trans</h4><code>∀ {x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>} {y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>} {z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> y z → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x z</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.setoid">      <h4>pSet.setoid</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/data/setoid.html#setoid">setoid</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="pSet.subset">      <h4>pSet.subset</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.has_subset">      <h4>pSet.has_subset</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset">has_subset</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="pSet.equiv.ext">      <h4>pSet.equiv.ext</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y ↔ x ⊆ y ∧ y ⊆ x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.subset.congr_left">      <h4>pSet.subset.congr_left</h4><code>∀ {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → (x ⊆ z ↔ y ⊆ z)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.subset.congr_right">      <h4>pSet.subset.congr_right</h4><code>∀ {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → (z ⊆ x ↔ z ⊆ y)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.mem">      <h4>pSet.mem</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → Prop</code>
-<div class="indent"><p><p><code>x ∈ y</code> as pre-sets if <code>x</code> is extensionally equivalent to a member
+       </div>
+</div><div class="thm"><a id="pSet.equiv.refl"></a>      <h4>pSet.equiv.refl</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.equiv.euc"></a>      <h4>pSet.equiv.euc</h4><code>∀ {x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>} {y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>} {z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> z y → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x z</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.equiv.symm"></a>      <h4>pSet.equiv.symm</h4><code>∀ {x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>} {y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> y x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.equiv.trans"></a>      <h4>pSet.equiv.trans</h4><code>∀ {x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>} {y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>} {z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> y z → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x z</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.setoid"></a>      <h4>pSet.setoid</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="pSet.subset"></a>      <h4>pSet.subset</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.has_subset"></a>      <h4>pSet.has_subset</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_subset">has_subset</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="pSet.equiv.ext"></a>      <h4>pSet.equiv.ext</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y ↔ x ⊆ y ∧ y ⊆ x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.subset.congr_left"></a>      <h4>pSet.subset.congr_left</h4><code>∀ {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → (x ⊆ z ↔ y ⊆ z)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.subset.congr_right"></a>      <h4>pSet.subset.congr_right</h4><code>∀ {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → (z ⊆ x ↔ z ⊆ y)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.mem"></a>      <h4>pSet.mem</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → Prop</code>
+<div class="indent"><p><code>x ∈ y</code> as pre-sets if <code>x</code> is extensionally equivalent to a member
  of the family <code>y</code>.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.has_mem">      <h4>pSet.has_mem</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="pSet.mem.mk">      <h4>pSet.mem.mk</h4><code>∀ {α : Type u} (A : α → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>) (a : α), A a ∈ pSet.mk α A</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.mem.ext">      <h4>pSet.mem.ext</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, (∀ (w : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), w ∈ x ↔ w ∈ y) → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.mem.congr_right">      <h4>pSet.mem.congr_right</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → ∀ {w : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, w ∈ x ↔ w ∈ y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.equiv_iff_mem">      <h4>pSet.equiv_iff_mem</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y ↔ ∀ {w : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, w ∈ x ↔ w ∈ y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.mem.congr_left">      <h4>pSet.mem.congr_left</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → ∀ {w : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, x ∈ w ↔ y ∈ w</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.to_set">      <h4>pSet.to_set</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>Convert a pre-set to a <code>set</code> of pre-sets.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.equiv.eq">      <h4>pSet.equiv.eq</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y ↔ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.to_set">pSet.to_set</a> x = <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.to_set">pSet.to_set</a> y</code>
-<div class="indent"><p><p>Two pre-sets are equivalent iff they have the same members.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.has_coe">      <h4>pSet.has_coe</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="pSet.empty">      <h4>pSet.empty</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>The empty pre-set</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.has_emptyc">      <h4>pSet.has_emptyc</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_emptyc">has_emptyc</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="pSet.mem_empty">      <h4>pSet.mem_empty</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), x ∉ ∅</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.insert">      <h4>pSet.insert</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>Insert an element into a pre-set</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.has_insert">      <h4>pSet.has_insert</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_insert">has_insert</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="pSet.of_nat">      <h4>pSet.of_nat</h4><code>ℕ → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>The n-th von Neumann ordinal</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.omega">      <h4>pSet.omega</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>The von Neumann ordinal ω</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.sep">      <h4>pSet.sep</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>The separation operation <code>{x ∈ a | p x}</code></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.has_sep">      <h4>pSet.has_sep</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sep">has_sep</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="pSet.powerset">      <h4>pSet.powerset</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>The powerset operator</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.mem_powerset">      <h4>pSet.mem_powerset</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, y ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.powerset">pSet.powerset</a> x ↔ y ⊆ x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.Union">      <h4>pSet.Union</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>The set union operator</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.mem_Union">      <h4>pSet.mem_Union</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, y ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.Union">pSet.Union</a> x ↔ ∃ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>) (_x : z ∈ x), y ∈ z</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.image">      <h4>pSet.image</h4><code>(<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>) → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>The image of a function</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.mem_image">      <h4>pSet.mem_image</h4><code>∀ {f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>},
-  (∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> (f x) (f y)) →
-  ∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, y ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.image">pSet.image</a> f x ↔ ∃ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>) (H : z ∈ x), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> y (f z)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.lift">      <h4>pSet.lift</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>Universe lift operation</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.embed">      <h4>pSet.embed</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a></code>
-<div class="indent"><p><p>Embedding of one universe in another</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.lift_mem_embed">      <h4>pSet.lift_mem_embed</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.lift">pSet.lift</a> x ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.embed">pSet.embed</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.arity.equiv">      <h4>pSet.arity.equiv</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#arity">arity</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> n → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#arity">arity</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> n → Prop</code>
-<div class="indent"><p><p>Function equivalence is defined so that <code>f ~ g</code> iff
+       </div>
+</div><div class="def"><a id="pSet.has_mem"></a>      <h4>pSet.has_mem</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mem">has_mem</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="pSet.mem.mk"></a>      <h4>pSet.mem.mk</h4><code>∀ {α : Type u} (A : α → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>) (a : α), A a ∈ pSet.mk α A</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.mem.ext"></a>      <h4>pSet.mem.ext</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, (∀ (w : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), w ∈ x ↔ w ∈ y) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.mem.congr_right"></a>      <h4>pSet.mem.congr_right</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → ∀ {w : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, w ∈ x ↔ w ∈ y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.equiv_iff_mem"></a>      <h4>pSet.equiv_iff_mem</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y ↔ ∀ {w : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, w ∈ x ↔ w ∈ y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.mem.congr_left"></a>      <h4>pSet.mem.congr_left</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → ∀ {w : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, x ∈ w ↔ y ∈ w</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.to_set"></a>      <h4>pSet.to_set</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>Convert a pre-set to a <code>set</code> of pre-sets.</p>
+       </div>
+</div><div class="thm"><a id="pSet.equiv.eq"></a>      <h4>pSet.equiv.eq</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.to_set">pSet.to_set</a> x = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.to_set">pSet.to_set</a> y</code>
+<div class="indent"><p>Two pre-sets are equivalent iff they have the same members.</p>
+       </div>
+</div><div class="def"><a id="pSet.has_coe"></a>      <h4>pSet.has_coe</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="pSet.empty"></a>      <h4>pSet.empty</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>The empty pre-set</p>
+       </div>
+</div><div class="def"><a id="pSet.has_emptyc"></a>      <h4>pSet.has_emptyc</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_emptyc">has_emptyc</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="pSet.mem_empty"></a>      <h4>pSet.mem_empty</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), x ∉ ∅</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.insert"></a>      <h4>pSet.insert</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>Insert an element into a pre-set</p>
+       </div>
+</div><div class="def"><a id="pSet.has_insert"></a>      <h4>pSet.has_insert</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_insert">has_insert</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="pSet.of_nat"></a>      <h4>pSet.of_nat</h4><code>ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>The n-th von Neumann ordinal</p>
+       </div>
+</div><div class="def"><a id="pSet.omega"></a>      <h4>pSet.omega</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>The von Neumann ordinal ω</p>
+       </div>
+</div><div class="def"><a id="pSet.sep"></a>      <h4>pSet.sep</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>The separation operation <code>{x ∈ a | p x}</code></p>
+       </div>
+</div><div class="def"><a id="pSet.has_sep"></a>      <h4>pSet.has_sep</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_sep">has_sep</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="pSet.powerset"></a>      <h4>pSet.powerset</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>The powerset operator</p>
+       </div>
+</div><div class="thm"><a id="pSet.mem_powerset"></a>      <h4>pSet.mem_powerset</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, y ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.powerset">pSet.powerset</a> x ↔ y ⊆ x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.Union"></a>      <h4>pSet.Union</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>The set union operator</p>
+       </div>
+</div><div class="thm"><a id="pSet.mem_Union"></a>      <h4>pSet.mem_Union</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, y ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.Union">pSet.Union</a> x ↔ ∃ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>) (_x : z ∈ x), y ∈ z</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.image"></a>      <h4>pSet.image</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>The image of a function</p>
+       </div>
+</div><div class="thm"><a id="pSet.mem_image"></a>      <h4>pSet.mem_image</h4><code>∀ {f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>},
+  (∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> x y → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> (f x) (f y)) →
+  ∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, y ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.image">pSet.image</a> f x ↔ ∃ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>) (H : z ∈ x), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> y (f z)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.lift"></a>      <h4>pSet.lift</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>Universe lift operation</p>
+       </div>
+</div><div class="def"><a id="pSet.embed"></a>      <h4>pSet.embed</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a></code>
+<div class="indent"><p>Embedding of one universe in another</p>
+       </div>
+</div><div class="thm"><a id="pSet.lift_mem_embed"></a>      <h4>pSet.lift_mem_embed</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.lift">pSet.lift</a> x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.embed">pSet.embed</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.arity.equiv"></a>      <h4>pSet.arity.equiv</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#arity">arity</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> n → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#arity">arity</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> n → Prop</code>
+<div class="indent"><p>Function equivalence is defined so that <code>f ~ g</code> iff
  <code>∀ x y, x ~ y → f x ~ g y</code>. This extends to equivalence of n-ary
  functions.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp">      <h4>pSet.resp</h4><code>ℕ → Type (u+1)</code>
-<div class="indent"><p><p><code>resp n</code> is the collection of n-ary functions on <code>pSet</code> that respect
+       </div>
+</div><div class="def"><a id="pSet.resp"></a>      <h4>pSet.resp</h4><code>ℕ → Type (u+1)</code>
+<div class="indent"><p><code>resp n</code> is the collection of n-ary functions on <code>pSet</code> that respect
  equivalence, i.e. when the inputs are equivalent the output is as well.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp.f">      <h4>pSet.resp.f</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> (n + 1) → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp.equiv">      <h4>pSet.resp.equiv</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp.refl">      <h4>pSet.resp.refl</h4><code>∀ {n : ℕ} (a : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> a a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp.euc">      <h4>pSet.resp.euc</h4><code>∀ {n : ℕ} {a b c : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> a b → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> c b → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> a c</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp.setoid">      <h4>pSet.resp.setoid</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/core/init/data/setoid.html#setoid">setoid</a> (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set">      <h4>Set</h4><code>Type (u+1)</code>
-<div class="indent"><p><p>The ZFC universe of sets consists of the type of pre-sets,
+       </div>
+</div><div class="def"><a id="pSet.resp.f"></a>      <h4>pSet.resp.f</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> (n + 1) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.resp.equiv"></a>      <h4>pSet.resp.equiv</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.resp.refl"></a>      <h4>pSet.resp.refl</h4><code>∀ {n : ℕ} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> a a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.resp.euc"></a>      <h4>pSet.resp.euc</h4><code>∀ {n : ℕ} {a b c : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> a b → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> c b → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> a c</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.resp.setoid"></a>      <h4>pSet.resp.setoid</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/setoid.html#setoid">setoid</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Set"></a>      <h4>Set</h4><code>Type (u+1)</code>
+<div class="indent"><p>The ZFC universe of sets consists of the type of pre-sets,
  quotiented by extensional equivalence.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp.eval_aux">      <h4>pSet.resp.eval_aux</h4><code>Π {n : ℕ}, {f // ∀ (a b : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> a b → f a = f b}</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp.eval">      <h4>pSet.resp.eval</h4><code>Π (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#arity">arity</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> n</code>
-<div class="indent"><p><p>An equivalence-respecting function yields an n-ary Set function.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.resp.eval_val">      <h4>pSet.resp.eval_val</h4><code>∀ {n : ℕ} {f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> (n + 1)} {x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.eval">pSet.resp.eval</a> (n + 1) f ⟦x⟧ = <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.eval">pSet.resp.eval</a> n (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.f">pSet.resp.f</a> f x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="pSet.definable">      <h4>pSet.definable</h4><code>Π (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#arity">arity</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> n → Type (u+1)</code>
-<div class="indent"><p><p>A set function is "definable" if it is the image of some n-ary pre-set
+       </div>
+</div><div class="def"><a id="pSet.resp.eval_aux"></a>      <h4>pSet.resp.eval_aux</h4><code>Π {n : ℕ}, {f // ∀ (a b : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.equiv">pSet.resp.equiv</a> a b → f a = f b}</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.resp.eval"></a>      <h4>pSet.resp.eval</h4><code>Π (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#arity">arity</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> n</code>
+<div class="indent"><p>An equivalence-respecting function yields an n-ary Set function.</p>
+       </div>
+</div><div class="thm"><a id="pSet.resp.eval_val"></a>      <h4>pSet.resp.eval_val</h4><code>∀ {n : ℕ} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> (n + 1)} {x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.eval">pSet.resp.eval</a> (n + 1) f ⟦x⟧ = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.eval">pSet.resp.eval</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.f">pSet.resp.f</a> f x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="cnst"><a id="pSet.definable"></a>      <h4>pSet.definable</h4><code>Π (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#arity">arity</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> n → Type (u+1)</code>
+<div class="indent"><p>A set function is "definable" if it is the image of some n-ary pre-set
  function. This isn't exactly definability, but is useful as a sufficient
  condition for functions that have a computable image.</p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.definable.eq_mk">      <h4>pSet.definable.eq_mk</h4><code>Π {n : ℕ} (f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n) {s : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#arity">arity</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> n}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.eval">pSet.resp.eval</a> n f = s → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> n s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.definable.resp">      <h4>pSet.definable.resp</h4><code>Π {n : ℕ} (s : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#arity">arity</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> n) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> n s], <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp">pSet.resp</a> n</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="pSet.definable.eq">      <h4>pSet.definable.eq</h4><code>∀ {n : ℕ} (s : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#arity">arity</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> n) [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> n s], <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.resp.eval">pSet.resp.eval</a> n (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable.resp">pSet.definable.resp</a> s) = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="classical.all_definable">      <h4>classical.all_definable</h4><code>Π {n : ℕ} (F : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#arity">arity</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> n), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> n F</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mk">      <h4>Set.mk</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mk_eq">      <h4>Set.mk_eq</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), ⟦x⟧ = <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.mk">Set.mk</a> x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.mem">      <h4>Set.mem</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.has_mem">      <h4>Set.has_mem</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.to_set">      <h4>Set.to_set</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>Convert a ZFC set into a <code>set</code> of sets</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.subset">      <h4>Set.subset</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.has_subset">      <h4>Set.has_subset</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset">has_subset</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.subset_iff">      <h4>Set.subset_iff</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.mk">Set.mk</a> x ⊆ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.mk">Set.mk</a> y ↔ x ⊆ y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.ext">      <h4>Set.ext</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, (∀ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), z ∈ x ↔ z ∈ y) → x = y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.ext_iff">      <h4>Set.ext_iff</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, (∀ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), z ∈ x ↔ z ∈ y) ↔ x = y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.empty">      <h4>Set.empty</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>The empty set</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.has_emptyc">      <h4>Set.has_emptyc</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_emptyc">has_emptyc</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.inhabited">      <h4>Set.inhabited</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.mem_empty">      <h4>Set.mem_empty</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), x ∉ ∅</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.eq_empty">      <h4>Set.eq_empty</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), x = ∅ ↔ ∀ (y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), y ∉ x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.insert">      <h4>Set.insert</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p><code>insert x y</code> is the set <code>{x} ∪ y</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.has_insert">      <h4>Set.has_insert</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_insert">has_insert</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.mem_insert">      <h4>Set.mem_insert</h4><code>∀ {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, x ∈ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#insert">insert</a> y z ↔ x = y ∨ x ∈ z</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.mem_singleton">      <h4>Set.mem_singleton</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, x ∈ {y} ↔ x = y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.mem_singleton'">      <h4>Set.mem_singleton'</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, x ∈ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#insert">insert</a> y ∅ ↔ x = y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.mem_pair">      <h4>Set.mem_pair</h4><code>∀ {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, x ∈ {y, z} ↔ x = y ∨ x = z</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.omega">      <h4>Set.omega</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p><code>omega</code> is the first infinite von Neumann ordinal</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.omega_zero">      <h4>Set.omega_zero</h4><code>∅ ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.omega">Set.omega</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.omega_succ">      <h4>Set.omega_succ</h4><code>∀ {n : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, n ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.omega">Set.omega</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#insert">insert</a> n n ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.omega">Set.omega</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.sep">      <h4>Set.sep</h4><code>(<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop) → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p><code>{x ∈ a | p x}</code> is the set of elements in <code>a</code> satisfying <code>p</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.has_sep">      <h4>Set.has_sep</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sep">has_sep</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.mem_sep">      <h4>Set.mem_sep</h4><code>∀ {p : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop} {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, y ∈ {y ∈ x | p y} ↔ y ∈ x ∧ p y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.powerset">      <h4>Set.powerset</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>The powerset operation, the collection of subsets of a set</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mem_powerset">      <h4>Set.mem_powerset</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, y ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.powerset">Set.powerset</a> x ↔ y ⊆ x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.Union_lem">      <h4>Set.Union_lem</h4><code>∀ {α β : Type u} (A : α → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>) (B : β → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet">pSet</a>),
-  (∀ (a : α), ∃ (b : β), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> (A a) (B b)) →
-  ∀ (a : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.type">pSet.type</a> (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.Union">pSet.Union</a> (pSet.mk α A))),
-    ∃ (b : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.type">pSet.type</a> (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.Union">pSet.Union</a> (pSet.mk β B))),
-      <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.func">pSet.func</a> (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.Union">pSet.Union</a> (pSet.mk α A)) a) (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.func">pSet.func</a> (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.Union">pSet.Union</a> (pSet.mk β B)) b)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.Union">      <h4>Set.Union</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>The union operator, the collection of elements of elements of a set</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mem_Union">      <h4>Set.mem_Union</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, y ∈ ⋃ x ↔ ∃ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (H : z ∈ x), y ∈ z</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.Union_singleton">      <h4>Set.Union_singleton</h4><code>∀ {x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, ⋃ {x} = x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.singleton_inj">      <h4>Set.singleton_inj</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, {x} = {y} → x = y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.union">      <h4>Set.union</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>The binary union operation</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.inter">      <h4>Set.inter</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>The binary intersection operation</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.diff">      <h4>Set.diff</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>The set difference operation</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.has_union">      <h4>Set.has_union</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_union">has_union</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.has_inter">      <h4>Set.has_inter</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter">has_inter</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.has_sdiff">      <h4>Set.has_sdiff</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sdiff">has_sdiff</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.mem_union">      <h4>Set.mem_union</h4><code>∀ {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, z ∈ x ∪ y ↔ z ∈ x ∨ z ∈ y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.mem_inter">      <h4>Set.mem_inter</h4><code>∀ {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, z ∈ x ∩ y ↔ z ∈ x ∧ z ∈ y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.mem_diff">      <h4>Set.mem_diff</h4><code>∀ {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, z ∈ x \ y ↔ z ∈ x ∧ z ∉ y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.induction_on">      <h4>Set.induction_on</h4><code>∀ {p : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop} (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), (∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), (∀ (y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), y ∈ x → p y) → p x) → p x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.regularity">      <h4>Set.regularity</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), x ≠ ∅ → (∃ (y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (H : y ∈ x), x ∩ y = ∅)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.image">      <h4>Set.image</h4><code>Π (f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f], <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>The image of a (definable) set function</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.image.mk">      <h4>Set.image.mk</h4><code>∀ (f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) {y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, y ∈ x → f y ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.image">Set.image</a> f x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mem_image">      <h4>Set.mem_image</h4><code>∀ {f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>} [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, y ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.image">Set.image</a> f x ↔ ∃ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (H : z ∈ x), f z = y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.pair">      <h4>Set.pair</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>Kuratowski ordered pair</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.pair_sep">      <h4>Set.pair_sep</h4><code>(<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop) → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>A subset of pairs <code>{(a, b) ∈ x × y | p a b}</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mem_pair_sep">      <h4>Set.mem_pair_sep</h4><code>∀ {p : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop} {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>},
-  z ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair_sep">Set.pair_sep</a> p x y ↔ ∃ (a : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (H : a ∈ x) (b : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (H : b ∈ y), z = <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair">Set.pair</a> a b ∧ p a b</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.pair_inj">      <h4>Set.pair_inj</h4><code>∀ {x y x' y' : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair">Set.pair</a> x y = <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair">Set.pair</a> x' y' → x = x' ∧ y = y'</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.prod">      <h4>Set.prod</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>The cartesian product, <code>{(a, b) | a ∈ x, b ∈ y}</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mem_prod">      <h4>Set.mem_prod</h4><code>∀ {x y z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, z ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.prod">Set.prod</a> x y ↔ ∃ (a : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (H : a ∈ x) (b : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (H : b ∈ y), z = <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair">Set.pair</a> a b</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.pair_mem_prod">      <h4>Set.pair_mem_prod</h4><code>∀ {x y a b : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair">Set.pair</a> a b ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.prod">Set.prod</a> x y ↔ a ∈ x ∧ b ∈ y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.is_func">      <h4>Set.is_func</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop</code>
-<div class="indent"><p><p><code>is_func x y f</code> is the assertion <code>f : x → y</code> where <code>f</code> is a ZFC function
+       </div>
+</div><div class="def"><a id="pSet.definable.eq_mk"></a>      <h4>pSet.definable.eq_mk</h4><code>Π {n : ℕ} (f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#arity">arity</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> n}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.eval">pSet.resp.eval</a> n f = s → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> n s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="pSet.definable.resp"></a>      <h4>pSet.definable.resp</h4><code>Π {n : ℕ} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#arity">arity</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> n) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> n s], <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp">pSet.resp</a> n</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="pSet.definable.eq"></a>      <h4>pSet.definable.eq</h4><code>∀ {n : ℕ} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#arity">arity</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> n) [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> n s], <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.resp.eval">pSet.resp.eval</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable.resp">pSet.definable.resp</a> s) = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="classical.all_definable"></a>      <h4>classical.all_definable</h4><code>Π {n : ℕ} (F : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#arity">arity</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> n), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> n F</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.mk"></a>      <h4>Set.mk</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.mk_eq"></a>      <h4>Set.mk_eq</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), ⟦x⟧ = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.mk">Set.mk</a> x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Set.mem"></a>      <h4>Set.mem</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.has_mem"></a>      <h4>Set.has_mem</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mem">has_mem</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Set.to_set"></a>      <h4>Set.to_set</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>Convert a ZFC set into a <code>set</code> of sets</p>
+       </div>
+</div><div class="def"><a id="Set.subset"></a>      <h4>Set.subset</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.has_subset"></a>      <h4>Set.has_subset</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_subset">has_subset</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="Set.subset_iff"></a>      <h4>Set.subset_iff</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.mk">Set.mk</a> x ⊆ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.mk">Set.mk</a> y ↔ x ⊆ y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.ext"></a>      <h4>Set.ext</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, (∀ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), z ∈ x ↔ z ∈ y) → x = y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.ext_iff"></a>      <h4>Set.ext_iff</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, (∀ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), z ∈ x ↔ z ∈ y) ↔ x = y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.empty"></a>      <h4>Set.empty</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>The empty set</p>
+       </div>
+</div><div class="def"><a id="Set.has_emptyc"></a>      <h4>Set.has_emptyc</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_emptyc">has_emptyc</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Set.inhabited"></a>      <h4>Set.inhabited</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="Set.mem_empty"></a>      <h4>Set.mem_empty</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), x ∉ ∅</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.eq_empty"></a>      <h4>Set.eq_empty</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), x = ∅ ↔ ∀ (y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), y ∉ x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.insert"></a>      <h4>Set.insert</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p><code>insert x y</code> is the set <code>{x} ∪ y</code></p>
+       </div>
+</div><div class="def"><a id="Set.has_insert"></a>      <h4>Set.has_insert</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_insert">has_insert</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="Set.mem_insert"></a>      <h4>Set.mem_insert</h4><code>∀ {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#insert">insert</a> y z ↔ x = y ∨ x ∈ z</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.mem_singleton"></a>      <h4>Set.mem_singleton</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, x ∈ {y} ↔ x = y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.mem_singleton'"></a>      <h4>Set.mem_singleton'</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, x ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#insert">insert</a> y ∅ ↔ x = y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.mem_pair"></a>      <h4>Set.mem_pair</h4><code>∀ {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, x ∈ {y, z} ↔ x = y ∨ x = z</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Set.omega"></a>      <h4>Set.omega</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p><code>omega</code> is the first infinite von Neumann ordinal</p>
+       </div>
+</div><div class="thm"><a id="Set.omega_zero"></a>      <h4>Set.omega_zero</h4><code>∅ ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.omega">Set.omega</a></code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.omega_succ"></a>      <h4>Set.omega_succ</h4><code>∀ {n : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, n ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.omega">Set.omega</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#insert">insert</a> n n ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.omega">Set.omega</a></code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Set.sep"></a>      <h4>Set.sep</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p><code>{x ∈ a | p x}</code> is the set of elements in <code>a</code> satisfying <code>p</code></p>
+       </div>
+</div><div class="def"><a id="Set.has_sep"></a>      <h4>Set.has_sep</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_sep">has_sep</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="Set.mem_sep"></a>      <h4>Set.mem_sep</h4><code>∀ {p : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop} {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, y ∈ {y ∈ x | p y} ↔ y ∈ x ∧ p y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Set.powerset"></a>      <h4>Set.powerset</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>The powerset operation, the collection of subsets of a set</p>
+       </div>
+</div><div class="thm"><a id="Set.mem_powerset"></a>      <h4>Set.mem_powerset</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, y ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.powerset">Set.powerset</a> x ↔ y ⊆ x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.Union_lem"></a>      <h4>Set.Union_lem</h4><code>∀ {α β : Type u} (A : α → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>) (B : β → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet">pSet</a>),
+  (∀ (a : α), ∃ (b : β), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> (A a) (B b)) →
+  ∀ (a : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.type">pSet.type</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.Union">pSet.Union</a> (pSet.mk α A))),
+    ∃ (b : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.type">pSet.type</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.Union">pSet.Union</a> (pSet.mk β B))),
+      <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.equiv">pSet.equiv</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.func">pSet.func</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.Union">pSet.Union</a> (pSet.mk α A)) a) (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.func">pSet.func</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.Union">pSet.Union</a> (pSet.mk β B)) b)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.Union"></a>      <h4>Set.Union</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>The union operator, the collection of elements of elements of a set</p>
+       </div>
+</div><div class="thm"><a id="Set.mem_Union"></a>      <h4>Set.mem_Union</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, y ∈ ⋃ x ↔ ∃ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (H : z ∈ x), y ∈ z</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.Union_singleton"></a>      <h4>Set.Union_singleton</h4><code>∀ {x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, ⋃ {x} = x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.singleton_inj"></a>      <h4>Set.singleton_inj</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, {x} = {y} → x = y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.union"></a>      <h4>Set.union</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>The binary union operation</p>
+       </div>
+</div><div class="def"><a id="Set.inter"></a>      <h4>Set.inter</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>The binary intersection operation</p>
+       </div>
+</div><div class="def"><a id="Set.diff"></a>      <h4>Set.diff</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>The set difference operation</p>
+       </div>
+</div><div class="def"><a id="Set.has_union"></a>      <h4>Set.has_union</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_union">has_union</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Set.has_inter"></a>      <h4>Set.has_inter</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_inter">has_inter</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Set.has_sdiff"></a>      <h4>Set.has_sdiff</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_sdiff">has_sdiff</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="Set.mem_union"></a>      <h4>Set.mem_union</h4><code>∀ {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, z ∈ x ∪ y ↔ z ∈ x ∨ z ∈ y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.mem_inter"></a>      <h4>Set.mem_inter</h4><code>∀ {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, z ∈ x ∩ y ↔ z ∈ x ∧ z ∈ y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.mem_diff"></a>      <h4>Set.mem_diff</h4><code>∀ {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, z ∈ x \ y ↔ z ∈ x ∧ z ∉ y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.induction_on"></a>      <h4>Set.induction_on</h4><code>∀ {p : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop} (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), (∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), (∀ (y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), y ∈ x → p y) → p x) → p x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.regularity"></a>      <h4>Set.regularity</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), x ≠ ∅ → (∃ (y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (H : y ∈ x), x ∩ y = ∅)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.image"></a>      <h4>Set.image</h4><code>Π (f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f], <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>The image of a (definable) set function</p>
+       </div>
+</div><div class="thm"><a id="Set.image.mk"></a>      <h4>Set.image.mk</h4><code>∀ (f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) {y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, y ∈ x → f y ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.image">Set.image</a> f x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.mem_image"></a>      <h4>Set.mem_image</h4><code>∀ {f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>} [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, y ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.image">Set.image</a> f x ↔ ∃ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (H : z ∈ x), f z = y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Set.pair"></a>      <h4>Set.pair</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>Kuratowski ordered pair</p>
+       </div>
+</div><div class="def"><a id="Set.pair_sep"></a>      <h4>Set.pair_sep</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>A subset of pairs <code>{(a, b) ∈ x × y | p a b}</code></p>
+       </div>
+</div><div class="thm"><a id="Set.mem_pair_sep"></a>      <h4>Set.mem_pair_sep</h4><code>∀ {p : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop} {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>},
+  z ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair_sep">Set.pair_sep</a> p x y ↔ ∃ (a : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (H : a ∈ x) (b : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (H : b ∈ y), z = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair">Set.pair</a> a b ∧ p a b</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.pair_inj"></a>      <h4>Set.pair_inj</h4><code>∀ {x y x' y' : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair">Set.pair</a> x y = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair">Set.pair</a> x' y' → x = x' ∧ y = y'</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Set.prod"></a>      <h4>Set.prod</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>The cartesian product, <code>{(a, b) | a ∈ x, b ∈ y}</code></p>
+       </div>
+</div><div class="thm"><a id="Set.mem_prod"></a>      <h4>Set.mem_prod</h4><code>∀ {x y z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, z ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.prod">Set.prod</a> x y ↔ ∃ (a : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (H : a ∈ x) (b : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (H : b ∈ y), z = <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair">Set.pair</a> a b</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.pair_mem_prod"></a>      <h4>Set.pair_mem_prod</h4><code>∀ {x y a b : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair">Set.pair</a> a b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.prod">Set.prod</a> x y ↔ a ∈ x ∧ b ∈ y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Set.is_func"></a>      <h4>Set.is_func</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop</code>
+<div class="indent"><p><code>is_func x y f</code> is the assertion <code>f : x → y</code> where <code>f</code> is a ZFC function
  (a set of ordered pairs)</p>
-</p>       </div>
-</div><div class="entry"><a id="Set.funs">      <h4>Set.funs</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p><code>funs x y</code> is <code>y ^ x</code>, the set of all set functions <code>x → y</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mem_funs">      <h4>Set.mem_funs</h4><code>∀ {x y f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, f ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.funs">Set.funs</a> x y ↔ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.is_func">Set.is_func</a> x y f</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.map_definable_aux">      <h4>Set.map_definable_aux</h4><code>Π (f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f], <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 (λ (y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair">Set.pair</a> y (f y))</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Set.map">      <h4>Set.map</h4><code>Π (f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f], <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>Graph of a function: <code>map f x</code> is the ZFC function which maps <code>a ∈ x</code> to <code>f a</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.mem_map">      <h4>Set.mem_map</h4><code>∀ {f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>} [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>},
-  y ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.map">Set.map</a> f x ↔ ∃ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (H : z ∈ x), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair">Set.pair</a> z (f z) = y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.map_unique">      <h4>Set.map_unique</h4><code>∀ {f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>} [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, z ∈ x → (∃! (w : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.pair">Set.pair</a> z w ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.map">Set.map</a> f x)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.map_is_func">      <h4>Set.map_is_func</h4><code>∀ {f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>} [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>},
-  <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.is_func">Set.is_func</a> x y (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.map">Set.map</a> f x) ↔ ∀ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), z ∈ x → f z ∈ y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class">      <h4>Class</h4><code>Type (u_1+1)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Class.has_subset">      <h4>Class.has_subset</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset">has_subset</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.has_sep">      <h4>Class.has_sep</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sep">has_sep</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.has_emptyc">      <h4>Class.has_emptyc</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_emptyc">has_emptyc</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.has_insert">      <h4>Class.has_insert</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_insert">has_insert</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.has_union">      <h4>Class.has_union</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_union">has_union</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.has_inter">      <h4>Class.has_inter</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter">has_inter</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.has_neg">      <h4>Class.has_neg</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg">has_neg</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.has_sdiff">      <h4>Class.has_sdiff</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sdiff">has_sdiff</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.of_Set">      <h4>Class.of_Set</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p>Coerce a set into a class</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.has_coe">      <h4>Class.has_coe</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.univ">      <h4>Class.univ</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p>The universal class</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.to_Set">      <h4>Class.to_Set</h4><code>(<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop) → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → Prop</code>
-<div class="indent"><p><p>Assert that <code>A</code> is a set satisfying <code>p</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Class.mem">      <h4>Class.mem</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → Prop</code>
-<div class="indent"><p><p><code>A ∈ B</code> if <code>A</code> is a set which is a member of <code>B</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Class.has_mem">      <h4>Class.has_mem</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="Class.mem_univ">      <h4>Class.mem_univ</h4><code>∀ {A : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a>}, A ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class.univ">Class.univ</a> ↔ ∃ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ↑x = A</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Class.Cong_to_Class">      <h4>Class.Cong_to_Class</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p>Convert a conglomerate (a collection of classes) into a class</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.Class_to_Cong">      <h4>Class.Class_to_Cong</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p>Convert a class into a conglomerate (a collection of classes)</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.powerset">      <h4>Class.powerset</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p>The power class of a class is the class of all subclasses that are sets</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.Union">      <h4>Class.Union</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p>The union of a class is the class of all members of sets in the class</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.of_Set.inj">      <h4>Class.of_Set.inj</h4><code>∀ {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, ↑x = ↑y → x = y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Class.to_Set_of_Set">      <h4>Class.to_Set_of_Set</h4><code>∀ (p : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop) (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class.to_Set">Class.to_Set</a> p ↑x ↔ p x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.mem_hom_left">      <h4>Class.mem_hom_left</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>) (A : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a>), ↑x ∈ A ↔ A x</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.mem_hom_right">      <h4>Class.mem_hom_right</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ↑y x ↔ x ∈ y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.subset_hom">      <h4>Class.subset_hom</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ↑x ⊆ ↑y ↔ x ⊆ y</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.sep_hom">      <h4>Class.sep_hom</h4><code>∀ (p : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop) (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ↑{y ∈ x | p y} = {y ∈ ↑x | p y}</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.empty_hom">      <h4>Class.empty_hom</h4><code>↑∅ = ∅</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.insert_hom">      <h4>Class.insert_hom</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#insert">insert</a> x ↑y = ↑(<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#insert">insert</a> x y)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.union_hom">      <h4>Class.union_hom</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ↑x ∪ ↑y = ↑(x ∪ y)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.inter_hom">      <h4>Class.inter_hom</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ↑x ∩ ↑y = ↑(x ∩ y)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.diff_hom">      <h4>Class.diff_hom</h4><code>∀ (x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ↑x \ ↑y = ↑(x \ y)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.powerset_hom">      <h4>Class.powerset_hom</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class.powerset">Class.powerset</a> ↑x = ↑(<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.powerset">Set.powerset</a> x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.Union_hom">      <h4>Class.Union_hom</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ⋃ ↑x = ↑(⋃ x)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Class.iota">      <h4>Class.iota</h4><code>(<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop) → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p>The definite description operator, which is {x} if <code>{a | p a} = {x}</code>
+       </div>
+</div><div class="def"><a id="Set.funs"></a>      <h4>Set.funs</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p><code>funs x y</code> is <code>y ^ x</code>, the set of all set functions <code>x → y</code></p>
+       </div>
+</div><div class="thm"><a id="Set.mem_funs"></a>      <h4>Set.mem_funs</h4><code>∀ {x y f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, f ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.funs">Set.funs</a> x y ↔ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.is_func">Set.is_func</a> x y f</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Set.map_definable_aux"></a>      <h4>Set.map_definable_aux</h4><code>Π (f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f], <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 (λ (y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair">Set.pair</a> y (f y))</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Set.map"></a>      <h4>Set.map</h4><code>Π (f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f], <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>Graph of a function: <code>map f x</code> is the ZFC function which maps <code>a ∈ x</code> to <code>f a</code></p>
+       </div>
+</div><div class="thm"><a id="Set.mem_map"></a>      <h4>Set.mem_map</h4><code>∀ {f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>} [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>},
+  y ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.map">Set.map</a> f x ↔ ∃ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (H : z ∈ x), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair">Set.pair</a> z (f z) = y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Set.map_unique"></a>      <h4>Set.map_unique</h4><code>∀ {f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>} [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, z ∈ x → (∃! (w : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.pair">Set.pair</a> z w ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.map">Set.map</a> f x)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.map_is_func"></a>      <h4>Set.map_is_func</h4><code>∀ {f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>} [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.is_func">Set.is_func</a> x y (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.map">Set.map</a> f x) ↔ ∀ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), z ∈ x → f z ∈ y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Class"></a>      <h4>Class</h4><code>Type (u_1+1)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Class.has_subset"></a>      <h4>Class.has_subset</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_subset">has_subset</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.has_sep"></a>      <h4>Class.has_sep</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_sep">has_sep</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.has_emptyc"></a>      <h4>Class.has_emptyc</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_emptyc">has_emptyc</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.has_insert"></a>      <h4>Class.has_insert</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_insert">has_insert</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.has_union"></a>      <h4>Class.has_union</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_union">has_union</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.has_inter"></a>      <h4>Class.has_inter</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_inter">has_inter</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.has_neg"></a>      <h4>Class.has_neg</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_neg">has_neg</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.has_sdiff"></a>      <h4>Class.has_sdiff</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_sdiff">has_sdiff</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.of_Set"></a>      <h4>Class.of_Set</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p>Coerce a set into a class</p>
+       </div>
+</div><div class="def"><a id="Class.has_coe"></a>      <h4>Class.has_coe</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="Class.univ"></a>      <h4>Class.univ</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p>The universal class</p>
+       </div>
+</div><div class="def"><a id="Class.to_Set"></a>      <h4>Class.to_Set</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → Prop</code>
+<div class="indent"><p>Assert that <code>A</code> is a set satisfying <code>p</code></p>
+       </div>
+</div><div class="def"><a id="Class.mem"></a>      <h4>Class.mem</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → Prop</code>
+<div class="indent"><p><code>A ∈ B</code> if <code>A</code> is a set which is a member of <code>B</code></p>
+       </div>
+</div><div class="def"><a id="Class.has_mem"></a>      <h4>Class.has_mem</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mem">has_mem</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="Class.mem_univ"></a>      <h4>Class.mem_univ</h4><code>∀ {A : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a>}, A ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class.univ">Class.univ</a> ↔ ∃ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ↑x = A</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="Class.Cong_to_Class"></a>      <h4>Class.Cong_to_Class</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p>Convert a conglomerate (a collection of classes) into a class</p>
+       </div>
+</div><div class="def"><a id="Class.Class_to_Cong"></a>      <h4>Class.Class_to_Cong</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/set.html#set">set</a> <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p>Convert a class into a conglomerate (a collection of classes)</p>
+       </div>
+</div><div class="def"><a id="Class.powerset"></a>      <h4>Class.powerset</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p>The power class of a class is the class of all subclasses that are sets</p>
+       </div>
+</div><div class="def"><a id="Class.Union"></a>      <h4>Class.Union</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p>The union of a class is the class of all members of sets in the class</p>
+       </div>
+</div><div class="thm"><a id="Class.of_Set.inj"></a>      <h4>Class.of_Set.inj</h4><code>∀ {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, ↑x = ↑y → x = y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Class.to_Set_of_Set"></a>      <h4>Class.to_Set_of_Set</h4><code>∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class.to_Set">Class.to_Set</a> p ↑x ↔ p x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.mem_hom_left"></a>      <h4>Class.mem_hom_left</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>) (A : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a>), ↑x ∈ A ↔ A x</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.mem_hom_right"></a>      <h4>Class.mem_hom_right</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ↑y x ↔ x ∈ y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.subset_hom"></a>      <h4>Class.subset_hom</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ↑x ⊆ ↑y ↔ x ⊆ y</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.sep_hom"></a>      <h4>Class.sep_hom</h4><code>∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ↑{y ∈ x | p y} = {y ∈ ↑x | p y}</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.empty_hom"></a>      <h4>Class.empty_hom</h4><code>↑∅ = ∅</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.insert_hom"></a>      <h4>Class.insert_hom</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#insert">insert</a> x ↑y = ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#insert">insert</a> x y)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.union_hom"></a>      <h4>Class.union_hom</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ↑x ∪ ↑y = ↑(x ∪ y)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.inter_hom"></a>      <h4>Class.inter_hom</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ↑x ∩ ↑y = ↑(x ∩ y)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.diff_hom"></a>      <h4>Class.diff_hom</h4><code>∀ (x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ↑x \ ↑y = ↑(x \ y)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.powerset_hom"></a>      <h4>Class.powerset_hom</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class.powerset">Class.powerset</a> ↑x = ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.powerset">Set.powerset</a> x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="Class.Union_hom"></a>      <h4>Class.Union_hom</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ⋃ ↑x = ↑(⋃ x)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Class.iota"></a>      <h4>Class.iota</h4><code>(<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p>The definite description operator, which is {x} if <code>{a | p a} = {x}</code>
  and ∅ otherwise</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.iota_val">      <h4>Class.iota_val</h4><code>∀ (p : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop) (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), (∀ (y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), p y ↔ y = x) → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class.iota">Class.iota</a> p = ↑x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Class.iota_ex">      <h4>Class.iota_ex</h4><code>∀ (p : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → Prop), <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class.iota">Class.iota</a> p ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class.univ">Class.univ</a></code>
-<div class="indent"><p><p>Unlike the other set constructors, the <code>iota</code> definite descriptor
+       </div>
+</div><div class="thm"><a id="Class.iota_val"></a>      <h4>Class.iota_val</h4><code>∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop) (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), (∀ (y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), p y ↔ y = x) → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class.iota">Class.iota</a> p = ↑x</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Class.iota_ex"></a>      <h4>Class.iota_ex</h4><code>∀ (p : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → Prop), <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class.iota">Class.iota</a> p ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class.univ">Class.univ</a></code>
+<div class="indent"><p>Unlike the other set constructors, the <code>iota</code> definite descriptor
  is a set for any set input, but not constructively so, so there is no
  associated <code>(Set → Prop) → Set</code> function.</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.fval">      <h4>Class.fval</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a></code>
-<div class="indent"><p><p>Function value</p>
-</p>       </div>
-</div><div class="entry"><a id="Class.fval_ex">      <h4>Class.fval_ex</h4><code>∀ (F A : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class">Class</a>), F′A ∈ <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Class.univ">Class.univ</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.map_fval">      <h4>Set.map_fval</h4><code>∀ {f : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>} [H : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>}, y ∈ x → ↑(<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.map">Set.map</a> f x)′↑y = ↑(f y)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="Set.choice">      <h4>Set.choice</h4><code><a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a> → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a></code>
-<div class="indent"><p><p>A choice function on the set of nonempty sets <code>x</code></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.choice_mem_aux">      <h4>Set.choice_mem_aux</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ∅ ∉ x → ∀ (y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), y ∈ x → <a href="https://robertylewis.com/mathlib_docs/core/init/classical.html#classical.epsilon">classical.epsilon</a> (λ (z : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), z ∈ y) ∈ y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.choice_is_func">      <h4>Set.choice_is_func</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ∅ ∉ x → <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.is_func">Set.is_func</a> x (⋃ x) (<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.choice">Set.choice</a> x)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="Set.choice_mem">      <h4>Set.choice_mem</h4><code>∀ (x : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), ∅ ∉ x → ∀ (y : <a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set">Set</a>), y ∈ x → ↑(<a href="https://robertylewis.com/mathlib_docs/set_theory/zfc.html#Set.choice">Set.choice</a> x)′↑y ∈ ↑y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
+       </div>
+</div><div class="def"><a id="Class.fval"></a>      <h4>Class.fval</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a></code>
+<div class="indent"><p>Function value</p>
+       </div>
+</div><div class="thm"><a id="Class.fval_ex"></a>      <h4>Class.fval_ex</h4><code>∀ (F A : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class">Class</a>), F′A ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Class.univ">Class.univ</a></code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.map_fval"></a>      <h4>Set.map_fval</h4><code>∀ {f : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>} [H : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#pSet.definable">pSet.definable</a> 1 f] {x y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>}, y ∈ x → ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.map">Set.map</a> f x)′↑y = ↑(f y)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="Set.choice"></a>      <h4>Set.choice</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a> → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a></code>
+<div class="indent"><p>A choice function on the set of nonempty sets <code>x</code></p>
+       </div>
+</div><div class="thm"><a id="Set.choice_mem_aux"></a>      <h4>Set.choice_mem_aux</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ∅ ∉ x → ∀ (y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), y ∈ x → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/classical.html#classical.epsilon">classical.epsilon</a> (λ (z : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), z ∈ y) ∈ y</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.choice_is_func"></a>      <h4>Set.choice_is_func</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ∅ ∉ x → <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.is_func">Set.is_func</a> x (⋃ x) (<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.choice">Set.choice</a> x)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="Set.choice_mem"></a>      <h4>Set.choice_mem</h4><code>∀ (x : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), ∅ ∉ x → ∀ (y : <a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set">Set</a>), y ∈ x → ↑(<a href="/home/rob/lean/mathlib/scripts/html_out/set_theory/zfc.html#Set.choice">Set.choice</a> x)′↑y ∈ ↑y</code>
+<div class="indent"><p></p>
+       </div>
 </div></body></html>

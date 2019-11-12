@@ -1,4 +1,4 @@
-<html><head><title>category.traversable.basic</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Traversable type class</h1>
+<!DOCTYPE html><html lang="en"><head><title>category.traversable.basic</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><h1>Traversable type class</h1>
 
 <p>Type classes for traversing collections. The concepts and laws are taken from
 http://hackage.haskell.org/package/base-4.11.1.0/docs/Data-Traversable.html</p>
@@ -6,13 +6,13 @@ http://hackage.haskell.org/package/base-4.11.1.0/docs/Data-Traversable.html</p>
 <p>Traversable collections are a generalization of functors. Whereas
 functors (such as <code>list</code>) allow us to apply a function to every
 element, it does not allow functions which external effects encoded in
-a monad. Consider for instance a functor <code>invite : email → <a href="https://robertylewis.com/mathlib_docs/core/system/io.html#io">io</a> response</code>
+a monad. Consider for instance a functor <code>invite : email → <a href="/home/rob/lean/mathlib/scripts/html_out/core/system/io.html#io">io</a> response</code>
 that takes an email address, sends an email and waits for a
-response. If we have a list <code>guests : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> email</code>, using calling
-<code>invite</code> using <code>map</code> gives us the following: <code>map invite guests : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a>
-(<a href="https://robertylewis.com/mathlib_docs/core/system/io.html#io">io</a> response)</code>.  It is not what we need. We need something of type <code>io
-(<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> response)</code>. Instead of using <code>map</code>, we can use <code>traverse</code> to
-send all the invites: <code>traverse invite guests : <a href="https://robertylewis.com/mathlib_docs/core/system/io.html#io">io</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> response)</code>.
+response. If we have a list <code>guests : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> email</code>, using calling
+<code>invite</code> using <code>map</code> gives us the following: <code>map invite guests : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a>
+(<a href="/home/rob/lean/mathlib/scripts/html_out/core/system/io.html#io">io</a> response)</code>.  It is not what we need. We need something of type <code>io
+(<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> response)</code>. Instead of using <code>map</code>, we can use <code>traverse</code> to
+send all the invites: <code>traverse invite guests : <a href="/home/rob/lean/mathlib/scripts/html_out/core/system/io.html#io">io</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> response)</code>.
 <code>traverse</code> applies <code>invite</code> to every element of <code>guests</code> and combines
 all the resulting effects. In the example, the effect is encoded in the
 monad <code>io</code> but any applicative functor is accepted by <code>traverse</code>.</p>
@@ -40,56 +40,56 @@ https://en.wikibooks.org/wiki/Haskell/Traversable</p>
 <li>"An Investigation of the Laws of Traversals", by Mauro Jaskelioff and Ondrej Rypacek, in Mathematically-Structured Functional Programming, 2012, online at http://arxiv.org/pdf/1202.2919.
 Synopsis</li>
 </ul>
-</div><div class="entry"><a id="applicative_transformation">      <h4>applicative_transformation</h4><code>Π (F : Type u → Type v) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F _inst_1] (G : Type u → Type w)
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G _inst_3], Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="applicative_transformation.has_coe_to_fun">      <h4>applicative_transformation.has_coe_to_fun</h4><code>Π (F : Type u → Type v) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] (G : Type u → Type w)
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G], <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="applicative_transformation.preserves_pure">      <h4>applicative_transformation.preserves_pure</h4><code>∀ {F : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] {G : Type u → Type w}
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G) {α : Type u}
+</div><div class="cnst"><a id="applicative_transformation"></a>      <h4>applicative_transformation</h4><code>Π (F : Type u → Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F _inst_1] (G : Type u → Type w)
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G _inst_3], Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="applicative_transformation.has_coe_to_fun"></a>      <h4>applicative_transformation.has_coe_to_fun</h4><code>Π (F : Type u → Type v) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] (G : Type u → Type w)
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="applicative_transformation.preserves_pure"></a>      <h4>applicative_transformation.preserves_pure</h4><code>∀ {F : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] {G : Type u → Type w}
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G) {α : Type u}
 (x : α), ⇑η (has_pure.pure x) = has_pure.pure x</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="applicative_transformation.preserves_seq">      <h4>applicative_transformation.preserves_seq</h4><code>∀ {F : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] {G : Type u → Type w}
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G) {α β : Type u}
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="applicative_transformation.preserves_seq"></a>      <h4>applicative_transformation.preserves_seq</h4><code>∀ {F : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] {G : Type u → Type w}
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G) {α β : Type u}
 (x : F (α → β)) (y : F α), ⇑η (x <*> y) = ⇑η x <*> ⇑η y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="applicative_transformation.preserves_map">      <h4>applicative_transformation.preserves_map</h4><code>∀ {F : Type u → Type v} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] {G : Type u → Type w}
-[_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G) {α β : Type u}
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="applicative_transformation.preserves_map"></a>      <h4>applicative_transformation.preserves_map</h4><code>∀ {F : Type u → Type v} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F] {G : Type u → Type w}
+[_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_4 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G) {α β : Type u}
 (x : α → β) (y : F α), ⇑η (x <$> y) = x <$> ⇑η y</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="traversable">      <h4>traversable</h4><code>(Type u → Type u) → Type (u+1)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="sequence">      <h4>sequence</h4><code>Π {t : Type u → Type u} {α : Type u} {f : Type u → Type u} [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> f] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t],
+<div class="indent"><p></p>
+       </div>
+</div><div class="cnst"><a id="traversable"></a>      <h4>traversable</h4><code>(Type u → Type u) → Type (u+1)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="sequence"></a>      <h4>sequence</h4><code>Π {t : Type u → Type u} {α : Type u} {f : Type u → Type u} [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> f] [_inst_3 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t],
   t (f α) → f (t α)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="is_lawful_traversable">      <h4>is_lawful_traversable</h4><code>Π (t : Type u → Type u) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t], Type (u+1)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="id.traversable">      <h4>id.traversable</h4><code><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="id.is_lawful_traversable">      <h4>id.is_lawful_traversable</h4><code><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="option.traversable">      <h4>option.traversable</h4><code><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="list.traversable">      <h4>list.traversable</h4><code><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="sum.traverse">      <h4>sum.traverse</h4><code>Π {σ : Type u} {F : Type u → Type u} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] {α : Type u_1} {β : Type u},
+<div class="indent"><p></p>
+       </div>
+</div><div class="cnst"><a id="is_lawful_traversable"></a>      <h4>is_lawful_traversable</h4><code>Π (t : Type u → Type u) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> t], Type (u+1)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="id.traversable"></a>      <h4>id.traversable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="id.is_lawful_traversable"></a>      <h4>id.is_lawful_traversable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="option.traversable"></a>      <h4>option.traversable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#option">option</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="list.traversable"></a>      <h4>list.traversable</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a></code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="sum.traverse"></a>      <h4>sum.traverse</h4><code>Π {σ : Type u} {F : Type u → Type u} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/applicative.html#applicative">applicative</a> F] {α : Type u_1} {β : Type u},
   (α → F β) → σ ⊕ α → F (σ ⊕ β)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="sum.traversable">      <h4>sum.traversable</h4><code>Π {σ : Type u}, <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sum">sum</a> σ)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="sum.traversable"></a>      <h4>sum.traversable</h4><code>Π {σ : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#sum">sum</a> σ)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
 </div></body></html>

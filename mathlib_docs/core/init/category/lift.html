@@ -1,53 +1,53 @@
-<html><head><title>core.init.category.lift</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="has_monad_lift">      <h4>has_monad_lift</h4><code>(Type u → Type v) → (Type u → Type w) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
-<div class="indent"><p><p>A function for lifting a computation from an inner monad to an outer monad.
+<!DOCTYPE html><html lang="en"><head><title>core.init.category.lift</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="cnst"><a id="has_monad_lift"></a>      <h4>has_monad_lift</h4><code>(Type u → Type v) → (Type u → Type w) → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
+<div class="indent"><p>A function for lifting a computation from an inner monad to an outer monad.
    Like <a href="https://hackage.haskell.org/package/transformers-0.5.5.0/docs/Control-Monad-Trans-Class.html">MonadTrans</a>,
    but <code>n</code> does not have to be a monad transformer.
    Alternatively, an implementation of <a href="https://hackage.haskell.org/package/layers-0.1/docs/Control-Monad-Layer.html#t:MonadLayer">MonadLayer</a> without <code>layerInvmap</code> (so far).</p>
-</p>       </div>
-</div><div class="entry"><a id="has_monad_lift_t">      <h4>has_monad_lift_t</h4><code>(Type u → Type v) → (Type u → Type w) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
-<div class="indent"><p><p>The reflexive-transitive closure of <code>has_monad_lift</code>.
+       </div>
+</div><div class="cnst"><a id="has_monad_lift_t"></a>      <h4>has_monad_lift_t</h4><code>(Type u → Type v) → (Type u → Type w) → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
+<div class="indent"><p>The reflexive-transitive closure of <code>has_monad_lift</code>.
    <code>monad_lift</code> is used to transitively lift monadic computations such as <code>state_t.get</code> or <code>state_t.put s</code>.
    Corresponds to <a href="https://hackage.haskell.org/package/layers-0.1/docs/Control-Monad-Layer.html#t:MonadLift">MonadLift</a>.</p>
-</p>       </div>
-</div><div class="entry"><a id="has_monad_lift_to_has_coe">      <h4>has_monad_lift_to_has_coe</h4><code>Π {m : Type u_1 → Type u_2} {n : Type u_1 → Type u_3} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m n] {α : Type u_1},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (m α) (n α)</code>
-<div class="indent"><p><p>A coercion that may reduce the need for explicit lifting.
+       </div>
+</div><div class="def"><a id="has_monad_lift_to_has_coe"></a>      <h4>has_monad_lift_to_has_coe</h4><code>Π {m : Type u_1 → Type u_2} {n : Type u_1 → Type u_3} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m n] {α : Type u_1},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/coe.html#has_coe">has_coe</a> (m α) (n α)</code>
+<div class="indent"><p>A coercion that may reduce the need for explicit lifting.
    Because of <a href="https://github.com/leanprover/lean/issues/1402">limitations of the current coercion resolution</a>, this definition is not marked as a global instance and should be marked locally instead.</p>
-</p>       </div>
-</div><div class="entry"><a id="has_monad_lift_t_trans">      <h4>has_monad_lift_t_trans</h4><code>Π (m : Type u_1 → Type u_2) (n : Type u_1 → Type u_3) (o : Type u_1 → Type u_4) [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift">has_monad_lift</a> n o]
-[_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m n], <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m o</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="has_monad_lift_t_refl">      <h4>has_monad_lift_t_refl</h4><code>Π (m : Type u_1 → Type u_2), <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m m</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="monad_lift_refl">      <h4>monad_lift_refl</h4><code>∀ {m : Type u → Type v} {α : Type u}, has_monad_lift_t.monad_lift = <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="monad_functor">      <h4>monad_functor</h4><code>(Type u → Type v) → (Type u → Type v) → (Type u → Type w) → (Type u → Type w) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
-<div class="indent"><p><p>A functor in the category of monads. Can be used to lift monad-transforming functions.
+       </div>
+</div><div class="def"><a id="has_monad_lift_t_trans"></a>      <h4>has_monad_lift_t_trans</h4><code>Π (m : Type u_1 → Type u_2) (n : Type u_1 → Type u_3) (o : Type u_1 → Type u_4) [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#has_monad_lift">has_monad_lift</a> n o]
+[_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m n], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m o</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="has_monad_lift_t_refl"></a>      <h4>has_monad_lift_t_refl</h4><code>Π (m : Type u_1 → Type u_2), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m m</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="monad_lift_refl"></a>      <h4>monad_lift_refl</h4><code>∀ {m : Type u → Type v} {α : Type u}, has_monad_lift_t.monad_lift = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a></code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="cnst"><a id="monad_functor"></a>      <h4>monad_functor</h4><code>(Type u → Type v) → (Type u → Type v) → (Type u → Type w) → (Type u → Type w) → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
+<div class="indent"><p>A functor in the category of monads. Can be used to lift monad-transforming functions.
    Based on pipes' <a href="https://hackage.haskell.org/package/pipes-2.4.0/docs/Control-MFunctor.html">MFunctor</a>,
    but not restricted to monad transformers.
    Alternatively, an implementation of <a href="http://duairc.netsoc.ie/layers-docs/Control-Monad-Layer.html#t:MonadTransFunctor">MonadTransFunctor</a>.</p>
-</p>       </div>
-</div><div class="entry"><a id="monad_functor_t">      <h4>monad_functor_t</h4><code>(Type u → Type v) → (Type u → Type v) → (Type u → Type w) → (Type u → Type w) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
-<div class="indent"><p><p>The reflexive-transitive closure of <code>monad_functor</code>.
+       </div>
+</div><div class="cnst"><a id="monad_functor_t"></a>      <h4>monad_functor_t</h4><code>(Type u → Type v) → (Type u → Type v) → (Type u → Type w) → (Type u → Type w) → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (u+1) v w)</code>
+<div class="indent"><p>The reflexive-transitive closure of <code>monad_functor</code>.
    <code>monad_map</code> is used to transitively lift monad morphisms such as <code>state_t.zoom</code>.
    A generalization of <a href="http://duairc.netsoc.ie/layers-docs/Control-Monad-Layer.html#t:MonadLiftFunctor">MonadLiftFunctor</a>, which can only lift endomorphisms (i.e. m = m', n = n').</p>
-</p>       </div>
-</div><div class="entry"><a id="monad_functor_t_trans">      <h4>monad_functor_t_trans</h4><code>Π (m m' : Type u_1 → Type u_2) (n n' : Type u_1 → Type u_3) (o o' : Type u_1 → Type u_4)
-[_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor">monad_functor</a> n n' o o'] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' n n'], <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' o o'</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="monad_functor_t_refl">      <h4>monad_functor_t_refl</h4><code>Π (m m' : Type u_1 → Type u_2), <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' m m'</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="monad_map_refl">      <h4>monad_map_refl</h4><code>∀ {m m' : Type u → Type v} (f : Π {α : Type u}, m α → m' α) {α : Type u}, monad_functor_t.monad_map f = f</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="monad_run">      <h4>monad_run</h4><code><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#out_param">out_param</a> (Type u → Type v) → (Type u → Type v) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</code>
-<div class="indent"><p><p>Run a monad stack to completion.
+       </div>
+</div><div class="def"><a id="monad_functor_t_trans"></a>      <h4>monad_functor_t_trans</h4><code>Π (m m' : Type u_1 → Type u_2) (n n' : Type u_1 → Type u_3) (o o' : Type u_1 → Type u_4)
+[_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#monad_functor">monad_functor</a> n n' o o'] [_inst_2 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' n n'], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' o o'</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="monad_functor_t_refl"></a>      <h4>monad_functor_t_refl</h4><code>Π (m m' : Type u_1 → Type u_2), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' m m'</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="monad_map_refl"></a>      <h4>monad_map_refl</h4><code>∀ {m m' : Type u → Type v} (f : Π {α : Type u}, m α → m' α) {α : Type u}, monad_functor_t.monad_map f = f</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="cnst"><a id="monad_run"></a>      <h4>monad_run</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#out_param">out_param</a> (Type u → Type v) → (Type u → Type v) → Type (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/algebra/functions.html#max">max</a> (u+1) v)</code>
+<div class="indent"><p>Run a monad stack to completion.
    <code>run</code> should be the composition of the transformers' individual <code>run</code> functions.
    This class mostly saves some typing when using highly nested monad stacks:
    <code>lean
@@ -55,5 +55,5 @@
    -- def my_monad.run {α : Type} (x : my_monad α) (cfg : my_cfg) (st : my_state) := ((x.run cfg).run st).run
    def my_monad.run {α : Type} (x : my_monad α) := monad_run.run x
 </code></p>
-</p>       </div>
+       </div>
 </div></body></html>

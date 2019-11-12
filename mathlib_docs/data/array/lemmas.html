@@ -1,142 +1,142 @@
-<html><head><title>data.array.lemmas</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="d_array.inhabited">      <h4>d_array.inhabited</h4><code>Π {n : ℕ} {α : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n → Type u} [_inst_1 : Π (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> (α i)], <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array">d_array</a> n α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="array.inhabited">      <h4>array.inhabited</h4><code>Π {n : ℕ} {α : Type u_1} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α], <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="array.to_list_of_heq">      <h4>array.to_list_of_heq</h4><code>∀ {n₁ n₂ : ℕ} {α : Type u_1} {a₁ : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n₁ α} {a₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n₂ α},
-  n₁ = n₂ → a₁ == a₂ → <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a₁ = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.rev_list_reverse_aux">      <h4>array.rev_list_reverse_aux</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (h : i ≤ n) (t : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.reverse_core">list.reverse_core</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) i h list.nil) t =
-    <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.rev_iterate_aux">d_array.rev_iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) i h t</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.rev_list_reverse">      <h4>array.rev_list_reverse</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α}, <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.reverse">list.reverse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.to_list_reverse">      <h4>array.to_list_reverse</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α}, <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.reverse">list.reverse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.mem.def">      <h4>array.mem.def</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α}, v ∈ a ↔ ∃ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a i = v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.mem_rev_list_aux">      <h4>array.mem_rev_list_aux</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} {i : ℕ} (h : i ≤ n),
-  (∃ (j : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), j.val < i ∧ <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a j = v) ↔
-    v ∈ <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) i h list.nil</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.mem_rev_list">      <h4>array.mem_rev_list</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α}, v ∈ <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a ↔ v ∈ a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.mem_to_list">      <h4>array.mem_to_list</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α}, v ∈ <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a ↔ v ∈ a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.rev_list_foldr_aux">      <h4>array.rev_list_foldr_aux</h4><code>∀ {n : ℕ} {α : Type u} {β : Type w} {b : β} {f : α → β → β} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} {i : ℕ} (h : i ≤ n),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldr">list.foldr</a> f b (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) i h list.nil) =
-    <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), f) i h b</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.rev_list_foldr">      <h4>array.rev_list_foldr</h4><code>∀ {n : ℕ} {α : Type u} {β : Type w} {b : β} {f : α → β → β} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldr">list.foldr</a> f b (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.foldl">array.foldl</a> a b f</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.to_list_foldl">      <h4>array.to_list_foldl</h4><code>∀ {n : ℕ} {α : Type u} {β : Type w} {b : β} {f : β → α → β} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldl">list.foldl</a> f b (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.foldl">array.foldl</a> a b (<a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.swap">function.swap</a> f)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.rev_list_length_aux">      <h4>array.rev_list_length_aux</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α) (i : ℕ) (h : i ≤ n),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) i h list.nil) = i</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.rev_list_length">      <h4>array.rev_list_length</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α), <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a) = n</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.to_list_length">      <h4>array.to_list_length</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α), <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) = n</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.to_list_nth_le_aux">      <h4>array.to_list_nth_le_aux</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (ih : i < n) (j : ℕ) {jh : j ≤ n} {t : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}
-{h' : i < <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.rev_iterate_aux">d_array.rev_iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) j jh t)},
-  (∀ (k : ℕ) (tl : k < <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> t), j + k = i → <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.nth_le">list.nth_le</a> t k tl = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, ih⟩) →
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.nth_le">list.nth_le</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.rev_iterate_aux">d_array.rev_iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) j jh t) i h' =
-    <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, ih⟩</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.to_list_nth_le">      <h4>array.to_list_nth_le</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (h : i < n) (h' : i < <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a)),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.nth_le">list.nth_le</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) i h' = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, h⟩</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.to_list_nth_le'">      <h4>array.to_list_nth_le'</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α) (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n) (h' : i.val < <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a)),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.nth_le">list.nth_le</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) (i.val) h' = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a i</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.to_list_nth">      <h4>array.to_list_nth</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} {i : ℕ} {v : α},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.nth">list.nth</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) i = option.some v ↔ ∃ (h : i < n), <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, h⟩ = v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.write_to_list">      <h4>array.write_to_list</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} {i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n} {v : α},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.write">array.write</a> a i v) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.update_nth">list.update_nth</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) (i.val) v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.mem_to_list_enum">      <h4>array.mem_to_list_enum</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} {i : ℕ} {v : α},
-  (i, v) ∈ <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.enum">list.enum</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) ↔ ∃ (h : i < n), <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, h⟩ = v</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.to_list_to_array">      <h4>array.to_list_to_array</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α), <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.to_array">list.to_array</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) == a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.to_array_to_list">      <h4>array.to_array_to_list</h4><code>∀ {α : Type u} (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> (<a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.to_array">list.to_array</a> l) = l</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.push_back_rev_list_aux">      <h4>array.push_back_rev_list_aux</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (h : i ≤ n + 1) (h' : i ≤ n),
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.push_back">array.push_back</a> a v) (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> (n + 1)), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) i h
+<!DOCTYPE html><html lang="en"><head><title>data.array.lemmas</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="def"><a id="d_array.inhabited"></a>      <h4>d_array.inhabited</h4><code>Π {n : ℕ} {α : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n → Type u} [_inst_1 : Π (i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> (α i)], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array">d_array</a> n α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="array.inhabited"></a>      <h4>array.inhabited</h4><code>Π {n : ℕ} {α : Type u_1} [_inst_1 : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> α], <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#inhabited">inhabited</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="array.to_list_of_heq"></a>      <h4>array.to_list_of_heq</h4><code>∀ {n₁ n₂ : ℕ} {α : Type u_1} {a₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n₁ α} {a₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n₂ α},
+  n₁ = n₂ → a₁ == a₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a₁ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.rev_list_reverse_aux"></a>      <h4>array.rev_list_reverse_aux</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (h : i ≤ n) (t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.reverse_core">list.reverse_core</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) i h list.nil) t =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.rev_iterate_aux">d_array.rev_iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) i h t</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.rev_list_reverse"></a>      <h4>array.rev_list_reverse</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.reverse">list.reverse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.to_list_reverse"></a>      <h4>array.to_list_reverse</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.reverse">list.reverse</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.mem.def"></a>      <h4>array.mem.def</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α}, v ∈ a ↔ ∃ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a i = v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.mem_rev_list_aux"></a>      <h4>array.mem_rev_list_aux</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} {i : ℕ} (h : i ≤ n),
+  (∃ (j : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), j.val < i ∧ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a j = v) ↔
+    v ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) i h list.nil</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.mem_rev_list"></a>      <h4>array.mem_rev_list</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α}, v ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a ↔ v ∈ a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.mem_to_list"></a>      <h4>array.mem_to_list</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α}, v ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a ↔ v ∈ a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.rev_list_foldr_aux"></a>      <h4>array.rev_list_foldr_aux</h4><code>∀ {n : ℕ} {α : Type u} {β : Type w} {b : β} {f : α → β → β} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} {i : ℕ} (h : i ≤ n),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.foldr">list.foldr</a> f b (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) i h list.nil) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), f) i h b</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.rev_list_foldr"></a>      <h4>array.rev_list_foldr</h4><code>∀ {n : ℕ} {α : Type u} {β : Type w} {b : β} {f : α → β → β} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.foldr">list.foldr</a> f b (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.foldl">array.foldl</a> a b f</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.to_list_foldl"></a>      <h4>array.to_list_foldl</h4><code>∀ {n : ℕ} {α : Type u} {β : Type w} {b : β} {f : β → α → β} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.foldl">list.foldl</a> f b (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.foldl">array.foldl</a> a b (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/function.html#function.swap">function.swap</a> f)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.rev_list_length_aux"></a>      <h4>array.rev_list_length_aux</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α) (i : ℕ) (h : i ≤ n),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) i h list.nil) = i</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.rev_list_length"></a>      <h4>array.rev_list_length</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a) = n</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.to_list_length"></a>      <h4>array.to_list_length</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) = n</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.to_list_nth_le_aux"></a>      <h4>array.to_list_nth_le_aux</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (ih : i < n) (j : ℕ) {jh : j ≤ n} {t : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α}
+{h' : i < <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.rev_iterate_aux">d_array.rev_iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) j jh t)},
+  (∀ (k : ℕ) (tl : k < <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> t), j + k = i → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.nth_le">list.nth_le</a> t k tl = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, ih⟩) →
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.nth_le">list.nth_le</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.rev_iterate_aux">d_array.rev_iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) j jh t) i h' =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, ih⟩</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.to_list_nth_le"></a>      <h4>array.to_list_nth_le</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (h : i < n) (h' : i < <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.nth_le">list.nth_le</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) i h' = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, h⟩</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.to_list_nth_le'"></a>      <h4>array.to_list_nth_le'</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α) (i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n) (h' : i.val < <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a)),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.nth_le">list.nth_le</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) (i.val) h' = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a i</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.to_list_nth"></a>      <h4>array.to_list_nth</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} {i : ℕ} {v : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.nth">list.nth</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) i = option.some v ↔ ∃ (h : i < n), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, h⟩ = v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.write_to_list"></a>      <h4>array.write_to_list</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} {i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n} {v : α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.write">array.write</a> a i v) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.update_nth">list.update_nth</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) (i.val) v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.mem_to_list_enum"></a>      <h4>array.mem_to_list_enum</h4><code>∀ {n : ℕ} {α : Type u} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} {i : ℕ} {v : α},
+  (i, v) ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.enum">list.enum</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) ↔ ∃ (h : i < n), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a ⟨i, h⟩ = v</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.to_list_to_array"></a>      <h4>array.to_list_to_array</h4><code>∀ {n : ℕ} {α : Type u} (a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α), <a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.to_array">list.to_array</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a) == a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.to_array_to_list"></a>      <h4>array.to_array_to_list</h4><code>∀ {α : Type u} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/data/list/defs.html#list.to_array">list.to_array</a> l) = l</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.push_back_rev_list_aux"></a>      <h4>array.push_back_rev_list_aux</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (h : i ≤ n + 1) (h' : i ≤ n),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.push_back">array.push_back</a> a v) (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> (n + 1)), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) i h
       list.nil =
-    <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), _x :: _y) i h' list.nil</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.push_back_rev_list">      <h4>array.push_back_rev_list</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α}, <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.push_back">array.push_back</a> a v) = v :: <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.push_back_to_list">      <h4>array.push_back_to_list</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α}, <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.push_back">array.push_back</a> a v) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list">array.to_list</a> a ++ [v]</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.read_foreach_aux">      <h4>array.read_foreach_aux</h4><code>∀ {n : ℕ} {α : Type u} {f : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n → α → α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (h : i ≤ n) (b : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α)
-(j : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n),
+    <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (_x : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), λ (_x : α) (_y : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), _x :: _y) i h' list.nil</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.push_back_rev_list"></a>      <h4>array.push_back_rev_list</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.push_back">array.push_back</a> a v) = v :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.rev_list">array.rev_list</a> a</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.push_back_to_list"></a>      <h4>array.push_back_to_list</h4><code>∀ {n : ℕ} {α : Type u} {v : α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.push_back">array.push_back</a> a v) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.to_list">array.to_list</a> a ++ [v]</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.read_foreach_aux"></a>      <h4>array.read_foreach_aux</h4><code>∀ {n : ℕ} {α : Type u} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n → α → α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α} (i : ℕ) (h : i ≤ n) (b : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α)
+(j : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n),
   j.val < i →
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n) (v : α) (a' : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α), <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.write">array.write</a> a' i (f i v)) i h b) j =
-    f j (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a j)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.read_foreach">      <h4>array.read_foreach</h4><code>∀ {n : ℕ} {α : Type u} {i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n} {f : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n → α → α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.foreach">array.foreach</a> a f) i = f i (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a i)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="array.read_map">      <h4>array.read_map</h4><code>∀ {n : ℕ} {α : Type u} {i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n} {f : α → α} {a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.map">array.map</a> f a) i = f (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a i)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.read_map₂">      <h4>array.read_map₂</h4><code>∀ {n : ℕ} {α : Type u} {i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n} {f : α → α → α} {a₁ a₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α},
-  <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.map₂">array.map₂</a> f a₁ a₂) i = f (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a₁ i) (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read">array.read</a> a₂ i)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: simp</div>
-</div><div class="entry"><a id="equiv.d_array_equiv_fin">      <h4>equiv.d_array_equiv_fin</h4><code>Π {n : ℕ} (α : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n → Type u_1), <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array">d_array</a> n α ≃ Π (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), α i</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.array_equiv_fin">      <h4>equiv.array_equiv_fin</h4><code>Π (n : ℕ) (α : Type u_1), <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α ≃ (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n → α)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.vector_equiv_fin">      <h4>equiv.vector_equiv_fin</h4><code>Π (α : Type u_1) (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/data/vector.html#vector">vector</a> α n ≃ (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n → α)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="equiv.vector_equiv_array">      <h4>equiv.vector_equiv_array</h4><code>Π (α : Type u_1) (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/data/vector.html#vector">vector</a> α n ≃ <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="array.traversable">      <h4>array.traversable</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="array.is_lawful_traversable">      <h4>array.is_lawful_traversable</h4><code>Π {n : ℕ}, <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array.iterate_aux">d_array.iterate_aux</a> a (λ (i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n) (v : α) (a' : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.write">array.write</a> a' i (f i v)) i h b) j =
+    f j (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a j)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.read_foreach"></a>      <h4>array.read_foreach</h4><code>∀ {n : ℕ} {α : Type u} {i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n} {f : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n → α → α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.foreach">array.foreach</a> a f) i = f i (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a i)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="thm"><a id="array.read_map"></a>      <h4>array.read_map</h4><code>∀ {n : ℕ} {α : Type u} {i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n} {f : α → α} {a : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.map">array.map</a> f a) i = f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a i)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="array.read_map₂"></a>      <h4>array.read_map₂</h4><code>∀ {n : ℕ} {α : Type u} {i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n} {f : α → α → α} {a₁ a₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.map₂">array.map₂</a> f a₁ a₂) i = f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a₁ i) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array.read">array.read</a> a₂ i)</code>
+<div class="indent"><p></p>
+       Attributes: simp</div>
+</div><div class="def"><a id="equiv.d_array_equiv_fin"></a>      <h4>equiv.d_array_equiv_fin</h4><code>Π {n : ℕ} (α : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n → Type u_1), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#d_array">d_array</a> n α ≃ Π (i : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n), α i</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="equiv.array_equiv_fin"></a>      <h4>equiv.array_equiv_fin</h4><code>Π (n : ℕ) (α : Type u_1), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α ≃ (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n → α)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="equiv.vector_equiv_fin"></a>      <h4>equiv.vector_equiv_fin</h4><code>Π (α : Type u_1) (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/vector.html#vector">vector</a> α n ≃ (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/fin/basic.html#fin">fin</a> n → α)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="equiv.vector_equiv_array"></a>      <h4>equiv.vector_equiv_array</h4><code>Π (α : Type u_1) (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/vector.html#vector">vector</a> α n ≃ <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="array.traversable"></a>      <h4>array.traversable</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#traversable">traversable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="def"><a id="array.is_lawful_traversable"></a>      <h4>array.is_lawful_traversable</h4><code>Π {n : ℕ}, <a href="/home/rob/lean/mathlib/scripts/html_out/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/array/basic.html#array">array</a> n)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
 </div></body></html>

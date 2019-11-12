@@ -1,458 +1,458 @@
-<html><head><title>core.data.stream</title><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
-</div><div class="entry"><a id="stream">      <h4>stream</h4><code>Type u → Type u</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.cons">      <h4>stream.cons</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.head">      <h4>stream.head</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail">      <h4>stream.tail</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.drop">      <h4>stream.drop</h4><code>Π {α : Type u}, ℕ → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth">      <h4>stream.nth</h4><code>Π {α : Type u}, ℕ → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.eta">      <h4>stream.eta</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_zero_cons">      <h4>stream.nth_zero_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> 0 (a :: s) = a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.head_cons">      <h4>stream.head_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> (a :: s) = a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_cons">      <h4>stream.tail_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (a :: s) = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_drop">      <h4>stream.tail_drop</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_drop">      <h4>stream.nth_drop</h4><code>∀ {α : Type u} (n m : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> m s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> (n + m) s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_eq_drop">      <h4>stream.tail_eq_drop</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> 1 s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.drop_drop">      <h4>stream.drop_drop</h4><code>∀ {α : Type u} (n m : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> m s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> (n + m) s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_succ">      <h4>stream.nth_succ</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> (nat.succ n) s = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.drop_succ">      <h4>stream.drop_succ</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> (nat.succ n) s = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.ext">      <h4>stream.ext</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α}, (∀ (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s₁ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s₂) → s₁ = s₂</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: ext</div>
-</div><div class="entry"><a id="stream.all">      <h4>stream.all</h4><code>Π {α : Type u}, (α → Prop) → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.any">      <h4>stream.any</h4><code>Π {α : Type u}, (α → Prop) → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.all_def">      <h4>stream.all_def</h4><code>∀ {α : Type u} (p : α → Prop) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.all">stream.all</a> p s = ∀ (n : ℕ), p (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.any_def">      <h4>stream.any_def</h4><code>∀ {α : Type u} (p : α → Prop) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.any">stream.any</a> p s = ∃ (n : ℕ), p (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem">      <h4>stream.mem</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.has_mem">      <h4>stream.has_mem</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> α (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       Attributes: instance</div>
-</div><div class="entry"><a id="stream.mem_cons">      <h4>stream.mem_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), a ∈ a :: s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_cons_of_mem">      <h4>stream.mem_cons_of_mem</h4><code>∀ {α : Type u} {a : α} {s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α} (b : α), a ∈ s → a ∈ b :: s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.eq_or_mem_of_mem_cons">      <h4>stream.eq_or_mem_of_mem_cons</h4><code>∀ {α : Type u} {a b : α} {s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α}, a ∈ b :: s → a = b ∨ a ∈ s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_of_nth_eq">      <h4>stream.mem_of_nth_eq</h4><code>∀ {α : Type u} {n : ℕ} {s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α} {a : α}, a = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s → a ∈ s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map">      <h4>stream.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.drop_map">      <h4>stream.drop_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_map">      <h4>stream.nth_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s) = f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_map">      <h4>stream.tail_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.head_map">      <h4>stream.head_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s) = f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_eq">      <h4>stream.map_eq</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s = f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s) :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_cons">      <h4>stream.map_cons</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (a :: s) = f a :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_id">      <h4>stream.map_id</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> s = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_map">      <h4>stream.map_map</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (g : β → δ) (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> g (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> (g ∘ f) s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_tail">      <h4>stream.map_tail</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_map">      <h4>stream.mem_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) {a : α} {s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α}, a ∈ s → f a ∈ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.exists_of_mem_map">      <h4>stream.exists_of_mem_map</h4><code>∀ {α : Type u} {β : Type v} {f : α → β} {b : β} {s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α},
-  b ∈ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s → (∃ (a : α), a ∈ s ∧ f a = b)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.zip">      <h4>stream.zip</h4><code>Π {α : Type u} {β : Type v} {δ : Type w}, (α → β → δ) → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> δ</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.drop_zip">      <h4>stream.drop_zip</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (n : ℕ) (s₁ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n s₁) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n s₂)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_zip">      <h4>stream.nth_zip</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (n : ℕ) (s₁ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂) = f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s₁) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s₂)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.head_zip">      <h4>stream.head_zip</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (s₁ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂) = f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₁) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₂)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_zip">      <h4>stream.tail_zip</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (s₁ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₁) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₂)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.zip_eq">      <h4>stream.zip_eq</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (s₁ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂ = f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₁) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₂) :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₁) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₂)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.const">      <h4>stream.const</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_const">      <h4>stream.mem_const</h4><code>∀ {α : Type u} (a : α), a ∈ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.const_eq">      <h4>stream.const_eq</h4><code>∀ {α : Type u} (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a = a :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_const">      <h4>stream.tail_const</h4><code>∀ {α : Type u} (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_const">      <h4>stream.map_const</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> (f a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_const">      <h4>stream.nth_const</h4><code>∀ {α : Type u} (n : ℕ) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a) = a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.drop_const">      <h4>stream.drop_const</h4><code>∀ {α : Type u} (n : ℕ) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.iterate">      <h4>stream.iterate</h4><code>Π {α : Type u}, (α → α) → α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.head_iterate">      <h4>stream.head_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f a) = a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_iterate">      <h4>stream.tail_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f a) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f (f a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.iterate_eq">      <h4>stream.iterate_eq</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f a = a :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f (f a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_zero_iterate">      <h4>stream.nth_zero_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> 0 (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f a) = a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_succ_iterate">      <h4>stream.nth_succ_iterate</h4><code>∀ {α : Type u} (n : ℕ) (f : α → α) (a : α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> (nat.succ n) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f a) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f (f a))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.is_bisimulation">      <h4>stream.is_bisimulation</h4><code>Π {α : Type u}, (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → Prop) → Prop</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_of_bisim">      <h4>stream.nth_of_bisim</h4><code>∀ {α : Type u} (R : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → Prop),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.is_bisimulation">stream.is_bisimulation</a> R →
-  ∀ {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α} (n : ℕ),
-    R s₁ s₂ → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s₁ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s₂ ∧ R (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> (n + 1) s₁) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> (n + 1) s₂)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.eq_of_bisim">      <h4>stream.eq_of_bisim</h4><code>∀ {α : Type u} (R : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → Prop),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.is_bisimulation">stream.is_bisimulation</a> R → ∀ {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α}, R s₁ s₂ → s₁ = s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.bisim_simple">      <h4>stream.bisim_simple</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₁ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₂ → s₁ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₁ → s₂ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₂ → s₁ = s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.coinduction">      <h4>stream.coinduction</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α},
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₁ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₂ →
-  (∀ (β : Type u) (fr : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → β), fr s₁ = fr s₂ → fr (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₁) = fr (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₂)) →
+<!DOCTYPE html><html lang="en"><head><title>core.data.stream</title><meta charset="UTF-8"><link rel="stylesheet" href="/home/rob/lean/mathlib/scripts/html_out/style.css"></head><body><div class="mod_doc"><p></p>
+</div><div class="def"><a id="stream"></a>      <h4>stream</h4><code>Type u → Type u</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.cons"></a>      <h4>stream.cons</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.head"></a>      <h4>stream.head</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.tail"></a>      <h4>stream.tail</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.drop"></a>      <h4>stream.drop</h4><code>Π {α : Type u}, ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.nth"></a>      <h4>stream.nth</h4><code>Π {α : Type u}, ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.eta"></a>      <h4>stream.eta</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_zero_cons"></a>      <h4>stream.nth_zero_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> 0 (a :: s) = a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.head_cons"></a>      <h4>stream.head_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> (a :: s) = a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_cons"></a>      <h4>stream.tail_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (a :: s) = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_drop"></a>      <h4>stream.tail_drop</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_drop"></a>      <h4>stream.nth_drop</h4><code>∀ {α : Type u} (n m : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> m s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> (n + m) s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_eq_drop"></a>      <h4>stream.tail_eq_drop</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> 1 s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.drop_drop"></a>      <h4>stream.drop_drop</h4><code>∀ {α : Type u} (n m : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> m s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> (n + m) s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_succ"></a>      <h4>stream.nth_succ</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> (nat.succ n) s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.drop_succ"></a>      <h4>stream.drop_succ</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> (nat.succ n) s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.ext"></a>      <h4>stream.ext</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α}, (∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s₁ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s₂) → s₁ = s₂</code>
+<div class="indent"><p></p>
+       Attributes: ext</div>
+</div><div class="def"><a id="stream.all"></a>      <h4>stream.all</h4><code>Π {α : Type u}, (α → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.any"></a>      <h4>stream.any</h4><code>Π {α : Type u}, (α → Prop) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.all_def"></a>      <h4>stream.all_def</h4><code>∀ {α : Type u} (p : α → Prop) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.all">stream.all</a> p s = ∀ (n : ℕ), p (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.any_def"></a>      <h4>stream.any_def</h4><code>∀ {α : Type u} (p : α → Prop) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.any">stream.any</a> p s = ∃ (n : ℕ), p (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.mem"></a>      <h4>stream.mem</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.has_mem"></a>      <h4>stream.has_mem</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#has_mem">has_mem</a> α (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α)</code>
+<div class="indent"><p></p>
+       Attributes: instance</div>
+</div><div class="thm"><a id="stream.mem_cons"></a>      <h4>stream.mem_cons</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), a ∈ a :: s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_cons_of_mem"></a>      <h4>stream.mem_cons_of_mem</h4><code>∀ {α : Type u} {a : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α} (b : α), a ∈ s → a ∈ b :: s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.eq_or_mem_of_mem_cons"></a>      <h4>stream.eq_or_mem_of_mem_cons</h4><code>∀ {α : Type u} {a b : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α}, a ∈ b :: s → a = b ∨ a ∈ s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_of_nth_eq"></a>      <h4>stream.mem_of_nth_eq</h4><code>∀ {α : Type u} {n : ℕ} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α} {a : α}, a = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s → a ∈ s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.map"></a>      <h4>stream.map</h4><code>Π {α : Type u} {β : Type v}, (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.drop_map"></a>      <h4>stream.drop_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_map"></a>      <h4>stream.nth_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s) = f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_map"></a>      <h4>stream.tail_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.head_map"></a>      <h4>stream.head_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s) = f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_eq"></a>      <h4>stream.map_eq</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s = f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s) :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_cons"></a>      <h4>stream.map_cons</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (a :: s) = f a :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_id"></a>      <h4>stream.map_id</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> s = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_map"></a>      <h4>stream.map_map</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (g : β → δ) (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> g (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> (g ∘ f) s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_tail"></a>      <h4>stream.map_tail</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_map"></a>      <h4>stream.mem_map</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) {a : α} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α}, a ∈ s → f a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.exists_of_mem_map"></a>      <h4>stream.exists_of_mem_map</h4><code>∀ {α : Type u} {β : Type v} {f : α → β} {b : β} {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α},
+  b ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s → (∃ (a : α), a ∈ s ∧ f a = b)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.zip"></a>      <h4>stream.zip</h4><code>Π {α : Type u} {β : Type v} {δ : Type w}, (α → β → δ) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> δ</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.drop_zip"></a>      <h4>stream.drop_zip</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (n : ℕ) (s₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n s₁) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n s₂)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_zip"></a>      <h4>stream.nth_zip</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (n : ℕ) (s₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂) = f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s₁) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s₂)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.head_zip"></a>      <h4>stream.head_zip</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (s₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂) = f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₁) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₂)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_zip"></a>      <h4>stream.tail_zip</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (s₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₁) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₂)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.zip_eq"></a>      <h4>stream.zip_eq</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (f : α → β → δ) (s₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α) (s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> f s₁ s₂ = f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₁) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₂) :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₁) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₂)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.const"></a>      <h4>stream.const</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_const"></a>      <h4>stream.mem_const</h4><code>∀ {α : Type u} (a : α), a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.const_eq"></a>      <h4>stream.const_eq</h4><code>∀ {α : Type u} (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a = a :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_const"></a>      <h4>stream.tail_const</h4><code>∀ {α : Type u} (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_const"></a>      <h4>stream.map_const</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> (f a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_const"></a>      <h4>stream.nth_const</h4><code>∀ {α : Type u} (n : ℕ) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a) = a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.drop_const"></a>      <h4>stream.drop_const</h4><code>∀ {α : Type u} (n : ℕ) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.iterate"></a>      <h4>stream.iterate</h4><code>Π {α : Type u}, (α → α) → α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.head_iterate"></a>      <h4>stream.head_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f a) = a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_iterate"></a>      <h4>stream.tail_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f (f a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.iterate_eq"></a>      <h4>stream.iterate_eq</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f a = a :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f (f a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_zero_iterate"></a>      <h4>stream.nth_zero_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> 0 (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f a) = a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_succ_iterate"></a>      <h4>stream.nth_succ_iterate</h4><code>∀ {α : Type u} (n : ℕ) (f : α → α) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> (nat.succ n) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f (f a))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.is_bisimulation"></a>      <h4>stream.is_bisimulation</h4><code>Π {α : Type u}, (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → Prop) → Prop</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_of_bisim"></a>      <h4>stream.nth_of_bisim</h4><code>∀ {α : Type u} (R : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → Prop),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.is_bisimulation">stream.is_bisimulation</a> R →
+  ∀ {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α} (n : ℕ),
+    R s₁ s₂ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s₁ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s₂ ∧ R (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> (n + 1) s₁) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> (n + 1) s₂)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.eq_of_bisim"></a>      <h4>stream.eq_of_bisim</h4><code>∀ {α : Type u} (R : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → Prop),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.is_bisimulation">stream.is_bisimulation</a> R → ∀ {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α}, R s₁ s₂ → s₁ = s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.bisim_simple"></a>      <h4>stream.bisim_simple</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₁ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₂ → s₁ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₁ → s₂ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₂ → s₁ = s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.coinduction"></a>      <h4>stream.coinduction</h4><code>∀ {α : Type u} {s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α},
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₁ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₂ →
+  (∀ (β : Type u) (fr : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → β), fr s₁ = fr s₂ → fr (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₁) = fr (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₂)) →
   s₁ = s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.iterate_id">      <h4>stream.iterate_id</h4><code>∀ {α : Type u} (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> a = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_iterate">      <h4>stream.map_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f (f a) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.corec">      <h4>stream.corec</h4><code>Π {α : Type u} {β : Type v}, (α → β) → (α → α) → α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.corec_on">      <h4>stream.corec_on</h4><code>Π {α : Type u} {β : Type v}, α → (α → β) → (α → α) → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.corec_def">      <h4>stream.corec_def</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (g : α → α) (a : α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.corec">stream.corec</a> f g a = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> g a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.corec_eq">      <h4>stream.corec_eq</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (g : α → α) (a : α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.corec">stream.corec</a> f g a = f a :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.corec">stream.corec</a> f g (g a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.corec_id_id_eq_const">      <h4>stream.corec_id_id_eq_const</h4><code>∀ {α : Type u} (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.corec">stream.corec</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> a = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.corec_id_f_eq_iterate">      <h4>stream.corec_id_f_eq_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.corec">stream.corec</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> f a = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> f a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.corec'">      <h4>stream.corec'</h4><code>Π {α : Type u} {β : Type v}, (α → β × α) → α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.corec'_eq">      <h4>stream.corec'_eq</h4><code>∀ {α : Type u} {β : Type v} (f : α → β × α) (a : α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.corec'">stream.corec'</a> f a = (f a).fst :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.corec'">stream.corec'</a> f ((f a).snd)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.unfolds">      <h4>stream.unfolds</h4><code>Π {α : Type u} {β : Type v}, (α → β) → (α → α) → α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.unfolds_eq">      <h4>stream.unfolds_eq</h4><code>∀ {α : Type u} {β : Type v} (g : α → β) (f : α → α) (a : α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.unfolds">stream.unfolds</a> g f a = g a :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.unfolds">stream.unfolds</a> g f (f a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_unfolds_head_tail">      <h4>stream.nth_unfolds_head_tail</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.unfolds">stream.unfolds</a> <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.unfolds_head_eq">      <h4>stream.unfolds_head_eq</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.unfolds">stream.unfolds</a> <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.interleave">      <h4>stream.interleave</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.interleave_eq">      <h4>stream.interleave_eq</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  s₁⋈s₂ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₁ :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s₂ :: (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₁⋈stream.tail s₂)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_interleave">      <h4>stream.tail_interleave</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (s₁⋈s₂) = s₂⋈stream.tail s₁</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.interleave_tail_tail">      <h4>stream.interleave_tail_tail</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s₁⋈stream.tail s₂ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (s₁⋈s₂))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_interleave_left">      <h4>stream.nth_interleave_left</h4><code>∀ {α : Type u} (n : ℕ) (s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> (2 * n) (s₁⋈s₂) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s₁</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_interleave_right">      <h4>stream.nth_interleave_right</h4><code>∀ {α : Type u} (n : ℕ) (s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> (2 * n + 1) (s₁⋈s₂) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_interleave_left">      <h4>stream.mem_interleave_left</h4><code>∀ {α : Type u} {a : α} {s₁ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α} (s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), a ∈ s₁ → a ∈ s₁⋈s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_interleave_right">      <h4>stream.mem_interleave_right</h4><code>∀ {α : Type u} {a : α} {s₁ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α} (s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), a ∈ s₂ → a ∈ s₁⋈s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.even">      <h4>stream.even</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.odd">      <h4>stream.odd</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.odd_eq">      <h4>stream.odd_eq</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.odd">stream.odd</a> s = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.head_even">      <h4>stream.head_even</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_even">      <h4>stream.tail_even</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.even_cons_cons">      <h4>stream.even_cons_cons</h4><code>∀ {α : Type u} (a₁ a₂ : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> (a₁ :: a₂ :: s) = a₁ :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.even_tail">      <h4>stream.even_tail</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.odd">stream.odd</a> s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.even_interleave">      <h4>stream.even_interleave</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> (s₁⋈s₂) = s₁</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.interleave_even_odd">      <h4>stream.interleave_even_odd</h4><code>∀ {α : Type u} (s₁ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> s₁⋈stream.odd s₁ = s₁</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_even">      <h4>stream.nth_even</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> (2 * n) s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_odd">      <h4>stream.nth_odd</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.odd">stream.odd</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> (2 * n + 1) s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_of_mem_even">      <h4>stream.mem_of_mem_even</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), a ∈ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.even">stream.even</a> s → a ∈ s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_of_mem_odd">      <h4>stream.mem_of_mem_odd</h4><code>∀ {α : Type u} (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), a ∈ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.odd">stream.odd</a> s → a ∈ s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.append_stream">      <h4>stream.append_stream</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nil_append_stream">      <h4>stream.nil_append_stream</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), list.nil++ₛ s = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.cons_append_stream">      <h4>stream.cons_append_stream</h4><code>∀ {α : Type u} (a : α) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), a :: l++ₛ s = a :: (l++ₛ s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.append_append_stream">      <h4>stream.append_append_stream</h4><code>∀ {α : Type u} (l₁ l₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), l₁ ++ l₂++ₛ s = l₁++ₛ(l₂++ₛ s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_append_stream">      <h4>stream.map_append_stream</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f (l++ₛ s) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> f l++ₛ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.drop_append_stream">      <h4>stream.drop_append_stream</h4><code>∀ {α : Type u} (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> l) (l++ₛ s) = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.append_stream_head_tail">      <h4>stream.append_stream_head_tail</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), [<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s]++ₛ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_append_stream_right">      <h4>stream.mem_append_stream_right</h4><code>∀ {α : Type u} {a : α} (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) {s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α}, a ∈ s → a ∈ l++ₛ s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_append_stream_left">      <h4>stream.mem_append_stream_left</h4><code>∀ {α : Type u} {a : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), a ∈ l → a ∈ l++ₛ s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.approx">      <h4>stream.approx</h4><code>Π {α : Type u}, ℕ → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.approx_zero">      <h4>stream.approx_zero</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.approx">stream.approx</a> 0 s = list.nil</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.approx_succ">      <h4>stream.approx_succ</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.approx">stream.approx</a> (nat.succ n) s = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.approx">stream.approx</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_approx">      <h4>stream.nth_approx</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.nth">list.nth</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.approx">stream.approx</a> (nat.succ n) s) n = option.some (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.append_approx_drop">      <h4>stream.append_approx_drop</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.approx">stream.approx</a> n s++ₛ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n s = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.take_theorem">      <h4>stream.take_theorem</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), (∀ (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.approx">stream.approx</a> n s₁ = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.approx">stream.approx</a> n s₂) → s₁ = s₂</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.cycle">      <h4>stream.cycle</h4><code>Π {α : Type u} (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α), l ≠ list.nil → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.cycle_eq">      <h4>stream.cycle_eq</h4><code>∀ {α : Type u} (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (h : l ≠ list.nil), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.cycle">stream.cycle</a> l h = l++ₛ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.cycle">stream.cycle</a> l h</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.mem_cycle">      <h4>stream.mem_cycle</h4><code>∀ {α : Type u} {a : α} {l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α} (h : l ≠ list.nil), a ∈ l → a ∈ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.cycle">stream.cycle</a> l h</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.cycle_singleton">      <h4>stream.cycle_singleton</h4><code>∀ {α : Type u} (a : α) (h : [a] ≠ list.nil), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.cycle">stream.cycle</a> [a] h = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> a</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tails">      <h4>stream.tails</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tails_eq">      <h4>stream.tails_eq</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tails">stream.tails</a> s = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tails">stream.tails</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_tails">      <h4>stream.nth_tails</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tails">stream.tails</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tails_eq_iterate">      <h4>stream.tails_eq_iterate</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tails">stream.tails</a> s = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.iterate">stream.iterate</a> <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.inits_core">      <h4>stream.inits_core</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.inits">      <h4>stream.inits</h4><code>Π {α : Type u}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.inits_core_eq">      <h4>stream.inits_core_eq</h4><code>∀ {α : Type u} (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits_core">stream.inits_core</a> l s = l :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits_core">stream.inits_core</a> (l ++ [<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s]) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.tail_inits">      <h4>stream.tail_inits</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits">stream.inits</a> s) =
-    <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits_core">stream.inits_core</a> [<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)] (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.inits_tail">      <h4>stream.inits_tail</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits">stream.inits</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits_core">stream.inits_core</a> [<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s)] (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.cons_nth_inits_core">      <h4>stream.cons_nth_inits_core</h4><code>∀ {α : Type u} (a : α) (n : ℕ) (l : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  a :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits_core">stream.inits_core</a> l s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits_core">stream.inits_core</a> (a :: l) s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_inits">      <h4>stream.nth_inits</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits">stream.inits</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.approx">stream.approx</a> (nat.succ n) s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.inits_eq">      <h4>stream.inits_eq</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits">stream.inits</a> s = [<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s] :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> (list.cons (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.head">stream.head</a> s)) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits">stream.inits</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tail">stream.tail</a> s))</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.zip_inits_tails">      <h4>stream.zip_inits_tails</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.zip">stream.zip</a> <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.append_stream">stream.append_stream</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.inits">stream.inits</a> s) (<a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.tails">stream.tails</a> s) = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.const">stream.const</a> s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.pure">      <h4>stream.pure</h4><code>Π {α : Type u}, α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.apply">      <h4>stream.apply</h4><code>Π {α : Type u} {β : Type v}, <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> (α → β) → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> β</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.identity">      <h4>stream.identity</h4><code>∀ {α : Type u} (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.pure">stream.pure</a> id⊛s = s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.composition">      <h4>stream.composition</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (g : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> (β → δ)) (f : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> (α → β)) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α),
-  <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.pure">stream.pure</a> function.comp⊛g⊛f⊛s = g⊛(f⊛s)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.homomorphism">      <h4>stream.homomorphism</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (a : α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.pure">stream.pure</a> f⊛stream.pure a = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.pure">stream.pure</a> (f a)</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.interchange">      <h4>stream.interchange</h4><code>∀ {α : Type u} {β : Type v} (fs : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> (α → β)) (a : α),
-  fs⊛stream.pure a = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.pure">stream.pure</a> (λ (f : α → β), f a)⊛fs</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.map_eq_apply">      <h4>stream.map_eq_apply</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> α), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> f s = <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.pure">stream.pure</a> f⊛s</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nats">      <h4>stream.nats</h4><code><a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream">stream</a> ℕ</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nth_nats">      <h4>stream.nth_nats</h4><code>∀ (n : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nth">stream.nth</a> n <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nats">stream.nats</a> = n</code>
-<div class="indent"><p><p></p>
-</p>       </div>
-</div><div class="entry"><a id="stream.nats_eq">      <h4>stream.nats_eq</h4><code><a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nats">stream.nats</a> = 0 :: <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.map">stream.map</a> nat.succ <a href="https://robertylewis.com/mathlib_docs/core/data/stream.html#stream.nats">stream.nats</a></code>
-<div class="indent"><p><p></p>
-</p>       </div>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.iterate_id"></a>      <h4>stream.iterate_id</h4><code>∀ {α : Type u} (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> a = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_iterate"></a>      <h4>stream.map_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f (f a) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.corec"></a>      <h4>stream.corec</h4><code>Π {α : Type u} {β : Type v}, (α → β) → (α → α) → α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.corec_on"></a>      <h4>stream.corec_on</h4><code>Π {α : Type u} {β : Type v}, α → (α → β) → (α → α) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.corec_def"></a>      <h4>stream.corec_def</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (g : α → α) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.corec">stream.corec</a> f g a = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> g a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.corec_eq"></a>      <h4>stream.corec_eq</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (g : α → α) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.corec">stream.corec</a> f g a = f a :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.corec">stream.corec</a> f g (g a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.corec_id_id_eq_const"></a>      <h4>stream.corec_id_id_eq_const</h4><code>∀ {α : Type u} (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.corec">stream.corec</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> a = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.corec_id_f_eq_iterate"></a>      <h4>stream.corec_id_f_eq_iterate</h4><code>∀ {α : Type u} (f : α → α) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.corec">stream.corec</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/logic.html#id">id</a> f a = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> f a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.corec'"></a>      <h4>stream.corec'</h4><code>Π {α : Type u} {β : Type v}, (α → β × α) → α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.corec'_eq"></a>      <h4>stream.corec'_eq</h4><code>∀ {α : Type u} {β : Type v} (f : α → β × α) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.corec'">stream.corec'</a> f a = (f a).fst :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.corec'">stream.corec'</a> f ((f a).snd)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.unfolds"></a>      <h4>stream.unfolds</h4><code>Π {α : Type u} {β : Type v}, (α → β) → (α → α) → α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.unfolds_eq"></a>      <h4>stream.unfolds_eq</h4><code>∀ {α : Type u} {β : Type v} (g : α → β) (f : α → α) (a : α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.unfolds">stream.unfolds</a> g f a = g a :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.unfolds">stream.unfolds</a> g f (f a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_unfolds_head_tail"></a>      <h4>stream.nth_unfolds_head_tail</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.unfolds">stream.unfolds</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.unfolds_head_eq"></a>      <h4>stream.unfolds_head_eq</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.unfolds">stream.unfolds</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.interleave"></a>      <h4>stream.interleave</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.interleave_eq"></a>      <h4>stream.interleave_eq</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  s₁⋈s₂ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₁ :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s₂ :: (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₁⋈stream.tail s₂)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_interleave"></a>      <h4>stream.tail_interleave</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (s₁⋈s₂) = s₂⋈stream.tail s₁</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.interleave_tail_tail"></a>      <h4>stream.interleave_tail_tail</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s₁⋈stream.tail s₂ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (s₁⋈s₂))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_interleave_left"></a>      <h4>stream.nth_interleave_left</h4><code>∀ {α : Type u} (n : ℕ) (s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> (2 * n) (s₁⋈s₂) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s₁</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_interleave_right"></a>      <h4>stream.nth_interleave_right</h4><code>∀ {α : Type u} (n : ℕ) (s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> (2 * n + 1) (s₁⋈s₂) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_interleave_left"></a>      <h4>stream.mem_interleave_left</h4><code>∀ {α : Type u} {a : α} {s₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α} (s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), a ∈ s₁ → a ∈ s₁⋈s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_interleave_right"></a>      <h4>stream.mem_interleave_right</h4><code>∀ {α : Type u} {a : α} {s₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α} (s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), a ∈ s₂ → a ∈ s₁⋈s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.even"></a>      <h4>stream.even</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.odd"></a>      <h4>stream.odd</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.odd_eq"></a>      <h4>stream.odd_eq</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.odd">stream.odd</a> s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.head_even"></a>      <h4>stream.head_even</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_even"></a>      <h4>stream.tail_even</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.even_cons_cons"></a>      <h4>stream.even_cons_cons</h4><code>∀ {α : Type u} (a₁ a₂ : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> (a₁ :: a₂ :: s) = a₁ :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.even_tail"></a>      <h4>stream.even_tail</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.odd">stream.odd</a> s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.even_interleave"></a>      <h4>stream.even_interleave</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> (s₁⋈s₂) = s₁</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.interleave_even_odd"></a>      <h4>stream.interleave_even_odd</h4><code>∀ {α : Type u} (s₁ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> s₁⋈stream.odd s₁ = s₁</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_even"></a>      <h4>stream.nth_even</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> (2 * n) s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_odd"></a>      <h4>stream.nth_odd</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.odd">stream.odd</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> (2 * n + 1) s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_of_mem_even"></a>      <h4>stream.mem_of_mem_even</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.even">stream.even</a> s → a ∈ s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_of_mem_odd"></a>      <h4>stream.mem_of_mem_odd</h4><code>∀ {α : Type u} (a : α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.odd">stream.odd</a> s → a ∈ s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.append_stream"></a>      <h4>stream.append_stream</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nil_append_stream"></a>      <h4>stream.nil_append_stream</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), list.nil++ₛ s = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.cons_append_stream"></a>      <h4>stream.cons_append_stream</h4><code>∀ {α : Type u} (a : α) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), a :: l++ₛ s = a :: (l++ₛ s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.append_append_stream"></a>      <h4>stream.append_append_stream</h4><code>∀ {α : Type u} (l₁ l₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), l₁ ++ l₂++ₛ s = l₁++ₛ(l₂++ₛ s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_append_stream"></a>      <h4>stream.map_append_stream</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f (l++ₛ s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.map">list.map</a> f l++ₛ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.drop_append_stream"></a>      <h4>stream.drop_append_stream</h4><code>∀ {α : Type u} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.length">list.length</a> l) (l++ₛ s) = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.append_stream_head_tail"></a>      <h4>stream.append_stream_head_tail</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), [<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s]++ₛ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_append_stream_right"></a>      <h4>stream.mem_append_stream_right</h4><code>∀ {α : Type u} {a : α} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) {s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α}, a ∈ s → a ∈ l++ₛ s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_append_stream_left"></a>      <h4>stream.mem_append_stream_left</h4><code>∀ {α : Type u} {a : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), a ∈ l → a ∈ l++ₛ s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.approx"></a>      <h4>stream.approx</h4><code>Π {α : Type u}, ℕ → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.approx_zero"></a>      <h4>stream.approx_zero</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.approx">stream.approx</a> 0 s = list.nil</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.approx_succ"></a>      <h4>stream.approx_succ</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.approx">stream.approx</a> (nat.succ n) s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.approx">stream.approx</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_approx"></a>      <h4>stream.nth_approx</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/data/list/basic.html#list.nth">list.nth</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.approx">stream.approx</a> (nat.succ n) s) n = option.some (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.append_approx_drop"></a>      <h4>stream.append_approx_drop</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.approx">stream.approx</a> n s++ₛ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n s = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.take_theorem"></a>      <h4>stream.take_theorem</h4><code>∀ {α : Type u} (s₁ s₂ : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), (∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.approx">stream.approx</a> n s₁ = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.approx">stream.approx</a> n s₂) → s₁ = s₂</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.cycle"></a>      <h4>stream.cycle</h4><code>Π {α : Type u} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α), l ≠ list.nil → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.cycle_eq"></a>      <h4>stream.cycle_eq</h4><code>∀ {α : Type u} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (h : l ≠ list.nil), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.cycle">stream.cycle</a> l h = l++ₛ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.cycle">stream.cycle</a> l h</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.mem_cycle"></a>      <h4>stream.mem_cycle</h4><code>∀ {α : Type u} {a : α} {l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α} (h : l ≠ list.nil), a ∈ l → a ∈ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.cycle">stream.cycle</a> l h</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.cycle_singleton"></a>      <h4>stream.cycle_singleton</h4><code>∀ {α : Type u} (a : α) (h : [a] ≠ list.nil), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.cycle">stream.cycle</a> [a] h = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> a</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.tails"></a>      <h4>stream.tails</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tails_eq"></a>      <h4>stream.tails_eq</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tails">stream.tails</a> s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tails">stream.tails</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_tails"></a>      <h4>stream.nth_tails</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tails">stream.tails</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.drop">stream.drop</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tails_eq_iterate"></a>      <h4>stream.tails_eq_iterate</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tails">stream.tails</a> s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.iterate">stream.iterate</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.inits_core"></a>      <h4>stream.inits_core</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.inits"></a>      <h4>stream.inits</h4><code>Π {α : Type u}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.inits_core_eq"></a>      <h4>stream.inits_core_eq</h4><code>∀ {α : Type u} (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits_core">stream.inits_core</a> l s = l :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits_core">stream.inits_core</a> (l ++ [<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s]) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.tail_inits"></a>      <h4>stream.tail_inits</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits">stream.inits</a> s) =
+    <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits_core">stream.inits_core</a> [<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)] (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.inits_tail"></a>      <h4>stream.inits_tail</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits">stream.inits</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits_core">stream.inits_core</a> [<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s)] (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.cons_nth_inits_core"></a>      <h4>stream.cons_nth_inits_core</h4><code>∀ {α : Type u} (a : α) (n : ℕ) (l : <a href="/home/rob/lean/mathlib/scripts/html_out/core/init/core.html#list">list</a> α) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  a :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits_core">stream.inits_core</a> l s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits_core">stream.inits_core</a> (a :: l) s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_inits"></a>      <h4>stream.nth_inits</h4><code>∀ {α : Type u} (n : ℕ) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits">stream.inits</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.approx">stream.approx</a> (nat.succ n) s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.inits_eq"></a>      <h4>stream.inits_eq</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits">stream.inits</a> s = [<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s] :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> (list.cons (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.head">stream.head</a> s)) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits">stream.inits</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tail">stream.tail</a> s))</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.zip_inits_tails"></a>      <h4>stream.zip_inits_tails</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.zip">stream.zip</a> <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.append_stream">stream.append_stream</a> (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.inits">stream.inits</a> s) (<a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.tails">stream.tails</a> s) = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.const">stream.const</a> s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.pure"></a>      <h4>stream.pure</h4><code>Π {α : Type u}, α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.apply"></a>      <h4>stream.apply</h4><code>Π {α : Type u} {β : Type v}, <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> (α → β) → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α → <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> β</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.identity"></a>      <h4>stream.identity</h4><code>∀ {α : Type u} (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.pure">stream.pure</a> id⊛s = s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.composition"></a>      <h4>stream.composition</h4><code>∀ {α : Type u} {β : Type v} {δ : Type w} (g : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> (β → δ)) (f : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> (α → β)) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α),
+  <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.pure">stream.pure</a> function.comp⊛g⊛f⊛s = g⊛(f⊛s)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.homomorphism"></a>      <h4>stream.homomorphism</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (a : α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.pure">stream.pure</a> f⊛stream.pure a = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.pure">stream.pure</a> (f a)</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.interchange"></a>      <h4>stream.interchange</h4><code>∀ {α : Type u} {β : Type v} (fs : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> (α → β)) (a : α),
+  fs⊛stream.pure a = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.pure">stream.pure</a> (λ (f : α → β), f a)⊛fs</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.map_eq_apply"></a>      <h4>stream.map_eq_apply</h4><code>∀ {α : Type u} {β : Type v} (f : α → β) (s : <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> α), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> f s = <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.pure">stream.pure</a> f⊛s</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="def"><a id="stream.nats"></a>      <h4>stream.nats</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream">stream</a> ℕ</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nth_nats"></a>      <h4>stream.nth_nats</h4><code>∀ (n : ℕ), <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nth">stream.nth</a> n <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nats">stream.nats</a> = n</code>
+<div class="indent"><p></p>
+       </div>
+</div><div class="thm"><a id="stream.nats_eq"></a>      <h4>stream.nats_eq</h4><code><a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nats">stream.nats</a> = 0 :: <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.map">stream.map</a> nat.succ <a href="/home/rob/lean/mathlib/scripts/html_out/core/data/stream.html#stream.nats">stream.nats</a></code>
+<div class="indent"><p></p>
+       </div>
 </div></body></html>
