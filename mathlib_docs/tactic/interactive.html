@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>tactic.interactive</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+<!DOCTYPE html><html lang="en"><head><title>tactic.interactive</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/tactic/index.html">tactic</a>/<a href="interactive.html">interactive</a></div><div class="mod_doc"><p></p>
 </div><div class="def"><a id="tactic.interactive.fconstructor"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/tactic/interactive.lean#L20">tactic.interactive.fconstructor</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
 <div class="indent"><p>Similar to <code>constructor</code>, but does not reorder goals.</p>
        </div>
@@ -188,15 +188,15 @@ meta def mono_rules : user_attribute :=
 { name :=</code>mono_rules,
   descr := "lemmas usable to prove monotonicity" }</p>
 
-<p>attribute [mono<em>rules] add</em>le<em>add mul</em>le<em>mul</em>of<em>nonneg</em>right</p>
+<p>attribute [mono_rules] add_le_add mul_le_mul_of_nonneg_right</p>
 
-<p>lemma my<em>test {a b c d e : real} (h1 : a ≤ b) (h2 : c ≤ d) (h3 : 0 ≤ e) :
+<p>lemma my_test {a b c d e : real} (h1 : a ≤ b) (h2 : c ≤ d) (h3 : 0 ≤ e) :
 a + c * e + a + c + 0 ≤ b + d * e + b + d + e :=
-by apply</em>rules mono<em>rules
+by apply_rules mono_rules
 -- any of the following lines would also work:
--- add</em>le<em>add (add</em>le<em>add (add</em>le<em>add (add</em>le<em>add h1 (mul</em>le<em>mul</em>of<em>nonneg</em>right h2 h3)) h1 ) h2) h3
--- by apply<em>rules [add</em>le<em>add, mul</em>le<em>mul</em>of<em>nonneg</em>right]
--- by apply<em>rules [mono</em>rules]
+-- add_le_add (add_le_add (add_le_add (add_le_add h1 (mul_le_mul_of_nonneg_right h2 h3)) h1 ) h2) h3
+-- by apply_rules [add_le_add, mul_le_mul_of_nonneg_right]
+-- by apply_rules [mono_rules]
 ```</p>
        </div>
 </div><div class="def"><a id="tactic.interactive.return_cast"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/tactic/interactive.lean#L409">tactic.interactive.return_cast</a></span> <span class="decl_args">(f : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">(t : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</span> <span class="decl_args">(es : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</span> <span class="decl_args">(e x x' eq_h : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
@@ -359,7 +359,7 @@ begin
 <pre><code> -- end
 </code></pre>
 
-<p>extract<em>goal my</em>lemma
+<p>extract_goal my_lemma
      -- lemma my_lemma {i j k : ℕ} (h₀ : i ≤ j) (h₁ : j ≤ k) : i ≤ k :=
      -- begin</p>
 
@@ -370,7 +370,7 @@ begin
 
 <p>example {i j k x y z w p q r m n : ℕ} (h₀ : i ≤ j) (h₁ : j ≤ k) (h₁ : k ≤ p) (h₁ : p ≤ q) : i ≤ k :=
 begin
-  extract<em>goal my</em>lemma,
+  extract_goal my_lemma,
     -- prints:
     -- lemma my_lemma {i j k x y z w p q r m n : ℕ} (h₀ : i ≤ j) (h₁ : j ≤ k)
     --   (h₁ : k ≤ p) (h₁ : p ≤ q) : i ≤ k :=
@@ -379,7 +379,7 @@ begin
 <pre><code>-- end
 </code></pre>
 
-<p>extract<em>goal my</em>lemma with i j k
+<p>extract_goal my_lemma with i j k
     -- prints:
     -- lemma my_lemma {i j k : ℕ} : i ≤ k :=
     -- begin</p>

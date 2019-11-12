@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>analysis.calculus.times_cont_diff</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Higher differentiability</h1>
+<!DOCTYPE html><html lang="en"><head><title>analysis.calculus.times_cont_diff</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/analysis/index.html">analysis</a>/<a href="https://robertylewis.com/mathlib_docs/analysis/calculus/index.html">calculus</a>/<a href="times_cont_diff.html">times_cont_diff</a></div><div class="mod_doc"><h1>Higher differentiability</h1>
 
 <p>A function is <code>C^1</code> on a domain if it is differentiable there, and its derivative is continuous.
 By induction, it is <code>C^n</code> if it is <code>C^{n-1}</code> and its (n-1)-th derivative is <code>C^1</code> there or,
@@ -20,8 +20,8 @@ or on the set <code>s</code>.</p>
 where there are n iterations of <code>E →L[𝕜]</code>. We define this space inductively, call it
 <code>iterated_continuous_linear_map 𝕜 n E F</code>, and denote it by <code>E [×n]→L[𝕜] F</code>. We can define
 it inductively either from the left (i.e., saying that the
-(n+1)-th space S<em>{n+1} is E →L[𝕜] S</em>n) or from the right (i.e., saying that
-the (n+1)-th space associated to F, denoted by S<em>{n+1} (F), is equal to S</em>n (E →L[𝕜] F)).
+(n+1)-th space S_{n+1} is E →L[𝕜] S_n) or from the right (i.e., saying that
+the (n+1)-th space associated to F, denoted by S_{n+1} (F), is equal to S_n (E →L[𝕜] F)).
 For proofs, it turns out to be more convenient to use the latter approach (from the right),
 as it means to prove things at the (n+1)-th step we only need to understand well enough the
 derivative in E →L[𝕜] F (contrary to the approach from the left, where one would need to know
@@ -37,13 +37,16 @@ universe max v u. But we should also ulift its vector space structure and its no
 structure. This can certainly be done, but I decided it was not worth it for now. Therefore, the
 definition is only made when E and F live in the same universe.</p>
 
-<p>Regarding the definition of <code>C^n</code> functions, there are two equivalent definitions:
-* require by induction that the function is differentiable, and that its derivative is C^{n-1}
-* or require that, for all m ≤ n, the m-th derivative is continuous, and for all m &lt; n the m-th
+<p>Regarding the definition of <code>C^n</code> functions, there are two equivalent definitions:</p>
+
+<ul>
+<li>require by induction that the function is differentiable, and that its derivative is C^{n-1}</li>
+<li>or require that, for all m ≤ n, the m-th derivative is continuous, and for all m &lt; n the m-th
 derivative is differentiable.
 The first definition is more efficient for many proofs by induction. The second definition is more
 satisfactory as it gives concrete information about the n-th derivative (contrary to the first point
-of view), and moreover it also makes sense for n = ∞.</p>
+of view), and moreover it also makes sense for n = ∞.</li>
+</ul>
 
 <p>Therefore, we give (and use) both definitions, named respectively <code>times_cont_diff_rec</code> and
 <code>times_cont_diff</code> (as well as relativized versions on a set). We show that they are equivalent.

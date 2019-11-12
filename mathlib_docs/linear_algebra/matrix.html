@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>linear_algebra.matrix</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Linear maps and matrices</h1>
+<!DOCTYPE html><html lang="en"><head><title>linear_algebra.matrix</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/linear_algebra/index.html">linear_algebra</a>/<a href="matrix.html">matrix</a></div><div class="mod_doc"><h1>Linear maps and matrices</h1>
 
 <p>This file defines the maps to send matrices to a linear map,
 and to send linear maps between modules with a finite bases
@@ -11,11 +11,11 @@ diagonal matrix (range, ker and rank).</p>
 
 <h2>Main definitions</h2>
 
-<p>to<em>lin, to</em>matrix, linear<em>equiv</em>matrix</p>
+<p>to_lin, to_matrix, linear_equiv_matrix</p>
 
 <h2>Tags</h2>
 
-<p>linear<em>map, matrix, linear</em>equiv, diagonal</p>
+<p>linear_map, matrix, linear_equiv, diagonal</p>
 </div><div class="def"><a id="matrix.fintype"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/linear_algebra/matrix.lean#L45">matrix.fintype</a></span> <span class="decl_args">{m n : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> m]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> n]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> m]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> n]</span> <span class="decl_args">(R : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> R]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> (<a href="https://robertylewis.com/mathlib_docs/data/matrix/basic.html#matrix">matrix</a> m n R)</div>
 <div class="indent"><p></p>
        Attributes: instance</div>
@@ -52,10 +52,10 @@ linear maps (n → R) →ₗ[R] (m → R).</p>
 <div class="indent"><p>The map from linear maps (n → R) →ₗ[R] (m → R) to matrix m n R.</p>
        </div>
 </div><div class="thm"><a id="to_matrix_to_lin"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/linear_algebra/matrix.lean#L129">to_matrix_to_lin</a></span> <span class="decl_args">{m n : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> m]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> n]</span> <span class="decl_args">{R : Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> n]</span> <span class="decl_args">{f : (n → R) →ₗ[R] m → R}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html#matrix.to_lin">matrix.to_lin</a> (<a href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html#linear_map.to_matrix">linear_map.to_matrix</a> f) = f</div>
-<div class="indent"><p>to<em>lin is the left inverse of to</em>matrix.</p>
+<div class="indent"><p>to_lin is the left inverse of to_matrix.</p>
        </div>
 </div><div class="thm"><a id="to_lin_to_matrix"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/linear_algebra/matrix.lean#L153">to_lin_to_matrix</a></span> <span class="decl_args">{m n : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> m]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> n]</span> <span class="decl_args">{R : Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> n]</span> <span class="decl_args">{M : <a href="https://robertylewis.com/mathlib_docs/data/matrix/basic.html#matrix">matrix</a> m n R}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html#linear_map.to_matrix">linear_map.to_matrix</a> (<a href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html#matrix.to_lin">matrix.to_lin</a> M) = M</div>
-<div class="indent"><p>to<em>lin is the right inverse of to</em>matrix.</p>
+<div class="indent"><p>to_lin is the right inverse of to_matrix.</p>
        </div>
 </div><div class="def"><a id="linear_equiv_matrix'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/linear_algebra/matrix.lean#L168">linear_equiv_matrix'</a></span> <span class="decl_args">{m n : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> m]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> n]</span> <span class="decl_args">{R : Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> n]</span> <span class="decl_args">:</span>       <div class="decl_type">((n → R) →ₗ[R] m → R) ≃ₗ[R] <a href="https://robertylewis.com/mathlib_docs/data/matrix/basic.html#matrix">matrix</a> m n R</div>
 <div class="indent"><p>Linear maps (n → R) →ₗ[R] (m → R) are linearly equivalent to matrix  m n R.</p>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>data.equiv.local_equiv</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Local equivalences</h1>
+<!DOCTYPE html><html lang="en"><head><title>data.equiv.local_equiv</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/data/index.html">data</a>/<a href="https://robertylewis.com/mathlib_docs/data/equiv/index.html">equiv</a>/<a href="local_equiv.html">local_equiv</a></div><div class="mod_doc"><h1>Local equivalences</h1>
 
 <p>This files defines equivalences between subsets of given types.
 An element <code>e</code> of <code>local_equiv α β</code> is made of two maps <code>e.to_fun</code> and <code>e.inv_fun</code> respectively
@@ -10,8 +10,8 @@ from α to β and from  β to α (just like equivs), which are inverse to each o
 <p>The main functionality is <code>e.trans f</code>, which composes the two local equivalences by restricting
 the source and target to the maximal set where the composition makes sense.</p>
 
-<p>Contrary to equivs, we do not register the coercion to functions and we use explicitly to<em>fun and
-inv</em>fun: coercions create numerous unification problems for manifolds.</p>
+<p>Contrary to equivs, we do not register the coercion to functions and we use explicitly to_fun and
+inv_fun: coercions create numerous unification problems for manifolds.</p>
 
 <h2>Main definitions</h2>
 
@@ -25,29 +25,35 @@ inv</em>fun: coercions create numerous unification problems for manifolds.</p>
 
 <h2>Implementation notes</h2>
 
-<p>There are at least three possible implementations of local equivalences:
-* equivs on subtypes
-* pairs of functions taking values in <code>option α</code> and <code>option β</code>, equal to none where the local
-equivalence is not defined
-* pairs of functions defined everywhere, keeping the source and target as additional data</p>
+<p>There are at least three possible implementations of local equivalences:</p>
 
-<p>Each of these implementations has pros and cons.
-* When dealing with subtypes, one still need to define additional API for composition and
+<ul>
+<li>equivs on subtypes</li>
+<li>pairs of functions taking values in <code>option α</code> and <code>option β</code>, equal to none where the local
+equivalence is not defined</li>
+<li>pairs of functions defined everywhere, keeping the source and target as additional data</li>
+</ul>
+
+<p>Each of these implementations has pros and cons.</p>
+
+<ul>
+<li>When dealing with subtypes, one still need to define additional API for composition and
 restriction of domains. Checking that one always belongs to the right subtype makes things very
 tedious, and leads quickly to DTT hell (as the subtype <code>u ∩ v</code> is not the "same" as <code>v ∩ u</code>, for
-instance).
-* With option-valued functions, the composition is very neat (it is just the usual composition, and
+instance).</li>
+<li>With option-valued functions, the composition is very neat (it is just the usual composition, and
 the domain is restricted automatically). These are implemented in <code>pequiv.lean</code>. For manifolds,
 where one wants to discuss thoroughly the smoothness of the maps, this creates however a lot of
-overhead as one would need to extend all classes of smoothness to option-valued maps.
-* The local_equiv version as explained above is easier to use for manifolds. The drawback is that
+overhead as one would need to extend all classes of smoothness to option-valued maps.</li>
+<li>The local_equiv version as explained above is easier to use for manifolds. The drawback is that
 there is extra useless data (the values of <code>to_fun</code> and <code>inv_fun</code> outside of <code>source</code> and <code>target</code>).
 In particular, the equality notion between local equivs is not "the right one", i.e., coinciding
 source and target and equality there. Moreover, there are no local equivs in this sense between
 an empty type and a nonempty type. Since empty types are not that useful, and since one almost never
 needs to talk about equal local equivs, this is not an issue in practice.
 Still, we introduce an equivalence relation <code>eq_on_source</code> that captures this right notion of
-equality, and show that many properties are invariant under this equivalence relation.</p>
+equality, and show that many properties are invariant under this equivalence relation.</li>
+</ul>
 </div><div class="cnst"><a id="local_equiv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/data/equiv/local_equiv.lean#L70">local_equiv</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">(β : Type u_6)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_5 u_6)</div>
 <div class="indent"><p>Local equivalence between subsets <code>source</code> and <code>target</code> of α and β respectively. The (global)
 maps <code>to_fun : α → β</code> and <code>inv_fun : β → α</code> map <code>source</code> to <code>target</code> and conversely, and are inverse
@@ -106,7 +112,7 @@ are irrelevant.</p>
 <div class="indent"><p></p>
        </div>
 </div><div class="thm"><a id="local_equiv.ext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/data/equiv/local_equiv.lean#L172">local_equiv.ext</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">(e e' : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> α β)</span> <span class="decl_args">(h : ∀ (x : α), e.to_fun x = e'.to_fun x)</span> <span class="decl_args">(hsymm : ∀ (x : β), e.inv_fun x = e'.inv_fun x)</span> <span class="decl_args">(hs : e.source = e'.source)</span> <span class="decl_args">:</span>       <div class="decl_type">e = e'</div>
-<div class="indent"><p>Two local equivs that have the same source, same to<em>fun and same inv</em>fun, coincide.</p>
+<div class="indent"><p>Two local equivs that have the same source, same to_fun and same inv_fun, coincide.</p>
        Attributes: ext</div>
 </div><div class="def"><a id="local_equiv.restr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/data/equiv/local_equiv.lean#L185">local_equiv.restr</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> α β)</span> <span class="decl_args">(s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> α β</div>
 <div class="indent"><p>Restricting a local equivalence to e.source ∩ s</p>

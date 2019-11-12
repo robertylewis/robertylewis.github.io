@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>geometry.manifold.smooth_manifold_with_corners</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Smooth manifolds (possibly with boundary or corners)</h1>
+<!DOCTYPE html><html lang="en"><head><title>geometry.manifold.smooth_manifold_with_corners</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/geometry/index.html">geometry</a>/<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/index.html">manifold</a>/<a href="smooth_manifold_with_corners.html">smooth_manifold_with_corners</a></div><div class="mod_doc"><h1>Smooth manifolds (possibly with boundary or corners)</h1>
 
 <p>A smooth manifold is a manifold modelled on a normed vector space, or a subset like a
 half-space (to get manifolds with boundaries) for which the change of coordinates are smooth maps.
@@ -26,12 +26,15 @@ class for C^∞ manifolds as these are the most commonly used.</p>
           coordinates with respect to the model with corners I on (𝕜, E, H). This type class is just
           a shortcut for <code>has_groupoid M (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#times_cont_diff_groupoid">times_cont_diff_groupoid</a> ⊤ I)</code></p>
 
-<p>As specific examples of models with corners, we define (in the file <code>real_instances.lean</code>)
-* <code>euclidean_space n</code> for a model vector space of dimension <code>n</code>.
-* <code>model_with_corners ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</code> for the model space used
-to define <code>n</code>-dimensional real manifolds with boundary and
-* <code>model_with_corners ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</code> for the model space used
-to define <code>n</code>-dimensional real manifolds with corners</p>
+<p>As specific examples of models with corners, we define (in the file <code>real_instances.lean</code>)</p>
+
+<ul>
+<li><code>euclidean_space n</code> for a model vector space of dimension <code>n</code>.</li>
+<li><code>model_with_corners ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</code> for the model space used
+to define <code>n</code>-dimensional real manifolds with boundary and</li>
+<li><code>model_with_corners ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</code> for the model space used
+to define <code>n</code>-dimensional real manifolds with corners</li>
+</ul>
 
 <p>With these definitions at hand, to invoke an <code>n</code>-dimensional real manifold without boundary,
 one could use</p>
@@ -51,7 +54,7 @@ the right properties, like</p>
   {M : Type*} [<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M] [<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> E M] [<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#smooth_manifold_with_corners">smooth_manifold_with_corners</a> I M]</code></p>
 
 <p>Here, <code>I.boundaryless</code> is a typeclass property ensuring that there is no boundary (this is for
-instance the case for model<em>with</em>corners_self, or products of these). Note that one could consider
+instance the case for model_with_corners_self, or products of these). Note that one could consider
 as a natural assumption to only use the trivial model with corners <code>model_with_corners_self ℝ E</code>,
 but again in product manifolds the natural model with corners will not be this one but the product
 one (and they are not defeq as (λp : E × F, (p.1, p.2)) is not defeq to the identity). So, it is
@@ -117,7 +120,7 @@ define a smooth manifold with model space H, and model vector space E.</p>
 <div class="indent"><p></p>
        </div>
 </div><div class="def"><a id="model_with_corners.prod"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/geometry/manifold/smooth_manifold_with_corners.lean#L190">model_with_corners.prod</a></span> <span class="decl_args">{𝕜 : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> 𝕜]</span> <span class="decl_args">{E : Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> 𝕜 E]</span> <span class="decl_args">{H : Type w}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(I : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> 𝕜 E H)</span> <span class="decl_args">{E' : Type v'}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> E']</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> 𝕜 E']</span> <span class="decl_args">{H' : Type w'}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H']</span> <span class="decl_args">(I' : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> 𝕜 E' H')</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> 𝕜 (E × E') (H × H')</div>
-<div class="indent"><p>Given two model<em>with</em>corners I on (E, H) and I' on (E', H'), we define the model with corners
+<div class="indent"><p>Given two model_with_corners I on (E, H) and I' on (E', H'), we define the model with corners
 I.prod I' on (E × E', H × H'). This appears in particular for the manifold structure on the tangent
 bundle to a manifold modelled on (E, H): it will be modelled on (E × E, H × E).</p>
        </div>

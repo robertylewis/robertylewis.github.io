@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="en"><head><title>data.padics.padic_numbers</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>p-adic numbers</h1>
+<!DOCTYPE html><html lang="en"><head><title>data.padics.padic_numbers</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/data/index.html">data</a>/<a href="https://robertylewis.com/mathlib_docs/data/padics/index.html">padics</a>/<a href="padic_numbers.html">padic_numbers</a></div><div class="mod_doc"><h1>p-adic numbers</h1>
 
-<p>This file defines the p-adic numbers (rationals) ℚ<em>p as the completion of ℚ with respect to the
-p-adic norm. We show that the p-adic norm on ℚ extends to ℚ</em>p, that ℚ is embedded in ℚ<em>p, and that
-ℚ</em>p is Cauchy complete.</p>
+<p>This file defines the p-adic numbers (rationals) ℚ_p as the completion of ℚ with respect to the
+p-adic norm. We show that the p-adic norm on ℚ extends to ℚ_p, that ℚ is embedded in ℚ_p, and that
+ℚ_p is Cauchy complete.</p>
 
 <h2>Important definitions</h2>
 
@@ -20,15 +20,15 @@ p-adic norm. We show that the p-adic norm on ℚ extends to ℚ</em>p, that ℚ 
 <p>Much, but not all, of this file assumes that <code>p</code> is prime. This assumption is inferred automatically
 by taking (prime p) as a type class argument.</p>
 
-<p>We use the same concrete Cauchy sequence construction that is used to construct ℝ. ℚ<em>p inherits a
-field structure from this construction. The extension of the norm on ℚ to ℚ</em>p is <em>not</em> analogous to
+<p>We use the same concrete Cauchy sequence construction that is used to construct ℝ. ℚ_p inherits a
+field structure from this construction. The extension of the norm on ℚ to ℚ_p is <em>not</em> analogous to
 extending the absolute value to ℝ, and hence the proof that ℚ_p is complete is different from the
 proof that ℝ is complete.</p>
 
 <p>A small special-purpose simplification tactic, <code>padic_index_simp</code>, is used to manipulate sequence
 indices in the proof that the norm extends.</p>
 
-<p><code>padic_norm_e</code> is the rational-valued p-adic norm on ℚ<em>p. To instantiate ℚ</em>p as a normed field, we
+<p><code>padic_norm_e</code> is the rational-valued p-adic norm on ℚ_p. To instantiate ℚ_p as a normed field, we
 must cast this into a ℝ-valued norm. The ℝ-valued norm, using notation ∥ ∥ from normed spaces, is
 the canonical representation of this norm.</p>
 
@@ -96,7 +96,7 @@ to sequences.</p>
 <div class="indent"><p>An auxiliary lemma for manipulating sequence indices.</p>
        </div>
 </div><div class="def"><a id="tactic.interactive.padic_index_simp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/data/padics/padic_numbers.lean#L215">tactic.interactive.padic_index_simp</a></span> <span class="decl_args">(l : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.pexpr_list">interactive.types.pexpr_list</a>)</span> <span class="decl_args">(at_ : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>This is a special-purpose tactic that lifts padic<em>norm (f (stationary</em>point f)) to
+<div class="indent"><p>This is a special-purpose tactic that lifts padic_norm (f (stationary_point f)) to
 padic_norm (f (max _ _ _)).</p>
        </div>
 </div><div class="thm"><a id="padic_seq.norm_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/data/padics/padic_numbers.lean#L228">padic_seq.norm_mul</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="decl_args">(f g : <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_numbers.html#padic_seq">padic_seq</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_numbers.html#padic_seq.norm">padic_seq.norm</a> (f * g) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_numbers.html#padic_seq.norm">padic_seq.norm</a> f * <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_numbers.html#padic_seq.norm">padic_seq.norm</a> g</div>

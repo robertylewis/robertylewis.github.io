@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>set_theory.pgame</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>Combinatorial (pre-)games.</h1>
+<!DOCTYPE html><html lang="en"><head><title>set_theory.pgame</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/set_theory/index.html">set_theory</a>/<a href="pgame.html">pgame</a></div><div class="mod_doc"><h1>Combinatorial (pre-)games.</h1>
 
 <p>The basic theory of combinatorial games, following Conway's book <code>On Numbers <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and">and</a> Games</code>. We
 construct "pregames", define an ordering and arithmetic operations on them, then show that the
@@ -31,7 +31,7 @@ on this relation.</p>
 
 <p>Pregames have both a <code>≤</code> and a <code>&lt;</code> relation, which are related in quite a subtle way. In particular,
 it is worth noting that in Lean's (perhaps unfortunate?) definition of a <code>preorder</code>, we have
-<code>lt_iff_le_not_le : ∀ a b : α, a &lt; b ↔ (a ≤ b ∧ ¬ b ≤ a)</code>, but this is <em>not</em> satisfied by the usual
+<code>lt_iff_le_not_le : ∀ a b : α, a &lt; b ↔ (a ≤ b ∧ ¬ b ≤ a)</code>, but this is _not_ satisfied by the usual
 <code>≤</code> and <code>&lt;</code> relations on pregames. (It is satisfied once we restrict to the surreal numbers.) In
 particular, <code>&lt;</code> is not transitive; there is an example below showing <code>0 &lt; star ∧ star &lt; 0</code>.</p>
 
@@ -90,12 +90,18 @@ quite incomplete.</li>
 
 <h2>References</h2>
 
-<p>The material here is all drawn from
-* [Conway, <em>On numbers and games</em>][conway2001]</p>
+<p>The material here is all drawn from</p>
 
-<p>An interested reader may like to formalise some of the material from
-* [Andreas Blass, <em>A game semantics for linear logic</em>][MR1167694]
-* [André Joyal, <em>Remarques sur la théorie des jeux à deux personnes</em>][joyal1997]</p>
+<ul>
+<li>[Conway, <em>On numbers and games</em>][conway2001]</li>
+</ul>
+
+<p>An interested reader may like to formalise some of the material from</p>
+
+<ul>
+<li>[Andreas Blass, <em>A game semantics for linear logic</em>][MR1167694]</li>
+<li>[André Joyal, <em>Remarques sur la théorie des jeux à deux personnes</em>][joyal1997]</li>
+</ul>
 </div><div class="cnst"><a id="pgame"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/set_theory/pgame.lean#L117">pgame</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
 <div class="indent"><p>The type of pre-games, before we have quotiented
  by extensionality. In ZFC, a combinatorial game is constructed from
@@ -143,10 +149,10 @@ quite incomplete.</li>
 <div class="indent"><p></p>
        Attributes: instance</div>
 </div><div class="thm"><a id="pgame.subsequent.left_move"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/set_theory/pgame.lean#L170">pgame.subsequent.left_move</a></span> <span class="decl_args">{xl xr : Type u_1}</span> <span class="decl_args">{xL : xl → <a href="https://robertylewis.com/mathlib_docs/set_theory/pgame.html#pgame">pgame</a>}</span> <span class="decl_args">{xR : xr → <a href="https://robertylewis.com/mathlib_docs/set_theory/pgame.html#pgame">pgame</a>}</span> <span class="decl_args">{i : xl}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/set_theory/pgame.html#pgame.subsequent">pgame.subsequent</a> (xL i) (pgame.mk xl xr xL xR)</div>
-<div class="indent"><p>A move by Left produces a subsequent game. (For use in pgame<em>wf</em>tac.)</p>
+<div class="indent"><p>A move by Left produces a subsequent game. (For use in pgame_wf_tac.)</p>
        </div>
 </div><div class="thm"><a id="pgame.subsequent.right_move"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/set_theory/pgame.lean#L174">pgame.subsequent.right_move</a></span> <span class="decl_args">{xl xr : Type u_1}</span> <span class="decl_args">{xL : xl → <a href="https://robertylewis.com/mathlib_docs/set_theory/pgame.html#pgame">pgame</a>}</span> <span class="decl_args">{xR : xr → <a href="https://robertylewis.com/mathlib_docs/set_theory/pgame.html#pgame">pgame</a>}</span> <span class="decl_args">{j : xr}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/set_theory/pgame.html#pgame.subsequent">pgame.subsequent</a> (xR j) (pgame.mk xl xr xL xR)</div>
-<div class="indent"><p>A move by Right produces a subsequent game. (For use in pgame<em>wf</em>tac.)</p>
+<div class="indent"><p>A move by Right produces a subsequent game. (For use in pgame_wf_tac.)</p>
        </div>
 </div><div class="def"><a id="pgame.pgame_wf_tac"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/set_theory/pgame.lean#L179">pgame.pgame_wf_tac</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
 <div class="indent"><p>A local tactic for proving well-foundedness of recursive definitions involving pregames.</p>

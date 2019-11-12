@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>tactic.subtype_instance</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+<!DOCTYPE html><html lang="en"><head><title>tactic.subtype_instance</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/tactic/index.html">tactic</a>/<a href="subtype_instance.html">subtype_instance</a></div><div class="mod_doc"><p></p>
 </div><div class="def"><a id="tactic.mk_mem_name"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/886b15b5ea473ae51ed90de31b05f23de00be10d/src/tactic/subtype_instance.lean#L22">tactic.mk_mem_name</a></span> <span class="decl_args">(sub a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div>
 <div class="indent"><p>makes the substructure axiom name from field name, by postfacing with <code>_mem</code></p>
        </div>
@@ -12,12 +12,12 @@
 ```lean
 variables {α : Type*} [monoid α] {s : set α}</p>
 
-<p>class is<em>submonoid (s : set α) : Prop :=
-(one</em>mem : (1:α) ∈ s)
+<p>class is_submonoid (s : set α) : Prop :=
+(one_mem : (1:α) ∈ s)
 (mul_mem {a b} : a ∈ s → b ∈ s → a * b ∈ s)</p>
 
-<p>instance subtype.monoid {s : set α} [is<em>submonoid s] : monoid s :=
-by subtype</em>instance
+<p>instance subtype.monoid {s : set α} [is_submonoid s] : monoid s :=
+by subtype_instance
 ````</p>
        </div>
 </div></body></html>

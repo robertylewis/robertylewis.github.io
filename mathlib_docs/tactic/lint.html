@@ -1,19 +1,25 @@
-<!DOCTYPE html><html lang="en"><head><title>tactic.lint</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><h1>lint command</h1>
+<!DOCTYPE html><html lang="en"><head><title>tactic.lint</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/tactic/index.html">tactic</a>/<a href="lint.html">lint</a></div><div class="mod_doc"><h1>lint command</h1>
 
-<p>This file defines the following user commands to spot common mistakes in the code.
-* <code>#lint</code>: check all declarations in the current file
-* <code>#lint_mathlib</code>: check all declarations in mathlib (so excluding core or other projects,
-  and also excluding the current file)
-* <code>#lint_all</code>: check all declarations in the environment (the current file and all
-  imported files)</p>
+<p>This file defines the following user commands to spot common mistakes in the code.</p>
 
-<p>The following linters are run by default:
-1. <code>unused_arguments</code> checks for unused arguments in declarations.
-2. <code>def_lemma</code> checks whether a declaration is incorrectly marked as a def/lemma.
-3. <code>dup_namespce</code> checks whether a namespace is duplicated in the name of a declaration.
-4. <code>illegal_constant</code> checks whether ≥/> is used in the declaration.
-5. <code>instance_priority</code> checks that instances that always apply have priority below default.
-6. <code>doc_blame</code> checks for missing doc strings on definitions and constants.</p>
+<ul>
+<li><code>#lint</code>: check all declarations in the current file</li>
+<li><code>#lint_mathlib</code>: check all declarations in mathlib (so excluding core or other projects,
+and also excluding the current file)</li>
+<li><code>#lint_all</code>: check all declarations in the environment (the current file and all
+imported files)</li>
+</ul>
+
+<p>The following linters are run by default:</p>
+
+<ol>
+<li><code>unused_arguments</code> checks for unused arguments in declarations.</li>
+<li><code>def_lemma</code> checks whether a declaration is incorrectly marked as a def/lemma.</li>
+<li><code>dup_namespce</code> checks whether a namespace is duplicated in the name of a declaration.</li>
+<li><code>illegal_constant</code> checks whether ≥/> is used in the declaration.</li>
+<li><code>instance_priority</code> checks that instances that always apply have priority below default.</li>
+<li><code>doc_blame</code> checks for missing doc strings on definitions and constants.</li>
+</ol>
 
 <p>Another linter, <code>doc_blame_thm</code>, checks for missing doc strings on lemmas and theorems.
 This is not run by default.</p>

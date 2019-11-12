@@ -1,12 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><title>core.init.core</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="mod_doc"><p></p>
+<!DOCTYPE html><html lang="en"><head><title>core.init.core</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><a href="https://robertylewis.com/mathlib_docs//index.html">root</a>/<a href="https://robertylewis.com/mathlib_docs/core/index.html">core</a>/<a href="https://robertylewis.com/mathlib_docs/core/init/index.html">init</a>/<a href="core.html">core</a></div><div class="mod_doc"><p></p>
 </div><div class="def"><a id="id_delta"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/80c1b4d67eec24f1d1e5b4b3ed7082c27851271d/library/init/core.lean#L100">id_delta</a></span> <span class="decl_args">{α : Sort u}</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">α</div>
 <div class="indent"><p>The kernel definitional equality test (t =?= s) has special support for id_delta applications.
 It implements the following rules</p>
 
-<p>1)   (id<em>delta t) =?= t
-   2)   t =?= (id</em>delta t)
-   3)   (id<em>delta t) =?= s  IF (unfold</em>of t) =?= s
-   4)   t =?= id<em>delta s    IF t =?= (unfold</em>of s)</p>
+<p>1)   (id_delta t) =?= t
+   2)   t =?= (id_delta t)
+   3)   (id_delta t) =?= s  IF (unfold_of t) =?= s
+   4)   t =?= id_delta s    IF t =?= (unfold_of s)</p>
 
 <p>This is mechanism for controlling the delta reduction (aka unfolding) used in the kernel.</p>
 
@@ -340,9 +340,9 @@ For example, given <code>x : vector α n</code> and <code>y : vector α (0+n)</c
 <div class="indent"><p>Auxiliary datatype for #[ ... ] notation.
    #[1, 2, 3, 4] is notation for</p>
 
-<p>bin<em>tree.node
-     (bin</em>tree.node (bin<em>tree.leaf 1) (bin</em>tree.leaf 2))
-     (bin<em>tree.node (bin</em>tree.leaf 3) (bin_tree.leaf 4))</p>
+<p>bin_tree.node
+     (bin_tree.node (bin_tree.leaf 1) (bin_tree.leaf 2))
+     (bin_tree.node (bin_tree.leaf 3) (bin_tree.leaf 4))</p>
 
 <p>We use this notation to input long sequences without exhausting the system stack space.
    Later, we define a coercion from <code>bin_tree</code> into <code>list</code>.</p>
