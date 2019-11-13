@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><title>data.padics.hensel</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><div class="title">mathlib API docs</div><a href="https://robertylewis.com/mathlib_docs/index.html">root</a>/<br><a href="https://robertylewis.com/mathlib_docs/data/index.html">data</a>/<br><a href="https://robertylewis.com/mathlib_docs/data/padics/index.html">padics</a>/<br><a href="hensel.html">hensel</a></div><div class="mod_doc"><h1>Hensel's lemma on ℤ_p</h1>
+<!DOCTYPE html><html lang="en"><head><title>data.padics.hensel</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><div class="title">mathlib API docs</div><a href="https://robertylewis.com/mathlib_docs/index.html">root</a>/<br><a href="https://robertylewis.com/mathlib_docs/data/index.html">data</a>/<br><a href="https://robertylewis.com/mathlib_docs/data/padics/index.html">padics</a>/<br><a href="hensel.html">hensel</a>      <br><br><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/data/padics/hensel.lean">View file source</a></div><div class="mod_doc"><h1>Hensel's lemma on ℤ_p</h1>
 
 <p>This file proves Hensel's lemma on ℤ_p, roughly following Keith Conrad's writeup:
-<a href="http://www.math.uconn.edu/~kconrad/blurbs/gradnumthy/hensel.pdf">http://www.math.uconn.edu/~kconrad/blurbs/gradnumthy/hensel.pdf</a></p>
+http://www.math.uconn.edu/~kconrad/blurbs/gradnumthy/hensel.pdf</p>
 
 <p>Hensel's lemma gives a simple condition for the existence of a root of a polynomial.</p>
 
@@ -11,26 +11,32 @@
 <h2>References</h2>
 
 <ul>
-<li><a href="http://www.math.uconn.edu/~kconrad/blurbs/gradnumthy/hensel.pdf">http://www.math.uconn.edu/~kconrad/blurbs/gradnumthy/hensel.pdf</a></li>
+<li>http://www.math.uconn.edu/~kconrad/blurbs/gradnumthy/hensel.pdf</li>
 <li>[R. Y. Lewis, <em>A formal proof of Hensel's lemma over the p-adic integers</em>][lewis2019]</li>
-<li><a href="https://en.wikipedia.org/wiki/Hensel%27s_lemma">https://en.wikipedia.org/wiki/Hensel%27s_lemma</a></li>
+<li>https://en.wikipedia.org/wiki/Hensel%27s_lemma</li>
 </ul>
 
 <h2>Tags</h2>
 
 <p>p-adic, p adic, padic, p-adic integer</p>
-</div><div class="thm"><a id="padic_polynomial_dist"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/data/padics/hensel.lean#L38">padic_polynomial_dist</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial">polynomial</a> ℤ_[p])</span> <span class="decl_args">(x y : ℤ_[p])</span> <span class="decl_args">:</span>       <div class="decl_type">∥polynomial.eval x F - <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.eval">polynomial.eval</a> y F∥ ≤ ∥x - y∥</div>
+</div><div class="thm"><a id="padic_polynomial_dist"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/data/padics/hensel.lean#L38">padic_polynomial_dist</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial">polynomial</a> ℤ_[p])</span> <span class="decl_args">(x y : ℤ_[p])</span> <span class="decl_args">:</span>       <div class="decl_type">∥polynomial.eval x F - <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.eval">polynomial.eval</a> y F∥ ≤ ∥x - y∥</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="limit_zero_of_norm_tendsto_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/data/padics/hensel.lean#L80">limit_zero_of_norm_tendsto_zero</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="decl_args">{ncs : <a href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html#cau_seq">cau_seq</a> ℤ_[p] has_norm.norm}</span> <span class="decl_args">{F : <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial">polynomial</a> ℤ_[p]}</span> <span class="decl_args">(hnorm : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (i : ℕ), ∥polynomial.eval (⇑ncs i) F∥) <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.at_top">filter.at_top</a> (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.eval">polynomial.eval</a> (<a href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html#cau_seq.lim">cau_seq.lim</a> ncs) F = 0</div>
+       
+
+</div>
+</div><div class="thm"><a id="limit_zero_of_norm_tendsto_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/data/padics/hensel.lean#L80">limit_zero_of_norm_tendsto_zero</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="decl_args">{ncs : <a href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html#cau_seq">cau_seq</a> ℤ_[p] has_norm.norm}</span> <span class="decl_args">{F : <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial">polynomial</a> ℤ_[p]}</span> <span class="decl_args">(hnorm : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (i : ℕ), ∥polynomial.eval (⇑ncs i) F∥) <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.at_top">filter.at_top</a> (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.eval">polynomial.eval</a> (<a href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html#cau_seq.lim">cau_seq.lim</a> ncs) F = 0</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="hensels_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/data/padics/hensel.lean#L435">hensels_lemma</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="decl_args">{F : <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial">polynomial</a> ℤ_[p]}</span> <span class="decl_args">{a : ℤ_[p]}</span> <span class="decl_args">(hnorm : ∥polynomial.eval a F∥ < ∥polynomial.eval a (<a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.derivative">polynomial.derivative</a> F)∥ ^ 2)</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (z : ℤ_[p]),
+       
+
+</div>
+</div><div class="thm"><a id="hensels_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/data/padics/hensel.lean#L435">hensels_lemma</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="decl_args">{F : <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial">polynomial</a> ℤ_[p]}</span> <span class="decl_args">{a : ℤ_[p]}</span> <span class="decl_args">(hnorm : ∥polynomial.eval a F∥ < ∥polynomial.eval a (<a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.derivative">polynomial.derivative</a> F)∥ ^ 2)</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (z : ℤ_[p]),
   <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.eval">polynomial.eval</a> z F = 0 ∧
     ∥z - a∥ < ∥polynomial.eval a (<a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.derivative">polynomial.derivative</a> F)∥ ∧
       ∥polynomial.eval z (<a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.derivative">polynomial.derivative</a> F)∥ = ∥polynomial.eval a (<a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.derivative">polynomial.derivative</a> F)∥ ∧
         ∀ (z' : ℤ_[p]),
           <a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.eval">polynomial.eval</a> z' F = 0 → ∥z' - a∥ < ∥polynomial.eval a (<a href="https://robertylewis.com/mathlib_docs/data/polynomial.html#polynomial.derivative">polynomial.derivative</a> F)∥ → z' = z</div>
 <div class="indent"><p></p>
-       </div>
+       
+
+</div>
 </div></body></html>

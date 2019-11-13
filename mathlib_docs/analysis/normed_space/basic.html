@@ -1,298 +1,528 @@
-<!DOCTYPE html><html lang="en"><head><title>analysis.normed_space.basic</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><div class="title">mathlib API docs</div><a href="https://robertylewis.com/mathlib_docs/index.html">root</a>/<br><a href="https://robertylewis.com/mathlib_docs/analysis/index.html">analysis</a>/<br><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/index.html">normed_space</a>/<br><a href="basic.html">basic</a></div><div class="mod_doc"><p></p>
-</div><div class="cnst"><a id="has_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L21">has_norm</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
+<!DOCTYPE html><html lang="en"><head><title>analysis.normed_space.basic</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><div class="title">mathlib API docs</div><a href="https://robertylewis.com/mathlib_docs/index.html">root</a>/<br><a href="https://robertylewis.com/mathlib_docs/analysis/index.html">analysis</a>/<br><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/index.html">normed_space</a>/<br><a href="basic.html">basic</a>      <br><br><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean">View file source</a></div><div class="mod_doc"><p></p>
+</div><div class="structure"><a id="has_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L21">has_norm</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="cnst"><a id="normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L27">normed_group</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
+       <div class="structure_fields">
+Fields:
+<div class="structure_field">has_norm.norm : α → ℝ</div>
+</div>
+
+</div>
+</div><div class="structure"><a id="normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L27">normed_group</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="normed_group.of_add_dist"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L31">normed_group.of_add_dist</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric_space">metric_space</a> α]</span> <span class="decl_args">(H1 : ∀ (x : α), ∥x∥ = has_dist.dist x 0)</span> <span class="decl_args">(H2 : ∀ (x y z : α), has_dist.dist x y ≤ has_dist.dist (x + z) (y + z))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α</div>
+       <div class="structure_fields">
+Fields:
+<div class="structure_field">normed_group.to_has_norm : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α</div>
+<div class="structure_field">normed_group.to_add_comm_group : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α</div>
+<div class="structure_field">normed_group.to_metric_space : <a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric_space">metric_space</a> α</div>
+<div class="structure_field">normed_group.dist_eq : ∀ (x y : α), has_dist.dist x y = ∥x - y∥</div>
+</div>
+
+</div>
+</div><div class="def"><a id="normed_group.of_add_dist"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L31">normed_group.of_add_dist</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric_space">metric_space</a> α]</span> <span class="decl_args">(H1 : ∀ (x : α), ∥x∥ = has_dist.dist x 0)</span> <span class="decl_args">(H2 : ∀ (x y z : α), has_dist.dist x y ≤ has_dist.dist (x + z) (y + z))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α</div>
 <div class="indent"><p>Construct a normed group from a translation invariant distance</p>
-       </div>
-</div><div class="def"><a id="normed_group.of_add_dist'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L41">normed_group.of_add_dist'</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric_space">metric_space</a> α]</span> <span class="decl_args">(H1 : ∀ (x : α), ∥x∥ = has_dist.dist x 0)</span> <span class="decl_args">(H2 : ∀ (x y z : α), has_dist.dist (x + z) (y + z) ≤ has_dist.dist x y)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α</div>
+       
+
+</div>
+</div><div class="def"><a id="normed_group.of_add_dist'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L41">normed_group.of_add_dist'</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric_space">metric_space</a> α]</span> <span class="decl_args">(H1 : ∀ (x : α), ∥x∥ = has_dist.dist x 0)</span> <span class="decl_args">(H2 : ∀ (x y z : α), has_dist.dist (x + z) (y + z) ≤ has_dist.dist x y)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α</div>
 <div class="indent"><p>Construct a normed group from a translation invariant distance</p>
-       </div>
-</div><div class="cnst"><a id="normed_group.core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L52">normed_group.core</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
+       
+
+</div>
+</div><div class="structure"><a id="normed_group.core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L52">normed_group.core</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
 <div class="indent"><p>A normed group can be built from a norm that satisfies algebraic properties. This is
 formalised in this structure.</p>
-       </div>
-</div><div class="def"><a id="normed_group.of_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L57">normed_group.of_core</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α]</span> <span class="decl_args">(C : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group.core">normed_group.core</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="dist_eq_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L73">dist_eq_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type">has_dist.dist g h = ∥g - h∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="dist_zero_right"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L76">dist_zero_right</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">has_dist.dist g 0 = ∥g∥</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="norm_triangle"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L79">norm_triangle</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥g + h∥ ≤ ∥g∥ + ∥h∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L85">norm_nonneg</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">0 ≤ ∥g∥</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="norm_eq_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L88">norm_eq_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥g∥ = 0 ↔ g = 0</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L91">norm_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">∥0∥ = 0</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="norm_triangle_sum"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L93">norm_triangle_sum</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">(s : <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset">finset</a> β)</span> <span class="decl_args">(f : β → α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥finset.sum s f∥ ≤ <a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (a : β), ∥f a∥)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_pos_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L96">norm_pos_iff</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">0 < ∥g∥ ↔ g ≠ 0</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_le_zero_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L103">norm_le_zero_iff</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥g∥ ≤ 0 ↔ g = 0</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L106">norm_neg</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥-g∥ = ∥g∥</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="norm_reverse_triangle'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L113">norm_reverse_triangle'</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a∥ - ∥b∥ ≤ ∥a - b∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_reverse_triangle"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L116">norm_reverse_triangle</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> (∥a∥ - ∥b∥) ≤ ∥a - b∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_triangle_sub"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L122">norm_triangle_sub</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">{a b : α}</span> <span class="decl_args">:</span>       <div class="decl_type">∥a - b∥ ≤ ∥a∥ + ∥b∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="abs_norm_sub_norm_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L125">abs_norm_sub_norm_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> (∥g∥ - ∥h∥) ≤ ∥g - h∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="dist_norm_norm_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L135">dist_norm_norm_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type">has_dist.dist ∥g∥ ∥h∥ ≤ ∥g - h∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_sub_rev"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L138">norm_sub_rev</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥g - h∥ = ∥h - g∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="ball_0_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L141">ball_0_eq</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(ε : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric.ball">metric.ball</a> 0 ε = {x : α | ∥x∥ < ε}</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="normed_group.tendsto_nhds_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L144">normed_group.tendsto_nhds_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{γ : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">{f : γ → α}</span> <span class="decl_args">{l : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> γ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0) ↔ ∀ (ε : ℝ), ε > 0 → {x : γ | ∥f x∥ < ε} ∈ l</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="nnnorm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L159">nnnorm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html#nnreal">nnreal</a></div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="coe_nnnorm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L161">coe_nnnorm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a) = ∥a∥</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="nndist_eq_nnnorm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L163">nndist_eq_nnnorm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#nndist">nndist</a> a b = <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (a - b)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="nnnorm_eq_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L165">nnnorm_eq_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a = 0 ↔ a = 0</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="nnnorm_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L168">nnnorm_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> 0 = 0</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="nnnorm_triangle"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L171">nnnorm_triangle</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (g + h) ≤ <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g + <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> h</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="nnnorm_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L174">nnnorm_neg</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (-g) = <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="nndist_nnnorm_nnnorm_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L177">nndist_nnnorm_nnnorm_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#nndist">nndist</a> (<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g) (<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> h) ≤ <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (g - h)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="prod.normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L182">prod.normed_group</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (α × β)</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="norm_fst_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L187">norm_fst_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">(x : α × β)</span> <span class="decl_args">:</span>       <div class="decl_type">∥x.fst∥ ≤ ∥x∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_snd_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L190">norm_snd_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">(x : α × β)</span> <span class="decl_args">:</span>       <div class="decl_type">∥x.snd∥ ≤ ∥x∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="fintype.normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L193">fintype.normed_group</a></span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">{π : ι → Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> ι]</span> <span class="decl_args">[Π (i : ι), <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (π i)]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (Π (b : ι), π b)</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="tendsto_iff_norm_tendsto_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L200">tendsto_iff_norm_tendsto_zero</a></span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">{f : ι → β}</span> <span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> ι}</span> <span class="decl_args">{b : β}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f a (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> b) ↔ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (e : ι), ∥f e - b∥) a (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="tendsto_zero_iff_norm_tendsto_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L204">tendsto_zero_iff_norm_tendsto_zero</a></span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">{γ : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">{f : γ → β}</span> <span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> γ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f a (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0) ↔ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (e : γ), ∥f e∥) a (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="lim_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L210">lim_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (g : α), ∥g - x∥) (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x) (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="lim_norm_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L213">lim_norm_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (g : α), ∥g∥) (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0) (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="continuous_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L216">continuous_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#continuous">continuous</a> (λ (g : α), ∥g∥)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="continuous_nnnorm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L224">continuous_nnnorm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#continuous">continuous</a> <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a></div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="normed_uniform_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L227">normed_uniform_group</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/uniform_group.html#uniform_add_group">uniform_add_group</a> α</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="normed_top_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L237">normed_top_monoid</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/monoid.html#topological_add_monoid">topological_add_monoid</a> α</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="normed_top_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L238">normed_top_group</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/group.html#topological_add_group">topological_add_group</a> α</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="cnst"><a id="normed_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L244">normed_ring</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="normed_ring.to_normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L248">normed_ring.to_normed_group</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[β : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="norm_mul_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L250">norm_mul_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a * b∥ ≤ ∥a∥ * ∥b∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_pow_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L253">norm_pow_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">(a_1 : 0 < n)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a ^ n∥ ≤ ∥a∥ ^ n</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="prod.normed_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L260">prod.normed_ring</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> β]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> (α × β)</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="normed_ring_top_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L274">normed_ring_top_monoid</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/monoid.html#topological_monoid">topological_monoid</a> α</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="normed_top_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L304">normed_top_ring</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/ring.html#topological_ring">topological_ring</a> α</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="cnst"><a id="normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L310">normed_field</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="cnst"><a id="nondiscrete_normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L314">nondiscrete_normed_field</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="normed_field.to_normed_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L317">normed_field.to_normed_ring</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[i : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="normed_field.norm_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L321">normed_field.norm_one</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">∥1∥ = 1</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="normed_field.norm_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L327">normed_field.norm_mul</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a * b∥ = ∥a∥ * ∥b∥</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="def"><a id="normed_field.normed_field.is_monoid_hom_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L330">normed_field.normed_field.is_monoid_hom_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> has_norm.norm</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="normed_field.norm_pow"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L333">normed_field.norm_pow</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a ^ n∥ = ∥a∥ ^ n</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="normed_field.norm_prod"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L336">normed_field.norm_prod</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(s : <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset">finset</a> β)</span> <span class="decl_args">(f : β → α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥finset.prod s f∥ = <a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.prod">finset.prod</a> s (λ (b : β), ∥f b∥)</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="normed_field.norm_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L340">normed_field.norm_div</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a / b∥ = ∥a∥ / ∥b∥</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="normed_field.norm_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L348">normed_field.norm_inv</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a⁻¹∥ = ∥a∥⁻¹</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="normed_field.norm_fpow"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L351">normed_field.norm_fpow</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(n : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a ^ n∥ = ∥a∥ ^ n</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="normed_field.exists_one_lt_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L356">normed_field.exists_one_lt_norm</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[i : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (x : α), 1 < ∥x∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="normed_field.exists_norm_lt_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L359">normed_field.exists_norm_lt_one</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (x : α), 0 < ∥x∥ ∧ ∥x∥ < 1</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="normed_field.normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L371">normed_field.normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> ℝ</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="normed_field.nondiscrete_normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L376">normed_field.nondiscrete_normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℝ</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="real.norm_eq_abs"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L380">real.norm_eq_abs</a></span> <span class="decl_args">(r : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥r∥ = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> r</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L382">norm_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥∥x∥∥ = ∥x∥</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="nnnorm_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L385">nnnorm_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> ∥a∥ = <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a</div>
-<div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="def"><a id="int.normed_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L388">int.normed_ring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> ℤ</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="int.norm_cast_real"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L393">int.norm_cast_real</a></span> <span class="decl_args">(m : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑m∥ = ∥m∥</div>
-<div class="indent"><p></p>
-       Attributes: elim_cast</div>
-</div><div class="def"><a id="rat.normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L395">rat.normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> ℚ</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="rat.nondiscrete_normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L400">rat.nondiscrete_normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℚ</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="rat.norm_cast_real"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L403">rat.norm_cast_real</a></span> <span class="decl_args">(r : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑r∥ = ∥r∥</div>
-<div class="indent"><p></p>
-       Attributes: simp, elim_cast</div>
-</div><div class="thm"><a id="int.norm_cast_rat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L405">int.norm_cast_rat</a></span> <span class="decl_args">(m : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑m∥ = ∥m∥</div>
-<div class="indent"><p></p>
-       Attributes: simp, elim_cast</div>
-</div><div class="cnst"><a id="normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L410">normed_space</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">(β : Type u_6)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_5 u_6)</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="normed_field.to_normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L416">normed_field.to_normed_space</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α α</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="norm_smul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L421">norm_smul</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α β]</span> <span class="decl_args">(s : α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">:</span>       <div class="decl_type">∥s • x∥ = ∥s∥ * ∥x∥</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="nnnorm_smul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L424">nnnorm_smul</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α β]</span> <span class="decl_args">(s : α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (s • x) = <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> s * <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> x</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="tendsto_smul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L430">tendsto_smul</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{γ : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{F : Type u_6}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α F]</span> <span class="decl_args">{f : γ → α}</span> <span class="decl_args">{g : γ → F}</span> <span class="decl_args">{e : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> γ}</span> <span class="decl_args">{s : α}</span> <span class="decl_args">{b : F}</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> s))</span> <span class="decl_args">(a_1 : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> g e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> b))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (x : γ), f x • g x) e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> (s • b))</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="tendsto_smul_const"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L459">tendsto_smul_const</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{γ : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{F : Type u_6}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α F]</span> <span class="decl_args">{g : γ → F}</span> <span class="decl_args">{e : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> γ}</span> <span class="decl_args">(s : α)</span> <span class="decl_args">{b : F}</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> g e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> b))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (x : γ), s • g x) e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> (s • b))</div>
-<div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="normed_space.topological_vector_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L463">normed_space.topological_vector_space</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{E : Type u_5}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α E]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/module.html#topological_vector_space">topological_vector_space</a> α E</div>
-<div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="rescale_to_shell"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L472">rescale_to_shell</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{E : Type u_5}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α E]</span> <span class="decl_args">{c : α}</span> <span class="decl_args">(hc : 1 < ∥c∥)</span> <span class="decl_args">{ε : ℝ}</span> <span class="decl_args">(εpos : 0 < ε)</span> <span class="decl_args">{x : E}</span> <span class="decl_args">(hx : x ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (d : α),
+       <div class="structure_fields">
+Fields:
+<div class="structure_field">normed_group.core.norm_eq_zero_iff : ∀ (x : α), ∥x∥ = 0 ↔ x = 0</div>
+<div class="structure_field">normed_group.core.triangle : ∀ (x y : α), ∥x + y∥ ≤ ∥x∥ + ∥y∥</div>
+<div class="structure_field">normed_group.core.norm_neg : ∀ (x : α), ∥-x∥ = ∥x∥</div>
+</div>
+
+</div>
+</div><div class="def"><a id="normed_group.of_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L57">normed_group.of_core</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#add_comm_group">add_comm_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α]</span> <span class="decl_args">(C : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group.core">normed_group.core</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="dist_eq_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L73">dist_eq_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type">has_dist.dist g h = ∥g - h∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="dist_zero_right"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L76">dist_zero_right</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">has_dist.dist g 0 = ∥g∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="norm_triangle"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L79">norm_triangle</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥g + h∥ ≤ ∥g∥ + ∥h∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L85">norm_nonneg</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">0 ≤ ∥g∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="norm_eq_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L88">norm_eq_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥g∥ = 0 ↔ g = 0</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L91">norm_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">∥0∥ = 0</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="norm_triangle_sum"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L93">norm_triangle_sum</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">(s : <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset">finset</a> β)</span> <span class="decl_args">(f : β → α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥finset.sum s f∥ ≤ <a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> s (λ (a : β), ∥f a∥)</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_pos_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L96">norm_pos_iff</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">0 < ∥g∥ ↔ g ≠ 0</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_le_zero_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L103">norm_le_zero_iff</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥g∥ ≤ 0 ↔ g = 0</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L106">norm_neg</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥-g∥ = ∥g∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="norm_reverse_triangle'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L113">norm_reverse_triangle'</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a∥ - ∥b∥ ≤ ∥a - b∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_reverse_triangle"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L116">norm_reverse_triangle</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> (∥a∥ - ∥b∥) ≤ ∥a - b∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_triangle_sub"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L122">norm_triangle_sub</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">{a b : α}</span> <span class="decl_args">:</span>       <div class="decl_type">∥a - b∥ ≤ ∥a∥ + ∥b∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="abs_norm_sub_norm_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L125">abs_norm_sub_norm_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> (∥g∥ - ∥h∥) ≤ ∥g - h∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="dist_norm_norm_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L135">dist_norm_norm_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type">has_dist.dist ∥g∥ ∥h∥ ≤ ∥g - h∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_sub_rev"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L138">norm_sub_rev</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥g - h∥ = ∥h - g∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="ball_0_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L141">ball_0_eq</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(ε : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric.ball">metric.ball</a> 0 ε = {x : α | ∥x∥ < ε}</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="normed_group.tendsto_nhds_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L144">normed_group.tendsto_nhds_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{γ : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">{f : γ → α}</span> <span class="decl_args">{l : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> γ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f l (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0) ↔ ∀ (ε : ℝ), ε > 0 → {x : γ | ∥f x∥ < ε} ∈ l</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="def"><a id="nnnorm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L159">nnnorm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html#nnreal">nnreal</a></div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="coe_nnnorm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L161">coe_nnnorm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a) = ∥a∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="nndist_eq_nnnorm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L163">nndist_eq_nnnorm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#nndist">nndist</a> a b = <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (a - b)</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="nnnorm_eq_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L165">nnnorm_eq_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a = 0 ↔ a = 0</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="nnnorm_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L168">nnnorm_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> 0 = 0</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="nnnorm_triangle"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L171">nnnorm_triangle</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (g + h) ≤ <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g + <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> h</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="nnnorm_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L174">nnnorm_neg</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (-g) = <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="nndist_nnnorm_nnnorm_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L177">nndist_nnnorm_nnnorm_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(g h : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#nndist">nndist</a> (<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> g) (<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> h) ≤ <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (g - h)</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="def"><a id="prod.normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L182">prod.normed_group</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (α × β)</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="norm_fst_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L187">norm_fst_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">(x : α × β)</span> <span class="decl_args">:</span>       <div class="decl_type">∥x.fst∥ ≤ ∥x∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_snd_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L190">norm_snd_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">(x : α × β)</span> <span class="decl_args">:</span>       <div class="decl_type">∥x.snd∥ ≤ ∥x∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="def"><a id="fintype.normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L193">fintype.normed_group</a></span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">{π : ι → Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> ι]</span> <span class="decl_args">[Π (i : ι), <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (π i)]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (Π (b : ι), π b)</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="tendsto_iff_norm_tendsto_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L200">tendsto_iff_norm_tendsto_zero</a></span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">{f : ι → β}</span> <span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> ι}</span> <span class="decl_args">{b : β}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f a (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> b) ↔ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (e : ι), ∥f e - b∥) a (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0)</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="tendsto_zero_iff_norm_tendsto_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L204">tendsto_zero_iff_norm_tendsto_zero</a></span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">{γ : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">{f : γ → β}</span> <span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> γ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f a (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0) ↔ <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (e : γ), ∥f e∥) a (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0)</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="lim_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L210">lim_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (g : α), ∥g - x∥) (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> x) (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0)</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="lim_norm_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L213">lim_norm_zero</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (g : α), ∥g∥) (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0) (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> 0)</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="continuous_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L216">continuous_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#continuous">continuous</a> (λ (g : α), ∥g∥)</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="continuous_nnnorm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L224">continuous_nnnorm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#continuous">continuous</a> <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a></div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="def"><a id="normed_uniform_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L227">normed_uniform_group</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/uniform_group.html#uniform_add_group">uniform_add_group</a> α</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="normed_top_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L237">normed_top_monoid</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/monoid.html#topological_add_monoid">topological_add_monoid</a> α</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="normed_top_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L238">normed_top_group</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/group.html#topological_add_group">topological_add_group</a> α</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="structure"><a id="normed_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L244">normed_ring</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
+<div class="indent"><p></p>
+       <div class="structure_fields">
+Fields:
+<div class="structure_field">normed_ring.to_has_norm : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α</div>
+<div class="structure_field">normed_ring.to_ring : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α</div>
+<div class="structure_field">normed_ring.to_metric_space : <a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric_space">metric_space</a> α</div>
+<div class="structure_field">normed_ring.dist_eq : ∀ (x y : α), has_dist.dist x y = ∥x - y∥</div>
+<div class="structure_field">normed_ring.norm_mul : ∀ (a b : α), ∥a * b∥ ≤ ∥a∥ * ∥b∥</div>
+</div>
+
+</div>
+</div><div class="def"><a id="normed_ring.to_normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L248">normed_ring.to_normed_group</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[β : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="norm_mul_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L250">norm_mul_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a * b∥ ≤ ∥a∥ * ∥b∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_pow_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L253">norm_pow_le</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">(a_1 : 0 < n)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a ^ n∥ ≤ ∥a∥ ^ n</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="def"><a id="prod.normed_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L260">prod.normed_ring</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> β]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> (α × β)</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="normed_ring_top_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L274">normed_ring_top_monoid</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/monoid.html#topological_monoid">topological_monoid</a> α</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="normed_top_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L304">normed_top_ring</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/ring.html#topological_ring">topological_ring</a> α</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="structure"><a id="normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L310">normed_field</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
+<div class="indent"><p></p>
+       <div class="structure_fields">
+Fields:
+<div class="structure_field">normed_field.to_has_norm : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#has_norm">has_norm</a> α</div>
+<div class="structure_field">normed_field.to_discrete_field : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/field.html#discrete_field">discrete_field</a> α</div>
+<div class="structure_field">normed_field.to_metric_space : <a href="https://robertylewis.com/mathlib_docs/topology/metric_space/basic.html#metric_space">metric_space</a> α</div>
+<div class="structure_field">normed_field.dist_eq : ∀ (x y : α), has_dist.dist x y = ∥x - y∥</div>
+<div class="structure_field">normed_field.norm_mul' : ∀ (a b : α), ∥a * b∥ = ∥a∥ * ∥b∥</div>
+</div>
+
+</div>
+</div><div class="structure"><a id="nondiscrete_normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L314">nondiscrete_normed_field</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5</div>
+<div class="indent"><p></p>
+       <div class="structure_fields">
+Fields:
+<div class="structure_field">nondiscrete_normed_field.to_normed_field : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α</div>
+<div class="structure_field">nondiscrete_normed_field.non_trivial : ∃ (x : α), 1 < ∥x∥</div>
+</div>
+
+</div>
+</div><div class="def"><a id="normed_field.to_normed_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L317">normed_field.to_normed_ring</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[i : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> α</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="normed_field.norm_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L321">normed_field.norm_one</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">∥1∥ = 1</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="normed_field.norm_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L327">normed_field.norm_mul</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a * b∥ = ∥a∥ * ∥b∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="def"><a id="normed_field.normed_field.is_monoid_hom_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L330">normed_field.normed_field.is_monoid_hom_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> has_norm.norm</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="normed_field.norm_pow"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L333">normed_field.norm_pow</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a ^ n∥ = ∥a∥ ^ n</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="normed_field.norm_prod"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L336">normed_field.norm_prod</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(s : <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset">finset</a> β)</span> <span class="decl_args">(f : β → α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥finset.prod s f∥ = <a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.prod">finset.prod</a> s (λ (b : β), ∥f b∥)</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="normed_field.norm_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L340">normed_field.norm_div</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a / b∥ = ∥a∥ / ∥b∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="normed_field.norm_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L348">normed_field.norm_inv</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a⁻¹∥ = ∥a∥⁻¹</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="normed_field.norm_fpow"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L351">normed_field.norm_fpow</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(n : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥a ^ n∥ = ∥a∥ ^ n</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="normed_field.exists_one_lt_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L356">normed_field.exists_one_lt_norm</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[i : <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (x : α), 1 < ∥x∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="normed_field.exists_norm_lt_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L359">normed_field.exists_norm_lt_one</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (x : α), 0 < ∥x∥ ∧ ∥x∥ < 1</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="def"><a id="normed_field.normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L371">normed_field.normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> ℝ</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="normed_field.nondiscrete_normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L376">normed_field.nondiscrete_normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℝ</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="real.norm_eq_abs"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L380">real.norm_eq_abs</a></span> <span class="decl_args">(r : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥r∥ = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> r</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="norm_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L382">norm_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type">∥∥x∥∥ = ∥x∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="nnnorm_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L385">nnnorm_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> ∥a∥ = <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> a</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp</div>
+</div><div class="def"><a id="int.normed_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L388">int.normed_ring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_ring">normed_ring</a> ℤ</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="int.norm_cast_real"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L393">int.norm_cast_real</a></span> <span class="decl_args">(m : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑m∥ = ∥m∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: elim_cast</div>
+</div><div class="def"><a id="rat.normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L395">rat.normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> ℚ</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="rat.nondiscrete_normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L400">rat.nondiscrete_normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℚ</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="rat.norm_cast_real"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L403">rat.norm_cast_real</a></span> <span class="decl_args">(r : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑r∥ = ∥r∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp, elim_cast</div>
+</div><div class="thm"><a id="int.norm_cast_rat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L405">int.norm_cast_rat</a></span> <span class="decl_args">(m : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑m∥ = ∥m∥</div>
+<div class="indent"><p></p>
+       
+
+Attributes: simp, elim_cast</div>
+</div><div class="structure"><a id="normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L410">normed_space</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">(β : Type u_6)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_5 u_6)</div>
+<div class="indent"><p></p>
+       <div class="structure_fields">
+Fields:
+<div class="structure_field">normed_space.to_vector_space : <a href="https://robertylewis.com/mathlib_docs/algebra/module.html#vector_space">vector_space</a> α β</div>
+<div class="structure_field">normed_space.norm_smul : ∀ (a : α) (b : β), ∥a • b∥ = ∥a∥ * ∥b∥</div>
+</div>
+
+</div>
+</div><div class="def"><a id="normed_field.to_normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L416">normed_field.to_normed_space</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α α</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="norm_smul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L421">norm_smul</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α β]</span> <span class="decl_args">(s : α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">:</span>       <div class="decl_type">∥s • x∥ = ∥s∥ * ∥x∥</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="nnnorm_smul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L424">nnnorm_smul</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> β]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α β]</span> <span class="decl_args">(s : α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> (s • x) = <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> s * <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nnnorm">nnnorm</a> x</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="tendsto_smul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L430">tendsto_smul</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{γ : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{F : Type u_6}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α F]</span> <span class="decl_args">{f : γ → α}</span> <span class="decl_args">{g : γ → F}</span> <span class="decl_args">{e : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> γ}</span> <span class="decl_args">{s : α}</span> <span class="decl_args">{b : F}</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> f e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> s))</span> <span class="decl_args">(a_1 : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> g e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> b))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (x : γ), f x • g x) e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> (s • b))</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="thm"><a id="tendsto_smul_const"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L459">tendsto_smul_const</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{γ : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{F : Type u_6}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α F]</span> <span class="decl_args">{g : γ → F}</span> <span class="decl_args">{e : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> γ}</span> <span class="decl_args">(s : α)</span> <span class="decl_args">{b : F}</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> g e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> b))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> (λ (x : γ), s • g x) e (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> (s • b))</div>
+<div class="indent"><p></p>
+       
+
+</div>
+</div><div class="def"><a id="normed_space.topological_vector_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L463">normed_space.topological_vector_space</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{E : Type u_5}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α E]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/module.html#topological_vector_space">topological_vector_space</a> α E</div>
+<div class="indent"><p></p>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="rescale_to_shell"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L472">rescale_to_shell</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{E : Type u_5}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α E]</span> <span class="decl_args">{c : α}</span> <span class="decl_args">(hc : 1 < ∥c∥)</span> <span class="decl_args">{ε : ℝ}</span> <span class="decl_args">(εpos : 0 < ε)</span> <span class="decl_args">{x : E}</span> <span class="decl_args">(hx : x ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (d : α),
   d ≠ 0 ∧ ∥d • x∥ ≤ ε ∧ ε / ∥c∥ ≤ ∥d • x∥ ∧ ∥d∥⁻¹ ≤ ε⁻¹ * ∥c∥ * ∥x∥</div>
 <div class="indent"><p>If there is a scalar <code>c</code> with <code>∥c∥&gt;1</code>, then any element can be moved by scalar multiplication to
 any shell of width <code>∥c∥</code>. Also recap information on the norm of the rescaling element that shows
 up in applications.</p>
-       </div>
-</div><div class="def"><a id="prod.normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L496">prod.normed_space</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{E : Type u_5}</span> <span class="decl_args">{F : Type u_6}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α F]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α (E × F)</div>
+       
+
+</div>
+</div><div class="def"><a id="prod.normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L496">prod.normed_space</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{E : Type u_5}</span> <span class="decl_args">{F : Type u_6}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α E]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α F]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α (E × F)</div>
 <div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="fintype.normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L510">fintype.normed_space</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{E : ι → Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> ι]</span> <span class="decl_args">[Π (i : ι), <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (E i)]</span> <span class="decl_args">[Π (i : ι), <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α (E i)]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α (Π (i : ι), E i)</div>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="fintype.normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L510">fintype.normed_space</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> α]</span> <span class="decl_args">{E : ι → Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> ι]</span> <span class="decl_args">[Π (i : ι), <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (E i)]</span> <span class="decl_args">[Π (i : ι), <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α (E i)]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> α (Π (i : ι), E i)</div>
 <div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="summable_iff_vanishing_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L524">summable_iff_vanishing_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> f ↔
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="summable_iff_vanishing_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L524">summable_iff_vanishing_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> f ↔
   ∀ (ε : ℝ), ε > 0 → (∃ (s : <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset">finset</a> ι), ∀ (t : <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset">finset</a> ι), <a href="https://robertylewis.com/mathlib_docs/data/set/lattice.html#disjoint">disjoint</a> t s → ∥finset.sum t f∥ < ε)</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="summable_of_norm_bounded"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L537">summable_of_norm_bounded</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">(g : ι → ℝ)</span> <span class="decl_args">(hf : <a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> g)</span> <span class="decl_args">(h : ∀ (i : ι), ∥f i∥ ≤ g i)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> f</div>
+       
+
+</div>
+</div><div class="thm"><a id="summable_of_norm_bounded"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L537">summable_of_norm_bounded</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">(g : ι → ℝ)</span> <span class="decl_args">(hf : <a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> g)</span> <span class="decl_args">(h : ∀ (i : ι), ∥f i∥ ≤ g i)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> f</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="summable_of_summable_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L547">summable_of_summable_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">(hf : <a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> (λ (a : ι), ∥f a∥))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> f</div>
+       
+
+</div>
+</div><div class="thm"><a id="summable_of_summable_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L547">summable_of_summable_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">(hf : <a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> (λ (a : ι), ∥f a∥))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> f</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="thm"><a id="norm_tsum_le_tsum_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L550">norm_tsum_le_tsum_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">(hf : <a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> (λ (i : ι), ∥f i∥))</span> <span class="decl_args">:</span>       <div class="decl_type">∥(∑ (i : ι), f i)∥ ≤ ∑ (i : ι), ∥f i∥</div>
+       
+
+</div>
+</div><div class="thm"><a id="norm_tsum_le_tsum_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L550">norm_tsum_le_tsum_norm</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{ι : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> α]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/cauchy.html#complete_space">complete_space</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">(hf : <a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> (λ (i : ι), ∥f i∥))</span> <span class="decl_args">:</span>       <div class="decl_type">∥(∑ (i : ι), f i)∥ ≤ ∑ (i : ι), ∥f i∥</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="complex.normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L561">complex.normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> ℂ</div>
+       
+
+</div>
+</div><div class="def"><a id="complex.normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L561">complex.normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_field">normed_field</a> ℂ</div>
 <div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="complex.nondiscrete_normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L567">complex.nondiscrete_normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℂ</div>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="complex.nondiscrete_normed_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L567">complex.nondiscrete_normed_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#nondiscrete_normed_field">nondiscrete_normed_field</a> ℂ</div>
 <div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="thm"><a id="complex.norm_real"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L570">complex.norm_real</a></span> <span class="decl_args">(r : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑r∥ = ∥r∥</div>
+       
+
+Attributes: instance</div>
+</div><div class="thm"><a id="complex.norm_real"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L570">complex.norm_real</a></span> <span class="decl_args">(r : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑r∥ = ∥r∥</div>
 <div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="complex.norm_rat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L572">complex.norm_rat</a></span> <span class="decl_args">(r : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑r∥ = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> ↑r</div>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="complex.norm_rat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L572">complex.norm_rat</a></span> <span class="decl_args">(r : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑r∥ = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> ↑r</div>
 <div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="complex.norm_nat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L576">complex.norm_nat</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑n∥ = ↑n</div>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="complex.norm_nat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L576">complex.norm_nat</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑n∥ = ↑n</div>
 <div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="complex.norm_int"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L578">complex.norm_int</a></span> <span class="decl_args">{n : ℤ}</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑n∥ = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> ↑n</div>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="complex.norm_int"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L578">complex.norm_int</a></span> <span class="decl_args">{n : ℤ}</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑n∥ = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> ↑n</div>
 <div class="indent"><p></p>
-       Attributes: simp</div>
-</div><div class="thm"><a id="complex.norm_int_of_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/analysis/normed_space/basic.lean#L582">complex.norm_int_of_nonneg</a></span> <span class="decl_args">{n : ℤ}</span> <span class="decl_args">(hn : 0 ≤ n)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑n∥ = ↑n</div>
+       
+
+Attributes: simp</div>
+</div><div class="thm"><a id="complex.norm_int_of_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/analysis/normed_space/basic.lean#L582">complex.norm_int_of_nonneg</a></span> <span class="decl_args">{n : ℤ}</span> <span class="decl_args">(hn : 0 ≤ n)</span> <span class="decl_args">:</span>       <div class="decl_type">∥↑n∥ = ↑n</div>
 <div class="indent"><p></p>
-       </div>
+       
+
+</div>
 </div></body></html>

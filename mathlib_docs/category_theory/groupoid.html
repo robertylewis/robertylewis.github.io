@@ -1,17 +1,35 @@
-<!DOCTYPE html><html lang="en"><head><title>category_theory.groupoid</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><div class="title">mathlib API docs</div><a href="https://robertylewis.com/mathlib_docs/index.html">root</a>/<br><a href="https://robertylewis.com/mathlib_docs/category_theory/index.html">category_theory</a>/<br><a href="groupoid.html">groupoid</a></div><div class="mod_doc"><p></p>
-</div><div class="cnst"><a id="category_theory.groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/category_theory/groupoid.lean#L16">category_theory.groupoid</a></span> <span class="decl_args">(obj : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u (v+1))</div>
+<!DOCTYPE html><html lang="en"><head><title>category_theory.groupoid</title><meta charset="UTF-8"><link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style.css"></head><body><div class="nav"><div class="title">mathlib API docs</div><a href="https://robertylewis.com/mathlib_docs/index.html">root</a>/<br><a href="https://robertylewis.com/mathlib_docs/category_theory/index.html">category_theory</a>/<br><a href="groupoid.html">groupoid</a>      <br><br><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/category_theory/groupoid.lean">View file source</a></div><div class="mod_doc"><p></p>
+</div><div class="structure"><a id="category_theory.groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/category_theory/groupoid.lean#L16">category_theory.groupoid</a></span> <span class="decl_args">(obj : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u (v+1))</div>
 <div class="indent"><p>A <code>groupoid</code> is a category such that all morphisms are isomorphisms.</p>
-       </div>
-</div><div class="def"><a id="category_theory.large_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/category_theory/groupoid.lean#L26">category_theory.large_groupoid</a></span> <span class="decl_args">(C : Type (u+1))</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
+       <div class="structure_fields">
+Fields:
+<div class="structure_field">category_theory.groupoid.to_category : <a href="https://robertylewis.com/mathlib_docs/category_theory/category/default.html#category_theory.category">category_theory.category</a> obj</div>
+<div class="structure_field">category_theory.groupoid.inv : Π {X Y : obj}, (X ⟶ Y) → (Y ⟶ X)</div>
+<div class="structure_field">category_theory.groupoid.inv_comp' : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ {X Y : obj} (f : X ⟶ Y), category_theory.groupoid.inv f ≫ f = 𝟙 Y)
+  (name.mk_string "obviously" name.anonymous)</div>
+<div class="structure_field">category_theory.groupoid.comp_inv' : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ {X Y : obj} (f : X ⟶ Y), f ≫ category_theory.groupoid.inv f = 𝟙 X)
+  (name.mk_string "obviously" name.anonymous)</div>
+</div>
+
+</div>
+</div><div class="def"><a id="category_theory.large_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/category_theory/groupoid.lean#L26">category_theory.large_groupoid</a></span> <span class="decl_args">(C : Type (u+1))</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="category_theory.small_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/category_theory/groupoid.lean#L27">category_theory.small_groupoid</a></span> <span class="decl_args">(C : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
+       
+
+</div>
+</div><div class="def"><a id="category_theory.small_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/category_theory/groupoid.lean#L27">category_theory.small_groupoid</a></span> <span class="decl_args">(C : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
 <div class="indent"><p></p>
-       </div>
-</div><div class="def"><a id="category_theory.is_iso.of_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/category_theory/groupoid.lean#L34">category_theory.is_iso.of_groupoid</a></span> <span class="decl_args">{C : Type u}</span> <span class="decl_args">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/groupoid.html#category_theory.groupoid">category_theory.groupoid</a> C]</span> <span class="decl_args">{X Y : C}</span> <span class="decl_args">(f : X ⟶ Y)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category_theory/isomorphism.html#category_theory.is_iso">category_theory.is_iso</a> f</div>
+       
+
+</div>
+</div><div class="def"><a id="category_theory.is_iso.of_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/category_theory/groupoid.lean#L34">category_theory.is_iso.of_groupoid</a></span> <span class="decl_args">{C : Type u}</span> <span class="decl_args">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/groupoid.html#category_theory.groupoid">category_theory.groupoid</a> C]</span> <span class="decl_args">{X Y : C}</span> <span class="decl_args">(f : X ⟶ Y)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category_theory/isomorphism.html#category_theory.is_iso">category_theory.is_iso</a> f</div>
 <div class="indent"><p></p>
-       Attributes: instance</div>
-</div><div class="def"><a id="category_theory.groupoid.iso_equiv_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/dfd25ff4fe93bbe6e376dd2d27f7ef7ee7c8b3f9/src/category_theory/groupoid.lean#L39">category_theory.groupoid.iso_equiv_hom</a></span> <span class="decl_args">{C : Type u}</span> <span class="decl_args">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/groupoid.html#category_theory.groupoid">category_theory.groupoid</a> C]</span> <span class="decl_args">(X Y : C)</span> <span class="decl_args">:</span>       <div class="decl_type">(X ≅ Y) ≃ (X ⟶ Y)</div>
+       
+
+Attributes: instance</div>
+</div><div class="def"><a id="category_theory.groupoid.iso_equiv_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/lean-3.4.2/src/category_theory/groupoid.lean#L39">category_theory.groupoid.iso_equiv_hom</a></span> <span class="decl_args">{C : Type u}</span> <span class="decl_args">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/groupoid.html#category_theory.groupoid">category_theory.groupoid</a> C]</span> <span class="decl_args">(X Y : C)</span> <span class="decl_args">:</span>       <div class="decl_type">(X ≅ Y) ≃ (X ⟶ Y)</div>
 <div class="indent"><p>In a groupoid, isomorphisms are equivalent to morphisms.</p>
-       </div>
+       
+
+</div>
 </div></body></html>
