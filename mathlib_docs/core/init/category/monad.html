@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: core.init.category.monad</title>
         <meta charset="UTF-8">
     </head>
@@ -1149,39 +1150,49 @@
 
 </div></div>
 <div class="column middle"><div class="content">
-<div class="structure"><a id="has_bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L12">has_bind</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</div>
-<div class="indent"><p></p>
-       <div class="structure_fields">
+<div class="structure"><a id="has_bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L12">has_bind</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Type u → Type v) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</div>
+<p></p>
+       <ul>
+
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">has_bind.bind : Π {α β : Type ?}, m α → (α → m β) → m β</div>
-</div>
+<ul><li><div class="structure_field">has_bind.bind : Π {α β : Type ?}, m α → (α → m β) → m β</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="has_bind.and_then"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L17">has_bind.and_then</a></span> <span class="decl_args">{α β : Type u}</span> <span class="decl_args">{m : Type u → Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind">has_bind</a> m]</span> <span class="decl_args">(x : m α)</span> <span class="decl_args">(y : m β)</span> <span class="decl_args">:</span>       <div class="decl_type">m β</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="has_bind.and_then"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L17">has_bind.and_then</a></span>  <span class="decl_args">:</span>       <div class="decl_type">m α → m β → m β</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind">has_bind</a> m]</span></li>
 
-</div>
-</div><div class="structure"><a id="monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L23">monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</div>
-<div class="indent"><p></p>
-       <div class="structure_fields">
+
+
+</ul></div><div class="structure"><a id="monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L23">monad</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Type u → Type v) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</div>
+<p></p>
+       <ul>
+
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">monad.to_applicative : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m</div>
-<div class="structure_field">monad.to_has_bind : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind">has_bind</a> m</div>
-</div>
+<ul><li><div class="structure_field">monad.to_applicative : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m</div></li>
+<li><div class="structure_field">monad.to_has_bind : <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind">has_bind</a> m</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="return"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L27">return</a></span> <span class="decl_args">{m : Type u → Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">m α</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="return"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L27">return</a></span>  <span class="decl_args">:</span>       <div class="decl_type">α → m α</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{α : Type u}</span></li>
 
-</div>
-</div><div class="def"><a id="has_bind.seq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L31">has_bind.seq</a></span> <span class="decl_args">{α β : Type u}</span> <span class="decl_args">{m : Type u → Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind">has_bind</a> m]</span> <span class="decl_args">(x : m α)</span> <span class="decl_args">(y : m β)</span> <span class="decl_args">:</span>       <div class="decl_type">m β</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div>
+
+</ul></div><div class="def"><a id="has_bind.seq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean#L31">has_bind.seq</a></span>  <span class="decl_args">:</span>       <div class="decl_type">m α → m β → m β</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind">has_bind</a> m]</span></li>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">monad</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/monad.lean">(view source on GitHub)</a></div><a href="#has_bind">has_bind</a><br>

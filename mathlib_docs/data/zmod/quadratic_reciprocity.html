@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: data.zmod.quadratic_reciprocity</title>
         <meta charset="UTF-8">
     </head>
@@ -1167,117 +1168,163 @@ interpretations in terms of existence of square roots depending on the congruenc
 <h2>Implementation notes</h2>
 
 <p>The proof of quadratic reciprocity implemented uses Gauss' lemma and Eisenstein's lemma</p>
-</div><div class="thm"><a id="zmodp.card_units_zmodp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L35">zmodp.card_units_zmodp</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype.card">fintype.card</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/group/units.html#units">units</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp)) = p - 1</div>
-<div class="indent"><p></p>
-       
+</div><div class="thm"><a id="zmodp.card_units_zmodp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L35">zmodp.card_units_zmodp</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype.card">fintype.card</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/group/units.html#units">units</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp)) = p - 1</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
+<li>Attributes: simp</li>
 
-Attributes: simp</div>
-</div><div class="thm"><a id="zmodp.fermat_little"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L38">zmodp.fermat_little</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp}</span> <span class="decl_args">(ha : a ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type">a ^ (p - 1) = 1</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.euler_criterion_units"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L42">zmodp.euler_criterion_units</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">{x : <a href="https://robertylewis.com/mathlib_docs/algebra/group/units.html#units">units</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp)}</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (y : <a href="https://robertylewis.com/mathlib_docs/algebra/group/units.html#units">units</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp)), y ^ 2 = x) ↔ x ^ (p / 2) = 1</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="zmodp.fermat_little"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L38">zmodp.fermat_little</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≠ 0 → a ^ (p - 1) = 1</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">{a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp}</span></li>
 
-</div>
-</div><div class="thm"><a id="zmodp.euler_criterion"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L56">zmodp.euler_criterion</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp}</span> <span class="decl_args">(ha : a ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (y : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), y ^ 2 = a) ↔ a ^ (p / 2) = 1</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.exists_pow_two_eq_neg_one_iff_mod_four_ne_three"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L65">zmodp.exists_pow_two_eq_neg_one_iff_mod_four_ne_three</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (y : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), y ^ 2 = -1) ↔ p % 4 ≠ 3</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.pow_div_two_eq_neg_one_or_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L89">zmodp.pow_div_two_eq_neg_one_or_one</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp}</span> <span class="decl_args">(ha : a ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type">a ^ (p / 2) = 1 ∨ a ^ (p / 2) = -1</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="zmodp.euler_criterion_units"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L42">zmodp.euler_criterion_units</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (y : <a href="https://robertylewis.com/mathlib_docs/algebra/group/units.html#units">units</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp)), y ^ 2 = x) ↔ x ^ (p / 2) = 1</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">{x : <a href="https://robertylewis.com/mathlib_docs/algebra/group/units.html#units">units</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp)}</span></li>
 
-</div>
-</div><div class="thm"><a id="zmodp.wilsons_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L95">zmodp.wilsons_lemma</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(<a href="https://robertylewis.com/mathlib_docs/data/nat/basic.html#nat.fact">nat.fact</a> (p - 1)) = -1</div>
-<div class="indent"><p></p>
-       
 
-Attributes: simp</div>
-</div><div class="thm"><a id="zmodp.prod_Ico_one_prime"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L116">zmodp.prod_Ico_one_prime</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.prod">finset.prod</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 p) (λ (x : ℕ), ↑x) = -1</div>
-<div class="indent"><p></p>
-       
 
-Attributes: simp</div>
-</div><div class="thm"><a id="Ico_map_val_min_abs_nat_abs_eq_Ico_map_id"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L127">Ico_map_val_min_abs_nat_abs_eq_Ico_map_id</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp)</span> <span class="decl_args">(hpa : a ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset.map">multiset.map</a> (λ (x : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp.val_min_abs">zmodp.val_min_abs</a> (a * ↑x))) ((<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 (nat.succ (p / 2))).val) =
+</ul></div><div class="thm"><a id="zmodp.euler_criterion"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L56">zmodp.euler_criterion</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≠ 0 → ((∃ (y : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), y ^ 2 = a) ↔ a ^ (p / 2) = 1)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">{a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="zmodp.exists_pow_two_eq_neg_one_iff_mod_four_ne_three"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L65">zmodp.exists_pow_two_eq_neg_one_iff_mod_four_ne_three</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (y : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), y ^ 2 = -1) ↔ p % 4 ≠ 3</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="zmodp.pow_div_two_eq_neg_one_or_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L89">zmodp.pow_div_two_eq_neg_one_or_one</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≠ 0 → a ^ (p / 2) = 1 ∨ a ^ (p / 2) = -1</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">{a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="zmodp.wilsons_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L95">zmodp.wilsons_lemma</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(<a href="https://robertylewis.com/mathlib_docs/data/nat/basic.html#nat.fact">nat.fact</a> (p - 1)) = -1</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="thm"><a id="zmodp.prod_Ico_one_prime"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L116">zmodp.prod_Ico_one_prime</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.prod">finset.prod</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 p) (λ (x : ℕ), ↑x) = -1</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="thm"><a id="Ico_map_val_min_abs_nat_abs_eq_Ico_map_id"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L127">Ico_map_val_min_abs_nat_abs_eq_Ico_map_id</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≠ 0 →
+<a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset.map">multiset.map</a> (λ (x : ℕ), <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp.val_min_abs">zmodp.val_min_abs</a> (a * ↑x))) ((<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 (nat.succ (p / 2))).val) =
   <a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset.map">multiset.map</a> (λ (a : ℕ), a) ((<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 (nat.succ (p / 2))).val)</div>
-<div class="indent"><p>The image of the map sending a non zero natural number <code>x ≤ p / 2</code> to the absolute value
+<p>The image of the map sending a non zero natural number <code>x ≤ p / 2</code> to the absolute value
  of the element of interger in the interval <code>(-p/2, p/2]</code> congruent to <code>a * x</code> mod p is the set
  of non zero natural numbers <code>x</code> such that <code>x ≤ p / 2</code></p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
 
-</div>
-</div><div class="thm"><a id="div_eq_filter_card"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L248">div_eq_filter_card</a></span> <span class="decl_args">{a b c : ℕ}</span> <span class="decl_args">(hb0 : 0 < b)</span> <span class="decl_args">(hc : a / b ≤ c)</span> <span class="decl_args">:</span>       <div class="decl_type">a / b = <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.card">finset.card</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.filter">finset.filter</a> (λ (x : ℕ), x * b ≤ a) (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 (nat.succ c)))</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="zmodp.legendre_sym"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L327">zmodp.legendre_sym</a></span> <span class="decl_args">(a p : ℕ)</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">ℤ</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.legendre_sym_eq_pow"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L330">zmodp.legendre_sym_eq_pow</a></span> <span class="decl_args">(a p : ℕ)</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(<a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp) = ↑a ^ (p / 2)</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="div_eq_filter_card"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L248">div_eq_filter_card</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → a / b ≤ c → a / b = <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.card">finset.card</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.filter">finset.filter</a> (λ (x : ℕ), x * b ≤ a) (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 (nat.succ c)))</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{a b c : ℕ}</span></li>
 
-</div>
-</div><div class="thm"><a id="zmodp.legendre_sym_eq_one_or_neg_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L345">zmodp.legendre_sym_eq_one_or_neg_one</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(a : ℕ)</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(ha : ↑a ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp = -1 ∨ <a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp = 1</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.gauss_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L351">zmodp.gauss_lemma</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">{a : ℕ}</span> <span class="decl_args">(hp1 : p % 2 = 1)</span> <span class="decl_args">(ha0 : ↑a ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp =
+
+</ul></div><div class="def"><a id="zmodp.legendre_sym"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L327">zmodp.legendre_sym</a></span> <span class="decl_args">(a p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p → ℤ</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="thm"><a id="zmodp.legendre_sym_eq_pow"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L330">zmodp.legendre_sym_eq_pow</a></span> <span class="decl_args">(a p : ℕ)</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(<a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp) = ↑a ^ (p / 2)</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="thm"><a id="zmodp.legendre_sym_eq_one_or_neg_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L345">zmodp.legendre_sym_eq_one_or_neg_one</a></span> <span class="decl_args">(a : ℕ)</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">↑a ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp = -1 ∨ <a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp = 1</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="zmodp.gauss_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L351">zmodp.gauss_lemma</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">p % 2 = 1 →
+↑a ≠ 0 →
+<a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp =
   (-1) ^ <a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.card">finset.card</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.filter">finset.filter</a> (λ (x : ℕ), p / 2 < (↑a * ↑x).val) (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 (nat.succ (p / 2))))</div>
-<div class="indent"><p>Gauss' lemma. The legendre symbol can be computed by considering the number of naturals less
+<p>Gauss' lemma. The legendre symbol can be computed by considering the number of naturals less
  than <code>p/2</code> such that <code>(a * x) % p &gt; p / 2</code></p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">{a : ℕ}</span></li>
 
-</div>
-</div><div class="thm"><a id="zmodp.legendre_sym_eq_one_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L365">zmodp.legendre_sym_eq_one_iff</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">{a : ℕ}</span> <span class="decl_args">(ha0 : ↑a ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp = 1 ↔ ∃ (b : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), b ^ 2 = ↑a</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.eisenstein_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L369">zmodp.eisenstein_lemma</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hp1 : p % 2 = 1)</span> <span class="decl_args">{a : ℕ}</span> <span class="decl_args">(ha1 : a % 2 = 1)</span> <span class="decl_args">(ha0 : ↑a ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp = (-1) ^ <a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 (nat.succ (p / 2))) (λ (x : ℕ), x * a / p)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.quadratic_reciprocity"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L374">zmodp.quadratic_reciprocity</a></span> <span class="decl_args">{p q : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hq : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> q)</span> <span class="decl_args">(hp1 : p % 2 = 1)</span> <span class="decl_args">(hq1 : q % 2 = 1)</span> <span class="decl_args">(hpq : p ≠ q)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> p q hq * <a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> q p hp = (-1) ^ (p / 2 * (q / 2))</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="zmodp.legendre_sym_eq_one_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L365">zmodp.legendre_sym_eq_one_iff</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">↑a ≠ 0 → (<a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp = 1 ↔ ∃ (b : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), b ^ 2 = ↑a)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">{a : ℕ}</span></li>
 
-</div>
-</div><div class="thm"><a id="zmodp.legendre_sym_two"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L381">zmodp.legendre_sym_two</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hp1 : p % 2 = 1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> 2 p hp = (-1) ^ (p / 4 + p / 2)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.exists_pow_two_eq_two_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L414">zmodp.exists_pow_two_eq_two_iff</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hp1 : p % 2 = 1)</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), a ^ 2 = 2) ↔ p % 8 = 1 ∨ p % 8 = 7</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="zmodp.exists_pow_two_eq_prime_iff_of_mod_four_eq_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L433">zmodp.exists_pow_two_eq_prime_iff_of_mod_four_eq_one</a></span> <span class="decl_args">{p q : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hq : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> q)</span> <span class="decl_args">(hp1 : p % 4 = 1)</span> <span class="decl_args">(hq1 : q % 2 = 1)</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), a ^ 2 = ↑q) ↔ ∃ (b : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> q hq), b ^ 2 = ↑p</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="zmodp.eisenstein_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L369">zmodp.eisenstein_lemma</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hp1 : p % 2 = 1)</span> <span class="decl_args">:</span>       <div class="decl_type">a % 2 = 1 →
+↑a ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> a p hp = (-1) ^ <a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> (<a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.Ico">finset.Ico</a> 1 (nat.succ (p / 2))) (λ (x : ℕ), x * a / p)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">{a : ℕ}</span></li>
 
-</div>
-</div><div class="thm"><a id="zmodp.exists_pow_two_eq_prime_iff_of_mod_four_eq_three"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L448">zmodp.exists_pow_two_eq_prime_iff_of_mod_four_eq_three</a></span> <span class="decl_args">{p q : ℕ}</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hq : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> q)</span> <span class="decl_args">(hp3 : p % 4 = 3)</span> <span class="decl_args">(hq3 : q % 4 = 3)</span> <span class="decl_args">(hpq : p ≠ q)</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), a ^ 2 = ↑q) ↔ ¬∃ (b : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> q hq), b ^ 2 = ↑p</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div>
+
+</ul></div><div class="thm"><a id="zmodp.quadratic_reciprocity"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L374">zmodp.quadratic_reciprocity</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hq : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> q)</span> <span class="decl_args">:</span>       <div class="decl_type">p % 2 = 1 → q % 2 = 1 → p ≠ q → <a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> p q hq * <a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> q p hp = (-1) ^ (p / 2 * (q / 2))</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p q : ℕ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="zmodp.legendre_sym_two"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L381">zmodp.legendre_sym_two</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">p % 2 = 1 → <a href="https://robertylewis.com/mathlib_docs/data/zmod/quadratic_reciprocity.html#zmodp.legendre_sym">zmodp.legendre_sym</a> 2 p hp = (-1) ^ (p / 4 + p / 2)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="zmodp.exists_pow_two_eq_two_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L414">zmodp.exists_pow_two_eq_two_iff</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">p % 2 = 1 → ((∃ (a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), a ^ 2 = 2) ↔ p % 8 = 1 ∨ p % 8 = 7)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="zmodp.exists_pow_two_eq_prime_iff_of_mod_four_eq_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L433">zmodp.exists_pow_two_eq_prime_iff_of_mod_four_eq_one</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hq : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> q)</span> <span class="decl_args">:</span>       <div class="decl_type">p % 4 = 1 → q % 2 = 1 → ((∃ (a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), a ^ 2 = ↑q) ↔ ∃ (b : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> q hq), b ^ 2 = ↑p)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p q : ℕ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="zmodp.exists_pow_two_eq_prime_iff_of_mod_four_eq_three"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean#L448">zmodp.exists_pow_two_eq_prime_iff_of_mod_four_eq_three</a></span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(hq : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> q)</span> <span class="decl_args">:</span>       <div class="decl_type">p % 4 = 3 → q % 4 = 3 → p ≠ q → ((∃ (a : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> p hp), a ^ 2 = ↑q) ↔ ¬∃ (b : <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmodp">zmodp</a> q hq), b ^ 2 = ↑p)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p q : ℕ}</span></li>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">quadratic_reciprocity</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/zmod/quadratic_reciprocity.lean">(view source on GitHub)</a></div><a href="#Ico_map_val_min_abs_nat_abs_eq_Ico_map_id">Ico_map_val_min_abs_nat_abs_eq_Ico_map_id</a><br>

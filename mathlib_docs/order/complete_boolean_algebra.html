@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: order.complete_boolean_algebra</title>
         <meta charset="UTF-8">
     </head>
@@ -1149,152 +1150,184 @@
 
 </div></div>
 <div class="column middle"><div class="content">
-<div class="def"><a id="lattice.complete_distrib_lattice.to_complete_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L21">lattice.complete_distrib_lattice.to_complete_lattice</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[s : <a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.complete_lattice">lattice.complete_lattice</a> α</div>
-<div class="indent"><p></p>
-       
-
-Attributes: instance</div>
-</div><div class="structure"><a id="lattice.complete_distrib_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L21">lattice.complete_distrib_lattice</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_1</div>
-<div class="indent"><p>A complete distributive lattice is a bit stronger than the name might
+<div class="structure"><a id="lattice.complete_distrib_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L21">lattice.complete_distrib_lattice</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u_1 → Type u_1</div>
+<p>A complete distributive lattice is a bit stronger than the name might
  suggest; perhaps completely distributive lattice is more descriptive,
  as this class includes a requirement that the lattice join
  distribute over <em>arbitrary</em> infima, and similarly for the dual.</p>
-       <div class="structure_fields">
+       <ul>
+
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">lattice.complete_distrib_lattice.sup : α → α → α</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le : α → α → Prop</div>
-<div class="structure_field">lattice.complete_distrib_lattice.lt : α → α → Prop</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_refl : ∀ (a : α), a ≤ a</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_trans : ∀ (a b c_1 : α), a ≤ b → b ≤ c_1 → a ≤ c_1</div>
-<div class="structure_field">lattice.complete_distrib_lattice.lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ (a b : α), a < b ↔ a ≤ b ∧ ¬b ≤ a) (name.mk_string "order_laws_tac" name.anonymous)</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_antisymm : ∀ (a b : α), a ≤ b → b ≤ a → a = b</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_sup_left : ∀ (a b : α), a ≤ a ⊔ b</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_sup_right : ∀ (a b : α), b ≤ a ⊔ b</div>
-<div class="structure_field">lattice.complete_distrib_lattice.sup_le : ∀ (a b c_1 : α), a ≤ c_1 → b ≤ c_1 → a ⊔ b ≤ c_1</div>
-<div class="structure_field">lattice.complete_distrib_lattice.inf : α → α → α</div>
-<div class="structure_field">lattice.complete_distrib_lattice.inf_le_left : ∀ (a b : α), a ⊓ b ≤ a</div>
-<div class="structure_field">lattice.complete_distrib_lattice.inf_le_right : ∀ (a b : α), a ⊓ b ≤ b</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_inf : ∀ (a b c_1 : α), a ≤ b → a ≤ c_1 → a ≤ b ⊓ c_1</div>
-<div class="structure_field">lattice.complete_distrib_lattice.top : α</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_top : ∀ (a : α), a ≤ ⊤</div>
-<div class="structure_field">lattice.complete_distrib_lattice.bot : α</div>
-<div class="structure_field">lattice.complete_distrib_lattice.bot_le : ∀ (a : α), ⊥ ≤ a</div>
-<div class="structure_field">lattice.complete_distrib_lattice.Sup : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → α</div>
-<div class="structure_field">lattice.complete_distrib_lattice.Inf : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → α</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_Sup : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), a ∈ s → a ≤ lattice.complete_distrib_lattice.Sup s</div>
-<div class="structure_field">lattice.complete_distrib_lattice.Sup_le : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), (∀ (b : α), b ∈ s → b ≤ a) → lattice.complete_distrib_lattice.Sup s ≤ a</div>
-<div class="structure_field">lattice.complete_distrib_lattice.Inf_le : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), a ∈ s → lattice.complete_distrib_lattice.Inf s ≤ a</div>
-<div class="structure_field">lattice.complete_distrib_lattice.le_Inf : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), (∀ (b : α), b ∈ s → a ≤ b) → a ≤ lattice.complete_distrib_lattice.Inf s</div>
-<div class="structure_field">lattice.complete_distrib_lattice.infi_sup_le_sup_Inf : ∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), (⨅ (b : α) (H : b ∈ s), a ⊔ b) ≤ a ⊔ lattice.complete_distrib_lattice.Inf s</div>
-<div class="structure_field">lattice.complete_distrib_lattice.inf_Sup_le_supr_inf : ∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), a ⊓ lattice.complete_distrib_lattice.Sup s ≤ ⨆ (b : α) (H : b ∈ s), a ⊓ b</div>
-</div>
+<ul><li><div class="structure_field">lattice.complete_distrib_lattice.sup : α → α → α</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le : α → α → Prop</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.lt : α → α → Prop</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_refl : ∀ (a : α), a ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_trans : ∀ (a b c_1 : α), a ≤ b → b ≤ c_1 → a ≤ c_1</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ (a b : α), a < b ↔ a ≤ b ∧ ¬b ≤ a) (name.mk_string "order_laws_tac" name.anonymous)</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_antisymm : ∀ (a b : α), a ≤ b → b ≤ a → a = b</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_sup_left : ∀ (a b : α), a ≤ a ⊔ b</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_sup_right : ∀ (a b : α), b ≤ a ⊔ b</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.sup_le : ∀ (a b c_1 : α), a ≤ c_1 → b ≤ c_1 → a ⊔ b ≤ c_1</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.inf : α → α → α</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.inf_le_left : ∀ (a b : α), a ⊓ b ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.inf_le_right : ∀ (a b : α), a ⊓ b ≤ b</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_inf : ∀ (a b c_1 : α), a ≤ b → a ≤ c_1 → a ≤ b ⊓ c_1</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.top : α</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_top : ∀ (a : α), a ≤ ⊤</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.bot : α</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.bot_le : ∀ (a : α), ⊥ ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.Sup : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → α</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.Inf : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → α</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_Sup : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), a ∈ s → a ≤ lattice.complete_distrib_lattice.Sup s</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.Sup_le : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), (∀ (b : α), b ∈ s → b ≤ a) → lattice.complete_distrib_lattice.Sup s ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.Inf_le : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), a ∈ s → lattice.complete_distrib_lattice.Inf s ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.le_Inf : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), (∀ (b : α), b ∈ s → a ≤ b) → a ≤ lattice.complete_distrib_lattice.Inf s</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.infi_sup_le_sup_Inf : ∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), (⨅ (b : α) (H : b ∈ s), a ⊔ b) ≤ a ⊔ lattice.complete_distrib_lattice.Inf s</div></li>
+<li><div class="structure_field">lattice.complete_distrib_lattice.inf_Sup_le_supr_inf : ∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), a ⊓ lattice.complete_distrib_lattice.Sup s ≤ ⨆ (b : α) (H : b ∈ s), a ⊓ b</div></li>
+</ul></li>
 
-</div>
-</div><div class="thm"><a id="lattice.sup_Inf_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L28">lattice.sup_Inf_eq</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="decl_args">{a : α}</span> <span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="decl_args">:</span>       <div class="decl_type">a ⊔ <a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Inf">lattice.Inf</a> s = ⨅ (b : α) (H : b ∈ s), a ⊔ b</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="lattice.complete_distrib_lattice.to_complete_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L21">lattice.complete_distrib_lattice.to_complete_lattice</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.complete_lattice">lattice.complete_lattice</a> α</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[s : <a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span></li>
+<li>Attributes: instance</li>
 
-</div>
-</div><div class="thm"><a id="lattice.Inf_sup_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L33">lattice.Inf_sup_eq</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="decl_args">{b : α}</span> <span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Inf">lattice.Inf</a> s ⊔ b = ⨅ (a : α) (H : a ∈ s), a ⊔ b</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="lattice.inf_Sup_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L36">lattice.inf_Sup_eq</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="decl_args">{a : α}</span> <span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="decl_args">:</span>       <div class="decl_type">a ⊓ <a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Sup">lattice.Sup</a> s = ⨆ (b : α) (H : b ∈ s), a ⊓ b</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="lattice.sup_Inf_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L28">lattice.sup_Inf_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ⊔ <a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Inf">lattice.Inf</a> s = ⨅ (b : α) (H : b ∈ s), a ⊔ b</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="impl_arg">{a : α}</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
 
-</div>
-</div><div class="thm"><a id="lattice.Sup_inf_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L41">lattice.Sup_inf_eq</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="decl_args">{b : α}</span> <span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Sup">lattice.Sup</a> s ⊓ b = ⨆ (a : α) (H : a ∈ s), a ⊓ b</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="lattice.Inf_sup_Inf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L44">lattice.Inf_sup_Inf</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="decl_args">{s t : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Inf">lattice.Inf</a> s ⊔ <a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Inf">lattice.Inf</a> t = ⨅ (p : α × α) (H : p ∈ <a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.prod">set.prod</a> s t), p.fst ⊔ p.snd</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="lattice.Sup_inf_Sup"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L66">lattice.Sup_inf_Sup</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="decl_args">{s t : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Sup">lattice.Sup</a> s ⊓ <a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Sup">lattice.Sup</a> t = ⨆ (p : α × α) (H : p ∈ <a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.prod">set.prod</a> s t), p.fst ⊓ p.snd</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="lattice.Inf_sup_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L33">lattice.Inf_sup_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Inf">lattice.Inf</a> s ⊔ b = ⨅ (a : α) (H : a ∈ s), a ⊔ b</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="impl_arg">{b : α}</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
 
-</div>
-</div><div class="def"><a id="lattice.lattice.bounded_distrib_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L90">lattice.lattice.bounded_distrib_lattice</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[d : <a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.bounded_distrib_lattice">lattice.bounded_distrib_lattice</a> α</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="lattice.complete_boolean_algebra.to_complete_distrib_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L99">lattice.complete_boolean_algebra.to_complete_distrib_lattice</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[s : <a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="lattice.complete_boolean_algebra.to_boolean_algebra"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L99">lattice.complete_boolean_algebra.to_boolean_algebra</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">[s : <a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/boolean_algebra.html#lattice.boolean_algebra">lattice.boolean_algebra</a> α</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="lattice.inf_Sup_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L36">lattice.inf_Sup_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ⊓ <a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Sup">lattice.Sup</a> s = ⨆ (b : α) (H : b ∈ s), a ⊓ b</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="impl_arg">{a : α}</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
 
-Attributes: instance</div>
-</div><div class="structure"><a id="lattice.complete_boolean_algebra"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L99">lattice.complete_boolean_algebra</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_1</div>
-<div class="indent"><p>A complete boolean algebra is a completely distributive boolean algebra.</p>
-       <div class="structure_fields">
+
+
+</ul></div><div class="thm"><a id="lattice.Sup_inf_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L41">lattice.Sup_inf_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Sup">lattice.Sup</a> s ⊓ b = ⨆ (a : α) (H : a ∈ s), a ⊓ b</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="impl_arg">{b : α}</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="lattice.Inf_sup_Inf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L44">lattice.Inf_sup_Inf</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Inf">lattice.Inf</a> s ⊔ <a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Inf">lattice.Inf</a> t = ⨅ (p : α × α) (H : p ∈ <a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.prod">set.prod</a> s t), p.fst ⊔ p.snd</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="impl_arg">{s t : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="lattice.Sup_inf_Sup"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L66">lattice.Sup_inf_Sup</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Sup">lattice.Sup</a> s ⊓ <a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.Sup">lattice.Sup</a> t = ⨆ (p : α × α) (H : p ∈ <a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.prod">set.prod</a> s t), p.fst ⊓ p.snd</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span> <span class="impl_arg">{s t : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
+
+
+
+</ul></div><div class="def"><a id="lattice.lattice.bounded_distrib_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L90">lattice.lattice.bounded_distrib_lattice</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.bounded_distrib_lattice">lattice.bounded_distrib_lattice</a> α</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[d : <a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="lattice.complete_boolean_algebra.to_boolean_algebra"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L99">lattice.complete_boolean_algebra.to_boolean_algebra</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/boolean_algebra.html#lattice.boolean_algebra">lattice.boolean_algebra</a> α</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[s : <a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="structure"><a id="lattice.complete_boolean_algebra"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L99">lattice.complete_boolean_algebra</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u_1 → Type u_1</div>
+<p>A complete boolean algebra is a completely distributive boolean algebra.</p>
+       <ul>
+
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">lattice.complete_boolean_algebra.sup : α → α → α</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le : α → α → Prop</div>
-<div class="structure_field">lattice.complete_boolean_algebra.lt : α → α → Prop</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_refl : ∀ (a : α), a ≤ a</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_trans : ∀ (a b c_1 : α), a ≤ b → b ≤ c_1 → a ≤ c_1</div>
-<div class="structure_field">lattice.complete_boolean_algebra.lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ (a b : α), a < b ↔ a ≤ b ∧ ¬b ≤ a) (name.mk_string "order_laws_tac" name.anonymous)</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_antisymm : ∀ (a b : α), a ≤ b → b ≤ a → a = b</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_sup_left : ∀ (a b : α), a ≤ a ⊔ b</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_sup_right : ∀ (a b : α), b ≤ a ⊔ b</div>
-<div class="structure_field">lattice.complete_boolean_algebra.sup_le : ∀ (a b c_1 : α), a ≤ c_1 → b ≤ c_1 → a ⊔ b ≤ c_1</div>
-<div class="structure_field">lattice.complete_boolean_algebra.inf : α → α → α</div>
-<div class="structure_field">lattice.complete_boolean_algebra.inf_le_left : ∀ (a b : α), a ⊓ b ≤ a</div>
-<div class="structure_field">lattice.complete_boolean_algebra.inf_le_right : ∀ (a b : α), a ⊓ b ≤ b</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_inf : ∀ (a b c_1 : α), a ≤ b → a ≤ c_1 → a ≤ b ⊓ c_1</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_sup_inf : ∀ (x y z : α), (x ⊔ y) ⊓ (x ⊔ z) ≤ x ⊔ y ⊓ z</div>
-<div class="structure_field">lattice.complete_boolean_algebra.top : α</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_top : ∀ (a : α), a ≤ ⊤</div>
-<div class="structure_field">lattice.complete_boolean_algebra.bot : α</div>
-<div class="structure_field">lattice.complete_boolean_algebra.bot_le : ∀ (a : α), ⊥ ≤ a</div>
-<div class="structure_field">lattice.complete_boolean_algebra.neg : α → α</div>
-<div class="structure_field">lattice.complete_boolean_algebra.sub : α → α → α</div>
-<div class="structure_field">lattice.complete_boolean_algebra.inf_neg_eq_bot : ∀ (x : α), x ⊓ -x = ⊥</div>
-<div class="structure_field">lattice.complete_boolean_algebra.sup_neg_eq_top : ∀ (x : α), x ⊔ -x = ⊤</div>
-<div class="structure_field">lattice.complete_boolean_algebra.sub_eq : ∀ (x y : α), x - y = x ⊓ -y</div>
-<div class="structure_field">lattice.complete_boolean_algebra.Sup : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → α</div>
-<div class="structure_field">lattice.complete_boolean_algebra.Inf : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → α</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_Sup : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), a ∈ s → a ≤ lattice.complete_boolean_algebra.Sup s</div>
-<div class="structure_field">lattice.complete_boolean_algebra.Sup_le : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), (∀ (b : α), b ∈ s → b ≤ a) → lattice.complete_boolean_algebra.Sup s ≤ a</div>
-<div class="structure_field">lattice.complete_boolean_algebra.Inf_le : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), a ∈ s → lattice.complete_boolean_algebra.Inf s ≤ a</div>
-<div class="structure_field">lattice.complete_boolean_algebra.le_Inf : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), (∀ (b : α), b ∈ s → a ≤ b) → a ≤ lattice.complete_boolean_algebra.Inf s</div>
-<div class="structure_field">lattice.complete_boolean_algebra.infi_sup_le_sup_Inf : ∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), (⨅ (b : α) (H : b ∈ s), a ⊔ b) ≤ a ⊔ lattice.complete_boolean_algebra.Inf s</div>
-<div class="structure_field">lattice.complete_boolean_algebra.inf_Sup_le_supr_inf : ∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), a ⊓ lattice.complete_boolean_algebra.Sup s ≤ ⨆ (b : α) (H : b ∈ s), a ⊓ b</div>
-</div>
+<ul><li><div class="structure_field">lattice.complete_boolean_algebra.sup : α → α → α</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le : α → α → Prop</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.lt : α → α → Prop</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_refl : ∀ (a : α), a ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_trans : ∀ (a b c_1 : α), a ≤ b → b ≤ c_1 → a ≤ c_1</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ (a b : α), a < b ↔ a ≤ b ∧ ¬b ≤ a) (name.mk_string "order_laws_tac" name.anonymous)</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_antisymm : ∀ (a b : α), a ≤ b → b ≤ a → a = b</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_sup_left : ∀ (a b : α), a ≤ a ⊔ b</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_sup_right : ∀ (a b : α), b ≤ a ⊔ b</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.sup_le : ∀ (a b c_1 : α), a ≤ c_1 → b ≤ c_1 → a ⊔ b ≤ c_1</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.inf : α → α → α</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.inf_le_left : ∀ (a b : α), a ⊓ b ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.inf_le_right : ∀ (a b : α), a ⊓ b ≤ b</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_inf : ∀ (a b c_1 : α), a ≤ b → a ≤ c_1 → a ≤ b ⊓ c_1</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_sup_inf : ∀ (x y z : α), (x ⊔ y) ⊓ (x ⊔ z) ≤ x ⊔ y ⊓ z</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.top : α</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_top : ∀ (a : α), a ≤ ⊤</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.bot : α</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.bot_le : ∀ (a : α), ⊥ ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.neg : α → α</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.sub : α → α → α</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.inf_neg_eq_bot : ∀ (x : α), x ⊓ -x = ⊥</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.sup_neg_eq_top : ∀ (x : α), x ⊔ -x = ⊤</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.sub_eq : ∀ (x y : α), x - y = x ⊓ -y</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.Sup : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → α</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.Inf : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → α</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_Sup : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), a ∈ s → a ≤ lattice.complete_boolean_algebra.Sup s</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.Sup_le : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), (∀ (b : α), b ∈ s → b ≤ a) → lattice.complete_boolean_algebra.Sup s ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.Inf_le : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), a ∈ s → lattice.complete_boolean_algebra.Inf s ≤ a</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.le_Inf : ∀ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) (a : α), (∀ (b : α), b ∈ s → a ≤ b) → a ≤ lattice.complete_boolean_algebra.Inf s</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.infi_sup_le_sup_Inf : ∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), (⨅ (b : α) (H : b ∈ s), a ⊔ b) ≤ a ⊔ lattice.complete_boolean_algebra.Inf s</div></li>
+<li><div class="structure_field">lattice.complete_boolean_algebra.inf_Sup_le_supr_inf : ∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), a ⊓ lattice.complete_boolean_algebra.Sup s ≤ ⨆ (b : α) (H : b ∈ s), a ⊓ b</div></li>
+</ul></li>
 
-</div>
-</div><div class="thm"><a id="lattice.neg_infi"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L104">lattice.neg_infi</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">{ι : Sort <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">:</span>       <div class="decl_type">-lattice.infi f = ⨆ (i : ι), -f i</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="lattice.complete_boolean_algebra.to_complete_distrib_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L99">lattice.complete_boolean_algebra.to_complete_distrib_lattice</a></span> <span class="decl_args">(α : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_distrib_lattice">lattice.complete_distrib_lattice</a> α</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[s : <a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span></li>
+<li>Attributes: instance</li>
 
-</div>
-</div><div class="thm"><a id="lattice.neg_supr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L109">lattice.neg_supr</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">{ι : Sort <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="decl_args">{f : ι → α}</span> <span class="decl_args">:</span>       <div class="decl_type">-lattice.supr f = ⨅ (i : ι), -f i</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="lattice.neg_Inf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L112">lattice.neg_Inf</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="decl_args">:</span>       <div class="decl_type">-lattice.Inf s = ⨆ (i : α) (H : i ∈ s), -i</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="lattice.neg_infi"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L104">lattice.neg_infi</a></span>  <span class="decl_args">:</span>       <div class="decl_type">-lattice.infi f = ⨆ (i : ι), -f i</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{ι : Sort w}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="impl_arg">{f : ι → α}</span></li>
 
-</div>
-</div><div class="thm"><a id="lattice.neg_Sup"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L115">lattice.neg_Sup</a></span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="decl_args">:</span>       <div class="decl_type">-lattice.Sup s = ⨅ (i : α) (H : i ∈ s), -i</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div>
+
+</ul></div><div class="thm"><a id="lattice.neg_supr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L109">lattice.neg_supr</a></span>  <span class="decl_args">:</span>       <div class="decl_type">-lattice.supr f = ⨅ (i : ι), -f i</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{ι : Sort w}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="impl_arg">{f : ι → α}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="lattice.neg_Inf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L112">lattice.neg_Inf</a></span>  <span class="decl_args">:</span>       <div class="decl_type">-lattice.Inf s = ⨆ (i : α) (H : i ∈ s), -i</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="lattice.neg_Sup"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean#L115">lattice.neg_Sup</a></span>  <span class="decl_args">:</span>       <div class="decl_type">-lattice.Sup s = ⨅ (i : α) (H : i ∈ s), -i</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/order/complete_boolean_algebra.html#lattice.complete_boolean_algebra">lattice.complete_boolean_algebra</a> α]</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">complete_boolean_algebra</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/order/complete_boolean_algebra.lean">(view source on GitHub)</a></div><a href="#lattice.Inf_sup_Inf">lattice.Inf_sup_Inf</a><br>

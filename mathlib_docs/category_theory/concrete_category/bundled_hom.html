@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: category_theory.concrete_category.bundled_hom</title>
         <meta charset="UTF-8">
     </head>
@@ -1158,45 +1159,54 @@ along with an <code>is_monoid_hom</code> typeclass), but the general trend is to
 
 <p>This file provides a basic infrastructure to define concrete categories using bundled homs, and
 define forgetful functors between them.</p>
-</div><div class="structure"><a id="category_theory.bundled_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean#L27">category_theory.bundled_hom</a></span> <span class="decl_args">{c : Type u → Type u}</span> <span class="decl_args">(hom : Π ⦃α β : Type u⦄, c α → c β → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
-<div class="indent"><p>Class for bundled homs. Note that the arguments order follows that of lemmas for <code>monoid_hom</code>.
+</div><div class="structure"><a id="category_theory.bundled_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean#L27">category_theory.bundled_hom</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Π ⦃α β : Type u⦄, c α → c β → Type u) → Type (u+1)</div>
+<p>Class for bundled homs. Note that the arguments order follows that of lemmas for <code>monoid_hom</code>.
 This way we can use <code>⟨@monoid_hom.to_fun, @monoid_hom.id ...⟩</code> in an instance.</p>
-       <div class="structure_fields">
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{c : Type u → Type u}</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">category_theory.bundled_hom.to_fun : Π {α β : Type ?} (Iα : c α) (Iβ : c β), hom Iα Iβ → α → β</div>
-<div class="structure_field">category_theory.bundled_hom.id : Π {α : Type ?} (I : c α), hom I I</div>
-<div class="structure_field">category_theory.bundled_hom.comp : Π {α β γ : Type ?} (Iα : c α) (Iβ : c β) (Iγ : c γ), hom Iβ Iγ → hom Iα Iβ → hom Iα Iγ</div>
-<div class="structure_field">category_theory.bundled_hom.hom_ext : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+<ul><li><div class="structure_field">category_theory.bundled_hom.to_fun : Π {α β : Type ?} (Iα : c α) (Iβ : c β), hom Iα Iβ → α → β</div></li>
+<li><div class="structure_field">category_theory.bundled_hom.id : Π {α : Type ?} (I : c α), hom I I</div></li>
+<li><div class="structure_field">category_theory.bundled_hom.comp : Π {α β γ : Type ?} (Iα : c α) (Iβ : c β) (Iγ : c γ), hom Iβ Iγ → hom Iα Iβ → hom Iα Iγ</div></li>
+<li><div class="structure_field">category_theory.bundled_hom.hom_ext : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
   (∀ {α β : Type ?} (Iα : c α) (Iβ : c β), <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.injective">function.injective</a> (category_theory.bundled_hom.to_fun c_1 Iα Iβ))
-  (name.mk_string "obviously" name.anonymous)</div>
-<div class="structure_field">category_theory.bundled_hom.id_to_fun : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (name.mk_string "obviously" name.anonymous)</div></li>
+<li><div class="structure_field">category_theory.bundled_hom.id_to_fun : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
   (∀ {α : Type ?} (I : c α), category_theory.bundled_hom.to_fun c_1 I I (category_theory.bundled_hom.id c_1 I) = <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a>)
-  (name.mk_string "obviously" name.anonymous)</div>
-<div class="structure_field">category_theory.bundled_hom.comp_to_fun : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
-  (∀ {α β γ : Type ?} (Iα : c α) (Iβ : c β) (Iγ : c γ) (f : hom Iα Iβ) (<a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> : hom Iβ Iγ),
-     category_theory.bundled_hom.to_fun c_1 Iα Iγ (category_theory.bundled_hom.comp c_1 Iα Iβ Iγ <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> f) =
-       category_theory.bundled_hom.to_fun c_1 Iβ Iγ <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> ∘ category_theory.bundled_hom.to_fun c_1 Iα Iβ f)
-  (name.mk_string "obviously" name.anonymous)</div>
-</div>
+  (name.mk_string "obviously" name.anonymous)</div></li>
+<li><div class="structure_field">category_theory.bundled_hom.comp_to_fun : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ {α β γ : Type ?} (Iα : c α) (Iβ : c β) (Iγ : c γ) (f : hom Iα Iβ) (g : hom Iβ Iγ),
+     category_theory.bundled_hom.to_fun c_1 Iα Iγ (category_theory.bundled_hom.comp c_1 Iα Iβ Iγ g f) =
+       category_theory.bundled_hom.to_fun c_1 Iβ Iγ g ∘ category_theory.bundled_hom.to_fun c_1 Iα Iβ f)
+  (name.mk_string "obviously" name.anonymous)</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="category_theory.bundled_hom.category_theory.category"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean#L48">category_theory.bundled_hom.category_theory.category</a></span> <span class="decl_args">{c : Type u → Type u}</span> <span class="decl_args">(hom : Π ⦃α β : Type u⦄, c α → c β → Type u)</span> <span class="decl_args">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled_hom.html#category_theory.bundled_hom">category_theory.bundled_hom</a> hom]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category_theory/category/default.html#category_theory.category">category_theory.category</a> (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c)</div>
-<div class="indent"><p>Every <code>@bundled_hom c _</code> defines a category with objects in <code>bundled c</code>.</p>
-       
+</ul></div><div class="def"><a id="category_theory.bundled_hom.category_theory.category"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean#L48">category_theory.bundled_hom.category_theory.category</a></span> <span class="decl_args">(hom : Π ⦃α β : Type u⦄, c α → c β → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category_theory/category/default.html#category_theory.category">category_theory.category</a> (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c)</div>
+<p>Every <code>@bundled_hom c _</code> defines a category with objects in <code>bundled c</code>.</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{c : Type u → Type u}</span> <span class="impl_arg">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled_hom.html#category_theory.bundled_hom">category_theory.bundled_hom</a> hom]</span></li>
+<li>Attributes: instance</li>
 
-Attributes: instance</div>
-</div><div class="def"><a id="category_theory.bundled_hom.concrete_category"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean#L60">category_theory.bundled_hom.concrete_category</a></span> <span class="decl_args">{c : Type u → Type u}</span> <span class="decl_args">(hom : Π ⦃α β : Type u⦄, c α → c β → Type u)</span> <span class="decl_args">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled_hom.html#category_theory.bundled_hom">category_theory.bundled_hom</a> hom]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c)</div>
-<div class="indent"><p>A category given by <code>bundled_hom</code> is a concrete category.</p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="category_theory.bundled_hom.mk_has_forget₂"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean#L71">category_theory.bundled_hom.mk_has_forget₂</a></span> <span class="decl_args">{c : Type u → Type u}</span> <span class="decl_args">{hom : Π ⦃α β : Type u⦄, c α → c β → Type u}</span> <span class="decl_args">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled_hom.html#category_theory.bundled_hom">category_theory.bundled_hom</a> hom]</span> <span class="decl_args">{d : Type u → Type u}</span> <span class="decl_args">{hom_d : Π ⦃α β : Type u⦄, d α → d β → Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled_hom.html#category_theory.bundled_hom">category_theory.bundled_hom</a> hom_d]</span> <span class="decl_args">(obj : Π ⦃α : Type u⦄, c α → d α)</span> <span class="decl_args">(map : Π {X Y : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c},
-  (X ⟶ Y) → (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled.map">category_theory.bundled.map</a> obj X ⟶ <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled.map">category_theory.bundled.map</a> obj Y))</span> <span class="decl_args">(h_map : ∀ {X Y : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c} (f : X ⟶ Y), ⇑(map f) = ⇑f)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/basic.html#category_theory.has_forget₂">category_theory.has_forget₂</a> (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c) (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> d)</div>
-<div class="indent"><p>A version of <code>has_forget₂.mk'</code> for categories defined using <code>@bundled_hom</code>.</p>
-       
+</ul></div><div class="def"><a id="category_theory.bundled_hom.concrete_category"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean#L60">category_theory.bundled_hom.concrete_category</a></span> <span class="decl_args">(hom : Π ⦃α β : Type u⦄, c α → c β → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/basic.html#category_theory.concrete_category">category_theory.concrete_category</a> (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c)</div>
+<p>A category given by <code>bundled_hom</code> is a concrete category.</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{c : Type u → Type u}</span> <span class="impl_arg">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled_hom.html#category_theory.bundled_hom">category_theory.bundled_hom</a> hom]</span></li>
+<li>Attributes: instance</li>
 
-</div>
-</div>
+
+</ul></div><div class="def"><a id="category_theory.bundled_hom.mk_has_forget₂"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean#L71">category_theory.bundled_hom.mk_has_forget₂</a></span> <span class="decl_args">(obj : Π ⦃α : Type u⦄, c α → d α)</span> <span class="decl_args">(map : Π {X Y : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c},
+  (X ⟶ Y) → (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled.map">category_theory.bundled.map</a> obj X ⟶ <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled.map">category_theory.bundled.map</a> obj Y))</span> <span class="decl_args">:</span>       <div class="decl_type">(∀ {X Y : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c} (f : X ⟶ Y), ⇑(map f) = ⇑f) →
+<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/basic.html#category_theory.has_forget₂">category_theory.has_forget₂</a> (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> c) (<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled.html#category_theory.bundled">category_theory.bundled</a> d)</div>
+<p>A version of <code>has_forget₂.mk'</code> for categories defined using <code>@bundled_hom</code>.</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{c : Type u → Type u}</span> <span class="impl_arg">{hom : Π ⦃α β : Type u⦄, c α → c β → Type u}</span> <span class="impl_arg">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled_hom.html#category_theory.bundled_hom">category_theory.bundled_hom</a> hom]</span> <span class="impl_arg">{d : Type u → Type u}</span> <span class="impl_arg">{hom_d : Π ⦃α β : Type u⦄, d α → d β → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category_theory/concrete_category/bundled_hom.html#category_theory.bundled_hom">category_theory.bundled_hom</a> hom_d]</span></li>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">bundled_hom</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/concrete_category/bundled_hom.lean">(view source on GitHub)</a></div><a href="#category_theory.bundled_hom">category_theory.bundled_hom</a><br>

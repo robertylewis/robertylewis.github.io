@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: tactic.lift</title>
         <meta charset="UTF-8">
     </head>
@@ -1159,51 +1160,67 @@ under a specified condition.</p>
 <h2>Tags</h2>
 
 <p>lift, tactic</p>
-</div><div class="structure"><a id="can_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L22">can_lift</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(β : Type v)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u v)</div>
-<div class="indent"><p>A class specifying that you can lift elements from <code>α</code> to <code>β</code> assuming <code>cond</code> is true.
+</div><div class="structure"><a id="can_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L22">can_lift</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type v → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u v)</div>
+<p>A class specifying that you can lift elements from <code>α</code> to <code>β</code> assuming <code>cond</code> is true.
  Used by the tactic <code>lift</code>.</p>
-       <div class="structure_fields">
+       <ul>
+
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">can_lift.coe : β → α</div>
-<div class="structure_field">can_lift.cond : α → Prop</div>
-<div class="structure_field">can_lift.prf : ∀ (x : α), can_lift.cond β x → (∃ (y : β), can_lift.coe α y = x)</div>
-</div>
+<ul><li><div class="structure_field">can_lift.coe : β → α</div></li>
+<li><div class="structure_field">can_lift.cond : α → Prop</div></li>
+<li><div class="structure_field">can_lift.prf : ∀ (x : α), can_lift.cond β x → (∃ (y : β), can_lift.coe α y = x)</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="can_lift_attr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L30">can_lift_attr</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>))</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="can_lift_attr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L30">can_lift_attr</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>))</div>
+<p></p>
+       <ul>
 
-</div>
-</div><div class="def"><a id="nat.can_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L40">nat.can_lift</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/lift.html#can_lift">can_lift</a> ℤ ℕ</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="tactic.get_lift_prf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L54">tactic.get_lift_prf</a></span> <span class="decl_args">(h : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</span> <span class="decl_args">(old_tp new_tp inst e : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">(s : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a>)</span> <span class="decl_args">(to_unfold : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L71">tactic.lift</a></span> <span class="decl_args">(p t : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</span> <span class="decl_args">(h : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Lift the expression <code>p</code> to the type <code>t</code>, with proof obligation given by <code>h</code>.
+
+</ul></div><div class="def"><a id="nat.can_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L40">nat.can_lift</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/lift.html#can_lift">can_lift</a> ℤ ℕ</div>
+<p></p>
+       <ul>
+
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="tactic.get_lift_prf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L54">tactic.get_lift_prf</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L71">tactic.lift</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Lift the expression <code>p</code> to the type <code>t</code>, with proof obligation given by <code>h</code>.
  The list <code>n</code> is used for the two newly generated names, and to specify whether <code>h</code> should
  remain in the local context. See the doc string of <code>tactic.interactive.lift</code> for more information.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.using_texpr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L116">tactic.using_texpr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser">lean.parser</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.to_texpr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L118">tactic.to_texpr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser">lean.parser</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L141">tactic.interactive.lift</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">(t : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/tactic/lift.html#tactic.to_texpr">tactic.to_texpr</a>)</span> <span class="decl_args">(h : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/tactic/lift.html#tactic.using_texpr">tactic.using_texpr</a>)</span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.with_ident_list">interactive.types.with_ident_list</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Lift an expression to another type.
+
+</ul></div><div class="def"><a id="tactic.using_texpr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L116">tactic.using_texpr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser">lean.parser</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.to_texpr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L118">tactic.to_texpr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser">lean.parser</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L141">tactic.interactive.lift</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/tactic/lift.html#tactic.to_texpr">tactic.to_texpr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/tactic/lift.html#tactic.using_texpr">tactic.using_texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.with_ident_list">interactive.types.with_ident_list</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Lift an expression to another type.
  * Usage: <code>'lift' expr 'to' expr ('using' expr)? ('with' id (id id?)?)?</code>.
  * If <code>n : ℤ</code> and <code>hn : n ≥ 0</code> then the tactic <code>lift n to ℕ using hn</code> creates a new
    constant of type ℕ, also named <code>n</code> and replaces all occurrences of the old variable <code>(n : ℤ)</code>
@@ -1221,10 +1238,12 @@ Attributes: instance</div>
    specify it again as the third argument to <code>with</code>, like this: <code>lift n to ℕ using h with n rfl h</code>.
  * More generally, this can lift an expression from <code>α</code> to <code>β</code> assuming that there is an instance
    of <code>can_lift α β</code>. In this case the proof obligation is specified by <code>can_lift.cond</code>.</p>
-       
+       <ul>
 
-</div>
-</div>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">lift</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean">(view source on GitHub)</a></div><a href="#can_lift">can_lift</a><br>

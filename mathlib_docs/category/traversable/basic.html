@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: category.traversable.basic</title>
         <meta charset="UTF-8">
     </head>
@@ -1193,98 +1194,126 @@ monad <code>io</code> but any applicative functor is accepted by <code>traverse<
 <li>"An Investigation of the Laws of Traversals", by Mauro Jaskelioff and Ondrej Rypacek, in Mathematically-Structured Functional Programming, 2012, online at <a href="http://arxiv.org/pdf/1202.2919">http://arxiv.org/pdf/1202.2919</a>
 Synopsis</li>
 </ul>
-</div><div class="structure"><a id="applicative_transformation"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L61">applicative_transformation</a></span> <span class="decl_args">(F : Type u → Type v)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F _inst_1]</span> <span class="decl_args">(G : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G _inst_3]</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</div>
-<div class="indent"><p></p>
-       <div class="structure_fields">
+</div><div class="structure"><a id="applicative_transformation"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L61">applicative_transformation</a></span> <span class="decl_args">(F : Type u → Type v)</span> <span class="decl_args">(G : Type u → Type w)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F _inst_1]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G _inst_3]</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">applicative_transformation.app : Π (α : Type ?), F α → G α</div>
-<div class="structure_field">applicative_transformation.preserves_pure' : ∀ {α : Type ?} (x : α), c.app α (has_pure.pure x) = has_pure.pure x</div>
-<div class="structure_field">applicative_transformation.preserves_seq' : ∀ {α β : Type ?} (x : F (α → β)) (y : F α), c.app β (x <*> y) = c.app (α → β) x <*> c.app α y</div>
-</div>
+<ul><li><div class="structure_field">applicative_transformation.app : Π (α : Type ?), F α → G α</div></li>
+<li><div class="structure_field">applicative_transformation.preserves_pure' : ∀ {α : Type ?} (x : α), c.app α (has_pure.pure x) = has_pure.pure x</div></li>
+<li><div class="structure_field">applicative_transformation.preserves_seq' : ∀ {α β : Type ?} (x : F (α → β)) (y : F α), c.app β (x <*> y) = c.app (α → β) x <*> c.app α y</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="applicative_transformation.has_coe_to_fun"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L73">applicative_transformation.has_coe_to_fun</a></span> <span class="decl_args">(F : Type u → Type v)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]</span> <span class="decl_args">(G : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="applicative_transformation.has_coe_to_fun"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L73">applicative_transformation.has_coe_to_fun</a></span> <span class="decl_args">(F : Type u → Type v)</span> <span class="decl_args">(G : Type u → Type w)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G]</span></li>
+<li>Attributes: instance</li>
 
-Attributes: instance</div>
-</div><div class="thm"><a id="applicative_transformation.preserves_pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L81">applicative_transformation.preserves_pure</a></span> <span class="decl_args">{F : Type u → Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]</span> <span class="decl_args">{G : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G]</span> <span class="decl_args">(η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑η (has_pure.pure x) = has_pure.pure x</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="applicative_transformation.preserves_seq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L84">applicative_transformation.preserves_seq</a></span> <span class="decl_args">{F : Type u → Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]</span> <span class="decl_args">{G : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G]</span> <span class="decl_args">(η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</span> <span class="decl_args">{α β : Type u}</span> <span class="decl_args">(x : F (α → β))</span> <span class="decl_args">(y : F α)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑η (x <*> y) = ⇑η x <*> ⇑η y</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="applicative_transformation.preserves_pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L81">applicative_transformation.preserves_pure</a></span> <span class="decl_args">(η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑η (has_pure.pure x) = has_pure.pure x</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{F : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]</span> <span class="impl_arg">{G : Type u → Type w}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G]</span> <span class="impl_arg">{α : Type u}</span></li>
 
-</div>
-</div><div class="thm"><a id="applicative_transformation.preserves_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L89">applicative_transformation.preserves_map</a></span> <span class="decl_args">{F : Type u → Type v}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]</span> <span class="decl_args">{G : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G]</span> <span class="decl_args">(η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</span> <span class="decl_args">{α β : Type u}</span> <span class="decl_args">(x : α → β)</span> <span class="decl_args">(y : F α)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑η (x <$> y) = x <$> ⇑η y</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="structure"><a id="traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L96">traversable</a></span> <span class="decl_args">(t : Type u → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
-<div class="indent"><p></p>
-       <div class="structure_fields">
+
+</ul></div><div class="thm"><a id="applicative_transformation.preserves_seq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L84">applicative_transformation.preserves_seq</a></span> <span class="decl_args">(η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</span> <span class="decl_args">(x : F (α → β))</span> <span class="decl_args">(y : F α)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑η (x <*> y) = ⇑η x <*> ⇑η y</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{F : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]</span> <span class="impl_arg">{G : Type u → Type w}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G]</span> <span class="impl_arg">{α β : Type u}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="applicative_transformation.preserves_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L89">applicative_transformation.preserves_map</a></span> <span class="decl_args">(η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G)</span> <span class="decl_args">(x : α → β)</span> <span class="decl_args">(y : F α)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑η (x <$> y) = x <$> ⇑η y</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{F : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]</span> <span class="impl_arg">{G : Type u → Type w}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G]</span> <span class="impl_arg">{α β : Type u}</span></li>
+
+
+
+</ul></div><div class="structure"><a id="traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L96">traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Type u → Type u) → Type (u+1)</div>
+<p></p>
+       <ul>
+
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">traversable.to_functor : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t</div>
-<div class="structure_field">traversable.traverse : Π {m : Type ? → Type ?} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type ?}, (α → m β) → t α → m (t β)</div>
-</div>
+<ul><li><div class="structure_field">traversable.to_functor : <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> t</div></li>
+<li><div class="structure_field">traversable.traverse : Π {m : Type ? → Type ?} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] {α β : Type ?}, (α → m β) → t α → m (t β)</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="sequence"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L113">sequence</a></span> <span class="decl_args">{t : Type u → Type u}</span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">{f : Type u → Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> f]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="decl_args">(a : t (f α))</span> <span class="decl_args">:</span>       <div class="decl_type">f (t α)</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="sequence"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L113">sequence</a></span>  <span class="decl_args">:</span>       <div class="decl_type">t (f α) → f (t α)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{f : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> f]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></li>
 
-</div>
-</div><div class="structure"><a id="is_lawful_traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L117">is_lawful_traversable</a></span> <span class="decl_args">(t : Type u → Type u)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
-<div class="indent"><p></p>
-       <div class="structure_fields">
+
+
+</ul></div><div class="structure"><a id="is_lawful_traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L117">is_lawful_traversable</a></span> <span class="decl_args">(t : Type u → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">is_lawful_traversable.to_is_lawful_functor : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t</div>
-<div class="structure_field">is_lawful_traversable.id_traverse : ∀ {α : Type ?} (x : t α), traversable.traverse <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> x = x</div>
-<div class="structure_field">is_lawful_traversable.comp_traverse : ∀ {F G : Type ? → Type ?} [_inst_1_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]
-[_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] {α β γ : Type ?} (f : β → F γ) (<a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> : α → G β) (x : t α),
-  traversable.traverse (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> ∘ functor.map f ∘ <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a>) x =
-    <a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> (traversable.traverse f <$> traversable.traverse <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> x)</div>
-<div class="structure_field">is_lawful_traversable.traverse_eq_map_id : ∀ {α β : Type ?} (f : α → β) (x : t α), traversable.traverse (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> ∘ f) x = <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> (f <$> x)</div>
-<div class="structure_field">is_lawful_traversable.naturality : ∀ {F G : Type ? → Type ?} [_inst_1_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]
+<ul><li><div class="structure_field">is_lawful_traversable.to_is_lawful_functor : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> t</div></li>
+<li><div class="structure_field">is_lawful_traversable.id_traverse : ∀ {α : Type ?} (x : t α), traversable.traverse <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> x = x</div></li>
+<li><div class="structure_field">is_lawful_traversable.comp_traverse : ∀ {F G : Type ? → Type ?} [_inst_1_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]
+[_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] {α β γ : Type ?} (f : β → F γ) (g : α → G β) (x : t α),
+  traversable.traverse (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> ∘ functor.map f ∘ g) x =
+    <a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> (traversable.traverse f <$> traversable.traverse g x)</div></li>
+<li><div class="structure_field">is_lawful_traversable.traverse_eq_map_id : ∀ {α β : Type ?} (f : α → β) (x : t α), traversable.traverse (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> ∘ f) x = <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> (f <$> x)</div></li>
+<li><div class="structure_field">is_lawful_traversable.naturality : ∀ {F G : Type ? → Type ?} [_inst_1_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]
 [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G) {α β : Type ?} (f : α → F β) (x : t α),
-  ⇑η (traversable.traverse f x) = traversable.traverse (⇑η ∘ f) x</div>
-</div>
+  ⇑η (traversable.traverse f x) = traversable.traverse (⇑η ∘ f) x</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="id.traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L132">id.traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="id.traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L132">id.traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></div>
+<p></p>
+       <ul>
 
-Attributes: instance</div>
-</div><div class="def"><a id="id.is_lawful_traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L133">id.is_lawful_traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></div>
-<div class="indent"><p></p>
-       
+<li>Attributes: instance</li>
 
-Attributes: instance</div>
-</div><div class="def"><a id="option.traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L139">option.traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a></div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="list.traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L141">list.traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a></div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="id.is_lawful_traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L133">id.is_lawful_traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></div>
+<p></p>
+       <ul>
 
-Attributes: instance</div>
-</div><div class="def"><a id="sum.traverse"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L151">sum.traverse</a></span> <span class="decl_args">{σ : Type u}</span> <span class="decl_args">{F : Type u → Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">{β : Type u}</span> <span class="decl_args">(f : α → F β)</span> <span class="decl_args">(a : σ ⊕ α)</span> <span class="decl_args">:</span>       <div class="decl_type">F (σ ⊕ β)</div>
-<div class="indent"><p></p>
-       
+<li>Attributes: instance</li>
 
-</div>
-</div><div class="def"><a id="sum.traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L157">sum.traversable</a></span> <span class="decl_args">{σ : Type u}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sum">sum</a> σ)</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div>
+</ul></div><div class="def"><a id="option.traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L139">option.traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a></div>
+<p></p>
+       <ul>
+
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="list.traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L141">list.traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a></div>
+<p></p>
+       <ul>
+
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="sum.traverse"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L151">sum.traverse</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → F β) → σ ⊕ α → F (σ ⊕ β)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{F : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F]</span> <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u}</span></li>
+
+
+
+</ul></div><div class="def"><a id="sum.traversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean#L157">sum.traversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sum">sum</a> σ)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">basic</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/traversable/basic.lean">(view source on GitHub)</a></div><a href="#applicative_transformation">applicative_transformation</a><br>

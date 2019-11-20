@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: geometry.manifold.real_instances</title>
         <meta charset="UTF-8">
     </head>
@@ -1172,111 +1173,149 @@ to define <code>n</code>-dimensional real manifolds with corners</li>
 <p>The manifold structure on the interval [x, y] = Icc x y requires the assumption <code>x &lt; y</code>. We
 introduce a dummy class <code>lt_class x y</code> for this, to make such an assumption available to typeclass
 search. This should hopefully not be necessary any more in Lean 4.</p>
-</div><div class="def"><a id="euclidean_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L38">euclidean_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<div class="indent"><p>The space ℝ^n. Note that the name is slightly misleading, as we only need a normed space
+</div><div class="def"><a id="euclidean_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L38">euclidean_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → Type</div>
+<p>The space ℝ^n. Note that the name is slightly misleading, as we only need a normed space
 structure on ℝ^n, but the one we use here is the sup norm and not the euclidean one -- this is not
 a problem for the manifold applications, but should probably be refactored at some point.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="euclidean_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L44">euclidean_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<div class="indent"><p>The half-space in ℝ^n, used to model manifolds with boundary. We only define it when <code>1 ≤ n</code>, as the
+
+
+
+</ul></div><div class="def"><a id="euclidean_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L44">euclidean_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
+<p>The half-space in ℝ^n, used to model manifolds with boundary. We only define it when <code>1 ≤ n</code>, as the
 definition only makes sense in this case.</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></li>
 
-</div>
-</div><div class="def"><a id="euclidean_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L51">euclidean_quadrant</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<div class="indent"><p>The quadrant in ℝ^n, used to model manifolds with corners, made of all vectors with nonnegative
+
+
+</ul></div><div class="def"><a id="euclidean_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L51">euclidean_quadrant</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → Type</div>
+<p>The quadrant in ℝ^n, used to model manifolds with corners, made of all vectors with nonnegative
 coordinates.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="euclidean_space.vector_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L58">euclidean_space.vector_space</a></span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/module.html#vector_space">vector_space</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="euclidean_space.normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L59">euclidean_space.normed_group</a></span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="euclidean_space.normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L60">euclidean_space.normed_space</a></span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="euclidean_half_space.topological_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L61">euclidean_half_space.topological_space</a></span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="euclidean_space.vector_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L58">euclidean_space.vector_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/module.html#vector_space">vector_space</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
+<li>Attributes: instance</li>
 
-Attributes: instance</div>
-</div><div class="def"><a id="euclidean_quadrant.topological_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L62">euclidean_quadrant.topological_space</a></span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="euclidean_space.finite_dimensional"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L63">euclidean_space.finite_dimensional</a></span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html#finite_dimensional">finite_dimensional</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="euclidean_space.normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L59">euclidean_space.normed_group</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
+<li>Attributes: instance</li>
 
-Attributes: instance</div>
-</div><div class="thm"><a id="findim_euclidean_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L65">findim_euclidean_space</a></span> <span class="decl_args">{n : ℕ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html#finite_dimensional.findim">finite_dimensional.findim</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) = n</div>
-<div class="indent"><p></p>
-       
 
-Attributes: simp</div>
-</div><div class="thm"><a id="range_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L68">range_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n), x.val) = {y : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | 0 ≤ y 0}</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="euclidean_space.normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L60">euclidean_space.normed_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
+<li>Attributes: instance</li>
 
-</div>
-</div><div class="thm"><a id="range_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L72">range_quadrant</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n), x.val) = {y : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | ∀ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), 0 ≤ y i}</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="model_with_corners_euclidean_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L82">model_with_corners_euclidean_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</div>
-<div class="indent"><p>Definition of the model with corners (euclidean_space n, euclidean_half_space n), used as a
+</ul></div><div class="def"><a id="euclidean_half_space.topological_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L61">euclidean_half_space.topological_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="euclidean_quadrant.topological_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L62">euclidean_quadrant.topological_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="euclidean_space.finite_dimensional"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L63">euclidean_space.finite_dimensional</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html#finite_dimensional">finite_dimensional</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="thm"><a id="findim_euclidean_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L65">findim_euclidean_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html#finite_dimensional.findim">finite_dimensional.findim</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) = n</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="thm"><a id="range_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L68">range_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n), x.val) = {y : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | 0 ≤ y 0}</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></li>
+
+
+
+</ul></div><div class="thm"><a id="range_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L72">range_quadrant</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n), x.val) = {y : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | ∀ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), 0 ≤ y i}</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="model_with_corners_euclidean_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L82">model_with_corners_euclidean_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</div>
+<p>Definition of the model with corners (euclidean_space n, euclidean_half_space n), used as a
 model for manifolds with boundary.</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></li>
 
-</div>
-</div><div class="def"><a id="model_with_corners_euclidean_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L140">model_with_corners_euclidean_quadrant</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</div>
-<div class="indent"><p>Definition of the model with corners (euclidean_space n, euclidean_quadrant n), used as a
+
+
+</ul></div><div class="def"><a id="model_with_corners_euclidean_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L140">model_with_corners_euclidean_quadrant</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</div>
+<p>Definition of the model with corners (euclidean_space n, euclidean_quadrant n), used as a
 model for manifolds with corners</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="lt_class"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L194">lt_class</a></span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt">has_lt</a> α]</span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>       <div class="decl_type">Prop</div>
-<div class="indent"><p>Dummy class to make an assumption such as <code>x &lt; y</code> available to typeclass search. Such an
+
+
+
+</ul></div><div class="def"><a id="lt_class"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L194">lt_class</a></span>  <span class="decl_args">:</span>       <div class="decl_type">α → α → Prop</div>
+<p>Dummy class to make an assumption such as <code>x &lt; y</code> available to typeclass search. Such an
 assumption is used to define a manifold structure on [x, y] when <code>x &lt; y</code>. Should be fixed in Lean 4.</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt">has_lt</a> α]</span></li>
 
-</div>
-</div><div class="def"><a id="Icc_left_chart"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L201">Icc_left_chart</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</div>
-<div class="indent"><p>The left chart for the topological space [x, y], defined on [x,y) and sending x to 0 in
+
+
+</ul></div><div class="def"><a id="Icc_left_chart"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L201">Icc_left_chart</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</div>
+<p>The left chart for the topological space [x, y], defined on [x,y) and sending x to 0 in
 <code>euclidean_half_space 1</code>.</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></li>
 
-</div>
-</div><div class="def"><a id="Icc_right_chart"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L249">Icc_right_chart</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</div>
-<div class="indent"><p>The right chart for the topological space [x, y], defined on (x,y] and sending y to 0 in
+
+
+</ul></div><div class="def"><a id="Icc_right_chart"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L249">Icc_right_chart</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</div>
+<p>The right chart for the topological space [x, y], defined on (x,y] and sending y to 0 in
 <code>euclidean_half_space 1</code>.</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></li>
 
-</div>
-</div><div class="def"><a id="Icc_manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L296">Icc_manifold</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1) ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y)</div>
-<div class="indent"><p>Manifold with boundary structure on [x, y], using only two charts.</p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="Icc_smooth_manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L312">Icc_smooth_manifold</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#smooth_manifold_with_corners">smooth_manifold_with_corners</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a> 1) ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y)</div>
-<div class="indent"><p>The manifold structure on [x, y] is smooth.</p>
-       
 
-Attributes: instance</div>
-</div>
+</ul></div><div class="def"><a id="Icc_manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L296">Icc_manifold</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1) ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y)</div>
+<p>Manifold with boundary structure on [x, y], using only two charts.</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="Icc_smooth_manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L312">Icc_smooth_manifold</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#smooth_manifold_with_corners">smooth_manifold_with_corners</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a> 1) ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y)</div>
+<p>The manifold structure on [x, y] is smooth.</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">real_instances</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean">(view source on GitHub)</a></div><a href="#Icc_left_chart">Icc_left_chart</a><br>

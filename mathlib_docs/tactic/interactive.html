@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: tactic.interactive</title>
         <meta charset="UTF-8">
     </head>
@@ -1150,164 +1151,224 @@
 </div></div>
 <div class="column middle"><div class="content">
 <div class="def"><a id="tactic.interactive.fconstructor"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L20">tactic.interactive.fconstructor</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Similar to <code>constructor</code>, but does not reorder goals.</p>
-       
+<p>Similar to <code>constructor</code>, but does not reorder goals.</p>
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.try_for"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L24">tactic.interactive.try_for</a></span> <span class="decl_args">(<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.pexpr">lean.parser.pexpr</a>)</span> <span class="decl_args">(tac : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>try_for n { tac }</code> executes <code>tac</code> for <code>n</code> ticks, otherwise uses <code>sorry</code> to close the goal.
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.try_for"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L24">tactic.interactive.try_for</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.pexpr">lean.parser.pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>try_for n { tac }</code> executes <code>tac</code> for <code>n</code> ticks, otherwise uses <code>sorry</code> to close the goal.
 Never fails. Useful for debugging.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.substs"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L32">tactic.interactive.substs</a></span> <span class="decl_args">(l : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Multiple subst. <code>substs x y z</code> is the same as <code>subst x, subst y, subst z</code>.</p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.unfold_coes"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L36">tactic.interactive.unfold_coes</a></span> <span class="decl_args">(loc : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Unfold coercion-related definitions</p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.unfold_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L43">tactic.interactive.unfold_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Unfold auxiliary definitions associated with the current declaration.</p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.recover"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L54">tactic.interactive.recover</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>For debugging only. This tactic checks the current state for any
+</ul></div><div class="def"><a id="tactic.interactive.substs"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L32">tactic.interactive.substs</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Multiple subst. <code>substs x y z</code> is the same as <code>subst x, subst y, subst z</code>.</p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.unfold_coes"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L36">tactic.interactive.unfold_coes</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Unfold coercion-related definitions</p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.unfold_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L43">tactic.interactive.unfold_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Unfold auxiliary definitions associated with the current declaration.</p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.recover"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L54">tactic.interactive.recover</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>For debugging only. This tactic checks the current state for any
 missing dropped goals and restores them. Useful when there are no
 goals to solve but "result contains meta-variables".</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.continue"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L59">tactic.interactive.continue</a></span> <span class="decl_args">(tac : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Like <code>try { tac }</code>, but in the case of failure it continues
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.continue"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L59">tactic.interactive.continue</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Like <code>try { tac }</code>, but in the case of failure it continues
 from the failure state instead of reverting to the original state.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.swap"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L65">tactic.interactive.swap</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> ℕ 2)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Move goal <code>n</code> to the front.</p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.rotate"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L74">tactic.interactive.rotate</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> ℕ 1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>rotate n</code> cyclically shifts the goals <code>n</code> times.
+
+
+</ul></div><div class="def"><a id="tactic.interactive.swap"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L65">tactic.interactive.swap</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> ℕ 2 → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Move goal <code>n</code> to the front.</p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.rotate"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L74">tactic.interactive.rotate</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> ℕ 1 → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>rotate n</code> cyclically shifts the goals <code>n</code> times.
 <code>rotate</code> defaults to <code>rotate 1</code>.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.clear_"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L77">tactic.interactive.clear_</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Clear all hypotheses starting with <code>_</code>, like <code>_match</code> and <code>_let_match</code>.</p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.apply_iff_congr_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L85">tactic.interactive.apply_iff_congr_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.congr_core'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L88">tactic.interactive.congr_core'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.congr'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L101">tactic.interactive.congr'</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.with_desc">interactive.with_desc</a> ↑"n" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Same as the <code>congr</code> tactic, but takes an optional argument which gives
+</ul></div><div class="def"><a id="tactic.interactive.clear_"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L77">tactic.interactive.clear_</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Clear all hypotheses starting with <code>_</code>, like <code>_match</code> and <code>_let_match</code>.</p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.apply_iff_congr_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L85">tactic.interactive.apply_iff_congr_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.congr_core'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L88">tactic.interactive.congr_core'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.congr'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L101">tactic.interactive.congr'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.with_desc">interactive.with_desc</a> ↑"n" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Same as the <code>congr</code> tactic, but takes an optional argument which gives
 the depth of recursive applications. This is useful when <code>congr</code>
 is too aggressive in breaking down the goal. For example, given
 <code>⊢ f (g (x + y)) = f (g (y + x))</code>, <code>congr'</code> produces the goals <code>⊢ x = y</code>
 and <code>⊢ y = x</code>, while <code>congr' 2</code> produces the intended <code>⊢ x + y = y + x</code>.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.replace"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L114">tactic.interactive.replace</a></span> <span class="decl_args">(h : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>))</span> <span class="decl_args">(q₁ : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)))</span> <span class="decl_args">(q₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Acts like <code>have</code>, but removes a hypothesis with the same name as
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.replace"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L114">tactic.interactive.replace</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Acts like <code>have</code>, but removes a hypothesis with the same name as
 this one. For example if the state is <code>h : p ⊢ goal</code> and <code>f : p → q</code>,
 then after <code>replace h := f h</code> the goal will be <code>h : q ⊢ goal</code>,
 where <code>have h := f h</code> would result in the state <code>h : p, h : q ⊢ goal</code>.
 This can be used to simulate the <code>specialize</code> and <code>apply at</code> tactics
 of Coq.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.classical"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L125">tactic.interactive.classical</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Make every propositions in the context decidable</p>
-       
 
-</div>
-</div><div class="thm"><a id="tactic.interactive.generalize_a_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L135">tactic.interactive.generalize_a_aux</a></span> <span class="decl_args">{α : Sort u}</span> <span class="decl_args">(h : Π (x : Sort u), (α → x) → x)</span> <span class="decl_args">:</span>       <div class="decl_type">α</div>
-<div class="indent"><p></p>
-       
 
-Attributes: nolint</div>
-</div><div class="def"><a id="tactic.interactive.generalize_hyp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L143">tactic.interactive.generalize_hyp</a></span> <span class="decl_args">(h : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>))</span> <span class="decl_args">(_x : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":"))</span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> generalize_arg_p)</span> <span class="decl_args">(l : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Like <code>generalize</code> but also considers assumptions
+
+</ul></div><div class="def"><a id="tactic.interactive.classical"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L125">tactic.interactive.classical</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Make every propositions in the context decidable</p>
+       <ul>
+
+
+
+
+</ul></div><div class="thm"><a id="tactic.interactive.generalize_a_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L135">tactic.interactive.generalize_a_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Π (x : Sort u), (α → x) → x) → α</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
+<li>Attributes: nolint</li>
+
+
+</ul></div><div class="def"><a id="tactic.interactive.generalize_hyp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L143">tactic.interactive.generalize_hyp</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":") →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> generalize_arg_p → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Like <code>generalize</code> but also considers assumptions
 specified by the user. The user can also specify to
 omit the goal.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.convert"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L170">tactic.interactive.convert</a></span> <span class="decl_args">(sym : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.with_desc">interactive.with_desc</a> ↑"←" (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "<-"))))</span> <span class="decl_args">(r : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "using" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Similar to <code>refine</code> but generates equality proof obligations
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.convert"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L170">tactic.interactive.convert</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.with_desc">interactive.with_desc</a> ↑"←" (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "<-"))) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "using" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Similar to <code>refine</code> but generates equality proof obligations
 for every discrepancy between the goal and the type of the rule.
 <code>convert e using n</code> (with <code>n : ℕ</code>) bounds the depth of the search
 for discrepancies, analogous to <code>congr' n</code>.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.compact_decl_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L181">tactic.interactive.compact_decl_aux</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</span> <span class="decl_args">(a_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#binder_info">binder_info</a>)</span> <span class="decl_args">(a_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">(a_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#binder_info">binder_info</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.compact_decl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L191">tactic.interactive.compact_decl</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#binder_info">binder_info</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.clean_ids"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L198">tactic.interactive.clean_ids</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.clean"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L206">tactic.interactive.clean</a></span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Remove identity functions from a term. These are normally
+</ul></div><div class="def"><a id="tactic.interactive.compact_decl_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L181">tactic.interactive.compact_decl_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#binder_info">binder_info</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#binder_info">binder_info</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.compact_decl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L191">tactic.interactive.compact_decl</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#binder_info">binder_info</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.clean_ids"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L198">tactic.interactive.clean_ids</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.clean"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L206">tactic.interactive.clean</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Remove identity functions from a term. These are normally
 automatically generated with terms like <code>show t, from p</code> or
 <code>(p : t)</code> which translate to some variant on <code>@id t p</code> in
 order to retain the type.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.source_fields"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L217">tactic.interactive.source_fields</a></span> <span class="decl_args">(missing : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>))</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.collect_struct'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L226">tactic.interactive.collect_struct'</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a>)) <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.collect_struct"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L233">tactic.interactive.collect_struct</a></span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a>))</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.refine_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L236">tactic.interactive.refine_one</a></span> <span class="decl_args">(str : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a>))</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="tactic.interactive.source_fields"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L217">tactic.interactive.source_fields</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>))</div>
+<p></p>
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.refine_recursively"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L264">tactic.interactive.refine_recursively</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.refine_struct"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L291">tactic.interactive.refine_struct</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>refine_struct { .. }</code> acts like <code>refine</code> but works only with structure instance
+
+
+</ul></div><div class="def"><a id="tactic.interactive.collect_struct'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L226">tactic.interactive.collect_struct'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a>)) <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.collect_struct"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L233">tactic.interactive.collect_struct</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a>))</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.refine_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L236">tactic.interactive.refine_one</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a>))</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.refine_recursively"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L264">tactic.interactive.refine_recursively</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#structure_instance_info">structure_instance_info</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.refine_struct"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L291">tactic.interactive.refine_struct</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>refine_struct { .. }</code> acts like <code>refine</code> but works only with structure instance
 literals. It creates a goal for each missing field and tags it with the name of the
 field so that <code>have_field</code> can be used to generically refer to the field currently
 being refined.</p>
@@ -1324,64 +1385,86 @@ refine_struct ( { .. } : semigroup α ),
 -- α : Type u,
 -- ⊢ ∀ (a b c : α), a * b * c = a * (b * c)
 ```</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.guard_hyp'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L303">tactic.interactive.guard_hyp'</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>)</span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>guard_hyp h := t</code> fails if the hypothesis <code>h</code> does not have type <code>t</code>.
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.guard_hyp'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L303">tactic.interactive.guard_hyp'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>guard_hyp h := t</code> fails if the hypothesis <code>h</code> does not have type <code>t</code>.
 We use this tactic for writing tests.
 Fixes <code>guard_hyp</code> by instantiating meta variables</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.guard_expr_strict"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L311">tactic.interactive.guard_expr_strict</a></span> <span class="decl_args">(t : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>guard_expr_strict t := e</code> fails if the expr <code>t</code> is not equal to <code>e</code>. By contrast
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.guard_expr_strict"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L311">tactic.interactive.guard_expr_strict</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>guard_expr_strict t := e</code> fails if the expr <code>t</code> is not equal to <code>e</code>. By contrast
 to <code>guard_expr</code>, this tests strict (syntactic) equality.
 We use this tactic for writing tests.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.guard_target_strict"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L318">tactic.interactive.guard_target_strict</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>guard_target_strict t</code> fails if the target of the main goal is not syntactically <code>t</code>.
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.guard_target_strict"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L318">tactic.interactive.guard_target_strict</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>guard_target_strict t</code> fails if the target of the main goal is not syntactically <code>t</code>.
 We use this tactic for writing tests.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.guard_hyp_strict"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L327">tactic.interactive.guard_hyp_strict</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>)</span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>guard_hyp_strict h := t</code> fails if the hypothesis <code>h</code> does not have type syntactically equal
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.guard_hyp_strict"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L327">tactic.interactive.guard_hyp_strict</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>guard_hyp_strict h := t</code> fails if the hypothesis <code>h</code> does not have type syntactically equal
 to <code>t</code>.
 We use this tactic for writing tests.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.guard_hyp_nums"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L330">tactic.interactive.guard_hyp_nums</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.guard_tags"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L334">tactic.interactive.guard_tags</a></span> <span class="decl_args">(tags : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.success_if_fail_with_msg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L340">tactic.interactive.success_if_fail_with_msg</a></span> <span class="decl_args">(tac : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a>)</span> <span class="decl_args">(msg : <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>success_if_fail_with_msg { tac } msg</code> succeeds if the interactive tactic <code>tac</code> fails with
+
+</ul></div><div class="def"><a id="tactic.interactive.guard_hyp_nums"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L330">tactic.interactive.guard_hyp_nums</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.guard_tags"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L334">tactic.interactive.guard_tags</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.success_if_fail_with_msg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L340">tactic.interactive.success_if_fail_with_msg</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>success_if_fail_with_msg { tac } msg</code> succeeds if the interactive tactic <code>tac</code> fails with
    error message <code>msg</code> (for test writing purposes).</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.get_current_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L343">tactic.interactive.get_current_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L347">tactic.interactive.field</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>)</span> <span class="decl_args">(tac : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.have_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L371">tactic.interactive.have_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>have_field</code>, used after <code>refine_struct _</code> poses <code>field</code> as a local constant
+
+</ul></div><div class="def"><a id="tactic.interactive.get_current_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L343">tactic.interactive.get_current_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L347">tactic.interactive.field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.have_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L371">tactic.interactive.have_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>have_field</code>, used after <code>refine_struct _</code> poses <code>field</code> as a local constant
 with the type of the field of the current goal:</p>
 
 <p><code>lean
@@ -1395,16 +1478,20 @@ refine_struct ({ .. } : semigroup α),
 { have field := @semigroup.mul, ... },
 { have field := @semigroup.mul_assoc, ... },
 </code></p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.apply_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L379">tactic.interactive.apply_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>apply_field</code> functions as <code>have_field, apply field, clear field</code></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.apply_rules"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L406">tactic.interactive.apply_rules</a></span> <span class="decl_args">(hs : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.pexpr_list_or_texpr">interactive.types.pexpr_list_or_texpr</a>)</span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> ℕ 50)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>apply_rules hs n</code>: apply the list of rules <code>hs</code> (given as pexpr) and <code>assumption</code> on the
+
+
+</ul></div><div class="def"><a id="tactic.interactive.apply_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L379">tactic.interactive.apply_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>apply_field</code> functions as <code>have_field, apply field, clear field</code></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.apply_rules"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L406">tactic.interactive.apply_rules</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.pexpr_list_or_texpr">interactive.types.pexpr_list_or_texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> ℕ 50 → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>apply_rules hs n</code>: apply the list of rules <code>hs</code> (given as pexpr) and <code>assumption</code> on the
 first goal and the resulting subgoals, iteratively, at most <code>n</code> times.
 <code>n</code> is 50 by default. <code>hs</code> can contain user attributes: in this case all theorems with this
 attribute are added to the list of rules.</p>
@@ -1426,27 +1513,44 @@ by apply_rules mono_rules
 -- by apply_rules [add_le_add, mul_le_mul_of_nonneg_right]
 -- by apply_rules [mono_rules]
 ```</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.return_cast"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L409">tactic.interactive.return_cast</a></span> <span class="decl_args">(f : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">(t : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</span> <span class="decl_args">(es : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</span> <span class="decl_args">(e x x' eq_h : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.list_cast_of_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L424">tactic.interactive.list_cast_of_aux</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">(t : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</span> <span class="decl_args">(es : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.list_cast_of"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L436">tactic.interactive.list_cast_of</a></span> <span class="decl_args">(x tgt : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.h_generalize"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L462">tactic.interactive.h_generalize</a></span> <span class="decl_args">(rev : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "!")))</span> <span class="decl_args">(h : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.ident_">interactive.types.ident_</a>))</span> <span class="decl_args">(_x : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":"))</span> <span class="decl_args">(arg : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> h_generalize_arg_p)</span> <span class="decl_args">(eqs_h : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a>
-  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "with" >> has_pure.pure <$> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.ident_">interactive.types.ident_</a> <|> has_pure.pure list.nil))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>h_generalize Hx : e == x</code> matches on <code>cast _ e</code> in the goal and replaces it with
+</ul></div><div class="def"><a id="tactic.interactive.return_cast"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L409">tactic.interactive.return_cast</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.list_cast_of_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L424">tactic.interactive.list_cast_of_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.list_cast_of"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L436">tactic.interactive.list_cast_of</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>))</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.h_generalize"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L462">tactic.interactive.h_generalize</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "!")) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.ident_">interactive.types.ident_</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":") →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> h_generalize_arg_p →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "with" >> has_pure.pure <$> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.ident_">interactive.types.ident_</a> <|> has_pure.pure list.nil) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>h_generalize Hx : e == x</code> matches on <code>cast _ e</code> in the goal and replaces it with
 <code>x</code>. It also adds <code>Hx : e == x</code> as an assumption. If <code>cast _ e</code> appears multiple
 times (not necessarily with the same proof), they are all replaced by <code>x</code>. <code>cast</code>
 <code>eq.mp</code>, <code>eq.mpr</code>, <code>eq.subst</code>, <code>eq.substr</code>, <code>eq.rec</code> and <code>eq.rec_on</code> are all treated
@@ -1460,11 +1564,15 @@ assumption <code>α = β</code>.</p>
 <p><code>h_generalize! Hx : e == x</code> reverts <code>Hx</code>.</p>
 
 <p>when <code>Hx</code> is omitted, assumption <code>Hx : e == x</code> is not added.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.choose"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L511">tactic.interactive.choose</a></span> <span class="decl_args">(first : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>)</span> <span class="decl_args">(names : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>))</span> <span class="decl_args">(tgt : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "using" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>choose a b h using hyp</code> takes an hypothesis <code>hyp</code> of the form
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.choose"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L511">tactic.interactive.choose</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "using" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>choose a b h using hyp</code> takes an hypothesis <code>hyp</code> of the form
 <code>∀ (x : X) (y : Y), ∃ (a : A) (b : B), P x y a b</code> for some <code>P : X → Y → A → B → Prop</code> and outputs
 into context a function <code>a : X → Y → A</code>, <code>b : X → Y → B</code> and a proposition <code>h</code> stating
 <code>∀ (x : X) (y : Y), P x y (a x y) (b x y)</code>. It presumably also works with dependent versions.</p>
@@ -1481,28 +1589,36 @@ begin
   trivial
 end
 </code></p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.guard_expr_eq'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L521">tactic.interactive.guard_expr_eq'</a></span> <span class="decl_args">(t : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.guard_target'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L528">tactic.interactive.guard_target'</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>guard_target t</code> fails if the target of the main goal is not <code>t</code>.
+
+
+</ul></div><div class="def"><a id="tactic.interactive.guard_expr_eq'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L521">tactic.interactive.guard_expr_eq'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.guard_target'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L528">tactic.interactive.guard_target'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>guard_target t</code> fails if the target of the main goal is not <code>t</code>.
 We use this tactic for writing tests.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.triv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L534">tactic.interactive.triv</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>a weaker version of <code>trivial</code> that tries to solve the goal by reflexivity or by reducing it to true,
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.triv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L534">tactic.interactive.triv</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>a weaker version of <code>trivial</code> that tries to solve the goal by reflexivity or by reducing it to true,
 unfolding only <code>reducible</code> constants.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.use"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L567">tactic.interactive.use</a></span> <span class="decl_args">(l : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.pexpr_list_or_texpr">interactive.types.pexpr_list_or_texpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Similar to <code>existsi</code>. <code>use x</code> will instantiate the first term of an <code>∃</code> or <code>Σ</code> goal with <code>x</code>.
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.use"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L567">tactic.interactive.use</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.pexpr_list_or_texpr">interactive.types.pexpr_list_or_texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Similar to <code>existsi</code>. <code>use x</code> will instantiate the first term of an <code>∃</code> or <code>Σ</code> goal with <code>x</code>.
 Unlike <code>existsi</code>, <code>x</code> is elaborated with respect to the expected type.
 <code>use</code> will alternatively take a list of terms <code>[x0, ..., xn]</code>.</p>
 
@@ -1530,86 +1646,120 @@ by use [1, 2, 3, 4, 5]</p>
 
 <p>example : foo :=
 by use [100, tt, 4, 3]</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.clear_aux_decl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L578">tactic.interactive.clear_aux_decl</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>clear_aux_decl</code> clears every <code>aux_decl</code> in the local context for the current goal.
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.clear_aux_decl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L578">tactic.interactive.clear_aux_decl</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>clear_aux_decl</code> clears every <code>aux_decl</code> in the local context for the current goal.
 This includes the induction hypothesis when using the equation compiler and
 <code>_let_match</code> and <code>_fun_match</code>.</p>
 
 <p>It is useful when using a tactic such as <code>finish</code>, <code>simp *</code> or <code>subst</code> that may use these
 auxiliary declarations, and produce an error saying the recursion is not well founded.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.loc.get_local_pp_names"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L580">tactic.interactive.loc.get_local_pp_names</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.loc">interactive.loc</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.loc.get_local_uniq_names"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L584">tactic.interactive.loc.get_local_uniq_names</a></span> <span class="decl_args">(l : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.loc">interactive.loc</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.change'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L593">tactic.interactive.change'</a></span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "with" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)))</span> <span class="decl_args">(a_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>The logic of <code>change x with y at l</code> fails when there are dependencies.
+
+</ul></div><div class="def"><a id="tactic.interactive.loc.get_local_pp_names"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L580">tactic.interactive.loc.get_local_pp_names</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.loc">interactive.loc</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.loc.get_local_uniq_names"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L584">tactic.interactive.loc.get_local_uniq_names</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.loc">interactive.loc</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.change'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L593">tactic.interactive.change'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "with" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>The logic of <code>change x with y at l</code> fails when there are dependencies.
 <code>change'</code> mimics the behavior of <code>change</code>, except in the case of <code>change x with y at l</code>.
 In this case, it will correctly replace occurences of <code>x</code> with <code>y</code> at all possible hypotheses in <code>l</code>.
 As long as <code>x</code> and <code>y</code> are defeq, it should never fail.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.convert_to_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L602">tactic.interactive.convert_to_core</a></span> <span class="decl_args">(r : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.convert_to"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L614">tactic.interactive.convert_to</a></span> <span class="decl_args">(r : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "using" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>convert_to g using n</code> attempts to change the current goal to <code>g</code>,
+
+
+</ul></div><div class="def"><a id="tactic.interactive.convert_to_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L602">tactic.interactive.convert_to_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.convert_to"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L614">tactic.interactive.convert_to</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "using" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>convert_to g using n</code> attempts to change the current goal to <code>g</code>,
 using <code>congr' n</code> to resolve discrepancies.</p>
 
 <p><code>convert_to g</code> defaults to using <code>congr' 1</code>.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.ac_change"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L622">tactic.interactive.ac_change</a></span> <span class="decl_args">(r : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "using" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>ac_change g using n</code> is <code>convert_to g using n; try {ac_refl}</code></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.set"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L637">tactic.interactive.set</a></span> <span class="decl_args">(h_simp : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "!")))</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>)</span> <span class="decl_args">(tp : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":" >> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)))</span> <span class="decl_args">(_x : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":="))</span> <span class="decl_args">(pv : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)</span> <span class="decl_args">(rev_name : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> opt_dir_with)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>set a := t with h</code> is a variant of <code>let a := t</code>.
+
+
+</ul></div><div class="def"><a id="tactic.interactive.ac_change"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L622">tactic.interactive.ac_change</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "using" *> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>ac_change g using n</code> is <code>convert_to g using n; try {ac_refl}</code></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.set"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L637">tactic.interactive.set</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "!")) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":" >> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a>)) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> ":=") →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> opt_dir_with → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>set a := t with h</code> is a variant of <code>let a := t</code>.
 It adds the hypothesis <code>h : a = t</code> to the local context and replaces <code>t</code> with <code>a</code> everywhere it can.
 <code>set a := t with ←h</code> will add <code>h : t = a</code> instead.
 <code>set! a := t with h</code> does not do any replacing.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.clear_except"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L656">tactic.interactive.clear_except</a></span> <span class="decl_args">(xs : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p><code>clear_except h₀ h₁</code> deletes all the assumptions it can except for <code>h₀</code> and <code>h₁</code>.</p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.format_names"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L662">tactic.interactive.format_names</a></span> <span class="decl_args">(ns : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.mk_paragraph_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L676">tactic.interactive.mk_paragraph_aux</a></span> <span class="decl_args">(right_margin : ℕ)</span> <span class="decl_args">(a a_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a>)</span> <span class="decl_args">(a_2 : ℕ)</span> <span class="decl_args">(a_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.mk_paragraph"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L687">tactic.interactive.mk_paragraph</a></span> <span class="decl_args">(right_margin : ℕ)</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div>
-<div class="indent"><p><code>mk_paragraph right_margin ls</code> packs <code>ls</code> into a paragraph where the lines have
+</ul></div><div class="def"><a id="tactic.interactive.clear_except"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L656">tactic.interactive.clear_except</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p><code>clear_except h₀ h₁</code> deletes all the assumptions it can except for <code>h₀</code> and <code>h₁</code>.</p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.format_names"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L662">tactic.interactive.format_names</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.mk_paragraph_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L676">tactic.interactive.mk_paragraph_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a> → ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.mk_paragraph"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L687">tactic.interactive.mk_paragraph</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div>
+<p><code>mk_paragraph right_margin ls</code> packs <code>ls</code> into a paragraph where the lines have
 length at most <code>right_margin</code></p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.extract_goal"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L736">tactic.interactive.extract_goal</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>))</span> <span class="decl_args">(vs : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.with_ident_list">interactive.types.with_ident_list</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>Format the current goal as a stand-alone example. Useful for testing tactic.</p>
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.extract_goal"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean#L736">tactic.interactive.extract_goal</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.with_ident_list">interactive.types.with_ident_list</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>Format the current goal as a stand-alone example. Useful for testing tactic.</p>
 
 <ul>
 <li><code>extract_goal</code>: formats the statement as an <code>example</code> declaration</li>
@@ -1661,10 +1811,12 @@ begin
 
 <p>end
 ```</p>
-       
+       <ul>
 
-</div>
-</div>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">interactive</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/interactive.lean">(view source on GitHub)</a></div><a href="#tactic.interactive.ac_change">tactic.interactive.ac_change</a><br>

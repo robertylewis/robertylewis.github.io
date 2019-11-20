@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: core.init.category.lift</title>
         <meta charset="UTF-8">
     </head>
@@ -1149,86 +1150,108 @@
 
 </div></div>
 <div class="column middle"><div class="content">
-<div class="structure"><a id="has_monad_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L21">has_monad_lift</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">(n : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</div>
-<div class="indent"><p>A function for lifting a computation from an inner monad to an outer monad.
+<div class="structure"><a id="has_monad_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L21">has_monad_lift</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Type u → Type v) → (Type u → Type w) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</div>
+<p>A function for lifting a computation from an inner monad to an outer monad.
    Like <a href="https://hackage.haskell.org/package/transformers-0.5.5.0/docs/Control-Monad-Trans-Class.html">MonadTrans</a>,
    but <code>n</code> does not have to be a monad transformer.
    Alternatively, an implementation of <a href="https://hackage.haskell.org/package/layers-0.1/docs/Control-Monad-Layer.html#t:MonadLayer">MonadLayer</a> without <code>layerInvmap</code> (so far).</p>
-       <div class="structure_fields">
-Fields:
-<div class="structure_field">has_monad_lift.monad_lift : Π {α : Type ?}, m α → n α</div>
-</div>
+       <ul>
 
-</div>
-</div><div class="structure"><a id="has_monad_lift_t"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L27">has_monad_lift_t</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">(n : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</div>
-<div class="indent"><p>The reflexive-transitive closure of <code>has_monad_lift</code>.
+
+<li class="structure_fields">
+Fields:
+<ul><li><div class="structure_field">has_monad_lift.monad_lift : Π {α : Type ?}, m α → n α</div></li>
+</ul></li>
+
+</ul></div><div class="structure"><a id="has_monad_lift_t"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L27">has_monad_lift_t</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Type u → Type v) → (Type u → Type w) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</div>
+<p>The reflexive-transitive closure of <code>has_monad_lift</code>.
    <code>monad_lift</code> is used to transitively lift monadic computations such as <code>state_t.get</code> or <code>state_t.put s</code>.
    Corresponds to <a href="https://hackage.haskell.org/package/layers-0.1/docs/Control-Monad-Layer.html#t:MonadLift">MonadLift</a>.</p>
-       <div class="structure_fields">
+       <ul>
+
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">has_monad_lift_t.monad_lift : Π {α : Type ?}, m α → n α</div>
-</div>
+<ul><li><div class="structure_field">has_monad_lift_t.monad_lift : Π {α : Type ?}, m α → n α</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="has_monad_lift_to_has_coe"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L34">has_monad_lift_to_has_coe</a></span> <span class="decl_args">{m : Type u_1 → Type u_2}</span> <span class="decl_args">{n : Type u_1 → Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m n]</span> <span class="decl_args">{α : Type u_1}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (m α) (n α)</div>
-<div class="indent"><p>A coercion that may reduce the need for explicit lifting.
+</ul></div><div class="def"><a id="has_monad_lift_to_has_coe"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L34">has_monad_lift_to_has_coe</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (m α) (n α)</div>
+<p>A coercion that may reduce the need for explicit lifting.
    Because of <a href="https://github.com/leanprover/lean/issues/1402">limitations of the current coercion resolution</a>, this definition is not marked as a global instance and should be marked locally instead.</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{m : Type u_1 → Type u_2}</span> <span class="impl_arg">{n : Type u_1 → Type u_3}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m n]</span> <span class="impl_arg">{α : Type u_1}</span></li>
 
-</div>
-</div><div class="def"><a id="has_monad_lift_t_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L37">has_monad_lift_t_trans</a></span> <span class="decl_args">(m : Type u_1 → Type u_2)</span> <span class="decl_args">(n : Type u_1 → Type u_3)</span> <span class="decl_args">(o : Type u_1 → Type u_4)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift">has_monad_lift</a> n o]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m n]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m o</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="has_monad_lift_t_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L40">has_monad_lift_t_refl</a></span> <span class="decl_args">(m : Type u_1 → Type u_2)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m m</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="thm"><a id="monad_lift_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L43">monad_lift_refl</a></span> <span class="decl_args">{m : Type u → Type v}</span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">:</span>       <div class="decl_type">has_monad_lift_t.monad_lift = <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="has_monad_lift_t_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L37">has_monad_lift_t_trans</a></span> <span class="decl_args">(m : Type u_1 → Type u_2)</span> <span class="decl_args">(n : Type u_1 → Type u_3)</span> <span class="decl_args">(o : Type u_1 → Type u_4)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m o</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift">has_monad_lift</a> n o]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m n]</span></li>
+<li>Attributes: instance</li>
 
-Attributes: simp</div>
-</div><div class="structure"><a id="monad_functor"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L50">monad_functor</a></span> <span class="decl_args">(m m' : Type u → Type v)</span> <span class="decl_args">(n n' : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</div>
-<div class="indent"><p>A functor in the category of monads. Can be used to lift monad-transforming functions.
+
+</ul></div><div class="def"><a id="has_monad_lift_t_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L40">has_monad_lift_t_refl</a></span> <span class="decl_args">(m : Type u_1 → Type u_2)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> m m</div>
+<p></p>
+       <ul>
+
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="thm"><a id="monad_lift_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L43">monad_lift_refl</a></span>  <span class="decl_args">:</span>       <div class="decl_type">has_monad_lift_t.monad_lift = <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span></li>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="structure"><a id="monad_functor"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L50">monad_functor</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Type u → Type v) → (Type u → Type v) → (Type u → Type w) → (Type u → Type w) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</div>
+<p>A functor in the category of monads. Can be used to lift monad-transforming functions.
    Based on pipes' <a href="https://hackage.haskell.org/package/pipes-2.4.0/docs/Control-MFunctor.html">MFunctor</a>,
    but not restricted to monad transformers.
    Alternatively, an implementation of <a href="http://duairc.netsoc.ie/layers-docs/Control-Monad-Layer.html#t:MonadTransFunctor">MonadTransFunctor</a>.</p>
-       <div class="structure_fields">
-Fields:
-<div class="structure_field">monad_functor.monad_map : Π {α : Type ?}, (Π {α : Type ?}, m α → m' α) → n α → n' α</div>
-</div>
+       <ul>
 
-</div>
-</div><div class="structure"><a id="monad_functor_t"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L56">monad_functor_t</a></span> <span class="decl_args">(m m' : Type u → Type v)</span> <span class="decl_args">(n n' : Type u → Type <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#w">w</a>)</div>
-<div class="indent"><p>The reflexive-transitive closure of <code>monad_functor</code>.
+
+<li class="structure_fields">
+Fields:
+<ul><li><div class="structure_field">monad_functor.monad_map : Π {α : Type ?}, (Π {α : Type ?}, m α → m' α) → n α → n' α</div></li>
+</ul></li>
+
+</ul></div><div class="structure"><a id="monad_functor_t"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L56">monad_functor_t</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Type u → Type v) → (Type u → Type v) → (Type u → Type w) → (Type u → Type w) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v w)</div>
+<p>The reflexive-transitive closure of <code>monad_functor</code>.
    <code>monad_map</code> is used to transitively lift monad morphisms such as <code>state_t.zoom</code>.
    A generalization of <a href="http://duairc.netsoc.ie/layers-docs/Control-Monad-Layer.html#t:MonadLiftFunctor">MonadLiftFunctor</a>, which can only lift endomorphisms (i.e. m = m', n = n').</p>
-       <div class="structure_fields">
+       <ul>
+
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">monad_functor_t.monad_map : Π {α : Type ?}, (Π {α : Type ?}, m α → m' α) → n α → n' α</div>
-</div>
+<ul><li><div class="structure_field">monad_functor_t.monad_map : Π {α : Type ?}, (Π {α : Type ?}, m α → m' α) → n α → n' α</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="monad_functor_t_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L61">monad_functor_t_trans</a></span> <span class="decl_args">(m m' : Type u_1 → Type u_2)</span> <span class="decl_args">(n n' : Type u_1 → Type u_3)</span> <span class="decl_args">(o o' : Type u_1 → Type u_4)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor">monad_functor</a> n n' o o']</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' n n']</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' o o'</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="monad_functor_t_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L61">monad_functor_t_trans</a></span> <span class="decl_args">(m m' : Type u_1 → Type u_2)</span> <span class="decl_args">(n n' : Type u_1 → Type u_3)</span> <span class="decl_args">(o o' : Type u_1 → Type u_4)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' o o'</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor">monad_functor</a> n n' o o']</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' n n']</span></li>
+<li>Attributes: instance</li>
 
-Attributes: instance</div>
-</div><div class="def"><a id="monad_functor_t_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L65">monad_functor_t_refl</a></span> <span class="decl_args">(m m' : Type u_1 → Type u_2)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' m m'</div>
-<div class="indent"><p></p>
-       
 
-Attributes: instance</div>
-</div><div class="thm"><a id="monad_map_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L68">monad_map_refl</a></span> <span class="decl_args">{m m' : Type u → Type v}</span> <span class="decl_args">(f : Π {α : Type u}, m α → m' α)</span> <span class="decl_args">{α : Type u}</span> <span class="decl_args">:</span>       <div class="decl_type">monad_functor_t.monad_map f = f</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="monad_functor_t_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L65">monad_functor_t_refl</a></span> <span class="decl_args">(m m' : Type u_1 → Type u_2)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> m m' m m'</div>
+<p></p>
+       <ul>
 
-Attributes: simp</div>
-</div><div class="structure"><a id="monad_run"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L80">monad_run</a></span> <span class="decl_args">(out : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#out_param">out_param</a> (Type u → Type v))</span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</div>
-<div class="indent"><p>Run a monad stack to completion.
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="thm"><a id="monad_map_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L68">monad_map_refl</a></span> <span class="decl_args">(f : Π {α : Type u}, m α → m' α)</span> <span class="decl_args">:</span>       <div class="decl_type">monad_functor_t.monad_map f = f</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{m m' : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span></li>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="structure"><a id="monad_run"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean#L80">monad_run</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#out_param">out_param</a> (Type u → Type v) → (Type u → Type v) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (u+1) v)</div>
+<p>Run a monad stack to completion.
    <code>run</code> should be the composition of the transformers' individual <code>run</code> functions.
    This class mostly saves some typing when using highly nested monad stacks:
    <code>lean
@@ -1236,13 +1259,15 @@ Attributes: simp</div>
    -- def my_monad.run {α : Type} (x : my_monad α) (cfg : my_cfg) (st : my_state) := ((x.run cfg).run st).run
    def my_monad.run {α : Type} (x : my_monad α) := monad_run.run x
 </code></p>
-       <div class="structure_fields">
-Fields:
-<div class="structure_field">monad_run.run : Π {α : Type ?}, m α → out α</div>
-</div>
+       <ul>
 
-</div>
-</div>
+
+<li class="structure_fields">
+Fields:
+<ul><li><div class="structure_field">monad_run.run : Π {α : Type ?}, m α → out α</div></li>
+</ul></li>
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">lift</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lift.lean">(view source on GitHub)</a></div><a href="#has_monad_lift">has_monad_lift</a><br>

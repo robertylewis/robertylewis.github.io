@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: category.bitraversable.basic</title>
         <meta charset="UTF-8">
     </head>
@@ -1163,7 +1164,7 @@ to define an a-list as:</p>
 </code></pre>
 
 <p>Then we can use <code>f : key → <a href="https://robertylewis.com/mathlib_docs/core/system/io.html#io">io</a> key'</code> and <code>g : val → <a href="https://robertylewis.com/mathlib_docs/core/system/io.html#io">io</a> val'</code> to manipulate the <code>alist</code>'s key
-and value respectively with <code>bitraverse f <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> : <a href="https://robertylewis.com/mathlib_docs/data/list/alist.html#alist">alist</a> key val → <a href="https://robertylewis.com/mathlib_docs/core/system/io.html#io">io</a> (<a href="https://robertylewis.com/mathlib_docs/data/list/alist.html#alist">alist</a> key' val')</code></p>
+and value respectively with <code>bitraverse f g : <a href="https://robertylewis.com/mathlib_docs/data/list/alist.html#alist">alist</a> key val → <a href="https://robertylewis.com/mathlib_docs/core/system/io.html#io">io</a> (<a href="https://robertylewis.com/mathlib_docs/data/list/alist.html#alist">alist</a> key' val')</code></p>
 
 <h2>Main definitions</h2>
 
@@ -1175,42 +1176,48 @@ and value respectively with <code>bitraverse f <a href="https://robertylewis.com
 <h2>Tags</h2>
 
 <p>traversable bitraversable iterator functor bifunctor applicative</p>
-</div><div class="structure"><a id="bitraversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/bitraversable/basic.lean#L40">bitraversable</a></span> <span class="decl_args">(t : Type u → Type u → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (u+1)</div>
-<div class="indent"><p></p>
-       <div class="structure_fields">
-Fields:
-<div class="structure_field">bitraversable.to_bifunctor : <a href="https://robertylewis.com/mathlib_docs/category/bifunctor.html#bifunctor">bifunctor</a> t</div>
-<div class="structure_field">bitraversable.bitraverse : Π {m : Type ? → Type ?} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] {α α' β β' : Type ?},
-  (α → m α') → (β → m β') → t α β → m (t α' β')</div>
-</div>
+</div><div class="structure"><a id="bitraversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/bitraversable/basic.lean#L40">bitraversable</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(Type u → Type u → Type u) → Type (u+1)</div>
+<p></p>
+       <ul>
 
-</div>
-</div><div class="def"><a id="bisequence"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/bitraversable/basic.lean#L46">bisequence</a></span> <span class="decl_args">{t : Type u_1 → Type u_1 → Type u_1}</span> <span class="decl_args">{m : Type u_1 → Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/bitraversable/basic.html#bitraversable">bitraversable</a> t]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m]</span> <span class="decl_args">{α β : Type u_1}</span> <span class="decl_args">(a : t (m α) (m β))</span> <span class="decl_args">:</span>       <div class="decl_type">m (t α β)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="structure"><a id="is_lawful_bitraversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/bitraversable/basic.lean#L51">is_lawful_bitraversable</a></span> <span class="decl_args">(t : Type u → Type u → Type u)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/bitraversable/basic.html#bitraversable">bitraversable</a> t]</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<div class="indent"><p></p>
-       <div class="structure_fields">
+<li class="structure_fields">
 Fields:
-<div class="structure_field">is_lawful_bitraversable.to_is_lawful_bifunctor : <a href="https://robertylewis.com/mathlib_docs/category/bifunctor.html#is_lawful_bifunctor">is_lawful_bifunctor</a> t</div>
-<div class="structure_field">is_lawful_bitraversable.id_bitraverse : ∀ {α β : Type ?} (x : t α β), bitraversable.bitraverse <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> x = <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> x</div>
-<div class="structure_field">is_lawful_bitraversable.comp_bitraverse : ∀ {F G : Type ? → Type ?} [_inst_1_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]
+<ul><li><div class="structure_field">bitraversable.to_bifunctor : <a href="https://robertylewis.com/mathlib_docs/category/bifunctor.html#bifunctor">bifunctor</a> t</div></li>
+<li><div class="structure_field">bitraversable.bitraverse : Π {m : Type ? → Type ?} [_inst_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m] {α α' β β' : Type ?},
+  (α → m α') → (β → m β') → t α β → m (t α' β')</div></li>
+</ul></li>
+
+</ul></div><div class="def"><a id="bisequence"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/bitraversable/basic.lean#L46">bisequence</a></span>  <span class="decl_args">:</span>       <div class="decl_type">t (m α) (m β) → m (t α β)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{t : Type u_1 → Type u_1 → Type u_1}</span> <span class="impl_arg">{m : Type u_1 → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/bitraversable/basic.html#bitraversable">bitraversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> m]</span> <span class="impl_arg">{α β : Type u_1}</span></li>
+
+
+
+</ul></div><div class="structure"><a id="is_lawful_bitraversable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/bitraversable/basic.lean#L51">is_lawful_bitraversable</a></span> <span class="decl_args">(t : Type u → Type u → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/bitraversable/basic.html#bitraversable">bitraversable</a> t]</span></li>
+
+<li class="structure_fields">
+Fields:
+<ul><li><div class="structure_field">is_lawful_bitraversable.to_is_lawful_bifunctor : <a href="https://robertylewis.com/mathlib_docs/category/bifunctor.html#is_lawful_bifunctor">is_lawful_bifunctor</a> t</div></li>
+<li><div class="structure_field">is_lawful_bitraversable.id_bitraverse : ∀ {α β : Type ?} (x : t α β), bitraversable.bitraverse <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> x = <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> x</div></li>
+<li><div class="structure_field">is_lawful_bitraversable.comp_bitraverse : ∀ {F G : Type ? → Type ?} [_inst_1_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]
 [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] {α α' β β' γ γ' : Type ?} (f : β → F γ) (f' : β' → F γ')
-(<a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> : α → G β) (g' : α' → G β') (x : t α α'),
-  bitraversable.bitraverse (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> ∘ functor.map f ∘ <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a>) (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> ∘ functor.map f' ∘ g') x =
-    <a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> (bitraversable.bitraverse f f' <$> bitraversable.bitraverse <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> g' x)</div>
-<div class="structure_field">is_lawful_bitraversable.bitraverse_eq_bimap_id : ∀ {α α' β β' : Type ?} (f : α → β) (f' : α' → β') (x : t α α'),
-  bitraversable.bitraverse (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> ∘ f) (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> ∘ f') x = <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> (bifunctor.bimap f f' x)</div>
-<div class="structure_field">is_lawful_bitraversable.binaturality : ∀ {F G : Type ? → Type ?} [_inst_1_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]
+(g : α → G β) (g' : α' → G β') (x : t α α'),
+  bitraversable.bitraverse (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> ∘ functor.map f ∘ g) (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> ∘ functor.map f' ∘ g') x =
+    <a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.mk">functor.comp.mk</a> (bitraversable.bitraverse f f' <$> bitraversable.bitraverse g g' x)</div></li>
+<li><div class="structure_field">is_lawful_bitraversable.bitraverse_eq_bimap_id : ∀ {α α' β β' : Type ?} (f : α → β) (f' : α' → β') (x : t α α'),
+  bitraversable.bitraverse (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> ∘ f) (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> ∘ f') x = <a href="https://robertylewis.com/mathlib_docs/category/functor.html#id.mk">id.mk</a> (bifunctor.bimap f f' x)</div></li>
+<li><div class="structure_field">is_lawful_bitraversable.binaturality : ∀ {F G : Type ? → Type ?} [_inst_1_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> F] [_inst_2 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> G] [_inst_3 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> F]
 [_inst_4 : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> G] (η : <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> F G) {α α' β β' : Type ?} (f : α → F β)
 (f' : α' → F β') (x : t α α'),
-  ⇑η (bitraversable.bitraverse f f' x) = bitraversable.bitraverse (⇑η ∘ f) (⇑η ∘ f') x</div>
-</div>
+  ⇑η (bitraversable.bitraverse f f' x) = bitraversable.bitraverse (⇑η ∘ f) (⇑η ∘ f') x</div></li>
+</ul></li>
 
-</div>
-</div>
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">basic</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/bitraversable/basic.lean">(view source on GitHub)</a></div><a href="#bisequence">bisequence</a><br>

@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: geometry.manifold.manifold</title>
         <meta charset="UTF-8">
     </head>
@@ -1225,99 +1226,126 @@ equivs with compatibility conditions (but we do not register it as an instance).
 <p>In the definition of a manifold, the model space is written as an explicit parameter as there can be
 several model spaces for a given topological space. For instance, a complex manifold (modelled over
 ℂ^n) will also be seen sometimes as a real manifold modelled over ℝ^(2n).</p>
-</div><div class="structure"><a id="structure_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L119">structure_groupoid</a></span> <span class="decl_args">(H : Type u)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type">Type u</div>
-<div class="indent"><p>A structure groupoid is a set of local homeomorphisms of a topological space stable under
+</div><div class="structure"><a id="structure_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L119">structure_groupoid</a></span> <span class="decl_args">(H : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u</div>
+<p>A structure groupoid is a set of local homeomorphisms of a topological space stable under
 composition and inverse. They appear in the definition of the smoothness class of a manifold.</p>
-       <div class="structure_fields">
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">structure_groupoid.members : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H)</div>
-<div class="structure_field">structure_groupoid.comp : ∀ (e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H), e ∈ c.members → e' ∈ c.members → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e' ∈ c.members</div>
-<div class="structure_field">structure_groupoid.inv : ∀ (e : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H), e ∈ c.members → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e ∈ c.members</div>
-<div class="structure_field">structure_groupoid.id_mem : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> H ∈ c.members</div>
-<div class="structure_field">structure_groupoid.locality : ∀ (e : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H),
+<ul><li><div class="structure_field">structure_groupoid.members : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H)</div></li>
+<li><div class="structure_field">structure_groupoid.comp : ∀ (e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H), e ∈ c.members → e' ∈ c.members → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> e e' ∈ c.members</div></li>
+<li><div class="structure_field">structure_groupoid.inv : ∀ (e : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H), e ∈ c.members → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e ∈ c.members</div></li>
+<li><div class="structure_field">structure_groupoid.id_mem : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> H ∈ c.members</div></li>
+<li><div class="structure_field">structure_groupoid.locality : ∀ (e : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H),
   (∀ (x : H),
      x ∈ (e.to_local_equiv).source →
      (∃ (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H), <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> s ∧ x ∈ s ∧ <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.restr">local_homeomorph.restr</a> e s ∈ c.members)) →
-  e ∈ c.members</div>
-<div class="structure_field">structure_groupoid.eq_on_source : ∀ (e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H), e ∈ c.members → e' ≈ e → e' ∈ c.members</div>
-</div>
+  e ∈ c.members</div></li>
+<li><div class="structure_field">structure_groupoid.eq_on_source : ∀ (e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H), e ∈ c.members → e' ≈ e → e' ∈ c.members</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="structure_groupoid.has_mem"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L130">structure_groupoid.has_mem</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="structure_groupoid.has_mem"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L130">structure_groupoid.has_mem</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+<li>Attributes: instance</li>
 
-Attributes: instance</div>
-</div><div class="def"><a id="structure_groupoid.partial_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L134">structure_groupoid.partial_order</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</div>
-<div class="indent"><p>Partial order on the set of groupoids, given by inclusion of the members of the groupoid</p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="id_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L140">id_groupoid</a></span> <span class="decl_args">(H : Type u)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</div>
-<div class="indent"><p>The trivial groupoid, containing only the identity (and maps with empty source, as this is
+</ul></div><div class="def"><a id="structure_groupoid.partial_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L134">structure_groupoid.partial_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</div>
+<p>Partial order on the set of groupoids, given by inclusion of the members of the groupoid</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="id_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L140">id_groupoid</a></span> <span class="decl_args">(H : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</div>
+<p>The trivial groupoid, containing only the identity (and maps with empty source, as this is
 necessary from the definition)</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
 
-</div>
-</div><div class="def"><a id="structure_groupoid.lattice.order_bot"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L191">structure_groupoid.lattice.order_bot</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.order_bot">lattice.order_bot</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</div>
-<div class="indent"><p>Every structure groupoid contains the identity groupoid</p>
-       
 
-Attributes: instance</div>
-</div><div class="structure"><a id="pregroupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L211">pregroupoid</a></span> <span class="decl_args">(H : Type u_4)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_4</div>
-<div class="indent"><p>To construct a groupoid, one may consider classes of local homeos such that both the function
+
+</ul></div><div class="def"><a id="structure_groupoid.lattice.order_bot"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L191">structure_groupoid.lattice.order_bot</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.order_bot">lattice.order_bot</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</div>
+<p>Every structure groupoid contains the identity groupoid</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="structure"><a id="pregroupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L211">pregroupoid</a></span> <span class="decl_args">(H : Type u_4)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_4</div>
+<p>To construct a groupoid, one may consider classes of local homeos such that both the function
 and its inverse have some property. If this property is stable under composition,
 one gets a groupoid. <code>pregroupoid</code> bundles the properties needed for this construction, with the
 groupoid of smooth functions with smooth inverses as an application.</p>
-       <div class="structure_fields">
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">pregroupoid.property : (H → H) → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H → Prop</div>
-<div class="structure_field">pregroupoid.comp : ∀ {f <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> : H → H} {u v : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H},
-  c.property f u → c.property <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> v → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (u ∩ f ⁻¹' v) → c.property (<a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> ∘ f) (u ∩ f ⁻¹' v)</div>
-<div class="structure_field">pregroupoid.id_mem : c.property <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.univ">set.univ</a></div>
-<div class="structure_field">pregroupoid.locality : ∀ {f : H → H} {u : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H},
+<ul><li><div class="structure_field">pregroupoid.property : (H → H) → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H → Prop</div></li>
+<li><div class="structure_field">pregroupoid.comp : ∀ {f g : H → H} {u v : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H},
+  c.property f u → c.property g v → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (u ∩ f ⁻¹' v) → c.property (g ∘ f) (u ∩ f ⁻¹' v)</div></li>
+<li><div class="structure_field">pregroupoid.id_mem : c.property <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.univ">set.univ</a></div></li>
+<li><div class="structure_field">pregroupoid.locality : ∀ {f : H → H} {u : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H},
   <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> u →
-  (∀ (x : H), x ∈ u → (∃ (v : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H), <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> v ∧ x ∈ v ∧ c.property f (u ∩ v))) → c.property f u</div>
-<div class="structure_field">pregroupoid.congr : ∀ {f <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> : H → H} {u : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H},
-  <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> u → (∀ (x : H), x ∈ u → <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> x = f x) → c.property f u → c.property <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#g">g</a> u</div>
-</div>
+  (∀ (x : H), x ∈ u → (∃ (v : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H), <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> v ∧ x ∈ v ∧ c.property f (u ∩ v))) → c.property f u</div></li>
+<li><div class="structure_field">pregroupoid.congr : ∀ {f g : H → H} {u : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H},
+  <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> u → (∀ (x : H), x ∈ u → g x = f x) → c.property f u → c.property g u</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="pregroupoid.groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L221">pregroupoid.groupoid</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(PG : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</div>
-<div class="indent"><p>Construct a groupoid of local homeos for which the map and its inverse have some property,
+</ul></div><div class="def"><a id="pregroupoid.groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L221">pregroupoid.groupoid</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H → <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</div>
+<p>Construct a groupoid of local homeos for which the map and its inverse have some property,
 from a pregroupoid asserting that this property is stable under composition.</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
 
-</div>
-</div><div class="thm"><a id="mem_groupoid_of_pregroupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L258">mem_groupoid_of_pregroupoid</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(PG : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H)</span> <span class="decl_args">:</span>       <div class="decl_type">e ∈ <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG ↔
+
+
+</ul></div><div class="thm"><a id="mem_groupoid_of_pregroupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L258">mem_groupoid_of_pregroupoid</a></span> <span class="decl_args">(PG : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H)</span> <span class="decl_args">:</span>       <div class="decl_type">e ∈ <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG ↔
   PG.property ((e.to_local_equiv).to_fun) ((e.to_local_equiv).source) ∧
     PG.property ((e.to_local_equiv).inv_fun) ((e.to_local_equiv).target)</div>
-<div class="indent"><p></p>
-       
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
 
-</div>
-</div><div class="thm"><a id="groupoid_of_pregroupoid_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L262">groupoid_of_pregroupoid_le</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(PG₁ PG₂ : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">(h : ∀ (f : H → H) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H), PG₁.property f s → PG₂.property f s)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG₁ ≤ <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG₂</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="mem_pregroupoid_of_eq_on_source"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L271">mem_pregroupoid_of_eq_on_source</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(PG : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">{e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H}</span> <span class="decl_args">(he' : e ≈ e')</span> <span class="decl_args">(he : PG.property ((e.to_local_equiv).to_fun) ((e.to_local_equiv).source))</span> <span class="decl_args">:</span>       <div class="decl_type">PG.property ((e'.to_local_equiv).to_fun) ((e'.to_local_equiv).source)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="continuous_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L280">continuous_groupoid</a></span> <span class="decl_args">(H : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</div>
-<div class="indent"><p>The groupoid of all local homeomorphisms on a topological space H</p>
-       
+</ul></div><div class="thm"><a id="groupoid_of_pregroupoid_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L262">groupoid_of_pregroupoid_le</a></span> <span class="decl_args">(PG₁ PG₂ : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">:</span>       <div class="decl_type">(∀ (f : H → H) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> H), PG₁.property f s → PG₂.property f s) →
+<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG₁ ≤ <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG₂</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
 
-</div>
-</div><div class="def"><a id="structure_groupoid.lattice.order_top"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L289">structure_groupoid.lattice.order_top</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.order_top">lattice.order_top</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</div>
-<div class="indent"><p>Every structure groupoid is contained in the groupoid of all local homeomorphisms</p>
-       
 
-Attributes: instance</div>
-</div><div class="structure"><a id="manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L305">manifold</a></span> <span class="decl_args">(H : Type u_4)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(M : Type u_5)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_4 u_5)</div>
-<div class="indent"><p>A manifold is a topological space endowed with an atlas, i.e., a set of local homeomorphisms
+
+</ul></div><div class="thm"><a id="mem_pregroupoid_of_eq_on_source"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L271">mem_pregroupoid_of_eq_on_source</a></span> <span class="decl_args">(PG : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">:</span>       <div class="decl_type">e ≈ e' →
+PG.property ((e.to_local_equiv).to_fun) ((e.to_local_equiv).source) →
+PG.property ((e'.to_local_equiv).to_fun) ((e'.to_local_equiv).source)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">{e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H}</span></li>
+
+
+
+</ul></div><div class="def"><a id="continuous_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L280">continuous_groupoid</a></span> <span class="decl_args">(H : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H</div>
+<p>The groupoid of all local homeomorphisms on a topological space H</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+
+
+
+</ul></div><div class="def"><a id="structure_groupoid.lattice.order_top"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L289">structure_groupoid.lattice.order_top</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.order_top">lattice.order_top</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</div>
+<p>Every structure groupoid is contained in the groupoid of all local homeomorphisms</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="structure"><a id="manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L305">manifold</a></span> <span class="decl_args">(H : Type u_4)</span> <span class="decl_args">(M : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_4 u_5)</div>
+<p>A manifold is a topological space endowed with an atlas, i.e., a set of local homeomorphisms
 taking value in a model space H, called charts, such that the domains of the charts cover the whole
 space. We express the covering property by chosing for each x a member <code>chart_at x</code> of the atlas
 containing x in its source: in the smooth case, this is convenient to construct the tangent bundle
@@ -1325,142 +1353,181 @@ in an efficient way.
 The model space is written as an explicit parameter as there can be several model spaces for a
 given topological space. For instance, a complex manifold (modelled over ℂ^n) will also be seen
 sometimes as a real manifold over ℝ^(2n).</p>
-       <div class="structure_fields">
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">manifold.atlas : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H)</div>
-<div class="structure_field">manifold.chart_at : M → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H</div>
-<div class="structure_field">manifold.mem_chart_source : ∀ (x : M), x ∈ ((manifold.chart_at H x).to_local_equiv).source</div>
-<div class="structure_field">manifold.chart_mem_atlas : ∀ (x : M), manifold.chart_at H x ∈ manifold.atlas H M</div>
-</div>
+<ul><li><div class="structure_field">manifold.atlas : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H)</div></li>
+<li><div class="structure_field">manifold.chart_at : M → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H</div></li>
+<li><div class="structure_field">manifold.mem_chart_source : ∀ (x : M), x ∈ ((manifold.chart_at H x).to_local_equiv).source</div></li>
+<li><div class="structure_field">manifold.chart_mem_atlas : ∀ (x : M), manifold.chart_at H x ∈ manifold.atlas H M</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="manifold_model_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L317">manifold_model_space</a></span> <span class="decl_args">(H : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H H</div>
-<div class="indent"><p>Any space is a manifold modelled over itself, by just using the identity chart</p>
-       
+</ul></div><div class="def"><a id="manifold_model_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L317">manifold_model_space</a></span> <span class="decl_args">(H : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H H</div>
+<p>Any space is a manifold modelled over itself, by just using the identity chart</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+<li>Attributes: instance</li>
 
-Attributes: instance</div>
-</div><div class="thm"><a id="model_space_atlas"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L325">model_space_atlas</a></span> <span class="decl_args">{H : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">{e : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H}</span> <span class="decl_args">:</span>       <div class="decl_type">e ∈ manifold.atlas H H ↔ e = <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> H</div>
-<div class="indent"><p>In the trivial manifold structure of a space modelled over itself through the identity, the
+
+</ul></div><div class="thm"><a id="model_space_atlas"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L325">model_space_atlas</a></span>  <span class="decl_args">:</span>       <div class="decl_type">e ∈ manifold.atlas H H ↔ e = <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> H</div>
+<p>In the trivial manifold structure of a space modelled over itself through the identity, the
 atlas members are just the identity</p>
-       
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">{e : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> H H}</span></li>
+<li>Attributes: simp</li>
 
-Attributes: simp</div>
-</div><div class="thm"><a id="chart_at_model_space_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L330">chart_at_model_space_eq</a></span> <span class="decl_args">{H : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">{x : H}</span> <span class="decl_args">:</span>       <div class="decl_type">manifold.chart_at H x = <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> H</div>
-<div class="indent"><p>In the model space, chart_at is always the identity</p>
-       
 
-Attributes: simp</div>
-</div><div class="structure"><a id="manifold_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L340">manifold_core</a></span> <span class="decl_args">(H : Type u_4)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(M : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_4 u_5)</div>
-<div class="indent"><p>Sometimes, one may want to construct a manifold structure on a space which does not yet have
+</ul></div><div class="thm"><a id="chart_at_model_space_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L330">chart_at_model_space_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type">manifold.chart_at H x = <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.refl">local_homeomorph.refl</a> H</div>
+<p>In the model space, chart_at is always the identity</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">{x : H}</span></li>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="structure"><a id="manifold_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L340">manifold_core</a></span> <span class="decl_args">(H : Type u_4)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_5 → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_4 u_5)</div>
+<p>Sometimes, one may want to construct a manifold structure on a space which does not yet have
 a topological structure, where the topology would come from the charts. For this, one needs charts
 that are only local equivs, and continuity properties for their composition.
 This is formalised in <code>manifold_core</code>.</p>
-       <div class="structure_fields">
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">manifold_core.atlas : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H)</div>
-<div class="structure_field">manifold_core.chart_at : M → <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H</div>
-<div class="structure_field">manifold_core.mem_chart_source : ∀ (x : M), x ∈ (c.chart_at x).source</div>
-<div class="structure_field">manifold_core.chart_mem_atlas : ∀ (x : M), c.chart_at x ∈ c.atlas</div>
-<div class="structure_field">manifold_core.open_source : ∀ (e e' : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H),
-  e ∈ c.atlas → e' ∈ c.atlas → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> ((<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.trans">local_equiv.trans</a> (<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.symm">local_equiv.symm</a> e) e').source)</div>
-<div class="structure_field">manifold_core.continuous_to_fun : ∀ (e e' : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H),
+<ul><li><div class="structure_field">manifold_core.atlas : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> (<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H)</div></li>
+<li><div class="structure_field">manifold_core.chart_at : M → <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H</div></li>
+<li><div class="structure_field">manifold_core.mem_chart_source : ∀ (x : M), x ∈ (c.chart_at x).source</div></li>
+<li><div class="structure_field">manifold_core.chart_mem_atlas : ∀ (x : M), c.chart_at x ∈ c.atlas</div></li>
+<li><div class="structure_field">manifold_core.open_source : ∀ (e e' : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H),
+  e ∈ c.atlas → e' ∈ c.atlas → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> ((<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.trans">local_equiv.trans</a> (<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.symm">local_equiv.symm</a> e) e').source)</div></li>
+<li><div class="structure_field">manifold_core.continuous_to_fun : ∀ (e e' : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H),
   e ∈ c.atlas →
   e' ∈ c.atlas →
   <a href="https://robertylewis.com/mathlib_docs/topology/continuous_on.html#continuous_on">continuous_on</a> ((<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.trans">local_equiv.trans</a> (<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.symm">local_equiv.symm</a> e) e').to_fun)
-    ((<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.trans">local_equiv.trans</a> (<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.symm">local_equiv.symm</a> e) e').source)</div>
-</div>
+    ((<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.trans">local_equiv.trans</a> (<a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.symm">local_equiv.symm</a> e) e').source)</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="manifold_core.to_topological_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L354">manifold_core.to_topological_space</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M</div>
-<div class="indent"><p>Topology generated by a set of charts on a Type.</p>
-       
+</ul></div><div class="def"><a id="manifold_core.to_topological_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L354">manifold_core.to_topological_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M</div>
+<p>Topology generated by a set of charts on a Type.</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
 
-</div>
-</div><div class="thm"><a id="manifold_core.open_source'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L358">manifold_core.open_source'</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">{e : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H}</span> <span class="decl_args">(he : e ∈ c.atlas)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (e.source)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="manifold_core.open_target"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L366">manifold_core.open_target</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">{e : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H}</span> <span class="decl_args">(he : e ∈ c.atlas)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (e.target)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="manifold_core.local_homeomorph"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L374">manifold_core.local_homeomorph</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H)</span> <span class="decl_args">(he : e ∈ c.atlas)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="manifold_core.open_source'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L358">manifold_core.open_source'</a></span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">:</span>       <div class="decl_type">e ∈ c.atlas → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (e.source)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">{e : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H}</span></li>
 
-</div>
-</div><div class="def"><a id="manifold_core.to_manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L405">manifold_core.to_manifold</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="structure"><a id="has_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L420">has_groupoid</a></span> <span class="decl_args">{H : Type u_4}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(M : Type u_5)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="decl_args">(G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</span> <span class="decl_args">:</span>       <div class="decl_type">Prop</div>
-<div class="indent"><p>A manifold has an atlas in a groupoid G if the change of coordinates belong to the groupoid</p>
-       <div class="structure_fields">
+
+</ul></div><div class="thm"><a id="manifold_core.open_target"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L366">manifold_core.open_target</a></span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">:</span>       <div class="decl_type">e ∈ c.atlas → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (e.target)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">{e : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H}</span></li>
+
+
+
+</ul></div><div class="def"><a id="manifold_core.local_homeomorph"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L374">manifold_core.local_homeomorph</a></span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv">local_equiv</a> M H)</span> <span class="decl_args">:</span>       <div class="decl_type">e ∈ c.atlas → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+
+
+
+</ul></div><div class="def"><a id="manifold_core.to_manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L405">manifold_core.to_manifold</a></span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold_core">manifold_core</a> H M)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+
+
+
+</ul></div><div class="structure"><a id="has_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L420">has_groupoid</a></span> <span class="decl_args">(M : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H → Prop</div>
+<p>A manifold has an atlas in a groupoid G if the change of coordinates belong to the groupoid</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u_4}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">has_groupoid.compatible : ∀ {e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H},
-  e ∈ manifold.atlas H M → e' ∈ manifold.atlas H M → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e' ∈ G</div>
-</div>
+<ul><li><div class="structure_field">has_groupoid.compatible : ∀ {e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H},
+  e ∈ manifold.atlas H M → e' ∈ manifold.atlas H M → <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e' ∈ G</div></li>
+</ul></li>
 
-</div>
-</div><div class="thm"><a id="has_groupoid_of_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L424">has_groupoid_of_le</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="decl_args">{G₁ G₂ : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}</span> <span class="decl_args">(h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G₁)</span> <span class="decl_args">(hle : G₁ ≤ G₂)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G₂</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="has_groupoid_of_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L424">has_groupoid_of_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G₁ → G₁ ≤ G₂ → <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G₂</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="impl_arg">{G₁ G₂ : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}</span></li>
 
-</div>
-</div><div class="thm"><a id="has_groupoid_of_pregroupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L428">has_groupoid_of_pregroupoid</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="decl_args">(PG : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">(h : ∀ {e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H},
-  e ∈ manifold.atlas H M →
-  e' ∈ manifold.atlas H M →
-  PG.property (((<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e').to_local_equiv).to_fun)
-    (((<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e').to_local_equiv).source))</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="has_groupoid_model_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L435">has_groupoid_model_space</a></span> <span class="decl_args">(H : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> H G</div>
-<div class="indent"><p>The trivial manifold structure on the model space is compatible with any groupoid</p>
-       
 
-Attributes: instance</div>
-</div><div class="def"><a id="has_groupoid_continuous_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L445">has_groupoid_continuous_groupoid</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#continuous_groupoid">continuous_groupoid</a> H)</div>
-<div class="indent"><p>Any manifold structure is compatible with the groupoid of all local homeomorphisms</p>
-       
+</ul></div><div class="thm"><a id="has_groupoid_of_pregroupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L428">has_groupoid_of_pregroupoid</a></span> <span class="decl_args">(PG : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid">pregroupoid</a> H)</span> <span class="decl_args">:</span>       <div class="decl_type">(∀ {e e' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H},
+   e ∈ manifold.atlas H M →
+   e' ∈ manifold.atlas H M →
+   PG.property (((<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e').to_local_equiv).to_fun)
+     (((<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> e) e').to_local_equiv).source)) →
+<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#pregroupoid.groupoid">pregroupoid.groupoid</a> PG)</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span></li>
 
-Attributes: instance</div>
-</div><div class="structure"><a id="structomorph"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L455">structomorph</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">(G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</span> <span class="decl_args">(M : Type u_4)</span> <span class="decl_args">(M' : Type u_5)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M']</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M']</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_4 u_5)</div>
-<div class="indent"><p>A G-diffeomorphism between two manifolds is a homeomorphism which, when read in the charts,
+
+
+</ul></div><div class="def"><a id="has_groupoid_model_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L435">has_groupoid_model_space</a></span> <span class="decl_args">(H : Type u_1)</span> <span class="decl_args">(G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> H G</div>
+<p>The trivial manifold structure on the model space is compatible with any groupoid</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="def"><a id="has_groupoid_continuous_groupoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L445">has_groupoid_continuous_groupoid</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#continuous_groupoid">continuous_groupoid</a> H)</div>
+<p>Any manifold structure is compatible with the groupoid of all local homeomorphisms</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span></li>
+<li>Attributes: instance</li>
+
+
+</ul></div><div class="structure"><a id="structomorph"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L455">structomorph</a></span> <span class="decl_args">(G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H)</span> <span class="decl_args">(M : Type u_4)</span> <span class="decl_args">(M' : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_4 u_5)</div>
+<p>A G-diffeomorphism between two manifolds is a homeomorphism which, when read in the charts,
 belongs to G. We avoid the word diffeomorph as it is too related to the smooth category, and use
 structomorph instead.</p>
-       <div class="structure_fields">
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M']</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M']</span></li>
+
+<li class="structure_fields">
 Fields:
-<div class="structure_field">structomorph.to_homeomorph : M ≃ₜ M'</div>
-<div class="structure_field">structomorph.to_fun_mem_groupoid : ∀ (c_1 : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H) (c' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M' H),
+<ul><li><div class="structure_field">structomorph.to_homeomorph : M ≃ₜ M'</div></li>
+<li><div class="structure_field">structomorph.to_fun_mem_groupoid : ∀ (c_1 : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M H) (c' : <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> M' H),
   c_1 ∈ manifold.atlas H M →
   c' ∈ manifold.atlas H M' →
   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.symm">local_homeomorph.symm</a> c_1)
       (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.trans">local_homeomorph.trans</a> (<a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#homeomorph.to_local_homeomorph">homeomorph.to_local_homeomorph</a> (c.to_homeomorph)) c') ∈
-    G</div>
-</div>
+    G</div></li>
+</ul></li>
 
-</div>
-</div><div class="def"><a id="structomorph.refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L465">structomorph.refl</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">{G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}</span> <span class="decl_args">(M : Type u_1)</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G]</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M</div>
-<div class="indent"><p>The identity is a diffeomorphism of any manifold, for any groupoid.</p>
-       
+</ul></div><div class="def"><a id="structomorph.refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L465">structomorph.refl</a></span> <span class="decl_args">(M : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M</div>
+<p>The identity is a diffeomorphism of any manifold, for any groupoid.</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">{G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#has_groupoid">has_groupoid</a> M G]</span></li>
 
-</div>
-</div><div class="def"><a id="structomorph.symm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L475">structomorph.symm</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">{M' : Type u_2}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M']</span> <span class="decl_args">{G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M']</span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M')</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M' M</div>
-<div class="indent"><p>The inverse of a structomorphism is a structomorphism</p>
-       
 
-</div>
-</div><div class="def"><a id="structomorph.trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L487">structomorph.trans</a></span> <span class="decl_args">{H : Type u}</span> <span class="decl_args">{M : Type u_1}</span> <span class="decl_args">{M' : Type u_2}</span> <span class="decl_args">{M'' : Type u_3}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M']</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M'']</span> <span class="decl_args">{G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M']</span> <span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M'']</span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M')</span> <span class="decl_args">(e' : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M' M'')</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M''</div>
-<div class="indent"><p>The composition of structomorphisms is a structomorphism</p>
-       
 
-</div>
-</div>
+</ul></div><div class="def"><a id="structomorph.symm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L475">structomorph.symm</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M' → <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M' M</div>
+<p>The inverse of a structomorphism is a structomorphism</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">{M' : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M']</span> <span class="impl_arg">{G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M']</span></li>
+
+
+
+</ul></div><div class="def"><a id="structomorph.trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean#L487">structomorph.trans</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M' → <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M' M'' → <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structomorph">structomorph</a> G M M''</div>
+<p>The composition of structomorphisms is a structomorphism</p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{H : Type u}</span> <span class="impl_arg">{M : Type u_1}</span> <span class="impl_arg">{M' : Type u_2}</span> <span class="impl_arg">{M'' : Type u_3}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> H]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M']</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> M'']</span> <span class="impl_arg">{G : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid">structure_groupoid</a> H}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M']</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> H M'']</span></li>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">manifold</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/manifold.lean">(view source on GitHub)</a></div><a href="#chart_at_model_space_eq">chart_at_model_space_eq</a><br>

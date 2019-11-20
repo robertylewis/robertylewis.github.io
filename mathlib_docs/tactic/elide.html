@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: tactic.elide</title>
         <meta charset="UTF-8">
     </head>
@@ -1149,32 +1150,40 @@
 
 </div></div>
 <div class="column middle"><div class="content">
-<div class="def"><a id="tactic.elide.replace"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean#L12">tactic.elide.replace</a></span> <span class="decl_args">(a : ℕ)</span> <span class="decl_args">(a_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
-<div class="indent"><p></p>
-       
+<div class="def"><a id="tactic.elide.replace"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean#L12">tactic.elide.replace</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
+<p></p>
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.elide.unelide"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean#L39">tactic.elide.unelide</a></span> <span class="decl_args">(e : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="def"><a id="tactic.interactive.elide"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean#L58">tactic.interactive.elide</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a>)</span> <span class="decl_args">(loc : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>The <code>elide n (at ...)</code> tactic hides all subterms of the target goal or hypotheses
+
+
+</ul></div><div class="def"><a id="tactic.elide.unelide"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean#L39">tactic.elide.unelide</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.elide"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean#L58">tactic.interactive.elide</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.small_nat">lean.parser.small_nat</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>The <code>elide n (at ...)</code> tactic hides all subterms of the target goal or hypotheses
  beyond depth <code>n</code> by replacing them with <code>hidden</code>, which is a variant
  on the identity function. (Tactics should still mostly be able to see
  through the abbreviation, but if you want to unhide the term you can use
  <code>unelide</code>.)</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="tactic.interactive.unelide"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean#L66">tactic.interactive.unelide</a></span> <span class="decl_args">(loc : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<div class="indent"><p>The <code>unelide (at ...)</code> tactic removes all <code>hidden</code> subterms in the target
+
+
+
+</ul></div><div class="def"><a id="tactic.interactive.unelide"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean#L66">tactic.interactive.unelide</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.location">interactive.types.location</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
+<p>The <code>unelide (at ...)</code> tactic removes all <code>hidden</code> subterms in the target
  types (usually added by <code>elide</code>).</p>
-       
+       <ul>
 
-</div>
-</div>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">elide</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/elide.lean">(view source on GitHub)</a></div><a href="#tactic.elide.replace">tactic.elide.replace</a><br>

@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://robertylewis.com/mathlib_docs/style_js_frame.css">
+        <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: data.int.gcd</title>
         <meta charset="UTF-8">
     </head>
@@ -1149,88 +1150,121 @@
 
 </div></div>
 <div class="column middle"><div class="content">
-<div class="def"><a id="nat.xgcd_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L17">nat.xgcd_aux</a></span> <span class="decl_args">(a : ℕ)</span> <span class="decl_args">(a_1 a_2 : ℤ)</span> <span class="decl_args">(a_3 : ℕ)</span> <span class="decl_args">(a_4 a_5 : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">ℕ × ℤ × ℤ</div>
-<div class="indent"><p></p>
-       
+<div class="def"><a id="nat.xgcd_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L17">nat.xgcd_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → ℤ → ℤ → ℕ → ℤ → ℤ → ℕ × ℤ × ℤ</div>
+<p></p>
+       <ul>
 
-</div>
-</div><div class="thm"><a id="nat.xgcd_zero_left"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L23">nat.xgcd_zero_left</a></span> <span class="decl_args">{s t : ℤ}</span> <span class="decl_args">{r' : ℕ}</span> <span class="decl_args">{s' t' : ℤ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> 0 s t r' s' t' = (r', s', t')</div>
-<div class="indent"><p></p>
-       
 
-Attributes: simp</div>
-</div><div class="thm"><a id="nat.xgcd_aux_rec"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L26">nat.xgcd_aux_rec</a></span> <span class="decl_args">{r : ℕ}</span> <span class="decl_args">{s t : ℤ}</span> <span class="decl_args">{r' : ℕ}</span> <span class="decl_args">{s' t' : ℤ}</span> <span class="decl_args">(h : 0 < r)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> r s t r' s' t' = <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> (r' % r) (s' - ↑r' / ↑r * s) (t' - ↑r' / ↑r * t) r s t</div>
-<div class="indent"><p></p>
-       
 
-Attributes: simp</div>
-</div><div class="def"><a id="nat.xgcd"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L31">nat.xgcd</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">ℤ × ℤ</div>
-<div class="indent"><p>Use the extended GCD algorithm to generate the <code>a</code> and <code>b</code> values
+
+</ul></div><div class="thm"><a id="nat.xgcd_zero_left"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L23">nat.xgcd_zero_left</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> 0 s t r' s' t' = (r', s', t')</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{s t : ℤ}</span> <span class="impl_arg">{r' : ℕ}</span> <span class="impl_arg">{s' t' : ℤ}</span></li>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="thm"><a id="nat.xgcd_aux_rec"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L26">nat.xgcd_aux_rec</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < r → <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> r s t r' s' t' = <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> (r' % r) (s' - ↑r' / ↑r * s) (t' - ↑r' / ↑r * t) r s t</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{r : ℕ}</span> <span class="impl_arg">{s t : ℤ}</span> <span class="impl_arg">{r' : ℕ}</span> <span class="impl_arg">{s' t' : ℤ}</span></li>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="def"><a id="nat.xgcd"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L31">nat.xgcd</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → ℕ → ℤ × ℤ</div>
+<p>Use the extended GCD algorithm to generate the <code>a</code> and <code>b</code> values
  satisfying <code>gcd x y = x * a + y * b</code>.</p>
-       
+       <ul>
 
-</div>
-</div><div class="def"><a id="nat.gcd_a"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L34">nat.gcd_a</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">ℤ</div>
-<div class="indent"><p>The extended GCD <code>a</code> value in the equation <code>gcd x y = x * a + y * b</code>.</p>
-       
 
-</div>
-</div><div class="def"><a id="nat.gcd_b"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L37">nat.gcd_b</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">ℤ</div>
-<div class="indent"><p>The extended GCD <code>b</code> value in the equation <code>gcd x y = x * a + y * b</code>.</p>
-       
 
-</div>
-</div><div class="thm"><a id="nat.xgcd_aux_fst"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L39">nat.xgcd_aux_fst</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">(s t s' t' : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> x s t y s' t').fst = <a href="https://robertylewis.com/mathlib_docs/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> x y</div>
-<div class="indent"><p></p>
-       
 
-Attributes: simp</div>
-</div><div class="thm"><a id="nat.xgcd_aux_val"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L43">nat.xgcd_aux_val</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> x 1 0 y 0 1 = (<a href="https://robertylewis.com/mathlib_docs/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> x y, <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd">nat.xgcd</a> x y)</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="nat.gcd_a"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L34">nat.gcd_a</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → ℕ → ℤ</div>
+<p>The extended GCD <code>a</code> value in the equation <code>gcd x y = x * a + y * b</code>.</p>
+       <ul>
 
-</div>
-</div><div class="thm"><a id="nat.xgcd_val"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L46">nat.xgcd_val</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd">nat.xgcd</a> x y = (<a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.gcd_a">nat.gcd_a</a> x y, <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.gcd_b">nat.gcd_b</a> x y)</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="nat.xgcd_aux_P"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L54">nat.xgcd_aux_P</a></span> <span class="decl_args">(a b : ℕ)</span> <span class="decl_args">{r r' : ℕ}</span> <span class="decl_args">{s t s' t' : ℤ}</span> <span class="decl_args">(a_1 : P a b (r, s, t))</span> <span class="decl_args">(a_2 : P a b (r', s', t'))</span> <span class="decl_args">:</span>       <div class="decl_type">P a b (<a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> r s t r' s' t')</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="nat.gcd_eq_gcd_ab"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L61">nat.gcd_eq_gcd_ab</a></span> <span class="decl_args">(a b : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(<a href="https://robertylewis.com/mathlib_docs/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> a b) = ↑a * <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.gcd_a">nat.gcd_a</a> a b + ↑b * <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.gcd_b">nat.gcd_b</a> a b</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="int.nat_abs_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L70">int.nat_abs_div</a></span> <span class="decl_args">(a b : ℤ)</span> <span class="decl_args">(H : b ∣ a)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (a / b) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> a / <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> b</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="def"><a id="nat.gcd_b"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L37">nat.gcd_b</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → ℕ → ℤ</div>
+<p>The extended GCD <code>b</code> value in the equation <code>gcd x y = x * a + y * b</code>.</p>
+       <ul>
 
-</div>
-</div><div class="thm"><a id="int.nat_abs_dvd_abs_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L83">int.nat_abs_dvd_abs_iff</a></span> <span class="decl_args">{i j : ℤ}</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> i ∣ <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> j ↔ i ∣ j</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="int.succ_dvd_or_succ_dvd_of_succ_sum_dvd_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L87">int.succ_dvd_or_succ_dvd_of_succ_sum_dvd_mul</a></span> <span class="decl_args">{p : ℕ}</span> <span class="decl_args">(p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">{m n : ℤ}</span> <span class="decl_args">{<a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> l : ℕ}</span> <span class="decl_args">(hpm : ↑(p ^ <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a>) ∣ m)</span> <span class="decl_args">(hpn : ↑(p ^ l) ∣ n)</span> <span class="decl_args">(hpmn : ↑(p ^ (<a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> + l + 1)) ∣ m * n)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(p ^ (<a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> + 1)) ∣ m ∨ ↑(p ^ (l + 1)) ∣ n</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="int.dvd_of_mul_dvd_mul_left"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L99">int.dvd_of_mul_dvd_mul_left</a></span> <span class="decl_args">{i j <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> : ℤ}</span> <span class="decl_args">(k_non_zero : <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> ≠ 0)</span> <span class="decl_args">(H : <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> * i ∣ <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> * j)</span> <span class="decl_args">:</span>       <div class="decl_type">i ∣ j</div>
-<div class="indent"><p></p>
-       
 
-</div>
-</div><div class="thm"><a id="int.dvd_of_mul_dvd_mul_right"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L102">int.dvd_of_mul_dvd_mul_right</a></span> <span class="decl_args">{i j <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> : ℤ}</span> <span class="decl_args">(k_non_zero : <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> ≠ 0)</span> <span class="decl_args">(H : i * <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a> ∣ j * <a href="https://robertylewis.com/mathlib_docs/topology/whoa.html#k">k</a>)</span> <span class="decl_args">:</span>       <div class="decl_type">i ∣ j</div>
-<div class="indent"><p></p>
-       
+</ul></div><div class="thm"><a id="nat.xgcd_aux_fst"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L39">nat.xgcd_aux_fst</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">(s t s' t' : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> x s t y s' t').fst = <a href="https://robertylewis.com/mathlib_docs/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> x y</div>
+<p></p>
+       <ul>
 
-</div>
-</div>
+<li>Attributes: simp</li>
+
+
+</ul></div><div class="thm"><a id="nat.xgcd_aux_val"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L43">nat.xgcd_aux_val</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> x 1 0 y 0 1 = (<a href="https://robertylewis.com/mathlib_docs/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> x y, <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd">nat.xgcd</a> x y)</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="thm"><a id="nat.xgcd_val"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L46">nat.xgcd_val</a></span> <span class="decl_args">(x y : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd">nat.xgcd</a> x y = (<a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.gcd_a">nat.gcd_a</a> x y, <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.gcd_b">nat.gcd_b</a> x y)</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="thm"><a id="nat.xgcd_aux_P"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L54">nat.xgcd_aux_P</a></span> <span class="decl_args">(a b : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">P a b (r, s, t) → P a b (r', s', t') → P a b (<a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.xgcd_aux">nat.xgcd_aux</a> r s t r' s' t')</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{r r' : ℕ}</span> <span class="impl_arg">{s t s' t' : ℤ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="nat.gcd_eq_gcd_ab"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L61">nat.gcd_eq_gcd_ab</a></span> <span class="decl_args">(a b : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(<a href="https://robertylewis.com/mathlib_docs/core/init/data/nat/gcd.html#nat.gcd">nat.gcd</a> a b) = ↑a * <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.gcd_a">nat.gcd_a</a> a b + ↑b * <a href="https://robertylewis.com/mathlib_docs/data/int/gcd.html#nat.gcd_b">nat.gcd_b</a> a b</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="thm"><a id="int.nat_abs_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L70">int.nat_abs_div</a></span> <span class="decl_args">(a b : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">b ∣ a → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (a / b) = <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> a / <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> b</div>
+<p></p>
+       <ul>
+
+
+
+
+</ul></div><div class="thm"><a id="int.nat_abs_dvd_abs_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L83">int.nat_abs_dvd_abs_iff</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> i ∣ <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> j ↔ i ∣ j</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{i j : ℤ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="int.succ_dvd_or_succ_dvd_of_succ_sum_dvd_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L87">int.succ_dvd_or_succ_dvd_of_succ_sum_dvd_mul</a></span> <span class="decl_args">(p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(p ^ k) ∣ m →
+↑(p ^ l) ∣ n → ↑(p ^ (k + l + 1)) ∣ m * n → ↑(p ^ (k + 1)) ∣ m ∨ ↑(p ^ (l + 1)) ∣ n</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">{m n : ℤ}</span> <span class="impl_arg">{k l : ℕ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="int.dvd_of_mul_dvd_mul_left"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L99">int.dvd_of_mul_dvd_mul_left</a></span>  <span class="decl_args">:</span>       <div class="decl_type">k ≠ 0 → k * i ∣ k * j → i ∣ j</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{i j k : ℤ}</span></li>
+
+
+
+</ul></div><div class="thm"><a id="int.dvd_of_mul_dvd_mul_right"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean#L102">int.dvd_of_mul_dvd_mul_right</a></span>  <span class="decl_args">:</span>       <div class="decl_type">k ≠ 0 → i * k ∣ j * k → i ∣ j</div>
+<p></p>
+       <ul>
+<li>Implicit arguments: <span class="impl_arg">{i j k : ℤ}</span></li>
+
+
+
+</ul></div>
 </div></div>
 <div class="column right"><div class="internal_nav">
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">gcd</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/int/gcd.lean">(view source on GitHub)</a></div><a href="#int.dvd_of_mul_dvd_mul_left">int.dvd_of_mul_dvd_mul_left</a><br>
