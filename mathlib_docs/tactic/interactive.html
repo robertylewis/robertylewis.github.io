@@ -1374,17 +1374,17 @@ field so that <code>have_field</code> can be used to generically refer to the fi
 being refined.</p>
 
 <p>As an example, we can use <code>refine_struct</code> to automate the construction semigroup
-instances:
-```lean
-refine_struct ( { .. } : semigroup α ),
+instances:</p>
+
+<pre><code>refine_struct ( { .. } : semigroup α ),
 -- case semigroup, mul
 -- α : Type u,
--- ⊢ α → α → α</p>
+-- ⊢ α → α → α
 
-<p>-- case semigroup, mul_assoc
+-- case semigroup, mul_assoc
 -- α : Type u,
 -- ⊢ ∀ (a b c : α), a * b * c = a * (b * c)
-```</p>
+</code></pre>
        <ul>
 
 
@@ -1467,17 +1467,17 @@ We use this tactic for writing tests.</p>
 <p><code>have_field</code>, used after <code>refine_struct _</code> poses <code>field</code> as a local constant
 with the type of the field of the current goal:</p>
 
-<p><code>lean
-refine_struct ({ .. } : semigroup α),
+<pre><code>refine_struct ({ .. } : semigroup α),
 { have_field, ... },
 { have_field, ... },
-</code>
-behaves like
-<code>lean
-refine_struct ({ .. } : semigroup α),
+</code></pre>
+
+<p>behaves like</p>
+
+<pre><code>refine_struct ({ .. } : semigroup α),
 { have field := @semigroup.mul, ... },
 { have field := @semigroup.mul_assoc, ... },
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -1496,23 +1496,23 @@ first goal and the resulting subgoals, iteratively, at most <code>n</code> times
 <code>n</code> is 50 by default. <code>hs</code> can contain user attributes: in this case all theorems with this
 attribute are added to the list of rules.</p>
 
-<p>example, with or without user attribute:
-``<code>lean
-@[user_attribute]
+<p>example, with or without user attribute:</p>
+
+<pre><code>@[user_attribute]
 meta def mono_rules : user_attribute :=
-{ name :=</code>mono_rules,
-  descr := "lemmas usable to prove monotonicity" }</p>
+{ name := `mono_rules,
+  descr := "lemmas usable to prove monotonicity" }
 
-<p>attribute [mono_rules] add_le_add mul_le_mul_of_nonneg_right</p>
+attribute [mono_rules] add_le_add mul_le_mul_of_nonneg_right
 
-<p>lemma my_test {a b c d e : real} (h1 : a ≤ b) (h2 : c ≤ d) (h3 : 0 ≤ e) :
+lemma my_test {a b c d e : real} (h1 : a ≤ b) (h2 : c ≤ d) (h3 : 0 ≤ e) :
 a + c * e + a + c + 0 ≤ b + d * e + b + d + e :=
 by apply_rules mono_rules
 -- any of the following lines would also work:
 -- add_le_add (add_le_add (add_le_add (add_le_add h1 (mul_le_mul_of_nonneg_right h2 h3)) h1 ) h2) h3
 -- by apply_rules [add_le_add, mul_le_mul_of_nonneg_right]
 -- by apply_rules [mono_rules]
-```</p>
+</code></pre>
        <ul>
 
 
@@ -1579,8 +1579,7 @@ into context a function <code>a : X → Y → A</code>, <code>b : X → Y → B<
 
 <p>Example:</p>
 
-<p><code>lean
-example (h : ∀n m : ℕ, ∃i j, m = n + i ∨ m + j = n) : true :=
+<pre><code>example (h : ∀n m : ℕ, ∃i j, m = n + i ∨ m + j = n) : true :=
 begin
   choose i j h using h,
   guard_hyp i := ℕ → ℕ → ℕ,
@@ -1588,7 +1587,7 @@ begin
   guard_hyp h := ∀ (n m : ℕ), m = n + i n m ∨ m + j n m = n,
   trivial
 end
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -1770,47 +1769,39 @@ called <code>my_decl</code></li>
 
 <p>Examples:</p>
 
-<p>```lean
-example (i j k : ℕ) (h₀ : i ≤ j) (h₁ : j ≤ k) : i ≤ k :=
+<pre><code>example (i j k : ℕ) (h₀ : i ≤ j) (h₁ : j ≤ k) : i ≤ k :=
 begin
   extract_goal,
      -- prints:
      -- example {i j k : ℕ} (h₀ : i ≤ j) (h₁ : j ≤ k) : i ≤ k :=
-     -- begin</p>
+     -- begin
 
-<pre><code> -- end
-</code></pre>
-
-<p>extract_goal my_lemma
+     -- end
+  extract_goal my_lemma
      -- lemma my_lemma {i j k : ℕ} (h₀ : i ≤ j) (h₁ : j ≤ k) : i ≤ k :=
-     -- begin</p>
+     -- begin
 
-<pre><code> -- end
-</code></pre>
+     -- end
+end
 
-<p>end</p>
-
-<p>example {i j k x y z w p q r m n : ℕ} (h₀ : i ≤ j) (h₁ : j ≤ k) (h₁ : k ≤ p) (h₁ : p ≤ q) : i ≤ k :=
+example {i j k x y z w p q r m n : ℕ} (h₀ : i ≤ j) (h₁ : j ≤ k) (h₁ : k ≤ p) (h₁ : p ≤ q) : i ≤ k :=
 begin
   extract_goal my_lemma,
     -- prints:
     -- lemma my_lemma {i j k x y z w p q r m n : ℕ} (h₀ : i ≤ j) (h₁ : j ≤ k)
     --   (h₁ : k ≤ p) (h₁ : p ≤ q) : i ≤ k :=
-    -- begin</p>
+    -- begin
 
-<pre><code>-- end
-</code></pre>
+    -- end
 
-<p>extract_goal my_lemma with i j k
+  extract_goal my_lemma with i j k
     -- prints:
     -- lemma my_lemma {i j k : ℕ} : i ≤ k :=
-    -- begin</p>
+    -- begin
 
-<pre><code>-- end
+    -- end
+end
 </code></pre>
-
-<p>end
-```</p>
        <ul>
 
 

@@ -1220,24 +1220,27 @@ Fields:
 </ul></div><div class="def"><a id="tactic.interactive.lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/lift.lean#L141">tactic.interactive.lift</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.texpr">interactive.types.texpr</a> →
 <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/tactic/lift.html#tactic.to_texpr">tactic.to_texpr</a> →
 <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/tactic/lift.html#tactic.using_texpr">tactic.using_texpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.with_ident_list">interactive.types.with_ident_list</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Lift an expression to another type.
- * Usage: <code>'lift' expr 'to' expr ('using' expr)? ('with' id (id id?)?)?</code>.
- * If <code>n : ℤ</code> and <code>hn : n ≥ 0</code> then the tactic <code>lift n to ℕ using hn</code> creates a new
-   constant of type ℕ, also named <code>n</code> and replaces all occurrences of the old variable <code>(n : ℤ)</code>
-   with <code>↑n</code> (where <code>n</code> in the new variable). It will remove <code>n</code> and <code>hn</code> from the context.
- * The argument <code>using hn</code> is optional, the tactic <code>lift n to ℕ</code> does the same, but also creates a
-   new subgoal that <code>n ≥ 0</code> (where <code>n</code> is the old variable).
- * You can also use <code>lift n to ℕ using e</code> where <code>e</code> is any expression of type <code>n ≥ 0</code>.
- * Use <code>lift n to ℕ with k</code> to specify the name of the new variable.
- * Use <code>lift n to ℕ with k hk</code> to also specify the name of the equality <code>↑k = n</code>. In this case, <code>n</code>
-   will remain in the context. You can use <code>rfl</code> for the name of <code>hk</code> to substitute it away.
- * You can also use <code>lift e to ℕ with k hk</code> where <code>e</code> is any expression of type <code>ℤ</code>.
-   In this case, the <code>hk</code> will always stay in the context, but it will be used to rewrite <code>e</code> in
-   all hypotheses and the target.
- * The tactic <code>lift n to ℕ using h</code> will remove <code>h</code> from the context. If you want to keep it,
-   specify it again as the third argument to <code>with</code>, like this: <code>lift n to ℕ using h with n rfl h</code>.
- * More generally, this can lift an expression from <code>α</code> to <code>β</code> assuming that there is an instance
-   of <code>can_lift α β</code>. In this case the proof obligation is specified by <code>can_lift.cond</code>.</p>
+<p>Lift an expression to another type.</p>
+
+<ul>
+<li>Usage: <code>'lift' expr 'to' expr ('using' expr)? ('with' id (id id?)?)?</code>.</li>
+<li>If <code>n : ℤ</code> and <code>hn : n ≥ 0</code> then the tactic <code>lift n to ℕ using hn</code> creates a new
+constant of type ℕ, also named <code>n</code> and replaces all occurrences of the old variable <code>(n : ℤ)</code>
+with <code>↑n</code> (where <code>n</code> in the new variable). It will remove <code>n</code> and <code>hn</code> from the context.</li>
+<li>The argument <code>using hn</code> is optional, the tactic <code>lift n to ℕ</code> does the same, but also creates a
+new subgoal that <code>n ≥ 0</code> (where <code>n</code> is the old variable).</li>
+<li>You can also use <code>lift n to ℕ using e</code> where <code>e</code> is any expression of type <code>n ≥ 0</code>.</li>
+<li>Use <code>lift n to ℕ with k</code> to specify the name of the new variable.</li>
+<li>Use <code>lift n to ℕ with k hk</code> to also specify the name of the equality <code>↑k = n</code>. In this case, <code>n</code>
+will remain in the context. You can use <code>rfl</code> for the name of <code>hk</code> to substitute it away.</li>
+<li>You can also use <code>lift e to ℕ with k hk</code> where <code>e</code> is any expression of type <code>ℤ</code>.
+In this case, the <code>hk</code> will always stay in the context, but it will be used to rewrite <code>e</code> in
+all hypotheses and the target.</li>
+<li>The tactic <code>lift n to ℕ using h</code> will remove <code>h</code> from the context. If you want to keep it,
+specify it again as the third argument to <code>with</code>, like this: <code>lift n to ℕ using h with n rfl h</code>.</li>
+<li>More generally, this can lift an expression from <code>α</code> to <code>β</code> assuming that there is an instance
+of <code>can_lift α β</code>. In this case the proof obligation is specified by <code>can_lift.cond</code>.</li>
+</ul>
        <ul>
 
 

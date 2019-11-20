@@ -1332,13 +1332,14 @@ Covers all declarations from the current file.</p>
 <p>Returns a pair (e, t), where <code>e ← mk_const d.to_name</code>, and <code>t = d.type</code>
 but with universe params updated to match the fresh universe metavariables in <code>e</code>.</p>
 
-<p>This should have the same effect as just
-<code>lean
-do e ← mk_const d.to_name,
+<p>This should have the same effect as just</p>
+
+<pre><code>do e ← mk_const d.to_name,
    t ← infer_type e,
    return (e, t)
-</code>
-but is hopefully faster.</p>
+</code></pre>
+
+<p>but is hopefully faster.</p>
        <ul>
 
 
@@ -1572,12 +1573,15 @@ via type class resolution, and updates the cache.</p>
    use <code>tac</code> to (partially) construct a proof for it. <code>gs</code> is the
    list of remaining goals in the proof of <code>h</code>.</p>
 
-<p>The benefits over assert are:
-   - unlike with <code>h ← assert `h p, tac</code> , <code>h</code> cannot be used by <code>tac</code>;
-   - when <code>tac</code> does not complete the proof of <code>h</code>, returning the list
-     of goals allows one to write a tactic using <code>h</code> and with the confidence
-     that a proof will not boil over to goals left over from the proof of <code>h</code>,
-     unlike what would be the case when using <code>tactic.swap</code>.</p>
+<p>The benefits over assert are:</p>
+
+<ul>
+<li>unlike with <code>h ← assert `h p, tac</code> , <code>h</code> cannot be used by <code>tac</code>;</li>
+<li>when <code>tac</code> does not complete the proof of <code>h</code>, returning the list
+ of goals allows one to write a tactic using <code>h</code> and with the confidence
+ that a proof will not boil over to goals left over from the proof of <code>h</code>,
+ unlike what would be the case when using <code>tactic.swap</code>.</li>
+</ul>
        <ul>
 
 
@@ -1658,10 +1662,13 @@ fail if none succeeds</p>
 
 
 </ul></div><div class="def"><a id="tactic.build_list_expr_for_apply"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/core.lean#L541">tactic.build_list_expr_for_apply</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div>
-<p>constructs a list of expressions given a list of p-expressions, as follows:
-- if the p-expression is the name of a theorem, use <code>i_to_expr_for_apply</code> on it
-- if the p-expression is a user attribute, add all the theorems with this attribute
-  to the list.</p>
+<p>constructs a list of expressions given a list of p-expressions, as follows:</p>
+
+<ul>
+<li>if the p-expression is the name of a theorem, use <code>i_to_expr_for_apply</code> on it</li>
+<li>if the p-expression is a user attribute, add all the theorems with this attribute
+to the list.</li>
+</ul>
        <ul>
 
 
@@ -1985,15 +1992,13 @@ of the previous local constants. <code>l</code> is a list of local constants and
 
 <p>In the following:</p>
 
-<p><code>lean
-instance : monad id :=
+<pre><code>instance : monad id :=
 {! !}
-</code></p>
+</code></pre>
 
 <p>invoking hole command <code>Instance Stub</code> produces:</p>
 
-<p><code>lean
-instance : monad id :=
+<pre><code>instance : monad id :=
 { map := _,
   map_const := _,
   pure := _,
@@ -2001,7 +2006,7 @@ instance : monad id :=
   seq_left := _,
   seq_right := _,
   bind := _ }
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -2035,15 +2040,13 @@ instance : monad id :=
 
 <p>In the following:</p>
 
-<p><code>lean
-meta def foo (e : expr) : tactic unit :=
+<pre><code>meta def foo (e : expr) : tactic unit :=
 {! e !}
-</code></p>
+</code></pre>
 
 <p>invoking hole command <code>Match Stub</code> produces:</p>
 
-<p><code>lean
-meta def foo (e : expr) : tactic unit :=
+<pre><code>meta def foo (e : expr) : tactic unit :=
 match e with
 | (expr.var a) := _
 | (expr.sort a) := _
@@ -2056,7 +2059,7 @@ match e with
 | (expr.elet a a_1 a_2 a_3) := _
 | (expr.macro a a_1) := _
 end
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -2067,14 +2070,12 @@ end
 
 <p>In the following:</p>
 
-<p><code>lean
-meta def foo : {! expr → tactic unit !} -- `:=` is omitted
-</code></p>
+<pre><code>meta def foo : {! expr → tactic unit !} -- `:=` is omitted
+</code></pre>
 
 <p>invoking hole command <code>Equations Stub</code> produces:</p>
 
-<p><code>lean
-meta def foo : expr → tactic unit
+<pre><code>meta def foo : expr → tactic unit
 | (expr.var a) := _
 | (expr.sort a) := _
 | (expr.const a a_1) := _
@@ -2085,17 +2086,15 @@ meta def foo : expr → tactic unit
 | (expr.pi a a_1 a_2 a_3) := _
 | (expr.elet a a_1 a_2 a_3) := _
 | (expr.macro a a_1) := _
-</code></p>
+</code></pre>
 
 <p>A similar result can be obtained by invoking <code>Equations Stub</code> on the following:</p>
 
-<p><code>lean
-meta def foo : expr → tactic unit := -- do not forget to write `:=`!!
+<pre><code>meta def foo : expr → tactic unit := -- do not forget to write `:=`!!
 {! !}
-</code></p>
+</code></pre>
 
-<p><code>lean
-meta def foo : expr → tactic unit := -- don't forget to erase `:=`!!
+<pre><code>meta def foo : expr → tactic unit := -- don't forget to erase `:=`!!
 | (expr.var a) := _
 | (expr.sort a) := _
 | (expr.const a a_1) := _
@@ -2106,7 +2105,7 @@ meta def foo : expr → tactic unit := -- don't forget to erase `:=`!!
 | (expr.pi a a_1 a_2 a_3) := _
 | (expr.elet a a_1 a_2 a_3) := _
 | (expr.macro a a_1) := _
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -2117,25 +2116,22 @@ meta def foo : expr → tactic unit := -- don't forget to erase `:=`!!
 
 <p>When used in the following hole:</p>
 
-<p><code>lean
-def foo : ℤ ⊕ ℕ :=
+<pre><code>def foo : ℤ ⊕ ℕ :=
 {! !}
-</code></p>
+</code></pre>
 
 <p>the command will produce:</p>
 
-<p><code>lean
-def foo : ℤ ⊕ ℕ :=
+<pre><code>def foo : ℤ ⊕ ℕ :=
 {! sum.inl, sum.inr !}
-</code></p>
+</code></pre>
 
 <p>and will display:</p>
 
-<p>```lean
-sum.inl : ℤ → ℤ ⊕ ℕ</p>
+<pre><code>sum.inl : ℤ → ℤ ⊕ ℕ
 
-<p>sum.inr : ℕ → ℤ ⊕ ℕ
-```</p>
+sum.inr : ℕ → ℤ ⊕ ℕ
+</code></pre>
        <ul>
 
 
@@ -2179,10 +2175,9 @@ It derives an auxiliary lemma of the form <code>f ∘ g = h</code> for reasoning
 at the beginning of a target. Unlike <code>existsi</code>, the pexprs in <code>l</code> are elaborated with respect to
 the expected type.</p>
 
-<p><code>lean
-example : ∃ x : ℤ, x = x :=
+<pre><code>example : ∃ x : ℤ, x = x :=
 by tactic.use ``(42)
-</code></p>
+</code></pre>
 
 <p>See the doc string for <code>tactic.interactive.use</code> for more information.</p>
        <ul>
@@ -2301,19 +2296,18 @@ and fails otherwise.</p>
 <p>The main differences are that <code>pp</code> is called instead of <code>to_fmt</code> and that we can use
 arguments of type <code>tactic α</code> in the quotations.</p>
 
-<p>Now, consider the following:
-<code>lean
-e ← to_expr ``(3 + 7),
+<p>Now, consider the following:</p>
+
+<pre><code>e ← to_expr ``(3 + 7),
 trace format!"{e}"  -- outputs `has_add.add.{0} nat nat.has_add (bit1.{0} nat nat.has_one nat.has_add (has_one.one.{0} nat nat.has_one)) ...`
 trace pformat!"{e}" -- outputs `3 + 7`
-</code></p>
+</code></pre>
 
 <p>The difference is significant. And now, the following is expressible:</p>
 
-<p><code>lean
-e ← to_expr ``(3 + 7),
+<pre><code>e ← to_expr ``(3 + 7),
 trace pformat!"{e} : {infer_type e}" -- outputs `3 + 7 : ℕ`
-</code></p>
+</code></pre>
 
 <p>See also: <code>trace!</code> and <code>fail!</code></p>
        <ul>
@@ -2363,11 +2357,12 @@ All arguments (implicit and explicit) to <code>arg</code> should be supplied.</p
 </ul></div><div class="def"><a id="tactic.delta_instance"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/core.lean#L1377">tactic.delta_instance</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/derive.html#derive_handler">derive_handler</a></div>
 <p>Tries to derive instances by unfolding the newly introduced type and applying type class resolution.</p>
 
-<p>For example,
-<code>lean
-@[derive ring] def new_int : Type := ℤ
-</code>
-adds an instance <code>ring new_int</code>, defined to be the instance of <code>ring ℤ</code> found by <code>apply_instance</code>.</p>
+<p>For example,</p>
+
+<pre><code>@[derive ring] def new_int : Type := ℤ
+</code></pre>
+
+<p>adds an instance <code>ring new_int</code>, defined to be the instance of <code>ring ℤ</code> found by <code>apply_instance</code>.</p>
 
 <p>Multiple instances can be added with <code>@[derive [ring, module ℝ]]</code>.</p>
 

@@ -1254,13 +1254,13 @@ along with an instance that it is <code>fully_faithful</code>.</p>
 </ul></div><div class="def"><a id="category_theory.yoneda.ext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category_theory/yoneda.lean#L71">category_theory.yoneda.ext</a></span> <span class="decl_args">(X Y : C)</span> <span class="decl_args">(p : Π {Z : C}, (Z ⟶ X) → (Z ⟶ Y))</span> <span class="decl_args">(q : Π {Z : C}, (Z ⟶ Y) → (Z ⟶ X))</span> <span class="decl_args">:</span>       <div class="decl_type">(∀ {Z : C} (f : Z ⟶ X), q (p f) = f) →
 (∀ {Z : C} (f : Z ⟶ Y), p (q f) = f) →
 (∀ {Z Z' : C} (f : Z' ⟶ Z) (g : Z ⟶ X), p (f ≫ g) = f ≫ p g) → (X ≅ Y)</div>
-<p>Extensionality via Yoneda. The typical usage would be
-<code>lean
--- Goal is `X ≅ Y`
+<p>Extensionality via Yoneda. The typical usage would be</p>
+
+<pre><code>-- Goal is `X ≅ Y`
 apply yoneda.ext,
 -- Goals are now functions `(Z ⟶ X) → (Z ⟶ Y)`, `(Z ⟶ Y) → (Z ⟶ X)`, and the fact that these
 functions are inverses and natural in `Z`.
-</code></p>
+</code></pre>
        <ul>
 <li>Implicit arguments: <span class="impl_arg">{C : Type u₁}</span> <span class="impl_arg">[𝒞 : <a href="https://robertylewis.com/mathlib_docs/category_theory/category/default.html#category_theory.category">category_theory.category</a> C]</span></li>
 

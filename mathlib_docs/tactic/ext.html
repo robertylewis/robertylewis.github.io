@@ -1156,21 +1156,19 @@ the equality of all non-propositional projections.</p>
 
 <p>On the following:</p>
 
-<p><code>lean
-@[ext]
+<pre><code>@[ext]
 structure foo (α : Type*) :=
 (x y : ℕ)
 (z : {z // z &lt; x})
 (k : α)
 (h : x &lt; y)
-</code></p>
+</code></pre>
 
 <p><code>derive_struct_lemma</code> generates:</p>
 
-<p><code>lean
-lemma foo.ext : ∀ {α : Type u_1} (x y : foo α), x.x = y.x → x.y = y.y → x.z == y.z → x.k = y.k → x = y
+<pre><code>lemma foo.ext : ∀ {α : Type u_1} (x y : foo α), x.x = y.x → x.y = y.y → x.z == y.z → x.k = y.k → x = y
 lemma foo.ext_iff : ∀ {α : Type u_1} (x y : foo α), x = y ↔ x.x = y.x ∧ x.y = y.y ∧ x.z == y.z ∧ x.k = y.k
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -1221,83 +1219,77 @@ lemma foo.ext_iff : ∀ {α : Type u_1} (x y : foo α), x = y ↔ x.x = y.x ∧ 
 </ul></div><div class="def"><a id="extensional_attribute"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/ext.lean#L233">extensional_attribute</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/rb_map.html#name_map">name_map</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>) (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/ext.html#ext_param_type">ext_param_type</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>))</div>
 <p>Tag lemmas of the form:</p>
 
-<p><code>lean
-@[ext]
+<pre><code>@[ext]
 lemma my_collection.ext (a b : my_collection)
   (h : ∀ x, a.lookup x = b.lookup y) :
   a = b := ...
-</code></p>
+</code></pre>
 
 <p>The attribute indexes extensionality lemma using the type of the
 objects (i.e. <code>my_collection</code>) which it gets from the statement of
 the lemma.  In some cases, the same lemma can be used to state the
 extensionality of multiple types that are definitionally equivalent.</p>
 
-<p><code>lean
-attribute [ext [(→),thunk,stream]] funext
-</code></p>
+<pre><code>attribute [ext [(→),thunk,stream]] funext
+</code></pre>
 
 <p>Those parameters are cumulative. The following are equivalent:</p>
 
-<p><code>lean
-attribute [ext [(→),thunk]] funext
+<pre><code>attribute [ext [(→),thunk]] funext
 attribute [ext [stream]] funext
-</code>
-and
-<code>lean
-attribute [ext [(→),thunk,stream]] funext
-</code></p>
+</code></pre>
 
-<p>One removes type names from the list for one lemma with:
-<code>lean
-attribute [ext [-stream,-thunk]] funext
-</code></p>
+<p>and</p>
 
-<p>Also, the following:</p>
+<pre><code>attribute [ext [(→),thunk,stream]] funext
+</code></pre>
 
-<p><code>lean
+<p>One removes type names from the list for one lemma with:</p>
+
+<pre><code>attribute [ext [-stream,-thunk]] funext
+ ```
+
+Also, the following:
+
+```lean
 @[ext]
 lemma my_collection.ext (a b : my_collection)
   (h : ∀ x, a.lookup x = b.lookup y) :
   a = b := ...
-</code></p>
+</code></pre>
 
 <p>is equivalent to</p>
 
-<p><code>lean
-@[ext *]
+<pre><code>@[ext *]
 lemma my_collection.ext (a b : my_collection)
   (h : ∀ x, a.lookup x = b.lookup y) :
   a = b := ...
-</code></p>
+</code></pre>
 
 <p>This allows us specify type synonyms along with the type
 that referred to in the lemma statement.</p>
 
-<p><code>lean
-@[ext [*,my_type_synonym]]
+<pre><code>@[ext [*,my_type_synonym]]
 lemma my_collection.ext (a b : my_collection)
   (h : ∀ x, a.lookup x = b.lookup y) :
   a = b := ...
-</code></p>
+</code></pre>
 
 <p>Attribute <code>ext</code> can be applied to a structure to generate its extensionality lemma:</p>
 
-<p><code>lean
-@[ext]
+<pre><code>@[ext]
 structure foo (α : Type*) :=
 (x y : ℕ)
 (z : {z // z &lt; x})
 (k : α)
 (h : x &lt; y)
-</code></p>
+</code></pre>
 
 <p>will generate:</p>
 
-<p><code>lean
-@[ext] lemma foo.ext : ∀ {α : Type u_1} (x y : foo α), x.x = y.x → x.y = y.y → x.z == y.z → x.k = y.k → x = y
+<pre><code>@[ext] lemma foo.ext : ∀ {α : Type u_1} (x y : foo α), x.x = y.x → x.y = y.y → x.z == y.z → x.k = y.k → x = y
 lemma foo.ext_iff : ∀ {α : Type u_1} (x y : foo α), x = y ↔ x.x = y.x ∧ x.y = y.y ∧ x.z == y.z ∧ x.k = y.k
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -1367,21 +1359,19 @@ until it runs out of identifiers in <code>ids</code> to name the local constants
 
 <p>When trying to prove:</p>
 
-<p><code>lean
-α β : Type,
+<pre><code>α β : Type,
 f g : α → set β
 ⊢ f = g
-</code></p>
+</code></pre>
 
 <p>applying <code>ext x y</code> yields:</p>
 
-<p><code>lean
-α β : Type,
+<pre><code>α β : Type,
 f g : α → set β,
 x : α,
 y : β
 ⊢ y ∈ f x ↔ y ∈ f x
-</code></p>
+</code></pre>
 
 <p>by applying functional extensionality and set extensionality.</p>
 

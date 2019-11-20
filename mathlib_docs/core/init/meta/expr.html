@@ -1179,16 +1179,13 @@ Fields:
 <p>Auxiliary annotation for binders (Lambda and Pi).
     This information is only used for elaboration.
       The difference between <code>{}</code> and <code>⦃⦄</code> is how implicit arguments are treated that are <em>not</em> followed by explicit arguments.
-  <code>{}</code> arguments are applied eagerly, while <code>⦃⦄</code> arguments are left partially applied:
-```lean
-def foo {x : ℕ} : ℕ := x
-def bar ⦃x : ℕ⦄ : ℕ := x</p>
+  <code>{}</code> arguments are applied eagerly, while <code>⦃⦄</code> arguments are left partially applied:</p>
 
-<h1>check foo -- foo : ℕ</h1>
-
-<h1>check bar -- bar : Π ⦃x : ℕ⦄, ℕ</h1>
-
-<p>```</p>
+<pre><code>def foo {x : ℕ} : ℕ := x
+def bar ⦃x : ℕ⦄ : ℕ := x
+#check foo -- foo : ℕ
+#check bar -- bar : Π ⦃x : ℕ⦄, ℕ
+</code></pre>
        <ul>
 
 
@@ -1211,25 +1208,28 @@ Constructors:
 </ul></div><div class="cnst"><a id="macro_def"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/expr.lean#L78">macro_def</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
 <p>Macros are basically "promises" to build an expr by some C++ code, you can't build them in Lean.
   You can unfold a macro and force it to evaluate.
-  They are used for
-  - <code>sorry</code>.
-  - Term placeholders (<code>_</code>) in <code>pexpr</code>s.
-  - Expression annotations. See <code>expr.is_annotation</code>.
-  - Meta-recursive calls. Eg:
-    <code>lean
-    meta def Y : (α → α) → α | f := f (Y f)
+  They are used for</p>
+
+<ul>
+<li><code>sorry</code>.</li>
+<li>Term placeholders (<code>_</code>) in <code>pexpr</code>s.</li>
+<li>Expression annotations. See <code>expr.is_annotation</code>.</li>
+<li>Meta-recursive calls. Eg:
+<code>lean
+meta def Y : (α → α) → α | f := f (Y f)
 </code>
-    The <code>Y</code> that appears in <code>f (Y f)</code> is a macro.
-  - Builtin projections:
-    <code>lean
-    structure foo := (mynat : ℕ)
-    #print foo.mynat
-    -- @[reducible]
-    -- def foo.mynat : foo → ℕ :=
-    -- λ (c : foo), [foo.mynat c]
+The <code>Y</code> that appears in <code>f (Y f)</code> is a macro.</li>
+<li>Builtin projections:
+<code>lean
+structure foo := (mynat : ℕ)
+#print foo.mynat
+-- @[reducible]
+-- def foo.mynat : foo → ℕ :=
+-- λ (c : foo), [foo.mynat c]
 </code>
-    The thing in square brackets is a macro.
-  - Ephemeral structures inside certain specialised C++ implemented tactics.</p>
+The thing in square brackets is a macro.</li>
+<li>Ephemeral structures inside certain specialised C++ implemented tactics.</li>
+</ul>
        <ul>
 
 
@@ -1475,9 +1475,12 @@ Otherwise if <code>some s'</code> is returned, <code>s'</code> will replace <cod
 
 </ul></div><div class="cnst"><a id="expr.lower_vars"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/expr.lean#L207">expr.lower_vars</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → ℕ → ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
 <p><code>lower_vars e s d</code> lowers the free variables &gt;= s in <code>e</code> by <code>d</code>. Note that this can cause variable clashes.
-   examples:
-   -  <code>lower_vars `(#2 #1 #0) 1 1 = `(#1 #0 #0)</code>
-   -  <code>lower_vars `(λ x, #2 #1 #0) 1 1 = `(λ x, #1 #1 #0 )</code></p>
+   examples:</p>
+
+<ul>
+<li><code>lower_vars `(#2 #1 #0) 1 1 = `(#1 #0 #0)</code></li>
+<li><code>lower_vars `(λ x, #2 #1 #0) 1 1 = `(λ x, #1 #1 #0 )</code></li>
+</ul>
        <ul>
 
 
@@ -1505,13 +1508,14 @@ Otherwise if <code>some s'</code> is returned, <code>s'</code> will replace <cod
 
 
 </ul></div><div class="cnst"><a id="expr.is_internal_cnstr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/expr.lean#L222">expr.is_internal_cnstr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/unsigned/basic.html#unsigned">unsigned</a></div>
-<p>Returns <code>some n</code> when the given expression is a constant with the name <code>..._cnstr.n</code>
-<code>lean
-is_internal_cnstr : expr → option unsigned
+<p>Returns <code>some n</code> when the given expression is a constant with the name <code>..._cnstr.n</code></p>
+
+<pre><code>is_internal_cnstr : expr → option unsigned
 |(const (mk_numeral n (mk_string "_cnstr" _)) _) := some n
 |_ := none
-</code>
-[NOTE] This is not used anywhere in core Lean.</p>
+</code></pre>
+
+<p>[NOTE] This is not used anywhere in core Lean.</p>
        <ul>
 
 

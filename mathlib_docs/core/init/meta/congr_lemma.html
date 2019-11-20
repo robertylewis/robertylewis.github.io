@@ -1151,19 +1151,22 @@
 </div></div>
 <div class="column middle"><div class="content">
 <div class="inductive"><a id="congr_arg_kind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/congr_lemma.lean#L23">congr_arg_kind</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p>This is a kind attached to an argument of a congruence lemma that tells the simplifier how to fill it in.
-- <code>fixed</code>: It is a parameter for the congruence lemma, the parameter occurs in the left and right hand sides. 
-  For example the α in the congruence generated from <code>f: Π {α : Type} α → α</code>.
-- <code>fixed_no_param</code>: It is not a parameter for the congruence lemma, the lemma was specialized for this parameter.
-  This only happens if the parameter is a subsingleton/proposition, and other parameters depend on it.
-  [TODO] example.
-- <code>eq</code>: The lemma contains three parameters for this kind of argument <code>a_i</code>, <code>b_i</code> and <code>(eq_i : a_i = b_i)</code>.
-  <code>a_i</code> and <code>b_i</code> represent the left and right hand sides, and <code>eq_i</code> is a proof for their equality.
-  For example the second argument in <code>f: Π {α : Type}, α → α</code>. 
-- <code>cast</code>: corresponds to arguments that are subsingletons/propositions. 
-  For example the <code>p</code> in the congruence generated from <code>f : Π (x y : ℕ) (p: x &lt; y), ℕ</code>.
-- <code>heq</code> The lemma contains three parameters for this kind of argument <code>a_i</code>, <code>b_i</code> and <code>(eq_i : a_i == b_i)</code>.
-   <code>a_i</code> and <code>b_i</code> represent the left and right hand sides, and eq_i is a proof for their heterogeneous equality.</p>
+<p>This is a kind attached to an argument of a congruence lemma that tells the simplifier how to fill it in.</p>
+
+<ul>
+<li><code>fixed</code>: It is a parameter for the congruence lemma, the parameter occurs in the left and right hand sides. 
+For example the α in the congruence generated from <code>f: Π {α : Type} α → α</code>.</li>
+<li><code>fixed_no_param</code>: It is not a parameter for the congruence lemma, the lemma was specialized for this parameter.
+This only happens if the parameter is a subsingleton/proposition, and other parameters depend on it.
+[TODO] example.</li>
+<li><code>eq</code>: The lemma contains three parameters for this kind of argument <code>a_i</code>, <code>b_i</code> and <code>(eq_i : a_i = b_i)</code>.
+<code>a_i</code> and <code>b_i</code> represent the left and right hand sides, and <code>eq_i</code> is a proof for their equality.
+For example the second argument in <code>f: Π {α : Type}, α → α</code>. </li>
+<li><code>cast</code>: corresponds to arguments that are subsingletons/propositions. 
+For example the <code>p</code> in the congruence generated from <code>f : Π (x y : ℕ) (p: x &lt; y), ℕ</code>.</li>
+<li><code>heq</code> The lemma contains three parameters for this kind of argument <code>a_i</code>, <code>b_i</code> and <code>(eq_i : a_i == b_i)</code>.
+<code>a_i</code> and <code>b_i</code> represent the left and right hand sides, and eq_i is a proof for their heterogeneous equality.</li>
+</ul>
        <ul>
 
 
@@ -1219,14 +1222,15 @@ creates a congruence lemma for the simplifier for the given function argument <c
 If <code>nargs</code> is not none, then it tries to create a lemma for an application of arity <code>nargs</code>.
 If <code>nargs</code> is none then the number of arguments will be guessed from the type signature of <code>f</code>.</p>
 
-<p>That is, given <code>f : Π {α β γ δ : Type}, α → β → γ → δ</code> and <code>nargs = some 6</code>, we get a congruence lemma:
-<code>lean
-{ type := ∀ (α β γ δ : Type), ∀ (a₁ a₂ : α), a₁ = a₂ → ∀ (b₁ b₂ : β), b₁ = b₂ → f a₁ b₁ = f a₂ b₂
+<p>That is, given <code>f : Π {α β γ δ : Type}, α → β → γ → δ</code> and <code>nargs = some 6</code>, we get a congruence lemma:</p>
+
+<pre><code>{ type := ∀ (α β γ δ : Type), ∀ (a₁ a₂ : α), a₁ = a₂ → ∀ (b₁ b₂ : β), b₁ = b₂ → f a₁ b₁ = f a₂ b₂
 , proof := ...
 , arg_kinds := [fixed, fixed, fixed, fixed, eq,eq]
 }
-</code>
-See the docstrings for the cases of <code>congr_arg_kind</code> for more detail on how <code>arg_kinds</code> are chosen.
+</code></pre>
+
+<p>See the docstrings for the cases of <code>congr_arg_kind</code> for more detail on how <code>arg_kinds</code> are chosen.
 It can be difficult to see how the system chooses the <code>arg_kinds</code>, but it depends on what the other arguments depend on and whether the arguments have subsingleton types.</p>
 
 <p>[NOTE] The number of arguments that <code>proof</code> takes can be inferred from <code>arg_kinds</code>: <code>arg_kinds.sum (fixed,cast ↦ 1 | eq,heq ↦ 3 | fixed_no_param ↦ 0)</code>.</p>
@@ -1259,9 +1263,12 @@ It can be difficult to see how the system chooses the <code>arg_kinds</code>, bu
 <p>Similar to <code>mk_congr_lemma_simp</code>, this will make a <code>congr_lemma</code> object.
    The difference is that for each <code>congr_arg_kind.cast</code> argument, two proof arguments are generated.</p>
 
-<p>Consider some function <code>f : Π (x : ℕ) (p : x &lt; 4), ℕ</code>.
-   - <code>mk_congr_simp</code> will produce a congruence lemma with type <code>∀ (x x_1 : ℕ) (e_1 : x = x_1) (p : x &lt; 4), cheese x p = cheese x_1 _</code>.
-   - <code>mk_congr</code> will produce a congruence lemma with type <code>∀ (x x_1 : ℕ) (e_1 : x = x_1) (p : x &lt; 4) (p_1 : x_1 &lt; 4), cheese x p = cheese x_1 p_1</code>.</p>
+<p>Consider some function <code>f : Π (x : ℕ) (p : x &lt; 4), ℕ</code>.</p>
+
+<ul>
+<li><code>mk_congr_simp</code> will produce a congruence lemma with type <code>∀ (x x_1 : ℕ) (e_1 : x = x_1) (p : x &lt; 4), cheese x p = cheese x_1 _</code>.</li>
+<li><code>mk_congr</code> will produce a congruence lemma with type <code>∀ (x x_1 : ℕ) (e_1 : x = x_1) (p : x &lt; 4) (p_1 : x_1 &lt; 4), cheese x p = cheese x_1 p_1</code>.</li>
+</ul>
 
 <p>From <code>congr_lemma.cpp</code>:</p>
 
@@ -1292,12 +1299,11 @@ It can be difficult to see how the system chooses the <code>arg_kinds</code>, bu
 <p>Make a congruence lemma using hetrogeneous equality <code>heq</code> instead of <code>eq</code>.
 For example <code>mk_hcongr_lemma (f : Π (α : ℕ → Type) (n:ℕ) (b:α n), ℕ</code> )` will make</p>
 
-<p><code>lean
-{ type := ∀ α α', α = α' → ∀ n n', n = n' → ∀ (b : α n) (b' : α' n'), b == b' → f α n b == f α' n' b'
+<pre><code>{ type := ∀ α α', α = α' → ∀ n n', n = n' → ∀ (b : α n) (b' : α' n'), b == b' → f α n b == f α' n' b'
 , proof := ...
 , arg_kinds := [eq,eq,heq]
 }
-</code></p>
+</code></pre>
 
 <p>(Using merely <code>mk_congr_lemma</code> instead will produce <code>[fixed,fixed,eq]</code> instaed.)</p>
        <ul>

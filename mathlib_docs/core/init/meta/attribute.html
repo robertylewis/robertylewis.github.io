@@ -1166,10 +1166,13 @@ Eg. <code>get_instances `simp</code> returns a list with the names of all of the
 
 
 </ul></div><div class="structure"><a id="user_attribute_cache_cfg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/attribute.lean#L21">user_attribute_cache_cfg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type → Type</div>
-<p>Configuration for a user attribute cache. For example, the <code>simp</code> attribute has a cache of type simp_lemmas.
-   - <code>mk_cache</code> is a function where you are given all of the declarations tagged with your attribute and you return the new value for the cache.
-       That is, <code>mk_cache</code> makes the object you want to be cached.
-   - <code>dependencies</code> [TODO] is a list of other attributes whose caches need to be computed first.</p>
+<p>Configuration for a user attribute cache. For example, the <code>simp</code> attribute has a cache of type simp_lemmas.</p>
+
+<ul>
+<li><code>mk_cache</code> is a function where you are given all of the declarations tagged with your attribute and you return the new value for the cache.
+   That is, <code>mk_cache</code> makes the object you want to be cached.</li>
+<li><code>dependencies</code> [TODO] is a list of other attributes whose caches need to be computed first.</li>
+</ul>
        <ul>
 
 
@@ -1205,21 +1208,24 @@ Fields:
 
 <h3>Data</h3>
 
-<p>A <code>user_attribute</code> consists of the following pieces of data:
-- <code>name</code> is the name of the attribute, eg <code>simp</code>
-- <code>descr</code> is a plaintext description of the attribute for humans.
-- <code>after_set</code> is an optional handler that will be called after the attribute has been applied to a declaration.
-    Failing the tactic will fail the entire <code>attribute/def/...</code> command, i.e. the attribute will
-    not be applied after all.
-    Declaring an <code>after_set</code> handler without a <code>before_unset</code> handler will make the attribute
-    non-removable.
-- <code>before_unset</code> Optional handler that will be called before the attribute is removed from a declaration.
-- <code>cache_cfg</code> describes how to construct the user attribute's cache. See docstring for <code>user_attribute_cache_cfg</code>
-- <code>reflect_param</code> demands that <code>param_ty</code> can be reflected.
-    This means we have a function from <code>param_ty</code> to an expr.
-    See the docstring for <code>has_reflect</code>.
-- <code>parser</code> Parser that will be invoked after parsing the attribute's name. The parse result will be reflected
-and stored and can be retrieved with <code>user_attribute.get_param</code>.</p>
+<p>A <code>user_attribute</code> consists of the following pieces of data:</p>
+
+<ul>
+<li><code>name</code> is the name of the attribute, eg <code>simp</code></li>
+<li><code>descr</code> is a plaintext description of the attribute for humans.</li>
+<li><code>after_set</code> is an optional handler that will be called after the attribute has been applied to a declaration.
+Failing the tactic will fail the entire <code>attribute/def/...</code> command, i.e. the attribute will
+not be applied after all.
+Declaring an <code>after_set</code> handler without a <code>before_unset</code> handler will make the attribute
+non-removable.</li>
+<li><code>before_unset</code> Optional handler that will be called before the attribute is removed from a declaration.</li>
+<li><code>cache_cfg</code> describes how to construct the user attribute's cache. See docstring for <code>user_attribute_cache_cfg</code></li>
+<li><code>reflect_param</code> demands that <code>param_ty</code> can be reflected.
+This means we have a function from <code>param_ty</code> to an expr.
+See the docstring for <code>has_reflect</code>.</li>
+<li><code>parser</code> Parser that will be invoked after parsing the attribute's name. The parse result will be reflected
+and stored and can be retrieved with <code>user_attribute.get_param</code>.</li>
+</ul>
        <ul>
 
 

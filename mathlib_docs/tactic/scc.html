@@ -1201,14 +1201,13 @@ composing the proofs along the edges of the paths to the root.</p>
 <p>More concretely, if we ignore preorder numbering, the set
 <code>{ {e₀,e₁,e₂,e₃}, {e₄,e₅} }</code> is represented as:</p>
 
-<p><code>lean
-e₀ → ⊥      -- no parent, i.e. e₀ is a root
+<pre><code>e₀ → ⊥      -- no parent, i.e. e₀ is a root
 e₁ → e₀, p₁ -- with p₁ : e₁ ↔ e₀
 e₂ → e₁, p₂ -- with p₂ : e₂ ↔ e₁
 e₃ → e₀, p₃ -- with p₃ : e₃ ↔ e₀
 e₄ → ⊥      -- no parent, i.e. e₄ is a root
 e₅ → e₄, p₅ -- with p₅ : e₅ ↔ e₄
-</code></p>
+</code></pre>
 
 <p>We can check that <code>e₂</code> and <code>e₃</code> are equivalent by seeking the root of
 the tree of each. The parent of <code>e₂</code> is <code>e₁</code>, the parent of <code>e₁</code> is
@@ -1236,10 +1235,13 @@ returning the output of <code>f</code>.</p>
 
 </ul></div><div class="def"><a id="tactic.closure.to_tactic_format"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/scc.lean#L105">tactic.closure.to_tactic_format</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/scc.html#tactic.closure">tactic.closure</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div>
 <p><code>to_tactic_format cl</code> pretty-prints the <code>closure</code> <code>cl</code> as a list. Assuming <code>cl</code> was built by
-<code>dfs_at</code>, each element corresponds to a node <code>pᵢ : expr</code> and is one of the folllowing:
-- if <code>pᵢ</code> is a root: <code>"pᵢ ⇐ i"</code>, where <code>i</code> is the preorder number of <code>pᵢ</code>,
-- otherwise: <code>"(pᵢ, pⱼ) : P"</code>, where <code>P</code> is <code>pᵢ ↔ pⱼ</code>.
-Useful for debugging.</p>
+<code>dfs_at</code>, each element corresponds to a node <code>pᵢ : expr</code> and is one of the folllowing:</p>
+
+<ul>
+<li>if <code>pᵢ</code> is a root: <code>"pᵢ ⇐ i"</code>, where <code>i</code> is the preorder number of <code>pᵢ</code>,</li>
+<li>otherwise: <code>"(pᵢ, pⱼ) : P"</code>, where <code>P</code> is <code>pᵢ ↔ pⱼ</code>.
+Useful for debugging.</li>
+</ul>
        <ul>
 
 

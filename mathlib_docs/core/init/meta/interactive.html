@@ -1223,35 +1223,37 @@
 </ul></div><div class="def"><a id="tactic.interactive.introv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/interactive.lean#L168">tactic.interactive.introv</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.ident_">interactive.types.ident_</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
 <p>The tactic <code>introv</code> allows the user to automatically introduce the variables of a theorem and explicitly name the hypotheses involved. The given names are used to name non-dependent hypotheses.</p>
 
-<p>Examples:
-<code>lean
-example : ∀ a b : nat, a = b → b = a :=
+<p>Examples:</p>
+
+<pre><code>example : ∀ a b : nat, a = b → b = a :=
 begin
   introv h,
   exact h.symm
 end
-</code>
-The state after <code>introv h</code> is
-<code>lean
-a b : ℕ,
+</code></pre>
+
+<p>The state after <code>introv h</code> is</p>
+
+<pre><code>a b : ℕ,
 h : a = b
 ⊢ b = a
-</code>
-<code>lean
+</code></pre>
+
+<p>```lean
 example : ∀ a b : nat, a = b → ∀ c, b = c → a = c :=
 begin
   introv h₁ h₂,
   exact h₁.trans h₂
-end
-</code>
-The state after <code>introv h₁ h₂</code> is
-<code>lean
+end</p>
+
+<pre><code>The state after `introv h₁ h₂` is
+```lean
 a b : ℕ,
 h₁ : a = b,
 c : ℕ,
 h₂ : b = c
 ⊢ a = c
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -1544,14 +1546,13 @@ and tag generated goals when using supported tactics such as: <code>induction</c
 <p>This tactic is useful for writing robust proof scripts that are not sensitive
 to the name generation strategy used by <code>t</code>.</p>
 
-<p><code>lean
-example (n : ℕ) : n = n :=
+<pre><code>example (n : ℕ) : n = n :=
 begin
   with_cases { induction n },
   case nat.zero { reflexivity },
   case nat.succ : n' ih { reflexivity }
 end
-</code></p>
+</code></pre>
 
 <p>TODO(Leo): improve docstring</p>
        <ul>
@@ -1603,14 +1604,13 @@ end
 <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive.html#tactic.interactive.itactic">tactic.interactive.itactic</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
 <p>Focuses on the <code>induction</code>/<code>cases</code>/<code>with_cases</code> subgoal corresponding to the given tag prefix, optionally renaming introduced locals.</p>
 
-<p><code>lean
-example (n : ℕ) : n = n :=
+<pre><code>example (n : ℕ) : n = n :=
 begin
   induction n,
   case nat.zero { reflexivity },
   case nat.succ : a ih { reflexivity }
 end
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -1653,10 +1653,10 @@ end
 <code>cases_matching [p_1, ..., p_n]</code> applies the <code>cases</code> tactic to a hypothesis <code>h : type</code> if <code>type</code> matches one of the given patterns.
 <code>cases_matching* p</code> more efficient and compact version of <code>focus1 { repeat { cases_matching p } }</code>. It is more efficient because the pattern is compiled once.</p>
 
-<p>Example: The following tactic destructs all conjunctions and disjunctions in the current goal.
-<code>lean
-cases_matching* [_ ∨ _, _ ∧ _]
-</code></p>
+<p>Example: The following tactic destructs all conjunctions and disjunctions in the current goal.</p>
+
+<pre><code>cases_matching* [_ ∨ _, _ ∧ _]
+</code></pre>
        <ul>
 
 
@@ -1678,10 +1678,10 @@ cases_matching* [_ ∨ _, _ ∧ _]
 <code>cases_type* I</code> is shorthand for <code>focus1 { repeat { cases_type I } }</code>
 <code>cases_type! I</code> only applies <code>cases</code> if the number of resulting subgoals is &lt;= 1.</p>
 
-<p>Example: The following tactic destructs all conjunctions and disjunctions in the current goal.
-<code>lean
-cases_type* or and
-</code></p>
+<p>Example: The following tactic destructs all conjunctions and disjunctions in the current goal.</p>
+
+<pre><code>cases_type* or and
+</code></pre>
        <ul>
 
 
@@ -2377,11 +2377,12 @@ We use this tactic for writing tests.</p>
 
 </ul></div><div class="def"><a id="tactic.interactive.funext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/interactive.lean#L1490">tactic.interactive.funext</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many">lean.parser.many</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.types.ident_">interactive.types.ident_</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
 <p>Apply function extensionality and introduce new hypotheses.
-The tactic <code>funext</code> will keep applying new the <code>funext</code> lemma until the goal target is not reducible to
-<code>lean
-  |-  ((fun x, ...) = (fun x, ...))
-</code>
-The variant <code>funext h₁ ... hₙ</code> applies <code>funext</code> <code>n</code> times, and uses the given identifiers to name the new hypotheses.</p>
+The tactic <code>funext</code> will keep applying new the <code>funext</code> lemma until the goal target is not reducible to</p>
+
+<pre><code>  |-  ((fun x, ...) = (fun x, ...))
+</code></pre>
+
+<p>The variant <code>funext h₁ ... hₙ</code> applies <code>funext</code> <code>n</code> times, and uses the given identifiers to name the new hypotheses.</p>
        <ul>
 
 

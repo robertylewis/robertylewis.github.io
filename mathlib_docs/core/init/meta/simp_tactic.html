@@ -1168,12 +1168,15 @@
 <p>Simp lemmas are used by the "simplifier" family of tactics.
 <code>simp_lemmas</code> is essentially a pair of tables <code>rb_map (expr_type × name) (priority_list simp_lemma)</code>.
 One of the tables is for congruences and one is for everything else.
-An individual simp lemma is:
-- A kind which can be <code>Refl</code>, <code>Simp</code> or <code>Congr</code>.
-- A pair of <code>expr</code>s <code>l ~&gt; r</code>. The rb map is indexed by the name of <code>get_app_fn(l)</code>.
-- A proof that <code>l = r</code> or <code>l ↔ r</code>.
-- A list of the metavariables that must be filled before the proof can be applied.
-- A priority number</p>
+An individual simp lemma is:</p>
+
+<ul>
+<li>A kind which can be <code>Refl</code>, <code>Simp</code> or <code>Congr</code>.</li>
+<li>A pair of <code>expr</code>s <code>l ~&gt; r</code>. The rb map is indexed by the name of <code>get_app_fn(l)</code>.</li>
+<li>A proof that <code>l = r</code> or <code>l ↔ r</code>.</li>
+<li>A list of the metavariables that must be filled before the proof can be applied.</li>
+<li>A priority number</li>
+</ul>
        <ul>
 
 
@@ -1233,12 +1236,12 @@ If your lemma is not being added, you can see the reasons by setting <code>set_o
 <p>Adds a congruence simp lemma to simp_lemmas.
 A congruence simp lemma is a lemma that breaks the simplification down into separate problems.
 For example, to simplify <code>a ∧ b</code> to <code>c ∧ d</code>, we should try to simp <code>a</code> to <code>c</code> and <code>b</code> to <code>d</code>.
-For examples of congruence simp lemmas look for lemmas with the <code>@[congr]</code> attribute.
-<code>lean
-lemma if_simp_congr ... (h_c : b ↔ c) (h_t : x = u) (h_e : y = v) : ite b x y = ite c u v := ...
+For examples of congruence simp lemmas look for lemmas with the <code>@[congr]</code> attribute.</p>
+
+<pre><code>lemma if_simp_congr ... (h_c : b ↔ c) (h_t : x = u) (h_e : y = v) : ite b x y = ite c u v := ...
 lemma imp_congr_right (h : a → (b ↔ c)) : (a → b) ↔ (a → c) := ...
 lemma and_congr (h₁ : a ↔ c) (h₂ : b ↔ d) : (a ∧ b) ↔ (c ∧ d) := ...
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -1899,17 +1902,15 @@ Fields:
 </ul></div><div class="def"><a id="tactic.get_user_simp_lemmas"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/simp_tactic.lean#L426">tactic.get_user_simp_lemmas</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a></div>
 <h3>Example usage:</h3>
 
-<p>``<code>lean
--- make a new simp attribute called "my_reduction"
-run_cmd mk_simp_attr</code>my_reduction
+<pre><code>-- make a new simp attribute called "my_reduction"
+run_cmd mk_simp_attr `my_reduction
 -- Add "my_reduction" attributes to these if-reductions
-attribute [my_reduction] if_pos if_neg dif_pos dif_neg</p>
+attribute [my_reduction] if_pos if_neg dif_pos dif_neg
 
-<p>-- will return the simp_lemmas with the <code>my_reduction</code> attribute.</p>
+-- will return the simp_lemmas with the `my_reduction` attribute.
+#eval get_user_simp_lemmas `my_reduction
 
-<h1>eval get_user_simp_lemmas `my_reduction</h1>
-
-<p>```</p>
+</code></pre>
        <ul>
 
 

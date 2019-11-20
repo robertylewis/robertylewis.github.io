@@ -1212,16 +1212,16 @@ Given a declaration named <code>n</code> of the form <code>f ≫ g = h</code>, p
 
 
 </ul></div><div class="def"><a id="tactic.reassoc_attr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/reassoc_axiom.lean#L115">tactic.reassoc_attr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>)</div>
-<p>On the following lemma:
-<code>lean
-@[reassoc]
-lemma foo_bar : foo ≫ bar = foo := ...
-</code>
-generates</p>
+<p>On the following lemma:</p>
 
-<p><code>lean
-lemma foo_bar_assoc {Z} {x : Y ⟶ Z} : foo ≫ bar ≫ x = foo ≫ x := ...
-</code></p>
+<pre><code>@[reassoc]
+lemma foo_bar : foo ≫ bar = foo := ...
+</code></pre>
+
+<p>generates</p>
+
+<pre><code>lemma foo_bar_assoc {Z} {x : Y ⟶ Z} : foo ≫ bar ≫ x = foo ≫ x := ...
+</code></pre>
 
 <p>The name of <code>foo_bar_assoc</code> can also be selected with @[reassoc new_name]</p>
        <ul>
@@ -1230,9 +1230,8 @@ lemma foo_bar_assoc {Z} {x : Y ⟶ Z} : foo ≫ bar ≫ x = foo ≫ x := ...
 
 
 </ul></div><div class="def"><a id="tactic.reassoc_cmd"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/reassoc_axiom.lean#L132">tactic.reassoc_cmd</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.tk">lean.parser.tk</a> "reassoc_axiom") → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser">lean.parser</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p><code>lean
-reassoc_axiom my_axiom
-</code></p>
+<pre><code>reassoc_axiom my_axiom
+</code></pre>
 
 <p>produces the lemma <code>my_axiom_assoc</code> which transforms a statement of the
 form <code>x ≫ y = z</code> into <code>x ≫ y ≫ k = z ≫ k</code>.</p>

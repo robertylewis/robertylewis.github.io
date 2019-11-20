@@ -1215,11 +1215,14 @@
 
 </ul></div><div class="def"><a id="tactic"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/tactic.lean#L46">tactic</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u_1 → Type u_1</div>
 <p><code>tactic</code> is the monad for building tactics.
-   You use this to:
-   - View and modify the local goals and hypotheses in the prover's state.
-   - Invoke type checking and elaboration of terms.
-   - View and modify the environment.
-   - Build new tactics out of existing ones such as <code>simp</code> and <code>rewrite</code>.</p>
+   You use this to:</p>
+
+<ul>
+<li>View and modify the local goals and hypotheses in the prover's state.</li>
+<li>Invoke type checking and elaboration of terms.</li>
+<li>View and modify the environment.</li>
+<li>Build new tactics out of existing ones such as <code>simp</code> and <code>rewrite</code>.</li>
+</ul>
        <ul>
 
 
@@ -1562,14 +1565,17 @@ Fields:
 
 </ul></div><div class="inductive"><a id="tactic.transparency"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/tactic.lean#L302">tactic.transparency</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
 <p>A parameter representing how aggressively definitions should be unfolded when trying to decide if two terms match, unify or are definitionally equal.
-By default, theorem declarations are never unfolded.
-- <code>all</code> will unfold everything, including macros and theorems. Except projection macros.
-- <code>semireducible</code> will unfold everything except theorems and definitions tagged as irreducible.
-- <code>instances</code> will unfold all class instance definitions and definitions tagged with reducible.
-- <code>reducible</code> will only unfold definitions tagged with the <code>reducible</code> attribute.
-- <code>none</code> will never unfold anything.
+By default, theorem declarations are never unfolded.</p>
+
+<ul>
+<li><code>all</code> will unfold everything, including macros and theorems. Except projection macros.</li>
+<li><code>semireducible</code> will unfold everything except theorems and definitions tagged as irreducible.</li>
+<li><code>instances</code> will unfold all class instance definitions and definitions tagged with reducible.</li>
+<li><code>reducible</code> will only unfold definitions tagged with the <code>reducible</code> attribute.</li>
+<li><code>none</code> will never unfold anything.
 [NOTE] You are not allowed to tag a definition with more than one of <code>reducible</code>, <code>irreducible</code>, <code>semireducible</code> attributes.
-[NOTE] there is a config flag <code>m_unfold_lemmas</code>that will make it unfold theorems.</p>
+[NOTE] there is a config flag <code>m_unfold_lemmas</code>that will make it unfold theorems.</li>
+</ul>
        <ul>
 
 
@@ -1940,10 +1946,13 @@ Example: with <code>x : ℕ, h : P(x) ⊢ T(x)</code>, <code>revert_lst [x]</cod
 
 </ul></div><div class="inductive"><a id="tactic.new_goals"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/tactic.lean#L453">tactic.new_goals</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
 <p>How to order the new goals made from an <code>apply</code> tactic.
-Supposing we were applying <code>e : ∀ (a:α) (p : P(a)), Q</code>
-- <code>non_dep_first</code> would produce goals <code>⊢ P(?m)</code>, <code>⊢ α</code>. It puts the P goal at the front because none of the arguments after <code>p</code> in <code>e</code> depend on <code>p</code>. It doesn't matter what the result <code>Q</code> depends on.
-- <code>non_dep_only</code> would produce goal <code>⊢ P(?m)</code>.
-- <code>all</code> would produce goals <code>⊢ α</code>, <code>⊢ P(?m)</code>.</p>
+Supposing we were applying <code>e : ∀ (a:α) (p : P(a)), Q</code></p>
+
+<ul>
+<li><code>non_dep_first</code> would produce goals <code>⊢ P(?m)</code>, <code>⊢ α</code>. It puts the P goal at the front because none of the arguments after <code>p</code> in <code>e</code> depend on <code>p</code>. It doesn't matter what the result <code>Q</code> depends on.</li>
+<li><code>non_dep_only</code> would produce goal <code>⊢ P(?m)</code>.</li>
+<li><code>all</code> would produce goals <code>⊢ α</code>, <code>⊢ P(?m)</code>.</li>
+</ul>
        <ul>
 
 
@@ -1955,16 +1964,19 @@ Constructors:
 <li><div class="structure_field">tactic.new_goals.all : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.new_goals">tactic.new_goals</a></div></li>
 </ul></li>
 </ul></div><div class="structure"><a id="tactic.apply_cfg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/tactic.lean#L466">tactic.apply_cfg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p>Configuration options for the <code>apply</code> tactic.
-- <code>md</code> sets how aggressively definitions are unfolded.
-- <code>new_goals</code> is the strategy for ordering new goals.
-- <code>instances</code> if <code>tt</code>, then <code>apply</code> tries to synthesize unresolved <code>[...]</code> arguments using type class resolution.
-- <code>auto_param</code> if <code>tt</code>, then <code>apply</code> tries to synthesize unresolved <code>(h : p . tac_id)</code> arguments using tactic <code>tac_id</code>.
-- <code>opt_param</code> if <code>tt</code>, then <code>apply</code> tries to synthesize unresolved <code>(a : t := v)</code> arguments by setting them to <code>v</code>.
-- <code>unify</code> if <code>tt</code>, then <code>apply</code> is free to assign existing metavariables in the goal when solving unification constraints.
-   For example, in the goal <code>|- ?x &lt; succ 0</code>, the tactic <code>apply succ_lt_succ</code> succeeds with the default configuration,
-   but <code>apply_with succ_lt_succ {unify := ff}</code> doesn't since it would require Lean to assign <code>?x</code> to <code>succ ?y</code> where
-   <code>?y</code> is a fresh metavariable.</p>
+<p>Configuration options for the <code>apply</code> tactic.</p>
+
+<ul>
+<li><code>md</code> sets how aggressively definitions are unfolded.</li>
+<li><code>new_goals</code> is the strategy for ordering new goals.</li>
+<li><code>instances</code> if <code>tt</code>, then <code>apply</code> tries to synthesize unresolved <code>[...]</code> arguments using type class resolution.</li>
+<li><code>auto_param</code> if <code>tt</code>, then <code>apply</code> tries to synthesize unresolved <code>(h : p . tac_id)</code> arguments using tactic <code>tac_id</code>.</li>
+<li><code>opt_param</code> if <code>tt</code>, then <code>apply</code> tries to synthesize unresolved <code>(a : t := v)</code> arguments by setting them to <code>v</code>.</li>
+<li><code>unify</code> if <code>tt</code>, then <code>apply</code> is free to assign existing metavariables in the goal when solving unification constraints.
+For example, in the goal <code>|- ?x &lt; succ 0</code>, the tactic <code>apply succ_lt_succ</code> succeeds with the default configuration,
+but <code>apply_with succ_lt_succ {unify := ff}</code> doesn't since it would require Lean to assign <code>?x</code> to <code>succ ?y</code> where
+<code>?y</code> is a fresh metavariable.</li>
+</ul>
        <ul>
 
 
@@ -2162,9 +2174,12 @@ of <code>(position_in_file, docstring)</code> pairs.</p>
 
 
 </ul></div><div class="def"><a id="tactic.module_doc_strings"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/tactic.lean#L556">tactic.module_doc_strings</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a>))</div>
-<p>Returns a list of docstrings in the active module. An entry in the list can be either:
-- a top-level (<code>/-!</code>) docstring, represented as <code>(none, docstring)</code>
-- a declaration-specific (<code>/--</code>) docstring, represented as <code>(some decl_name, docstring)</code></p>
+<p>Returns a list of docstrings in the active module. An entry in the list can be either:</p>
+
+<ul>
+<li>a top-level (<code>/-!</code>) docstring, represented as <code>(none, docstring)</code></li>
+<li>a declaration-specific (<code>/--</code>) docstring, represented as <code>(some decl_name, docstring)</code></li>
+</ul>
        <ul>
 
 
@@ -3146,15 +3161,18 @@ If the target is not a Pi or elet it will try to put it in WHNF.</p>
 </ul></div><div class="def"><a id="tactic.add_defn_equations"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/tactic.lean#L1391">tactic.add_defn_equations</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
 <p><code>add_defn_equations</code> adds a definition specified by a list of equations.</p>
 
-<p>The arguments:
-   * <code>lp</code>: list of universe parameters
-   * <code>params</code>: list of parameters (binders before the colon);
-   * <code>fn</code>: a local constant giving the name and type of the declaration
-     (with <code>params</code> in the local context);
-   * <code>eqns</code>: a list of equations, each of which is a list of patterns
-     (constructors applied to new local constants) and the branch
-     expression;
-   * <code>is_meta</code>: is the definition meta?</p>
+<p>The arguments:</p>
+
+<ul>
+<li><code>lp</code>: list of universe parameters</li>
+<li><code>params</code>: list of parameters (binders before the colon);</li>
+<li><code>fn</code>: a local constant giving the name and type of the declaration
+ (with <code>params</code> in the local context);</li>
+<li><code>eqns</code>: a list of equations, each of which is a list of patterns
+ (constructors applied to new local constants) and the branch
+ expression;</li>
+<li><code>is_meta</code>: is the definition meta?</li>
+</ul>
 
 <p><code>add_defn_equations</code> can be used as:</p>
 

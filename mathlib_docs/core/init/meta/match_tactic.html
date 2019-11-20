@@ -1168,15 +1168,15 @@ the temporary metavariables. It then returns the outputs with the assigned varia
 
 <h2>Example</h2>
 
-<p>The pattern for <code>list.cons h t</code> returning <code>h</code> and <code>t</code> would be
-<code>lean
-{ target  := `(@list.cons ?x_0 ?x_1 ?x_2),
+<p>The pattern for <code>list.cons h t</code> returning <code>h</code> and <code>t</code> would be</p>
+
+<pre><code>{ target  := `(@list.cons ?x_0 ?x_1 ?x_2),
   uoutput := [],
   moutput := [?x_1,?x_2],
   nuvars  := 0,
   nmvars  := 3
 }
-</code></p>
+</code></pre>
        <ul>
 
 
@@ -1190,19 +1190,25 @@ Fields:
 </ul></li>
 
 </ul></div><div class="cnst"><a id="tactic.mk_pattern"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/match_tactic.lean#L61">tactic.mk_pattern</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/level.html#level">level</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/level.html#level">level</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/match_tactic.html#tactic.pattern">tactic.pattern</a></div>
-<p><code>mk_pattern umetas emetas target uoutput eoutput</code> creates a new pattern. The arguments are
-- <code>umetas</code> a list of level params to be replaced with temporary universe metavariables.
-- <code>emetas</code> a list of local constants to be replaced with temporary metavariables.
-- <code>target</code> the expression to be matched.
-- <code>uoutput</code> a list of levels to return upon matching. Fails if this depends on metavariables.
-- <code>eoutput</code> a list of expressions to return upon matching. Fails if this depends on metavariables.</p>
+<p><code>mk_pattern umetas emetas target uoutput eoutput</code> creates a new pattern. The arguments are</p>
 
-<p>The procedure is as follows:
-1. Convert all metavariables in <code>target</code> to temporary metavariables.
-2. For each item in <code>umetas</code> amd <code>emetas</code>, create a temporary
-   metavariable and replace each instance of the item in <code>target</code> with a temporary metavariable
-3. Replace these instances in <code>uoutput</code> and <code>eoutput</code> too.
-4. Return these replaced versions as a <code>pattern</code>.</p>
+<ul>
+<li><code>umetas</code> a list of level params to be replaced with temporary universe metavariables.</li>
+<li><code>emetas</code> a list of local constants to be replaced with temporary metavariables.</li>
+<li><code>target</code> the expression to be matched.</li>
+<li><code>uoutput</code> a list of levels to return upon matching. Fails if this depends on metavariables.</li>
+<li><code>eoutput</code> a list of expressions to return upon matching. Fails if this depends on metavariables.</li>
+</ul>
+
+<p>The procedure is as follows:</p>
+
+<ol>
+<li>Convert all metavariables in <code>target</code> to temporary metavariables.</li>
+<li>For each item in <code>umetas</code> amd <code>emetas</code>, create a temporary
+metavariable and replace each instance of the item in <code>target</code> with a temporary metavariable</li>
+<li>Replace these instances in <code>uoutput</code> and <code>eoutput</code> too.</li>
+<li>Return these replaced versions as a <code>pattern</code>.</li>
+</ol>
 
 <h2>Example</h2>
 
