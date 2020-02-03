@@ -7,8 +7,214 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">tactic.omega.eq_elim</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean">View source</a></div><a href="#omega.cancel">omega.cancel</a><br>
+<a href="#omega.coeffs_reduce">omega.coeffs_reduce</a><br>
+<a href="#omega.coeffs_reduce_correct">omega.coeffs_reduce_correct</a><br>
+<a href="#omega.ee">omega.ee</a><br>
+<a href="#omega.ee.has_reflect">omega.ee.has_reflect</a><br>
+<a href="#omega.ee.has_repr">omega.ee.has_repr</a><br>
+<a href="#omega.ee.has_to_format">omega.ee.has_to_format</a><br>
+<a href="#omega.ee.repr">omega.ee.repr</a><br>
+<a href="#omega.eq_elim">omega.eq_elim</a><br>
+<a href="#omega.mul_symdiv_eq">omega.mul_symdiv_eq</a><br>
+<a href="#omega.rhs">omega.rhs</a><br>
+<a href="#omega.rhs_correct">omega.rhs_correct</a><br>
+<a href="#omega.rhs_correct_aux">omega.rhs_correct_aux</a><br>
+<a href="#omega.sat_empty">omega.sat_empty</a><br>
+<a href="#omega.sat_eq_elim">omega.sat_eq_elim</a><br>
+<a href="#omega.sgm">omega.sgm</a><br>
+<a href="#omega.subst">omega.subst</a><br>
+<a href="#omega.subst_correct">omega.subst_correct</a><br>
+<a href="#omega.sym_sym">omega.sym_sym</a><br>
+<a href="#omega.symdiv">omega.symdiv</a><br>
+<a href="#omega.symmod">omega.symmod</a><br>
+<a href="#omega.symmod_add_one_self">omega.symmod_add_one_self</a><br>
+<a href="#omega.symmod_eq">omega.symmod_eq</a><br>
+<a href="#omega.unsat_of_unsat_eq_elim">omega.unsat_of_unsat_eq_elim</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl def" id="omega.symdiv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L16">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symdiv">omega.symdiv</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symdiv">omega.symdiv</a> i j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mod.mod" title="has_mod.mod">%</a> j) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> j)
+    (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> j)
+    (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1)</li></ul></details> </ul></div><div class="decl def" id="omega.symmod"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L21">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> i j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mod.mod" title="has_mod.mod">%</a> j) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> j)
+    (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mod.mod" title="has_mod.mod">%</a> j)
+    (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mod.mod" title="has_mod.mod">%</a> j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> j)</li></ul></details> </ul></div><div class="decl theorem" id="omega.symmod_add_one_self"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L26">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod_add_one_self">omega.symmod_add_one_self</a></span> <span class="impl_arg"><span class="decl_args">{i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> i → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> i (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> -1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="omega.mul_symdiv_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L39">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.mul_symdiv_eq">omega.mul_symdiv_eq</a></span> <span class="impl_arg"><span class="decl_args">{i j : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symdiv">omega.symdiv</a> i j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> i j</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="omega.symmod_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L51">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod_eq">omega.symmod_eq</a></span> <span class="impl_arg"><span class="decl_args">{i j : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> i j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symdiv">omega.symdiv</a> i j</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="omega.sgm"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L60">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sgm">omega.sgm</a></span>  <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sgm">omega.sgm</a> v b as n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  let a_n : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> := <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as,
+      m : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> := a_n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1
+  in (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> b m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a>
+          <a href="https://robertylewis.com/mathlib_docs/tactic/omega/coeffs.html#omega.coeffs.val">omega.coeffs.val</a> v
+            (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>), <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> x m)
+               as)) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a>
+       m</li></ul></details> </ul></div><div class="decl def" id="omega.rhs"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L67">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs">omega.rhs</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs">omega.rhs</a> n b as <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  let m : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> := <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1
+  in (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> b m,
+      <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.set">list.func.set</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>m)
+        (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>), <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> x m) as)
+        n)</li></ul></details> </ul></div><div class="decl theorem" id="omega.rhs_correct_aux"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L72">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs_correct_aux">omega.rhs_correct_aux</a></span> <span class="impl_arg"><span class="decl_args">{v : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{m : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{as : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{k : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">∃ (d : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>),
+  m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> d <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a>
+      <a href="https://robertylewis.com/mathlib_docs/tactic/omega/coeffs.html#omega.coeffs.val_between">omega.coeffs.val_between</a> v
+        (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>), <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> x m) as)
+        0
+        k <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+    <a href="https://robertylewis.com/mathlib_docs/tactic/omega/coeffs.html#omega.coeffs.val_between">omega.coeffs.val_between</a> v as 0 k</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="omega.rhs_correct"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs_correct">omega.rhs_correct</a></span> <span class="impl_arg"><span class="decl_args">{v : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{b : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{as : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> v (b, as) →
+v n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a>
+    (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/misc.html#omega.update">omega.update</a> n (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sgm">omega.sgm</a> v b as n) v)
+    (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs">omega.rhs</a> n b as)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="omega.sym_sym"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L154">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sym_sym">omega.sym_sym</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sym_sym">omega.sym_sym</a> m b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symdiv">omega.symdiv</a> b m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> b m</li></ul></details> </ul></div><div class="decl def" id="omega.coeffs_reduce"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L157">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.coeffs_reduce">omega.coeffs_reduce</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.coeffs_reduce">omega.coeffs_reduce</a> n b as <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  let a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> := <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as,
+      m : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> := a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1
+  in (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sym_sym">omega.sym_sym</a> m b,
+      <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.set">list.func.set</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>a)
+        (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sym_sym">omega.sym_sym</a> m) as)
+        n)</li></ul></details> </ul></div><div class="decl theorem" id="omega.coeffs_reduce_correct"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L163">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.coeffs_reduce_correct">omega.coeffs_reduce_correct</a></span> <span class="impl_arg"><span class="decl_args">{v : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{b : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{as : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> v (b, as) →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a>
+    (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/misc.html#omega.update">omega.update</a> n (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sgm">omega.sgm</a> v b as n) v)
+    (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.coeffs_reduce">omega.coeffs_reduce</a> n b as)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="omega.cancel"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L264">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.cancel">omega.cancel</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.cancel">omega.cancel</a> m t1 t2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.mul">omega.term.mul</a>
+     (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a><a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> m t2.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod.snd" title="prod.snd">snd</a>)
+     t1).<a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.add" title="omega.term.add">add</a>
+    t2</li></ul></details> </ul></div><div class="decl def" id="omega.subst"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L267">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.subst">omega.subst</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.subst">omega.subst</a> n t1 t2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.mul">omega.term.mul</a> (<a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n t2.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod.snd" title="prod.snd">snd</a>)
+     t1).<a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.add" title="omega.term.add">add</a>
+    (t2.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod.fst" title="prod.fst">fst</a>, <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.set">list.func.set</a> 0 t2.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod.snd" title="prod.snd">snd</a> n)</li></ul></details> </ul></div><div class="decl theorem" id="omega.subst_correct"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L270">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.subst_correct">omega.subst_correct</a></span> <span class="impl_arg"><span class="decl_args">{v : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{b : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{as : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{t : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>}</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> v (b, as) →
+<a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> v t <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a>
+    (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/misc.html#omega.update">omega.update</a> n (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sgm">omega.sgm</a> v b as n) v)
+    (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.subst">omega.subst</a> n (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs">omega.rhs</a> n b as) t)</div></div>
+   <p></p>
+  </ul></div><div class="decl inductive" id="omega.ee"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L290">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">inductive</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type</div></div>
+  <ul class="constructors">
+<li class="constructor" id="omega.ee.drop">drop : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></li>
+<li class="constructor" id="omega.ee.nondiv">nondiv : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></li>
+<li class="constructor" id="omega.ee.factor">factor : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></li>
+<li class="constructor" id="omega.ee.neg">neg : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></li>
+<li class="constructor" id="omega.ee.reduce">reduce : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></li>
+<li class="constructor" id="omega.ee.cancel">cancel : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></li>
+</ul> <p></p>
+  </ul></div><div class="decl def" id="omega.ee.has_reflect"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L290">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.has_reflect">omega.ee.has_reflect</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/has_reflect.html#has_reflect">has_reflect</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="omega.ee.repr"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L300">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.repr">omega.ee.repr</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">(<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.cancel">omega.ee.cancel</a> n).<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.repr" title="omega.ee.repr">repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  "+" <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append.append" title="has_append.append">++</a> n.<a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#nat.repr" title="nat.repr">repr</a></li><li class="equation">(<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.reduce">omega.ee.reduce</a> n).<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.repr" title="omega.ee.repr">repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  "≻" <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append.append" title="has_append.append">++</a> n.<a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#nat.repr" title="nat.repr">repr</a></li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.neg">omega.ee.neg</a>.<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.repr" title="omega.ee.repr">repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> "-"</li><li class="equation">(<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.factor">omega.ee.factor</a> i).<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.repr" title="omega.ee.repr">repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  "/" <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append.append" title="has_append.append">++</a> i.<a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.repr" title="int.repr">repr</a></li><li class="equation">(<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.nondiv">omega.ee.nondiv</a> i).<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.repr" title="omega.ee.repr">repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  i.<a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.repr" title="int.repr">repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append.append" title="has_append.append">++</a> "∤"</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.drop">omega.ee.drop</a>.<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.repr" title="omega.ee.repr">repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> "↓"</li></ul></details> </ul></div><div class="decl def" id="omega.ee.has_repr"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L308">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.has_repr">omega.ee.has_repr</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.has_repr">omega.ee.has_repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr.mk" title="has_repr.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr.repr" title="has_repr.repr">repr</a> := <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.repr">omega.ee.repr</a>}</li></ul></details> </ul></div><div class="decl def" id="omega.ee.has_to_format"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L310">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.has_to_format">omega.ee.has_to_format</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#has_to_format">has_to_format</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="omega.eq_elim"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L314">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause">omega.clause</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause">omega.clause</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.cancel">omega.ee.cancel</a> m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> es)
+    (eq <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> es
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.cancel">omega.cancel</a> m eq) eqs,
+     <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.cancel">omega.cancel</a> m eq) les)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.cancel">omega.ee.cancel</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> _x)
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.reduce">omega.ee.reduce</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> es)
+    ((b, as) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as)
+    (let eq' : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> := <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.coeffs_reduce">omega.coeffs_reduce</a> n b as,
+         r : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> := <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs">omega.rhs</a> n b as,
+         eqs' : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> :=
+           <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.subst">omega.subst</a> n r) eqs,
+         les' : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> :=
+           <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.subst">omega.subst</a> n r) les
+     in <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> es (eq' <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs', les'))
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.reduce">omega.ee.reduce</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> _x)
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.neg">omega.ee.neg</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> es)
+    (eq <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> es (eq.<a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.neg" title="omega.term.neg">neg</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs, les)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.neg">omega.ee.neg</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> _x)
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.factor">omega.ee.factor</a> i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> es)
+    ((b, as) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a>
+    (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+       ∀ (x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>), x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> as → i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> x)
+    (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> es
+       (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.div">omega.term.div</a> i (b, as) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs, les))
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.factor">omega.ee.factor</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> _x)
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.nondiv">omega.ee.nondiv</a> i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> es)
+    ((b, as) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a>
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+       ∀ (x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>), x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> as → i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> x)
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, [(-1, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>)])
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.nondiv">omega.ee.nondiv</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> _x)
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.drop">omega.ee.drop</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> es)
+    (eq <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> eqs, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> es (eqs, les)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee.drop">omega.ee.drop</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> _x)
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> (_x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> _x_1, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a>
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, les) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, les)</li></ul></details> </ul></div><div class="decl theorem" id="omega.sat_empty"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L341">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sat_empty">omega.sat_empty</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.sat">omega.clause.sat</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>, <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="omega.sat_eq_elim"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L344">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sat_eq_elim">omega.sat_eq_elim</a></span> <span class="impl_arg"><span class="decl_args">{es : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a>}</span></span> <span class="impl_arg"><span class="decl_args">{c : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause">omega.clause</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">c.<a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.sat" title="omega.clause.sat">sat</a> → (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> es c).<a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.sat" title="omega.clause.sat">sat</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="omega.unsat_of_unsat_eq_elim"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/omega/eq_elim.lean#L431">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.unsat_of_unsat_eq_elim">omega.unsat_of_unsat_eq_elim</a></span> <span class="decl_args">(ee : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a>)</span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause">omega.clause</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> ee c).<a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.unsat" title="omega.clause.unsat">unsat</a> → c.<a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.unsat" title="omega.clause.unsat">unsat</a></div></div>
+   <p></p>
+  </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +301,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +319,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +844,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +897,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +914,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +963,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +999,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1023,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1044,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1073,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1081,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1104,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1231,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1241,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1259,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1329,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1370,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,222 +1380,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="def"><a id="omega.symdiv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L16">omega.symdiv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℤ → ℤ → ℤ</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="omega.symmod"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L21">omega.symmod</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℤ → ℤ → ℤ</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="omega.symmod_add_one_self"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L26">omega.symmod_add_one_self</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < i → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> i (i + 1) = -1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{i : ℤ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="omega.mul_symdiv_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L39">omega.mul_symdiv_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type">j * <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symdiv">omega.symdiv</a> i j = i - <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> i j</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{i j : ℤ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="omega.symmod_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L51">omega.symmod_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> i j = i - j * <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symdiv">omega.symdiv</a> i j</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{i j : ℤ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="omega.sgm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L60">omega.sgm</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(ℕ → ℤ) → ℤ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℤ → ℕ → ℤ</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="omega.rhs"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L67">omega.rhs</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → ℤ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℤ → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="omega.rhs_correct_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L72">omega.rhs_correct_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type">∃ (d : ℤ),
-  m * d + <a href="https://robertylewis.com/mathlib_docs/tactic/omega/coeffs.html#omega.coeffs.val_between">omega.coeffs.val_between</a> v (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> (λ (x : ℤ), <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.symmod">omega.symmod</a> x m) as) 0 k =
-    <a href="https://robertylewis.com/mathlib_docs/tactic/omega/coeffs.html#omega.coeffs.val_between">omega.coeffs.val_between</a> v as 0 k</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{v : ℕ → ℤ}</span> <span class="impl_arg">{m : ℤ}</span> <span class="impl_arg">{as : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℤ}</span> <span class="impl_arg">{k : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="omega.rhs_correct"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L99">omega.rhs_correct</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">0 < <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as →
-0 = <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> v (b, as) → v n = <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/misc.html#omega.update">omega.update</a> n (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sgm">omega.sgm</a> v b as n) v) (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs">omega.rhs</a> n b as)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{v : ℕ → ℤ}</span> <span class="impl_arg">{b : ℤ}</span> <span class="impl_arg">{as : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℤ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="omega.sym_sym"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L154">omega.sym_sym</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℤ → ℤ → ℤ</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="omega.coeffs_reduce"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L157">omega.coeffs_reduce</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → ℤ → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℤ → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="omega.coeffs_reduce_correct"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L163">omega.coeffs_reduce_correct</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as →
-0 = <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> v (b, as) → 0 = <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/misc.html#omega.update">omega.update</a> n (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sgm">omega.sgm</a> v b as n) v) (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.coeffs_reduce">omega.coeffs_reduce</a> n b as)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{v : ℕ → ℤ}</span> <span class="impl_arg">{b : ℤ}</span> <span class="impl_arg">{as : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℤ}</span> <span class="impl_arg">{n : ℕ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="omega.cancel"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L264">omega.cancel</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="omega.subst"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L267">omega.subst</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="omega.subst_correct"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L270">omega.subst_correct</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < <a href="https://robertylewis.com/mathlib_docs/data/list/defs.html#list.func.get">list.func.get</a> n as →
-0 = <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> v (b, as) →
-<a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> v t = <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term.val">omega.term.val</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/misc.html#omega.update">omega.update</a> n (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.sgm">omega.sgm</a> v b as n) v) (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.subst">omega.subst</a> n (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.rhs">omega.rhs</a> n b as) t)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{v : ℕ → ℤ}</span> <span class="impl_arg">{b : ℤ}</span> <span class="impl_arg">{as : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> ℤ}</span> <span class="impl_arg">{t : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>}</span> <span class="impl_arg">{n : ℕ}</span></li>
-
-
-
-</ul></div><div class="inductive"><a id="omega.ee"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L290">omega.ee</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p></p>
-       <ul>
-
-
-
-<li class="structure_fields">
-Constructors:
-<ul><li><div class="structure_field">omega.ee.drop : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></li>
-<li><div class="structure_field">omega.ee.nondiv : ℤ → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></li>
-<li><div class="structure_field">omega.ee.factor : ℤ → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></li>
-<li><div class="structure_field">omega.ee.neg : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></li>
-<li><div class="structure_field">omega.ee.reduce : ℕ → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></li>
-<li><div class="structure_field">omega.ee.cancel : ℕ → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div></li>
-</ul></li>
-</ul></div><div class="def"><a id="omega.ee.has_reflect"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L290">omega.ee.has_reflect</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/has_reflect.html#has_reflect">has_reflect</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="omega.ee.repr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L300">omega.ee.repr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="omega.ee.has_repr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L308">omega.ee.has_repr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="omega.ee.has_to_format"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L310">omega.ee.has_to_format</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#has_to_format">has_to_format</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="omega.eq_elim"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L314">omega.eq_elim</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause">omega.clause</a> → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause">omega.clause</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="omega.sat_empty"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L341">omega.sat_empty</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.sat">omega.clause.sat</a> (list.nil omega.term, list.nil <a href="https://robertylewis.com/mathlib_docs/tactic/omega/term.html#omega.term">omega.term</a>)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="omega.sat_eq_elim"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L344">omega.sat_eq_elim</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.sat">omega.clause.sat</a> c → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.sat">omega.clause.sat</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> es c)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{es : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a>}</span> <span class="impl_arg">{c : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause">omega.clause</a>}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="omega.unsat_of_unsat_eq_elim"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean#L431">omega.unsat_of_unsat_eq_elim</a></span> <span class="decl_args">(ee : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.ee">omega.ee</a>)</span> <span class="decl_args">(c : <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause">omega.clause</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.unsat">omega.clause.unsat</a> (<a href="https://robertylewis.com/mathlib_docs/tactic/omega/eq_elim.html#omega.eq_elim">omega.eq_elim</a> ee c) → <a href="https://robertylewis.com/mathlib_docs/tactic/omega/clause.html#omega.clause.unsat">omega.clause.unsat</a> c</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">eq_elim</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/tactic/omega/eq_elim.lean">(view source on GitHub)</a></div><a href="#omega.cancel">omega.cancel</a><br>
-<a href="#omega.coeffs_reduce">omega.coeffs_reduce</a><br>
-<a href="#omega.coeffs_reduce_correct">omega.coeffs_reduce_correct</a><br>
-<a href="#omega.ee">omega.ee</a><br>
-<a href="#omega.ee.has_reflect">omega.ee.has_reflect</a><br>
-<a href="#omega.ee.has_repr">omega.ee.has_repr</a><br>
-<a href="#omega.ee.has_to_format">omega.ee.has_to_format</a><br>
-<a href="#omega.ee.repr">omega.ee.repr</a><br>
-<a href="#omega.eq_elim">omega.eq_elim</a><br>
-<a href="#omega.mul_symdiv_eq">omega.mul_symdiv_eq</a><br>
-<a href="#omega.rhs">omega.rhs</a><br>
-<a href="#omega.rhs_correct">omega.rhs_correct</a><br>
-<a href="#omega.rhs_correct_aux">omega.rhs_correct_aux</a><br>
-<a href="#omega.sat_empty">omega.sat_empty</a><br>
-<a href="#omega.sat_eq_elim">omega.sat_eq_elim</a><br>
-<a href="#omega.sgm">omega.sgm</a><br>
-<a href="#omega.subst">omega.subst</a><br>
-<a href="#omega.subst_correct">omega.subst_correct</a><br>
-<a href="#omega.sym_sym">omega.sym_sym</a><br>
-<a href="#omega.symdiv">omega.symdiv</a><br>
-<a href="#omega.symmod">omega.symmod</a><br>
-<a href="#omega.symmod_add_one_self">omega.symmod_add_one_self</a><br>
-<a href="#omega.symmod_eq">omega.symmod_eq</a><br>
-<a href="#omega.unsat_of_unsat_eq_elim">omega.unsat_of_unsat_eq_elim</a><br>
 </div></div>
 
         </div>

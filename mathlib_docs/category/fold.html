@@ -7,8 +7,300 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">category.fold</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean">View source</a></div><a href="#monoid.foldl">monoid.foldl</a><br>
+<a href="#monoid.foldl.get">monoid.foldl.get</a><br>
+<a href="#monoid.foldl.mk">monoid.foldl.mk</a><br>
+<a href="#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a><br>
+<a href="#monoid.foldr">monoid.foldr</a><br>
+<a href="#monoid.foldr.get">monoid.foldr.get</a><br>
+<a href="#monoid.foldr.mk">monoid.foldr.mk</a><br>
+<a href="#monoid.foldr.of_free_monoid">monoid.foldr.of_free_monoid</a><br>
+<a href="#monoid.mfoldl">monoid.mfoldl</a><br>
+<a href="#monoid.mfoldl.get">monoid.mfoldl.get</a><br>
+<a href="#monoid.mfoldl.mk">monoid.mfoldl.mk</a><br>
+<a href="#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a><br>
+<a href="#monoid.mfoldr">monoid.mfoldr</a><br>
+<a href="#monoid.mfoldr.get">monoid.mfoldr.get</a><br>
+<a href="#monoid.mfoldr.mk">monoid.mfoldr.mk</a><br>
+<a href="#monoid.mfoldr.of_free_monoid">monoid.mfoldr.of_free_monoid</a><br>
+<a href="#traversable.fold_foldl">traversable.fold_foldl</a><br>
+<a href="#traversable.fold_foldr">traversable.fold_foldr</a><br>
+<a href="#traversable.fold_map">traversable.fold_map</a><br>
+<a href="#traversable.fold_map_hom">traversable.fold_map_hom</a><br>
+<a href="#traversable.fold_map_hom_free">traversable.fold_map_hom_free</a><br>
+<a href="#traversable.fold_map_map">traversable.fold_map_map</a><br>
+<a href="#traversable.fold_mfoldl">traversable.fold_mfoldl</a><br>
+<a href="#traversable.fold_mfoldl_cons">traversable.fold_mfoldl_cons</a><br>
+<a href="#traversable.fold_mfoldr">traversable.fold_mfoldr</a><br>
+<a href="#traversable.fold_mfoldr_cons">traversable.fold_mfoldr_cons</a><br>
+<a href="#traversable.foldl">traversable.foldl</a><br>
+<a href="#traversable.foldl.of_free_monoid_comp_free_mk">traversable.foldl.of_free_monoid_comp_free_mk</a><br>
+<a href="#traversable.foldl.unop_of_free_monoid">traversable.foldl.unop_of_free_monoid</a><br>
+<a href="#traversable.foldl_map">traversable.foldl_map</a><br>
+<a href="#traversable.foldl_to_list">traversable.foldl_to_list</a><br>
+<a href="#traversable.foldr">traversable.foldr</a><br>
+<a href="#traversable.foldr.of_free_monoid_comp_free_mk">traversable.foldr.of_free_monoid_comp_free_mk</a><br>
+<a href="#traversable.foldr_map">traversable.foldr_map</a><br>
+<a href="#traversable.foldr_to_list">traversable.foldr_to_list</a><br>
+<a href="#traversable.free.map">traversable.free.map</a><br>
+<a href="#traversable.free.map_eq_map">traversable.free.map_eq_map</a><br>
+<a href="#traversable.free.mk">traversable.free.mk</a><br>
+<a href="#traversable.is_monoid_hom">traversable.is_monoid_hom</a><br>
+<a href="#traversable.length">traversable.length</a><br>
+<a href="#traversable.length_to_list">traversable.length_to_list</a><br>
+<a href="#traversable.map_fold">traversable.map_fold</a><br>
+<a href="#traversable.mfoldl">traversable.mfoldl</a><br>
+<a href="#traversable.mfoldl.of_free_monoid_comp_free_mk">traversable.mfoldl.of_free_monoid_comp_free_mk</a><br>
+<a href="#traversable.mfoldl.unop_of_free_monoid">traversable.mfoldl.unop_of_free_monoid</a><br>
+<a href="#traversable.mfoldl_map">traversable.mfoldl_map</a><br>
+<a href="#traversable.mfoldl_to_list">traversable.mfoldl_to_list</a><br>
+<a href="#traversable.mfoldr">traversable.mfoldr</a><br>
+<a href="#traversable.mfoldr.of_free_monoid_comp_free_mk">traversable.mfoldr.of_free_monoid_comp_free_mk</a><br>
+<a href="#traversable.mfoldr_map">traversable.mfoldr_map</a><br>
+<a href="#traversable.mfoldr_to_list">traversable.mfoldr_to_list</a><br>
+<a href="#traversable.to_list">traversable.to_list</a><br>
+<a href="#traversable.to_list_eq_self">traversable.to_list_eq_self</a><br>
+<a href="#traversable.to_list_map">traversable.to_list_map</a><br>
+<a href="#traversable.to_list_spec">traversable.to_list_spec</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl def" id="monoid.foldl"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L92">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl">monoid.foldl</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+   <p>For a list, foldl f x [y₀,y₁] reduces as follows
+  calc  foldl f x [y₀,y₁]
+      = foldl f (f x y₀) [y₁]      : rfl
+  ... = foldl f (f (f x y₀) y₁) [] : rfl
+  ... = f (f x y₀) y₁              : rfl</p>
+
+<p>with f : α → β → α
+     x : α
+     [y₀,y₁] : list β</p>
+
+<p>We can view the above as a composition of functions:</p>
+
+<p>... = f (f x y₀) y₁              : rfl
+  ... = flip f y₁ (flip f y₀ x)    : rfl
+  ... = (flip f y₁ ∘ flip f y₀) x  : rfl</p>
+
+<p>We can use traverse and const to construct this composition:</p>
+
+<p>calc   const.run (traverse (λ y, const.mk' (flip f y)) [y₀,y₁]) x
+       = const.run ((::) <$&gt; const.mk' (flip f y₀) &lt;<em>&gt; traverse (λ y, const.mk' (flip f y)) [y₁]) x
+  ...  = const.run ((::) <$&gt; const.mk' (flip f y₀) &lt;</em>&gt; ( (::) <$&gt; const.mk' (flip f y₁) &lt;<em>&gt; traverse (λ y, const.mk' (flip f y)) [] )) x
+  ...  = const.run ((::) <$&gt; const.mk' (flip f y₀) &lt;</em>&gt; ( (::) <$&gt; const.mk' (flip f y₁) &lt;<em>&gt; pure [] )) x
+  ...  = const.run ( ((::) <$&gt; const.mk' (flip f y₁) &lt;</em>&gt; pure []) ∘ ((::) <$&gt; const.mk' (flip f y₀)) ) x
+  ...  = const.run ( const.mk' (flip f y₁) ∘ const.mk' (flip f y₀) ) x
+  ...  = const.run ( flip f y₁ ∘ flip f y₀ ) x
+  ...  = f (f x y₀) y₁</p>
+
+<p>And this is how <code>const</code> turns a monoid into an applicative functor and
+how the monoid of endofunctions define <code>foldl</code>.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl">monoid.foldl</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/category_theory/endomorphism.html#category_theory.End">category_theory.End</a> α)<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a></li></ul></details> </ul></div><div class="decl def" id="monoid.foldl.mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L93">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.mk">monoid.foldl.mk</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → α) → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl">monoid.foldl</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.mk">monoid.foldl.mk</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> f</li></ul></details> </ul></div><div class="decl def" id="monoid.foldl.get"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L94">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.get">monoid.foldl.get</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl">monoid.foldl</a> α → α → α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">x.<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.get" title="monoid.foldl.get">get</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> x</li></ul></details> </ul></div><div class="decl def" id="monoid.foldl.of_free_monoid"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L95">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(β → α → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl">monoid.foldl</a> β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a> f xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldl">list.foldl</a> f) xs)</li></ul></details> </ul></div><div class="decl def" id="monoid.foldr"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L98">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr">monoid.foldr</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr">monoid.foldr</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/category_theory/endomorphism.html#category_theory.End">category_theory.End</a> α</li></ul></details> </ul></div><div class="decl def" id="monoid.foldr.mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.mk">monoid.foldr.mk</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → α) → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr">monoid.foldr</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.mk">monoid.foldr.mk</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f</li></ul></details> </ul></div><div class="decl def" id="monoid.foldr.get"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L100">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.get">monoid.foldr.get</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr">monoid.foldr</a> α → α → α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">x.<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.get" title="monoid.foldr.get">get</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</li></ul></details> </ul></div><div class="decl def" id="monoid.foldr.of_free_monoid"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L101">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.of_free_monoid">monoid.foldr.of_free_monoid</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → β → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr">monoid.foldr</a> β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.of_free_monoid">monoid.foldr.of_free_monoid</a> f xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldr">list.foldr</a> f) xs</li></ul></details> </ul></div><div class="decl def" id="monoid.mfoldl"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L104">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl">monoid.mfoldl</a></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl">monoid.mfoldl</a> m α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/category_theory/endomorphism.html#category_theory.End">category_theory.End</a>
+       (<a href="https://robertylewis.com/mathlib_docs/category_theory/category/Kleisli.html#category_theory.Kleisli.mk">category_theory.Kleisli.mk</a> m α))<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a></li></ul></details> </ul></div><div class="decl def" id="monoid.mfoldl.mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L105">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.mk">monoid.mfoldl.mk</a></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → m α) → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl">monoid.mfoldl</a> m α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.mk">monoid.mfoldl.mk</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> f</li></ul></details> </ul></div><div class="decl def" id="monoid.mfoldl.get"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L106">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.get">monoid.mfoldl.get</a></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl">monoid.mfoldl</a> m α → α → m α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">x.<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.get" title="monoid.mfoldl.get">get</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> x</li></ul></details> </ul></div><div class="decl def" id="monoid.mfoldl.of_free_monoid"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L107">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(β → α → m β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl">monoid.mfoldl</a> m β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a> f xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldl">list.mfoldl</a> f) xs)</li></ul></details> </ul></div><div class="decl def" id="monoid.mfoldr"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L110">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr">monoid.mfoldr</a></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr">monoid.mfoldr</a> m α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category_theory/endomorphism.html#category_theory.End">category_theory.End</a>
+    (<a href="https://robertylewis.com/mathlib_docs/category_theory/category/Kleisli.html#category_theory.Kleisli.mk">category_theory.Kleisli.mk</a> m α)</li></ul></details> </ul></div><div class="decl def" id="monoid.mfoldr.mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L112">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.mk">monoid.mfoldr.mk</a></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → m α) → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr">monoid.mfoldr</a> m α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.mk">monoid.mfoldr.mk</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f</li></ul></details> </ul></div><div class="decl def" id="monoid.mfoldr.get"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L113">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.get">monoid.mfoldr.get</a></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr">monoid.mfoldr</a> m α → α → m α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">x.<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.get" title="monoid.mfoldr.get">get</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</li></ul></details> </ul></div><div class="decl def" id="monoid.mfoldr.of_free_monoid"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L114">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.of_free_monoid">monoid.mfoldr.of_free_monoid</a></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → β → m β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr">monoid.mfoldr</a> m β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.of_free_monoid">monoid.mfoldr.of_free_monoid</a> f xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldr">list.mfoldr</a> f) xs</li></ul></details> </ul></div><div class="decl def" id="traversable.fold_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L125">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">{α ω : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> ω]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> ω]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → ω) → t α → ω</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable.traverse">traversable.traverse</a>
+    (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.const.mk'">functor.const.mk'</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f)</li></ul></details> </ul></div><div class="decl def" id="traversable.foldl"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L128">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → β → α) → α → t β → α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a> f x xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a>
+     (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.mk">monoid.foldl.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> f)
+     xs).<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.get" title="monoid.foldl.get">get</a>
+    x</li></ul></details> </ul></div><div class="decl def" id="traversable.foldr"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L131">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr">traversable.foldr</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → β → β) → β → t α → β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr">traversable.foldr</a> f x xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a>
+     (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.mk">monoid.foldr.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f)
+     xs).<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.get" title="monoid.foldr.get">get</a>
+    x</li></ul></details> </ul></div><div class="decl def" id="traversable.to_list"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L151">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="decl_args">:</span>     <div class="decl_type">t α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α</div></div>
+   <p>Conceptually, <code>to_list</code> collects all the elements of a collection
+in a list. This idea is formalized by</p>
+
+<p><code>lemma to_list_spec (x : t α) : to_list x = fold_map free_monoid.mk x</code>.</p>
+
+<p>The definition of <code>to_list</code> is based on <code>foldl</code> and <code>list.cons</code> for
+speed. It is faster than using <code>fold_map free_monoid.mk</code> because, by
+using <code>foldl</code> and <code>list.cons</code>, each insertion is done in constant
+time. As a consequence, <code>to_list</code> performs in linear.</p>
+
+<p>On the other hand, <code>fold_map free_monoid.mk</code> creates a singleton list
+around each element and concatenates all the resulting lists. In
+<code>xs ++ ys</code>, concatenation takes a time proportional to <code>length xs</code>. Since
+the order in which concatenation is evaluated is unspecified, nothing
+prevents each element of the traversable to be appended at the end
+<code>xs ++ [x]</code> which would yield a <code>O(n²)</code> run time.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.reverse">list.reverse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a>
+    <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons">list.cons</a>)
+      <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a></li></ul></details> </ul></div><div class="decl def" id="traversable.length"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L154">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.length">traversable.length</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="decl_args">:</span>     <div class="decl_type">t α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.length">traversable.length</a> xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a>
+     (λ (l : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ulift">ulift</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>) (_x : α),
+        <span title="ulift.up">{</span><a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ulift.down" title="ulift.down">down</a> := l.<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ulift.down" title="ulift.down">down</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1})
+     <span title="ulift.up">{</span><a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ulift.down" title="ulift.down">down</a> := 0}
+     xs).<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ulift.down" title="ulift.down">down</a></li></ul></details> </ul></div><div class="decl def" id="traversable.mfoldl"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L159">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl">traversable.mfoldl</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → β → m α) → α → t β → m α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl">traversable.mfoldl</a> f x xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a>
+     (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.mk">monoid.mfoldl.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> f)
+     xs).<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.get" title="monoid.mfoldl.get">get</a>
+    x</li></ul></details> </ul></div><div class="decl def" id="traversable.mfoldr"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L162">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr">traversable.mfoldr</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → β → m β) → β → t α → m β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr">traversable.mfoldr</a> f x xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a>
+     (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.mk">monoid.mfoldr.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f)
+     xs).<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.get" title="monoid.mfoldr.get">get</a>
+    x</li></ul></details> </ul></div><div class="decl def" id="traversable.map_fold"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L172">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.map_fold">traversable.map_fold</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> β]</span></span> <span class="decl_args">(f : α → β)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> f]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.const">functor.const</a> α)
+  (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.const">functor.const</a> β)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.map_fold">traversable.map_fold</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation.mk" title="applicative_transformation.mk">{</a><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation.app" title="applicative_transformation.app">app</a> := λ (x : Type u_1), f,
+   <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation.preserves_pure'" title="applicative_transformation.preserves_pure'">preserves_pure'</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation.preserves_seq'" title="applicative_transformation.preserves_seq'">preserves_seq'</a> := _}</li></ul></details> </ul></div><div class="decl def" id="traversable.free.mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L178">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">α → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.ret">list.ret</a></li></ul></details> </ul></div><div class="decl def" id="traversable.free.map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L180">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.map">traversable.free.map</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.map">traversable.free.map</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.map">list.map</a> f</li></ul></details> </ul></div><div class="decl theorem" id="traversable.free.map_eq_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L182">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.map_eq_map">traversable.free.map_eq_map</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(xs : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.map">traversable.free.map</a> f xs</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="traversable.is_monoid_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L185">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.is_monoid_hom">traversable.is_monoid_hom</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.map">traversable.free.map</a> f)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl def" id="traversable.fold_foldl"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L189">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_foldl">traversable.fold_foldl</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(f : β → α → β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a> f)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="traversable.foldl.unop_of_free_monoid"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L194">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl.unop_of_free_monoid">traversable.foldl.unop_of_free_monoid</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(f : β → α → β)</span> <span class="decl_args">(xs : <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α)</span> <span class="decl_args">(a : β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a> f xs) a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldl">list.foldl</a> f a xs</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="traversable.fold_foldr"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L197">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_foldr">traversable.fold_foldr</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(f : α → β → β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.of_free_monoid">monoid.foldr.of_free_monoid</a> f)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="traversable.mfoldl.unop_of_free_monoid"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L205">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl.unop_of_free_monoid">traversable.mfoldl.unop_of_free_monoid</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(f : β → α → m β)</span> <span class="decl_args">(xs : <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α)</span> <span class="decl_args">(a : β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a> f xs) a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldl">list.mfoldl</a> f a xs</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="traversable.fold_mfoldl"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L208">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_mfoldl">traversable.fold_mfoldl</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(f : β → α → m β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a> f)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl def" id="traversable.fold_mfoldr"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L213">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_mfoldr">traversable.fold_mfoldr</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(f : α → β → m β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.of_free_monoid">monoid.mfoldr.of_free_monoid</a> f)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="traversable.fold_map_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L221">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map_hom">traversable.fold_map_hom</a></span> <span class="impl_arg"><span class="decl_args">{α β γ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> β]</span></span> <span class="decl_args">(f : α → β)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> f]</span></span> <span class="decl_args">(g : γ → α)</span> <span class="decl_args">(x : t γ)</span> <span class="decl_args">:</span>     <div class="decl_type">f (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> g x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> (f <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> g) x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.fold_map_hom_free"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L231">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map_hom_free">traversable.fold_map_hom_free</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> β]</span></span> <span class="decl_args">(f : <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → β)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> f]</span></span> <span class="decl_args">(x : t α)</span> <span class="decl_args">:</span>     <div class="decl_type">f (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a>
+    (f <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a>)
+    x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.fold_mfoldl_cons"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L238">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_mfoldl_cons">traversable.fold_mfoldl_cons</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(f : α → β → m α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">(y : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldl">list.mfoldl</a> f y (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f y x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.fold_mfoldr_cons"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L242">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_mfoldr_cons">traversable.fold_mfoldr_cons</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(f : β → α → m α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">(y : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldr">list.mfoldr</a> f y (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f x y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.foldl.of_free_monoid_comp_free_mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L254">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl.of_free_monoid_comp_free_mk">traversable.foldl.of_free_monoid_comp_free_mk</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(f : α → β → α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a>
+    <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.mk">monoid.foldl.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.foldr.of_free_monoid_comp_free_mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L257">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr.of_free_monoid_comp_free_mk">traversable.foldr.of_free_monoid_comp_free_mk</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(f : β → α → α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.of_free_monoid">monoid.foldr.of_free_monoid</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a>
+    <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.mk">monoid.foldr.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.mfoldl.of_free_monoid_comp_free_mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L260">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl.of_free_monoid_comp_free_mk">traversable.mfoldl.of_free_monoid_comp_free_mk</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(f : α → β → m α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a>
+    <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.mk">monoid.mfoldl.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.mfoldr.of_free_monoid_comp_free_mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L264">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr.of_free_monoid_comp_free_mk">traversable.mfoldr.of_free_monoid_comp_free_mk</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(f : β → α → m α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.of_free_monoid">monoid.mfoldr.of_free_monoid</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a>
+    <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.mk">monoid.mfoldr.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.to_list_spec"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L267">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list_spec">traversable.to_list_spec</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> xs</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.fold_map_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L282">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map_map">traversable.fold_map_map</a></span> <span class="impl_arg"><span class="decl_args">{α β γ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> γ]</span></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> g (f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> xs) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> (g <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f) xs</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.foldl_to_list"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L286">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl_to_list">traversable.foldl_to_list</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="decl_args">(f : α → β → α)</span> <span class="decl_args">(xs : t β)</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a> f x xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldl">list.foldl</a> f x (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.foldr_to_list"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L291">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr_to_list">traversable.foldr_to_list</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="decl_args">(f : α → β → β)</span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr">traversable.foldr</a> f x xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldr">list.foldr</a> f x (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.to_list_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L296">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list_map">traversable.to_list_map</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> (f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> xs) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.foldl_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L300">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl_map">traversable.foldl_map</a></span> <span class="impl_arg"><span class="decl_args">{α β γ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(f : α → γ → α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(l : t β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a> f a (g <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> l) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a> (λ (x : α) (y : β), f x (g y)) a l</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.foldr_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L304">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr_map">traversable.foldr_map</a></span> <span class="impl_arg"><span class="decl_args">{α β γ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(f : γ → α → α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(l : t β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr">traversable.foldr</a> f a (g <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> l) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr">traversable.foldr</a> (f <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> g) a l</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.to_list_eq_self"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L308">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list_eq_self">traversable.to_list_eq_self</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{xs : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> xs</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.length_to_list"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L316">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.length_to_list">traversable.length_to_list</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">{xs : t α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.length">traversable.length</a> xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs).<a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length" title="list.length">length</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.mfoldl_to_list"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L336">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl_to_list">traversable.mfoldl_to_list</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{f : α → β → m α}</span></span> <span class="impl_arg"><span class="decl_args">{x : α}</span></span> <span class="impl_arg"><span class="decl_args">{xs : t β}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl">traversable.mfoldl</a> f x xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldl">list.mfoldl</a> f x (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.mfoldr_to_list"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L341">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr_to_list">traversable.mfoldr_to_list</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(f : α → β → m β)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr">traversable.mfoldr</a> f x xs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldr">list.mfoldr</a> f x (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.mfoldl_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L346">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl_map">traversable.mfoldl_map</a></span> <span class="impl_arg"><span class="decl_args">{α β γ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(f : α → γ → m α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(l : t β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl">traversable.mfoldl</a> f a (g <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> l) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl">traversable.mfoldl</a> (λ (x : α) (y : β), f x (g y)) a l</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="traversable.mfoldr_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/category/fold.lean#L350">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr_map">traversable.mfoldr_map</a></span> <span class="impl_arg"><span class="decl_args">{α β γ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{t : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(f : γ → α → m α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(l : t β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr">traversable.mfoldr</a> f a (g <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> l) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr">traversable.mfoldr</a> (f <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> g) a l</div></div>
+   <p></p>
+  </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +387,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +405,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +930,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +983,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +1000,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +1049,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1085,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1109,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1130,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1159,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1167,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1190,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1317,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1327,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1345,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1415,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1456,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,499 +1466,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="def"><a id="monoid.foldl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L92">monoid.foldl</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p>For a list, foldl f x [y₀,y₁] reduces as follows
-  calc  foldl f x [y₀,y₁]
-      = foldl f (f x y₀) [y₁]      : rfl
-  ... = foldl f (f (f x y₀) y₁) [] : rfl
-  ... = f (f x y₀) y₁              : rfl</p>
-
-<p>with f : α → β → α
-     x : α
-     [y₀,y₁] : list β</p>
-
-<p>We can view the above as a composition of functions:</p>
-
-<p>... = f (f x y₀) y₁              : rfl
-  ... = flip f y₁ (flip f y₀ x)    : rfl
-  ... = (flip f y₁ ∘ flip f y₀) x  : rfl</p>
-
-<p>We can use traverse and const to construct this composition:</p>
-
-<p>calc   const.run (traverse (λ y, const.mk' (flip f y)) [y₀,y₁]) x
-       = const.run ((::) <$&gt; const.mk' (flip f y₀) &lt;<em>&gt; traverse (λ y, const.mk' (flip f y)) [y₁]) x
-  ...  = const.run ((::) <$&gt; const.mk' (flip f y₀) &lt;</em>&gt; ( (::) <$&gt; const.mk' (flip f y₁) &lt;<em>&gt; traverse (λ y, const.mk' (flip f y)) [] )) x
-  ...  = const.run ((::) <$&gt; const.mk' (flip f y₀) &lt;</em>&gt; ( (::) <$&gt; const.mk' (flip f y₁) &lt;<em>&gt; pure [] )) x
-  ...  = const.run ( ((::) <$&gt; const.mk' (flip f y₁) &lt;</em>&gt; pure []) ∘ ((::) <$&gt; const.mk' (flip f y₀)) ) x
-  ...  = const.run ( const.mk' (flip f y₁) ∘ const.mk' (flip f y₀) ) x
-  ...  = const.run ( flip f y₁ ∘ flip f y₀ ) x
-  ...  = f (f x y₀) y₁</p>
-
-<p>And this is how <code>const</code> turns a monoid into an applicative functor and
-how the monoid of endofunctions define <code>foldl</code>.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="monoid.foldl.mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L93">monoid.foldl.mk</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → α) → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl">monoid.foldl</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.foldl.get"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L94">monoid.foldl.get</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl">monoid.foldl</a> α → α → α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.foldl.of_free_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L95">monoid.foldl.of_free_monoid</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(β → α → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl">monoid.foldl</a> β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.foldr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L98">monoid.foldr</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="monoid.foldr.mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L99">monoid.foldr.mk</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → α) → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr">monoid.foldr</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.foldr.get"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L100">monoid.foldr.get</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr">monoid.foldr</a> α → α → α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.foldr.of_free_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L101">monoid.foldr.of_free_monoid</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → β → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr">monoid.foldr</a> β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.mfoldl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L104">monoid.mfoldl</a></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.mfoldl.mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L105">monoid.mfoldl.mk</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → m α) → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl">monoid.mfoldl</a> m α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.mfoldl.get"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L106">monoid.mfoldl.get</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl">monoid.mfoldl</a> m α → α → m α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.mfoldl.of_free_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L107">monoid.mfoldl.of_free_monoid</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(β → α → m β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl">monoid.mfoldl</a> m β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{α β : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.mfoldr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L110">monoid.mfoldr</a></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.mfoldr.mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L112">monoid.mfoldr.mk</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → m α) → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr">monoid.mfoldr</a> m α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.mfoldr.get"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L113">monoid.mfoldr.get</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr">monoid.mfoldr</a> m α → α → m α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="monoid.mfoldr.of_free_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L114">monoid.mfoldr.of_free_monoid</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → β → m β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr">monoid.mfoldr</a> m β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{α β : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.fold_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L125">traversable.fold_map</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → ω) → t α → ω</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">{α ω : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_one">has_one</a> ω]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul">has_mul</a> ω]</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.foldl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L128">traversable.foldl</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → β → α) → α → t β → α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.foldr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L131">traversable.foldr</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → β → β) → β → t α → β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.to_list"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L151">traversable.to_list</a></span>  <span class="decl_args">:</span>       <div class="decl_type">t α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α</div>
-<p>Conceptually, <code>to_list</code> collects all the elements of a collection
-in a list. This idea is formalized by</p>
-
-<p><code>lemma to_list_spec (x : t α) : to_list x = fold_map free_monoid.mk x</code>.</p>
-
-<p>The definition of <code>to_list</code> is based on <code>foldl</code> and <code>list.cons</code> for
-speed. It is faster than using <code>fold_map free_monoid.mk</code> because, by
-using <code>foldl</code> and <code>list.cons</code>, each insertion is done in constant
-time. As a consequence, <code>to_list</code> performs in linear.</p>
-
-<p>On the other hand, <code>fold_map free_monoid.mk</code> creates a singleton list
-around each element and concatenates all the resulting lists. In
-<code>xs ++ ys</code>, concatenation takes a time proportional to <code>length xs</code>. Since
-the order in which concatenation is evaluated is unspecified, nothing
-prevents each element of the traversable to be appended at the end
-<code>xs ++ [x]</code> which would yield a <code>O(n²)</code> run time.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.length"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L154">traversable.length</a></span>  <span class="decl_args">:</span>       <div class="decl_type">t α → ℕ</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.mfoldl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L159">traversable.mfoldl</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → β → m α) → α → t β → m α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.mfoldr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L162">traversable.mfoldr</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → β → m β) → β → t α → m β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.map_fold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L172">traversable.map_fold</a></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#applicative_transformation">applicative_transformation</a> (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.const">functor.const</a> α) (<a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.const">functor.const</a> β)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> β]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> f]</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.free.mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L178">traversable.free.mk</a></span>  <span class="decl_args">:</span>       <div class="decl_type">α → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.free.map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L180">traversable.free.map</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → β) → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.free.map_eq_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L182">traversable.free.map_eq_map</a></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(xs : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">f <$> xs = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.map">traversable.free.map</a> f xs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.is_monoid_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L185">traversable.is_monoid_hom</a></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.map">traversable.free.map</a> f)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="traversable.fold_foldl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L189">traversable.fold_foldl</a></span> <span class="decl_args">(f : β → α → β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a> f)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="traversable.foldl.unop_of_free_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L194">traversable.foldl.unop_of_free_monoid</a></span> <span class="decl_args">(f : β → α → β)</span> <span class="decl_args">(xs : <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α)</span> <span class="decl_args">(a : β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a> f xs) a = <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldl">list.foldl</a> f a xs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="traversable.fold_foldr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L197">traversable.fold_foldr</a></span> <span class="decl_args">(f : α → β → β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.of_free_monoid">monoid.foldr.of_free_monoid</a> f)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="traversable.mfoldl.unop_of_free_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L205">traversable.mfoldl.unop_of_free_monoid</a></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="decl_args">(f : β → α → m β)</span> <span class="decl_args">(xs : <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α)</span> <span class="decl_args">(a : β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a> f xs) a = <a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldl">list.mfoldl</a> f a xs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="traversable.fold_mfoldl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L208">traversable.fold_mfoldl</a></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="decl_args">(f : β → α → m β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a> f)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="traversable.fold_mfoldr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L213">traversable.fold_mfoldr</a></span> <span class="decl_args">(m : Type u → Type u)</span> <span class="decl_args">(f : α → β → m β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.of_free_monoid">monoid.mfoldr.of_free_monoid</a> f)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="traversable.fold_map_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L221">traversable.fold_map_hom</a></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(g : γ → α)</span> <span class="decl_args">(x : t γ)</span> <span class="decl_args">:</span>       <div class="decl_type">f (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> g x) = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> (f ∘ g) x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β γ : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> β]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> f]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.fold_map_hom_free"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L231">traversable.fold_map_hom_free</a></span> <span class="decl_args">(f : <a href="https://robertylewis.com/mathlib_docs/algebra/group/free_monoid.html#free_monoid">free_monoid</a> α → β)</span> <span class="decl_args">(x : t α)</span> <span class="decl_args">:</span>       <div class="decl_type">f (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> x) = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> (f ∘ <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a>) x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> β]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> f]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.fold_mfoldl_cons"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L238">traversable.fold_mfoldl_cons</a></span> <span class="decl_args">(f : α → β → m α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">(y : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldl">list.mfoldl</a> f y (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> x) = f y x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.fold_mfoldr_cons"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L242">traversable.fold_mfoldr_cons</a></span> <span class="decl_args">(f : β → α → m α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">(y : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldr">list.mfoldr</a> f y (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> x) = f x y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.foldl.of_free_monoid_comp_free_mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L254">traversable.foldl.of_free_monoid_comp_free_mk</a></span> <span class="decl_args">(f : α → β → α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a> f ∘ <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldl.mk">monoid.foldl.mk</a> ∘ <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="traversable.foldr.of_free_monoid_comp_free_mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L257">traversable.foldr.of_free_monoid_comp_free_mk</a></span> <span class="decl_args">(f : β → α → α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.of_free_monoid">monoid.foldr.of_free_monoid</a> f ∘ <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.foldr.mk">monoid.foldr.mk</a> ∘ f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="traversable.mfoldl.of_free_monoid_comp_free_mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L260">traversable.mfoldl.of_free_monoid_comp_free_mk</a></span> <span class="decl_args">(f : α → β → m α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a> f ∘ <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldl.mk">monoid.mfoldl.mk</a> ∘ <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#flip">flip</a> f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="traversable.mfoldr.of_free_monoid_comp_free_mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L264">traversable.mfoldr.of_free_monoid_comp_free_mk</a></span> <span class="decl_args">(f : β → α → m α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.of_free_monoid">monoid.mfoldr.of_free_monoid</a> f ∘ <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#monoid.mfoldr.mk">monoid.mfoldr.mk</a> ∘ f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="traversable.to_list_spec"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L267">traversable.to_list_spec</a></span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.free.mk">traversable.free.mk</a> xs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.fold_map_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L282">traversable.fold_map_map</a></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> g (f <$> xs) = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.fold_map">traversable.fold_map</a> (g ∘ f) xs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β γ : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> γ]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.foldl_to_list"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L286">traversable.foldl_to_list</a></span> <span class="decl_args">(f : α → β → α)</span> <span class="decl_args">(xs : t β)</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a> f x xs = <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldl">list.foldl</a> f x (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.foldr_to_list"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L291">traversable.foldr_to_list</a></span> <span class="decl_args">(f : α → β → β)</span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr">traversable.foldr</a> f x xs = <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.foldr">list.foldr</a> f x (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.to_list_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L296">traversable.to_list_map</a></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> (f <$> xs) = f <$> <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.foldl_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L300">traversable.foldl_map</a></span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(f : α → γ → α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(l : t β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a> f a (g <$> l) = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldl">traversable.foldl</a> (λ (x : α) (y : β), f x (g y)) a l</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β γ : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="traversable.foldr_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L304">traversable.foldr_map</a></span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(f : γ → α → α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(l : t β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr">traversable.foldr</a> f a (g <$> l) = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.foldr">traversable.foldr</a> (f ∘ g) a l</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β γ : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="traversable.to_list_eq_self"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L308">traversable.to_list_eq_self</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs = xs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{xs : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="traversable.length_to_list"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L316">traversable.length_to_list</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.length">traversable.length</a> xs = <a href="https://robertylewis.com/mathlib_docs/core/init/data/list/basic.html#list.length">list.length</a> (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span> <span class="impl_arg">{xs : t α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.mfoldl_to_list"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L337">traversable.mfoldl_to_list</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl">traversable.mfoldl</a> f x xs = <a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldl">list.mfoldl</a> f x (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span> <span class="impl_arg">{f : α → β → m α}</span> <span class="impl_arg">{x : α}</span> <span class="impl_arg">{xs : t β}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.mfoldr_to_list"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L342">traversable.mfoldr_to_list</a></span> <span class="decl_args">(f : α → β → m β)</span> <span class="decl_args">(x : β)</span> <span class="decl_args">(xs : t α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr">traversable.mfoldr</a> f x xs = <a href="https://robertylewis.com/mathlib_docs/core/init/category/combinators.html#list.mfoldr">list.mfoldr</a> f x (<a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.to_list">traversable.to_list</a> xs)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="traversable.mfoldl_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L347">traversable.mfoldl_map</a></span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(f : α → γ → m α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(l : t β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl">traversable.mfoldl</a> f a (g <$> l) = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldl">traversable.mfoldl</a> (λ (x : α) (y : β), f x (g y)) a l</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β γ : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="traversable.mfoldr_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean#L351">traversable.mfoldr_map</a></span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">(f : γ → α → m α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(l : t β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr">traversable.mfoldr</a> f a (g <$> l) = <a href="https://robertylewis.com/mathlib_docs/category/fold.html#traversable.mfoldr">traversable.mfoldr</a> (f ∘ g) a l</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β γ : Type u}</span> <span class="impl_arg">{t : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#traversable">traversable</a> t]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable">is_lawful_traversable</a> t]</span> <span class="impl_arg">{m : Type u → Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">fold</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/category/fold.lean">(view source on GitHub)</a></div><a href="#monoid.foldl">monoid.foldl</a><br>
-<a href="#monoid.foldl.get">monoid.foldl.get</a><br>
-<a href="#monoid.foldl.mk">monoid.foldl.mk</a><br>
-<a href="#monoid.foldl.of_free_monoid">monoid.foldl.of_free_monoid</a><br>
-<a href="#monoid.foldr">monoid.foldr</a><br>
-<a href="#monoid.foldr.get">monoid.foldr.get</a><br>
-<a href="#monoid.foldr.mk">monoid.foldr.mk</a><br>
-<a href="#monoid.foldr.of_free_monoid">monoid.foldr.of_free_monoid</a><br>
-<a href="#monoid.mfoldl">monoid.mfoldl</a><br>
-<a href="#monoid.mfoldl.get">monoid.mfoldl.get</a><br>
-<a href="#monoid.mfoldl.mk">monoid.mfoldl.mk</a><br>
-<a href="#monoid.mfoldl.of_free_monoid">monoid.mfoldl.of_free_monoid</a><br>
-<a href="#monoid.mfoldr">monoid.mfoldr</a><br>
-<a href="#monoid.mfoldr.get">monoid.mfoldr.get</a><br>
-<a href="#monoid.mfoldr.mk">monoid.mfoldr.mk</a><br>
-<a href="#monoid.mfoldr.of_free_monoid">monoid.mfoldr.of_free_monoid</a><br>
-<a href="#traversable.fold_foldl">traversable.fold_foldl</a><br>
-<a href="#traversable.fold_foldr">traversable.fold_foldr</a><br>
-<a href="#traversable.fold_map">traversable.fold_map</a><br>
-<a href="#traversable.fold_map_hom">traversable.fold_map_hom</a><br>
-<a href="#traversable.fold_map_hom_free">traversable.fold_map_hom_free</a><br>
-<a href="#traversable.fold_map_map">traversable.fold_map_map</a><br>
-<a href="#traversable.fold_mfoldl">traversable.fold_mfoldl</a><br>
-<a href="#traversable.fold_mfoldl_cons">traversable.fold_mfoldl_cons</a><br>
-<a href="#traversable.fold_mfoldr">traversable.fold_mfoldr</a><br>
-<a href="#traversable.fold_mfoldr_cons">traversable.fold_mfoldr_cons</a><br>
-<a href="#traversable.foldl">traversable.foldl</a><br>
-<a href="#traversable.foldl.of_free_monoid_comp_free_mk">traversable.foldl.of_free_monoid_comp_free_mk</a><br>
-<a href="#traversable.foldl.unop_of_free_monoid">traversable.foldl.unop_of_free_monoid</a><br>
-<a href="#traversable.foldl_map">traversable.foldl_map</a><br>
-<a href="#traversable.foldl_to_list">traversable.foldl_to_list</a><br>
-<a href="#traversable.foldr">traversable.foldr</a><br>
-<a href="#traversable.foldr.of_free_monoid_comp_free_mk">traversable.foldr.of_free_monoid_comp_free_mk</a><br>
-<a href="#traversable.foldr_map">traversable.foldr_map</a><br>
-<a href="#traversable.foldr_to_list">traversable.foldr_to_list</a><br>
-<a href="#traversable.free.map">traversable.free.map</a><br>
-<a href="#traversable.free.map_eq_map">traversable.free.map_eq_map</a><br>
-<a href="#traversable.free.mk">traversable.free.mk</a><br>
-<a href="#traversable.is_monoid_hom">traversable.is_monoid_hom</a><br>
-<a href="#traversable.length">traversable.length</a><br>
-<a href="#traversable.length_to_list">traversable.length_to_list</a><br>
-<a href="#traversable.map_fold">traversable.map_fold</a><br>
-<a href="#traversable.mfoldl">traversable.mfoldl</a><br>
-<a href="#traversable.mfoldl.of_free_monoid_comp_free_mk">traversable.mfoldl.of_free_monoid_comp_free_mk</a><br>
-<a href="#traversable.mfoldl.unop_of_free_monoid">traversable.mfoldl.unop_of_free_monoid</a><br>
-<a href="#traversable.mfoldl_map">traversable.mfoldl_map</a><br>
-<a href="#traversable.mfoldl_to_list">traversable.mfoldl_to_list</a><br>
-<a href="#traversable.mfoldr">traversable.mfoldr</a><br>
-<a href="#traversable.mfoldr.of_free_monoid_comp_free_mk">traversable.mfoldr.of_free_monoid_comp_free_mk</a><br>
-<a href="#traversable.mfoldr_map">traversable.mfoldr_map</a><br>
-<a href="#traversable.mfoldr_to_list">traversable.mfoldr_to_list</a><br>
-<a href="#traversable.to_list">traversable.to_list</a><br>
-<a href="#traversable.to_list_eq_self">traversable.to_list_eq_self</a><br>
-<a href="#traversable.to_list_map">traversable.to_list_map</a><br>
-<a href="#traversable.to_list_spec">traversable.to_list_spec</a><br>
 </div></div>
 
         </div>

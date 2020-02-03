@@ -7,8 +7,267 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">data.analysis.topology</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean">View source</a></div><a href="#compact.realizer">compact.realizer</a><br>
+<a href="#ctop">ctop</a><br>
+<a href="#ctop.coe_mk">ctop.coe_mk</a><br>
+<a href="#ctop.has_coe_to_fun">ctop.has_coe_to_fun</a><br>
+<a href="#ctop.mem_nhds_to_topsp">ctop.mem_nhds_to_topsp</a><br>
+<a href="#ctop.of_equiv">ctop.of_equiv</a><br>
+<a href="#ctop.of_equiv_val">ctop.of_equiv_val</a><br>
+<a href="#ctop.realizer">ctop.realizer</a><br>
+<a href="#ctop.realizer.ext">ctop.realizer.ext</a><br>
+<a href="#ctop.realizer.ext'">ctop.realizer.ext'</a><br>
+<a href="#ctop.realizer.id">ctop.realizer.id</a><br>
+<a href="#ctop.realizer.is_basis">ctop.realizer.is_basis</a><br>
+<a href="#ctop.realizer.is_closed_iff">ctop.realizer.is_closed_iff</a><br>
+<a href="#ctop.realizer.is_open">ctop.realizer.is_open</a><br>
+<a href="#ctop.realizer.is_open_iff">ctop.realizer.is_open_iff</a><br>
+<a href="#ctop.realizer.mem_interior_iff">ctop.realizer.mem_interior_iff</a><br>
+<a href="#ctop.realizer.mem_nhds">ctop.realizer.mem_nhds</a><br>
+<a href="#ctop.realizer.nhds">ctop.realizer.nhds</a><br>
+<a href="#ctop.realizer.nhds_F">ctop.realizer.nhds_F</a><br>
+<a href="#ctop.realizer.nhds_σ">ctop.realizer.nhds_σ</a><br>
+<a href="#ctop.realizer.of_equiv">ctop.realizer.of_equiv</a><br>
+<a href="#ctop.realizer.of_equiv_F">ctop.realizer.of_equiv_F</a><br>
+<a href="#ctop.realizer.of_equiv_σ">ctop.realizer.of_equiv_σ</a><br>
+<a href="#ctop.realizer.tendsto_nhds_iff">ctop.realizer.tendsto_nhds_iff</a><br>
+<a href="#ctop.to_realizer">ctop.to_realizer</a><br>
+<a href="#ctop.to_topsp">ctop.to_topsp</a><br>
+<a href="#ctop.to_topsp_is_topological_basis">ctop.to_topsp_is_topological_basis</a><br>
+<a href="#locally_finite.realizer">locally_finite.realizer</a><br>
+<a href="#locally_finite.realizer.to_locally_finite">locally_finite.realizer.to_locally_finite</a><br>
+<a href="#locally_finite_iff_exists_realizer">locally_finite_iff_exists_realizer</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl structure" id="ctop"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L16">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u_1 → Type u_2 → Type (max u_1 u_2)</div></div>
+ <ul class="structure_fields" id="ctop.mk">
+<li class="structure_field" id="ctop.f">f : σ → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α</li>
+<li class="structure_field" id="ctop.top">top : α → σ</li>
+<li class="structure_field" id="ctop.top_mem">top_mem : ∀ (x : α), x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> (c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top" title="ctop.top">top</a> x)</li>
+<li class="structure_field" id="ctop.inter">inter : Π (a b : σ) (x : α),
+  x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> b → σ</li>
+<li class="structure_field" id="ctop.inter_mem">inter_mem : ∀ (a b : σ) (x : α)
+(h : x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> b),
+  x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> (c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter" title="ctop.inter">inter</a> a b x h)</li>
+<li class="structure_field" id="ctop.inter_sub">inter_sub : ∀ (a b : σ) (x : α)
+(h : x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> b),
+  c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> (c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter" title="ctop.inter">inter</a> a b x h) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a>
+    c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> b</li>
+</ul>  <p>A <code>ctop α σ</code> is a realization of a topology (basis) on <code>α</code>,
+ represented by a type <code>σ</code> together with operations for the top element and
+ the intersection operation.</p>
+  </ul></div><div class="decl def" id="ctop.has_coe_to_fun"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L30">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.has_coe_to_fun">ctop.has_coe_to_fun</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_3}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.has_coe_to_fun">ctop.has_coe_to_fun</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.mk" title="has_coe_to_fun.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.F" title="has_coe_to_fun.F">F</a> := λ (x : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ),
+          σ → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.coe" title="has_coe_to_fun.coe">coe</a> := <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f">ctop.f</a> σ}</li></ul></details> </ul></div><div class="decl theorem" id="ctop.coe_mk"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L32">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.coe_mk">ctop.coe_mk</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_3}</span></span> <span class="decl_args">(f : σ → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α)</span> <span class="decl_args">(T : α → σ)</span> <span class="decl_args">(h₁ : ∀ (x : α), x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> f (T x))</span> <span class="decl_args">(I : Π (a b : σ) (x : α), x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> f a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> f b → σ)</span> <span class="decl_args">(h₂ : ∀ (a b : σ) (x : α) (h : x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> f a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> f b),
+  x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> f (I a b x h))</span> <span class="decl_args">(h₃ : ∀ (a b : σ) (x : α) (h : x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> f a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> f b),
+  f (I a b x h) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a> f a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> f b)</span> <span class="decl_args">(a : σ)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.mk" title="ctop.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> := f,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top" title="ctop.top">top</a> := T,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top_mem" title="ctop.top_mem">top_mem</a> := h₁,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter" title="ctop.inter">inter</a> := I,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter_mem" title="ctop.inter_mem">inter_mem</a> := h₂,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter_sub" title="ctop.inter_sub">inter_sub</a> := h₃}
+    a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  f a</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="ctop.of_equiv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L35">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.of_equiv">ctop.of_equiv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_3}</span></span> <span class="impl_arg"><span class="decl_args">{τ : Type u_4}</span></span> <span class="decl_args">:</span>     <div class="decl_type">σ <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv" title="equiv">≃</a> τ → <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ → <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α τ</div></div>
+   <p>Map a ctop to an equivalent representation type.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.of_equiv">ctop.of_equiv</a> E
+    <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.mk" title="ctop.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> := f,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top" title="ctop.top">top</a> := T,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top_mem" title="ctop.top_mem">top_mem</a> := h₁,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter" title="ctop.inter">inter</a> := I,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter_mem" title="ctop.inter_mem">inter_mem</a> := h₂,
+     <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter_sub" title="ctop.inter_sub">inter_sub</a> := h₃} <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.mk" title="ctop.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> := λ (a : τ), f (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(E.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm" title="equiv.symm">symm</a>) a),
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top" title="ctop.top">top</a> := λ (x : α), <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>E (T x),
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top_mem" title="ctop.top_mem">top_mem</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter" title="ctop.inter">inter</a> := λ (a b : τ) (x : α)
+            (h :
+              x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a>
+                f (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(E.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm" title="equiv.symm">symm</a>) a) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a>
+                  f (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(E.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm" title="equiv.symm">symm</a>) b)),
+              <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>E
+                (I (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(E.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm" title="equiv.symm">symm</a>) a) (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(E.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm" title="equiv.symm">symm</a>) b) x
+                   h),
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter_mem" title="ctop.inter_mem">inter_mem</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter_sub" title="ctop.inter_sub">inter_sub</a> := _}</li></ul></details> </ul></div><div class="decl theorem" id="ctop.of_equiv_val"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L44">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.of_equiv_val">ctop.of_equiv_val</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_3}</span></span> <span class="impl_arg"><span class="decl_args">{τ : Type u_4}</span></span> <span class="decl_args">(E : σ <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv" title="equiv">≃</a> τ)</span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</span> <span class="decl_args">(a : τ)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.of_equiv">ctop.of_equiv</a> E F) a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>F (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(E.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm" title="equiv.symm">symm</a>) a)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="ctop.to_topsp"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L50">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp">ctop.to_topsp</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_3}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α</div></div>
+   <p>Every <code>ctop</code> is a topological space.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp" title="ctop.to_topsp">to_topsp</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/topology/order.html#topological_space.generate_from">topological_space.generate_from</a>
+    (<a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a>)</li></ul></details> </ul></div><div class="decl theorem" id="ctop.to_topsp_is_topological_basis"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L53">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp_is_topological_basis">ctop.to_topsp_is_topological_basis</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_3}</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/bases.html#topological_space.is_topological_basis">topological_space.is_topological_basis</a>
+  (<a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.mem_nhds_to_topsp"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L59">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.mem_nhds_to_topsp">ctop.mem_nhds_to_topsp</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_3}</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</span> <span class="impl_arg"><span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  ∃ (b : σ),
+    a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>F b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+      <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>F b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a> s</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="ctop.realizer"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L69">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="impl_arg"><span class="decl_args">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Type (max u_5 (u_6+1))</div></div>
+ <ul class="structure_fields" id="ctop.realizer.mk">
+<li class="structure_field" id="ctop.realizer.σ">σ : Type ?</li>
+<li class="structure_field" id="ctop.realizer.F">F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a></li>
+<li class="structure_field" id="ctop.realizer.eq">eq : c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp" title="ctop.to_topsp">to_topsp</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> T</li>
+</ul>  <p>A <code>ctop</code> realizer for the topological space <code>T</code> is a <code>ctop</code>
+ which generates <code>T</code>.</p>
+  </ul></div><div class="decl def" id="ctop.to_realizer"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L75">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_realizer">ctop.to_realizer</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_3}</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_realizer" title="ctop.to_realizer">to_realizer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.mk" title="ctop.realizer.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a> := σ,
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a> := F,
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.eq" title="ctop.realizer.eq">eq</a> := _}</li></ul></details> </ul></div><div class="decl theorem" id="ctop.realizer.is_basis"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L80">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.is_basis">ctop.realizer.is_basis</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/bases.html#topological_space.is_topological_basis">topological_space.is_topological_basis</a>
+  (<a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.mem_nhds"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L84">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.mem_nhds">ctop.realizer.mem_nhds</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="impl_arg"><span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  ∃ (b : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a>),
+    a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+      <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a> s</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.is_open_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L88">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.is_open_iff">ctop.realizer.is_open_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="impl_arg"><span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> s <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  ∀ (a : α),
+    a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> s →
+    (∃ (b : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a>),
+       a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+         <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a> s)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.is_closed_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L92">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.is_closed_iff">ctop.realizer.is_closed_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="impl_arg"><span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_closed">is_closed</a> s <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  ∀ (a : α),
+    (∀ (b : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a>),
+       a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) b →
+       (∃ (z : α),
+          z <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a>
+            <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> s)) →
+    a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> s</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.mem_interior_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.mem_interior_iff">ctop.realizer.mem_interior_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="impl_arg"><span class="decl_args">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#interior">interior</a> s <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  ∃ (b : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a>),
+    a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+      <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a> s</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.is_open"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L103">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.is_open">ctop.realizer.is_open</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(s : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.ext'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L106">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.ext'">ctop.realizer.ext'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">{F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α),
+   s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+     ∃ (b : σ),
+       a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>F b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+         <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>F b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a> s) →
+F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp" title="ctop.to_topsp">to_topsp</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> T</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.ext"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L117">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.ext">ctop.realizer.ext</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{σ : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">{F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(∀ (a : σ), <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>F a)) →
+(∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α),
+   s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a →
+   (∃ (b : σ),
+      a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>F b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+        <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>F b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a> s)) →
+F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp" title="ctop.to_topsp">to_topsp</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> T</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="ctop.realizer.id"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L125">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.id">ctop.realizer.id</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.id">ctop.realizer.id</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.mk" title="ctop.realizer.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a> := {x // <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> x},
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a> := <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.mk" title="ctop.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.f" title="ctop.f">f</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val">subtype.val</a>
+                (λ (x : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> x),
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top" title="ctop.top">top</a> := λ (_x : α), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a><a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.univ">set.univ</a> α, _⟩,
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top_mem" title="ctop.top_mem">top_mem</a> := _,
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter" title="ctop.inter">inter</a> := λ (_x : {x // <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> x}),
+                    ctop.realizer.id._match_2 _x,
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter_mem" title="ctop.inter_mem">inter_mem</a> := _,
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter_sub" title="ctop.inter_sub">inter_sub</a> := _},
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.eq" title="ctop.realizer.eq">eq</a> := _}</li><li class="equation">ctop.realizer.id._match_2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>x, h₁⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  λ (_x : {x // <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> x}), ctop.realizer.id._match_1 x h₁ _x</li><li class="equation">ctop.realizer.id._match_1 x h₁ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>y, h₂⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  λ (a : α)
+  (h₃ :
+    a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a>
+      <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>x, h₁⟩.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a>
+        <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>y, h₂⟩.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>),
+    <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a> y, _⟩</li></ul></details> </ul></div><div class="decl def" id="ctop.realizer.of_equiv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L135">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.of_equiv">ctop.realizer.of_equiv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{τ : Type u_4}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a> <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv" title="equiv">≃</a> τ → <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.of_equiv" title="ctop.realizer.of_equiv">of_equiv</a> E <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.mk" title="ctop.realizer.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a> := τ,
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a> := <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.of_equiv">ctop.of_equiv</a> E F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>,
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.eq" title="ctop.realizer.eq">eq</a> := _}</li></ul></details> </ul></div><div class="decl theorem" id="ctop.realizer.of_equiv_σ"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L139">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.of_equiv_σ">ctop.realizer.of_equiv_σ</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{τ : Type u_4}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(E : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a> <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv" title="equiv">≃</a> τ)</span> <span class="decl_args">:</span>     <div class="decl_type">(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.of_equiv" title="ctop.realizer.of_equiv">of_equiv</a> E).<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> τ</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.of_equiv_F"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L140">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.of_equiv_F">ctop.realizer.of_equiv_F</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{τ : Type u_4}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(E : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a> <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv" title="equiv">≃</a> τ)</span> <span class="decl_args">(s : τ)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>((F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.of_equiv" title="ctop.realizer.of_equiv">of_equiv</a> E).<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(E.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm" title="equiv.symm">symm</a>) s)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="ctop.realizer.nhds"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L143">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds">ctop.realizer.nhds</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a).<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer" title="filter.realizer">realizer</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds" title="ctop.realizer.nhds">nhds</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.mk" title="filter.realizer.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.σ" title="filter.realizer.σ">σ</a> := {s // a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a>
+           <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s},
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.F" title="filter.realizer.F">F</a> := <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#cfilter.mk" title="cfilter.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#cfilter.f" title="cfilter.f">f</a> := λ
+              (s : {s // <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.mem">set.mem</a> a (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s)}),
+                <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>,
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#cfilter.pt" title="cfilter.pt">pt</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.top" title="ctop.top">top</a> a, _⟩,
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#cfilter.inf" title="cfilter.inf">inf</a> := λ
+                (_x : {s // <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.mem">set.mem</a> a (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s)}),
+                  ctop.realizer.nhds._match_2 F a _x,
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#cfilter.inf_le_left" title="cfilter.inf_le_left">inf_le_left</a> := _,
+         <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#cfilter.inf_le_right" title="cfilter.inf_le_right">inf_le_right</a> := _},
+   <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.eq" title="filter.realizer.eq">eq</a> := _}</li><li class="equation">ctop.realizer.nhds._match_2 F a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>x, h₁⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  λ (_x : {s // <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.mem">set.mem</a> a (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s)}),
+    ctop.realizer.nhds._match_1 F a x h₁ _x</li><li class="equation">ctop.realizer.nhds._match_1 F a x h₁ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>y, h₂⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.inter" title="ctop.inter">inter</a> x y a _, _⟩</li></ul></details> </ul></div><div class="decl theorem" id="ctop.realizer.nhds_σ"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L154">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds_σ">ctop.realizer.nhds_σ</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(m : α → β)</span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds" title="ctop.realizer.nhds">nhds</a> a).<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.σ" title="filter.realizer.σ">σ</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  {s // a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s}</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.nhds_F"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L156">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds_F">ctop.realizer.nhds_F</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(m : α → β)</span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(s : (F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds" title="ctop.realizer.nhds">nhds</a> a).<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.σ" title="filter.realizer.σ">σ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>((F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds" title="ctop.realizer.nhds">nhds</a> a).<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.F" title="filter.realizer.F">F</a>) s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ctop.realizer.tendsto_nhds_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L159">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.tendsto_nhds_iff">ctop.realizer.tendsto_nhds_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{m : β → α}</span></span> <span class="impl_arg"><span class="decl_args">{f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> β}</span></span> <span class="decl_args">(F : f.<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer" title="filter.realizer">realizer</a>)</span> <span class="decl_args">(R : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> m f (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a) <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  ∀ (t : R.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.σ" title="ctop.realizer.σ">σ</a>),
+    a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(R.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) t →
+    (∃ (s : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.σ" title="filter.realizer.σ">σ</a>),
+       ∀ (x : β),
+         x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.F" title="filter.realizer.F">F</a>) s →
+         m x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(R.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) t)</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="locally_finite.realizer"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L165">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#locally_finite.realizer">locally_finite.realizer</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α → (β → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) → Type (max u_1 u_2 u_5)</div></div>
+ <ul class="structure_fields" id="locally_finite.realizer.mk">
+<li class="structure_field" id="locally_finite.realizer.bas">bas : Π (a : α), {s // a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>) s}</li>
+<li class="structure_field" id="locally_finite.realizer.sets">sets : Π (x : α),
+  <a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a>
+    <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>{i :
+         β | f i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inter.inter" title="has_inter.inter">∩</a>
+           <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.F" title="ctop.realizer.F">F</a>)
+             <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(c.<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#locally_finite.realizer.bas" title="locally_finite.realizer.bas">bas</a> x) <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a>
+         <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_emptyc.emptyc" title="has_emptyc.emptyc">∅</a>}</li>
+</ul>  <p></p>
+  </ul></div><div class="decl theorem" id="locally_finite.realizer.to_locally_finite"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L169">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#locally_finite.realizer.to_locally_finite">locally_finite.realizer.to_locally_finite</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α}</span></span> <span class="impl_arg"><span class="decl_args">{f : β → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#locally_finite.realizer">locally_finite.realizer</a> F f → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#locally_finite">locally_finite</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="locally_finite_iff_exists_realizer"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L175">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#locally_finite_iff_exists_realizer">locally_finite_iff_exists_realizer</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="impl_arg"><span class="decl_args">{f : β → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#locally_finite">locally_finite</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#nonempty">nonempty</a> (<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#locally_finite.realizer">locally_finite.realizer</a> F f)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="compact.realizer"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/analysis/topology.lean#L186">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#compact.realizer">compact.realizer</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → Type (max u_1 (max u_1 (u_3+1)) u_3 u_1)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#compact.realizer">compact.realizer</a> R s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  Π {f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> α} (F : f.<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer" title="filter.realizer">realizer</a>) (x : F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.σ" title="filter.realizer.σ">σ</a>),
+    f <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> <a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.has_bot.bot" title="lattice.has_bot.bot">⊥</a> →
+    <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(F.<a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer.F" title="filter.realizer.F">F</a>) x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_subset.subset" title="has_subset.subset">⊆</a> s →
+    {a // a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">∈</a> s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a>
+       <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.has_inf.inf" title="lattice.has_inf.inf">⊓</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> <a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.has_bot.bot" title="lattice.has_bot.bot">⊥</a>}</li></ul></details> </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +354,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +372,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +897,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +950,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +967,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +1016,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1052,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1076,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1097,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1126,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1134,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1157,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1284,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1294,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1312,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1382,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1423,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,278 +1433,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="structure"><a id="ctop"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L16">ctop</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u_1 → Type u_2 → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_1 u_2)</div>
-<p>A <code>ctop α σ</code> is a realization of a topology (basis) on <code>α</code>,
- represented by a type <code>σ</code> together with operations for the top element and
- the intersection operation.</p>
-       <ul>
-
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">ctop.f : σ → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α</div></li>
-<li><div class="structure_field">ctop.top : α → σ</div></li>
-<li><div class="structure_field">ctop.top_mem : ∀ (x : α), x ∈ c.f (c.top x)</div></li>
-<li><div class="structure_field">ctop.inter : Π (a b : σ) (x : α), x ∈ c.f a ∩ c.f b → σ</div></li>
-<li><div class="structure_field">ctop.inter_mem : ∀ (a b : σ) (x : α) (h : x ∈ c.f a ∩ c.f b), x ∈ c.f (c.inter a b x h)</div></li>
-<li><div class="structure_field">ctop.inter_sub : ∀ (a b : σ) (x : α) (h : x ∈ c.f a ∩ c.f b), c.f (c.inter a b x h) ⊆ c.f a ∩ c.f b</div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="ctop.has_coe_to_fun"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L30">ctop.has_coe_to_fun</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{σ : Type u_3}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="ctop.coe_mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L32">ctop.coe_mk</a></span> <span class="decl_args">(f : σ → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α)</span> <span class="decl_args">(T : α → σ)</span> <span class="decl_args">(h₁ : ∀ (x : α), x ∈ f (T x))</span> <span class="decl_args">(I : Π (a b : σ) (x : α), x ∈ f a ∩ f b → σ)</span> <span class="decl_args">(h₂ : ∀ (a b : σ) (x : α) (h : x ∈ f a ∩ f b), x ∈ f (I a b x h))</span> <span class="decl_args">(h₃ : ∀ (a b : σ) (x : α) (h : x ∈ f a ∩ f b), f (I a b x h) ⊆ f a ∩ f b)</span> <span class="decl_args">(a : σ)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑{f := f, top := T, top_mem := h₁, inter := I, inter_mem := h₂, inter_sub := h₃} a = f a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{σ : Type u_3}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="ctop.of_equiv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L35">ctop.of_equiv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">σ ≃ τ → <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ → <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α τ</div>
-<p>Map a ctop to an equivalent representation type.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{σ : Type u_3}</span> <span class="impl_arg">{τ : Type u_4}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.of_equiv_val"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L44">ctop.of_equiv_val</a></span> <span class="decl_args">(E : σ ≃ τ)</span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</span> <span class="decl_args">(a : τ)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑(<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.of_equiv">ctop.of_equiv</a> E F) a = ⇑F (⇑(<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm">equiv.symm</a> E) a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{σ : Type u_3}</span> <span class="impl_arg">{τ : Type u_4}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="ctop.to_topsp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L49">ctop.to_topsp</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{σ : Type u_3}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="ctop.to_topsp_is_topological_basis"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L52">ctop.to_topsp_is_topological_basis</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/bases.html#topological_space.is_topological_basis">topological_space.is_topological_basis</a> (<a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> (F.f))</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{σ : Type u_3}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.mem_nhds_to_topsp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L58">ctop.mem_nhds_to_topsp</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</span> <span class="decl_args">:</span>       <div class="decl_type">s ∈ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a ↔ ∃ (b : σ), a ∈ ⇑F b ∧ ⇑F b ⊆ s</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{σ : Type u_3}</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="impl_arg">{a : α}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="structure"><a id="ctop.realizer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L68">ctop.realizer</a></span> <span class="decl_args">(α : Type u_5)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_5 (u_6+1))</div>
-<p>A <code>ctop</code> realizer for the topological space <code>T</code> is a <code>ctop</code>
- which generates <code>T</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">ctop.realizer.σ : Type ?</div></li>
-<li><div class="structure_field">ctop.realizer.F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α (c.σ)</div></li>
-<li><div class="structure_field">ctop.realizer.eq : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp">ctop.to_topsp</a> (c.F) = T</div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="ctop.to_realizer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L74">ctop.to_realizer</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{σ : Type u_3}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.is_basis"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L79">ctop.realizer.is_basis</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/bases.html#topological_space.is_topological_basis">topological_space.is_topological_basis</a> (<a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> ((F.F).f))</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.mem_nhds"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L83">ctop.realizer.mem_nhds</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">s ∈ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a ↔ ∃ (b : F.σ), a ∈ ⇑(F.F) b ∧ ⇑(F.F) b ⊆ s</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.is_open_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L87">ctop.realizer.is_open_iff</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> s ↔ ∀ (a : α), a ∈ s → (∃ (b : F.σ), a ∈ ⇑(F.F) b ∧ ⇑(F.F) b ⊆ s)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.is_closed_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L91">ctop.realizer.is_closed_iff</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_closed">is_closed</a> s ↔ ∀ (a : α), (∀ (b : F.σ), a ∈ ⇑(F.F) b → (∃ (z : α), z ∈ ⇑(F.F) b ∩ s)) → a ∈ s</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.mem_interior_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L98">ctop.realizer.mem_interior_iff</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">a ∈ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#interior">interior</a> s ↔ ∃ (b : F.σ), a ∈ ⇑(F.F) b ∧ ⇑(F.F) b ⊆ s</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.is_open"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L102">ctop.realizer.is_open</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(s : F.σ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (⇑(F.F) s)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.ext'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L105">ctop.realizer.ext'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), s ∈ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a ↔ ∃ (b : σ), a ∈ ⇑F b ∧ ⇑F b ⊆ s) → <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp">ctop.to_topsp</a> F = T</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{σ : Type u_2}</span> <span class="impl_arg">{F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.ext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L116">ctop.realizer.ext</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(∀ (a : σ), <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#is_open">is_open</a> (⇑F a)) →
-(∀ (a : α) (s : <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α), s ∈ <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a → (∃ (b : σ), a ∈ ⇑F b ∧ ⇑F b ⊆ s)) → <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.to_topsp">ctop.to_topsp</a> F = T</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[T : <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{σ : Type u_2}</span> <span class="impl_arg">{F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop">ctop</a> α σ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="ctop.realizer.id"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L124">ctop.realizer.id</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-
-
-
-</ul></div><div class="def"><a id="ctop.realizer.of_equiv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L134">ctop.realizer.of_equiv</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">F.σ ≃ τ → <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{τ : Type u_4}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.of_equiv_σ"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L138">ctop.realizer.of_equiv_σ</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(E : F.σ ≃ τ)</span> <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.of_equiv">ctop.realizer.of_equiv</a> F E).σ = τ</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{τ : Type u_4}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.of_equiv_F"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L139">ctop.realizer.of_equiv_F</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(E : F.σ ≃ τ)</span> <span class="decl_args">(s : τ)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑((<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.of_equiv">ctop.realizer.of_equiv</a> F E).F) s = ⇑(F.F) (⇑(<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.symm">equiv.symm</a> E) s)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{τ : Type u_4}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="ctop.realizer.nhds"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L142">ctop.realizer.nhds</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer">filter.realizer</a> (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.nhds_σ"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L153">ctop.realizer.nhds_σ</a></span> <span class="decl_args">(m : α → β)</span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds">ctop.realizer.nhds</a> F a).σ = {s // a ∈ ⇑(F.F) s}</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.nhds_F"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L155">ctop.realizer.nhds_F</a></span> <span class="decl_args">(m : α → β)</span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">(s : (<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds">ctop.realizer.nhds</a> F a).σ)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑((<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer.nhds">ctop.realizer.nhds</a> F a).F) s = ⇑(F.F) (s.val)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="ctop.realizer.tendsto_nhds_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L158">ctop.realizer.tendsto_nhds_iff</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/filter.html#filter.realizer">filter.realizer</a> f)</span> <span class="decl_args">(R : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.tendsto">filter.tendsto</a> m f (<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#nhds">nhds</a> a) ↔
-  ∀ (t : R.σ), a ∈ ⇑(R.F) t → (∃ (s : F.σ), ∀ (x : β), x ∈ ⇑(F.F) s → m x ∈ ⇑(R.F) t)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{m : β → α}</span> <span class="impl_arg">{f : <a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter">filter</a> β}</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="structure"><a id="locally_finite.realizer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L164">locally_finite.realizer</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α → (β → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α) → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_1 u_2 u_5)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">locally_finite.realizer.bas : Π (a : α), {s // a ∈ ⇑(F.F) s}</div></li>
-<li><div class="structure_field">locally_finite.realizer.sets : Π (x : α), <a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> ↥{i : β | f i ∩ ⇑(F.F) ↑(c.bas x) ≠ ∅}</div></li>
-</ul></li>
-
-</ul></div><div class="thm"><a id="locally_finite.realizer.to_locally_finite"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L168">locally_finite.realizer.to_locally_finite</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#locally_finite.realizer">locally_finite.realizer</a> F f → <a href="https://robertylewis.com/mathlib_docs/topology/basic.html#locally_finite">locally_finite</a> f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α}</span> <span class="impl_arg">{f : β → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="locally_finite_iff_exists_realizer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L174">locally_finite_iff_exists_realizer</a></span> <span class="decl_args">(F : <a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#locally_finite">locally_finite</a> f ↔ <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#nonempty">nonempty</a> (<a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#locally_finite.realizer">locally_finite.realizer</a> F f)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span> <span class="impl_arg">{f : β → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α}</span></li>
-
-
-
-</ul></div><div class="def"><a id="compact.realizer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean#L185">compact.realizer</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/analysis/topology.html#ctop.realizer">ctop.realizer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α → Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_1 (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_1 (u_3+1)) u_3 u_1)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> α]</span></li>
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">topology</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/analysis/topology.lean">(view source on GitHub)</a></div><a href="#compact.realizer">compact.realizer</a><br>
-<a href="#ctop">ctop</a><br>
-<a href="#ctop.coe_mk">ctop.coe_mk</a><br>
-<a href="#ctop.has_coe_to_fun">ctop.has_coe_to_fun</a><br>
-<a href="#ctop.mem_nhds_to_topsp">ctop.mem_nhds_to_topsp</a><br>
-<a href="#ctop.of_equiv">ctop.of_equiv</a><br>
-<a href="#ctop.of_equiv_val">ctop.of_equiv_val</a><br>
-<a href="#ctop.realizer">ctop.realizer</a><br>
-<a href="#ctop.realizer.ext">ctop.realizer.ext</a><br>
-<a href="#ctop.realizer.ext'">ctop.realizer.ext'</a><br>
-<a href="#ctop.realizer.id">ctop.realizer.id</a><br>
-<a href="#ctop.realizer.is_basis">ctop.realizer.is_basis</a><br>
-<a href="#ctop.realizer.is_closed_iff">ctop.realizer.is_closed_iff</a><br>
-<a href="#ctop.realizer.is_open">ctop.realizer.is_open</a><br>
-<a href="#ctop.realizer.is_open_iff">ctop.realizer.is_open_iff</a><br>
-<a href="#ctop.realizer.mem_interior_iff">ctop.realizer.mem_interior_iff</a><br>
-<a href="#ctop.realizer.mem_nhds">ctop.realizer.mem_nhds</a><br>
-<a href="#ctop.realizer.nhds">ctop.realizer.nhds</a><br>
-<a href="#ctop.realizer.nhds_F">ctop.realizer.nhds_F</a><br>
-<a href="#ctop.realizer.nhds_σ">ctop.realizer.nhds_σ</a><br>
-<a href="#ctop.realizer.of_equiv">ctop.realizer.of_equiv</a><br>
-<a href="#ctop.realizer.of_equiv_F">ctop.realizer.of_equiv_F</a><br>
-<a href="#ctop.realizer.of_equiv_σ">ctop.realizer.of_equiv_σ</a><br>
-<a href="#ctop.realizer.tendsto_nhds_iff">ctop.realizer.tendsto_nhds_iff</a><br>
-<a href="#ctop.to_realizer">ctop.to_realizer</a><br>
-<a href="#ctop.to_topsp">ctop.to_topsp</a><br>
-<a href="#ctop.to_topsp_is_topological_basis">ctop.to_topsp_is_topological_basis</a><br>
-<a href="#locally_finite.realizer">locally_finite.realizer</a><br>
-<a href="#locally_finite.realizer.to_locally_finite">locally_finite.realizer.to_locally_finite</a><br>
-<a href="#locally_finite_iff_exists_realizer">locally_finite_iff_exists_realizer</a><br>
 </div></div>
 
         </div>

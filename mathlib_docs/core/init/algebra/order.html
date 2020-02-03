@@ -7,8 +7,392 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">core.init.algebra.order</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean">View source</a></div><a href="#decidable_eq_of_decidable_le">decidable_eq_of_decidable_le</a><br>
+<a href="#decidable_linear_order">decidable_linear_order</a><br>
+<a href="#decidable_linear_order.to_linear_order">decidable_linear_order.to_linear_order</a><br>
+<a href="#decidable_lt_of_decidable_le">decidable_lt_of_decidable_le</a><br>
+<a href="#eq.decidable">eq.decidable</a><br>
+<a href="#eq_or_lt_of_not_lt">eq_or_lt_of_not_lt</a><br>
+<a href="#ge_trans">ge_trans</a><br>
+<a href="#gt.trans">gt.trans</a><br>
+<a href="#gt_irrefl">gt_irrefl</a><br>
+<a href="#gt_of_ge_of_gt">gt_of_ge_of_gt</a><br>
+<a href="#gt_of_gt_of_ge">gt_of_gt_of_ge</a><br>
+<a href="#gt_trans">gt_trans</a><br>
+<a href="#has_le.le.decidable">has_le.le.decidable</a><br>
+<a href="#has_le.le.is_total_preorder">has_le.le.is_total_preorder</a><br>
+<a href="#has_lt.lt.decidable">has_lt.lt.decidable</a><br>
+<a href="#is_strict_total_order_of_decidable_linear_order">is_strict_total_order_of_decidable_linear_order</a><br>
+<a href="#is_strict_weak_order_of_decidable_linear_order">is_strict_weak_order_of_decidable_linear_order</a><br>
+<a href="#le_antisymm">le_antisymm</a><br>
+<a href="#le_antisymm_iff">le_antisymm_iff</a><br>
+<a href="#le_iff_lt_or_eq">le_iff_lt_or_eq</a><br>
+<a href="#le_not_le_of_lt">le_not_le_of_lt</a><br>
+<a href="#le_of_eq">le_of_eq</a><br>
+<a href="#le_of_eq_or_lt">le_of_eq_or_lt</a><br>
+<a href="#le_of_lt">le_of_lt</a><br>
+<a href="#le_of_lt_or_eq">le_of_lt_or_eq</a><br>
+<a href="#le_of_not_ge">le_of_not_ge</a><br>
+<a href="#le_of_not_gt">le_of_not_gt</a><br>
+<a href="#le_of_not_le">le_of_not_le</a><br>
+<a href="#le_or_gt">le_or_gt</a><br>
+<a href="#le_refl">le_refl</a><br>
+<a href="#le_total">le_total</a><br>
+<a href="#le_trans">le_trans</a><br>
+<a href="#linear_order">linear_order</a><br>
+<a href="#linear_order.to_partial_order">linear_order.to_partial_order</a><br>
+<a href="#lt.trans">lt.trans</a><br>
+<a href="#lt_asymm">lt_asymm</a><br>
+<a href="#lt_iff_le_not_le">lt_iff_le_not_le</a><br>
+<a href="#lt_iff_not_ge">lt_iff_not_ge</a><br>
+<a href="#lt_irrefl">lt_irrefl</a><br>
+<a href="#lt_of_le_not_le">lt_of_le_not_le</a><br>
+<a href="#lt_of_le_of_lt">lt_of_le_of_lt</a><br>
+<a href="#lt_of_le_of_ne">lt_of_le_of_ne</a><br>
+<a href="#lt_of_lt_of_le">lt_of_lt_of_le</a><br>
+<a href="#lt_of_not_ge">lt_of_not_ge</a><br>
+<a href="#lt_or_eq_of_le">lt_or_eq_of_le</a><br>
+<a href="#lt_or_ge">lt_or_ge</a><br>
+<a href="#lt_or_gt_of_ne">lt_or_gt_of_ne</a><br>
+<a href="#lt_trans">lt_trans</a><br>
+<a href="#lt_trichotomy">lt_trichotomy</a><br>
+<a href="#ne_iff_lt_or_gt">ne_iff_lt_or_gt</a><br>
+<a href="#ne_of_gt">ne_of_gt</a><br>
+<a href="#ne_of_lt">ne_of_lt</a><br>
+<a href="#not_le_of_gt">not_le_of_gt</a><br>
+<a href="#not_lt_of_ge">not_lt_of_ge</a><br>
+<a href="#not_lt_of_gt">not_lt_of_gt</a><br>
+<a href="#partial_order">partial_order</a><br>
+<a href="#partial_order.to_preorder">partial_order.to_preorder</a><br>
+<a href="#preorder">preorder</a><br>
+<a href="#preorder.to_has_le">preorder.to_has_le</a><br>
+<a href="#preorder.to_has_lt">preorder.to_has_lt</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl def" id="preorder.to_has_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L19">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder.to_has_lt">preorder.to_has_lt</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt">has_lt</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="preorder"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L19">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+ <ul class="structure_fields" id="preorder.mk">
+<li class="structure_field" id="preorder.le">le : α → α → Prop</li>
+<li class="structure_field" id="preorder.lt">lt : α → α → Prop</li>
+<li class="structure_field" id="preorder.le_refl">le_refl : ∀ (a : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</li>
+<li class="structure_field" id="preorder.le_trans">le_trans : ∀ (a b c_1 : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c_1 → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c_1</li>
+<li class="structure_field" id="preorder.lt_iff_le_not_le">lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ (a b : α),
+     a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+       a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "order_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+</ul>  <p>A preorder is a reflexive, transitive relation <code>≤</code> with <code>a &lt; b</code> defined in the obvious way.</p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order.to_preorder">partial_order.to_preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#directed_order.to_preorder">directed_order.to_preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#order_dual.preorder">order_dual.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#pi.preorder">pi.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#subtype.preorder">subtype.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#prod.preorder">prod.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_bot.preorder">with_bot.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_top.preorder">with_top.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#units.preorder">units.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#with_zero.preorder">with_zero.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.preorder">rat.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/associated.html#associates.preorder">associates.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/finsupp.html#finsupp.preorder">finsupp.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html#cau_seq.preorder">cau_seq.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real.preorder">real.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html#measure_theory.simple_func.preorder">measure_theory.simple_func.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/measure_theory/ae_eq_fun.html#measure_theory.ae_eq_fun.preorder">measure_theory.ae_eq_fun.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/zsqrtd/basic.html#zsqrtd.preorder">zsqrtd.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lexicographic.html#lex_preorder">lex_preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lexicographic.html#dlex_preorder">dlex_preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html#filter.filter_product.preorder">filter.filter_product.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/surreal.html#surreal.preorder">surreal.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/ordinal_notation.html#onote.preorder">onote.preorder</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/ordinal_notation.html#nonote.preorder">nonote.preorder</a></li></ul></details></ul></div><div class="decl def" id="preorder.to_has_le"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L19">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder.to_has_le">preorder.to_has_le</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le">has_le</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="partial_order.to_preorder"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L26">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order.to_preorder">partial_order.to_preorder</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="partial_order"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L26">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+ <ul class="structure_fields" id="partial_order.mk">
+<li class="structure_field" id="partial_order.le">le : α → α → Prop</li>
+<li class="structure_field" id="partial_order.lt">lt : α → α → Prop</li>
+<li class="structure_field" id="partial_order.le_refl">le_refl : ∀ (a : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</li>
+<li class="structure_field" id="partial_order.le_trans">le_trans : ∀ (a b c_1 : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c_1 → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c_1</li>
+<li class="structure_field" id="partial_order.lt_iff_le_not_le">lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ (a b : α),
+     a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+       a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "order_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+<li class="structure_field" id="partial_order.le_antisymm">le_antisymm : ∀ (a b : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</li>
+</ul>  <p>A partial order is a reflexive, transitive, antisymmetric relation <code>≤</code>.</p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order.to_partial_order">linear_order.to_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#ordered_cancel_comm_monoid.to_partial_order">ordered_cancel_comm_monoid.to_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#ordered_comm_group.to_partial_order">ordered_comm_group.to_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_sup.to_partial_order">lattice.semilattice_sup.to_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_inf.to_partial_order">lattice.semilattice_inf.to_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.order_top.to_partial_order">lattice.order_top.to_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#lattice.order_bot.to_partial_order">lattice.order_bot.to_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#ordered_comm_monoid.to_partial_order">ordered_comm_monoid.to_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#order_dual.partial_order">order_dual.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#pi.partial_order">pi.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#subtype.partial_order">subtype.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#prod.partial_order">prod.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_bot.partial_order">with_bot.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_top.partial_order">with_top.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#units.partial_order">units.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#with_zero.partial_order">with_zero.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset.partial_order">multiset.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/finset.html#finset.partial_order">finset.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.partial_order">rat.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/nat/enat.html#enat.partial_order">enat.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.partial_order">filter.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/topology/order.html#topological_space.partial_order">topological_space.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/topology/opens.html#topological_space.opens.partial_order">topological_space.opens.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/associated.html#associates.partial_order">associates.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/group_theory/submonoid.html#submonoid.partial_order">submonoid.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/group_theory/submonoid.html#add_submonoid.partial_order">add_submonoid.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/finsupp.html#finsupp.partial_order">finsupp.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/linear_algebra/basic.html#submodule.partial_order">submodule.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real.partial_order">real.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/ring_theory/algebra.html#subalgebra.partial_order">subalgebra.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/setoid.html#setoid.partition.partial_order">setoid.partition.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/measure_theory/measurable_space.html#measurable_space.partial_order">measurable_space.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/measure_theory/measurable_space.html#measurable_space.dynkin_system.partial_order">measurable_space.dynkin_system.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/topology/uniform_space/basic.html#uniform_space.partial_order">uniform_space.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html#measure_theory.measure.partial_order">measure_theory.measure.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html#measure_theory.simple_func.partial_order">measure_theory.simple_func.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/measure_theory/ae_eq_fun.html#measure_theory.ae_eq_fun.partial_order">measure_theory.ae_eq_fun.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/ordinal.html#ordinal.partial_order">ordinal.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lexicographic.html#lex_partial_order">lex_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lexicographic.html#dlex_partial_order">dlex_partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html#filter.filter_product.partial_order">filter.filter_product.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/pilex.html#pilex.partial_order">pilex.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#structure_groupoid.partial_order">structure_groupoid.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/surreal.html#surreal.partial_order">surreal.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/pequiv.html#pequiv.partial_order">pequiv.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/semiquot.html#semiquot.partial_order">semiquot.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/topology/algebra/open_subgroup.html#open_subgroup.partial_order">open_subgroup.partial_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/topology/algebra/open_subgroup.html#open_add_subgroup.partial_order">open_add_subgroup.partial_order</a></li></ul></details></ul></div><div class="decl def" id="linear_order.to_partial_order"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L30">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order.to_partial_order">linear_order.to_partial_order</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="linear_order"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L30">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+ <ul class="structure_fields" id="linear_order.mk">
+<li class="structure_field" id="linear_order.le">le : α → α → Prop</li>
+<li class="structure_field" id="linear_order.lt">lt : α → α → Prop</li>
+<li class="structure_field" id="linear_order.le_refl">le_refl : ∀ (a : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</li>
+<li class="structure_field" id="linear_order.le_trans">le_trans : ∀ (a b c_1 : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c_1 → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c_1</li>
+<li class="structure_field" id="linear_order.lt_iff_le_not_le">lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ (a b : α),
+     a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+       a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "order_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+<li class="structure_field" id="linear_order.le_antisymm">le_antisymm : ∀ (a b : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</li>
+<li class="structure_field" id="linear_order.le_total">le_total : ∀ (a b : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</li>
+</ul>  <p>A linear order is reflexive, transitive, antisymmetric and total relation <code>≤</code>.</p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.to_linear_order">decidable_linear_order.to_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_semiring.to_linear_order">linear_ordered_semiring.to_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_ring.to_linear_order">linear_ordered_ring.to_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_ring.html#linear_nonneg_ring.to_linear_order">linear_nonneg_ring.to_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/data/nat/lemmas.html#nat.linear_order">nat.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#order_dual.linear_order">order_dual.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#subtype.linear_order">subtype.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_bot.linear_order">with_bot.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_top.linear_order">with_top.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#units.linear_order">units.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#with_zero.linear_order">with_zero.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/list/basic.html#list.linear_order">list.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_order">rat.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real.linear_order">real.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/cardinal.html#cardinal.linear_order">cardinal.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lexicographic.html#lex_linear_order">lex_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lexicographic.html#dlex_linear_order">dlex_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html#filter.filter_product.linear_order">filter.filter_product.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/pilex.html#pilex.linear_order">pilex.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/surreal.html#surreal.linear_order">surreal.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/ordinal_notation.html#nonote.linear_order">nonote.linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/real/ereal.html#ereal.linear_order_1">ereal.linear_order_1</a></li></ul></details></ul></div><div class="decl theorem" id="le_refl"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L33">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_refl">le_refl</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_trans"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L36">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_trans">le_trans</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_iff_le_not_le"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L39">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_iff_le_not_le">lt_iff_le_not_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_of_le_not_le"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L42">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_of_le_not_le">lt_of_le_not_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_not_le_of_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L45">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_not_le_of_lt">le_not_le_of_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_antisymm"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L48">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_antisymm">le_antisymm</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_of_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L51">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_of_eq">le_of_eq</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_antisymm_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L54">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_antisymm_iff">le_antisymm_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ge_trans"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L57">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#ge_trans">ge_trans</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_total"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L60">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_total">le_total</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_of_not_ge"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L63">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_of_not_ge">le_of_not_ge</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_of_not_le"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L66">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_of_not_le">le_of_not_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_irrefl"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L69">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_irrefl">lt_irrefl</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="gt_irrefl"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L74">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#gt_irrefl">gt_irrefl</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_trans"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L77">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_trans">lt_trans</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="lt.trans"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L83">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt.trans">lt.trans</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt.trans">lt.trans</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_trans">lt_trans</a></li></ul></details> </ul></div><div class="decl theorem" id="gt_trans"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L85">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#gt_trans">gt_trans</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="gt.trans"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L88">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#gt.trans">gt.trans</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> c</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#gt.trans">gt.trans</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#gt_trans">gt_trans</a></li></ul></details> </ul></div><div class="decl theorem" id="ne_of_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L90">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#ne_of_lt">ne_of_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ne_of_gt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L93">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#ne_of_gt">ne_of_gt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_asymm"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L96">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_asymm">lt_asymm</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="not_lt_of_gt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#not_lt_of_gt">not_lt_of_gt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_of_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L102">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_of_lt">le_of_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_of_lt_of_le"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L105">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_of_lt_of_le">lt_of_lt_of_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_of_le_of_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L110">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_of_le_of_lt">lt_of_le_of_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="gt_of_gt_of_ge"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L115">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#gt_of_gt_of_ge">gt_of_gt_of_ge</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="gt_of_ge_of_gt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L118">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#gt_of_ge_of_gt">gt_of_ge_of_gt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="not_le_of_gt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L121">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#not_le_of_gt">not_le_of_gt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="not_lt_of_ge"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L124">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#not_lt_of_ge">not_lt_of_ge</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> b → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_or_eq_of_le"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L127">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_or_eq_of_le">lt_or_eq_of_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_of_lt_or_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L132">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_of_lt_or_eq">le_of_lt_or_eq</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_iff_lt_or_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L136">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_iff_lt_or_eq">le_iff_lt_or_eq</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_of_le_of_ne"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L139">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_of_le_of_ne">lt_of_le_of_ne</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_trichotomy"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L142">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_trichotomy">lt_trichotomy</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_of_not_gt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L151">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_of_not_gt">le_of_not_gt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_of_not_ge"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L158">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_of_not_ge">lt_of_not_ge</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_or_ge"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L165">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_or_ge">lt_or_ge</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_or_gt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L172">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_or_gt">le_or_gt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_or_gt_of_ne"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L175">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_or_gt_of_ne">lt_or_gt_of_ne</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_of_eq_or_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L182">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#le_of_eq_or_lt">le_of_eq_or_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ne_iff_lt_or_gt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L185">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#ne_iff_lt_or_gt">ne_iff_lt_or_gt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_iff_not_ge"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L188">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#lt_iff_not_ge">lt_iff_not_ge</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>     <div class="decl_type">x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> y <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> y</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="decidable_lt_of_decidable_le"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L191">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_lt_of_decidable_le">decidable_lt_of_decidable_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le">has_le.le</a>]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt">has_lt.lt</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_lt_of_decidable_le">decidable_lt_of_decidable_le</a> a b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)
+    (λ (hab : a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b),
+       <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)
+         (λ (hba : b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable.is_false">decidable.is_false</a> _)
+         (λ (hba : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable.is_true">decidable.is_true</a> _))
+    (λ (hab : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable.is_false">decidable.is_false</a> _)</li></ul></details> </ul></div><div class="decl def" id="decidable_eq_of_decidable_le"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L203">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_eq_of_decidable_le">decidable_eq_of_decidable_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le">has_le.le</a>]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_eq_of_decidable_le">decidable_eq_of_decidable_le</a> a b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)
+    (λ (hab : a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b),
+       <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)
+         (λ (hba : b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable.is_true">decidable.is_true</a> _)
+         (λ (hba : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable.is_false">decidable.is_false</a> _))
+    (λ (hab : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable.is_false">decidable.is_false</a> _)</li></ul></details> </ul></div><div class="decl def" id="decidable_linear_order.to_linear_order"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L215">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.to_linear_order">decidable_linear_order.to_linear_order</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="decidable_linear_order"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L215">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+ <ul class="structure_fields" id="decidable_linear_order.mk">
+<li class="structure_field" id="decidable_linear_order.le">le : α → α → Prop</li>
+<li class="structure_field" id="decidable_linear_order.lt">lt : α → α → Prop</li>
+<li class="structure_field" id="decidable_linear_order.le_refl">le_refl : ∀ (a : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</li>
+<li class="structure_field" id="decidable_linear_order.le_trans">le_trans : ∀ (a b c_1 : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c_1 → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c_1</li>
+<li class="structure_field" id="decidable_linear_order.lt_iff_le_not_le">lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ (a b : α),
+     a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+       a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "order_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+<li class="structure_field" id="decidable_linear_order.le_antisymm">le_antisymm : ∀ (a b : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</li>
+<li class="structure_field" id="decidable_linear_order.le_total">le_total : ∀ (a b : α), a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</li>
+<li class="structure_field" id="decidable_linear_order.decidable_le">decidable_le : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le">has_le.le</a></li>
+<li class="structure_field" id="decidable_linear_order.decidable_eq">decidable_eq : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α</li>
+<li class="structure_field" id="decidable_linear_order.decidable_lt">decidable_lt : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt">has_lt.lt</a></li>
+</ul>  <p></p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#decidable_linear_ordered_comm_group.to_decidable_linear_order">decidable_linear_ordered_comm_group.to_decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#decidable_linear_ordered_cancel_comm_monoid.to_decidable_linear_order">decidable_linear_ordered_cancel_comm_monoid.to_decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#decidable_linear_ordered_semiring.to_decidable_linear_order">decidable_linear_ordered_semiring.to_decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/complete_lattice.html#lattice.complete_linear_order.to_decidable_linear_order">lattice.complete_linear_order.to_decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/conditionally_complete_lattice.html#lattice.conditionally_complete_linear_order.to_decidable_linear_order">lattice.conditionally_complete_linear_order.to_decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/conditionally_complete_lattice.html#lattice.conditionally_complete_linear_order_bot.to_decidable_linear_order">lattice.conditionally_complete_linear_order_bot.to_decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#order_dual.decidable_linear_order">order_dual.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/basic.html#subtype.decidable_linear_order">subtype.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_bot.decidable_linear_order">with_bot.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/bounded_lattice.html#with_top.decidable_linear_order">with_top.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#units.decidable_linear_order">units.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#with_zero.decidable_linear_order">with_zero.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/fin.html#fin.decidable_linear_order">fin.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/list/basic.html#list.decidable_linear_order">list.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/char.html#char.decidable_linear_order">char.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/string/basic.html#string.decidable_linear_order">string.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/pnat/basic.html#pnat.decidable_linear_order">pnat.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_order">rat.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/nat/enat.html#enat.decidable_linear_order">enat.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real.decidable_linear_order">real.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html#nnreal.decidable_linear_order">nnreal.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/zsqrtd/basic.html#zsqrtd.decidable_linear_order">zsqrtd.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/cardinal.html#cardinal.decidable_linear_order">cardinal.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/ordinal.html#ordinal.decidable_linear_order">ordinal.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lexicographic.html#lex_decidable_linear_order">lex_decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/lexicographic.html#dlex_decidable_linear_order">dlex_decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html#filter.filter_product.decidable_linear_order">filter.filter_product.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/set_theory/ordinal_notation.html#nonote.decidable_linear_order">nonote.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/num/lemmas.html#pos_num.decidable_linear_order">pos_num.decidable_linear_order</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/num/lemmas.html#znum.decidable_linear_order">znum.decidable_linear_order</a></li></ul></details></ul></div><div class="decl def" id="has_lt.lt.decidable"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L221">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#has_lt.lt.decidable">has_lt.lt.decidable</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#has_lt.lt.decidable">has_lt.lt.decidable</a> a b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_lt">decidable_linear_order.decidable_lt</a> α a b</li></ul></details> </ul></div><div class="decl def" id="has_le.le.decidable"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L224">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#has_le.le.decidable">has_le.le.decidable</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#has_le.le.decidable">has_le.le.decidable</a> a b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_le">decidable_linear_order.decidable_le</a> α a b</li></ul></details> </ul></div><div class="decl def" id="eq.decidable"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L227">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#eq.decidable">eq.decidable</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#eq.decidable">eq.decidable</a> a b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_eq">decidable_linear_order.decidable_eq</a> α a b</li></ul></details> </ul></div><div class="decl theorem" id="eq_or_lt_of_not_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L230">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#eq_or_lt_of_not_lt">eq_or_lt_of_not_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="has_le.le.is_total_preorder"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L234">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#has_le.le.is_total_preorder">has_le.le.is_total_preorder</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/classes.html#is_total_preorder">is_total_preorder</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le">has_le.le</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#has_le.le.is_total_preorder">has_le.le.is_total_preorder</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl def" id="is_strict_weak_order_of_decidable_linear_order"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L238">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#is_strict_weak_order_of_decidable_linear_order">is_strict_weak_order_of_decidable_linear_order</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/classes.html#is_strict_weak_order">is_strict_weak_order</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt">has_lt.lt</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#is_strict_weak_order_of_decidable_linear_order">is_strict_weak_order_of_decidable_linear_order</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl def" id="is_strict_total_order_of_decidable_linear_order"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/algebra/order.lean#L242">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#is_strict_total_order_of_decidable_linear_order">is_strict_total_order_of_decidable_linear_order</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/classes.html#is_strict_total_order">is_strict_total_order</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt">has_lt.lt</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#is_strict_total_order_of_decidable_linear_order">is_strict_total_order_of_decidable_linear_order</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/classes.html#is_strict_total_order.mk">is_strict_total_order.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt">has_lt.lt</a></li></ul></details> </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +479,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +497,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +1022,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +1075,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +1092,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +1141,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1177,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1201,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1222,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1251,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1259,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1282,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1409,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1419,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1437,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1507,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1548,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,532 +1558,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="structure"><a id="preorder"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L19">preorder</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p>A preorder is a reflexive, transitive relation <code>≤</code> with <code>a &lt; b</code> defined in the obvious way.</p>
-       <ul>
-
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">preorder.le : α → α → Prop</div></li>
-<li><div class="structure_field">preorder.lt : α → α → Prop</div></li>
-<li><div class="structure_field">preorder.le_refl : ∀ (a : α), a ≤ a</div></li>
-<li><div class="structure_field">preorder.le_trans : ∀ (a b c_1 : α), a ≤ b → b ≤ c_1 → a ≤ c_1</div></li>
-<li><div class="structure_field">preorder.lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ (a b : α), a < b ↔ a ≤ b ∧ ¬b ≤ a) (name.mk_string "order_laws_tac" name.anonymous)</div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="preorder.to_has_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L19">preorder.to_has_le</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le">has_le</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="preorder.to_has_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L19">preorder.to_has_lt</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt">has_lt</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="structure"><a id="partial_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L26">partial_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p>A partial order is a reflexive, transitive, antisymmetric relation <code>≤</code>.</p>
-       <ul>
-
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">partial_order.le : α → α → Prop</div></li>
-<li><div class="structure_field">partial_order.lt : α → α → Prop</div></li>
-<li><div class="structure_field">partial_order.le_refl : ∀ (a : α), a ≤ a</div></li>
-<li><div class="structure_field">partial_order.le_trans : ∀ (a b c_1 : α), a ≤ b → b ≤ c_1 → a ≤ c_1</div></li>
-<li><div class="structure_field">partial_order.lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ (a b : α), a < b ↔ a ≤ b ∧ ¬b ≤ a) (name.mk_string "order_laws_tac" name.anonymous)</div></li>
-<li><div class="structure_field">partial_order.le_antisymm : ∀ (a b : α), a ≤ b → b ≤ a → a = b</div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="partial_order.to_preorder"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L26">partial_order.to_preorder</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="linear_order.to_partial_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L30">linear_order.to_partial_order</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="structure"><a id="linear_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L30">linear_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p>A linear order is reflexive, transitive, antisymmetric and total relation <code>≤</code>.</p>
-       <ul>
-
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">linear_order.le : α → α → Prop</div></li>
-<li><div class="structure_field">linear_order.lt : α → α → Prop</div></li>
-<li><div class="structure_field">linear_order.le_refl : ∀ (a : α), a ≤ a</div></li>
-<li><div class="structure_field">linear_order.le_trans : ∀ (a b c_1 : α), a ≤ b → b ≤ c_1 → a ≤ c_1</div></li>
-<li><div class="structure_field">linear_order.lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ (a b : α), a < b ↔ a ≤ b ∧ ¬b ≤ a) (name.mk_string "order_laws_tac" name.anonymous)</div></li>
-<li><div class="structure_field">linear_order.le_antisymm : ∀ (a b : α), a ≤ b → b ≤ a → a = b</div></li>
-<li><div class="structure_field">linear_order.le_total : ∀ (a b : α), a ≤ b ∨ b ≤ a</div></li>
-</ul></li>
-
-</ul></div><div class="thm"><a id="le_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L33">le_refl</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L36">le_trans</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b → b ≤ c → a ≤ c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_iff_le_not_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L39">lt_iff_le_not_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b ↔ a ≤ b ∧ ¬b ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_of_le_not_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L42">lt_of_le_not_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b → ¬b ≤ a → a < b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_not_le_of_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L45">le_not_le_of_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b → a ≤ b ∧ ¬b ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_antisymm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L48">le_antisymm</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b → b ≤ a → a = b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_of_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L51">le_of_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a = b → a ≤ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_antisymm_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L54">le_antisymm_iff</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a = b ↔ a ≤ b ∧ b ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ge_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L57">ge_trans</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≥ b → b ≥ c → a ≥ c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_total"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L60">le_total</a></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≤ b ∨ b ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_of_not_ge"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L63">le_of_not_ge</a></span>  <span class="decl_args">:</span>       <div class="decl_type">¬a ≥ b → a ≤ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_of_not_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L66">le_of_not_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">¬a ≤ b → b ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_irrefl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L69">lt_irrefl</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">¬a < a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="gt_irrefl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L74">gt_irrefl</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">¬a > a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L77">lt_trans</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b → b < c → a < c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="def"><a id="lt.trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L83">lt.trans</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b → b < c → a < c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="gt_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L85">gt_trans</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a > b → b > c → a > c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="def"><a id="gt.trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L88">gt.trans</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a > b → b > c → a > c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ne_of_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L90">ne_of_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b → a ≠ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ne_of_gt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L93">ne_of_gt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a > b → a ≠ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_asymm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L96">lt_asymm</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b → ¬b < a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="not_lt_of_gt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L99">not_lt_of_gt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a > b → ¬a < b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_of_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L102">le_of_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b → a ≤ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_of_lt_of_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L105">lt_of_lt_of_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b → b ≤ c → a < c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_of_le_of_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L110">lt_of_le_of_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b → b < c → a < c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="gt_of_gt_of_ge"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L115">gt_of_gt_of_ge</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a > b → b ≥ c → a > c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="gt_of_ge_of_gt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L118">gt_of_ge_of_gt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≥ b → b > c → a > c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="not_le_of_gt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L121">not_le_of_gt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a > b → ¬a ≤ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="not_lt_of_ge"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L124">not_lt_of_ge</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≥ b → ¬a < b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_or_eq_of_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L127">lt_or_eq_of_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b → a < b ∨ a = b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_of_lt_or_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L132">le_of_lt_or_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < b ∨ a = b → a ≤ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_iff_lt_or_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L136">le_iff_lt_or_eq</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b ↔ a < b ∨ a = b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_of_le_of_ne"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L139">lt_of_le_of_ne</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b → a ≠ b → a < b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_trichotomy"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L142">lt_trichotomy</a></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">a < b ∨ a = b ∨ b < a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_of_not_gt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L151">le_of_not_gt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">¬a > b → a ≤ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_of_not_ge"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L158">lt_of_not_ge</a></span>  <span class="decl_args">:</span>       <div class="decl_type">¬a ≥ b → a < b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_or_ge"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L165">lt_or_ge</a></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">a < b ∨ a ≥ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_or_gt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L172">le_or_gt</a></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≤ b ∨ a > b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_or_gt_of_ne"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L175">lt_or_gt_of_ne</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≠ b → a < b ∨ a > b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_of_eq_or_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L182">le_of_eq_or_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a = b ∨ a < b → a ≤ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ne_iff_lt_or_gt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L185">ne_iff_lt_or_gt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≠ b ↔ a < b ∨ a > b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_iff_not_ge"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L188">lt_iff_not_ge</a></span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>       <div class="decl_type">x < y ↔ ¬x ≥ y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α]</span></li>
-
-
-
-</ul></div><div class="def"><a id="decidable_lt_of_decidable_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L191">decidable_lt_of_decidable_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> has_lt.lt</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> has_le.le]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="decidable_eq_of_decidable_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L203">decidable_eq_of_decidable_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> has_le.le]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="structure"><a id="decidable_linear_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L215">decidable_linear_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p></p>
-       <ul>
-
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">decidable_linear_order.le : α → α → Prop</div></li>
-<li><div class="structure_field">decidable_linear_order.lt : α → α → Prop</div></li>
-<li><div class="structure_field">decidable_linear_order.le_refl : ∀ (a : α), a ≤ a</div></li>
-<li><div class="structure_field">decidable_linear_order.le_trans : ∀ (a b c_1 : α), a ≤ b → b ≤ c_1 → a ≤ c_1</div></li>
-<li><div class="structure_field">decidable_linear_order.lt_iff_le_not_le : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ (a b : α), a < b ↔ a ≤ b ∧ ¬b ≤ a) (name.mk_string "order_laws_tac" name.anonymous)</div></li>
-<li><div class="structure_field">decidable_linear_order.le_antisymm : ∀ (a b : α), a ≤ b → b ≤ a → a = b</div></li>
-<li><div class="structure_field">decidable_linear_order.le_total : ∀ (a b : α), a ≤ b ∨ b ≤ a</div></li>
-<li><div class="structure_field">decidable_linear_order.decidable_le : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> has_le.le</div></li>
-<li><div class="structure_field">decidable_linear_order.decidable_eq : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_eq">decidable_eq</a> α</div></li>
-<li><div class="structure_field">decidable_linear_order.decidable_lt : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> has_lt.lt</div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="decidable_linear_order.to_linear_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L215">decidable_linear_order.to_linear_order</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[s : <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="has_lt.lt.decidable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L221">has_lt.lt.decidable</a></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (a < b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="has_le.le.decidable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L224">has_le.le.decidable</a></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (a ≤ b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="eq.decidable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L227">eq.decidable</a></span> <span class="decl_args">(a b : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (a = b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="eq_or_lt_of_not_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L230">eq_or_lt_of_not_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">¬a < b → a = b ∨ b < a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="def"><a id="has_le.le.is_total_preorder"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L234">has_le.le.is_total_preorder</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/classes.html#is_total_preorder">is_total_preorder</a> α has_le.le</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="is_strict_weak_order_of_decidable_linear_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L238">is_strict_weak_order_of_decidable_linear_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/classes.html#is_strict_weak_order">is_strict_weak_order</a> α has_lt.lt</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="is_strict_total_order_of_decidable_linear_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean#L242">is_strict_total_order_of_decidable_linear_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/classes.html#is_strict_total_order">is_strict_total_order</a> α has_lt.lt</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">order</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/algebra/order.lean">(view source on GitHub)</a></div><a href="#decidable_eq_of_decidable_le">decidable_eq_of_decidable_le</a><br>
-<a href="#decidable_linear_order">decidable_linear_order</a><br>
-<a href="#decidable_linear_order.to_linear_order">decidable_linear_order.to_linear_order</a><br>
-<a href="#decidable_lt_of_decidable_le">decidable_lt_of_decidable_le</a><br>
-<a href="#eq.decidable">eq.decidable</a><br>
-<a href="#eq_or_lt_of_not_lt">eq_or_lt_of_not_lt</a><br>
-<a href="#ge_trans">ge_trans</a><br>
-<a href="#gt.trans">gt.trans</a><br>
-<a href="#gt_irrefl">gt_irrefl</a><br>
-<a href="#gt_of_ge_of_gt">gt_of_ge_of_gt</a><br>
-<a href="#gt_of_gt_of_ge">gt_of_gt_of_ge</a><br>
-<a href="#gt_trans">gt_trans</a><br>
-<a href="#has_le.le.decidable">has_le.le.decidable</a><br>
-<a href="#has_le.le.is_total_preorder">has_le.le.is_total_preorder</a><br>
-<a href="#has_lt.lt.decidable">has_lt.lt.decidable</a><br>
-<a href="#is_strict_total_order_of_decidable_linear_order">is_strict_total_order_of_decidable_linear_order</a><br>
-<a href="#is_strict_weak_order_of_decidable_linear_order">is_strict_weak_order_of_decidable_linear_order</a><br>
-<a href="#le_antisymm">le_antisymm</a><br>
-<a href="#le_antisymm_iff">le_antisymm_iff</a><br>
-<a href="#le_iff_lt_or_eq">le_iff_lt_or_eq</a><br>
-<a href="#le_not_le_of_lt">le_not_le_of_lt</a><br>
-<a href="#le_of_eq">le_of_eq</a><br>
-<a href="#le_of_eq_or_lt">le_of_eq_or_lt</a><br>
-<a href="#le_of_lt">le_of_lt</a><br>
-<a href="#le_of_lt_or_eq">le_of_lt_or_eq</a><br>
-<a href="#le_of_not_ge">le_of_not_ge</a><br>
-<a href="#le_of_not_gt">le_of_not_gt</a><br>
-<a href="#le_of_not_le">le_of_not_le</a><br>
-<a href="#le_or_gt">le_or_gt</a><br>
-<a href="#le_refl">le_refl</a><br>
-<a href="#le_total">le_total</a><br>
-<a href="#le_trans">le_trans</a><br>
-<a href="#linear_order">linear_order</a><br>
-<a href="#linear_order.to_partial_order">linear_order.to_partial_order</a><br>
-<a href="#lt.trans">lt.trans</a><br>
-<a href="#lt_asymm">lt_asymm</a><br>
-<a href="#lt_iff_le_not_le">lt_iff_le_not_le</a><br>
-<a href="#lt_iff_not_ge">lt_iff_not_ge</a><br>
-<a href="#lt_irrefl">lt_irrefl</a><br>
-<a href="#lt_of_le_not_le">lt_of_le_not_le</a><br>
-<a href="#lt_of_le_of_lt">lt_of_le_of_lt</a><br>
-<a href="#lt_of_le_of_ne">lt_of_le_of_ne</a><br>
-<a href="#lt_of_lt_of_le">lt_of_lt_of_le</a><br>
-<a href="#lt_of_not_ge">lt_of_not_ge</a><br>
-<a href="#lt_or_eq_of_le">lt_or_eq_of_le</a><br>
-<a href="#lt_or_ge">lt_or_ge</a><br>
-<a href="#lt_or_gt_of_ne">lt_or_gt_of_ne</a><br>
-<a href="#lt_trans">lt_trans</a><br>
-<a href="#lt_trichotomy">lt_trichotomy</a><br>
-<a href="#ne_iff_lt_or_gt">ne_iff_lt_or_gt</a><br>
-<a href="#ne_of_gt">ne_of_gt</a><br>
-<a href="#ne_of_lt">ne_of_lt</a><br>
-<a href="#not_le_of_gt">not_le_of_gt</a><br>
-<a href="#not_lt_of_ge">not_lt_of_ge</a><br>
-<a href="#not_lt_of_gt">not_lt_of_gt</a><br>
-<a href="#partial_order">partial_order</a><br>
-<a href="#partial_order.to_preorder">partial_order.to_preorder</a><br>
-<a href="#preorder">preorder</a><br>
-<a href="#preorder.to_has_le">preorder.to_has_le</a><br>
-<a href="#preorder.to_has_lt">preorder.to_has_lt</a><br>
 </div></div>
 
         </div>

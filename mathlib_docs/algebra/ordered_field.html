@@ -7,8 +7,282 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">algebra.ordered_field</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean">View source</a></div><a href="#abs_inv">abs_inv</a><br>
+<a href="#div_le_div_iff">div_le_div_iff</a><br>
+<a href="#div_le_div_left">div_le_div_left</a><br>
+<a href="#div_le_div_of_le_left">div_le_div_of_le_left</a><br>
+<a href="#div_le_div_of_le_of_nonneg">div_le_div_of_le_of_nonneg</a><br>
+<a href="#div_le_div_right">div_le_div_right</a><br>
+<a href="#div_le_div_right_of_neg">div_le_div_right_of_neg</a><br>
+<a href="#div_le_iff">div_le_iff</a><br>
+<a href="#div_le_iff'">div_le_iff'</a><br>
+<a href="#div_le_iff_of_neg">div_le_iff_of_neg</a><br>
+<a href="#div_le_one_iff_le">div_le_one_iff_le</a><br>
+<a href="#div_lt_div">div_lt_div</a><br>
+<a href="#div_lt_div'">div_lt_div'</a><br>
+<a href="#div_lt_div_iff">div_lt_div_iff</a><br>
+<a href="#div_lt_div_left">div_lt_div_left</a><br>
+<a href="#div_lt_div_right">div_lt_div_right</a><br>
+<a href="#div_lt_div_right_of_neg">div_lt_div_right_of_neg</a><br>
+<a href="#div_lt_iff">div_lt_iff</a><br>
+<a href="#div_lt_iff'">div_lt_iff'</a><br>
+<a href="#div_lt_iff_of_neg">div_lt_iff_of_neg</a><br>
+<a href="#div_lt_one_iff_lt">div_lt_one_iff_lt</a><br>
+<a href="#div_nonneg">div_nonneg</a><br>
+<a href="#div_nonneg'">div_nonneg'</a><br>
+<a href="#div_pos">div_pos</a><br>
+<a href="#half_lt_self">half_lt_self</a><br>
+<a href="#half_pos">half_pos</a><br>
+<a href="#inv_le">inv_le</a><br>
+<a href="#inv_le_inv">inv_le_inv</a><br>
+<a href="#inv_le_inv_of_le">inv_le_inv_of_le</a><br>
+<a href="#inv_le_one">inv_le_one</a><br>
+<a href="#inv_lt">inv_lt</a><br>
+<a href="#inv_lt_inv">inv_lt_inv</a><br>
+<a href="#inv_lt_one">inv_lt_one</a><br>
+<a href="#inv_lt_zero">inv_lt_zero</a><br>
+<a href="#inv_neg">inv_neg</a><br>
+<a href="#inv_neg'">inv_neg'</a><br>
+<a href="#inv_nonneg">inv_nonneg</a><br>
+<a href="#inv_nonpos">inv_nonpos</a><br>
+<a href="#inv_pos">inv_pos</a><br>
+<a href="#inv_pos'">inv_pos'</a><br>
+<a href="#le_div_iff">le_div_iff</a><br>
+<a href="#le_div_iff'">le_div_iff'</a><br>
+<a href="#le_div_iff_of_neg">le_div_iff_of_neg</a><br>
+<a href="#le_inv">le_inv</a><br>
+<a href="#linear_ordered_field.to_densely_ordered">linear_ordered_field.to_densely_ordered</a><br>
+<a href="#linear_ordered_field.to_no_bot_order">linear_ordered_field.to_no_bot_order</a><br>
+<a href="#linear_ordered_field.to_no_top_order">linear_ordered_field.to_no_top_order</a><br>
+<a href="#lt_div_iff">lt_div_iff</a><br>
+<a href="#lt_div_iff'">lt_div_iff'</a><br>
+<a href="#lt_inv">lt_inv</a><br>
+<a href="#mul_self_inj_of_nonneg">mul_self_inj_of_nonneg</a><br>
+<a href="#nat.inv_pos_of_nat">nat.inv_pos_of_nat</a><br>
+<a href="#nat.one_div_le_one_div">nat.one_div_le_one_div</a><br>
+<a href="#nat.one_div_lt_one_div">nat.one_div_lt_one_div</a><br>
+<a href="#nat.one_div_pos_of_nat">nat.one_div_pos_of_nat</a><br>
+<a href="#one_div_le_one_div">one_div_le_one_div</a><br>
+<a href="#one_div_lt">one_div_lt</a><br>
+<a href="#one_div_lt_one_div">one_div_lt_one_div</a><br>
+<a href="#one_half_lt_one">one_half_lt_one</a><br>
+<a href="#one_half_pos">one_half_pos</a><br>
+<a href="#one_le_div_iff_le">one_le_div_iff_le</a><br>
+<a href="#one_le_inv">one_le_inv</a><br>
+<a href="#one_lt_div_iff_lt">one_lt_div_iff_lt</a><br>
+<a href="#one_lt_inv">one_lt_inv</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl theorem" id="div_pos"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L11">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_pos">div_pos</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_pos"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L13">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_pos">inv_pos</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_lt_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L16">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_lt_zero">inv_lt_zero</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0 → a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_le_div_iff_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L19">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_le_div_iff_le">one_le_div_iff_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_lt_div_iff_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L22">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_lt_div_iff_lt">one_lt_div_iff_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → (1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_one_iff_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L25">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_one_iff_le">div_le_one_iff_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_one_iff_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L28">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_one_iff_lt">div_lt_one_iff_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → (a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_div_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L31">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#le_div_iff">le_div_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_div_iff'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L34">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#le_div_iff'">le_div_iff'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L37">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_iff">div_le_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_iff'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L40">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_iff'">div_le_iff'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> c)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_div_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L43">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#lt_div_iff">lt_div_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_div_iff'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L46">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#lt_div_iff'">lt_div_iff'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_iff_of_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L49">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_iff_of_neg">div_le_iff_of_neg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0 →
+(b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_div_iff_of_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L52">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#le_div_iff_of_neg">le_div_iff_of_neg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0 →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> c)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L56">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_iff">div_lt_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> c)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_iff'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L59">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_iff'">div_lt_iff'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_iff_of_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L62">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_iff_of_neg">div_lt_iff_of_neg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0 →
+(b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_le_inv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L65">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_le_inv">inv_le_inv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L69">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_le">inv_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="le_inv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L72">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#le_inv">le_inv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_div_le_one_div"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L75">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_div_le_one_div">one_div_le_one_div</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_lt_inv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L78">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_lt_inv">inv_lt_inv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L81">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_lt">inv_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_div_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L84">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_div_lt">one_div_lt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="lt_inv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L87">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#lt_inv">lt_inv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_div_lt_one_div"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L90">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_div_lt_one_div">one_div_lt_one_div</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+(1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L93">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_nonneg">div_nonneg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_div_right"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L95">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_div_right">div_lt_div_right</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_div_right"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_div_right">div_le_div_right</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_div_right_of_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L102">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_div_right_of_neg">div_lt_div_right_of_neg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0 →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_div_right_of_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L106">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_div_right_of_neg">div_le_div_right_of_neg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0 →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_div_left"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L109">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_div_left">div_lt_div_left</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_div_left"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L112">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_div_left">div_le_div_left</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_div_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L115">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_div_iff">div_lt_div_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c d : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> d →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> d <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+   a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> d <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_div_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L119">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_div_iff">div_le_div_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c d : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> d →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> d <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+   a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> d <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_div"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L122">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_div">div_lt_div</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c d : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+d <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> d → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> d</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_lt_div'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L126">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_lt_div'">div_lt_div'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c d : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c →
+d <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> d → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> d</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="half_pos"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L130">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#half_pos">half_pos</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> 2</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_half_pos"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L132">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_half_pos">one_half_pos</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> 2</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="half_lt_self"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L134">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#half_lt_self">half_lt_self</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> 2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_half_lt_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L136">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_half_lt_one">one_half_lt_one</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type">1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> 2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="linear_ordered_field.to_densely_ordered"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L139">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#linear_ordered_field.to_densely_ordered">linear_ordered_field.to_densely_ordered</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/basic.html#densely_ordered">densely_ordered</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#linear_ordered_field.to_densely_ordered">linear_ordered_field.to_densely_ordered</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl def" id="linear_ordered_field.to_no_top_order"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L147">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#linear_ordered_field.to_no_top_order">linear_ordered_field.to_no_top_order</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/basic.html#no_top_order">no_top_order</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#linear_ordered_field.to_no_top_order">linear_ordered_field.to_no_top_order</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl def" id="linear_ordered_field.to_no_bot_order"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L151">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#linear_ordered_field.to_no_bot_order">linear_ordered_field.to_no_bot_order</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/basic.html#no_bot_order">no_bot_order</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#linear_ordered_field.to_no_bot_order">linear_ordered_field.to_no_bot_order</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="inv_lt_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L155">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_lt_one">inv_lt_one</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a → a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_lt_inv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L158">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_lt_inv">one_lt_inv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 1 → 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_le_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L161">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_le_one">inv_le_one</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="one_le_inv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L164">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#one_le_inv">one_le_inv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{x : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> x → x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 1 → 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> x<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="mul_self_inj_of_nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L167">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#mul_self_inj_of_nonneg">mul_self_inj_of_nonneg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b →
+(a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_div_of_le_left"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L171">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_div_of_le_left">div_le_div_of_le_left</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c →
+c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="nat.inv_pos_of_nat"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L183">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#nat.inv_pos_of_nat">nat.inv_pos_of_nat</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1)<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="nat.one_div_pos_of_nat"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L186">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#nat.one_div_pos_of_nat">nat.one_div_pos_of_nat</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="nat.one_div_le_one_div"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L189">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#nat.one_div_le_one_div">nat.one_div_le_one_div</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{n m : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> m →
+1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+  1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="nat.one_div_lt_one_div"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L192">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#nat.one_div_lt_one_div">nat.one_div_lt_one_div</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{n m : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> m →
+1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a>
+  1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_pos'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L200">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_pos'">inv_pos'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_neg'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L203">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_neg'">inv_neg'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L206">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_nonneg">inv_nonneg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_nonpos"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L209">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_nonpos">inv_nonpos</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="abs_inv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L212">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#abs_inv">abs_inv</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> a)<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L217">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_neg">inv_neg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>a)<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="inv_le_inv_of_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L222">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#inv_le_inv_of_le">inv_le_inv_of_le</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → a<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_nonneg'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L228">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_nonneg'">div_nonneg'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="div_le_div_of_le_of_nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/ordered_field.lean#L231">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_field.html#div_le_div_of_le_of_nonneg">div_le_div_of_le_of_nonneg</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{a b c : α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> c</div></div>
+   <p></p>
+  </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +369,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +387,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +912,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +965,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +982,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +1031,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1067,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1091,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1112,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1141,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1149,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1172,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1299,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1309,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1327,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1397,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1438,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,528 +1448,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="thm"><a id="div_pos"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L11">div_pos</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → 0 < a / b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_pos"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L13">inv_pos</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < a⁻¹</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_lt_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L16">inv_lt_zero</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < 0 → a⁻¹ < 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_le_div_iff_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L19">one_le_div_iff_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → (1 ≤ a / b ↔ b ≤ a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_lt_div_iff_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L22">one_lt_div_iff_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → (1 < a / b ↔ b < a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_le_one_iff_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L25">div_le_one_iff_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → (a / b ≤ 1 ↔ a ≤ b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_one_iff_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L28">div_lt_one_iff_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → (a / b < 1 ↔ a < b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_div_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L31">le_div_iff</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (a ≤ b / c ↔ a * c ≤ b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_div_iff'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L34">le_div_iff'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (a ≤ b / c ↔ c * a ≤ b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_le_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L37">div_le_iff</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → (a / b ≤ c ↔ a ≤ c * b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_le_iff'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L40">div_le_iff'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → (a / b ≤ c ↔ a ≤ b * c)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_div_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L43">lt_div_iff</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (a < b / c ↔ a * c < b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_div_iff'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L46">lt_div_iff'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (a < b / c ↔ c * a < b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_le_iff_of_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L49">div_le_iff_of_neg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">c < 0 → (b / c ≤ a ↔ a * c ≤ b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_div_iff_of_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L52">le_div_iff_of_neg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">c < 0 → (a ≤ b / c ↔ b ≤ a * c)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L56">div_lt_iff</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (b / c < a ↔ b < a * c)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_iff'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L59">div_lt_iff'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (b / c < a ↔ b < c * a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_iff_of_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L62">div_lt_iff_of_neg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">c < 0 → (b / c < a ↔ a * c < b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_le_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L65">inv_le_inv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (a⁻¹ ≤ b⁻¹ ↔ b ≤ a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L69">inv_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (a⁻¹ ≤ b ↔ b⁻¹ ≤ a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="le_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L72">le_inv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (a ≤ b⁻¹ ↔ b ≤ a⁻¹)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_div_le_one_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L75">one_div_le_one_div</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (1 / a ≤ 1 / b ↔ b ≤ a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_lt_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L78">inv_lt_inv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (a⁻¹ < b⁻¹ ↔ b < a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L81">inv_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (a⁻¹ < b ↔ b⁻¹ < a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_div_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L84">one_div_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (1 / a < b ↔ 1 / b < a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="lt_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L87">lt_inv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (a < b⁻¹ ↔ b < a⁻¹)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_div_lt_one_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L90">one_div_lt_one_div</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → (1 / a < 1 / b ↔ b < a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L93">div_nonneg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 ≤ a → 0 < b → 0 ≤ a / b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_div_right"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L95">div_lt_div_right</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (a / c < b / c ↔ a < b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_le_div_right"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L99">div_le_div_right</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (a / c ≤ b / c ↔ a ≤ b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_div_right_of_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L102">div_lt_div_right_of_neg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">c < 0 → (a / c < b / c ↔ b < a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_le_div_right_of_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L106">div_le_div_right_of_neg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">c < 0 → (a / c ≤ b / c ↔ b ≤ a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_div_left"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L109">div_lt_div_left</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → 0 < c → (a / b < a / c ↔ c < b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_le_div_left"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L112">div_le_div_left</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < b → 0 < c → (a / b ≤ a / c ↔ c ≤ b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_div_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L115">div_lt_div_iff</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → 0 < d → (a / b < c / d ↔ a * d < c * b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c d : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L119">div_lt_div</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a < c → d ≤ b → 0 ≤ c → 0 < d → a / b < c / d</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c d : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_lt_div'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L123">div_lt_div'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ c → d < b → 0 < c → 0 < d → a / b < c / d</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c d : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="half_pos"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L127">half_pos</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → 0 < a / 2</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_half_pos"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L129">one_half_pos</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < 1 / 2</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="half_lt_self"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L131">half_lt_self</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → a / 2 < a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_half_lt_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L133">one_half_lt_one</a></span>  <span class="decl_args">:</span>       <div class="decl_type">1 / 2 < 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ivl_translate"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L135">ivl_translate</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(λ (x : α), x + c) '' {r : α | a ≤ r ∧ r ≤ b} = {r : α | a + c ≤ r ∧ r ≤ b + c}</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ivl_stretch"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L142">ivl_stretch</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < c → (λ (x : α), x * c) '' {r : α | a ≤ r ∧ r ≤ b} = {r : α | a * c ≤ r ∧ r ≤ b * c}</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="def"><a id="linear_ordered_field.to_densely_ordered"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L149">linear_ordered_field.to_densely_ordered</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/basic.html#densely_ordered">densely_ordered</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="linear_ordered_field.to_no_top_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L156">linear_ordered_field.to_no_top_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/basic.html#no_top_order">no_top_order</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="linear_ordered_field.to_no_bot_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L159">linear_ordered_field.to_no_bot_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/basic.html#no_bot_order">no_bot_order</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="inv_lt_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L163">inv_lt_one</a></span>  <span class="decl_args">:</span>       <div class="decl_type">1 < a → a⁻¹ < 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_lt_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L166">one_lt_inv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a → a < 1 → 1 < a⁻¹</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_le_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L169">inv_le_one</a></span>  <span class="decl_args">:</span>       <div class="decl_type">1 ≤ a → a⁻¹ ≤ 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="one_le_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L172">one_le_inv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < x → x ≤ 1 → 1 ≤ x⁻¹</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{x : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="mul_self_inj_of_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L175">mul_self_inj_of_nonneg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 ≤ a → 0 ≤ b → (a * a = b * b ↔ a = b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_le_div_of_le_left"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L179">div_le_div_of_le_left</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 ≤ a → 0 < c → c ≤ b → a / b ≤ a / c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{a b c : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="nat.inv_pos_of_nat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L191">nat.inv_pos_of_nat</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < (↑n + 1)⁻¹</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{n : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="nat.one_div_pos_of_nat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L194">nat.one_div_pos_of_nat</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < 1 / (↑n + 1)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{n : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="nat.one_div_le_one_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L197">nat.one_div_le_one_div</a></span>  <span class="decl_args">:</span>       <div class="decl_type">n ≤ m → 1 / (↑m + 1) ≤ 1 / (↑n + 1)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{n m : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="nat.one_div_lt_one_div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L200">nat.one_div_lt_one_div</a></span>  <span class="decl_args">:</span>       <div class="decl_type">n < m → 1 / (↑m + 1) < 1 / (↑n + 1)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> α]</span> <span class="impl_arg">{n m : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_pos'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L208">inv_pos'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a⁻¹ ↔ 0 < a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="inv_neg'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L211">inv_neg'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a⁻¹ < 0 ↔ a < 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="inv_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L214">inv_nonneg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 ≤ a⁻¹ ↔ 0 ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="inv_nonpos"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L217">inv_nonpos</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a⁻¹ ≤ 0 ↔ a ≤ 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span> <span class="impl_arg">{a : α}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="abs_inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L220">abs_inv</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> a⁻¹ = (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> a)⁻¹</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L225">inv_neg</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">(-a)⁻¹ = -a⁻¹</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="inv_le_inv_of_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L230">inv_le_inv_of_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → b ≤ a → a⁻¹ ≤ b⁻¹</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="div_nonneg'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean#L236">div_nonneg'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 ≤ a → 0 ≤ b → 0 ≤ a / b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> α]</span> <span class="impl_arg">{a b : α}</span></li>
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">ordered_field</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/ordered_field.lean">(view source on GitHub)</a></div><a href="#abs_inv">abs_inv</a><br>
-<a href="#div_le_div_left">div_le_div_left</a><br>
-<a href="#div_le_div_of_le_left">div_le_div_of_le_left</a><br>
-<a href="#div_le_div_right">div_le_div_right</a><br>
-<a href="#div_le_div_right_of_neg">div_le_div_right_of_neg</a><br>
-<a href="#div_le_iff">div_le_iff</a><br>
-<a href="#div_le_iff'">div_le_iff'</a><br>
-<a href="#div_le_iff_of_neg">div_le_iff_of_neg</a><br>
-<a href="#div_le_one_iff_le">div_le_one_iff_le</a><br>
-<a href="#div_lt_div">div_lt_div</a><br>
-<a href="#div_lt_div'">div_lt_div'</a><br>
-<a href="#div_lt_div_iff">div_lt_div_iff</a><br>
-<a href="#div_lt_div_left">div_lt_div_left</a><br>
-<a href="#div_lt_div_right">div_lt_div_right</a><br>
-<a href="#div_lt_div_right_of_neg">div_lt_div_right_of_neg</a><br>
-<a href="#div_lt_iff">div_lt_iff</a><br>
-<a href="#div_lt_iff'">div_lt_iff'</a><br>
-<a href="#div_lt_iff_of_neg">div_lt_iff_of_neg</a><br>
-<a href="#div_lt_one_iff_lt">div_lt_one_iff_lt</a><br>
-<a href="#div_nonneg">div_nonneg</a><br>
-<a href="#div_nonneg'">div_nonneg'</a><br>
-<a href="#div_pos">div_pos</a><br>
-<a href="#half_lt_self">half_lt_self</a><br>
-<a href="#half_pos">half_pos</a><br>
-<a href="#inv_le">inv_le</a><br>
-<a href="#inv_le_inv">inv_le_inv</a><br>
-<a href="#inv_le_inv_of_le">inv_le_inv_of_le</a><br>
-<a href="#inv_le_one">inv_le_one</a><br>
-<a href="#inv_lt">inv_lt</a><br>
-<a href="#inv_lt_inv">inv_lt_inv</a><br>
-<a href="#inv_lt_one">inv_lt_one</a><br>
-<a href="#inv_lt_zero">inv_lt_zero</a><br>
-<a href="#inv_neg">inv_neg</a><br>
-<a href="#inv_neg'">inv_neg'</a><br>
-<a href="#inv_nonneg">inv_nonneg</a><br>
-<a href="#inv_nonpos">inv_nonpos</a><br>
-<a href="#inv_pos">inv_pos</a><br>
-<a href="#inv_pos'">inv_pos'</a><br>
-<a href="#ivl_stretch">ivl_stretch</a><br>
-<a href="#ivl_translate">ivl_translate</a><br>
-<a href="#le_div_iff">le_div_iff</a><br>
-<a href="#le_div_iff'">le_div_iff'</a><br>
-<a href="#le_div_iff_of_neg">le_div_iff_of_neg</a><br>
-<a href="#le_inv">le_inv</a><br>
-<a href="#linear_ordered_field.to_densely_ordered">linear_ordered_field.to_densely_ordered</a><br>
-<a href="#linear_ordered_field.to_no_bot_order">linear_ordered_field.to_no_bot_order</a><br>
-<a href="#linear_ordered_field.to_no_top_order">linear_ordered_field.to_no_top_order</a><br>
-<a href="#lt_div_iff">lt_div_iff</a><br>
-<a href="#lt_div_iff'">lt_div_iff'</a><br>
-<a href="#lt_inv">lt_inv</a><br>
-<a href="#mul_self_inj_of_nonneg">mul_self_inj_of_nonneg</a><br>
-<a href="#nat.inv_pos_of_nat">nat.inv_pos_of_nat</a><br>
-<a href="#nat.one_div_le_one_div">nat.one_div_le_one_div</a><br>
-<a href="#nat.one_div_lt_one_div">nat.one_div_lt_one_div</a><br>
-<a href="#nat.one_div_pos_of_nat">nat.one_div_pos_of_nat</a><br>
-<a href="#one_div_le_one_div">one_div_le_one_div</a><br>
-<a href="#one_div_lt">one_div_lt</a><br>
-<a href="#one_div_lt_one_div">one_div_lt_one_div</a><br>
-<a href="#one_half_lt_one">one_half_lt_one</a><br>
-<a href="#one_half_pos">one_half_pos</a><br>
-<a href="#one_le_div_iff_le">one_le_div_iff_le</a><br>
-<a href="#one_le_inv">one_le_inv</a><br>
-<a href="#one_lt_div_iff_lt">one_lt_div_iff_lt</a><br>
-<a href="#one_lt_inv">one_lt_inv</a><br>
 </div></div>
 
         </div>

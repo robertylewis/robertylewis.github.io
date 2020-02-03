@@ -7,8 +7,229 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">geometry.manifold.real_instances</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean">View source</a></div><a href="#Icc_left_chart">Icc_left_chart</a><br>
+<a href="#Icc_manifold">Icc_manifold</a><br>
+<a href="#Icc_right_chart">Icc_right_chart</a><br>
+<a href="#Icc_smooth_manifold">Icc_smooth_manifold</a><br>
+<a href="#euclidean_half_space">euclidean_half_space</a><br>
+<a href="#euclidean_half_space.topological_space">euclidean_half_space.topological_space</a><br>
+<a href="#euclidean_quadrant">euclidean_quadrant</a><br>
+<a href="#euclidean_quadrant.topological_space">euclidean_quadrant.topological_space</a><br>
+<a href="#euclidean_space">euclidean_space</a><br>
+<a href="#euclidean_space.finite_dimensional">euclidean_space.finite_dimensional</a><br>
+<a href="#euclidean_space.normed_group">euclidean_space.normed_group</a><br>
+<a href="#euclidean_space.normed_space">euclidean_space.normed_space</a><br>
+<a href="#euclidean_space.vector_space">euclidean_space.vector_space</a><br>
+<a href="#findim_euclidean_space">findim_euclidean_space</a><br>
+<a href="#lt_class">lt_class</a><br>
+<a href="#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a><br>
+<a href="#model_with_corners_euclidean_quadrant">model_with_corners_euclidean_quadrant</a><br>
+<a href="#range_half_space">range_half_space</a><br>
+<a href="#range_quadrant">range_quadrant</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="mod_doc">
+<h1>Constructing examples of manifolds over ℝ</h1>
+
+<p>We introduce the necessary bits to be able to define manifolds modelled over ℝ^n, boundaryless
+or with boundary or with corners. As a concrete example, we construct explicitly the manifold with
+boundary structure on the real interval [x, y].</p>
+
+<p>More specifically, we introduce</p>
+
+<ul>
+<li><code>euclidean_space n</code> for a model vector space of dimension <code>n</code>.</li>
+<li><code>model_with_corners ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</code> for the model space used
+to define <code>n</code>-dimensional real manifolds with boundary</li>
+<li><code>model_with_corners ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</code> for the model space used
+to define <code>n</code>-dimensional real manifolds with corners</li>
+</ul>
+
+<h2>Implementation notes</h2>
+
+<p>The manifold structure on the interval [x, y] = Icc x y requires the assumption <code>x &lt; y</code>. We
+introduce a dummy class <code>lt_class x y</code> for this, to make such an assumption available to typeclass
+search. This should hopefully not be necessary any more in Lean 4.</p>
+</div><div class="decl def" id="euclidean_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L38">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → Type</div></div>
+   <p>The space ℝ^n. Note that the name is slightly misleading, as we only need a normed space
+structure on ℝ^n, but the one we use here is the sup norm and not the euclidean one -- this is not
+a problem for the manifold applications, but should probably be refactored at some point.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n → <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a>)</li></ul></details> </ul></div><div class="decl def" id="euclidean_half_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L44">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Type</div></div>
+   <p>The half-space in ℝ^n, used to model manifolds with boundary. We only define it when <code>1 ≤ n</code>, as the
+definition only makes sense in this case.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> {x // 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> x 0}</li></ul></details> </ul></div><div class="decl def" id="euclidean_quadrant"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L51">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → Type</div></div>
+   <p>The quadrant in ℝ^n, used to model manifolds with corners, made of all vectors with nonnegative
+coordinates.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  {x // ∀ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> x i}</li></ul></details> </ul></div><div class="decl def" id="euclidean_space.vector_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L59">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space.vector_space">euclidean_space.vector_space</a></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/module.html#vector_space">vector_space</a> <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space.vector_space">euclidean_space.vector_space</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/algebra/pi_instances.html#pi.module">pi.module</a> <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a></li></ul></details> </ul></div><div class="decl def" id="euclidean_space.normed_group"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L60">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space.normed_group">euclidean_space.normed_group</a></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space.normed_group">euclidean_space.normed_group</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#pi.normed_group">pi.normed_group</a></li></ul></details> </ul></div><div class="decl def" id="euclidean_space.normed_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L61">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space.normed_space">euclidean_space.normed_space</a></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space.normed_space">euclidean_space.normed_space</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#pi.normed_space">pi.normed_space</a></li></ul></details> </ul></div><div class="decl def" id="euclidean_half_space.topological_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L62">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space.topological_space">euclidean_half_space.topological_space</a></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space.topological_space">euclidean_half_space.topological_space</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/topology/constructions.html#subtype.topological_space">subtype.topological_space</a></li></ul></details> </ul></div><div class="decl def" id="euclidean_quadrant.topological_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L63">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant.topological_space">euclidean_quadrant.topological_space</a></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant.topological_space">euclidean_quadrant.topological_space</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/topology/constructions.html#subtype.topological_space">subtype.topological_space</a></li></ul></details> </ul></div><div class="decl def" id="euclidean_space.finite_dimensional"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L64">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space.finite_dimensional">euclidean_space.finite_dimensional</a></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html#finite_dimensional">finite_dimensional</a> <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space.finite_dimensional">euclidean_space.finite_dimensional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="findim_euclidean_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L66">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#findim_euclidean_space">findim_euclidean_space</a></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html#finite_dimensional.findim">finite_dimensional.findim</a> <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a>
+    (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  n</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="range_half_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L69">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#range_half_space">range_half_space</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a>
+    (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n), x.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  {y : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> y 0}</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="range_quadrant"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L73">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#range_quadrant">range_quadrant</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a>
+    (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n), x.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  {y : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | ∀ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> y i}</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="model_with_corners_euclidean_half_space"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L83">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)
+  (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</div></div>
+   <p>Definition of the model with corners (euclidean_space n, euclidean_half_space n), used as a
+model for manifolds with boundary.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.mk" title="model_with_corners.mk">{</a><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.to_local_equiv" title="model_with_corners.to_local_equiv">to_local_equiv</a> := <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.mk" title="local_equiv.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.to_fun" title="local_equiv.to_fun">to_fun</a> := λ
+                                (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n), x.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.inv_fun" title="local_equiv.inv_fun">inv_fun</a> := λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n),
+                                   <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>λ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n),
+                                      <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0)
+                                        (λ (h : i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0), <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (x i) 0)
+                                        (λ (h : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0), x i),
+                                    _⟩,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.source" title="local_equiv.source">source</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.univ">set.univ</a>
+                                  (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n),
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.target" title="local_equiv.target">target</a> := <a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a>
+                                  (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n),
+                                     x.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>),
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.map_source" title="local_equiv.map_source">map_source</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.map_target" title="local_equiv.map_target">map_target</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.left_inv" title="local_equiv.left_inv">left_inv</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.right_inv" title="local_equiv.right_inv">right_inv</a> := _},
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.source_eq" title="model_with_corners.source_eq">source_eq</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.unique_diff" title="model_with_corners.unique_diff">unique_diff</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.continuous_to_fun" title="model_with_corners.continuous_to_fun">continuous_to_fun</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.continuous_inv_fun" title="model_with_corners.continuous_inv_fun">continuous_inv_fun</a> := _}</li></ul></details> </ul></div><div class="decl def" id="model_with_corners_euclidean_quadrant"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L141">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#model_with_corners_euclidean_quadrant">model_with_corners_euclidean_quadrant</a></span> <span class="decl_args">(n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)
+  (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</div></div>
+   <p>Definition of the model with corners (euclidean_space n, euclidean_quadrant n), used as a
+model for manifolds with corners</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#model_with_corners_euclidean_quadrant">model_with_corners_euclidean_quadrant</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.mk" title="model_with_corners.mk">{</a><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.to_local_equiv" title="model_with_corners.to_local_equiv">to_local_equiv</a> := <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.mk" title="local_equiv.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.to_fun" title="local_equiv.to_fun">to_fun</a> := λ
+                                (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n), x.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.inv_fun" title="local_equiv.inv_fun">inv_fun</a> := λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n),
+                                   <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>λ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (x i) 0, _⟩,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.source" title="local_equiv.source">source</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.univ">set.univ</a>
+                                  (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n),
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.target" title="local_equiv.target">target</a> := <a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a>
+                                  (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n), x.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>),
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.map_source" title="local_equiv.map_source">map_source</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.map_target" title="local_equiv.map_target">map_target</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.left_inv" title="local_equiv.left_inv">left_inv</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.right_inv" title="local_equiv.right_inv">right_inv</a> := _},
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.source_eq" title="model_with_corners.source_eq">source_eq</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.unique_diff" title="model_with_corners.unique_diff">unique_diff</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.continuous_to_fun" title="model_with_corners.continuous_to_fun">continuous_to_fun</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners.continuous_inv_fun" title="model_with_corners.continuous_inv_fun">continuous_inv_fun</a> := _}</li></ul></details> </ul></div><div class="decl def" id="lt_class"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L195">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt">has_lt</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type">α → α → Prop</div></div>
+   <p>Dummy class to make an assumption such as <code>x &lt; y</code> available to typeclass search. Such an
+assumption is used to define a manifold structure on [x, y] when <code>x &lt; y</code>. Should be fixed in Lean 4.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> y)</li></ul></details> </ul></div><div class="decl def" id="Icc_left_chart"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L202">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_left_chart">Icc_left_chart</a></span> <span class="decl_args">(x y : <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a>)</span> <span class="impl_arg"><span class="decl_args">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x y)
+  (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</div></div>
+   <p>The left chart for the topological space [x, y], defined on [x,y) and sending x to 0 in
+<code>euclidean_half_space 1</code>.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_left_chart">Icc_left_chart</a> x y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.mk" title="local_homeomorph.mk">{</a><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.to_local_equiv" title="local_homeomorph.to_local_equiv">to_local_equiv</a> := <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.mk" title="local_equiv.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.to_fun" title="local_equiv.to_fun">to_fun</a> := λ
+                                (z : <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x y)),
+                                  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>λ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> 1),
+                                     z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> x,
+                                   _⟩,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.inv_fun" title="local_equiv.inv_fun">inv_fun</a> := λ
+                                 (z : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1),
+                                   <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#min">min</a>
+                                      (z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> x)
+                                      y,
+                                    _⟩,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.source" title="local_equiv.source">source</a> := {z :
+                                   <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x
+                                        y) | z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> y},
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.target" title="local_equiv.target">target</a> := {z :
+                                   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1 | z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>
+                                     0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a>
+                                   y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> x},
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.map_source" title="local_equiv.map_source">map_source</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.map_target" title="local_equiv.map_target">map_target</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.left_inv" title="local_equiv.left_inv">left_inv</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.right_inv" title="local_equiv.right_inv">right_inv</a> := _},
+   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.open_source" title="local_homeomorph.open_source">open_source</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.open_target" title="local_homeomorph.open_target">open_target</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.continuous_to_fun" title="local_homeomorph.continuous_to_fun">continuous_to_fun</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.continuous_inv_fun" title="local_homeomorph.continuous_inv_fun">continuous_inv_fun</a> := _}</li></ul></details> </ul></div><div class="decl def" id="Icc_right_chart"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L250">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_right_chart">Icc_right_chart</a></span> <span class="decl_args">(x y : <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a>)</span> <span class="impl_arg"><span class="decl_args">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x y)
+  (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</div></div>
+   <p>The right chart for the topological space [x, y], defined on (x,y] and sending y to 0 in
+<code>euclidean_half_space 1</code>.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_right_chart">Icc_right_chart</a> x y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.mk" title="local_homeomorph.mk">{</a><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.to_local_equiv" title="local_homeomorph.to_local_equiv">to_local_equiv</a> := <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.mk" title="local_equiv.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.to_fun" title="local_equiv.to_fun">to_fun</a> := λ
+                                (z : <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x y)),
+                                  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>λ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> 1),
+                                     y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>,
+                                   _⟩,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.inv_fun" title="local_equiv.inv_fun">inv_fun</a> := λ
+                                 (z : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1),
+                                   <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a>
+                                      (y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a> 0)
+                                      x,
+                                    _⟩,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.source" title="local_equiv.source">source</a> := {z :
+                                   <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x y) | x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a>
+                                   z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>},
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.target" title="local_equiv.target">target</a> := {z :
+                                   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1 | z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a>
+                                     0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a>
+                                   y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> x},
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.map_source" title="local_equiv.map_source">map_source</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.map_target" title="local_equiv.map_target">map_target</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.left_inv" title="local_equiv.left_inv">left_inv</a> := _,
+                      <a href="https://robertylewis.com/mathlib_docs/data/equiv/local_equiv.html#local_equiv.right_inv" title="local_equiv.right_inv">right_inv</a> := _},
+   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.open_source" title="local_homeomorph.open_source">open_source</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.open_target" title="local_homeomorph.open_target">open_target</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.continuous_to_fun" title="local_homeomorph.continuous_to_fun">continuous_to_fun</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph.continuous_inv_fun" title="local_homeomorph.continuous_inv_fun">continuous_inv_fun</a> := _}</li></ul></details> </ul></div><div class="decl def" id="Icc_manifold"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L297">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_manifold">Icc_manifold</a></span> <span class="decl_args">(x y : <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a>)</span> <span class="impl_arg"><span class="decl_args">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x y)</div></div>
+   <p>Manifold with boundary structure on [x, y], using only two charts.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_manifold">Icc_manifold</a> x y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold.mk" title="manifold.mk">{</a><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold.atlas" title="manifold.atlas">atlas</a> := {<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_left_chart">Icc_left_chart</a> x y,
+               <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_right_chart">Icc_right_chart</a> x y},
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold.chart_at" title="manifold.chart_at">chart_at</a> := λ (z : <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x y)),
+                 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (z.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> y)
+                   (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_left_chart">Icc_left_chart</a> x y)
+                   (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_right_chart">Icc_right_chart</a> x y),
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold.mem_chart_source" title="manifold.mem_chart_source">mem_chart_source</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold.chart_mem_atlas" title="manifold.chart_mem_atlas">chart_mem_atlas</a> := _}</li></ul></details> </ul></div><div class="decl def" id="Icc_smooth_manifold"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/geometry/manifold/real_instances.lean#L313">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#Icc_smooth_manifold">Icc_smooth_manifold</a></span> <span class="decl_args">(x y : <a href="https://robertylewis.com/mathlib_docs/data/real/basic.html#real" title="real">ℝ</a>)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#smooth_manifold_with_corners">smooth_manifold_with_corners</a>
+  (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a> 1)
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_sort" title="coe_sort">↥</a>(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html#set.Icc">set.Icc</a> x y)</div></div>
+   <p>The manifold structure on [x, y] is smooth.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +316,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +334,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +859,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +912,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +929,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +978,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1014,9 @@
 <div class="nav_sect_inner" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file visible" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1038,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1059,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1088,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1096,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1119,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1246,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1256,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1274,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1344,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1385,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,200 +1395,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="mod_doc">
-<a id="top"></a>
-<h1>Constructing examples of manifolds over ℝ</h1>
-
-<p>We introduce the necessary bits to be able to define manifolds modelled over ℝ^n, boundaryless
-or with boundary or with corners. As a concrete example, we construct explicitly the manifold with
-boundary structure on the real interval [x, y].</p>
-
-<p>More specifically, we introduce</p>
-
-<ul>
-<li><code>euclidean_space n</code> for a model vector space of dimension <code>n</code>.</li>
-<li><code>model_with_corners ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</code> for the model space used
-to define <code>n</code>-dimensional real manifolds with boundary</li>
-<li><code>model_with_corners ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</code> for the model space used
-to define <code>n</code>-dimensional real manifolds with corners</li>
-</ul>
-
-<h2>Implementation notes</h2>
-
-<p>The manifold structure on the interval [x, y] = Icc x y requires the assumption <code>x &lt; y</code>. We
-introduce a dummy class <code>lt_class x y</code> for this, to make such an assumption available to typeclass
-search. This should hopefully not be necessary any more in Lean 4.</p>
-</div><div class="def"><a id="euclidean_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L38">euclidean_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → Type</div>
-<p>The space ℝ^n. Note that the name is slightly misleading, as we only need a normed space
-structure on ℝ^n, but the one we use here is the sup norm and not the euclidean one -- this is not
-a problem for the manifold applications, but should probably be refactored at some point.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="euclidean_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L44">euclidean_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p>The half-space in ℝ^n, used to model manifolds with boundary. We only define it when <code>1 ≤ n</code>, as the
-definition only makes sense in this case.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></li>
-
-
-
-</ul></div><div class="def"><a id="euclidean_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L51">euclidean_quadrant</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → Type</div>
-<p>The quadrant in ℝ^n, used to model manifolds with corners, made of all vectors with nonnegative
-coordinates.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="euclidean_space.vector_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L58">euclidean_space.vector_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/module.html#vector_space">vector_space</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="euclidean_space.normed_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L59">euclidean_space.normed_group</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_group">normed_group</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="euclidean_space.normed_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L60">euclidean_space.normed_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/analysis/normed_space/basic.html#normed_space">normed_space</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="euclidean_half_space.topological_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L61">euclidean_half_space.topological_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="euclidean_quadrant.topological_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L62">euclidean_quadrant.topological_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/basic.html#topological_space">topological_space</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="euclidean_space.finite_dimensional"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L63">euclidean_space.finite_dimensional</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html#finite_dimensional">finite_dimensional</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="findim_euclidean_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L65">findim_euclidean_space</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html#finite_dimensional.findim">finite_dimensional.findim</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) = n</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="range_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L68">range_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n), x.val) = {y : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | 0 ≤ y 0}</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="range_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L72">range_quadrant</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/set/basic.html#set.range">set.range</a> (λ (x : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n), x.val) = {y : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n | ∀ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n), 0 ≤ y i}</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="model_with_corners_euclidean_half_space"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L82">model_with_corners_euclidean_half_space</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> n)</div>
-<p>Definition of the model with corners (euclidean_space n, euclidean_half_space n), used as a
-model for manifolds with boundary.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_zero">has_zero</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n)]</span></li>
-
-
-
-</ul></div><div class="def"><a id="model_with_corners_euclidean_quadrant"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L140">model_with_corners_euclidean_quadrant</a></span> <span class="decl_args">(n : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#model_with_corners">model_with_corners</a> ℝ (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_space">euclidean_space</a> n) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_quadrant">euclidean_quadrant</a> n)</div>
-<p>Definition of the model with corners (euclidean_space n, euclidean_quadrant n), used as a
-model for manifolds with corners</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="lt_class"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L194">lt_class</a></span>  <span class="decl_args">:</span>       <div class="decl_type">α → α → Prop</div>
-<p>Dummy class to make an assumption such as <code>x &lt; y</code> available to typeclass search. Such an
-assumption is used to define a manifold structure on [x, y] when <code>x &lt; y</code>. Should be fixed in Lean 4.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt">has_lt</a> α]</span></li>
-
-
-
-</ul></div><div class="def"><a id="Icc_left_chart"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L201">Icc_left_chart</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</div>
-<p>The left chart for the topological space [x, y], defined on [x,y) and sending x to 0 in
-<code>euclidean_half_space 1</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></li>
-
-
-
-</ul></div><div class="def"><a id="Icc_right_chart"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L249">Icc_right_chart</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html#local_homeomorph">local_homeomorph</a> ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y) (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1)</div>
-<p>The right chart for the topological space [x, y], defined on (x,y] and sending y to 0 in
-<code>euclidean_half_space 1</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></li>
-
-
-
-</ul></div><div class="def"><a id="Icc_manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L296">Icc_manifold</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html#manifold">manifold</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#euclidean_half_space">euclidean_half_space</a> 1) ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y)</div>
-<p>Manifold with boundary structure on [x, y], using only two charts.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[h : <a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="Icc_smooth_manifold"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean#L312">Icc_smooth_manifold</a></span> <span class="decl_args">(x y : ℝ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html#smooth_manifold_with_corners">smooth_manifold_with_corners</a> (<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a> 1) ↥(<a href="https://robertylewis.com/mathlib_docs/data/set/intervals.html#set.Icc">set.Icc</a> x y)</div>
-<p>The manifold structure on [x, y] is smooth.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html#lt_class">lt_class</a> x y]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">real_instances</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/geometry/manifold/real_instances.lean">(view source on GitHub)</a></div><a href="#Icc_left_chart">Icc_left_chart</a><br>
-<a href="#Icc_manifold">Icc_manifold</a><br>
-<a href="#Icc_right_chart">Icc_right_chart</a><br>
-<a href="#Icc_smooth_manifold">Icc_smooth_manifold</a><br>
-<a href="#euclidean_half_space">euclidean_half_space</a><br>
-<a href="#euclidean_half_space.topological_space">euclidean_half_space.topological_space</a><br>
-<a href="#euclidean_quadrant">euclidean_quadrant</a><br>
-<a href="#euclidean_quadrant.topological_space">euclidean_quadrant.topological_space</a><br>
-<a href="#euclidean_space">euclidean_space</a><br>
-<a href="#euclidean_space.finite_dimensional">euclidean_space.finite_dimensional</a><br>
-<a href="#euclidean_space.normed_group">euclidean_space.normed_group</a><br>
-<a href="#euclidean_space.normed_space">euclidean_space.normed_space</a><br>
-<a href="#euclidean_space.vector_space">euclidean_space.vector_space</a><br>
-<a href="#findim_euclidean_space">findim_euclidean_space</a><br>
-<a href="#lt_class">lt_class</a><br>
-<a href="#model_with_corners_euclidean_half_space">model_with_corners_euclidean_half_space</a><br>
-<a href="#model_with_corners_euclidean_quadrant">model_with_corners_euclidean_quadrant</a><br>
-<a href="#range_half_space">range_half_space</a><br>
-<a href="#range_quadrant">range_quadrant</a><br>
 </div></div>
 
         </div>

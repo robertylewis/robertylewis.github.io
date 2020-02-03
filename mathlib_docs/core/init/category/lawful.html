@@ -7,8 +7,287 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">core.init.category.lawful</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean">View source</a></div><a href="#bind_ext_congr">bind_ext_congr</a><br>
+<a href="#bind_pure">bind_pure</a><br>
+<a href="#control_laws_tac">control_laws_tac</a><br>
+<a href="#except_t.ext">except_t.ext</a><br>
+<a href="#except_t.is_lawful_monad">except_t.is_lawful_monad</a><br>
+<a href="#except_t.run_bind">except_t.run_bind</a><br>
+<a href="#except_t.run_map">except_t.run_map</a><br>
+<a href="#except_t.run_monad_lift">except_t.run_monad_lift</a><br>
+<a href="#except_t.run_monad_map">except_t.run_monad_map</a><br>
+<a href="#except_t.run_pure">except_t.run_pure</a><br>
+<a href="#id.bind_eq">id.bind_eq</a><br>
+<a href="#id.is_lawful_monad">id.is_lawful_monad</a><br>
+<a href="#id.map_eq">id.map_eq</a><br>
+<a href="#id.pure_eq">id.pure_eq</a><br>
+<a href="#is_lawful_applicative">is_lawful_applicative</a><br>
+<a href="#is_lawful_functor">is_lawful_functor</a><br>
+<a href="#is_lawful_monad">is_lawful_monad</a><br>
+<a href="#map_ext_congr">map_ext_congr</a><br>
+<a href="#option_t.ext">option_t.ext</a><br>
+<a href="#option_t.is_lawful_monad">option_t.is_lawful_monad</a><br>
+<a href="#option_t.run_bind">option_t.run_bind</a><br>
+<a href="#option_t.run_map">option_t.run_map</a><br>
+<a href="#option_t.run_monad_lift">option_t.run_monad_lift</a><br>
+<a href="#option_t.run_monad_map">option_t.run_monad_map</a><br>
+<a href="#option_t.run_pure">option_t.run_pure</a><br>
+<a href="#pure_id_seq">pure_id_seq</a><br>
+<a href="#reader_t.ext">reader_t.ext</a><br>
+<a href="#reader_t.is_lawful_monad">reader_t.is_lawful_monad</a><br>
+<a href="#reader_t.run_bind">reader_t.run_bind</a><br>
+<a href="#reader_t.run_map">reader_t.run_map</a><br>
+<a href="#reader_t.run_monad_lift">reader_t.run_monad_lift</a><br>
+<a href="#reader_t.run_monad_map">reader_t.run_monad_map</a><br>
+<a href="#reader_t.run_pure">reader_t.run_pure</a><br>
+<a href="#reader_t.run_read">reader_t.run_read</a><br>
+<a href="#state_t.ext">state_t.ext</a><br>
+<a href="#state_t.is_lawful_monad">state_t.is_lawful_monad</a><br>
+<a href="#state_t.run_adapt">state_t.run_adapt</a><br>
+<a href="#state_t.run_bind">state_t.run_bind</a><br>
+<a href="#state_t.run_get">state_t.run_get</a><br>
+<a href="#state_t.run_map">state_t.run_map</a><br>
+<a href="#state_t.run_monad_lift">state_t.run_monad_lift</a><br>
+<a href="#state_t.run_monad_map">state_t.run_monad_map</a><br>
+<a href="#state_t.run_pure">state_t.run_pure</a><br>
+<a href="#state_t.run_put">state_t.run_put</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl def" id="control_laws_tac"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L14">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#control_laws_tac">control_laws_tac</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="is_lawful_functor"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L16">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a></span> <span class="decl_args">(f : Type u → Type v)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> f]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Prop</div></div>
+ <ul class="structure_fields" id="is_lawful_functor.mk">
+<li class="structure_field" id="is_lawful_functor.map_const_eq">map_const_eq : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ {α β : Type ?},
+     <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map_const">functor.map_const</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+       <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map">functor.map</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> β)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "control_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+<li class="structure_field" id="is_lawful_functor.id_map">id_map : ∀ {α : Type ?} (x : f α), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</li>
+<li class="structure_field" id="is_lawful_functor.comp_map">comp_map : ∀ {α β γ : Type ?} (g : α → β) (h : β → γ) (x : f α),
+  (h <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> g) <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+    h <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> g <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x</li>
+</ul>  <p></p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/category/bifunctor.html#bifunctor.is_lawful_functor">bifunctor.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/traversable/basic.html#is_lawful_traversable.to_is_lawful_functor">is_lawful_traversable.to_is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative.to_is_lawful_functor">is_lawful_applicative.to_is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set.is_lawful_functor">set.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/basic.html#sum.is_lawful_functor">sum.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.const.is_lawful_functor">functor.const.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.add_const.is_lawful_functor">functor.add_const.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/functor.html#functor.comp.is_lawful_functor">functor.comp.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset.is_lawful_functor">multiset.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.is_lawful_functor">filter.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq.is_lawful_functor">seq.is_lawful_functor</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html#measure_theory.outer_measure.is_lawful_functor">measure_theory.outer_measure.is_lawful_functor</a></li></ul></details></ul></div><div class="decl structure" id="is_lawful_applicative"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L26">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a></span> <span class="decl_args">(f : Type u → Type v)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> f]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Prop</div></div>
+ <ul class="structure_fields" id="is_lawful_applicative.mk">
+<li class="structure_field" id="is_lawful_applicative.to_is_lawful_functor">to_is_lawful_functor : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> f</li>
+<li class="structure_field" id="is_lawful_applicative.seq_left_eq">seq_left_eq : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ {α β : Type ?} (a : f α) (b : f β),
+     a <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq_left.seq_left" title="has_seq_left.seq_left"><*</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+       <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> β <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> a <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> b)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "control_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+<li class="structure_field" id="is_lawful_applicative.seq_right_eq">seq_right_eq : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ {α β : Type ?} (a : f α) (b : f β),
+     a <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq_right.seq_right" title="has_seq_right.seq_right">*></a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+       <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> a <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> b)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "control_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+<li class="structure_field" id="is_lawful_applicative.pure_seq_eq_map">pure_seq_eq_map : ∀ {α β : Type ?} (g : α → β) (x : f α),
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> g <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> g <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x</li>
+<li class="structure_field" id="is_lawful_applicative.map_pure">map_pure : ∀ {α β : Type ?} (g : α → β) (x : α),
+  g <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> (g x)</li>
+<li class="structure_field" id="is_lawful_applicative.seq_pure">seq_pure : ∀ {α β : Type ?} (g : f (α → β)) (x : α),
+  g <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+    (λ (g : α → β), g x) <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> g</li>
+<li class="structure_field" id="is_lawful_applicative.seq_assoc">seq_assoc : ∀ {α β γ : Type ?} (x : f α) (g : f (α → β)) (h : f (β → γ)),
+  h <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> (g <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+    <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp">function.comp</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> h <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> g <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> x</li>
+</ul>  <p></p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/category/basic.html#is_comm_applicative.to_is_lawful_applicative">is_comm_applicative.to_is_lawful_applicative</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad.to_is_lawful_applicative">is_lawful_monad.to_is_lawful_applicative</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/applicative.html#comp.is_lawful_applicative">comp.is_lawful_applicative</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/applicative.html#functor.const.is_lawful_applicative">functor.const.is_lawful_applicative</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/applicative.html#functor.add_const.is_lawful_applicative">functor.add_const.is_lawful_applicative</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.is_lawful_applicative">filter.is_lawful_applicative</a></li></ul></details></ul></div><div class="decl theorem" id="pure_id_seq"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L41">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#pure_id_seq">pure_id_seq</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{f : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> f]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> f]</span></span> <span class="decl_args">(x : f α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="is_lawful_monad"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L44">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Prop</div></div>
+ <ul class="structure_fields" id="is_lawful_monad.mk">
+<li class="structure_field" id="is_lawful_monad.to_is_lawful_applicative">to_is_lawful_applicative : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> m</li>
+<li class="structure_field" id="is_lawful_monad.bind_pure_comp_eq_map">bind_pure_comp_eq_map : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ {α β : Type ?} (f : α → β) (x : m α),
+     x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+       f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "control_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+<li class="structure_field" id="is_lawful_monad.bind_map_eq_seq">bind_map_eq_seq : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a>
+  (∀ {α β : Type ?} (f : m (α → β)) (x : m α),
+     (f <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> λ (_x : α → β), _x <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+       f <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_seq.seq" title="has_seq.seq"><*></a> x)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "control_laws_tac" <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>)</li>
+<li class="structure_field" id="is_lawful_monad.pure_bind">pure_bind : ∀ {α β : Type ?} (x : α) (f : α → m β),
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f x</li>
+<li class="structure_field" id="is_lawful_monad.bind_assoc">bind_assoc : ∀ {α β γ : Type ?} (x : m α) (f : α → m β) (g : β → m γ),
+  x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> g <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+    x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> λ (x : α), f x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> g</li>
+</ul>  <p></p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/category/monad/cont.html#is_lawful_monad_cont.to_is_lawful_monad">is_lawful_monad_cont.to_is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#id.is_lawful_monad">id.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.is_lawful_monad">state_t.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#except_t.is_lawful_monad">except_t.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.is_lawful_monad">reader_t.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#option_t.is_lawful_monad">option_t.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/data/list/instances.html#list.is_lawful_monad">list.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/init/data/option/instances.html#option.is_lawful_monad">option.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/basic.html#sum.is_lawful_monad">sum.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/core/data/buffer/parser.html#parser.is_lawful_monad">parser.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/quot.html#trunc.is_lawful_monad">trunc.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/set/lattice.html#set.is_lawful_monad">set.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset.is_lawful_monad">multiset.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/pfun.html#roption.is_lawful_monad">roption.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/pfun.html#pfun.is_lawful_monad">pfun.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/order/filter/basic.html#filter.ultrafilter.is_lawful_monad">filter.ultrafilter.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_magma.is_lawful_monad">free_magma.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/algebra/free.html#free_semigroup.is_lawful_monad">free_semigroup.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/seq/computation.html#computation.is_lawful_monad">computation.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/seq/seq.html#seq1.is_lawful_monad">seq1.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html#free_group.is_lawful_monad">free_group.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html#free_abelian_group.is_lawful_monad">free_abelian_group.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/monad/writer.html#writer_t.is_lawful_monad">writer_t.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/category/monad/cont.html#cont_t.is_lawful_monad">cont_t.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/erased.html#erased.is_lawful_monad">erased.is_lawful_monad</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/data/semiquot.html#semiquot.is_lawful_monad">semiquot.is_lawful_monad</a></li></ul></details></ul></div><div class="decl theorem" id="bind_pure"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L62">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#bind_pure">bind_pure</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(x : m α)</span> <span class="decl_args">:</span>     <div class="decl_type">x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="bind_ext_congr"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L65">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#bind_ext_congr">bind_ext_congr</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind">has_bind</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{x : m α}</span></span> <span class="impl_arg"><span class="decl_args">{f g : α → m β}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(∀ (a : α), f a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> g a) → x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> g</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="map_ext_congr"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L70">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#map_ext_congr">map_ext_congr</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{x : m α}</span></span> <span class="impl_arg"><span class="decl_args">{f g : α → β}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(∀ (a : α), f a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> g a) → f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> g <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="id.map_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L79">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#id.map_eq">id.map_eq</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> α)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>     <div class="decl_type">f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="id.bind_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L80">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#id.bind_eq">id.bind_eq</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> β)</span> <span class="decl_args">:</span>     <div class="decl_type">x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="id.pure_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L81">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#id.pure_eq">id.pure_eq</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="id.is_lawful_monad"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L84">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#id.is_lawful_monad">id.is_lawful_monad</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#id.is_lawful_monad">id.is_lawful_monad</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="state_t.ext"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L95">view source</a></div> <div class="attributes">@[ext]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.ext">state_t.ext</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{x x' : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(∀ (st : σ), x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x'.<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st) → x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x'</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="state_t.run_pure"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L100">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.run_pure">state_t.run_pure</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(st : σ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> a).<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> (a, st)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="state_t.run_bind"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L101">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.run_bind">state_t.run_bind</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m α)</span> <span class="decl_args">(st : σ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m β)</span> <span class="decl_args">:</span>     <div class="decl_type">(x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> f).<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a>
+    λ (p : α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> σ), (f p.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod.fst" title="prod.fst">fst</a>).<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> p.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod.snd" title="prod.snd">snd</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="state_t.run_map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L104">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.run_map">state_t.run_map</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m α)</span> <span class="decl_args">(st : σ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(f : α → β)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (λ (p : α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> σ), (f p.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod.fst" title="prod.fst">fst</a>, p.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod.snd" title="prod.snd">snd</a>)) <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a>
+    x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="state_t.run_monad_lift"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L111">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.run_monad_lift">state_t.run_monad_lift</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(st : σ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{n : Type u → Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> n m]</span></span> <span class="decl_args">(x : n α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t.monad_lift">has_monad_lift_t.monad_lift</a> x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t.monad_lift">has_monad_lift_t.monad_lift</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a>
+    λ (a : α), <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> (a, st)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="state_t.run_monad_map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L113">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.run_monad_map">state_t.run_monad_map</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m α)</span> <span class="decl_args">(st : σ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{m' : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{n n' : Type u → Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> n n' m m']</span></span> <span class="decl_args">(f : Π {α : Type u}, n α → n' α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t.monad_map">monad_functor_t.monad_map</a> f x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t.monad_map">monad_functor_t.monad_map</a> f (x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="state_t.run_adapt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L115">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.run_adapt">state_t.run_adapt</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{σ' σ'' : Type u}</span></span> <span class="decl_args">(st : σ)</span> <span class="decl_args">(split : σ → σ' <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> σ'')</span> <span class="decl_args">(join : σ' → σ'' → σ)</span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ' m α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.adapt">state_t.adapt</a> split join x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (λ (_a : σ' <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> σ''),
+     _a.<span title="prod.cases_on">cases_on</span>
+       (λ (fst : σ') (snd : σ''),
+          <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#id_rhs">id_rhs</a> (m (α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> σ))
+            (x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> fst <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a>
+               λ (_p : α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> σ'),
+                 (λ (_a : α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> σ'),
+                    _a.<span title="prod.cases_on">cases_on</span>
+                      (λ (fst : α) (snd_1 : σ'),
+                         <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#id_rhs">id_rhs</a> (m (α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> σ))
+                           (<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> (fst, join snd_1 snd))))
+                   _p)))
+    (split st)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="state_t.run_get"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L122">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.run_get">state_t.run_get</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(st : σ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.get">state_t.get</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> (st, st)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="state_t.run_put"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L123">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.run_put">state_t.run_put</a></span> <span class="impl_arg"><span class="decl_args">{σ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(st : σ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(st' : σ)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.put">state_t.put</a> st').<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.run" title="state_t.run">run</a> st <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#punit.star">punit.star</a>, st')</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="state_t.is_lawful_monad"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L127">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#state_t.is_lawful_monad">state_t.is_lawful_monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(σ : Type u)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="except_t.ext"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L136">view source</a></div> <div class="attributes">@[ext]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#except_t.ext">except_t.ext</a></span> <span class="impl_arg"><span class="decl_args">{α ε : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{x x' : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x'.<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a> → x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x'</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="except_t.run_pure"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L141">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#except_t.run_pure">except_t.run_pure</a></span> <span class="impl_arg"><span class="decl_args">{α ε : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> a).<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except.ok">except.ok</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="except_t.run_bind"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L142">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#except_t.run_bind">except_t.run_bind</a></span> <span class="impl_arg"><span class="decl_args">{α β ε : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m α)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m β)</span> <span class="decl_args">:</span>     <div class="decl_type">(x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> f).<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.bind_cont">except_t.bind_cont</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="except_t.run_map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L144">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#except_t.run_map">except_t.run_map</a></span> <span class="impl_arg"><span class="decl_args">{α β ε : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m α)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(f : α → β)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except.map">except.map</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="except_t.run_monad_lift"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L151">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#except_t.run_monad_lift">except_t.run_monad_lift</a></span> <span class="impl_arg"><span class="decl_args">{α ε : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{n : Type u → Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> n m]</span></span> <span class="decl_args">(x : n α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t.monad_lift">has_monad_lift_t.monad_lift</a> x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except.ok">except.ok</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a>
+    <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t.monad_lift">has_monad_lift_t.monad_lift</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="except_t.run_monad_map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L153">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#except_t.run_monad_map">except_t.run_monad_map</a></span> <span class="impl_arg"><span class="decl_args">{α ε : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m α)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{m' : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{n n' : Type u → Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> n n' m m']</span></span> <span class="decl_args">(f : Π {α : Type u}, n α → n' α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t.monad_map">monad_functor_t.monad_map</a> f x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t.monad_map">monad_functor_t.monad_map</a> f x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.run" title="except_t.run">run</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="except_t.is_lawful_monad"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L157">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#except_t.is_lawful_monad">except_t.is_lawful_monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">(ε : Type u)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="reader_t.ext"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L183">view source</a></div> <div class="attributes">@[ext]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.ext">reader_t.ext</a></span> <span class="impl_arg"><span class="decl_args">{ρ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{x x' : <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(∀ (r : ρ), x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x'.<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r) → x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x'</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="reader_t.run_pure"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L188">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.run_pure">reader_t.run_pure</a></span> <span class="impl_arg"><span class="decl_args">{ρ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(r : ρ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> a).<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="reader_t.run_bind"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L189">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.run_bind">reader_t.run_bind</a></span> <span class="impl_arg"><span class="decl_args">{ρ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m α)</span> <span class="decl_args">(r : ρ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m β)</span> <span class="decl_args">:</span>     <div class="decl_type">(x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> f).<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> λ (a : α), (f a).<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="reader_t.run_map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L191">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.run_map">reader_t.run_map</a></span> <span class="impl_arg"><span class="decl_args">{ρ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m α)</span> <span class="decl_args">(r : ρ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(f : α → β)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="reader_t.run_monad_lift"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L193">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.run_monad_lift">reader_t.run_monad_lift</a></span> <span class="impl_arg"><span class="decl_args">{ρ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(r : ρ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{n : Type u → Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> n m]</span></span> <span class="decl_args">(x : n α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t.monad_lift">has_monad_lift_t.monad_lift</a> x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t.monad_lift">has_monad_lift_t.monad_lift</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="reader_t.run_monad_map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L195">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.run_monad_map">reader_t.run_monad_map</a></span> <span class="impl_arg"><span class="decl_args">{ρ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m α)</span> <span class="decl_args">(r : ρ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{m' : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{n n' : Type u → Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> n n' m m']</span></span> <span class="decl_args">(f : Π {α : Type u}, n α → n' α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t.monad_map">monad_functor_t.monad_map</a> f x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t.monad_map">monad_functor_t.monad_map</a> f (x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="reader_t.run_read"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L197">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.run_read">reader_t.run_read</a></span> <span class="impl_arg"><span class="decl_args">{ρ : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(r : ρ)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.read">reader_t.read</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t.run" title="reader_t.run">run</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> r</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="reader_t.is_lawful_monad"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L201">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#reader_t.is_lawful_monad">reader_t.is_lawful_monad</a></span> <span class="decl_args">(ρ : Type u)</span> <span class="decl_args">(m : Type u → Type v)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="option_t.ext"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L210">view source</a></div> <div class="attributes">@[ext]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#option_t.ext">option_t.ext</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{x x' : <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x'.<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a> → x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x'</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="option_t.run_pure"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L215">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#option_t.run_pure">option_t.run_pure</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> a).<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#has_pure.pure">has_pure.pure</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option.some">option.some</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="option_t.run_bind"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L216">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#option_t.run_bind">option_t.run_bind</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m α)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m β)</span> <span class="decl_args">:</span>     <div class="decl_type">(x <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> f).<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind.bind" title="has_bind.bind">>>=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.bind_cont">option_t.bind_cont</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="option_t.run_map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L218">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#option_t.run_map">option_t.run_map</a></span> <span class="impl_arg"><span class="decl_args">{α β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m α)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="decl_args">(f : α → β)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/data/option/basic.html#option.map">option.map</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a> x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="option_t.run_monad_lift"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L225">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#option_t.run_monad_lift">option_t.run_monad_lift</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{n : Type u → Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> n m]</span></span> <span class="decl_args">(x : n α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t.monad_lift">has_monad_lift_t.monad_lift</a> x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option.some">option.some</a> <a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor.map" title="functor.map"><$></a>
+    <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t.monad_lift">has_monad_lift_t.monad_lift</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="option_t.run_monad_map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L227">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#option_t.run_monad_map">option_t.run_monad_map</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{m : Type u → Type v}</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m α)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">{m' : Type u → Type v}</span></span> <span class="impl_arg"><span class="decl_args">{n n' : Type u → Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> n n' m m']</span></span> <span class="decl_args">(f : Π {α : Type u}, n α → n' α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t.monad_map">monad_functor_t.monad_map</a> f x).<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t.monad_map">monad_functor_t.monad_map</a> f x.<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.run" title="option_t.run">run</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="option_t.is_lawful_monad"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/category/lawful.lean#L231">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#option_t.is_lawful_monad">option_t.is_lawful_monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +374,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +392,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +917,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +970,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +987,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +1036,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1072,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1096,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1117,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1146,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1154,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1177,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1304,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1314,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1332,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1402,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1443,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,406 +1453,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="def"><a id="control_laws_tac"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L14">control_laws_tac</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="structure"><a id="is_lawful_functor"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L16">is_lawful_functor</a></span> <span class="decl_args">(f : Type u → Type v)</span> <span class="decl_args">:</span>       <div class="decl_type">Prop</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> f]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">is_lawful_functor.map_const_eq : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ {α β : Type ?}, functor.map_const = functor.map ∘ <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> β)
-  (name.mk_string "control_laws_tac" name.anonymous)</div></li>
-<li><div class="structure_field">is_lawful_functor.id_map : ∀ {α : Type ?} (x : f α), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <$> x = x</div></li>
-<li><div class="structure_field">is_lawful_functor.comp_map : ∀ {α β γ : Type ?} (g : α → β) (h : β → γ) (x : f α), (h ∘ g) <$> x = h <$> g <$> x</div></li>
-</ul></li>
-
-</ul></div><div class="structure"><a id="is_lawful_applicative"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L26">is_lawful_applicative</a></span> <span class="decl_args">(f : Type u → Type v)</span> <span class="decl_args">:</span>       <div class="decl_type">Prop</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> f]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">is_lawful_applicative.to_is_lawful_functor : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_functor">is_lawful_functor</a> f</div></li>
-<li><div class="structure_field">is_lawful_applicative.seq_left_eq : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ {α β : Type ?} (a : f α) (b : f β), a <* b = <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> β <$> a <*> b)
-  (name.mk_string "control_laws_tac" name.anonymous)</div></li>
-<li><div class="structure_field">is_lawful_applicative.seq_right_eq : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ {α β : Type ?} (a : f α) (b : f β), a *> b = <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.const">function.const</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <$> a <*> b)
-  (name.mk_string "control_laws_tac" name.anonymous)</div></li>
-<li><div class="structure_field">is_lawful_applicative.pure_seq_eq_map : ∀ {α β : Type ?} (g : α → β) (x : f α), has_pure.pure g <*> x = g <$> x</div></li>
-<li><div class="structure_field">is_lawful_applicative.map_pure : ∀ {α β : Type ?} (g : α → β) (x : α), g <$> has_pure.pure x = has_pure.pure (g x)</div></li>
-<li><div class="structure_field">is_lawful_applicative.seq_pure : ∀ {α β : Type ?} (g : f (α → β)) (x : α), g <*> has_pure.pure x = (λ (g : α → β), g x) <$> g</div></li>
-<li><div class="structure_field">is_lawful_applicative.seq_assoc : ∀ {α β γ : Type ?} (x : f α) (g : f (α → β)) (h : f (β → γ)),
-  h <*> (g <*> x) = <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp">function.comp</a> <$> h <*> g <*> x</div></li>
-</ul></li>
-
-</ul></div><div class="thm"><a id="pure_id_seq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L41">pure_id_seq</a></span> <span class="decl_args">(x : f α)</span> <span class="decl_args">:</span>       <div class="decl_type">has_pure.pure <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> <*> x = x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{f : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/applicative.html#applicative">applicative</a> f]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> f]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="structure"><a id="is_lawful_monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L44">is_lawful_monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">:</span>       <div class="decl_type">Prop</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">is_lawful_monad.to_is_lawful_applicative : <a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_applicative">is_lawful_applicative</a> m</div></li>
-<li><div class="structure_field">is_lawful_monad.bind_pure_comp_eq_map : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ {α β : Type ?} (f : α → β) (x : m α), x >>= has_pure.pure ∘ f = f <$> x)
-  (name.mk_string "control_laws_tac" name.anonymous)</div></li>
-<li><div class="structure_field">is_lawful_monad.bind_map_eq_seq : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#auto_param">auto_param</a> (∀ {α β : Type ?} (f : m (α → β)) (x : m α), (f >>= λ (_x : α → β), _x <$> x) = f <*> x)
-  (name.mk_string "control_laws_tac" name.anonymous)</div></li>
-<li><div class="structure_field">is_lawful_monad.pure_bind : ∀ {α β : Type ?} (x : α) (f : α → m β), has_pure.pure x >>= f = f x</div></li>
-<li><div class="structure_field">is_lawful_monad.bind_assoc : ∀ {α β γ : Type ?} (x : m α) (f : α → m β) (g : β → m γ), x >>= f >>= g = x >>= λ (x : α), f x >>= g</div></li>
-</ul></li>
-
-</ul></div><div class="thm"><a id="bind_pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L62">bind_pure</a></span> <span class="decl_args">(x : m α)</span> <span class="decl_args">:</span>       <div class="decl_type">x >>= has_pure.pure = x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="bind_ext_congr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L65">bind_ext_congr</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(∀ (a : α), f a = g a) → x >>= f = x >>= g</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#has_bind">has_bind</a> m]</span> <span class="impl_arg">{x : m α}</span> <span class="impl_arg">{f g : α → m β}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="map_ext_congr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L70">map_ext_congr</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(∀ (a : α), f a = g a) → f <$> x = g <$> x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/functor.html#functor">functor</a> m]</span> <span class="impl_arg">{x : m α}</span> <span class="impl_arg">{f g : α → β}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="id.map_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L79">id.map_eq</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> α)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>       <div class="decl_type">f <$> x = f x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="id.bind_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L80">id.bind_eq</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> β)</span> <span class="decl_args">:</span>       <div class="decl_type">x >>= f = f x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="id.pure_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L81">id.pure_eq</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">has_pure.pure a = a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="id.is_lawful_monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L84">id.is_lawful_monad</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="state_t.ext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L95">state_t.ext</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(∀ (st : σ), x.run st = x'.run st) → x = x'</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{x x' : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m α}</span></li>
-<li>Attributes: ext</li>
-
-
-</ul></div><div class="thm"><a id="state_t.run_pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L100">state_t.run_pure</a></span> <span class="decl_args">(st : σ)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">(has_pure.pure a).run st = has_pure.pure (a, st)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="state_t.run_bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L101">state_t.run_bind</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m α)</span> <span class="decl_args">(st : σ)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m β)</span> <span class="decl_args">:</span>       <div class="decl_type">(x >>= f).run st = x.run st >>= λ (p : α × σ), (f (p.fst)).run (p.snd)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="state_t.run_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L104">state_t.run_map</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m α)</span> <span class="decl_args">(st : σ)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>       <div class="decl_type">(f <$> x).run st = (λ (p : α × σ), (f (p.fst), p.snd)) <$> x.run st</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="state_t.run_monad_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L111">state_t.run_monad_lift</a></span> <span class="decl_args">(st : σ)</span> <span class="decl_args">(x : n α)</span> <span class="decl_args">:</span>       <div class="decl_type">(has_monad_lift_t.monad_lift x).run st = has_monad_lift_t.monad_lift x >>= λ (a : α), has_pure.pure (a, st)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{n : Type u → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> n m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="state_t.run_monad_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L113">state_t.run_monad_map</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m α)</span> <span class="decl_args">(st : σ)</span> <span class="decl_args">(f : Π {α : Type u}, n α → n' α)</span> <span class="decl_args">:</span>       <div class="decl_type">(monad_functor_t.monad_map f x).run st = monad_functor_t.monad_map f (x.run st)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{m' : Type u → Type v}</span> <span class="impl_arg">{n n' : Type u → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> n n' m m']</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="state_t.run_adapt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L115">state_t.run_adapt</a></span> <span class="decl_args">(st : σ)</span> <span class="decl_args">(split : σ → σ' × σ'')</span> <span class="decl_args">(join : σ' → σ'' → σ)</span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ' m α)</span> <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.adapt">state_t.adapt</a> split join x).run st =
-  (λ (_a : σ' × σ''),
-     prod.cases_on _a
-       (λ (fst : σ') (snd : σ''),
-          <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#id_rhs">id_rhs</a> (m (α × σ))
-            (x.run fst >>=
-               λ (_p : α × σ'),
-                 (λ (_a : α × σ'),
-                    prod.cases_on _a
-                      (λ (fst : α) (snd_1 : σ'), <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#id_rhs">id_rhs</a> (m (α × σ)) (has_pure.pure (fst, join snd_1 snd))))
-                   _p)))
-    (split st)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{σ' σ'' : Type u}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="state_t.run_get"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L122">state_t.run_get</a></span> <span class="decl_args">(st : σ)</span> <span class="decl_args">:</span>       <div class="decl_type">state_t.get.run st = has_pure.pure (st, st)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="state_t.run_put"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L123">state_t.run_put</a></span> <span class="decl_args">(st : σ)</span> <span class="decl_args">(st' : σ)</span> <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t.put">state_t.put</a> st').run st = has_pure.pure (punit.star, st')</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{σ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="state_t.is_lawful_monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L127">state_t.is_lawful_monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">(σ : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#state_t">state_t</a> σ m)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="except_t.ext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L136">except_t.ext</a></span>  <span class="decl_args">:</span>       <div class="decl_type">x.run = x'.run → x = x'</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α ε : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{x x' : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m α}</span></li>
-<li>Attributes: ext</li>
-
-
-</ul></div><div class="thm"><a id="except_t.run_pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L141">except_t.run_pure</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">(has_pure.pure a).run = has_pure.pure (except.ok a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α ε : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="except_t.run_bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L142">except_t.run_bind</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m β)</span> <span class="decl_args">:</span>       <div class="decl_type">(x >>= f).run = x.run >>= <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t.bind_cont">except_t.bind_cont</a> f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β ε : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="except_t.run_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L144">except_t.run_map</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m α)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>       <div class="decl_type">(f <$> x).run = <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except.map">except.map</a> f <$> x.run</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β ε : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="except_t.run_monad_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L151">except_t.run_monad_lift</a></span> <span class="decl_args">(x : n α)</span> <span class="decl_args">:</span>       <div class="decl_type">(has_monad_lift_t.monad_lift x).run = except.ok <$> has_monad_lift_t.monad_lift x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α ε : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{n : Type u → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> n m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="except_t.run_monad_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L153">except_t.run_monad_map</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m α)</span> <span class="decl_args">(f : Π {α : Type u}, n α → n' α)</span> <span class="decl_args">:</span>       <div class="decl_type">(monad_functor_t.monad_map f x).run = monad_functor_t.monad_map f (x.run)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α ε : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{m' : Type u → Type v}</span> <span class="impl_arg">{n n' : Type u → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> n n' m m']</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="except_t.is_lawful_monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L157">except_t.is_lawful_monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">(ε : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/except.html#except_t">except_t</a> ε m)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="reader_t.ext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L183">reader_t.ext</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(∀ (r : ρ), x.run r = x'.run r) → x = x'</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{ρ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{x x' : <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m α}</span></li>
-<li>Attributes: ext</li>
-
-
-</ul></div><div class="thm"><a id="reader_t.run_pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L188">reader_t.run_pure</a></span> <span class="decl_args">(r : ρ)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">(has_pure.pure a).run r = has_pure.pure a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{ρ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="reader_t.run_bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L189">reader_t.run_bind</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m α)</span> <span class="decl_args">(r : ρ)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m β)</span> <span class="decl_args">:</span>       <div class="decl_type">(x >>= f).run r = x.run r >>= λ (a : α), (f a).run r</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{ρ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="reader_t.run_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L191">reader_t.run_map</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m α)</span> <span class="decl_args">(r : ρ)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>       <div class="decl_type">(f <$> x).run r = f <$> x.run r</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{ρ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="reader_t.run_monad_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L193">reader_t.run_monad_lift</a></span> <span class="decl_args">(r : ρ)</span> <span class="decl_args">(x : n α)</span> <span class="decl_args">:</span>       <div class="decl_type">(has_monad_lift_t.monad_lift x).run r = has_monad_lift_t.monad_lift x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{ρ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{n : Type u → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> n m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="reader_t.run_monad_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L195">reader_t.run_monad_map</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m α)</span> <span class="decl_args">(r : ρ)</span> <span class="decl_args">(f : Π {α : Type u}, n α → n' α)</span> <span class="decl_args">:</span>       <div class="decl_type">(monad_functor_t.monad_map f x).run r = monad_functor_t.monad_map f (x.run r)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{ρ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{m' : Type u → Type v}</span> <span class="impl_arg">{n n' : Type u → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> n n' m m']</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="reader_t.run_read"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L197">reader_t.run_read</a></span> <span class="decl_args">(r : ρ)</span> <span class="decl_args">:</span>       <div class="decl_type">reader_t.read.run r = has_pure.pure r</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{ρ : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="reader_t.is_lawful_monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L201">reader_t.is_lawful_monad</a></span> <span class="decl_args">(ρ : Type u)</span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/reader.html#reader_t">reader_t</a> ρ m)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="option_t.ext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L210">option_t.ext</a></span>  <span class="decl_args">:</span>       <div class="decl_type">x.run = x'.run → x = x'</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">{x x' : <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m α}</span></li>
-<li>Attributes: ext</li>
-
-
-</ul></div><div class="thm"><a id="option_t.run_pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L215">option_t.run_pure</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">(has_pure.pure a).run = has_pure.pure (option.some a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="option_t.run_bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L216">option_t.run_bind</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m β)</span> <span class="decl_args">:</span>       <div class="decl_type">(x >>= f).run = x.run >>= <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t.bind_cont">option_t.bind_cont</a> f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="option_t.run_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L218">option_t.run_map</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m α)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>       <div class="decl_type">(f <$> x).run = <a href="https://robertylewis.com/mathlib_docs/core/init/data/option/basic.html#option.map">option.map</a> f <$> x.run</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α β : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="option_t.run_monad_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L225">option_t.run_monad_lift</a></span> <span class="decl_args">(x : n α)</span> <span class="decl_args">:</span>       <div class="decl_type">(has_monad_lift_t.monad_lift x).run = option.some <$> has_monad_lift_t.monad_lift x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{n : Type u → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift_t">has_monad_lift_t</a> n m]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="option_t.run_monad_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L227">option_t.run_monad_map</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m α)</span> <span class="decl_args">(f : Π {α : Type u}, n α → n' α)</span> <span class="decl_args">:</span>       <div class="decl_type">(monad_functor_t.monad_map f x).run = monad_functor_t.monad_map f (x.run)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{m : Type u → Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">{m' : Type u → Type v}</span> <span class="impl_arg">{n n' : Type u → Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m']</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#monad_functor_t">monad_functor_t</a> n n' m m']</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="option_t.is_lawful_monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean#L231">option_t.is_lawful_monad</a></span> <span class="decl_args">(m : Type u → Type v)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/option.html#option_t">option_t</a> m)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> m]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/category/lawful.html#is_lawful_monad">is_lawful_monad</a> m]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">lawful</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/category/lawful.lean">(view source on GitHub)</a></div><a href="#bind_ext_congr">bind_ext_congr</a><br>
-<a href="#bind_pure">bind_pure</a><br>
-<a href="#control_laws_tac">control_laws_tac</a><br>
-<a href="#except_t.ext">except_t.ext</a><br>
-<a href="#except_t.is_lawful_monad">except_t.is_lawful_monad</a><br>
-<a href="#except_t.run_bind">except_t.run_bind</a><br>
-<a href="#except_t.run_map">except_t.run_map</a><br>
-<a href="#except_t.run_monad_lift">except_t.run_monad_lift</a><br>
-<a href="#except_t.run_monad_map">except_t.run_monad_map</a><br>
-<a href="#except_t.run_pure">except_t.run_pure</a><br>
-<a href="#id.bind_eq">id.bind_eq</a><br>
-<a href="#id.is_lawful_monad">id.is_lawful_monad</a><br>
-<a href="#id.map_eq">id.map_eq</a><br>
-<a href="#id.pure_eq">id.pure_eq</a><br>
-<a href="#is_lawful_applicative">is_lawful_applicative</a><br>
-<a href="#is_lawful_functor">is_lawful_functor</a><br>
-<a href="#is_lawful_monad">is_lawful_monad</a><br>
-<a href="#map_ext_congr">map_ext_congr</a><br>
-<a href="#option_t.ext">option_t.ext</a><br>
-<a href="#option_t.is_lawful_monad">option_t.is_lawful_monad</a><br>
-<a href="#option_t.run_bind">option_t.run_bind</a><br>
-<a href="#option_t.run_map">option_t.run_map</a><br>
-<a href="#option_t.run_monad_lift">option_t.run_monad_lift</a><br>
-<a href="#option_t.run_monad_map">option_t.run_monad_map</a><br>
-<a href="#option_t.run_pure">option_t.run_pure</a><br>
-<a href="#pure_id_seq">pure_id_seq</a><br>
-<a href="#reader_t.ext">reader_t.ext</a><br>
-<a href="#reader_t.is_lawful_monad">reader_t.is_lawful_monad</a><br>
-<a href="#reader_t.run_bind">reader_t.run_bind</a><br>
-<a href="#reader_t.run_map">reader_t.run_map</a><br>
-<a href="#reader_t.run_monad_lift">reader_t.run_monad_lift</a><br>
-<a href="#reader_t.run_monad_map">reader_t.run_monad_map</a><br>
-<a href="#reader_t.run_pure">reader_t.run_pure</a><br>
-<a href="#reader_t.run_read">reader_t.run_read</a><br>
-<a href="#state_t.ext">state_t.ext</a><br>
-<a href="#state_t.is_lawful_monad">state_t.is_lawful_monad</a><br>
-<a href="#state_t.run_adapt">state_t.run_adapt</a><br>
-<a href="#state_t.run_bind">state_t.run_bind</a><br>
-<a href="#state_t.run_get">state_t.run_get</a><br>
-<a href="#state_t.run_map">state_t.run_map</a><br>
-<a href="#state_t.run_monad_lift">state_t.run_monad_lift</a><br>
-<a href="#state_t.run_monad_map">state_t.run_monad_map</a><br>
-<a href="#state_t.run_pure">state_t.run_pure</a><br>
-<a href="#state_t.run_put">state_t.run_put</a><br>
 </div></div>
 
         </div>

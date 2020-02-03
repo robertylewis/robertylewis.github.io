@@ -7,8 +7,230 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">data.padics.padic_norm</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean">View source</a></div><a href="#padic_norm">padic_norm</a><br>
+<a href="#padic_norm.add_eq_max_of_ne">padic_norm.add_eq_max_of_ne</a><br>
+<a href="#padic_norm.div">padic_norm.div</a><br>
+<a href="#padic_norm.eq_fpow_of_nonzero">padic_norm.eq_fpow_of_nonzero</a><br>
+<a href="#padic_norm.image">padic_norm.image</a><br>
+<a href="#padic_norm.is_absolute_value">padic_norm.is_absolute_value</a><br>
+<a href="#padic_norm.le_of_dvd">padic_norm.le_of_dvd</a><br>
+<a href="#padic_norm.mul">padic_norm.mul</a><br>
+<a href="#padic_norm.neg">padic_norm.neg</a><br>
+<a href="#padic_norm.nonarchimedean">padic_norm.nonarchimedean</a><br>
+<a href="#padic_norm.nonneg">padic_norm.nonneg</a><br>
+<a href="#padic_norm.nonzero">padic_norm.nonzero</a><br>
+<a href="#padic_norm.of_int">padic_norm.of_int</a><br>
+<a href="#padic_norm.one">padic_norm.one</a><br>
+<a href="#padic_norm.sub">padic_norm.sub</a><br>
+<a href="#padic_norm.triangle_ineq">padic_norm.triangle_ineq</a><br>
+<a href="#padic_norm.zero">padic_norm.zero</a><br>
+<a href="#padic_norm.zero_of_padic_norm_eq_zero">padic_norm.zero_of_padic_norm_eq_zero</a><br>
+<a href="#padic_val_rat">padic_val_rat</a><br>
+<a href="#padic_val_rat.defn">padic_val_rat.defn</a><br>
+<a href="#padic_val_rat.div">padic_val_rat.div</a><br>
+<a href="#padic_val_rat.finite_int_prime_iff">padic_val_rat.finite_int_prime_iff</a><br>
+<a href="#padic_val_rat.inv">padic_val_rat.inv</a><br>
+<a href="#padic_val_rat.le_padic_val_rat_add_of_le">padic_val_rat.le_padic_val_rat_add_of_le</a><br>
+<a href="#padic_val_rat.min_le_padic_val_rat_add">padic_val_rat.min_le_padic_val_rat_add</a><br>
+<a href="#padic_val_rat.mul">padic_val_rat.mul</a><br>
+<a href="#padic_val_rat.neg">padic_val_rat.neg</a><br>
+<a href="#padic_val_rat.one">padic_val_rat.one</a><br>
+<a href="#padic_val_rat.padic_val_rat_le_padic_val_rat_iff">padic_val_rat.padic_val_rat_le_padic_val_rat_iff</a><br>
+<a href="#padic_val_rat.padic_val_rat_of_int">padic_val_rat.padic_val_rat_of_int</a><br>
+<a href="#padic_val_rat.padic_val_rat_self">padic_val_rat.padic_val_rat_self</a><br>
+<a href="#padic_val_rat.pow">padic_val_rat.pow</a><br>
+<a href="#padic_val_rat_def">padic_val_rat_def</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="mod_doc">
+<h1>p-adic norm</h1>
+
+<p>This file defines the p-adic valuation and the p-adic norm on ℚ.</p>
+
+<p>The p-adic valuation on ℚ is the difference of the multiplicities of <code>p</code> in the numerator and
+denominator of <code>q</code>. This function obeys the standard properties of a valuation, with the appropriate
+assumptions on p.</p>
+
+<p>The valuation induces a norm on ℚ. This norm is a nonarchimedean absolute value.
+It takes values in {0} ∪ {1/p^k | k ∈ ℤ}.</p>
+
+<h2>Notations</h2>
+
+<p>This file uses the local notation <code>/.</code> for <code>rat.mk</code>.</p>
+
+<h2>Implementation notes</h2>
+
+<p>Much, but not all, of this file assumes that <code>p</code> is prime. This assumption is inferred automatically
+by taking (prime p) as a type class argument.</p>
+
+<h2>References</h2>
+
+<ul>
+<li>[F. Q. Gouêva, <em>p-adic numbers</em>][gouvea1997]</li>
+<li>[R. Y. Lewis, <em>A formal proof of Hensel's lemma over the p-adic integers</em>][lewis2019]</li>
+<li><a href="https://en.wikipedia.org/wiki/P-adic_number">https://en.wikipedia.org/wiki/P-adic_number</a></li>
+</ul>
+
+<h2>Tags</h2>
+
+<p>p-adic, p adic, padic, norm, valuation</p>
+</div><div class="decl def" id="padic_val_rat"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L62">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a></div></div>
+   <p>For <code>p ≠ 1</code>, the p-adic valuation of an integer <code>z ≠ 0</code> is the largest natural number <code>n</code> such that
+p^n divides z.</p>
+
+<p><code>padic_val_rat</code> defines the valuation of a rational <code>q</code> to be the valuation of <code>q.num</code> minus the
+valuation of <code>q.denom</code>.
+If <code>q = 0</code> or <code>p = 1</code>, then <code>padic_val_rat p q</code> defaults to 0.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 1)
+    (λ (h : q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 1),
+       <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p
+               q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a>).<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#roption.get" title="roption.get">get</a>
+              _) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a>
+         <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p
+               <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>)).<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#roption.get" title="roption.get">get</a>
+              _))
+    (λ (h : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>(q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#and" title="and">∧</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 1)), 0)</li></ul></details> </ul></div><div class="decl theorem" id="padic_val_rat_def"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L73">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat_def">padic_val_rat_def</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">(hq : q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a>).<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#roption.get" title="roption.get">get</a>
+         _) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a>
+    <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p
+          <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>)).<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#roption.get" title="roption.get">get</a>
+         _)</div></div>
+   <p>A simplification of the definition of <code>padic_val_rat p q</code> when <code>q ≠ 0</code> and <code>p</code> is prime.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L86">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.neg">padic_val_rat.neg</a></span> <span class="impl_arg"><span class="decl_args">{p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>q) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</div></div>
+   <p><code>padic_val_rat p q</code> is symmetric in <code>q</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L99">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.one">padic_val_rat.one</a></span> <span class="impl_arg"><span class="decl_args">{p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p><code>padic_val_rat p 1</code> is 0 for any <code>p</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.padic_val_rat_self"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L105">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.padic_val_rat_self">padic_val_rat.padic_val_rat_self</a></span> <span class="impl_arg"><span class="decl_args">{p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> p → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 1</div></div>
+   <p>For <code>p ≠ 0, p ≠ 1,</code>padic_val_rat p p` is 1.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.padic_val_rat_of_int"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L111">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.padic_val_rat_of_int">padic_val_rat.padic_val_rat_of_int</a></span> <span class="impl_arg"><span class="decl_args">{p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">(z : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>)</span> <span class="decl_args">(hp : p <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 1)</span> <span class="decl_args">(hz : z <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>z <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p z).<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#roption.get" title="roption.get">get</a> _)</div></div>
+   <p>The p-adic value of an integer <code>z ≠ 0</code> is the multiplicity of <code>p</code> in <code>z</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.finite_int_prime_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L126">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.finite_int_prime_iff">padic_val_rat.finite_int_prime_iff</a></span> <span class="impl_arg"><span class="decl_args">{p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0</div></div>
+   <p>The multiplicity of <code>p : ℕ</code> in <code>a : ℤ</code> is finite exactly when <code>a ≠ 0</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.defn"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L132">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.defn">padic_val_rat.defn</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{n d : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">(hqz : q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0)</span> <span class="decl_args">(qdf : q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n d)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p n).<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#roption.get" title="roption.get">get</a>
+         _) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a>
+    <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p d).<a href="https://robertylewis.com/mathlib_docs/data/pfun.html#roption.get" title="roption.get">get</a> _)</div></div>
+   <p>A rewrite lemma for <code>padic_val_rat p q</code> when <code>q</code> is expressed in terms of <code>rat.mk</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.mul"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L147">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.mul">padic_val_rat.mul</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+r <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r</div></div>
+   <p>A rewrite lemma for <code>padic_val_rat p (q * r)</code> with conditions <code>q ≠ 0</code>, <code>r ≠ 0</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.pow"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L163">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.pow">padic_val_rat.pow</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">(hq : q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0)</span> <span class="impl_arg"><span class="decl_args">{k : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> k) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>k <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</div></div>
+   <p>A rewrite lemma for <code>padic_val_rat p (q^k) with condition</code>q ≠ 0`.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.inv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L171">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.inv">padic_val_rat.inv</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_inv.inv" title="has_inv.inv">⁻¹</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</div></div>
+   <p>A rewrite lemma for <code>padic_val_rat p (q⁻¹)</code> with condition <code>q ≠ 0</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.div"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L179">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.div">padic_val_rat.div</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+r <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r</div></div>
+   <p>A rewrite lemma for <code>padic_val_rat p (q / r)</code> with conditions <code>q ≠ 0</code>, <code>r ≠ 0</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.padic_val_rat_le_padic_val_rat_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L188">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.padic_val_rat_le_padic_val_rat_iff">padic_val_rat.padic_val_rat_le_padic_val_rat_iff</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{n₁ n₂ d₁ d₂ : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">n₁ <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+n₂ <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+d₁ <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+d₂ <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+(<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n₁ d₁) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+     <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n₂ d₂) <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+   ∀ (n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>),
+     <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> n₁ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> d₂ →
+     <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> n₂ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> d₁)</div></div>
+   <p>A condition for <code>padic_val_rat p (n₁ / d₁) ≤ padic_val_rat p (n₂ / d₂),
+in terms of divisibility by</code>p^n`.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.le_padic_val_rat_add_of_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L213">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.le_padic_val_rat_add_of_le">padic_val_rat.le_padic_val_rat_add_of_le</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+r <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r →
+<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> r)</div></div>
+   <p>Sufficient conditions to show that the p-adic valuation of <code>q</code> is less than or equal to the
+p-adic vlauation of <code>q + r</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_val_rat.min_le_padic_val_rat_add"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L246">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat.min_le_padic_val_rat_add">padic_val_rat.min_le_padic_val_rat_add</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p_prime : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+r <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> r <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#min">min</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> r)</div></div>
+   <p>The minimum of the valuations of <code>q</code> and <code>r</code> is less than or equal to the valuation of <code>q + r</code>.</p>
+  </ul></div><div class="decl def" id="padic_norm"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L261">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a> → <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p>If <code>q ≠ 0</code>, the p-adic norm of a rational <code>q</code> is <code>p ^ (-(padic_val_rat p q))</code>.
+If <code>q = 0</code>, the p-adic norm of <code>q</code> is 0.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0) 0
+    (<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q)</li></ul></details> </ul></div><div class="decl theorem" id="padic_norm.eq_fpow_of_nonzero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L273">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.eq_fpow_of_nonzero">padic_norm.eq_fpow_of_nonzero</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</div></div>
+   <p>Unfolds the definition of the p-adic norm of <code>q</code> when <code>q ≠ 0</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L280">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.nonneg">padic_norm.nonneg</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q</div></div>
+   <p>The p-adic norm is nonnegative.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L292">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.zero">padic_norm.zero</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p>The p-adic norm of 0 is 0.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L297">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.one">padic_norm.one</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 1</div></div>
+   <p>The p-adic norm of 1 is 1.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.image"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L302">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.image">padic_norm.image</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 →
+(∃ (n : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>),
+   <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>n)</div></div>
+   <p>The image of <code>padic_norm p</code> is {0} ∪ {p^(-n) | n ∈ ℤ}.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.nonzero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L311">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.nonzero">padic_norm.nonzero</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0</div></div>
+   <p>If <code>q ≠ 0</code>, then <code>padic_norm p q ≠ 0</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L321">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.neg">padic_norm.neg</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>q) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q</div></div>
+   <p><code>padic_norm p</code> is symmetric.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.zero_of_padic_norm_eq_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L328">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.zero_of_padic_norm_eq_zero">padic_norm.zero_of_padic_norm_eq_zero</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0 → q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p>If the p-adic norm of <code>q</code> is 0, then <code>q</code> is 0.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.mul"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L340">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.mul">padic_norm.mul</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="decl_args">(q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</div></div>
+   <p>The p-adic norm is multiplicative.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.div"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L353">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.div">padic_norm.div</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="decl_args">(q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</div></div>
+   <p>The p-adic norm respects division.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.of_int"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L360">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.of_int">padic_norm.of_int</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="decl_args">(z : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>z <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 1</div></div>
+   <p>The p-adic norm of an integer is at most 1.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.nonarchimedean"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L401">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.nonarchimedean">padic_norm.nonarchimedean</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</div></div>
+   <p>The p-adic norm is nonarchimedean: the norm of <code>p + q</code> is at most the max of the norm of <code>p</code> and
+the norm of <code>q</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.triangle_ineq"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L412">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.triangle_ineq">padic_norm.triangle_ineq</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="decl_args">(q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</div></div>
+   <p>The p-adic norm respects the triangle inequality: the norm of <code>p + q</code> is at most the norm of <code>p</code>
+plus the norm of <code>q</code>.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.sub"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L421">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.sub">padic_norm.sub</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</div></div>
+   <p>The p-adic norm of a difference is at most the max of each component. Restates the archimedean
+property of the p-adic norm.</p>
+  </ul></div><div class="decl theorem" id="padic_norm.add_eq_max_of_ne"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L428">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.add_eq_max_of_ne">padic_norm.add_eq_max_of_ne</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{q r : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r →
+<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> r) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</div></div>
+   <p>If the p-adic norms of <code>q</code> and <code>r</code> are different, then the norm of <code>q + r</code> is equal to the max of
+the norms of <code>q</code> and <code>r</code>.</p>
+  </ul></div><div class="decl def" id="padic_norm.is_absolute_value"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L454">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.is_absolute_value">padic_norm.is_absolute_value</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html#is_absolute_value">is_absolute_value</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p)</div></div>
+   <p>The p-adic norm is an absolute value: positive-definite and multiplicative, satisfying the triangle
+inequality.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="padic_norm.le_of_dvd"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/padics/padic_norm.lean#L469">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm.le_of_dvd">padic_norm.le_of_dvd</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{z : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> n) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> z →
+<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>z <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>n</div></div>
+   <p>If <code>p^n</code> divides an integer <code>z</code>, then the p-adic norm of <code>z</code> is at most <code>p^(-n)</code>.</p>
+  </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +317,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +335,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +860,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +913,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +930,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +979,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1015,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1039,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1060,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1089,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1097,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1120,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1247,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1257,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1275,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1345,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1386,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,332 +1396,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="mod_doc">
-<a id="top"></a>
-<h1>p-adic norm</h1>
-
-<p>This file defines the p-adic valuation and the p-adic norm on ℚ.</p>
-
-<p>The p-adic valuation on ℚ is the difference of the multiplicities of <code>p</code> in the numerator and
-denominator of <code>q</code>. This function obeys the standard properties of a valuation, with the appropriate
-assumptions on p.</p>
-
-<p>The valuation induces a norm on ℚ. This norm is a nonarchimedean absolute value.
-It takes values in {0} ∪ {1/p^k | k ∈ ℤ}.</p>
-
-<h2>Notations</h2>
-
-<p>This file uses the local notation <code>/.</code> for <code>rat.mk</code>.</p>
-
-<h2>Implementation notes</h2>
-
-<p>Much, but not all, of this file assumes that <code>p</code> is prime. This assumption is inferred automatically
-by taking (prime p) as a type class argument.</p>
-
-<h2>References</h2>
-
-<ul>
-<li>[F. Q. Gouêva, <em>p-adic numbers</em>][gouvea1997]</li>
-<li>[R. Y. Lewis, <em>A formal proof of Hensel's lemma over the p-adic integers</em>][lewis2019]</li>
-<li><a href="https://en.wikipedia.org/wiki/P-adic_number">https://en.wikipedia.org/wiki/P-adic_number</a></li>
-</ul>
-
-<h2>Tags</h2>
-
-<p>p-adic, p adic, padic, norm, valuation</p>
-</div><div class="def"><a id="padic_val_rat"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L62">padic_val_rat</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → ℚ → ℤ</div>
-<p>For <code>p ≠ 1</code>, the p-adic valuation of an integer <code>z ≠ 0</code> is the largest natural number <code>n</code> such that
-p^n divides z.</p>
-
-<p><code>padic_val_rat</code> defines the valuation of a rational <code>q</code> to be the valuation of <code>q.num</code> minus the
-valuation of <code>q.denom</code>.
-If <code>q = 0</code> or <code>p = 1</code>, then <code>padic_val_rat p q</code> defaults to 0.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat_def"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L73">padic_val_rat_def</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(hq : q ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q = ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p (q.num)).get _) - ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p ↑(q.denom)).get _)</div>
-<p>A simplification of the definition of <code>padic_val_rat p q</code> when <code>q ≠ 0</code> and <code>p</code> is prime.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L86">padic_val_rat.neg</a></span> <span class="decl_args">(q : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (-q) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</div>
-<p><code>padic_val_rat p q</code> is symmetric in <code>q</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L99">padic_val_rat.one</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p 1 = 0</div>
-<p><code>padic_val_rat p 1</code> is 0 for any <code>p</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.padic_val_rat_self"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L105">padic_val_rat.padic_val_rat_self</a></span>  <span class="decl_args">:</span>       <div class="decl_type">1 < p → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p ↑p = 1</div>
-<p>For <code>p ≠ 0, p ≠ 1,</code>padic_val_rat p p` is 1.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.padic_val_rat_of_int"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L111">padic_val_rat.padic_val_rat_of_int</a></span> <span class="decl_args">(z : ℤ)</span> <span class="decl_args">(hp : p ≠ 1)</span> <span class="decl_args">(hz : z ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p ↑z = ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p z).get _)</div>
-<p>The p-adic value of an integer <code>z ≠ 0</code> is the multiplicity of <code>p</code> in <code>z</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.finite_int_prime_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L126">padic_val_rat.finite_int_prime_iff</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity.finite">multiplicity.finite</a> ↑p a ↔ a ≠ 0</div>
-<p>The multiplicity of <code>p : ℕ</code> in <code>a : ℤ</code> is finite exactly when <code>a ≠ 0</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{a : ℤ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.defn"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L132">padic_val_rat.defn</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(hqz : q ≠ 0)</span> <span class="decl_args">(qdf : q = <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n d)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q = ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p n).get _) - ↑((<a href="https://robertylewis.com/mathlib_docs/ring_theory/multiplicity.html#multiplicity">multiplicity</a> ↑p d).get _)</div>
-<p>A rewrite lemma for <code>padic_val_rat p q</code> when <code>q</code> is expressed in terms of <code>rat.mk</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q : ℚ}</span> <span class="impl_arg">{n d : ℤ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L147">padic_val_rat.mul</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">q ≠ 0 → r ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q * r) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q + <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r</div>
-<p>A rewrite lemma for <code>padic_val_rat p (q * r)</code> with conditions <code>q ≠ 0</code>, <code>r ≠ 0</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q r : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.pow"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L163">padic_val_rat.pow</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(hq : q ≠ 0)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q ^ k) = ↑k * <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q</div>
-<p>A rewrite lemma for <code>padic_val_rat p (q^k) with condition</code>q ≠ 0`.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q : ℚ}</span> <span class="impl_arg">{k : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.inv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L171">padic_val_rat.inv</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">q ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q⁻¹ = -padic_val_rat p q</div>
-<p>A rewrite lemma for <code>padic_val_rat p (q⁻¹)</code> with condition <code>q ≠ 0</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L179">padic_val_rat.div</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">q ≠ 0 → r ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q / r) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q - <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r</div>
-<p>A rewrite lemma for <code>padic_val_rat p (q / r)</code> with conditions <code>q ≠ 0</code>, <code>r ≠ 0</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q r : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.padic_val_rat_le_padic_val_rat_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L188">padic_val_rat.padic_val_rat_le_padic_val_rat_iff</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">n₁ ≠ 0 →
-n₂ ≠ 0 →
-d₁ ≠ 0 →
-d₂ ≠ 0 →
-(<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n₁ d₁) ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> n₂ d₂) ↔
-   ∀ (n : ℕ), ↑p ^ n ∣ n₁ * d₂ → ↑p ^ n ∣ n₂ * d₁)</div>
-<p>A condition for <code>padic_val_rat p (n₁ / d₁) ≤ padic_val_rat p (n₂ / d₂),
-in terms of divisibility by</code>p^n`.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{n₁ n₂ d₁ d₂ : ℤ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.le_padic_val_rat_add_of_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L213">padic_val_rat.le_padic_val_rat_add_of_le</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">q ≠ 0 →
-r ≠ 0 → q + r ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q + r)</div>
-<p>Sufficient conditions to show that the p-adic valuation of <code>q</code> is less than or equal to the
-p-adic vlauation of <code>q + r</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q r : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_val_rat.min_le_padic_val_rat_add"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L246">padic_val_rat.min_le_padic_val_rat_add</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">q ≠ 0 → r ≠ 0 → q + r ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#min">min</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p r) ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_val_rat">padic_val_rat</a> p (q + r)</div>
-<p>The minimum of the valuations of <code>q</code> and <code>r</code> is less than or equal to the valuation of <code>q + r</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[p_prime : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q r : ℚ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="padic_norm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L261">padic_norm</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → ℚ → ℚ</div>
-<p>If <code>q ≠ 0</code>, the p-adic norm of a rational <code>q</code> is <code>p ^ (-(padic_val_rat p q))</code>.
-If <code>q = 0</code>, the p-adic norm of <code>q</code> is 0.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.eq_fpow_of_nonzero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L273">padic_norm.eq_fpow_of_nonzero</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">q ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = ↑p ^ -padic_val_rat p q</div>
-<p>Unfolds the definition of the p-adic norm of <code>q</code> when <code>q ≠ 0</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{q : ℚ}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_norm.nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L280">padic_norm.nonneg</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(q : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">0 ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q</div>
-<p>The p-adic norm is nonnegative.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L292">padic_norm.zero</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p 0 = 0</div>
-<p>The p-adic norm of 0 is 0.</p>
-       <ul>
-
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_norm.one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L297">padic_norm.one</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p 1 = 1</div>
-<p>The p-adic norm of 1 is 1.</p>
-       <ul>
-
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_norm.image"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L302">padic_norm.image</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">q ≠ 0 → (∃ (n : ℤ), <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = ↑p ^ -n)</div>
-<p>The image of <code>padic_norm p</code> is {0} ∪ {p^(-n) | n ∈ ℤ}.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{q : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.nonzero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L311">padic_norm.nonzero</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">q ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q ≠ 0</div>
-<p>If <code>q ≠ 0</code>, then <code>padic_norm p q ≠ 0</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L321">padic_norm.neg</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(q : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (-q) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q</div>
-<p><code>padic_norm p</code> is symmetric.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_norm.zero_of_padic_norm_eq_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L328">padic_norm.zero_of_padic_norm_eq_zero</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q = 0 → q = 0</div>
-<p>If the p-adic norm of <code>q</code> is 0, then <code>q</code> is 0.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L340">padic_norm.mul</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(q r : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q * r) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q * <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</div>
-<p>The p-adic norm is multiplicative.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_norm.div"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L353">padic_norm.div</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(q r : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q / r) = <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q / <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</div>
-<p>The p-adic norm respects division.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="padic_norm.of_int"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L360">padic_norm.of_int</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(z : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p ↑z ≤ 1</div>
-<p>The p-adic norm of an integer is at most 1.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.nonarchimedean"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L401">padic_norm.nonarchimedean</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</div>
-<p>The p-adic norm is nonarchimedean: the norm of <code>p + q</code> is at most the max of the norm of <code>p</code> and
-the norm of <code>q</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q r : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.triangle_ineq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L412">padic_norm.triangle_ineq</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(q r : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) ≤ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q + <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r</div>
-<p>The p-adic norm respects the triangle inequality: the norm of <code>p + q</code> is at most the norm of <code>p</code>
-plus the norm of <code>q</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.sub"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L421">padic_norm.sub</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q - r) ≤ <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</div>
-<p>The p-adic norm of a difference is at most the max of each component. Restates the archimedean
-property of the p-adic norm.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q r : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="padic_norm.add_eq_max_of_ne"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L428">padic_norm.add_eq_max_of_ne</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q ≠ <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p (q + r) = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p q) (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p r)</div>
-<p>If the p-adic norms of <code>q</code> and <code>r</code> are different, then the norm of <code>q + r</code> is equal to the max of
-the norms of <code>q</code> and <code>r</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{q r : ℚ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="padic_norm.is_absolute_value"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L454">padic_norm.is_absolute_value</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html#is_absolute_value">is_absolute_value</a> (<a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p)</div>
-<p>The p-adic norm is an absolute value: positive-definite and multiplicative, satisfying the triangle
-inequality.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="padic_norm.le_of_dvd"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean#L469">padic_norm.le_of_dvd</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(p ^ n) ∣ z → <a href="https://robertylewis.com/mathlib_docs/data/padics/padic_norm.html#padic_norm">padic_norm</a> p ↑z ≤ ↑p ^ -↑n</div>
-<p>If <code>p^n</code> divides an integer <code>z</code>, then the p-adic norm of <code>z</code> is at most <code>p^(-n)</code>.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">{n : ℕ}</span> <span class="impl_arg">{z : ℤ}</span></li>
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">padic_norm</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/padics/padic_norm.lean">(view source on GitHub)</a></div><a href="#padic_norm">padic_norm</a><br>
-<a href="#padic_norm.add_eq_max_of_ne">padic_norm.add_eq_max_of_ne</a><br>
-<a href="#padic_norm.div">padic_norm.div</a><br>
-<a href="#padic_norm.eq_fpow_of_nonzero">padic_norm.eq_fpow_of_nonzero</a><br>
-<a href="#padic_norm.image">padic_norm.image</a><br>
-<a href="#padic_norm.is_absolute_value">padic_norm.is_absolute_value</a><br>
-<a href="#padic_norm.le_of_dvd">padic_norm.le_of_dvd</a><br>
-<a href="#padic_norm.mul">padic_norm.mul</a><br>
-<a href="#padic_norm.neg">padic_norm.neg</a><br>
-<a href="#padic_norm.nonarchimedean">padic_norm.nonarchimedean</a><br>
-<a href="#padic_norm.nonneg">padic_norm.nonneg</a><br>
-<a href="#padic_norm.nonzero">padic_norm.nonzero</a><br>
-<a href="#padic_norm.of_int">padic_norm.of_int</a><br>
-<a href="#padic_norm.one">padic_norm.one</a><br>
-<a href="#padic_norm.sub">padic_norm.sub</a><br>
-<a href="#padic_norm.triangle_ineq">padic_norm.triangle_ineq</a><br>
-<a href="#padic_norm.zero">padic_norm.zero</a><br>
-<a href="#padic_norm.zero_of_padic_norm_eq_zero">padic_norm.zero_of_padic_norm_eq_zero</a><br>
-<a href="#padic_val_rat">padic_val_rat</a><br>
-<a href="#padic_val_rat.defn">padic_val_rat.defn</a><br>
-<a href="#padic_val_rat.div">padic_val_rat.div</a><br>
-<a href="#padic_val_rat.finite_int_prime_iff">padic_val_rat.finite_int_prime_iff</a><br>
-<a href="#padic_val_rat.inv">padic_val_rat.inv</a><br>
-<a href="#padic_val_rat.le_padic_val_rat_add_of_le">padic_val_rat.le_padic_val_rat_add_of_le</a><br>
-<a href="#padic_val_rat.min_le_padic_val_rat_add">padic_val_rat.min_le_padic_val_rat_add</a><br>
-<a href="#padic_val_rat.mul">padic_val_rat.mul</a><br>
-<a href="#padic_val_rat.neg">padic_val_rat.neg</a><br>
-<a href="#padic_val_rat.one">padic_val_rat.one</a><br>
-<a href="#padic_val_rat.padic_val_rat_le_padic_val_rat_iff">padic_val_rat.padic_val_rat_le_padic_val_rat_iff</a><br>
-<a href="#padic_val_rat.padic_val_rat_of_int">padic_val_rat.padic_val_rat_of_int</a><br>
-<a href="#padic_val_rat.padic_val_rat_self">padic_val_rat.padic_val_rat_self</a><br>
-<a href="#padic_val_rat.pow">padic_val_rat.pow</a><br>
-<a href="#padic_val_rat_def">padic_val_rat_def</a><br>
 </div></div>
 
         </div>

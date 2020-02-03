@@ -7,8 +7,95 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">data.opposite</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean">View source</a></div><a href="#opposite">opposite</a><br>
+<a href="#opposite.op">opposite.op</a><br>
+<a href="#opposite.op_induction">opposite.op_induction</a><br>
+<a href="#opposite.op_inj">opposite.op_inj</a><br>
+<a href="#opposite.op_inj_iff">opposite.op_inj_iff</a><br>
+<a href="#opposite.op_unop">opposite.op_unop</a><br>
+<a href="#opposite.unop">opposite.unop</a><br>
+<a href="#opposite.unop_inj">opposite.unop_inj</a><br>
+<a href="#opposite.unop_inj_iff">opposite.unop_inj_iff</a><br>
+<a href="#opposite.unop_op">opposite.unop_op</a><br>
+<a href="#tactic.interactive.op_induction">tactic.interactive.op_induction</a><br>
+<a href="#tactic.op_induction">tactic.op_induction</a><br>
+<a href="#tactic.op_induction'">tactic.op_induction'</a><br>
+<a href="#tactic.op_induction.find_opposite_hyp">tactic.op_induction.find_opposite_hyp</a><br>
+<a href="#tactic.op_induction.is_opposite">tactic.op_induction.is_opposite</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl def" id="opposite"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L35">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite">opposite</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Sort u → Sort u</div></div>
+   <p>The type of objects of the opposite of <code>α</code>; used to defined opposite category/group/...</p>
+
+<p>In order to avoid confusion between <code>α</code> and its opposite type, we
+ set up the type of objects <code>opposite α</code> using the following pattern,
+ which will be repeated later for the morphisms.</p>
+
+<ol>
+<li>Define <code>opposite α := α</code>.</li>
+<li>Define the isomorphisms <code>op : α → opposite α</code>, <code>unop : opposite α → α</code>.</li>
+<li><p>Make the definition <code>opposite</code> irreducible.</p>
+
+<p>This has the following consequences.</p></li>
+<li><p><code>opposite α</code> and <code>α</code> are distinct types in the elaborator, so you
+must use <code>op</code> and <code>unop</code> explicitly to convert between them.</p></li>
+<li><p>Both <code>unop (op X) = X</code> and <code>op (unop X) = X</code> are definitional
+equalities. Notably, every object of the opposite category is
+definitionally of the form <code>op X</code>, which greatly simplifies the
+definition of the structure of the opposite category, for example.</p>
+
+<p>(If Lean supported definitional eta equality for records, we could
+achieve the same goals using a structure with one field.)</p></li>
+</ol>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">α<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> α</li></ul></details> </ul></div><div class="decl def" id="opposite.op"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L44">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">α → α<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></li></ul></details> </ul></div><div class="decl def" id="opposite.unop"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L45">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">α<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a> → α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a></li></ul></details> </ul></div><div class="decl theorem" id="opposite.op_inj"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L47">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op_inj">opposite.op_inj</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.injective">function.injective</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="opposite.unop_inj"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L48">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop_inj">opposite.unop_inj</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.injective">function.injective</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="opposite.op_inj_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L50">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op_inj_iff">opposite.op_inj_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> y <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="opposite.unop_inj_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L51">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop_inj_iff">opposite.unop_inj_iff</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="decl_args">(x y : α<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">x.<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop" title="opposite.unop">unop</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> y.<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop" title="opposite.unop">unop</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="opposite.op_unop"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L53">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op_unop">opposite.op_unop</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="decl_args">(x : α<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> x.<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop" title="opposite.unop">unop</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="opposite.unop_op"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L54">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop_op">opposite.unop_op</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> x).<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop" title="opposite.unop">unop</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="opposite.op_induction"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L58">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op_induction">opposite.op_induction</a></span> <span class="impl_arg"><span class="decl_args">{α : Sort u}</span></span> <span class="impl_arg"><span class="decl_args">{F : α<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a> → Sort v}</span></span> <span class="decl_args">(h : Π (X : α), F (<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> X))</span> <span class="decl_args">(X : α<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">F X</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op_induction">opposite.op_induction</a> h <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  λ (X : α<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite" title="opposite">ᵒᵖ</a>), h X.<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop" title="opposite.unop">unop</a></li></ul></details> </ul></div><div class="decl def" id="tactic.op_induction.is_opposite"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L70">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#tactic.op_induction.is_opposite">tactic.op_induction.is_opposite</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="tactic.op_induction.find_opposite_hyp"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L75">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#tactic.op_induction.find_opposite_hyp">tactic.op_induction.find_opposite_hyp</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="tactic.op_induction"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L84">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#tactic.op_induction">tactic.op_induction</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="tactic.op_induction'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L96">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#tactic.op_induction'">tactic.op_induction'</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="tactic.interactive.op_induction"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/opposite.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#tactic.interactive.op_induction">tactic.interactive.op_induction</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +182,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +200,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +725,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +778,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +795,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +844,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +880,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +904,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +925,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +954,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +962,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +985,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1112,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1122,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1140,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1210,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1251,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,157 +1261,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="def"><a id="opposite"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L35">opposite</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Sort u → Sort u</div>
-<p>The type of objects of the opposite of <code>α</code>; used to defined opposite category/group/...</p>
-
-<p>In order to avoid confusion between <code>α</code> and its opposite type, we
- set up the type of objects <code>opposite α</code> using the following pattern,
- which will be repeated later for the morphisms.</p>
-
-<ol>
-<li>Define <code>opposite α := α</code>.</li>
-<li>Define the isomorphisms <code>op : α → opposite α</code>, <code>unop : opposite α → α</code>.</li>
-<li><p>Make the definition <code>opposite</code> irreducible.</p>
-
-<p>This has the following consequences.</p></li>
-<li><p><code>opposite α</code> and <code>α</code> are distinct types in the elaborator, so you
-must use <code>op</code> and <code>unop</code> explicitly to convert between them.</p></li>
-<li><p>Both <code>unop (op X) = X</code> and <code>op (unop X) = X</code> are definitional
-equalities. Notably, every object of the opposite category is
-definitionally of the form <code>op X</code>, which greatly simplifies the
-definition of the structure of the opposite category, for example.</p>
-
-<p>(If Lean supported definitional eta equality for records, we could
-achieve the same goals using a structure with one field.)</p></li>
-</ol>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="opposite.op"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L44">opposite.op</a></span>  <span class="decl_args">:</span>       <div class="decl_type">α → αᵒᵖ</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="opposite.unop"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L45">opposite.unop</a></span>  <span class="decl_args">:</span>       <div class="decl_type">αᵒᵖ → α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="opposite.op_inj"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L47">opposite.op_inj</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.injective">function.injective</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a></div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="opposite.unop_inj"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L48">opposite.unop_inj</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.injective">function.injective</a> <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a></div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="opposite.op_inj_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L50">opposite.op_inj_iff</a></span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> x = <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> y ↔ x = y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="opposite.unop_inj_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L51">opposite.unop_inj_iff</a></span> <span class="decl_args">(x y : αᵒᵖ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> x = <a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> y ↔ x = y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="opposite.op_unop"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L53">opposite.op_unop</a></span> <span class="decl_args">(x : αᵒᵖ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> (<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> x) = x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="opposite.unop_op"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L54">opposite.unop_op</a></span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.unop">opposite.unop</a> (<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> x) = x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="opposite.op_induction"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L58">opposite.op_induction</a></span> <span class="decl_args">(h : Π (X : α), F (<a href="https://robertylewis.com/mathlib_docs/data/opposite.html#opposite.op">opposite.op</a> X))</span> <span class="decl_args">(X : αᵒᵖ)</span> <span class="decl_args">:</span>       <div class="decl_type">F X</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Sort u}</span> <span class="impl_arg">{F : αᵒᵖ → Sort v}</span></li>
-
-
-
-</ul></div><div class="def"><a id="tactic.op_induction.is_opposite"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L70">tactic.op_induction.is_opposite</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="tactic.op_induction.find_opposite_hyp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L75">tactic.op_induction.find_opposite_hyp</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="tactic.op_induction"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L84">tactic.op_induction</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="tactic.op_induction'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L96">tactic.op_induction'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="tactic.interactive.op_induction"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean#L99">tactic.interactive.op_induction</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#optional">optional</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">opposite</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/opposite.lean">(view source on GitHub)</a></div><a href="#opposite">opposite</a><br>
-<a href="#opposite.op">opposite.op</a><br>
-<a href="#opposite.op_induction">opposite.op_induction</a><br>
-<a href="#opposite.op_inj">opposite.op_inj</a><br>
-<a href="#opposite.op_inj_iff">opposite.op_inj_iff</a><br>
-<a href="#opposite.op_unop">opposite.op_unop</a><br>
-<a href="#opposite.unop">opposite.unop</a><br>
-<a href="#opposite.unop_inj">opposite.unop_inj</a><br>
-<a href="#opposite.unop_inj_iff">opposite.unop_inj_iff</a><br>
-<a href="#opposite.unop_op">opposite.unop_op</a><br>
-<a href="#tactic.interactive.op_induction">tactic.interactive.op_induction</a><br>
-<a href="#tactic.op_induction">tactic.op_induction</a><br>
-<a href="#tactic.op_induction'">tactic.op_induction'</a><br>
-<a href="#tactic.op_induction.find_opposite_hyp">tactic.op_induction.find_opposite_hyp</a><br>
-<a href="#tactic.op_induction.is_opposite">tactic.op_induction.is_opposite</a><br>
 </div></div>
 
         </div>

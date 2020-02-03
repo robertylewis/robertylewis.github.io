@@ -7,8 +7,133 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">measure_theory.probability_mass_function</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean">View source</a></div><a href="#pmf">pmf</a><br>
+<a href="#pmf.bernoulli">pmf.bernoulli</a><br>
+<a href="#pmf.bind">pmf.bind</a><br>
+<a href="#pmf.bind.summable">pmf.bind.summable</a><br>
+<a href="#pmf.bind_apply">pmf.bind_apply</a><br>
+<a href="#pmf.bind_bind">pmf.bind_bind</a><br>
+<a href="#pmf.bind_comm">pmf.bind_comm</a><br>
+<a href="#pmf.bind_pure">pmf.bind_pure</a><br>
+<a href="#pmf.bind_pure_comp">pmf.bind_pure_comp</a><br>
+<a href="#pmf.coe_bind_apply">pmf.coe_bind_apply</a><br>
+<a href="#pmf.coe_le_one">pmf.coe_le_one</a><br>
+<a href="#pmf.ext">pmf.ext</a><br>
+<a href="#pmf.has_coe_to_fun">pmf.has_coe_to_fun</a><br>
+<a href="#pmf.has_sum_coe_one">pmf.has_sum_coe_one</a><br>
+<a href="#pmf.inhabited">pmf.inhabited</a><br>
+<a href="#pmf.map">pmf.map</a><br>
+<a href="#pmf.map_comp">pmf.map_comp</a><br>
+<a href="#pmf.map_id">pmf.map_id</a><br>
+<a href="#pmf.of_fintype">pmf.of_fintype</a><br>
+<a href="#pmf.of_multiset">pmf.of_multiset</a><br>
+<a href="#pmf.pure">pmf.pure</a><br>
+<a href="#pmf.pure_apply">pmf.pure_apply</a><br>
+<a href="#pmf.pure_bind">pmf.pure_bind</a><br>
+<a href="#pmf.pure_map">pmf.pure_map</a><br>
+<a href="#pmf.seq">pmf.seq</a><br>
+<a href="#pmf.summable_coe">pmf.summable_coe</a><br>
+<a href="#pmf.support">pmf.support</a><br>
+<a href="#pmf.tsum_coe">pmf.tsum_coe</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl def" id="pmf"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L14">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+   <p>Probability mass functions, i.e. discrete probability measures</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> {f // <a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#has_sum">has_sum</a> f 1}</li></ul></details> </ul></div><div class="decl def" id="pmf.has_coe_to_fun"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L18">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.has_coe_to_fun">pmf.has_coe_to_fun</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.has_coe_to_fun">pmf.has_coe_to_fun</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.mk" title="has_coe_to_fun.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.F" title="has_coe_to_fun.F">F</a> := λ (p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α), α → <a href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html#nnreal">nnreal</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.coe" title="has_coe_to_fun.coe">coe</a> := λ (p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α) (a : α), p.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a> a}</li></ul></details> </ul></div><div class="decl theorem" id="pmf.ext"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L20">view source</a></div> <div class="attributes">@[ext]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.ext">pmf.ext</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{p q : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(∀ (a : α), <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>q a) → p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> q</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.has_sum_coe_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L23">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.has_sum_coe_one">pmf.has_sum_coe_one</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#has_sum">has_sum</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p 1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.summable_coe"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L25">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.summable_coe">pmf.summable_coe</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.tsum_coe"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L27">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.tsum_coe">pmf.tsum_coe</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">(∑ (a : α), <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p a) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="pmf.support"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L29">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.support">pmf.support</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.support" title="pmf.support">support</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> {a : α | p.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.val" title="subtype.val">val</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0}</li></ul></details> </ul></div><div class="decl def" id="pmf.pure"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L31">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">:</span>     <div class="decl_type">α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>λ (a' : α), <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (a' <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> a) 1 0, _⟩</li></ul></details> </ul></div><div class="decl theorem" id="pmf.pure_apply"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L33">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure_apply">pmf.pure_apply</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">(a a' : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> a) a' <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (a' <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> a) 1 0</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="pmf.inhabited"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L35">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.inhabited">pmf.inhabited</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.inhabited">pmf.inhabited</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited.mk" title="inhabited.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited.default" title="inhabited.default">default</a> := <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#default">default</a> α)}</li></ul></details> </ul></div><div class="decl theorem" id="pmf.coe_le_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L37">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.coe_le_one">pmf.coe_le_one</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.bind.summable"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L40">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind.summable">pmf.bind.summable</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(b : β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> (λ (a : α), <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(f a) b)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="pmf.bind"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L47">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α → (α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β) → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>λ (b : β),
+     ∑ (a : α), <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(f a) b,
+   _⟩</li></ul></details> </ul></div><div class="decl theorem" id="pmf.bind_apply"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L57">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind_apply">pmf.bind_apply</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(b : β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> f) b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  ∑ (a : α), <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(f a) b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.coe_bind_apply"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L59">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.coe_bind_apply">pmf.coe_bind_apply</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(b : β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> f) b) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  ∑ (a : α),
+    <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>p a) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>(f a) b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.pure_bind"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L63">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure_bind">pmf.pure_bind</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> a).<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.bind_pure"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L68">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind_pure">pmf.bind_pure</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> p</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.bind_bind"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L73">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind_bind">pmf.bind_bind</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">{γ : Type u_3}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(g : β → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> γ)</span> <span class="decl_args">:</span>     <div class="decl_type">(p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> f).<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> g <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> (λ (a : α), (f a).<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> g)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.bind_comm"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L82">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind_comm">pmf.bind_comm</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">{γ : Type u_3}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(f : α → β → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> γ)</span> <span class="decl_args">:</span>     <div class="decl_type">p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> (λ (a : α), q.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> (f a)) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  q.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> (λ (b : β), p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> (λ (a : α), f a b))</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="pmf.map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L91">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → β) → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> f p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f)</li></ul></details> </ul></div><div class="decl theorem" id="pmf.bind_pure_comp"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L93">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind_pure_comp">pmf.bind_pure_comp</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> f p</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.map_id"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L95">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map_id">pmf.map_id</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> p</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.map_comp"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L97">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map_comp">pmf.map_comp</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">{γ : Type u_3}</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> g (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> f p) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> (g <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a> f) p</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="pmf.pure_map"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L100">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure_map">pmf.pure_map</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">(a : α)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> f (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> a) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> (f a)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="pmf.seq"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L103">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.seq">pmf.seq</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u_2}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> (α → β) → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">f.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.seq" title="pmf.seq">seq</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  f.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a>
+    (λ (m : α → β), p.<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind" title="pmf.bind">bind</a> (λ (a : α), <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> (m a)))</li></ul></details> </ul></div><div class="decl def" id="pmf.of_multiset"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L105">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.of_multiset">pmf.of_multiset</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="decl_args">(s : <a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset">multiset</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">s <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0 → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.of_multiset">pmf.of_multiset</a> s hs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>λ (a : α),
+     <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(<a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset.count">multiset.count</a> a s) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a>
+       <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(s.<a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset.card" title="multiset.card">card</a>),
+   _⟩</li></ul></details> </ul></div><div class="decl def" id="pmf.of_fintype"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L117">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.of_fintype">pmf.of_fintype</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> α]</span></span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html#nnreal">nnreal</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/fintype.html#finset.univ">finset.univ</a>.<a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum" title="finset.sum">sum</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 1 → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.of_fintype">pmf.of_fintype</a> f h <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>f, _⟩</li></ul></details> </ul></div><div class="decl def" id="pmf.bernoulli"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/measure_theory/probability_mass_function.lean#L120">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bernoulli">pmf.bernoulli</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html#nnreal">nnreal</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> 1 → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bernoulli">pmf.bernoulli</a> p h <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.of_fintype">pmf.of_fintype</a>
+    (λ (b : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a>), <a href="https://robertylewis.com/mathlib_docs/core/init/data/bool/basic.html#cond">cond</a> b p (1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> p))
+    _</li></ul></details> </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +220,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +238,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +763,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +816,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +833,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +882,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +918,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +942,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +963,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +992,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1000,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file visible" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1023,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1150,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1160,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1178,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1248,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1289,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,240 +1299,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="def"><a id="pmf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L14">pmf</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p>Probability mass functions, i.e. discrete probability measures</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="pmf.has_coe_to_fun"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L18">pmf.has_coe_to_fun</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="pmf.ext"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L20">pmf.ext</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(∀ (a : α), ⇑p a = ⇑q a) → p = q</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{p q : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α}</span></li>
-<li>Attributes: ext</li>
-
-
-</ul></div><div class="thm"><a id="pmf.has_sum_coe_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L23">pmf.has_sum_coe_one</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#has_sum">has_sum</a> ⇑p 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.summable_coe"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L25">pmf.summable_coe</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> ⇑p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.tsum_coe"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L27">pmf.tsum_coe</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">(∑ (a : α), ⇑p a) = 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="pmf.support"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L29">pmf.support</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/data/set.html#set">set</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-
-
-
-</ul></div><div class="def"><a id="pmf.pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L31">pmf.pure</a></span>  <span class="decl_args">:</span>       <div class="decl_type">α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.pure_apply"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L33">pmf.pure_apply</a></span> <span class="decl_args">(a a' : α)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑(<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> a) a' = <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ite">ite</a> (a' = a) 1 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="def"><a id="pmf.inhabited"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L35">pmf.inhabited</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="pmf.coe_le_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L37">pmf.coe_le_one</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(a : α)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑p a ≤ 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.bind.summable"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L40">pmf.bind.summable</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(b : β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/topology/algebra/infinite_sum.html#summable">summable</a> (λ (a : α), ⇑p a * ⇑(f a) b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-
-
-
-</ul></div><div class="def"><a id="pmf.bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L47">pmf.bind</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α → (α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β) → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.bind_apply"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L56">pmf.bind_apply</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(b : β)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑(<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> p f) b = ∑ (a : α), ⇑p a * ⇑(f a) b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="pmf.coe_bind_apply"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L58">pmf.coe_bind_apply</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(b : β)</span> <span class="decl_args">:</span>       <div class="decl_type">↑(⇑(<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> p f) b) = ∑ (a : α), ↑(⇑p a) * ↑(⇑(f a) b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.pure_bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L62">pmf.pure_bind</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> a) f = f a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="pmf.bind_pure"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L67">pmf.bind_pure</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> p <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> = p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="pmf.bind_bind"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L72">pmf.bind_bind</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(g : β → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> γ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> p f) g = <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> p (λ (a : α), <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> (f a) g)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">{γ : Type u_3}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="pmf.bind_comm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L81">pmf.bind_comm</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β)</span> <span class="decl_args">(f : α → β → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> γ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> p (λ (a : α), <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> q (f a)) = <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> q (λ (b : β), <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> p (λ (a : α), f a b))</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">{γ : Type u_3}</span></li>
-
-
-
-</ul></div><div class="def"><a id="pmf.map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L90">pmf.map</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → β) → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.bind_pure_comp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L92">pmf.bind_pure_comp</a></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.bind">pmf.bind</a> p (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> ∘ f) = <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> f p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.map_id"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L94">pmf.map_id</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#id">id</a> p = p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.map_comp"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L96">pmf.map_comp</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(g : β → γ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> g (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> f p) = <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> (g ∘ f) p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span> <span class="impl_arg">{γ : Type u_3}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="pmf.pure_map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L99">pmf.pure_map</a></span> <span class="decl_args">(a : α)</span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.map">pmf.map</a> f (<a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> a) = <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf.pure">pmf.pure</a> (f a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-
-
-
-</ul></div><div class="def"><a id="pmf.seq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L102">pmf.seq</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> (α → β) → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">{β : Type u_2}</span></li>
-
-
-
-</ul></div><div class="def"><a id="pmf.of_multiset"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L104">pmf.of_multiset</a></span> <span class="decl_args">(s : <a href="https://robertylewis.com/mathlib_docs/data/multiset.html#multiset">multiset</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">s ≠ 0 → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span></li>
-
-
-
-</ul></div><div class="def"><a id="pmf.of_fintype"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L116">pmf.of_fintype</a></span> <span class="decl_args">(f : α → <a href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html#nnreal">nnreal</a>)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/big_operators.html#finset.sum">finset.sum</a> <a href="https://robertylewis.com/mathlib_docs/data/fintype.html#finset.univ">finset.univ</a> f = 1 → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> α]</span></li>
-
-
-
-</ul></div><div class="def"><a id="pmf.bernoulli"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean#L119">pmf.bernoulli</a></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html#nnreal">nnreal</a>)</span> <span class="decl_args">:</span>       <div class="decl_type">p ≤ 1 → <a href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html#pmf">pmf</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">probability_mass_function</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/measure_theory/probability_mass_function.lean">(view source on GitHub)</a></div><a href="#pmf">pmf</a><br>
-<a href="#pmf.bernoulli">pmf.bernoulli</a><br>
-<a href="#pmf.bind">pmf.bind</a><br>
-<a href="#pmf.bind.summable">pmf.bind.summable</a><br>
-<a href="#pmf.bind_apply">pmf.bind_apply</a><br>
-<a href="#pmf.bind_bind">pmf.bind_bind</a><br>
-<a href="#pmf.bind_comm">pmf.bind_comm</a><br>
-<a href="#pmf.bind_pure">pmf.bind_pure</a><br>
-<a href="#pmf.bind_pure_comp">pmf.bind_pure_comp</a><br>
-<a href="#pmf.coe_bind_apply">pmf.coe_bind_apply</a><br>
-<a href="#pmf.coe_le_one">pmf.coe_le_one</a><br>
-<a href="#pmf.ext">pmf.ext</a><br>
-<a href="#pmf.has_coe_to_fun">pmf.has_coe_to_fun</a><br>
-<a href="#pmf.has_sum_coe_one">pmf.has_sum_coe_one</a><br>
-<a href="#pmf.inhabited">pmf.inhabited</a><br>
-<a href="#pmf.map">pmf.map</a><br>
-<a href="#pmf.map_comp">pmf.map_comp</a><br>
-<a href="#pmf.map_id">pmf.map_id</a><br>
-<a href="#pmf.of_fintype">pmf.of_fintype</a><br>
-<a href="#pmf.of_multiset">pmf.of_multiset</a><br>
-<a href="#pmf.pure">pmf.pure</a><br>
-<a href="#pmf.pure_apply">pmf.pure_apply</a><br>
-<a href="#pmf.pure_bind">pmf.pure_bind</a><br>
-<a href="#pmf.pure_map">pmf.pure_map</a><br>
-<a href="#pmf.seq">pmf.seq</a><br>
-<a href="#pmf.summable_coe">pmf.summable_coe</a><br>
-<a href="#pmf.support">pmf.support</a><br>
-<a href="#pmf.tsum_coe">pmf.tsum_coe</a><br>
 </div></div>
 
         </div>

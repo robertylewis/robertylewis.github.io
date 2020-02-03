@@ -7,8 +7,132 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">algebra.char_p</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean">View source</a></div><a href="#add_pow_char">add_pow_char</a><br>
+<a href="#char_p">char_p</a><br>
+<a href="#char_p.cast_eq_mod">char_p.cast_eq_mod</a><br>
+<a href="#char_p.cast_eq_zero">char_p.cast_eq_zero</a><br>
+<a href="#char_p.char_is_prime">char_p.char_is_prime</a><br>
+<a href="#char_p.char_is_prime_of_ge_two">char_p.char_is_prime_of_ge_two</a><br>
+<a href="#char_p.char_is_prime_or_zero">char_p.char_is_prime_or_zero</a><br>
+<a href="#char_p.char_ne_one">char_p.char_ne_one</a><br>
+<a href="#char_p.char_ne_zero_of_fintype">char_p.char_ne_zero_of_fintype</a><br>
+<a href="#char_p.char_p_to_char_zero">char_p.char_p_to_char_zero</a><br>
+<a href="#char_p.eq">char_p.eq</a><br>
+<a href="#char_p.exists">char_p.exists</a><br>
+<a href="#char_p.exists_unique">char_p.exists_unique</a><br>
+<a href="#char_p.of_char_zero">char_p.of_char_zero</a><br>
+<a href="#frobenius">frobenius</a><br>
+<a href="#frobenius.is_ring_hom">frobenius.is_ring_hom</a><br>
+<a href="#frobenius_add">frobenius_add</a><br>
+<a href="#frobenius_def">frobenius_def</a><br>
+<a href="#frobenius_inj">frobenius_inj</a><br>
+<a href="#frobenius_mul">frobenius_mul</a><br>
+<a href="#frobenius_nat_cast">frobenius_nat_cast</a><br>
+<a href="#frobenius_neg">frobenius_neg</a><br>
+<a href="#frobenius_one">frobenius_one</a><br>
+<a href="#frobenius_sub">frobenius_sub</a><br>
+<a href="#frobenius_zero">frobenius_zero</a><br>
+<a href="#is_monoid_hom.map_frobenius">is_monoid_hom.map_frobenius</a><br>
+<a href="#ring_char">ring_char</a><br>
+<a href="#ring_char.eq">ring_char.eq</a><br>
+<a href="#ring_char.spec">ring_char.spec</a><br>
+<a href="#zmod.cast_is_ring_hom">zmod.cast_is_ring_hom</a><br>
+<a href="#zmod.to_module">zmod.to_module</a><br>
+<a href="#zmod.to_module'">zmod.to_module'</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl structure" id="char_p"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L15">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → Prop</div></div>
+ <ul class="structure_fields" id="char_p.mk">
+<li class="structure_field" id="char_p.cast_eq_zero_iff">cast_eq_zero_iff : ∀ (x : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>), <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> x</li>
+</ul>  <p>The generator of the kernel of the unique homomorphism ℕ → α for a semiring α</p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.of_char_zero">char_p.of_char_zero</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/field_theory/perfect_closure.html#perfect_closure.char_p">perfect_closure.char_p</a></li></ul></details></ul></div><div class="decl theorem" id="char_p.cast_eq_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L18">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.cast_eq_zero">char_p.cast_eq_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.eq"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L21">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.eq">char_p.eq</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{p q : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p → <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α q → p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> q</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="char_p.of_char_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L26">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.of_char_zero">char_p.of_char_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_zero.html#char_zero">char_zero</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α 0</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="char_p.exists"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L29">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.exists">char_p.exists</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type">∃ (p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>), <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.exists_unique"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L45">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.exists_unique">char_p.exists_unique</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type">∃! (p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>), <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="ring_char"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L49">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#ring_char">ring_char</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a></div></div>
+   <p>Noncomuptable function that outputs the unique characteristic of a semiring.</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#ring_char">ring_char</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/classical.html#classical.some">classical.some</a> _</li></ul></details> </ul></div><div class="decl theorem" id="ring_char.spec"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L52">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#ring_char.spec">ring_char.spec</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#ring_char">ring_char</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_dvd.dvd" title="has_dvd.dvd">∣</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_char.eq"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L56">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#ring_char.eq">ring_char.eq</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p → p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#ring_char">ring_char</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="add_pow_char"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L59">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#add_pow_char">add_pow_char</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">(hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>     <div class="decl_type">(x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> p</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="frobenius"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L75">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → α → α</div></div>
+   <p>The frobenius map that sends x to x^p</p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> p</li></ul></details> </ul></div><div class="decl theorem" id="frobenius_def"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L77">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_def">frobenius_def</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_pow.pow" title="has_pow.pow">^</a> p</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="frobenius_mul"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L79">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_mul">frobenius_mul</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#comm_monoid">comm_monoid</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="frobenius_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L81">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_one">frobenius_one</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="is_monoid_hom.map_frobenius"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L84">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#is_monoid_hom.map_frobenius">is_monoid_hom.map_frobenius</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type v}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> β]</span></span> <span class="decl_args">(f : α → β)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> f]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>     <div class="decl_type">f (<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> β p (f x)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="frobenius.is_ring_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L89">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius.is_ring_hom">frobenius.is_ring_hom</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/ring.html#is_ring_hom">is_ring_hom</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="frobenius_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L96">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_zero">frobenius_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="frobenius_add"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_add">frobenius_add</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="frobenius_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L100">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_neg">frobenius_neg</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="frobenius_sub"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L101">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_sub">frobenius_sub</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hp : p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="frobenius_inj"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L104">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_inj">frobenius_inj</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p y → x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="frobenius_nat_cast"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L108">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius_nat_cast">frobenius_nat_cast</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a>]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.char_p_to_char_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L117">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.char_p_to_char_zero">char_p.char_p_to_char_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α 0]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_zero.html#char_zero">char_zero</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.cast_eq_mod"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L121">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.cast_eq_mod">char_p.cast_eq_mod</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">(k : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>k <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(k <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mod.mod" title="has_mod.mod">%</a> p)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.char_ne_zero_of_fintype"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L125">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.char_ne_zero_of_fintype">char_p.char_ne_zero_of_fintype</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type">p <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.char_ne_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L137">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.char_ne_one">char_p.char_ne_one</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">:</span>     <div class="decl_type">p <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#ne" title="ne">≠</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.char_is_prime_of_ge_two"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L142">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.char_is_prime_of_ge_two">char_p.char_is_prime_of_ge_two</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">:</span>     <div class="decl_type">p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#ge" title="ge">≥</a> 2 → p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.char_is_prime_or_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L160">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.char_is_prime_or_zero">char_p.char_is_prime_or_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">:</span>     <div class="decl_type">p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="char_p.char_is_prime"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L167">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p.char_is_prime">char_p.char_is_prime</a></span> <span class="decl_args">(α : Type u)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> α]</span></span> <span class="decl_args">(p : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></span> <span class="decl_args">:</span>     <div class="decl_type">p.<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime" title="nat.prime">prime</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="zmod.cast_is_ring_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L178">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#zmod.cast_is_ring_hom">zmod.cast_is_ring_hom</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/data/pnat/basic.html#pnat" title="pnat">ℕ+</a>}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>n]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/ring.html#is_ring_hom">is_ring_hom</a> <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmod.cast">zmod.cast</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#zmod.cast_is_ring_hom">zmod.cast_is_ring_hom</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl def" id="zmod.to_module"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L185">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#zmod.to_module">zmod.to_module</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/data/pnat/basic.html#pnat" title="pnat">ℕ+</a>}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>n]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/module.html#module">module</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmod">zmod</a> n) α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#zmod.to_module">zmod.to_module</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/algebra/module.html#is_ring_hom.to_module">is_ring_hom.to_module</a> <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmod.cast">zmod.cast</a></li></ul></details> </ul></div><div class="decl def" id="zmod.to_module'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/algebra/char_p.lean#L187">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#zmod.to_module'">zmod.to_module'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span></span> <span class="impl_arg"><span class="decl_args">{m : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="impl_arg"><span class="decl_args">{hm : m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> 0}</span></span> <span class="impl_arg"><span class="decl_args">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α m]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/module.html#module">module</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmod">zmod</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#subtype.mk" title="subtype.mk">⟨</a>m, hm⟩) α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#zmod.to_module'">zmod.to_module'</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#zmod.to_module">zmod.to_module</a></li></ul></details> </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +219,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +237,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +762,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +815,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +832,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +881,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +917,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +941,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +962,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +991,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +999,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1022,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1149,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1159,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1177,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1247,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1288,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,275 +1298,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="structure"><a id="char_p"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L15">char_p</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">ℕ → Prop</div>
-<p>The generator of the kernel of the unique homomorphism ℕ → α for a semiring α</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">char_p.cast_eq_zero_iff : ∀ (x : ℕ), ↑x = 0 ↔ p ∣ x</div></li>
-</ul></li>
-
-</ul></div><div class="thm"><a id="char_p.cast_eq_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L18">char_p.cast_eq_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">↑p = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L21">char_p.eq</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p → <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α q → p = q</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span> <span class="impl_arg">{p q : ℕ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="char_p.of_char_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L26">char_p.of_char_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_zero.html#char_zero">char_zero</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="char_p.exists"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L29">char_p.exists</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">∃ (p : ℕ), <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.exists_unique"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L45">char_p.exists_unique</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">∃! (p : ℕ), <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></li>
-
-
-
-</ul></div><div class="def"><a id="ring_char"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L49">ring_char</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">ℕ</div>
-<p>Noncomuptable function that outputs the unique characteristic of a semiring.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_char.spec"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L52">ring_char.spec</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(x : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">↑x = 0 ↔ <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#ring_char">ring_char</a> α ∣ x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_char.eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L56">ring_char.eq</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p → p = <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#ring_char">ring_char</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#semiring">semiring</a> α]</span> <span class="impl_arg">{p : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="add_pow_char"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L59">add_pow_char</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p)</span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>       <div class="decl_type">(x + y) ^ p = x ^ p + y ^ p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span> <span class="impl_arg">{p : ℕ}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="def"><a id="frobenius"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L75">frobenius</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type">ℕ → α → α</div>
-<p>The frobenius map that sends x to x^p</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="frobenius_def"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L77">frobenius_def</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x = x ^ p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="frobenius_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L79">frobenius_mul</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p (x * y) = <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x * <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#comm_monoid">comm_monoid</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="frobenius_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L81">frobenius_one</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p 1 = 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="is_monoid_hom.map_frobenius"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L84">is_monoid_hom.map_frobenius</a></span> <span class="decl_args">(f : α → β)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type">f (<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x) = <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> β p (f x)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{β : Type v}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/group.html#monoid">monoid</a> β]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_monoid_hom">is_monoid_hom</a> f]</span></li>
-
-
-
-</ul></div><div class="def"><a id="frobenius.is_ring_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L89">frobenius.is_ring_hom</a></span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/ring.html#is_ring_hom">is_ring_hom</a> (<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span> <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="frobenius_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L96">frobenius_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p 0 = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span> <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="frobenius_add"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L99">frobenius_add</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p (x + y) = <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x + <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span> <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="frobenius_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L100">frobenius_neg</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(x : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p (-x) = -frobenius α p x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span> <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="frobenius_sub"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L101">frobenius_sub</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p (x - y) = <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x - <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span> <span class="impl_arg">[hp : <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="frobenius_inj"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L104">frobenius_inj</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(x y : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p x = <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p y → x = y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="frobenius_nat_cast"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L108">frobenius_nat_cast</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(x : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#frobenius">frobenius</a> α p ↑x = ↑x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.char_p_to_char_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L117">char_p.char_p_to_char_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/char_zero.html#char_zero">char_zero</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α 0]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.cast_eq_mod"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L121">char_p.cast_eq_mod</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">(k : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">↑k = ↑(k % p)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.char_ne_zero_of_fintype"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L125">char_p.char_ne_zero_of_fintype</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">p ≠ 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span> <span class="impl_arg">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.char_ne_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L137">char_p.char_ne_one</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">p ≠ 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span> <span class="impl_arg">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.char_is_prime_of_ge_two"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L142">char_p.char_is_prime_of_ge_two</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">p ≥ 2 → <a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span> <span class="impl_arg">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.char_is_prime_or_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L160">char_p.char_is_prime_or_zero</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p ∨ p = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span> <span class="impl_arg">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="char_p.char_is_prime"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L167">char_p.char_is_prime</a></span> <span class="decl_args">(α : Type u)</span> <span class="decl_args">(p : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/nat/prime.html#nat.prime">nat.prime</a> p</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#integral_domain">integral_domain</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/data/fintype.html#fintype">fintype</a> α]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α p]</span></li>
-
-
-
-</ul></div><div class="def"><a id="zmod.cast_is_ring_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L178">zmod.cast_is_ring_hom</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/ring.html#is_ring_hom">is_ring_hom</a> <a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmod.cast">zmod.cast</a></div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span> <span class="impl_arg">{n : ℕ+}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α ↑n]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="zmod.to_module"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L185">zmod.to_module</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/module.html#module">module</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmod">zmod</a> n) α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span> <span class="impl_arg">{n : ℕ+}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α ↑n]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="zmod.to_module'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean#L187">zmod.to_module'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/module.html#module">module</a> (<a href="https://robertylewis.com/mathlib_docs/data/zmod/basic.html#zmod">zmod</a> ⟨m, hm⟩) α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> α]</span> <span class="impl_arg">{m : ℕ}</span> <span class="impl_arg">{hm : m > 0}</span> <span class="impl_arg">[hc : <a href="https://robertylewis.com/mathlib_docs/algebra/char_p.html#char_p">char_p</a> α m]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">char_p</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/algebra/char_p.lean">(view source on GitHub)</a></div><a href="#add_pow_char">add_pow_char</a><br>
-<a href="#char_p">char_p</a><br>
-<a href="#char_p.cast_eq_mod">char_p.cast_eq_mod</a><br>
-<a href="#char_p.cast_eq_zero">char_p.cast_eq_zero</a><br>
-<a href="#char_p.char_is_prime">char_p.char_is_prime</a><br>
-<a href="#char_p.char_is_prime_of_ge_two">char_p.char_is_prime_of_ge_two</a><br>
-<a href="#char_p.char_is_prime_or_zero">char_p.char_is_prime_or_zero</a><br>
-<a href="#char_p.char_ne_one">char_p.char_ne_one</a><br>
-<a href="#char_p.char_ne_zero_of_fintype">char_p.char_ne_zero_of_fintype</a><br>
-<a href="#char_p.char_p_to_char_zero">char_p.char_p_to_char_zero</a><br>
-<a href="#char_p.eq">char_p.eq</a><br>
-<a href="#char_p.exists">char_p.exists</a><br>
-<a href="#char_p.exists_unique">char_p.exists_unique</a><br>
-<a href="#char_p.of_char_zero">char_p.of_char_zero</a><br>
-<a href="#frobenius">frobenius</a><br>
-<a href="#frobenius.is_ring_hom">frobenius.is_ring_hom</a><br>
-<a href="#frobenius_add">frobenius_add</a><br>
-<a href="#frobenius_def">frobenius_def</a><br>
-<a href="#frobenius_inj">frobenius_inj</a><br>
-<a href="#frobenius_mul">frobenius_mul</a><br>
-<a href="#frobenius_nat_cast">frobenius_nat_cast</a><br>
-<a href="#frobenius_neg">frobenius_neg</a><br>
-<a href="#frobenius_one">frobenius_one</a><br>
-<a href="#frobenius_sub">frobenius_sub</a><br>
-<a href="#frobenius_zero">frobenius_zero</a><br>
-<a href="#is_monoid_hom.map_frobenius">is_monoid_hom.map_frobenius</a><br>
-<a href="#ring_char">ring_char</a><br>
-<a href="#ring_char.eq">ring_char.eq</a><br>
-<a href="#ring_char.spec">ring_char.spec</a><br>
-<a href="#zmod.cast_is_ring_hom">zmod.cast_is_ring_hom</a><br>
-<a href="#zmod.to_module">zmod.to_module</a><br>
-<a href="#zmod.to_module'">zmod.to_module'</a><br>
 </div></div>
 
         </div>

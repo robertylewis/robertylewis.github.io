@@ -7,8 +7,197 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">core.data.buffer</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean">View source</a></div><a href="#array.to_buffer">array.to_buffer</a><br>
+<a href="#buffer">buffer</a><br>
+<a href="#buffer.append">buffer.append</a><br>
+<a href="#buffer.append_array">buffer.append_array</a><br>
+<a href="#buffer.append_list">buffer.append_list</a><br>
+<a href="#buffer.append_string">buffer.append_string</a><br>
+<a href="#buffer.drop">buffer.drop</a><br>
+<a href="#buffer.foldl">buffer.foldl</a><br>
+<a href="#buffer.foreach">buffer.foreach</a><br>
+<a href="#buffer.has_append">buffer.has_append</a><br>
+<a href="#buffer.has_mem">buffer.has_mem</a><br>
+<a href="#buffer.has_repr">buffer.has_repr</a><br>
+<a href="#buffer.has_to_format">buffer.has_to_format</a><br>
+<a href="#buffer.has_to_tactic_format">buffer.has_to_tactic_format</a><br>
+<a href="#buffer.iterate">buffer.iterate</a><br>
+<a href="#buffer.lt_aux_1">buffer.lt_aux_1</a><br>
+<a href="#buffer.lt_aux_2">buffer.lt_aux_2</a><br>
+<a href="#buffer.lt_aux_3">buffer.lt_aux_3</a><br>
+<a href="#buffer.map">buffer.map</a><br>
+<a href="#buffer.mem">buffer.mem</a><br>
+<a href="#buffer.nil">buffer.nil</a><br>
+<a href="#buffer.pop_back">buffer.pop_back</a><br>
+<a href="#buffer.push_back">buffer.push_back</a><br>
+<a href="#buffer.read">buffer.read</a><br>
+<a href="#buffer.read'">buffer.read'</a><br>
+<a href="#buffer.read_eq_read'">buffer.read_eq_read'</a><br>
+<a href="#buffer.rev_iterate">buffer.rev_iterate</a><br>
+<a href="#buffer.reverse">buffer.reverse</a><br>
+<a href="#buffer.size">buffer.size</a><br>
+<a href="#buffer.take">buffer.take</a><br>
+<a href="#buffer.take_right">buffer.take_right</a><br>
+<a href="#buffer.to_array">buffer.to_array</a><br>
+<a href="#buffer.to_list">buffer.to_list</a><br>
+<a href="#buffer.to_string">buffer.to_string</a><br>
+<a href="#buffer.write">buffer.write</a><br>
+<a href="#buffer.write'">buffer.write'</a><br>
+<a href="#buffer.write_eq_write'">buffer.write_eq_write'</a><br>
+<a href="#char_buffer">char_buffer</a><br>
+<a href="#format.to_buffer">format.to_buffer</a><br>
+<a href="#list.to_buffer">list.to_buffer</a><br>
+<a href="#mk_buffer">mk_buffer</a><br>
+<a href="#string.to_char_buffer">string.to_char_buffer</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl def" id="buffer"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L8">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type u → Type u</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> Σ (n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>), <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α</li></ul></details> </ul></div><div class="decl def" id="mk_buffer"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L10">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#mk_buffer">mk_buffer</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#mk_buffer">mk_buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>0,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.mk" title="d_array.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#d_array.data" title="d_array.data">data</a> := λ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> 0), i.<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin.elim0" title="fin.elim0">elim0</a>}⟩</li></ul></details> </ul></div><div class="decl def" id="array.to_buffer"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L13">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#array.to_buffer">array.to_buffer</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">a.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#array.to_buffer" title="array.to_buffer">to_buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a⟩</li></ul></details> </ul></div><div class="decl def" id="buffer.nil"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L19">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.nil">buffer.nil</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.nil">buffer.nil</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#mk_buffer">mk_buffer</a></li></ul></details> </ul></div><div class="decl def" id="buffer.size"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L22">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.fst" title="sigma.fst">fst</a></li></ul></details> </ul></div><div class="decl def" id="buffer.to_array"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L25">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_array">buffer.to_array</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_array" title="buffer.to_array">to_array</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b.<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.snd" title="sigma.snd">snd</a></li></ul></details> </ul></div><div class="decl def" id="buffer.push_back"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L28">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.push_back">buffer.push_back</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.push_back">buffer.push_back</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a⟩ v <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1, a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.push_back" title="array.push_back">push_back</a> v⟩</li></ul></details> </ul></div><div class="decl def" id="buffer.pop_back"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L31">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.pop_back">buffer.pop_back</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.pop_back">buffer.pop_back</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1, a⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.pop_back" title="array.pop_back">pop_back</a>⟩</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.pop_back">buffer.pop_back</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>0, a⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>0, a⟩</li></ul></details> </ul></div><div class="decl def" id="buffer.read"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L35">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read">buffer.read</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a> → α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read">buffer.read</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a⟩ i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read" title="array.read">read</a> i</li></ul></details> </ul></div><div class="decl def" id="buffer.write"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L38">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write">buffer.write</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a> → α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write">buffer.write</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a⟩ i v <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.write" title="array.write">write</a> i v⟩</li></ul></details> </ul></div><div class="decl def" id="buffer.read'"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L41">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read'">buffer.read'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read'">buffer.read'</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a⟩ i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read'" title="array.read'">read'</a> i</li></ul></details> </ul></div><div class="decl def" id="buffer.write'"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L44">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write'">buffer.write'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write'">buffer.write'</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a⟩ i v <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.write'" title="array.write'">write'</a> i v⟩</li></ul></details> </ul></div><div class="decl theorem" id="buffer.read_eq_read'"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L47">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read_eq_read'">buffer.read_eq_read'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α]</span></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">(i : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">(h : i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read" title="buffer.read">read</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin.mk" title="fin.mk">⟨</a>i, h⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read'" title="buffer.read'">read'</a> i</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="buffer.write_eq_write'"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L50">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write_eq_write'">buffer.write_eq_write'</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">(i : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">(h : i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>)</span> <span class="decl_args">(v : α)</span> <span class="decl_args">:</span>     <div class="decl_type">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write" title="buffer.write">write</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin.mk" title="fin.mk">⟨</a>i, h⟩ v <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write'" title="buffer.write'">write'</a> i v</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="buffer.to_list"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L53">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_list">buffer.to_list</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_list" title="buffer.to_list">to_list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_array" title="buffer.to_array">to_array</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list" title="array.to_list">to_list</a></li></ul></details> </ul></div><div class="decl def" id="buffer.to_string"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L56">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_string">buffer.to_string</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_string" title="buffer.to_string">to_string</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_array" title="buffer.to_array">to_array</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.to_list" title="array.to_list">to_list</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#list.as_string" title="list.as_string">as_string</a></li></ul></details> </ul></div><div class="decl def" id="buffer.append_list"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L59">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_list">buffer.append_list</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_list" title="buffer.append_list">append_list</a> (v <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.cons" title="list.cons">::</a> vs) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.push_back" title="buffer.push_back">push_back</a> v).<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_list" title="buffer.append_list">append_list</a> vs</li><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_list" title="buffer.append_list">append_list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</li></ul></details> </ul></div><div class="decl def" id="buffer.append_string"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L63">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_string">buffer.append_string</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_string" title="buffer.append_string">append_string</a> s <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_list" title="buffer.append_list">append_list</a> s.<a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string.to_list" title="string.to_list">to_list</a></li></ul></details> </ul></div><div class="decl theorem" id="buffer.lt_aux_1"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L66">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.lt_aux_1">buffer.lt_aux_1</a></span> <span class="impl_arg"><span class="decl_args">{a b c : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="buffer.lt_aux_2"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L69">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.lt_aux_2">buffer.lt_aux_2</a></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> 0 → n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> n</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="buffer.lt_aux_3"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L73">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.lt_aux_3">buffer.lt_aux_3</a></span> <span class="impl_arg"><span class="decl_args">{n i : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> n →
+n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> 2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> n</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="buffer.append_array"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L78">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_array">buffer.append_array</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{n : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>}</span></span> <span class="decl_args">(nz : n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#gt" title="gt">></a> 0)</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">(a_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α)</span> <span class="decl_args">(i : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> n → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_array">buffer.append_array</a> nz <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>m, b⟩ a (j <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1) h <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  let i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n := <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin.mk" title="fin.mk">⟨</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> 2 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> j, _⟩
+  in <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_array">buffer.append_array</a> nz
+       <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1,
+        b.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.push_back" title="array.push_back">push_back</a> (a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read" title="array.read">read</a> i)⟩
+       a
+       j
+       _</li><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_array">buffer.append_array</a> nz <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>m, b⟩ a 0 _x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  let i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> n := <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin.mk" title="fin.mk">⟨</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> 1, _⟩
+  in <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>m <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1, b.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.push_back" title="array.push_back">push_back</a> (a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.read" title="array.read">read</a> i)⟩</li></ul></details> </ul></div><div class="decl def" id="buffer.append"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L86">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append">buffer.append</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append" title="buffer.append">append</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> 1, a⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_array">buffer.append_array</a> _ b a n _</li><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append" title="buffer.append">append</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>0, a⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</li></ul></details> </ul></div><div class="decl def" id="buffer.iterate"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L90">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.iterate">buffer.iterate</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type w}</span></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">β → (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a> → α → β → β) → β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.iterate">buffer.iterate</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>_x, a⟩ b f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.iterate" title="array.iterate">iterate</a> b f</li></ul></details> </ul></div><div class="decl def" id="buffer.foreach"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L93">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.foreach">buffer.foreach</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a> → α → α) → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.foreach">buffer.foreach</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a⟩ f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.foreach" title="array.foreach">foreach</a> f⟩</li></ul></details> </ul></div><div class="decl def" id="buffer.map"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L96">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.map">buffer.map</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">(α → α) → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.map">buffer.map</a> f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, a⟩ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.map">array.map</a> f a⟩</li></ul></details> </ul></div><div class="decl def" id="buffer.foldl"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.foldl">buffer.foldl</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type w}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → β → (α → β → β) → β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.foldl">buffer.foldl</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>_x, a⟩ b f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.foldl" title="array.foldl">foldl</a> b f</li></ul></details> </ul></div><div class="decl def" id="buffer.rev_iterate"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L102">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.rev_iterate">buffer.rev_iterate</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type w}</span></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>     <div class="decl_type">β → (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a> → α → β → β) → β</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.rev_iterate">buffer.rev_iterate</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>_x, a⟩ b f <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  a.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array.rev_iterate" title="array.rev_iterate">rev_iterate</a> b f</li></ul></details> </ul></div><div class="decl def" id="buffer.take"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L105">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.take">buffer.take</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.take" title="buffer.take">take</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>)
+    (λ (h : n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>),
+       <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_array" title="buffer.to_array">to_array</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/slice.html#array.take" title="array.take">take</a> n h⟩)
+    (λ (h : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>), b)</li></ul></details> </ul></div><div class="decl def" id="buffer.take_right"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L108">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.take_right">buffer.take_right</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.take_right" title="buffer.take_right">take_right</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>)
+    (λ (h : n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>),
+       <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>n, b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_array" title="buffer.to_array">to_array</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/slice.html#array.take_right" title="array.take_right">take_right</a> n h⟩)
+    (λ (h : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>), b)</li></ul></details> </ul></div><div class="decl def" id="buffer.drop"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L111">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.drop">buffer.drop</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.drop" title="buffer.drop">drop</a> n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#dite">dite</a> (n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>)
+    (λ (h : n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>),
+       <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> n,
+        b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_array" title="buffer.to_array">to_array</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/slice.html#array.drop" title="array.drop">drop</a> n h⟩)
+    (λ (h : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#not" title="not">¬</a>n <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>), b)</li></ul></details> </ul></div><div class="decl def" id="buffer.reverse"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L114">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.reverse">buffer.reverse</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.reverse" title="buffer.reverse">reverse</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#sigma.mk" title="sigma.mk">⟨</a>b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>, b.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_array" title="buffer.to_array">to_array</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/array/slice.html#array.reverse" title="array.reverse">reverse</a>⟩</li></ul></details> </ul></div><div class="decl def" id="buffer.mem"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L117">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.mem">buffer.mem</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type">α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → Prop</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.mem">buffer.mem</a> v a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  ∃ (i : <a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> a.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size" title="buffer.size">size</a>), a.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read" title="buffer.read">read</a> i <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> v</li></ul></details> </ul></div><div class="decl def" id="buffer.has_mem"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L119">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.has_mem">buffer.has_mem</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> α (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.has_mem">buffer.has_mem</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mk" title="has_mem.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem.mem" title="has_mem.mem">mem</a> := <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.mem">buffer.mem</a> α}</li></ul></details> </ul></div><div class="decl def" id="buffer.has_append"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L121">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.has_append">buffer.has_append</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append">has_append</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.has_append">buffer.has_append</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append.mk" title="has_append.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append.append" title="has_append.append">append</a> := <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append">buffer.append</a> α}</li></ul></details> </ul></div><div class="decl def" id="buffer.has_repr"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L124">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.has_repr">buffer.has_repr</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.has_repr">buffer.has_repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr.mk" title="has_repr.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr.repr" title="has_repr.repr">repr</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#repr">repr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.comp" title="function.comp">∘</a>
+             <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.to_list">buffer.to_list</a>}</li></ul></details> </ul></div><div class="decl def" id="buffer.has_to_format"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L127">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.has_to_format">buffer.has_to_format</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#has_to_format">has_to_format</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#has_to_format">has_to_format</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="buffer.has_to_tactic_format"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L130">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.has_to_tactic_format">buffer.has_to_tactic_format</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#has_to_tactic_format">has_to_tactic_format</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#has_to_tactic_format">has_to_tactic_format</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="list.to_buffer"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L135">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#list.to_buffer">list.to_buffer</a></span> <span class="impl_arg"><span class="decl_args">{α : Type u}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">l.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#list.to_buffer" title="list.to_buffer">to_buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#mk_buffer">mk_buffer</a>.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_list" title="buffer.append_list">append_list</a> l</li></ul></details> </ul></div><div class="decl def" id="char_buffer"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L138">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#char_buffer">char_buffer</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#char_buffer">char_buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a></li></ul></details> </ul></div><div class="decl constant" id="format.to_buffer"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L142">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#format.to_buffer">format.to_buffer</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/options.html#options">options</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a></div></div>
+   <p>Convert a format object into a character buffer with the provided
+   formatting options.</p>
+  </ul></div><div class="decl def" id="string.to_char_buffer"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/data/buffer.lean#L144">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#string.to_char_buffer">string.to_char_buffer</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#char_buffer">char_buffer</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">s.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#string.to_char_buffer" title="string.to_char_buffer">to_char_buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.nil">buffer.nil</a>.<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.append_string" title="buffer.append_string">append_string</a> s</li></ul></details> </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +284,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +302,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +827,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +880,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +897,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +946,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +982,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1006,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1027,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1056,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1064,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1087,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1214,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1224,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1242,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1312,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1353,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,353 +1363,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="def"><a id="buffer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L8">buffer</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type u → Type u</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="mk_buffer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L10">mk_buffer</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="array.to_buffer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L13">array.to_buffer</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{n : ℕ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.nil"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L19">buffer.nil</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.size"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L22">buffer.size</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → ℕ</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.to_array"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L25">buffer.to_array</a></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a> b) α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.push_back"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L28">buffer.push_back</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.pop_back"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L31">buffer.pop_back</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.read"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L35">buffer.read</a></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a> b) → α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.write"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L38">buffer.write</a></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a> b) → α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.read'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L41">buffer.read'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → ℕ → α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α]</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.write'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L44">buffer.write'</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → ℕ → α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="buffer.read_eq_read'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L47">buffer.read_eq_read'</a></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">(i : ℕ)</span> <span class="decl_args">(h : i < <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a> b)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read">buffer.read</a> b ⟨i, h⟩ = <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.read'">buffer.read'</a> b i</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#inhabited">inhabited</a> α]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="buffer.write_eq_write'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L50">buffer.write_eq_write'</a></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">(i : ℕ)</span> <span class="decl_args">(h : i < <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a> b)</span> <span class="decl_args">(v : α)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write">buffer.write</a> b ⟨i, h⟩ v = <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.write'">buffer.write'</a> b i v</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.to_list"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L53">buffer.to_list</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.to_string"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L56">buffer.to_string</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="buffer.append_list"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L59">buffer.append_list</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.append_string"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L63">buffer.append_string</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="buffer.lt_aux_1"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L66">buffer.lt_aux_1</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a + c < b → a < b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b c : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="buffer.lt_aux_2"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L69">buffer.lt_aux_2</a></span>  <span class="decl_args">:</span>       <div class="decl_type">n > 0 → n - 1 < n</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n : ℕ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="buffer.lt_aux_3"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L73">buffer.lt_aux_3</a></span>  <span class="decl_args">:</span>       <div class="decl_type">i + 1 < n → n - 2 - i < n</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{n i : ℕ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.append_array"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L78">buffer.append_array</a></span> <span class="decl_args">(nz : n > 0)</span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">(a_1 : <a href="https://robertylewis.com/mathlib_docs/core/init/data/array/basic.html#array">array</a> n α)</span> <span class="decl_args">(i : ℕ)</span> <span class="decl_args">:</span>       <div class="decl_type">i < n → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{n : ℕ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.append"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L86">buffer.append</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.iterate"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L90">buffer.iterate</a></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">β → (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a> b) → α → β → β) → β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{β : Type w}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.foreach"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L93">buffer.foreach</a></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a> b) → α → α) → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.map"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L96">buffer.map</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(α → α) → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.foldl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L99">buffer.foldl</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → β → (α → β → β) → β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{β : Type w}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.rev_iterate"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L102">buffer.rev_iterate</a></span> <span class="decl_args">(b : <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</span> <span class="decl_args">:</span>       <div class="decl_type">β → (<a href="https://robertylewis.com/mathlib_docs/core/init/data/fin/basic.html#fin">fin</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer.size">buffer.size</a> b) → α → β → β) → β</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">{β : Type w}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.take"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L105">buffer.take</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → ℕ → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.take_right"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L108">buffer.take_right</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → ℕ → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.drop"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L111">buffer.drop</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → ℕ → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.reverse"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L114">buffer.reverse</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.mem"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L117">buffer.mem</a></span>  <span class="decl_args">:</span>       <div class="decl_type">α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α → Prop</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="buffer.has_mem"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L119">buffer.has_mem</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mem">has_mem</a> α (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="buffer.has_append"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L121">buffer.has_append</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append">has_append</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="buffer.has_repr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L124">buffer.has_repr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/data/repr.html#has_repr">has_repr</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="buffer.has_to_format"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L127">buffer.has_to_format</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#has_to_format">has_to_format</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#has_to_format">has_to_format</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="buffer.has_to_tactic_format"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L130">buffer.has_to_tactic_format</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#has_to_tactic_format">has_to_tactic_format</a> (<a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#has_to_tactic_format">has_to_tactic_format</a> α]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="list.to_buffer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L135">list.to_buffer</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> α → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type u}</span></li>
-
-
-
-</ul></div><div class="def"><a id="char_buffer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L138">char_buffer</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="format.to_buffer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L142">format.to_buffer</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/options.html#options">options</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#buffer">buffer</a> <a href="https://robertylewis.com/mathlib_docs/core/init/data/char/basic.html#char">char</a></div>
-<p>Convert a format object into a character buffer with the provided
-   formatting options.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="string.to_char_buffer"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean#L144">string.to_char_buffer</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/data/string/basic.html#string">string</a> → <a href="https://robertylewis.com/mathlib_docs/core/data/buffer.html#char_buffer">char_buffer</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">buffer</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/data/buffer.lean">(view source on GitHub)</a></div><a href="#array.to_buffer">array.to_buffer</a><br>
-<a href="#buffer">buffer</a><br>
-<a href="#buffer.append">buffer.append</a><br>
-<a href="#buffer.append_array">buffer.append_array</a><br>
-<a href="#buffer.append_list">buffer.append_list</a><br>
-<a href="#buffer.append_string">buffer.append_string</a><br>
-<a href="#buffer.drop">buffer.drop</a><br>
-<a href="#buffer.foldl">buffer.foldl</a><br>
-<a href="#buffer.foreach">buffer.foreach</a><br>
-<a href="#buffer.has_append">buffer.has_append</a><br>
-<a href="#buffer.has_mem">buffer.has_mem</a><br>
-<a href="#buffer.has_repr">buffer.has_repr</a><br>
-<a href="#buffer.has_to_format">buffer.has_to_format</a><br>
-<a href="#buffer.has_to_tactic_format">buffer.has_to_tactic_format</a><br>
-<a href="#buffer.iterate">buffer.iterate</a><br>
-<a href="#buffer.lt_aux_1">buffer.lt_aux_1</a><br>
-<a href="#buffer.lt_aux_2">buffer.lt_aux_2</a><br>
-<a href="#buffer.lt_aux_3">buffer.lt_aux_3</a><br>
-<a href="#buffer.map">buffer.map</a><br>
-<a href="#buffer.mem">buffer.mem</a><br>
-<a href="#buffer.nil">buffer.nil</a><br>
-<a href="#buffer.pop_back">buffer.pop_back</a><br>
-<a href="#buffer.push_back">buffer.push_back</a><br>
-<a href="#buffer.read">buffer.read</a><br>
-<a href="#buffer.read'">buffer.read'</a><br>
-<a href="#buffer.read_eq_read'">buffer.read_eq_read'</a><br>
-<a href="#buffer.rev_iterate">buffer.rev_iterate</a><br>
-<a href="#buffer.reverse">buffer.reverse</a><br>
-<a href="#buffer.size">buffer.size</a><br>
-<a href="#buffer.take">buffer.take</a><br>
-<a href="#buffer.take_right">buffer.take_right</a><br>
-<a href="#buffer.to_array">buffer.to_array</a><br>
-<a href="#buffer.to_list">buffer.to_list</a><br>
-<a href="#buffer.to_string">buffer.to_string</a><br>
-<a href="#buffer.write">buffer.write</a><br>
-<a href="#buffer.write'">buffer.write'</a><br>
-<a href="#buffer.write_eq_write'">buffer.write_eq_write'</a><br>
-<a href="#char_buffer">char_buffer</a><br>
-<a href="#format.to_buffer">format.to_buffer</a><br>
-<a href="#list.to_buffer">list.to_buffer</a><br>
-<a href="#mk_buffer">mk_buffer</a><br>
-<a href="#string.to_char_buffer">string.to_char_buffer</a><br>
 </div></div>
 
         </div>

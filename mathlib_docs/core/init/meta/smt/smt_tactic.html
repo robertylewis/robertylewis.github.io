@@ -7,8 +7,360 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">core.init.meta.smt.smt_tactic</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean">View source</a></div><a href="#ematch">ematch</a><br>
+<a href="#ematch_lhs">ematch_lhs</a><br>
+<a href="#simp_attr.pre_smt">simp_attr.pre_smt</a><br>
+<a href="#smt_config">smt_config</a><br>
+<a href="#smt_config.set_classical">smt_config.set_classical</a><br>
+<a href="#smt_goal">smt_goal</a><br>
+<a href="#smt_pre_config">smt_pre_config</a><br>
+<a href="#smt_state">smt_state</a><br>
+<a href="#smt_state.classical">smt_state.classical</a><br>
+<a href="#smt_state.has_append">smt_state.has_append</a><br>
+<a href="#smt_state.mk">smt_state.mk</a><br>
+<a href="#smt_state.to_format">smt_state.to_format</a><br>
+<a href="#smt_tactic">smt_tactic</a><br>
+<a href="#smt_tactic.add_ematch_eqn_lemmas_for">smt_tactic.add_ematch_eqn_lemmas_for</a><br>
+<a href="#smt_tactic.add_ematch_eqn_lemmas_for_core">smt_tactic.add_ematch_eqn_lemmas_for_core</a><br>
+<a href="#smt_tactic.add_ematch_lemma">smt_tactic.add_ematch_lemma</a><br>
+<a href="#smt_tactic.add_ematch_lemma_core">smt_tactic.add_ematch_lemma_core</a><br>
+<a href="#smt_tactic.add_ematch_lemma_from_decl">smt_tactic.add_ematch_lemma_from_decl</a><br>
+<a href="#smt_tactic.add_ematch_lemma_from_decl_core">smt_tactic.add_ematch_lemma_from_decl_core</a><br>
+<a href="#smt_tactic.add_ematch_lhs_lemma">smt_tactic.add_ematch_lhs_lemma</a><br>
+<a href="#smt_tactic.add_ematch_lhs_lemma_from_decl">smt_tactic.add_ematch_lhs_lemma_from_decl</a><br>
+<a href="#smt_tactic.add_lemmas">smt_tactic.add_lemmas</a><br>
+<a href="#smt_tactic.add_lemmas_from_facts">smt_tactic.add_lemmas_from_facts</a><br>
+<a href="#smt_tactic.add_lemmas_from_facts_core">smt_tactic.add_lemmas_from_facts_core</a><br>
+<a href="#smt_tactic.all_goals">smt_tactic.all_goals</a><br>
+<a href="#smt_tactic.alternative">smt_tactic.alternative</a><br>
+<a href="#smt_tactic.assert">smt_tactic.assert</a><br>
+<a href="#smt_tactic.assertv">smt_tactic.assertv</a><br>
+<a href="#smt_tactic.by_cases">smt_tactic.by_cases</a><br>
+<a href="#smt_tactic.by_contradiction">smt_tactic.by_contradiction</a><br>
+<a href="#smt_tactic.classical">smt_tactic.classical</a><br>
+<a href="#smt_tactic.close">smt_tactic.close</a><br>
+<a href="#smt_tactic.define">smt_tactic.define</a><br>
+<a href="#smt_tactic.definev">smt_tactic.definev</a><br>
+<a href="#smt_tactic.destruct">smt_tactic.destruct</a><br>
+<a href="#smt_tactic.eblast">smt_tactic.eblast</a><br>
+<a href="#smt_tactic.ematch">smt_tactic.ematch</a><br>
+<a href="#smt_tactic.ematch_core">smt_tactic.ematch_core</a><br>
+<a href="#smt_tactic.ematch_using">smt_tactic.ematch_using</a><br>
+<a href="#smt_tactic.fail">smt_tactic.fail</a><br>
+<a href="#smt_tactic.failed">smt_tactic.failed</a><br>
+<a href="#smt_tactic.focus1">smt_tactic.focus1</a><br>
+<a href="#smt_tactic.get_config">smt_tactic.get_config</a><br>
+<a href="#smt_tactic.get_facts">smt_tactic.get_facts</a><br>
+<a href="#smt_tactic.get_goals">smt_tactic.get_goals</a><br>
+<a href="#smt_tactic.get_lemmas">smt_tactic.get_lemmas</a><br>
+<a href="#smt_tactic.get_refuted_facts">smt_tactic.get_refuted_facts</a><br>
+<a href="#smt_tactic.has_andthen">smt_tactic.has_andthen</a><br>
+<a href="#smt_tactic.has_coe">smt_tactic.has_coe</a><br>
+<a href="#smt_tactic.has_monad_lift">smt_tactic.has_monad_lift</a><br>
+<a href="#smt_tactic.induction">smt_tactic.induction</a><br>
+<a href="#smt_tactic.intro_lst">smt_tactic.intro_lst</a><br>
+<a href="#smt_tactic.intron">smt_tactic.intron</a><br>
+<a href="#smt_tactic.intros">smt_tactic.intros</a><br>
+<a href="#smt_tactic.iterate">smt_tactic.iterate</a><br>
+<a href="#smt_tactic.iterate_at_most">smt_tactic.iterate_at_most</a><br>
+<a href="#smt_tactic.iterate_exactly">smt_tactic.iterate_exactly</a><br>
+<a href="#smt_tactic.mk_ematch_eqn_lemmas_for_core">smt_tactic.mk_ematch_eqn_lemmas_for_core</a><br>
+<a href="#smt_tactic.monad">smt_tactic.monad</a><br>
+<a href="#smt_tactic.monad_fail">smt_tactic.monad_fail</a><br>
+<a href="#smt_tactic.monad_state">smt_tactic.monad_state</a><br>
+<a href="#smt_tactic.note">smt_tactic.note</a><br>
+<a href="#smt_tactic.num_goals">smt_tactic.num_goals</a><br>
+<a href="#smt_tactic.pose">smt_tactic.pose</a><br>
+<a href="#smt_tactic.preprocess">smt_tactic.preprocess</a><br>
+<a href="#smt_tactic.proof_for">smt_tactic.proof_for</a><br>
+<a href="#smt_tactic.read">smt_tactic.read</a><br>
+<a href="#smt_tactic.refutation_for">smt_tactic.refutation_for</a><br>
+<a href="#smt_tactic.seq">smt_tactic.seq</a><br>
+<a href="#smt_tactic.set_goals">smt_tactic.set_goals</a><br>
+<a href="#smt_tactic.set_lemmas">smt_tactic.set_lemmas</a><br>
+<a href="#smt_tactic.slift">smt_tactic.slift</a><br>
+<a href="#smt_tactic.slift_aux">smt_tactic.slift_aux</a><br>
+<a href="#smt_tactic.solve1">smt_tactic.solve1</a><br>
+<a href="#smt_tactic.swap">smt_tactic.swap</a><br>
+<a href="#smt_tactic.to_cc_state">smt_tactic.to_cc_state</a><br>
+<a href="#smt_tactic.to_em_state">smt_tactic.to_em_state</a><br>
+<a href="#smt_tactic.to_expr">smt_tactic.to_expr</a><br>
+<a href="#smt_tactic.trace">smt_tactic.trace</a><br>
+<a href="#smt_tactic.trace_state">smt_tactic.trace_state</a><br>
+<a href="#smt_tactic.try">smt_tactic.try</a><br>
+<a href="#smt_tactic.when">smt_tactic.when</a><br>
+<a href="#smt_tactic.when_tracing">smt_tactic.when_tracing</a><br>
+<a href="#smt_tactic.write">smt_tactic.write</a><br>
+<a href="#tactic_to_smt_tactic">tactic_to_smt_tactic</a><br>
+<a href="#using_smt">using_smt</a><br>
+<a href="#using_smt_with">using_smt_with</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="decl def" id="simp_attr.pre_smt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L14">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#simp_attr.pre_smt">simp_attr.pre_smt</a></span>  <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="ematch_lhs"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L15">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#ematch_lhs">ematch_lhs</a></span>  <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="ematch"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L15">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#ematch">ematch</a></span>  <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="smt_pre_config"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L29">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_pre_config">smt_pre_config</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type</div></div>
+ <ul class="structure_fields" id="smt_pre_config.mk">
+<li class="structure_field" id="smt_pre_config.simp_attr">simp_attr : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></li>
+<li class="structure_field" id="smt_pre_config.max_steps">max_steps : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a></li>
+<li class="structure_field" id="smt_pre_config.zeta">zeta : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></li>
+</ul>  <p>Configuration for the smt tactic preprocessor. The preprocessor
+is applied whenever a new hypothesis is introduced.</p>
+
+<ul>
+<li><p>simp_attr: is the attribute name for the simplification lemmas
+that are used during the preprocessing step.</p></li>
+<li><p>max_steps: it is the maximum number of steps performed by the simplifier.</p></li>
+<li><p>zeta: if tt, then zeta reduction (i.e., unfolding let-expressions)
+is used during preprocessing.</p></li>
+</ul>
+  </ul></div><div class="decl structure" id="smt_config"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L39">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type</div></div>
+ <ul class="structure_fields" id="smt_config.mk">
+<li class="structure_field" id="smt_config.cc_cfg">cc_cfg : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_config">cc_config</a></li>
+<li class="structure_field" id="smt_config.em_cfg">em_cfg : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#ematch_config">ematch_config</a></li>
+<li class="structure_field" id="smt_config.pre_cfg">pre_cfg : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_pre_config">smt_pre_config</a></li>
+<li class="structure_field" id="smt_config.em_attr">em_attr : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></li>
+</ul>  <p>Configuration for the smt_state object.</p>
+
+<ul>
+<li>em_attr: is the attribute name for the hinst_lemmas
+that are used for ematching</li>
+</ul>
+  </ul></div><div class="decl def" id="smt_config.set_classical"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L45">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config.set_classical">smt_config.set_classical</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_goal"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L48">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_goal">smt_goal</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_state"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L49">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type</div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_state.mk"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L51">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state.mk">smt_state.mk</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_state.to_format"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L52">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state.to_format">smt_state.to_format</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic_state">tactic_state</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_state.classical"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L54">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state.classical">smt_state.classical</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div></div>
+   <p>Return tt iff classical excluded middle was enabled at  smt_state.mk</p>
+  </ul></div><div class="decl def" id="smt_tactic"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L56">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></span>  <span class="decl_args">:</span>     <div class="decl_type">Type → Type</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_state.has_append"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L59">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state.has_append">smt_state.has_append</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append">has_append</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.monad"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L64">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.monad">smt_tactic.monad</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.alternative"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L65">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.alternative">smt_tactic.alternative</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#alternative">alternative</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.monad_state"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L66">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.monad_state">smt_tactic.monad_state</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#monad_state">monad_state</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="tactic_to_smt_tactic"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L71">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#tactic_to_smt_tactic">tactic_to_smt_tactic</a></span> <span class="decl_args">(α : Type)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.has_monad_lift"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L73">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.has_monad_lift">smt_tactic.has_monad_lift</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift">has_monad_lift</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.has_coe"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L76">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.has_coe">smt_tactic.has_coe</a></span> <span class="decl_args">(α : Type)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α) (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.monad_fail"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L79">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.monad_fail">smt_tactic.monad_fail</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/monad_fail.html#monad_fail">monad_fail</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.intros"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L84">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.intros">smt_tactic.intros</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.intron"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L85">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.intron">smt_tactic.intron</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.intro_lst"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L86">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.intro_lst">smt_tactic.intro_lst</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.close"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L91">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.close">smt_tactic.close</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Try to close main goal by using equalities implied by the congruence
+closure module.</p>
+  </ul></div><div class="decl constant" id="smt_tactic.ematch_core"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L103">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.ematch_core">smt_tactic.ematch_core</a></span>  <span class="decl_args">:</span>     <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Produce new facts using heuristic lemma instantiation based on E-matching.
+This tactic tries to match patterns from lemmas in the main goal with terms
+in the main goal. The set of lemmas is populated with theorems
+tagged with the attribute specified at smt_config.em_attr, and lemmas
+added using tactics such as <code>smt_tactic.add_lemmas</code>.
+The current set of lemmas can be retrieved using the tactic <code>smt_tactic.get_lemmas</code>.</p>
+
+<p>Remark: the given predicate is applied to every new instance. The instance
+is only added to the state if the predicate returns tt.</p>
+  </ul></div><div class="decl constant" id="smt_tactic.ematch_using"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L109">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.ematch_using">smt_tactic.ematch_using</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Produce new facts using heuristic lemma instantiation based on E-matching.
+This tactic tries to match patterns from the given lemmas with terms in
+the main goal.</p>
+  </ul></div><div class="decl constant" id="smt_tactic.mk_ematch_eqn_lemmas_for_core"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L110">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.mk_ematch_eqn_lemmas_for_core">smt_tactic.mk_ematch_eqn_lemmas_for_core</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.to_cc_state"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L111">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.to_cc_state">smt_tactic.to_cc_state</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_state">cc_state</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.to_em_state"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L112">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.to_em_state">smt_tactic.to_em_state</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#ematch_state">ematch_state</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.get_config"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L113">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.get_config">smt_tactic.get_config</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.preprocess"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L119">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.preprocess">smt_tactic.preprocess</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div></div>
+   <p>Preprocess the given term using the same simplifications rules used when
+we introduce a new hypothesis. The result is pair containing the resulting
+term and a proof that it is equal to the given one.</p>
+  </ul></div><div class="decl constant" id="smt_tactic.get_lemmas"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L120">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.get_lemmas">smt_tactic.get_lemmas</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.set_lemmas"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L121">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.set_lemmas">smt_tactic.set_lemmas</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl constant" id="smt_tactic.add_lemmas"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L122">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">constant</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_lemmas">smt_tactic.add_lemmas</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_ematch_lemma_core"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L124">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_ematch_lemma_core">smt_tactic.add_ematch_lemma_core</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_ematch_lemma_from_decl_core"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L128">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_ematch_lemma_from_decl_core">smt_tactic.add_ematch_lemma_from_decl_core</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_ematch_eqn_lemmas_for_core"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L132">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_ematch_eqn_lemmas_for_core">smt_tactic.add_ematch_eqn_lemmas_for_core</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.ematch"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L136">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.ematch">smt_tactic.ematch</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.failed"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L139">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.failed">smt_tactic.failed</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.fail"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L142">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.fail">smt_tactic.fail</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="impl_arg"><span class="decl_args">{β : Type u}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#has_to_format">has_to_format</a> β]</span></span> <span class="decl_args">:</span>     <div class="decl_type">β → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.try"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L145">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.try">smt_tactic.try</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.iterate_at_most"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L151">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.iterate_at_most">smt_tactic.iterate_at_most</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p><code>iterate_at_most n t</code>: repeat the given tactic at most n times or until t fails</p>
+  </ul></div><div class="decl def" id="smt_tactic.iterate_exactly"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L156">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.iterate_exactly">smt_tactic.iterate_exactly</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p><code>iterate_exactly n t</code> : execute t n times</p>
+  </ul></div><div class="decl def" id="smt_tactic.iterate"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L160">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.iterate">smt_tactic.iterate</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.eblast"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L163">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.eblast">smt_tactic.eblast</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.read"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L168">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.read">smt_tactic.read</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic_state">tactic_state</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.write"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L173">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.write">smt_tactic.write</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic_state">tactic_state</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.slift_aux"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L186">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.slift_aux">smt_tactic.slift_aux</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.slift"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L199">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.slift">smt_tactic.slift</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div></div>
+   <p>This lift operation will restart the SMT state.
+It is useful for using tactics that change the set of hypotheses.</p>
+  </ul></div><div class="decl def" id="smt_tactic.trace_state"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L202">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.trace_state">smt_tactic.trace_state</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.trace"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L206">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.trace">smt_tactic.trace</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#has_to_tactic_format">has_to_tactic_format</a> α]</span></span> <span class="decl_args">:</span>     <div class="decl_type">α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.to_expr"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L209">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.to_expr">smt_tactic.to_expr</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool.tt">bool.tt</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.classical"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L212">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.classical">smt_tactic.classical</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.num_goals"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L216">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.num_goals">smt_tactic.num_goals</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.get_goals"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L220">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.get_goals">smt_tactic.get_goals</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a>
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_goal">smt_goal</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#prod" title="prod">×</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.set_goals"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L225">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.set_goals">smt_tactic.set_goals</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_goal">smt_goal</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.all_goals"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L238">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.all_goals">smt_tactic.all_goals</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Apply the given tactic to all goals.</p>
+  </ul></div><div class="decl def" id="smt_tactic.seq"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L243">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.seq">smt_tactic.seq</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>LCF-style AND_THEN tactic. It applies tac1, and if succeed applies tac2 to each subgoal produced by tac1</p>
+  </ul></div><div class="decl def" id="smt_tactic.has_andthen"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L250">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.has_andthen">smt_tactic.has_andthen</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_andthen">has_andthen</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a>)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a>)
+  (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.focus1"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L253">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.focus1">smt_tactic.focus1</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.solve1"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L265">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.solve1">smt_tactic.solve1</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.swap"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L280">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.swap">smt_tactic.swap</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.assert"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L288">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.assert">smt_tactic.assert</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Add a new goal for t, and the hypothesis (h : t) in the current goal.</p>
+  </ul></div><div class="decl def" id="smt_tactic.assertv"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L292">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.assertv">smt_tactic.assertv</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Add the hypothesis (h : t) in the current goal if v has type t.</p>
+  </ul></div><div class="decl def" id="smt_tactic.define"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L296">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.define">smt_tactic.define</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Add a new goal for t, and the hypothesis (h : t := ?M) in the current goal.</p>
+  </ul></div><div class="decl def" id="smt_tactic.definev"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L300">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.definev">smt_tactic.definev</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Add the hypothesis (h : t := v) in the current goal if v has type t.</p>
+  </ul></div><div class="decl def" id="smt_tactic.pose"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L304">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.pose">smt_tactic.pose</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option.none">option.none</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Add (h : t := pr) to the current goal</p>
+  </ul></div><div class="decl def" id="smt_tactic.note"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L311">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.note">smt_tactic.note</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option.none">option.none</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p>Add (h : t) to the current goal, given a proof (pr : t)</p>
+  </ul></div><div class="decl def" id="smt_tactic.destruct"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L317">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.destruct">smt_tactic.destruct</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.by_cases"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L320">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.by_cases">smt_tactic.by_cases</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.by_contradiction"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L330">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.by_contradiction">smt_tactic.by_contradiction</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.proof_for"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L345">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.proof_for">smt_tactic.proof_for</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div></div>
+   <p>Return a proof for e, if 'e' is a known fact in the main goal.</p>
+  </ul></div><div class="decl def" id="smt_tactic.refutation_for"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L349">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.refutation_for">smt_tactic.refutation_for</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div></div>
+   <p>Return a refutation for e (i.e., a proof for (not e)), if 'e' has been refuted in the main goal.</p>
+  </ul></div><div class="decl def" id="smt_tactic.get_facts"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L352">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.get_facts">smt_tactic.get_facts</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.get_refuted_facts"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L356">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.get_refuted_facts">smt_tactic.get_refuted_facts</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_ematch_lemma"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L360">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_ematch_lemma">smt_tactic.add_ematch_lemma</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_ematch_lhs_lemma"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L363">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_ematch_lhs_lemma">smt_tactic.add_ematch_lhs_lemma</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_ematch_lemma_from_decl"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L366">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_ematch_lemma_from_decl">smt_tactic.add_ematch_lemma_from_decl</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_ematch_lhs_lemma_from_decl"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L369">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_ematch_lhs_lemma_from_decl">smt_tactic.add_ematch_lhs_lemma_from_decl</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_ematch_eqn_lemmas_for"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L372">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_ematch_eqn_lemmas_for">smt_tactic.add_ematch_eqn_lemmas_for</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_lemmas_from_facts_core"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L375">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_lemmas_from_facts_core">smt_tactic.add_lemmas_from_facts_core</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.add_lemmas_from_facts"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L381">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.add_lemmas_from_facts">smt_tactic.add_lemmas_from_facts</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.induction"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L384">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.induction">smt_tactic.induction</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list.nil">list.nil</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option.none">option.none</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.when"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L387">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.when">smt_tactic.when</a></span> <span class="decl_args">(c : Prop)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> c]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="smt_tactic.when_tracing"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L390">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic.when_tracing">smt_tactic.when_tracing</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="using_smt"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L397">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#using_smt">using_smt</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α →
+<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config.mk" title="smt_config.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config.cc_cfg" title="smt_config.cc_cfg">cc_cfg</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_config.mk" title="cc_config.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_config.ignore_instances" title="cc_config.ignore_instances">ignore_instances</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool.tt">bool.tt</a>,
+              <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_config.ac" title="cc_config.ac">ac</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool.tt">bool.tt</a>,
+              <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_config.ho_fns" title="cc_config.ho_fns">ho_fns</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option.none">option.none</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>),
+              <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_config.em" title="cc_config.em">em</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool.tt">bool.tt</a>},
+   <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config.em_cfg" title="smt_config.em_cfg">em_cfg</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#ematch_config.mk" title="ematch_config.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#ematch_config.max_instances" title="ematch_config.max_instances">max_instances</a> := 10000,
+              <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#ematch_config.max_generation" title="ematch_config.max_generation">max_generation</a> := 10},
+   <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config.pre_cfg" title="smt_config.pre_cfg">pre_cfg</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_pre_config.mk" title="smt_pre_config.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_pre_config.simp_attr" title="smt_pre_config.simp_attr">simp_attr</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a>
+                              "pre_smt"
+                              <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>,
+               <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_pre_config.max_steps" title="smt_pre_config.max_steps">max_steps</a> := 1000000,
+               <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_pre_config.zeta" title="smt_pre_config.zeta">zeta</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool.ff">bool.ff</a>},
+   <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config.em_attr" title="smt_config.em_attr">em_attr</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.mk_string">name.mk_string</a> "ematch"
+                <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name.anonymous">name.anonymous</a>} →
+<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="using_smt_with"><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/71c2d38d6c5c45f1bfa2a34fd91a08a3034e04d7/library/init/meta/smt/smt_tactic.lean#L402">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#using_smt_with">using_smt_with</a></span> <span class="impl_arg"><span class="decl_args">{α : Type}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α</div></div>
+   <p></p>
+  </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +447,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +465,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +990,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +1043,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +1060,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +1109,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1145,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1169,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1190,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1219,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1227,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1250,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1377,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1387,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1405,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1475,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1516,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,757 +1526,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="def"><a id="simp_attr.pre_smt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L14">simp_attr.pre_smt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/simp_tactic.html#simp_lemmas">simp_lemmas</a>)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="ematch_lhs"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L15">ematch_lhs</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a>)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="ematch"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L15">ematch</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/attribute.html#user_attribute">user_attribute</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a>)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="structure"><a id="smt_pre_config"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L29">smt_pre_config</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p>Configuration for the smt tactic preprocessor. The preprocessor
-is applied whenever a new hypothesis is introduced.</p>
-
-<ul>
-<li><p>simp_attr: is the attribute name for the simplification lemmas
-that are used during the preprocessing step.</p></li>
-<li><p>max_steps: it is the maximum number of steps performed by the simplifier.</p></li>
-<li><p>zeta: if tt, then zeta reduction (i.e., unfolding let-expressions)
-is used during preprocessing.</p></li>
-</ul>
-       <ul>
-
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">smt_pre_config.simp_attr : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div></li>
-<li><div class="structure_field">smt_pre_config.max_steps : ℕ</div></li>
-<li><div class="structure_field">smt_pre_config.zeta : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div></li>
-</ul></li>
-
-</ul></div><div class="structure"><a id="smt_config"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L39">smt_config</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p>Configuration for the smt_state object.</p>
-
-<ul>
-<li>em_attr: is the attribute name for the hinst_lemmas
-that are used for ematching</li>
-</ul>
-       <ul>
-
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">smt_config.cc_cfg : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_config">cc_config</a></div></li>
-<li><div class="structure_field">smt_config.em_cfg : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#ematch_config">ematch_config</a></div></li>
-<li><div class="structure_field">smt_config.pre_cfg : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_pre_config">smt_pre_config</a></div></li>
-<li><div class="structure_field">smt_config.em_attr : <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a></div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="smt_config.set_classical"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L45">smt_config.set_classical</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_goal"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L48">smt_goal</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_state"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L49">smt_state</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_state.mk"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L51">smt_state.mk</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_state.to_format"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L52">smt_state.to_format</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic_state">tactic_state</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#format">format</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_state.classical"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L54">smt_state.classical</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div>
-<p>Return tt iff classical excluded middle was enabled at  smt_state.mk</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L56">smt_tactic</a></span>  <span class="decl_args">:</span>       <div class="decl_type">Type → Type</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_state.has_append"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L59">smt_state.has_append</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_append">has_append</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="smt_tactic.monad"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L64">smt_tactic.monad</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/monad.html#monad">monad</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="smt_tactic.alternative"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L65">smt_tactic.alternative</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/alternative.html#alternative">alternative</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="smt_tactic.monad_state"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L66">smt_tactic.monad_state</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/state.html#monad_state">monad_state</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="cnst"><a id="tactic_to_smt_tactic"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L71">tactic_to_smt_tactic</a></span> <span class="decl_args">(α : Type)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.has_monad_lift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L73">smt_tactic.has_monad_lift</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/lift.html#has_monad_lift">has_monad_lift</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="smt_tactic.has_coe"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L76">smt_tactic.has_coe</a></span> <span class="decl_args">(α : Type)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe">has_coe</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α) (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α)</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="smt_tactic.monad_fail"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L79">smt_tactic.monad_fail</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/category/monad_fail.html#monad_fail">monad_fail</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a></div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.intros"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L84">smt_tactic.intros</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.intron"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L85">smt_tactic.intron</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.intro_lst"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L86">smt_tactic.intro_lst</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.close"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L91">smt_tactic.close</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Try to close main goal by using equalities implied by the congruence
-closure module.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.ematch_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L103">smt_tactic.ematch_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a>) → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Produce new facts using heuristic lemma instantiation based on E-matching.
-This tactic tries to match patterns from lemmas in the main goal with terms
-in the main goal. The set of lemmas is populated with theorems
-tagged with the attribute specified at smt_config.em_attr, and lemmas
-added using tactics such as <code>smt_tactic.add_lemmas</code>.
-The current set of lemmas can be retrieved using the tactic <code>smt_tactic.get_lemmas</code>.</p>
-
-<p>Remark: the given predicate is applied to every new instance. The instance
-is only added to the state if the predicate returns tt.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.ematch_using"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L109">smt_tactic.ematch_using</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Produce new facts using heuristic lemma instantiation based on E-matching.
-This tactic tries to match patterns from the given lemmas with terms in
-the main goal.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.mk_ematch_eqn_lemmas_for_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L110">smt_tactic.mk_ematch_eqn_lemmas_for_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.to_cc_state"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L111">smt_tactic.to_cc_state</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/congruence_closure.html#cc_state">cc_state</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.to_em_state"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L112">smt_tactic.to_em_state</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#ematch_state">ematch_state</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.get_config"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L113">smt_tactic.get_config</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.preprocess"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L119">smt_tactic.preprocess</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div>
-<p>Preprocess the given term using the same simplifications rules used when
-we introduce a new hypothesis. The result is pair containing the resulting
-term and a proof that it is equal to the given one.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.get_lemmas"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L120">smt_tactic.get_lemmas</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.set_lemmas"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L121">smt_tactic.set_lemmas</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="cnst"><a id="smt_tactic.add_lemmas"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L122">smt_tactic.add_lemmas</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/ematch.html#hinst_lemmas">hinst_lemmas</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_ematch_lemma_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L124">smt_tactic.add_ematch_lemma_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_ematch_lemma_from_decl_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L128">smt_tactic.add_ematch_lemma_from_decl_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_ematch_eqn_lemmas_for_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L132">smt_tactic.add_ematch_eqn_lemmas_for_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic.transparency">tactic.transparency</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.ematch"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L136">smt_tactic.ematch</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.failed"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L139">smt_tactic.failed</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span></li>
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.fail"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L142">smt_tactic.fail</a></span>  <span class="decl_args">:</span>       <div class="decl_type">β → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span> <span class="impl_arg">{β : Type u}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/meta/format.html#has_to_format">has_to_format</a> β]</span></li>
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.try"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L145">smt_tactic.try</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span></li>
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.iterate_at_most"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L151">smt_tactic.iterate_at_most</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p><code>iterate_at_most n t</code>: repeat the given tactic at most n times or until t fails</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.iterate_exactly"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L156">smt_tactic.iterate_exactly</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℕ → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p><code>iterate_exactly n t</code> : execute t n times</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.iterate"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L160">smt_tactic.iterate</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.eblast"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L163">smt_tactic.eblast</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.read"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L168">smt_tactic.read</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic_state">tactic_state</a>)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.write"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L173">smt_tactic.write</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_state">smt_state</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic_state">tactic_state</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.slift_aux"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L186">smt_tactic.slift_aux</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span></li>
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.slift"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L199">smt_tactic.slift</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div>
-<p>This lift operation will restart the SMT state.
-It is useful for using tactics that change the set of hypotheses.</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span></li>
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.trace_state"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L202">smt_tactic.trace_state</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.trace"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L206">smt_tactic.trace</a></span>  <span class="decl_args">:</span>       <div class="decl_type">α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#has_to_tactic_format">has_to_tactic_format</a> α]</span></li>
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.to_expr"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L209">smt_tactic.to_expr</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/pexpr.html#pexpr">pexpr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> bool.tt → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.classical"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L212">smt_tactic.classical</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.num_goals"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L216">smt_tactic.num_goals</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> ℕ</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.get_goals"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L220">smt_tactic.get_goals</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_goal">smt_goal</a> × <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.set_goals"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L225">smt_tactic.set_goals</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_goal">smt_goal</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.all_goals"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L238">smt_tactic.all_goals</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Apply the given tactic to all goals.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.seq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L243">smt_tactic.seq</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>LCF-style AND_THEN tactic. It applies tac1, and if succeed applies tac2 to each subgoal produced by tac1</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.has_andthen"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L250">smt_tactic.has_andthen</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_andthen">has_andthen</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a>) (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a>) (<a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a>)</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="smt_tactic.focus1"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L253">smt_tactic.focus1</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span></li>
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.solve1"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L265">smt_tactic.solve1</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.swap"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L280">smt_tactic.swap</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.assert"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L288">smt_tactic.assert</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Add a new goal for t, and the hypothesis (h : t) in the current goal.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.assertv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L292">smt_tactic.assertv</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Add the hypothesis (h : t) in the current goal if v has type t.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.define"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L296">smt_tactic.define</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Add a new goal for t, and the hypothesis (h : t := ?M) in the current goal.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.definev"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L300">smt_tactic.definev</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Add the hypothesis (h : t := v) in the current goal if v has type t.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.pose"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L304">smt_tactic.pose</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) option.none → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Add (h : t := pr) to the current goal</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.note"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L311">smt_tactic.note</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>) option.none → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p>Add (h : t) to the current goal, given a proof (pr : t)</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.destruct"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L317">smt_tactic.destruct</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.by_cases"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L320">smt_tactic.by_cases</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.by_contradiction"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L330">smt_tactic.by_contradiction</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.proof_for"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L345">smt_tactic.proof_for</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
-<p>Return a proof for e, if 'e' is a known fact in the main goal.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.refutation_for"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L349">smt_tactic.refutation_for</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a></div>
-<p>Return a refutation for e (i.e., a proof for (not e)), if 'e' has been refuted in the main goal.</p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.get_facts"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L352">smt_tactic.get_facts</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.get_refuted_facts"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L356">smt_tactic.get_refuted_facts</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a>)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_ematch_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L360">smt_tactic.add_ematch_lemma</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_ematch_lhs_lemma"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L363">smt_tactic.add_ematch_lhs_lemma</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_ematch_lemma_from_decl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L366">smt_tactic.add_ematch_lemma_from_decl</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_ematch_lhs_lemma_from_decl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L369">smt_tactic.add_ematch_lhs_lemma_from_decl</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_ematch_eqn_lemmas_for"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L372">smt_tactic.add_ematch_eqn_lemmas_for</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_lemmas_from_facts_core"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L375">smt_tactic.add_lemmas_from_facts_core</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.add_lemmas_from_facts"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L381">smt_tactic.add_lemmas_from_facts</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.induction"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L384">smt_tactic.induction</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr">expr</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>) list.nil → <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#option">option</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>) option.none → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.when"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L387">smt_tactic.when</a></span> <span class="decl_args">(c : Prop)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> c]</span></li>
-
-
-
-</ul></div><div class="def"><a id="smt_tactic.when_tracing"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L390">smt_tactic.when_tracing</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="using_smt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L397">using_smt</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α →
-<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#opt_param">opt_param</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a>
-  {cc_cfg := {ignore_instances := bool.tt, ac := bool.tt, ho_fns := option.none (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#list">list</a> <a href="https://robertylewis.com/mathlib_docs/core/init/meta/name.html#name">name</a>), em := bool.tt},
-   em_cfg := {max_instances := 10000, max_generation := 10},
-   pre_cfg := {simp_attr := name.mk_string "pre_smt" name.anonymous, max_steps := 1000000, zeta := bool.ff},
-   em_attr := name.mk_string "ematch" name.anonymous} →
-<a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span></li>
-
-
-
-</ul></div><div class="def"><a id="using_smt_with"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean#L402">using_smt_with</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_config">smt_config</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/smt/smt_tactic.html#smt_tactic">smt_tactic</a> α → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> α</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{α : Type}</span></li>
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">smt_tactic</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/lean/blob/1603dd40872c7c1e3b25cc546392a55cbd3cedc6/library/init/meta/smt/smt_tactic.lean">(view source on GitHub)</a></div><a href="#ematch">ematch</a><br>
-<a href="#ematch_lhs">ematch_lhs</a><br>
-<a href="#simp_attr.pre_smt">simp_attr.pre_smt</a><br>
-<a href="#smt_config">smt_config</a><br>
-<a href="#smt_config.set_classical">smt_config.set_classical</a><br>
-<a href="#smt_goal">smt_goal</a><br>
-<a href="#smt_pre_config">smt_pre_config</a><br>
-<a href="#smt_state">smt_state</a><br>
-<a href="#smt_state.classical">smt_state.classical</a><br>
-<a href="#smt_state.has_append">smt_state.has_append</a><br>
-<a href="#smt_state.mk">smt_state.mk</a><br>
-<a href="#smt_state.to_format">smt_state.to_format</a><br>
-<a href="#smt_tactic">smt_tactic</a><br>
-<a href="#smt_tactic.add_ematch_eqn_lemmas_for">smt_tactic.add_ematch_eqn_lemmas_for</a><br>
-<a href="#smt_tactic.add_ematch_eqn_lemmas_for_core">smt_tactic.add_ematch_eqn_lemmas_for_core</a><br>
-<a href="#smt_tactic.add_ematch_lemma">smt_tactic.add_ematch_lemma</a><br>
-<a href="#smt_tactic.add_ematch_lemma_core">smt_tactic.add_ematch_lemma_core</a><br>
-<a href="#smt_tactic.add_ematch_lemma_from_decl">smt_tactic.add_ematch_lemma_from_decl</a><br>
-<a href="#smt_tactic.add_ematch_lemma_from_decl_core">smt_tactic.add_ematch_lemma_from_decl_core</a><br>
-<a href="#smt_tactic.add_ematch_lhs_lemma">smt_tactic.add_ematch_lhs_lemma</a><br>
-<a href="#smt_tactic.add_ematch_lhs_lemma_from_decl">smt_tactic.add_ematch_lhs_lemma_from_decl</a><br>
-<a href="#smt_tactic.add_lemmas">smt_tactic.add_lemmas</a><br>
-<a href="#smt_tactic.add_lemmas_from_facts">smt_tactic.add_lemmas_from_facts</a><br>
-<a href="#smt_tactic.add_lemmas_from_facts_core">smt_tactic.add_lemmas_from_facts_core</a><br>
-<a href="#smt_tactic.all_goals">smt_tactic.all_goals</a><br>
-<a href="#smt_tactic.alternative">smt_tactic.alternative</a><br>
-<a href="#smt_tactic.assert">smt_tactic.assert</a><br>
-<a href="#smt_tactic.assertv">smt_tactic.assertv</a><br>
-<a href="#smt_tactic.by_cases">smt_tactic.by_cases</a><br>
-<a href="#smt_tactic.by_contradiction">smt_tactic.by_contradiction</a><br>
-<a href="#smt_tactic.classical">smt_tactic.classical</a><br>
-<a href="#smt_tactic.close">smt_tactic.close</a><br>
-<a href="#smt_tactic.define">smt_tactic.define</a><br>
-<a href="#smt_tactic.definev">smt_tactic.definev</a><br>
-<a href="#smt_tactic.destruct">smt_tactic.destruct</a><br>
-<a href="#smt_tactic.eblast">smt_tactic.eblast</a><br>
-<a href="#smt_tactic.ematch">smt_tactic.ematch</a><br>
-<a href="#smt_tactic.ematch_core">smt_tactic.ematch_core</a><br>
-<a href="#smt_tactic.ematch_using">smt_tactic.ematch_using</a><br>
-<a href="#smt_tactic.fail">smt_tactic.fail</a><br>
-<a href="#smt_tactic.failed">smt_tactic.failed</a><br>
-<a href="#smt_tactic.focus1">smt_tactic.focus1</a><br>
-<a href="#smt_tactic.get_config">smt_tactic.get_config</a><br>
-<a href="#smt_tactic.get_facts">smt_tactic.get_facts</a><br>
-<a href="#smt_tactic.get_goals">smt_tactic.get_goals</a><br>
-<a href="#smt_tactic.get_lemmas">smt_tactic.get_lemmas</a><br>
-<a href="#smt_tactic.get_refuted_facts">smt_tactic.get_refuted_facts</a><br>
-<a href="#smt_tactic.has_andthen">smt_tactic.has_andthen</a><br>
-<a href="#smt_tactic.has_coe">smt_tactic.has_coe</a><br>
-<a href="#smt_tactic.has_monad_lift">smt_tactic.has_monad_lift</a><br>
-<a href="#smt_tactic.induction">smt_tactic.induction</a><br>
-<a href="#smt_tactic.intro_lst">smt_tactic.intro_lst</a><br>
-<a href="#smt_tactic.intron">smt_tactic.intron</a><br>
-<a href="#smt_tactic.intros">smt_tactic.intros</a><br>
-<a href="#smt_tactic.iterate">smt_tactic.iterate</a><br>
-<a href="#smt_tactic.iterate_at_most">smt_tactic.iterate_at_most</a><br>
-<a href="#smt_tactic.iterate_exactly">smt_tactic.iterate_exactly</a><br>
-<a href="#smt_tactic.mk_ematch_eqn_lemmas_for_core">smt_tactic.mk_ematch_eqn_lemmas_for_core</a><br>
-<a href="#smt_tactic.monad">smt_tactic.monad</a><br>
-<a href="#smt_tactic.monad_fail">smt_tactic.monad_fail</a><br>
-<a href="#smt_tactic.monad_state">smt_tactic.monad_state</a><br>
-<a href="#smt_tactic.note">smt_tactic.note</a><br>
-<a href="#smt_tactic.num_goals">smt_tactic.num_goals</a><br>
-<a href="#smt_tactic.pose">smt_tactic.pose</a><br>
-<a href="#smt_tactic.preprocess">smt_tactic.preprocess</a><br>
-<a href="#smt_tactic.proof_for">smt_tactic.proof_for</a><br>
-<a href="#smt_tactic.read">smt_tactic.read</a><br>
-<a href="#smt_tactic.refutation_for">smt_tactic.refutation_for</a><br>
-<a href="#smt_tactic.seq">smt_tactic.seq</a><br>
-<a href="#smt_tactic.set_goals">smt_tactic.set_goals</a><br>
-<a href="#smt_tactic.set_lemmas">smt_tactic.set_lemmas</a><br>
-<a href="#smt_tactic.slift">smt_tactic.slift</a><br>
-<a href="#smt_tactic.slift_aux">smt_tactic.slift_aux</a><br>
-<a href="#smt_tactic.solve1">smt_tactic.solve1</a><br>
-<a href="#smt_tactic.swap">smt_tactic.swap</a><br>
-<a href="#smt_tactic.to_cc_state">smt_tactic.to_cc_state</a><br>
-<a href="#smt_tactic.to_em_state">smt_tactic.to_em_state</a><br>
-<a href="#smt_tactic.to_expr">smt_tactic.to_expr</a><br>
-<a href="#smt_tactic.trace">smt_tactic.trace</a><br>
-<a href="#smt_tactic.trace_state">smt_tactic.trace_state</a><br>
-<a href="#smt_tactic.try">smt_tactic.try</a><br>
-<a href="#smt_tactic.when">smt_tactic.when</a><br>
-<a href="#smt_tactic.when_tracing">smt_tactic.when_tracing</a><br>
-<a href="#smt_tactic.write">smt_tactic.write</a><br>
-<a href="#tactic_to_smt_tactic">tactic_to_smt_tactic</a><br>
-<a href="#using_smt">using_smt</a><br>
-<a href="#using_smt_with">using_smt_with</a><br>
 </div></div>
 
         </div>

@@ -7,8 +7,201 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">ring_theory.maps</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean">View source</a></div><a href="#comm_ring.anti_equiv_to_equiv">comm_ring.anti_equiv_to_equiv</a><br>
+<a href="#comm_ring.anti_hom_to_hom">comm_ring.anti_hom_to_hom</a><br>
+<a href="#comm_ring.equiv_to_anti_equiv">comm_ring.equiv_to_anti_equiv</a><br>
+<a href="#comm_ring.hom_to_anti_hom">comm_ring.hom_to_anti_hom</a><br>
+<a href="#is_ring_anti_hom">is_ring_anti_hom</a><br>
+<a href="#is_ring_anti_hom.is_add_group_hom">is_ring_anti_hom.is_add_group_hom</a><br>
+<a href="#is_ring_anti_hom.map_neg">is_ring_anti_hom.map_neg</a><br>
+<a href="#is_ring_anti_hom.map_sub">is_ring_anti_hom.map_sub</a><br>
+<a href="#is_ring_anti_hom.map_zero">is_ring_anti_hom.map_zero</a><br>
+<a href="#ring_anti_equiv">ring_anti_equiv</a><br>
+<a href="#ring_anti_equiv.bijective">ring_anti_equiv.bijective</a><br>
+<a href="#ring_anti_equiv.has_coe_to_fun">ring_anti_equiv.has_coe_to_fun</a><br>
+<a href="#ring_anti_equiv.is_ring_anti_hom">ring_anti_equiv.is_ring_anti_hom</a><br>
+<a href="#ring_anti_equiv.map_add">ring_anti_equiv.map_add</a><br>
+<a href="#ring_anti_equiv.map_mul">ring_anti_equiv.map_mul</a><br>
+<a href="#ring_anti_equiv.map_neg">ring_anti_equiv.map_neg</a><br>
+<a href="#ring_anti_equiv.map_neg_one">ring_anti_equiv.map_neg_one</a><br>
+<a href="#ring_anti_equiv.map_one">ring_anti_equiv.map_one</a><br>
+<a href="#ring_anti_equiv.map_sub">ring_anti_equiv.map_sub</a><br>
+<a href="#ring_anti_equiv.map_zero">ring_anti_equiv.map_zero</a><br>
+<a href="#ring_anti_equiv.map_zero_iff">ring_anti_equiv.map_zero_iff</a><br>
+<a href="#ring_anti_equiv.refl">ring_anti_equiv.refl</a><br>
+<a href="#ring_equiv.bijective">ring_equiv.bijective</a><br>
+<a href="#ring_equiv.map_zero_iff">ring_equiv.map_zero_iff</a><br>
+<a href="#ring_invo">ring_invo</a><br>
+<a href="#ring_invo.bijective">ring_invo.bijective</a><br>
+<a href="#ring_invo.has_coe_to_fun">ring_invo.has_coe_to_fun</a><br>
+<a href="#ring_invo.id">ring_invo.id</a><br>
+<a href="#ring_invo.is_ring_anti_hom">ring_invo.is_ring_anti_hom</a><br>
+<a href="#ring_invo.map_add">ring_invo.map_add</a><br>
+<a href="#ring_invo.map_mul">ring_invo.map_mul</a><br>
+<a href="#ring_invo.map_neg">ring_invo.map_neg</a><br>
+<a href="#ring_invo.map_neg_one">ring_invo.map_neg_one</a><br>
+<a href="#ring_invo.map_one">ring_invo.map_one</a><br>
+<a href="#ring_invo.map_sub">ring_invo.map_sub</a><br>
+<a href="#ring_invo.map_zero">ring_invo.map_zero</a><br>
+<a href="#ring_invo.map_zero_iff">ring_invo.map_zero_iff</a><br>
+<a href="#ring_invo.to_ring_anti_equiv">ring_invo.to_ring_anti_equiv</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="mod_doc">
+<h1>Ring antihomomorphisms, isomorphisms, antiisomorphisms and involutions</h1>
+
+<p>This file defines ring antihomomorphisms, antiisomorphism and involutions
+and proves basic properties of them.</p>
+
+<h2>Notations</h2>
+
+<p>All types defined in this file are given a coercion to the underlying function.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Antihomomorphism">https://en.wikipedia.org/wiki/Antihomomorphism</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Involution_(mathematics)#Ring_theory">https://en.wikipedia.org/wiki/Involution_(mathematics)#Ring_theory</a></li>
+</ul>
+
+<h2>Tags</h2>
+
+<p>Ring isomorphism, automorphism, antihomomorphism, antiisomorphism, antiautomorphism, involution</p>
+</div><div class="decl structure" id="is_ring_anti_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L32">view source</a></div> <div class="attributes">@[class]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">:</span>     <div class="decl_type">(R → F) → Prop</div></div>
+ <ul class="structure_fields" id="is_ring_anti_hom.mk">
+<li class="structure_field" id="is_ring_anti_hom.map_one">map_one : f 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 1</li>
+<li class="structure_field" id="is_ring_anti_hom.map_mul">map_mul : ∀ {x y : R}, f (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> f x</li>
+<li class="structure_field" id="is_ring_anti_hom.map_add">map_add : ∀ {x y : R}, f (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> f y</li>
+</ul>  <p></p>
+  <details class="instances"><summary>Instances</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.is_ring_anti_hom">ring_anti_equiv.is_ring_anti_hom</a></li>
+<li><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.is_ring_anti_hom">ring_invo.is_ring_anti_hom</a></li></ul></details></ul></div><div class="decl def" id="is_ring_anti_hom.is_add_group_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L42">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom.is_add_group_hom">is_ring_anti_hom.is_add_group_hom</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(f : R → F)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_add_group_hom">is_add_group_hom</a> f</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="is_ring_anti_hom.map_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L45">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom.map_zero">is_ring_anti_hom.map_zero</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(f : R → F)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span></span> <span class="decl_args">:</span>     <div class="decl_type">f 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="is_ring_anti_hom.map_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L48">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom.map_neg">is_ring_anti_hom.map_neg</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(f : R → F)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span></span> <span class="impl_arg"><span class="decl_args">{x : R}</span></span> <span class="decl_args">:</span>     <div class="decl_type">f (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>f x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="is_ring_anti_hom.map_sub"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L51">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom.map_sub">is_ring_anti_hom.map_sub</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(f : R → F)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span></span> <span class="impl_arg"><span class="decl_args">{x y : R}</span></span> <span class="decl_args">:</span>     <div class="decl_type">f (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> f x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> f y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_equiv.bijective"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L64">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_equiv.bijective">ring_equiv.bijective</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : R <a href="https://robertylewis.com/mathlib_docs/data/equiv/algebra.html#ring_equiv" title="ring_equiv">≃+*</a> F)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.bijective">function.bijective</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_equiv.map_zero_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L67">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_equiv.map_zero_iff">ring_equiv.map_zero_iff</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : R <a href="https://robertylewis.com/mathlib_docs/data/equiv/algebra.html#ring_equiv" title="ring_equiv">≃+*</a> F)</span> <span class="impl_arg"><span class="decl_args">{x : R}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="ring_anti_equiv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L74">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a></span> <span class="decl_args">(R : Type u_1)</span> <span class="decl_args">(F : Type u_2)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Type (max u_1 u_2)</div></div>
+ <ul class="structure_fields" id="ring_anti_equiv.mk">
+<li class="structure_field" id="ring_anti_equiv.to_equiv">to_equiv : R <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv" title="equiv">≃</a> F</li>
+<li class="structure_field" id="ring_anti_equiv.anti_hom">anti_hom : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> c.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.to_equiv" title="ring_anti_equiv.to_equiv">to_equiv</a>.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.to_fun" title="equiv.to_fun">to_fun</a></li>
+</ul>  <p>A ring antiisomorphism</p>
+  </ul></div><div class="decl def" id="ring_anti_equiv.has_coe_to_fun"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L81">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.has_coe_to_fun">ring_anti_equiv.has_coe_to_fun</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.has_coe_to_fun">ring_anti_equiv.has_coe_to_fun</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.mk" title="has_coe_to_fun.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.F" title="has_coe_to_fun.F">F</a> := λ (Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F),
+          R → F,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.coe" title="has_coe_to_fun.coe">coe</a> := λ (Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F),
+            Hs.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.to_equiv" title="ring_anti_equiv.to_equiv">to_equiv</a>.<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.to_fun" title="equiv.to_fun">to_fun</a>}</li></ul></details> </ul></div><div class="decl def" id="ring_anti_equiv.is_ring_anti_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L84">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.is_ring_anti_hom">ring_anti_equiv.is_ring_anti_hom</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl theorem" id="ring_anti_equiv.map_add"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L86">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.map_add">ring_anti_equiv.map_add</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_anti_equiv.map_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L89">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.map_zero">ring_anti_equiv.map_zero</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_anti_equiv.map_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L92">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.map_neg">ring_anti_equiv.map_neg</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">(x : R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_anti_equiv.map_sub"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L95">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.map_sub">ring_anti_equiv.map_sub</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_anti_equiv.map_mul"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L98">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.map_mul">ring_anti_equiv.map_mul</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_anti_equiv.map_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L101">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.map_one">ring_anti_equiv.map_one</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_anti_equiv.map_neg_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L104">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.map_neg_one">ring_anti_equiv.map_neg_one</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs (-1) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> -1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_anti_equiv.bijective"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L107">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.bijective">ring_anti_equiv.bijective</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.bijective">function.bijective</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_anti_equiv.map_zero_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L109">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.map_zero_iff">ring_anti_equiv.map_zero_iff</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="impl_arg"><span class="decl_args">{x : R}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hs x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl structure" id="ring_invo"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L116">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">structure</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a></span> <span class="decl_args">(R : Type u_1)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">:</span>     <div class="decl_type">Type u_1</div></div>
+ <ul class="structure_fields" id="ring_invo.mk">
+<li class="structure_field" id="ring_invo.to_fun">to_fun : R → R</li>
+<li class="structure_field" id="ring_invo.anti_hom">anti_hom : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> c.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_fun" title="ring_invo.to_fun">to_fun</a></li>
+<li class="structure_field" id="ring_invo.to_fun_to_fun">to_fun_to_fun : ∀ (x : R), c.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_fun" title="ring_invo.to_fun">to_fun</a> (c.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_fun" title="ring_invo.to_fun">to_fun</a> x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</li>
+</ul>  <p>A ring involution</p>
+  </ul></div><div class="decl def" id="ring_invo.has_coe_to_fun"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L127">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.has_coe_to_fun">ring_invo.has_coe_to_fun</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.has_coe_to_fun">ring_invo.has_coe_to_fun</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.mk" title="has_coe_to_fun.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.F" title="has_coe_to_fun.F">F</a> := λ (Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R), R → R,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun.coe" title="has_coe_to_fun.coe">coe</a> := λ (Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R), Hi.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_fun" title="ring_invo.to_fun">to_fun</a>}</li></ul></details> </ul></div><div class="decl def" id="ring_invo.is_ring_anti_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L130">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.is_ring_anti_hom">ring_invo.is_ring_anti_hom</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">_ <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> _</li></ul></details> </ul></div><div class="decl def" id="ring_invo.to_ring_anti_equiv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L132">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_ring_anti_equiv">ring_invo.to_ring_anti_equiv</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R → <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R R</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">Hi.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_ring_anti_equiv" title="ring_invo.to_ring_anti_equiv">to_ring_anti_equiv</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.mk">ring_anti_equiv.mk</a>
+    <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.mk" title="equiv.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.to_fun" title="equiv.to_fun">to_fun</a> := Hi.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_fun" title="ring_invo.to_fun">to_fun</a>,
+     <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.inv_fun" title="equiv.inv_fun">inv_fun</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi,
+     <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.left_inv" title="equiv.left_inv">left_inv</a> := _,
+     <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.right_inv" title="equiv.right_inv">right_inv</a> := _}</li></ul></details> </ul></div><div class="decl theorem" id="ring_invo.map_add"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L138">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.map_add">ring_invo.map_add</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_invo.map_zero"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L141">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.map_zero">ring_invo.map_zero</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_invo.map_neg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L144">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.map_neg">ring_invo.map_neg</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">(x : R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>x) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_invo.map_sub"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L147">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.map_sub">ring_invo.map_sub</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi y</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_invo.map_mul"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L150">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.map_mul">ring_invo.map_mul</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi (x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> y) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi y <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_invo.map_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L153">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.map_one">ring_invo.map_one</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi 1 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_invo.map_neg_one"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L156">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.map_neg_one">ring_invo.map_neg_one</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi (-1) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> -1</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_invo.bijective"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L159">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.bijective">ring_invo.bijective</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.bijective">function.bijective</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="ring_invo.map_zero_iff"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L162">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.map_zero_iff">ring_invo.map_zero_iff</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="impl_arg"><span class="decl_args">{x : R}</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe_fn" title="coe_fn">⇑</a>Hi x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> x <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="ring_invo.id"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L170">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.id">ring_invo.id</a></span> <span class="decl_args">(R : Type u_1)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.id">ring_invo.id</a> R <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.mk" title="ring_invo.mk">{</a><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_fun" title="ring_invo.to_fun">to_fun</a> := (<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.refl">equiv.refl</a>
+                R).<a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.to_fun" title="equiv.to_fun">to_fun</a>,
+   <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.anti_hom" title="ring_invo.anti_hom">anti_hom</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_fun_to_fun" title="ring_invo.to_fun_to_fun">to_fun_to_fun</a> := _}</li></ul></details> </ul></div><div class="decl def" id="ring_anti_equiv.refl"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L175">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.refl">ring_anti_equiv.refl</a></span> <span class="decl_args">(R : Type u_1)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R R</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.refl">ring_anti_equiv.refl</a> R <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.id">ring_invo.id</a> R).<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo.to_ring_anti_equiv" title="ring_invo.to_ring_anti_equiv">to_ring_anti_equiv</a></li></ul></details> </ul></div><div class="decl theorem" id="comm_ring.hom_to_anti_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L180">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#comm_ring.hom_to_anti_hom">comm_ring.hom_to_anti_hom</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> F]</span></span> <span class="decl_args">(f : R → F)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/algebra/ring.html#is_ring_hom">is_ring_hom</a> f]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="comm_ring.anti_hom_to_hom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L185">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#comm_ring.anti_hom_to_hom">comm_ring.anti_hom_to_hom</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> F]</span></span> <span class="decl_args">(f : R → F)</span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/ring.html#is_ring_hom">is_ring_hom</a> f</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="comm_ring.equiv_to_anti_equiv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L190">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#comm_ring.equiv_to_anti_equiv">comm_ring.equiv_to_anti_equiv</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> F]</span></span> <span class="decl_args">:</span>     <div class="decl_type">R <a href="https://robertylewis.com/mathlib_docs/data/equiv/algebra.html#ring_equiv" title="ring_equiv">≃+*</a> F → <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#comm_ring.equiv_to_anti_equiv">comm_ring.equiv_to_anti_equiv</a> Hs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.mk">ring_anti_equiv.mk</a>
+    <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.mk" title="equiv.mk">{</a><a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.to_fun" title="equiv.to_fun">to_fun</a> := Hs.<a href="https://robertylewis.com/mathlib_docs/data/equiv/algebra.html#ring_equiv.to_fun" title="ring_equiv.to_fun">to_fun</a>,
+     <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.inv_fun" title="equiv.inv_fun">inv_fun</a> := Hs.<a href="https://robertylewis.com/mathlib_docs/data/equiv/algebra.html#ring_equiv.inv_fun" title="ring_equiv.inv_fun">inv_fun</a>,
+     <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.left_inv" title="equiv.left_inv">left_inv</a> := _,
+     <a href="https://robertylewis.com/mathlib_docs/data/equiv/basic.html#equiv.right_inv" title="equiv.right_inv">right_inv</a> := _}</li></ul></details> </ul></div><div class="decl def" id="comm_ring.anti_equiv_to_equiv"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/ring_theory/maps.lean#L194">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#comm_ring.anti_equiv_to_equiv">comm_ring.anti_equiv_to_equiv</a></span> <span class="impl_arg"><span class="decl_args">{R : Type u_1}</span></span> <span class="impl_arg"><span class="decl_args">{F : Type u_2}</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span></span> <span class="impl_arg"><span class="decl_args">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> F]</span></span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F → R <a href="https://robertylewis.com/mathlib_docs/data/equiv/algebra.html#ring_equiv" title="ring_equiv">≃+*</a> F</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#comm_ring.anti_equiv_to_equiv">comm_ring.anti_equiv_to_equiv</a> Hs <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/equiv/algebra.html#ring_equiv.of'">ring_equiv.of'</a> Hs.<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv.to_equiv" title="ring_anti_equiv.to_equiv">to_equiv</a></li></ul></details> </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +288,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +306,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +831,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +884,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +901,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +950,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +986,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1010,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1031,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1060,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1068,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1091,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1218,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1228,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1246,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1316,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1357,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,355 +1367,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="mod_doc">
-<a id="top"></a>
-<h1>Ring antihomomorphisms, isomorphisms, antiisomorphisms and involutions</h1>
-
-<p>This file defines ring antihomomorphisms, antiisomorphism and involutions
-and proves basic properties of them.</p>
-
-<h2>Notations</h2>
-
-<p>All types defined in this file are given a coercion to the underlying function.</p>
-
-<h2>References</h2>
-
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Antihomomorphism">https://en.wikipedia.org/wiki/Antihomomorphism</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Involution_(mathematics)#Ring_theory">https://en.wikipedia.org/wiki/Involution_(mathematics)#Ring_theory</a></li>
-</ul>
-
-<h2>Tags</h2>
-
-<p>Ring isomorphism, automorphism, antihomomorphism, antiisomorphism, antiautomorphism, involution</p>
-</div><div class="structure"><a id="is_ring_anti_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L32">is_ring_anti_hom</a></span>  <span class="decl_args">:</span>       <div class="decl_type">(R → F) → Prop</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">is_ring_anti_hom.map_one : f 1 = 1</div></li>
-<li><div class="structure_field">is_ring_anti_hom.map_mul : ∀ {x y : R}, f (x * y) = f y * f x</div></li>
-<li><div class="structure_field">is_ring_anti_hom.map_add : ∀ {x y : R}, f (x + y) = f x + f y</div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="is_ring_anti_hom.is_add_group_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L41">is_ring_anti_hom.is_add_group_hom</a></span> <span class="decl_args">(f : R → F)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/group/hom.html#is_add_group_hom">is_add_group_hom</a> f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="is_ring_anti_hom.map_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L44">is_ring_anti_hom.map_zero</a></span> <span class="decl_args">(f : R → F)</span> <span class="decl_args">:</span>       <div class="decl_type">f 0 = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="is_ring_anti_hom.map_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L47">is_ring_anti_hom.map_neg</a></span> <span class="decl_args">(f : R → F)</span> <span class="decl_args">:</span>       <div class="decl_type">f (-x) = -f x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span> <span class="impl_arg">{x : R}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="is_ring_anti_hom.map_sub"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L50">is_ring_anti_hom.map_sub</a></span> <span class="decl_args">(f : R → F)</span> <span class="decl_args">:</span>       <div class="decl_type">f (x - y) = f x - f y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span> <span class="impl_arg">{x y : R}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_equiv.bijective"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L63">ring_equiv.bijective</a></span> <span class="decl_args">(Hs : R ≃+* F)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.bijective">function.bijective</a> ⇑Hs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_equiv.map_zero_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L66">ring_equiv.map_zero_iff</a></span> <span class="decl_args">(Hs : R ≃+* F)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs x = 0 ↔ x = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span> <span class="impl_arg">{x : R}</span></li>
-
-
-
-</ul></div><div class="structure"><a id="ring_anti_equiv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L73">ring_anti_equiv</a></span> <span class="decl_args">(R : Type u_1)</span> <span class="decl_args">(F : Type u_2)</span> <span class="decl_args">:</span>       <div class="decl_type">Type (<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#max">max</a> u_1 u_2)</div>
-<p>A ring antiisomorphism</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">ring_anti_equiv.to_equiv : R ≃ F</div></li>
-<li><div class="structure_field">ring_anti_equiv.anti_hom : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> ((c.to_equiv).to_fun)</div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="ring_anti_equiv.has_coe_to_fun"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L80">ring_anti_equiv.has_coe_to_fun</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="ring_anti_equiv.is_ring_anti_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L83">ring_anti_equiv.is_ring_anti_hom</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> ⇑Hs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.map_add"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L85">ring_anti_equiv.map_add</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs (x + y) = ⇑Hs x + ⇑Hs y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.map_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L88">ring_anti_equiv.map_zero</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs 0 = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.map_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L91">ring_anti_equiv.map_neg</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">(x : R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs (-x) = -⇑Hs x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.map_sub"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L94">ring_anti_equiv.map_sub</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs (x - y) = ⇑Hs x - ⇑Hs y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.map_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L97">ring_anti_equiv.map_mul</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs (x * y) = ⇑Hs y * ⇑Hs x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.map_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L100">ring_anti_equiv.map_one</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs 1 = 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.map_neg_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L103">ring_anti_equiv.map_neg_one</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs (-1) = -1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.bijective"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L106">ring_anti_equiv.bijective</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.bijective">function.bijective</a> ⇑Hs</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_anti_equiv.map_zero_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L108">ring_anti_equiv.map_zero_iff</a></span> <span class="decl_args">(Hs : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hs x = 0 ↔ x = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> F]</span> <span class="impl_arg">{x : R}</span></li>
-
-
-
-</ul></div><div class="structure"><a id="ring_invo"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L115">ring_invo</a></span> <span class="decl_args">(R : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type">Type u_1</div>
-<p>A ring involution</p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-<li class="structure_fields">
-Fields:
-<ul><li><div class="structure_field">ring_invo.to_fun : R → R</div></li>
-<li><div class="structure_field">ring_invo.anti_hom : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> (c.to_fun)</div></li>
-<li><div class="structure_field">ring_invo.to_fun_to_fun : ∀ (x : R), c.to_fun (c.to_fun x) = x</div></li>
-</ul></li>
-
-</ul></div><div class="def"><a id="ring_invo.has_coe_to_fun"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L126">ring_invo.has_coe_to_fun</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#has_coe_to_fun">has_coe_to_fun</a> (<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="ring_invo.is_ring_anti_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L129">ring_invo.is_ring_anti_hom</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> ⇑Hi</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="ring_invo.to_ring_anti_equiv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L131">ring_invo.to_ring_anti_equiv</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R → <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R R</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.map_add"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L137">ring_invo.map_add</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hi (x + y) = ⇑Hi x + ⇑Hi y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.map_zero"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L140">ring_invo.map_zero</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hi 0 = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.map_neg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L143">ring_invo.map_neg</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">(x : R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hi (-x) = -⇑Hi x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.map_sub"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L146">ring_invo.map_sub</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hi (x - y) = ⇑Hi x - ⇑Hi y</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.map_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L149">ring_invo.map_mul</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">(x y : R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hi (x * y) = ⇑Hi y * ⇑Hi x</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.map_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L152">ring_invo.map_one</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hi 1 = 1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.map_neg_one"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L155">ring_invo.map_neg_one</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hi (-1) = -1</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.bijective"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L158">ring_invo.bijective</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/function.html#function.bijective">function.bijective</a> ⇑Hi</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="ring_invo.map_zero_iff"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L161">ring_invo.map_zero_iff</a></span> <span class="decl_args">(Hi : <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R)</span> <span class="decl_args">:</span>       <div class="decl_type">⇑Hi x = 0 ↔ x = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#ring">ring</a> R]</span> <span class="impl_arg">{x : R}</span></li>
-
-
-
-</ul></div><div class="def"><a id="ring_invo.id"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L169">ring_invo.id</a></span> <span class="decl_args">(R : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_invo">ring_invo</a> R</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span></li>
-
-
-
-</ul></div><div class="def"><a id="ring_anti_equiv.refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L174">ring_anti_equiv.refl</a></span> <span class="decl_args">(R : Type u_1)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R R</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="comm_ring.hom_to_anti_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L179">comm_ring.hom_to_anti_hom</a></span> <span class="decl_args">(f : R → F)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/algebra/ring.html#is_ring_hom">is_ring_hom</a> f]</span></li>
-
-
-
-</ul></div><div class="thm"><a id="comm_ring.anti_hom_to_hom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L184">comm_ring.anti_hom_to_hom</a></span> <span class="decl_args">(f : R → F)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/ring.html#is_ring_hom">is_ring_hom</a> f</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> F]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#is_ring_anti_hom">is_ring_anti_hom</a> f]</span></li>
-
-
-
-</ul></div><div class="def"><a id="comm_ring.equiv_to_anti_equiv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L189">comm_ring.equiv_to_anti_equiv</a></span>  <span class="decl_args">:</span>       <div class="decl_type">R ≃+* F → <a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> F]</span></li>
-
-
-
-</ul></div><div class="def"><a id="comm_ring.anti_equiv_to_equiv"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean#L193">comm_ring.anti_equiv_to_equiv</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/ring_theory/maps.html#ring_anti_equiv">ring_anti_equiv</a> R F → R ≃+* F</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{R : Type u_1}</span> <span class="impl_arg">{F : Type u_2}</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> R]</span> <span class="impl_arg">[<a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ring.html#comm_ring">comm_ring</a> F]</span></li>
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">maps</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/ring_theory/maps.lean">(view source on GitHub)</a></div><a href="#comm_ring.anti_equiv_to_equiv">comm_ring.anti_equiv_to_equiv</a><br>
-<a href="#comm_ring.anti_hom_to_hom">comm_ring.anti_hom_to_hom</a><br>
-<a href="#comm_ring.equiv_to_anti_equiv">comm_ring.equiv_to_anti_equiv</a><br>
-<a href="#comm_ring.hom_to_anti_hom">comm_ring.hom_to_anti_hom</a><br>
-<a href="#is_ring_anti_hom">is_ring_anti_hom</a><br>
-<a href="#is_ring_anti_hom.is_add_group_hom">is_ring_anti_hom.is_add_group_hom</a><br>
-<a href="#is_ring_anti_hom.map_neg">is_ring_anti_hom.map_neg</a><br>
-<a href="#is_ring_anti_hom.map_sub">is_ring_anti_hom.map_sub</a><br>
-<a href="#is_ring_anti_hom.map_zero">is_ring_anti_hom.map_zero</a><br>
-<a href="#ring_anti_equiv">ring_anti_equiv</a><br>
-<a href="#ring_anti_equiv.bijective">ring_anti_equiv.bijective</a><br>
-<a href="#ring_anti_equiv.has_coe_to_fun">ring_anti_equiv.has_coe_to_fun</a><br>
-<a href="#ring_anti_equiv.is_ring_anti_hom">ring_anti_equiv.is_ring_anti_hom</a><br>
-<a href="#ring_anti_equiv.map_add">ring_anti_equiv.map_add</a><br>
-<a href="#ring_anti_equiv.map_mul">ring_anti_equiv.map_mul</a><br>
-<a href="#ring_anti_equiv.map_neg">ring_anti_equiv.map_neg</a><br>
-<a href="#ring_anti_equiv.map_neg_one">ring_anti_equiv.map_neg_one</a><br>
-<a href="#ring_anti_equiv.map_one">ring_anti_equiv.map_one</a><br>
-<a href="#ring_anti_equiv.map_sub">ring_anti_equiv.map_sub</a><br>
-<a href="#ring_anti_equiv.map_zero">ring_anti_equiv.map_zero</a><br>
-<a href="#ring_anti_equiv.map_zero_iff">ring_anti_equiv.map_zero_iff</a><br>
-<a href="#ring_anti_equiv.refl">ring_anti_equiv.refl</a><br>
-<a href="#ring_equiv.bijective">ring_equiv.bijective</a><br>
-<a href="#ring_equiv.map_zero_iff">ring_equiv.map_zero_iff</a><br>
-<a href="#ring_invo">ring_invo</a><br>
-<a href="#ring_invo.bijective">ring_invo.bijective</a><br>
-<a href="#ring_invo.has_coe_to_fun">ring_invo.has_coe_to_fun</a><br>
-<a href="#ring_invo.id">ring_invo.id</a><br>
-<a href="#ring_invo.is_ring_anti_hom">ring_invo.is_ring_anti_hom</a><br>
-<a href="#ring_invo.map_add">ring_invo.map_add</a><br>
-<a href="#ring_invo.map_mul">ring_invo.map_mul</a><br>
-<a href="#ring_invo.map_neg">ring_invo.map_neg</a><br>
-<a href="#ring_invo.map_neg_one">ring_invo.map_neg_one</a><br>
-<a href="#ring_invo.map_one">ring_invo.map_one</a><br>
-<a href="#ring_invo.map_sub">ring_invo.map_sub</a><br>
-<a href="#ring_invo.map_zero">ring_invo.map_zero</a><br>
-<a href="#ring_invo.map_zero_iff">ring_invo.map_zero_iff</a><br>
-<a href="#ring_invo.to_ring_anti_equiv">ring_invo.to_ring_anti_equiv</a><br>
 </div></div>
 
         </div>

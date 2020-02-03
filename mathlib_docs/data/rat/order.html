@@ -7,8 +7,322 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row"><div class="column left"><div class="nav">
-<div class="nav_sect">algebra</div>
+        <div class="row"><div class="column left"><div class="internal_nav">
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">data.rat.order</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean">View source</a></div><a href="#rat.abs_def">rat.abs_def</a><br>
+<a href="#rat.add_le_add_left">rat.add_le_add_left</a><br>
+<a href="#rat.decidable_le">rat.decidable_le</a><br>
+<a href="#rat.decidable_linear_order">rat.decidable_linear_order</a><br>
+<a href="#rat.decidable_linear_ordered_comm_group">rat.decidable_linear_ordered_comm_group</a><br>
+<a href="#rat.decidable_linear_ordered_comm_ring">rat.decidable_linear_ordered_comm_ring</a><br>
+<a href="#rat.decidable_linear_ordered_semiring">rat.decidable_linear_ordered_semiring</a><br>
+<a href="#rat.decidable_nonneg">rat.decidable_nonneg</a><br>
+<a href="#rat.discrete_linear_ordered_field">rat.discrete_linear_ordered_field</a><br>
+<a href="#rat.div_lt_div_iff_mul_lt_mul">rat.div_lt_div_iff_mul_lt_mul</a><br>
+<a href="#rat.exists_mul_self">rat.exists_mul_self</a><br>
+<a href="#rat.has_le">rat.has_le</a><br>
+<a href="#rat.has_lt">rat.has_lt</a><br>
+<a href="#rat.lattice.distrib_lattice">rat.lattice.distrib_lattice</a><br>
+<a href="#rat.lattice.has_inf">rat.lattice.has_inf</a><br>
+<a href="#rat.lattice.has_sup">rat.lattice.has_sup</a><br>
+<a href="#rat.lattice.lattice">rat.lattice.lattice</a><br>
+<a href="#rat.lattice.semilattice_inf">rat.lattice.semilattice_inf</a><br>
+<a href="#rat.lattice.semilattice_sup">rat.lattice.semilattice_sup</a><br>
+<a href="#rat.le">rat.le</a><br>
+<a href="#rat.le_antisymm">rat.le_antisymm</a><br>
+<a href="#rat.le_def">rat.le_def</a><br>
+<a href="#rat.le_def'">rat.le_def'</a><br>
+<a href="#rat.le_refl">rat.le_refl</a><br>
+<a href="#rat.le_total">rat.le_total</a><br>
+<a href="#rat.le_trans">rat.le_trans</a><br>
+<a href="#rat.linear_order">rat.linear_order</a><br>
+<a href="#rat.linear_ordered_comm_ring">rat.linear_ordered_comm_ring</a><br>
+<a href="#rat.linear_ordered_field">rat.linear_ordered_field</a><br>
+<a href="#rat.linear_ordered_ring">rat.linear_ordered_ring</a><br>
+<a href="#rat.linear_ordered_semiring">rat.linear_ordered_semiring</a><br>
+<a href="#rat.lt_def">rat.lt_def</a><br>
+<a href="#rat.lt_one_iff_num_lt_denom">rat.lt_one_iff_num_lt_denom</a><br>
+<a href="#rat.mk_nonneg">rat.mk_nonneg</a><br>
+<a href="#rat.mul_nonneg">rat.mul_nonneg</a><br>
+<a href="#rat.nonneg">rat.nonneg</a><br>
+<a href="#rat.nonneg_add">rat.nonneg_add</a><br>
+<a href="#rat.nonneg_antisymm">rat.nonneg_antisymm</a><br>
+<a href="#rat.nonneg_iff_zero_le">rat.nonneg_iff_zero_le</a><br>
+<a href="#rat.nonneg_mul">rat.nonneg_mul</a><br>
+<a href="#rat.nonneg_total">rat.nonneg_total</a><br>
+<a href="#rat.num_nonneg_iff_zero_le">rat.num_nonneg_iff_zero_le</a><br>
+<a href="#rat.num_pos_iff_pos">rat.num_pos_iff_pos</a><br>
+<a href="#rat.ordered_cancel_comm_monoid">rat.ordered_cancel_comm_monoid</a><br>
+<a href="#rat.ordered_comm_group">rat.ordered_comm_group</a><br>
+<a href="#rat.ordered_comm_monoid">rat.ordered_comm_monoid</a><br>
+<a href="#rat.ordered_ring">rat.ordered_ring</a><br>
+<a href="#rat.ordered_semiring">rat.ordered_semiring</a><br>
+<a href="#rat.partial_order">rat.partial_order</a><br>
+<a href="#rat.preorder">rat.preorder</a><br>
+<a href="#rat.sqrt">rat.sqrt</a><br>
+<a href="#rat.sqrt_eq">rat.sqrt_eq</a><br>
+<a href="#rat.sqrt_nonneg">rat.sqrt_nonneg</a><br>
+</div></div>
+<div class="column middle"><div class="content">
+<a id="top"></a><div class="mod_doc">
+<h1>Order for Rational Numbers</h1>
+
+<h2>Summary</h2>
+
+<p>We define the order on <code>ℚ</code>, prove that <code>ℚ</code> is a discrete, linearly ordered field, and define
+functions such as <code>abs</code> and <code>sqrt</code> that depend on this order.</p>
+
+<h2>Notations</h2>
+
+<ul>
+<li><code>/.</code> is infix notation for <code>rat.mk</code>.</li>
+</ul>
+
+<h2>Tags</h2>
+
+<p>rat, rationals, field, ℚ, numerator, denominator, num, denom, order, ordering, sqrt, abs</p>
+</div><div class="decl def" id="rat.nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L28">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a> → Prop</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><span title="rat.mk'">{</span><a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a> := n,
+   <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a> := d,
+   <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.pos" title="rat.pos">pos</a> := h,
+   <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.cop" title="rat.cop">cop</a> := c}.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  (0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> n)</li></ul></details> </ul></div><div class="decl theorem" id="rat.mk_nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L31">view source</a></div> <div class="attributes">@[simp]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.mk_nonneg">rat.mk_nonneg</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>)</span> <span class="impl_arg"><span class="decl_args">{b : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+((<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> a b).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.nonneg_add"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L44">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg_add">rat.nonneg_add</a></span> <span class="impl_arg"><span class="decl_args">{a b : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> → b.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> → (a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> b).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.nonneg_mul"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L55">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg_mul">rat.nonneg_mul</a></span> <span class="impl_arg"><span class="decl_args">{a b : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> → b.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> → (a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> b).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a></div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.nonneg_antisymm"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L65">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg_antisymm">rat.nonneg_antisymm</a></span> <span class="impl_arg"><span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> → (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>a).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> 0</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.nonneg_total"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L73">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg_total">rat.nonneg_total</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> (<a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_neg.neg" title="has_neg.neg">-</a>a).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a></div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="rat.decidable_nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L77">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_nonneg">rat.decidable_nonneg</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_nonneg" title="rat.decidable_nonneg">decidable_nonneg</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  a.<span title="rat.cases_on">cases_on</span>
+    (λ (a_num : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>) (a_denom : <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#nat" title="nat">ℕ</a>) (a_pos : 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a_denom)
+     (a_cop : a_num.<a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs" title="int.nat_abs">nat_abs</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/nat/gcd.html#nat.coprime" title="nat.coprime">coprime</a> a_denom),
+       _.<a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#eq.mpr" title="eq.mpr">mpr</a> (0.<a href="https://robertylewis.com/mathlib_docs/core/init/data/int/order.html#int.decidable_le" title="int.decidable_le">decidable_le</a> a_num))</li></ul></details> </ul></div><div class="decl def" id="rat.le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L80">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le">rat.le</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a> → <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a> → Prop</div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le" title="rat.le">le</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> (b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> a).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a></li></ul></details> </ul></div><div class="decl def" id="rat.has_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L82">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.has_le">rat.has_le</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le">has_le</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.has_le">rat.has_le</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.mk" title="has_le.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">le</a> := <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le">rat.le</a>}</li></ul></details> </ul></div><div class="decl def" id="rat.decidable_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L84">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_le">rat.decidable_le</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le">has_le.le</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_le" title="rat.decidable_le">decidable_le</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  show <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> a).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a>, from
+    (b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> a).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_nonneg" title="rat.decidable_nonneg">decidable_nonneg</a></li></ul></details> </ul></div><div class="decl theorem" id="rat.le_def"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L87">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_def">rat.le_def</a></span> <span class="impl_arg"><span class="decl_args">{a b c d : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> d →
+(<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> a b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> c d <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+   a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> d <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.le_refl"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L93">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_refl">rat.le_refl</a></span> <span class="decl_args">(a : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.le_total"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L96">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_total">rat.le_total</a></span> <span class="decl_args">(a b : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#or" title="or">∨</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.le_antisymm"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L99">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_antisymm">rat.le_antisymm</a></span> <span class="impl_arg"><span class="decl_args">{a b : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.le_trans"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L103">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_trans">rat.le_trans</a></span> <span class="impl_arg"><span class="decl_args">{a b c : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c → a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="rat.decidable_linear_order"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L107">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_order">rat.decidable_linear_order</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_order">rat.decidable_linear_order</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.mk" title="decidable_linear_order.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.le" title="decidable_linear_order.le">le</a> := <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le">rat.le</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.lt" title="decidable_linear_order.lt">lt</a> := linear_order.lt._default
+           <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le">rat.le</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.le_refl" title="decidable_linear_order.le_refl">le_refl</a> := <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_refl">rat.le_refl</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.le_trans" title="decidable_linear_order.le_trans">le_trans</a> := <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_trans">rat.le_trans</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.lt_iff_le_not_le" title="decidable_linear_order.lt_iff_le_not_le">lt_iff_le_not_le</a> := rat.decidable_linear_order._proof_1,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.le_antisymm" title="decidable_linear_order.le_antisymm">le_antisymm</a> := <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_antisymm">rat.le_antisymm</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.le_total" title="decidable_linear_order.le_total">le_total</a> := <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_total">rat.le_total</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_le" title="decidable_linear_order.decidable_le">decidable_le</a> := λ (a b : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>),
+                     (b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> a).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_nonneg" title="rat.decidable_nonneg">decidable_nonneg</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_eq" title="decidable_linear_order.decidable_eq">decidable_eq</a> := λ (a b : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>),
+                     a.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.decidable_eq" title="rat.decidable_eq">decidable_eq</a> b,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_lt" title="decidable_linear_order.decidable_lt">decidable_lt</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_lt_of_decidable_le">decidable_lt_of_decidable_le</a>
+                     (λ (a b : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>),
+                        (b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_sub.sub" title="has_sub.sub">-</a> a).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_nonneg" title="rat.decidable_nonneg">decidable_nonneg</a>)}</li></ul></details> </ul></div><div class="decl def" id="rat.has_lt"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L117">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.has_lt">rat.has_lt</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt">has_lt</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.has_lt">rat.has_lt</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder.to_has_lt">preorder.to_has_lt</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.lattice.distrib_lattice"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L118">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.distrib_lattice">rat.lattice.distrib_lattice</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.distrib_lattice">lattice.distrib_lattice</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.distrib_lattice">rat.lattice.distrib_lattice</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.distrib_lattice_of_decidable_linear_order">lattice.distrib_lattice_of_decidable_linear_order</a></li></ul></details> </ul></div><div class="decl def" id="rat.lattice.lattice"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L119">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.lattice">rat.lattice.lattice</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.lattice">lattice.lattice</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.lattice">rat.lattice.lattice</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.lattice_of_decidable_linear_order">lattice.lattice_of_decidable_linear_order</a></li></ul></details> </ul></div><div class="decl def" id="rat.lattice.semilattice_inf"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L120">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.semilattice_inf">rat.lattice.semilattice_inf</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_inf">lattice.semilattice_inf</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.semilattice_inf">rat.lattice.semilattice_inf</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.lattice.to_semilattice_inf">lattice.lattice.to_semilattice_inf</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.lattice.semilattice_sup"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L121">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.semilattice_sup">rat.lattice.semilattice_sup</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.semilattice_sup">rat.lattice.semilattice_sup</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.lattice.to_semilattice_sup">lattice.lattice.to_semilattice_sup</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.lattice.has_inf"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L122">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.has_inf">rat.lattice.has_inf</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.has_inf">lattice.has_inf</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.has_inf">rat.lattice.has_inf</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_inf.to_has_inf">lattice.semilattice_inf.to_has_inf</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.lattice.has_sup"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L123">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.has_sup">rat.lattice.has_sup</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.has_sup">lattice.has_sup</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lattice.has_sup">rat.lattice.has_sup</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_sup.to_has_sup">lattice.semilattice_sup.to_has_sup</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.linear_order"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L124">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_order">rat.linear_order</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_order">rat.linear_order</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.to_linear_order">decidable_linear_order.to_linear_order</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.partial_order"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L125">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.partial_order">rat.partial_order</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.partial_order">rat.partial_order</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_inf.to_partial_order">lattice.semilattice_inf.to_partial_order</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.preorder"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L126">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.preorder">rat.preorder</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.preorder">rat.preorder</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order.to_preorder">partial_order.to_preorder</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl theorem" id="rat.le_def'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L128">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.le_def'">rat.le_def'</a></span> <span class="impl_arg"><span class="decl_args">{p q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  p.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a>
+    q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(p.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.lt_def"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L135">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lt_def">rat.lt_def</a></span> <span class="impl_arg"><span class="decl_args">{p q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">p <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> q <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  p.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>) <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a>
+    q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(p.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.nonneg_iff_zero_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L145">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg_iff_zero_le">rat.nonneg_iff_zero_le</a></span> <span class="impl_arg"><span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">a.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg" title="rat.nonneg">nonneg</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.num_nonneg_iff_zero_le"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L148">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.num_nonneg_iff_zero_le">rat.num_nonneg_iff_zero_le</a></span> <span class="impl_arg"><span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.add_le_add_left"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L151">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.add_le_add_left">rat.add_le_add_left</a></span> <span class="impl_arg"><span class="decl_args">{a b c : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_add.add" title="has_add.add">+</a> b <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.mul_nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L154">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.mul_nonneg">rat.mul_nonneg</a></span> <span class="impl_arg"><span class="decl_args">{a b : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> b → 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> b</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="rat.discrete_linear_ordered_field"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L157">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.discrete_linear_ordered_field">rat.discrete_linear_ordered_field</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.discrete_linear_ordered_field">rat.discrete_linear_ordered_field</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.mk" title="discrete_linear_ordered_field.mk">{</a><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.add" title="discrete_linear_ordered_field.add">add</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/field.html#discrete_field.add">discrete_field.add</a>
+            <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.discrete_field">rat.discrete_field</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.add_assoc" title="discrete_linear_ordered_field.add_assoc">add_assoc</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.zero" title="discrete_linear_ordered_field.zero">zero</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/field.html#discrete_field.zero">discrete_field.zero</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>
+             <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.discrete_field">rat.discrete_field</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.zero_add" title="discrete_linear_ordered_field.zero_add">zero_add</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.add_zero" title="discrete_linear_ordered_field.add_zero">add_zero</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.neg" title="discrete_linear_ordered_field.neg">neg</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/field.html#discrete_field.neg">discrete_field.neg</a>
+            <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.discrete_field">rat.discrete_field</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.add_left_neg" title="discrete_linear_ordered_field.add_left_neg">add_left_neg</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.add_comm" title="discrete_linear_ordered_field.add_comm">add_comm</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.mul" title="discrete_linear_ordered_field.mul">mul</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/field.html#discrete_field.mul">discrete_field.mul</a>
+            <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.discrete_field">rat.discrete_field</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.mul_assoc" title="discrete_linear_ordered_field.mul_assoc">mul_assoc</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.one" title="discrete_linear_ordered_field.one">one</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/field.html#discrete_field.one">discrete_field.one</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>
+            <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.discrete_field">rat.discrete_field</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.one_mul" title="discrete_linear_ordered_field.one_mul">one_mul</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.mul_one" title="discrete_linear_ordered_field.mul_one">mul_one</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.left_distrib" title="discrete_linear_ordered_field.left_distrib">left_distrib</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.right_distrib" title="discrete_linear_ordered_field.right_distrib">right_distrib</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.le" title="discrete_linear_ordered_field.le">le</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.le">decidable_linear_order.le</a>
+           <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_order">rat.decidable_linear_order</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.lt" title="discrete_linear_ordered_field.lt">lt</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.lt">decidable_linear_order.lt</a>
+           <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_order">rat.decidable_linear_order</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.le_refl" title="discrete_linear_ordered_field.le_refl">le_refl</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.le_trans" title="discrete_linear_ordered_field.le_trans">le_trans</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.lt_iff_le_not_le" title="discrete_linear_ordered_field.lt_iff_le_not_le">lt_iff_le_not_le</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.le_antisymm" title="discrete_linear_ordered_field.le_antisymm">le_antisymm</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.add_le_add_left" title="discrete_linear_ordered_field.add_le_add_left">add_le_add_left</a> := rat.discrete_linear_ordered_field._proof_1,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.add_lt_add_left" title="discrete_linear_ordered_field.add_lt_add_left">add_lt_add_left</a> := rat.discrete_linear_ordered_field._proof_2,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.zero_ne_one" title="discrete_linear_ordered_field.zero_ne_one">zero_ne_one</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.mul_nonneg" title="discrete_linear_ordered_field.mul_nonneg">mul_nonneg</a> := <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.mul_nonneg">rat.mul_nonneg</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.mul_pos" title="discrete_linear_ordered_field.mul_pos">mul_pos</a> := rat.discrete_linear_ordered_field._proof_3,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.le_total" title="discrete_linear_ordered_field.le_total">le_total</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.zero_lt_one" title="discrete_linear_ordered_field.zero_lt_one">zero_lt_one</a> := rat.discrete_linear_ordered_field._proof_4,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.inv" title="discrete_linear_ordered_field.inv">inv</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/field.html#discrete_field.inv">discrete_field.inv</a>
+            <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.discrete_field">rat.discrete_field</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.mul_inv_cancel" title="discrete_linear_ordered_field.mul_inv_cancel">mul_inv_cancel</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.inv_mul_cancel" title="discrete_linear_ordered_field.inv_mul_cancel">inv_mul_cancel</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.mul_comm" title="discrete_linear_ordered_field.mul_comm">mul_comm</a> := _,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.decidable_le" title="discrete_linear_ordered_field.decidable_le">decidable_le</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_le">decidable_linear_order.decidable_le</a>
+                     <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>
+                     <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_order">rat.decidable_linear_order</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.decidable_eq" title="discrete_linear_ordered_field.decidable_eq">decidable_eq</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_eq">decidable_linear_order.decidable_eq</a>
+                     <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>
+                     <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_order">rat.decidable_linear_order</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.decidable_lt" title="discrete_linear_ordered_field.decidable_lt">decidable_lt</a> := <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order.decidable_lt">decidable_linear_order.decidable_lt</a>
+                     <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>
+                     <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_order">rat.decidable_linear_order</a>,
+   <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.inv_zero" title="discrete_linear_ordered_field.inv_zero">inv_zero</a> := _}</li></ul></details> </ul></div><div class="decl def" id="rat.linear_ordered_field"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L169">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_ordered_field">rat.linear_ordered_field</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_ordered_field">rat.linear_ordered_field</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.to_linear_ordered_field">discrete_linear_ordered_field.to_linear_ordered_field</a>
+    <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.decidable_linear_ordered_comm_ring"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L170">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_ordered_comm_ring">rat.decidable_linear_ordered_comm_ring</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#decidable_linear_ordered_comm_ring">decidable_linear_ordered_comm_ring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_ordered_comm_ring">rat.decidable_linear_ordered_comm_ring</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field.to_decidable_linear_ordered_comm_ring">discrete_linear_ordered_field.to_decidable_linear_ordered_comm_ring</a>
+    <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.linear_ordered_comm_ring"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L171">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_ordered_comm_ring">rat.linear_ordered_comm_ring</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_comm_ring">linear_ordered_comm_ring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_ordered_comm_ring">rat.linear_ordered_comm_ring</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#decidable_linear_ordered_comm_ring.to_linear_ordered_comm_ring">decidable_linear_ordered_comm_ring.to_linear_ordered_comm_ring</a>
+    <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.linear_ordered_ring"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L172">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_ordered_ring">rat.linear_ordered_ring</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_ring">linear_ordered_ring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_ordered_ring">rat.linear_ordered_ring</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field.to_linear_ordered_ring">linear_ordered_field.to_linear_ordered_ring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.ordered_ring"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L173">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_ring">rat.ordered_ring</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#ordered_ring">ordered_ring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_ring">rat.ordered_ring</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_ring.to_ordered_ring">linear_ordered_ring.to_ordered_ring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.decidable_linear_ordered_semiring"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L174">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_ordered_semiring">rat.decidable_linear_ordered_semiring</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#decidable_linear_ordered_semiring">decidable_linear_ordered_semiring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_ordered_semiring">rat.decidable_linear_ordered_semiring</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#decidable_linear_ordered_comm_ring.to_decidable_linear_ordered_semiring">decidable_linear_ordered_comm_ring.to_decidable_linear_ordered_semiring</a></li></ul></details> </ul></div><div class="decl def" id="rat.linear_ordered_semiring"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L175">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_ordered_semiring">rat.linear_ordered_semiring</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_semiring">linear_ordered_semiring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.linear_ordered_semiring">rat.linear_ordered_semiring</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_ring.to_linear_ordered_semiring">linear_ordered_ring.to_linear_ordered_semiring</a></li></ul></details> </ul></div><div class="decl def" id="rat.ordered_semiring"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L176">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_semiring">rat.ordered_semiring</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#ordered_semiring">ordered_semiring</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_semiring">rat.ordered_semiring</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#ordered_ring.to_ordered_semiring">ordered_ring.to_ordered_semiring</a></li></ul></details> </ul></div><div class="decl def" id="rat.decidable_linear_ordered_comm_group"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L177">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_ordered_comm_group">rat.decidable_linear_ordered_comm_group</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#decidable_linear_ordered_comm_group">decidable_linear_ordered_comm_group</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.decidable_linear_ordered_comm_group">rat.decidable_linear_ordered_comm_group</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#decidable_linear_ordered_comm_ring.to_decidable_linear_ordered_comm_group">decidable_linear_ordered_comm_ring.to_decidable_linear_ordered_comm_group</a>
+    <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.ordered_comm_group"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L178">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_comm_group">rat.ordered_comm_group</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#ordered_comm_group">ordered_comm_group</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_comm_group">rat.ordered_comm_group</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#ordered_ring.to_ordered_comm_group">ordered_ring.to_ordered_comm_group</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.ordered_cancel_comm_monoid"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L179">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_cancel_comm_monoid">rat.ordered_cancel_comm_monoid</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#ordered_cancel_comm_monoid">ordered_cancel_comm_monoid</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_cancel_comm_monoid">rat.ordered_cancel_comm_monoid</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#ordered_semiring.to_ordered_cancel_comm_monoid">ordered_semiring.to_ordered_cancel_comm_monoid</a>
+    <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></li></ul></details> </ul></div><div class="decl def" id="rat.ordered_comm_monoid"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L180">view source</a></div> <div class="attributes">@[instance]</div>     <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_comm_monoid">rat.ordered_comm_monoid</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#ordered_comm_monoid">ordered_comm_monoid</a> <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.ordered_comm_monoid">rat.ordered_comm_monoid</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#ordered_cancel_comm_monoid.to_ordered_comm_monoid">ordered_cancel_comm_monoid.to_ordered_comm_monoid</a></li></ul></details> </ul></div><div class="decl theorem" id="rat.num_pos_iff_pos"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L184">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.num_pos_iff_pos">rat.num_pos_iff_pos</a></span> <span class="impl_arg"><span class="decl_args">{a : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a> <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a> 0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> a</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.div_lt_div_iff_mul_lt_mul"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L189">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.div_lt_div_iff_mul_lt_mul">rat.div_lt_div_iff_mul_lt_mul</a></span> <span class="impl_arg"><span class="decl_args">{a b c d : <a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int" title="int">ℤ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> b →
+0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> d →
+(<a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>b <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a>
+     <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_div.div" title="has_div.div">/</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>d <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+   a <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> d <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> c <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> b)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.lt_one_iff_num_lt_denom"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L198">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.lt_one_iff_num_lt_denom">rat.lt_one_iff_num_lt_denom</a></span> <span class="impl_arg"><span class="decl_args">{q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>}</span></span> <span class="decl_args">:</span>     <div class="decl_type">q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> 1 <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt.lt" title="has_lt.lt"><</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.abs_def"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L210">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.abs_def">rat.abs_def</a></span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs" title="int.nat_abs">nat_abs</a>)
+    <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>)</div></div>
+   <p></p>
+  </ul></div><div class="decl def" id="rat.sqrt"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L226">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt">rat.sqrt</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a> → <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a></div></div>
+   <p></p>
+ <details><summary>Equations</summary><ul class="equations"><li class="equation">q.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt" title="rat.sqrt">sqrt</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a>
+  <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.num" title="rat.num">num</a>.<a href="https://robertylewis.com/mathlib_docs/data/int/sqrt.html#int.sqrt" title="int.sqrt">sqrt</a>
+    <a href="https://robertylewis.com/mathlib_docs/core/init/coe.html#coe" title="coe">↑</a>(q.<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.denom" title="rat.denom">denom</a>.<a href="https://robertylewis.com/mathlib_docs/data/nat/sqrt.html#nat.sqrt" title="nat.sqrt">sqrt</a>)</li></ul></details> </ul></div><div class="decl theorem" id="rat.sqrt_eq"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L228">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt_eq">rat.sqrt_eq</a></span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">(q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> q).<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt" title="rat.sqrt">sqrt</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> q</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.exists_mul_self"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L231">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.exists_mul_self">rat.exists_mul_self</a></span> <span class="decl_args">(x : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">(∃ (q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>), q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> q <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x) <a href="https://robertylewis.com/mathlib_docs/core/init/logic.html#iff" title="iff">↔</a>
+  x.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt" title="rat.sqrt">sqrt</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_mul.mul" title="has_mul.mul">*</a> x.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt" title="rat.sqrt">sqrt</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#eq" title="eq">=</a> x</div></div>
+   <p></p>
+  </ul></div><div class="decl theorem" id="rat.sqrt_nonneg"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/data/rat/order.lean#L235">view source</a></div>      <div class="decl_header impl_collapsed">        <span class="decl_kind">theorem</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt_nonneg">rat.sqrt_nonneg</a></span> <span class="decl_args">(q : <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat" title="rat">ℚ</a>)</span> <span class="decl_args">:</span>     <div class="decl_type">0 <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le.le" title="has_le.le">≤</a> q.<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt" title="rat.sqrt">sqrt</a></div></div>
+   <p></p>
+  </ul></div>
+</div></div>
+<div class="column right"><div class="nav">
+<div class="search">
+<script async src="https://cse.google.com/cse.js?cx=013315010647789779870:7aikx0zd1z9"></script>
+<div class="gcse-search"></div>
+</div>
+<h3>General documentation</h3><a href="https://robertylewis.com/mathlib_docs/">index</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactics.html">tactics</a><br>
+<a href="https://robertylewis.com/mathlib_docs/commands.html">commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/hole_commands.html">hole commands</a><br>
+<a href="https://robertylewis.com/mathlib_docs/notes.html">notes</a><br>
+<h3>Tutorials</h3><a href="https://robertylewis.com/mathlib_docs/overview.html">mathlib overview</a><br>
+<a href="https://robertylewis.com/mathlib_docs/tactic_writing.html">tactic writing</a><br>
+<a href="https://robertylewis.com/mathlib_docs/conv.html">conv mode</a><br>
+<a href="https://robertylewis.com/mathlib_docs/simp.html">simplification</a><br>
+<a href="https://robertylewis.com/mathlib_docs/well_founded_recursion.html">well founded recursion</a><br>
+<h3>Library</h3><div class="nav_sect">algebra</div>
 <div class="nav_sect_inner hidden" id="algebra">
 <div class="nav_sect">category</div>
 <div class="nav_sect_inner hidden" id="algebra/category">
@@ -95,10 +409,17 @@
 
 </div><div class="nav_sect">analysis</div>
 <div class="nav_sect_inner hidden" id="analysis">
-<div class="nav_sect">calculus</div>
+<div class="nav_sect">ODE</div>
+<div class="nav_sect_inner hidden" id="analysis/ODE">
+<a class="nav_file" id="analysis/ODE/gronwall.html" href="https://robertylewis.com/mathlib_docs/analysis/ODE/gronwall.html">gronwall</a><br>
+
+
+</div><div class="nav_sect">calculus</div>
 <div class="nav_sect_inner hidden" id="analysis/calculus">
 <a class="nav_file" id="analysis/calculus/deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/deriv.html">deriv</a><br>
+<a class="nav_file" id="analysis/calculus/extend_deriv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/extend_deriv.html">extend_deriv</a><br>
 <a class="nav_file" id="analysis/calculus/fderiv.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/fderiv.html">fderiv</a><br>
+<a class="nav_file" id="analysis/calculus/local_extr.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="analysis/calculus/mean_value.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/mean_value.html">mean_value</a><br>
 <a class="nav_file" id="analysis/calculus/tangent_cone.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/tangent_cone.html">tangent_cone</a><br>
 <a class="nav_file" id="analysis/calculus/times_cont_diff.html" href="https://robertylewis.com/mathlib_docs/analysis/calculus/times_cont_diff.html">times_cont_diff</a><br>
@@ -106,6 +427,7 @@
 
 </div><div class="nav_sect">complex</div>
 <div class="nav_sect_inner hidden" id="analysis/complex">
+<a class="nav_file" id="analysis/complex/basic.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/basic.html">basic</a><br>
 <a class="nav_file" id="analysis/complex/exponential.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/exponential.html">exponential</a><br>
 <a class="nav_file" id="analysis/complex/polynomial.html" href="https://robertylewis.com/mathlib_docs/analysis/complex/polynomial.html">polynomial</a><br>
 
@@ -630,6 +952,7 @@
 <a class="nav_file" id="data/nat/fib.html" href="https://robertylewis.com/mathlib_docs/data/nat/fib.html">fib</a><br>
 <a class="nav_file" id="data/nat/gcd.html" href="https://robertylewis.com/mathlib_docs/data/nat/gcd.html">gcd</a><br>
 <a class="nav_file" id="data/nat/modeq.html" href="https://robertylewis.com/mathlib_docs/data/nat/modeq.html">modeq</a><br>
+<a class="nav_file" id="data/nat/multiplicity.html" href="https://robertylewis.com/mathlib_docs/data/nat/multiplicity.html">multiplicity</a><br>
 <a class="nav_file" id="data/nat/pairing.html" href="https://robertylewis.com/mathlib_docs/data/nat/pairing.html">pairing</a><br>
 <a class="nav_file" id="data/nat/parity.html" href="https://robertylewis.com/mathlib_docs/data/nat/parity.html">parity</a><br>
 <a class="nav_file" id="data/nat/prime.html" href="https://robertylewis.com/mathlib_docs/data/nat/prime.html">prime</a><br>
@@ -682,6 +1005,7 @@
 <a class="nav_file" id="data/real/cau_seq.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq.html">cau_seq</a><br>
 <a class="nav_file" id="data/real/cau_seq_completion.html" href="https://robertylewis.com/mathlib_docs/data/real/cau_seq_completion.html">cau_seq_completion</a><br>
 <a class="nav_file" id="data/real/ennreal.html" href="https://robertylewis.com/mathlib_docs/data/real/ennreal.html">ennreal</a><br>
+<a class="nav_file" id="data/real/ereal.html" href="https://robertylewis.com/mathlib_docs/data/real/ereal.html">ereal</a><br>
 <a class="nav_file" id="data/real/hyperreal.html" href="https://robertylewis.com/mathlib_docs/data/real/hyperreal.html">hyperreal</a><br>
 <a class="nav_file" id="data/real/irrational.html" href="https://robertylewis.com/mathlib_docs/data/real/irrational.html">irrational</a><br>
 <a class="nav_file" id="data/real/nnreal.html" href="https://robertylewis.com/mathlib_docs/data/real/nnreal.html">nnreal</a><br>
@@ -698,13 +1022,18 @@
 
 </div><div class="nav_sect">set</div>
 <div class="nav_sect_inner hidden" id="data/set">
-<a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
+<div class="nav_sect">intervals</div>
+<div class="nav_sect_inner hidden" id="data/set/intervals">
+<a class="nav_file" id="data/set/intervals/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/basic.html">basic</a><br>
+<a class="nav_file" id="data/set/intervals/disjoint.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals/disjoint.html">disjoint</a><br>
+
+
+</div><a class="nav_file" id="data/set/basic.html" href="https://robertylewis.com/mathlib_docs/data/set/basic.html">basic</a><br>
 <a class="nav_file" id="data/set/countable.html" href="https://robertylewis.com/mathlib_docs/data/set/countable.html">countable</a><br>
 <a class="nav_file" id="data/set/disjointed.html" href="https://robertylewis.com/mathlib_docs/data/set/disjointed.html">disjointed</a><br>
 <a class="nav_file" id="data/set/enumerate.html" href="https://robertylewis.com/mathlib_docs/data/set/enumerate.html">enumerate</a><br>
 <a class="nav_file" id="data/set/finite.html" href="https://robertylewis.com/mathlib_docs/data/set/finite.html">finite</a><br>
 <a class="nav_file" id="data/set/function.html" href="https://robertylewis.com/mathlib_docs/data/set/function.html">function</a><br>
-<a class="nav_file" id="data/set/intervals.html" href="https://robertylewis.com/mathlib_docs/data/set/intervals.html">intervals</a><br>
 <a class="nav_file" id="data/set/lattice.html" href="https://robertylewis.com/mathlib_docs/data/set/lattice.html">lattice</a><br>
 
 
@@ -742,6 +1071,7 @@
 <a class="nav_file" id="data/fintype.html" href="https://robertylewis.com/mathlib_docs/data/fintype.html">fintype</a><br>
 <a class="nav_file" id="data/hash_map.html" href="https://robertylewis.com/mathlib_docs/data/hash_map.html">hash_map</a><br>
 <a class="nav_file" id="data/holor.html" href="https://robertylewis.com/mathlib_docs/data/holor.html">holor</a><br>
+<a class="nav_file" id="data/indicator_function.html" href="https://robertylewis.com/mathlib_docs/data/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="data/lazy_list2.html" href="https://robertylewis.com/mathlib_docs/data/lazy_list2.html">lazy_list2</a><br>
 <a class="nav_file" id="data/mllist.html" href="https://robertylewis.com/mathlib_docs/data/mllist.html">mllist</a><br>
 <a class="nav_file" id="data/multiset.html" href="https://robertylewis.com/mathlib_docs/data/multiset.html">multiset</a><br>
@@ -777,7 +1107,9 @@
 <div class="nav_sect_inner hidden" id="geometry">
 <div class="nav_sect">manifold</div>
 <div class="nav_sect_inner hidden" id="geometry/manifold">
+<a class="nav_file" id="geometry/manifold/basic_smooth_bundle.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/basic_smooth_bundle.html">basic_smooth_bundle</a><br>
 <a class="nav_file" id="geometry/manifold/manifold.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/manifold.html">manifold</a><br>
+<a class="nav_file" id="geometry/manifold/mfderiv.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/mfderiv.html">mfderiv</a><br>
 <a class="nav_file" id="geometry/manifold/real_instances.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/real_instances.html">real_instances</a><br>
 <a class="nav_file" id="geometry/manifold/smooth_manifold_with_corners.html" href="https://robertylewis.com/mathlib_docs/geometry/manifold/smooth_manifold_with_corners.html">smooth_manifold_with_corners</a><br>
 
@@ -799,6 +1131,7 @@
 <a class="nav_file" id="group_theory/free_abelian_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_abelian_group.html">free_abelian_group</a><br>
 <a class="nav_file" id="group_theory/free_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/free_group.html">free_group</a><br>
 <a class="nav_file" id="group_theory/group_action.html" href="https://robertylewis.com/mathlib_docs/group_theory/group_action.html">group_action</a><br>
+<a class="nav_file" id="group_theory/monoid_localization.html" href="https://robertylewis.com/mathlib_docs/group_theory/monoid_localization.html">monoid_localization</a><br>
 <a class="nav_file" id="group_theory/order_of_element.html" href="https://robertylewis.com/mathlib_docs/group_theory/order_of_element.html">order_of_element</a><br>
 <a class="nav_file" id="group_theory/presented_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/presented_group.html">presented_group</a><br>
 <a class="nav_file" id="group_theory/quotient_group.html" href="https://robertylewis.com/mathlib_docs/group_theory/quotient_group.html">quotient_group</a><br>
@@ -819,7 +1152,9 @@
 <a class="nav_file" id="linear_algebra/finite_dimensional.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finite_dimensional.html">finite_dimensional</a><br>
 <a class="nav_file" id="linear_algebra/finsupp.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp.html">finsupp</a><br>
 <a class="nav_file" id="linear_algebra/finsupp_vector_space.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/finsupp_vector_space.html">finsupp_vector_space</a><br>
+<a class="nav_file" id="linear_algebra/linear_action.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/linear_action.html">linear_action</a><br>
 <a class="nav_file" id="linear_algebra/matrix.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/matrix.html">matrix</a><br>
+<a class="nav_file" id="linear_algebra/multilinear.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/multilinear.html">multilinear</a><br>
 <a class="nav_file" id="linear_algebra/sesquilinear_form.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/sesquilinear_form.html">sesquilinear_form</a><br>
 <a class="nav_file" id="linear_algebra/tensor_product.html" href="https://robertylewis.com/mathlib_docs/linear_algebra/tensor_product.html">tensor_product</a><br>
 
@@ -846,6 +1181,7 @@
 <a class="nav_file" id="measure_theory/borel_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/borel_space.html">borel_space</a><br>
 <a class="nav_file" id="measure_theory/decomposition.html" href="https://robertylewis.com/mathlib_docs/measure_theory/decomposition.html">decomposition</a><br>
 <a class="nav_file" id="measure_theory/giry_monad.html" href="https://robertylewis.com/mathlib_docs/measure_theory/giry_monad.html">giry_monad</a><br>
+<a class="nav_file" id="measure_theory/indicator_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/indicator_function.html">indicator_function</a><br>
 <a class="nav_file" id="measure_theory/integration.html" href="https://robertylewis.com/mathlib_docs/measure_theory/integration.html">integration</a><br>
 <a class="nav_file" id="measure_theory/l1_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/l1_space.html">l1_space</a><br>
 <a class="nav_file" id="measure_theory/lebesgue_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/lebesgue_measure.html">lebesgue_measure</a><br>
@@ -853,6 +1189,7 @@
 <a class="nav_file" id="measure_theory/measure_space.html" href="https://robertylewis.com/mathlib_docs/measure_theory/measure_space.html">measure_space</a><br>
 <a class="nav_file" id="measure_theory/outer_measure.html" href="https://robertylewis.com/mathlib_docs/measure_theory/outer_measure.html">outer_measure</a><br>
 <a class="nav_file" id="measure_theory/probability_mass_function.html" href="https://robertylewis.com/mathlib_docs/measure_theory/probability_mass_function.html">probability_mass_function</a><br>
+<a class="nav_file" id="measure_theory/set_integral.html" href="https://robertylewis.com/mathlib_docs/measure_theory/set_integral.html">set_integral</a><br>
 <a class="nav_file" id="measure_theory/simple_func_dense.html" href="https://robertylewis.com/mathlib_docs/measure_theory/simple_func_dense.html">simple_func_dense</a><br>
 
 
@@ -875,7 +1212,9 @@
 <div class="nav_sect_inner hidden" id="order">
 <div class="nav_sect">filter</div>
 <div class="nav_sect_inner hidden" id="order/filter">
+<a class="nav_file" id="order/filter/bases.html" href="https://robertylewis.com/mathlib_docs/order/filter/bases.html">bases</a><br>
 <a class="nav_file" id="order/filter/basic.html" href="https://robertylewis.com/mathlib_docs/order/filter/basic.html">basic</a><br>
+<a class="nav_file" id="order/filter/extr.html" href="https://robertylewis.com/mathlib_docs/order/filter/extr.html">extr</a><br>
 <a class="nav_file" id="order/filter/filter_product.html" href="https://robertylewis.com/mathlib_docs/order/filter/filter_product.html">filter_product</a><br>
 <a class="nav_file" id="order/filter/lift.html" href="https://robertylewis.com/mathlib_docs/order/filter/lift.html">lift</a><br>
 <a class="nav_file" id="order/filter/partial.html" href="https://robertylewis.com/mathlib_docs/order/filter/partial.html">partial</a><br>
@@ -1000,6 +1339,7 @@
 <a class="nav_file" id="tactic/auto_cases.html" href="https://robertylewis.com/mathlib_docs/tactic/auto_cases.html">auto_cases</a><br>
 <a class="nav_file" id="tactic/cache.html" href="https://robertylewis.com/mathlib_docs/tactic/cache.html">cache</a><br>
 <a class="nav_file" id="tactic/chain.html" href="https://robertylewis.com/mathlib_docs/tactic/chain.html">chain</a><br>
+<a class="nav_file" id="tactic/clear.html" href="https://robertylewis.com/mathlib_docs/tactic/clear.html">clear</a><br>
 <a class="nav_file" id="tactic/core.html" href="https://robertylewis.com/mathlib_docs/tactic/core.html">core</a><br>
 <a class="nav_file" id="tactic/elide.html" href="https://robertylewis.com/mathlib_docs/tactic/elide.html">elide</a><br>
 <a class="nav_file" id="tactic/explode.html" href="https://robertylewis.com/mathlib_docs/tactic/explode.html">explode</a><br>
@@ -1009,6 +1349,7 @@
 <a class="nav_file" id="tactic/finish.html" href="https://robertylewis.com/mathlib_docs/tactic/finish.html">finish</a><br>
 <a class="nav_file" id="tactic/generalize_proofs.html" href="https://robertylewis.com/mathlib_docs/tactic/generalize_proofs.html">generalize_proofs</a><br>
 <a class="nav_file" id="tactic/interactive.html" href="https://robertylewis.com/mathlib_docs/tactic/interactive.html">interactive</a><br>
+<a class="nav_file" id="tactic/library_note.html" href="https://robertylewis.com/mathlib_docs/tactic/library_note.html">library_note</a><br>
 <a class="nav_file" id="tactic/lift.html" href="https://robertylewis.com/mathlib_docs/tactic/lift.html">lift</a><br>
 <a class="nav_file" id="tactic/linarith.html" href="https://robertylewis.com/mathlib_docs/tactic/linarith.html">linarith</a><br>
 <a class="nav_file" id="tactic/lint.html" href="https://robertylewis.com/mathlib_docs/tactic/lint.html">lint</a><br>
@@ -1026,7 +1367,9 @@
 <a class="nav_file" id="tactic/rewrite.html" href="https://robertylewis.com/mathlib_docs/tactic/rewrite.html">rewrite</a><br>
 <a class="nav_file" id="tactic/ring.html" href="https://robertylewis.com/mathlib_docs/tactic/ring.html">ring</a><br>
 <a class="nav_file" id="tactic/ring2.html" href="https://robertylewis.com/mathlib_docs/tactic/ring2.html">ring2</a><br>
+<a class="nav_file" id="tactic/ring_exp.html" href="https://robertylewis.com/mathlib_docs/tactic/ring_exp.html">ring_exp</a><br>
 <a class="nav_file" id="tactic/scc.html" href="https://robertylewis.com/mathlib_docs/tactic/scc.html">scc</a><br>
+<a class="nav_file" id="tactic/simp_rw.html" href="https://robertylewis.com/mathlib_docs/tactic/simp_rw.html">simp_rw</a><br>
 <a class="nav_file" id="tactic/simpa.html" href="https://robertylewis.com/mathlib_docs/tactic/simpa.html">simpa</a><br>
 <a class="nav_file" id="tactic/simps.html" href="https://robertylewis.com/mathlib_docs/tactic/simps.html">simps</a><br>
 <a class="nav_file" id="tactic/slice.html" href="https://robertylewis.com/mathlib_docs/tactic/slice.html">slice</a><br>
@@ -1094,6 +1437,7 @@
 <a class="nav_file" id="topology/metric_space/cau_seq_filter.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/cau_seq_filter.html">cau_seq_filter</a><br>
 <a class="nav_file" id="topology/metric_space/closeds.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/closeds.html">closeds</a><br>
 <a class="nav_file" id="topology/metric_space/completion.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/completion.html">completion</a><br>
+<a class="nav_file" id="topology/metric_space/contracting.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/contracting.html">contracting</a><br>
 <a class="nav_file" id="topology/metric_space/emetric_space.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/emetric_space.html">emetric_space</a><br>
 <a class="nav_file" id="topology/metric_space/gluing.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gluing.html">gluing</a><br>
 <a class="nav_file" id="topology/metric_space/gromov_hausdorff.html" href="https://robertylewis.com/mathlib_docs/topology/metric_space/gromov_hausdorff.html">gromov_hausdorff</a><br>
@@ -1134,6 +1478,7 @@
 <a class="nav_file" id="topology/dense_embedding.html" href="https://robertylewis.com/mathlib_docs/topology/dense_embedding.html">dense_embedding</a><br>
 <a class="nav_file" id="topology/homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/homeomorph.html">homeomorph</a><br>
 <a class="nav_file" id="topology/list.html" href="https://robertylewis.com/mathlib_docs/topology/list.html">list</a><br>
+<a class="nav_file" id="topology/local_extr.html" href="https://robertylewis.com/mathlib_docs/topology/local_extr.html">local_extr</a><br>
 <a class="nav_file" id="topology/local_homeomorph.html" href="https://robertylewis.com/mathlib_docs/topology/local_homeomorph.html">local_homeomorph</a><br>
 <a class="nav_file" id="topology/maps.html" href="https://robertylewis.com/mathlib_docs/topology/maps.html">maps</a><br>
 <a class="nav_file" id="topology/opens.html" href="https://robertylewis.com/mathlib_docs/topology/opens.html">opens</a><br>
@@ -1143,458 +1488,10 @@
 <a class="nav_file" id="topology/stone_cech.html" href="https://robertylewis.com/mathlib_docs/topology/stone_cech.html">stone_cech</a><br>
 <a class="nav_file" id="topology/subset_properties.html" href="https://robertylewis.com/mathlib_docs/topology/subset_properties.html">subset_properties</a><br>
 <a class="nav_file" id="topology/topological_fiber_bundle.html" href="https://robertylewis.com/mathlib_docs/topology/topological_fiber_bundle.html">topological_fiber_bundle</a><br>
-<a class="nav_file" id="topology/whoa.html" href="https://robertylewis.com/mathlib_docs/topology/whoa.html">whoa</a><br>
 
 
 </div>
 
-</div></div>
-<div class="column middle"><div class="content">
-<div class="mod_doc">
-<a id="top"></a>
-<h1>Order for Rational Numbers</h1>
-
-<h2>Summary</h2>
-
-<p>We define the order on <code>ℚ</code>, prove that <code>ℚ</code> is a discrete, linearly ordered field, and define
-functions such as <code>abs</code> and <code>sqrt</code> that depend on this order.</p>
-
-<h2>Notations</h2>
-
-<ul>
-<li><code>/.</code> is infix notation for <code>rat.mk</code>.</li>
-</ul>
-
-<h2>Tags</h2>
-
-<p>rat, rationals, field, ℚ, numerator, denominator, num, denom, order, ordering, sqrt, abs</p>
-</div><div class="def"><a id="rat.nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L28">rat.nonneg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℚ → Prop</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="rat.mk_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L31">rat.mk_nonneg</a></span> <span class="decl_args">(a : ℤ)</span> <span class="decl_args">:</span>       <div class="decl_type">0 < b → (<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> (<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> a b) ↔ 0 ≤ a)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{b : ℤ}</span></li>
-<li>Attributes: simp</li>
-
-
-</ul></div><div class="thm"><a id="rat.nonneg_add"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L44">rat.nonneg_add</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> a → <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> b → <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> (a + b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.nonneg_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L55">rat.nonneg_mul</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> a → <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> b → <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> (a * b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.nonneg_antisymm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L65">rat.nonneg_antisymm</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> a → <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> (-a) → a = 0</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.nonneg_total"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L73">rat.nonneg_total</a></span> <span class="decl_args">(a : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> a ∨ <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> (-a)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="rat.decidable_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L77">rat.decidable_nonneg</a></span> <span class="decl_args">(a : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable">decidable</a> (<a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> a)</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L80">rat.le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℚ → ℚ → Prop</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="rat.has_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L82">rat.has_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_le">has_le</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.decidable_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L84">rat.decidable_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#decidable_rel">decidable_rel</a> has_le.le</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="rat.le_def"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L87">rat.le_def</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → 0 < d → (<a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> a b ≤ <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> c d ↔ a * d ≤ c * b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b c d : ℤ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.le_refl"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L93">rat.le_refl</a></span> <span class="decl_args">(a : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≤ a</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="rat.le_total"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L96">rat.le_total</a></span> <span class="decl_args">(a b : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">a ≤ b ∨ b ≤ a</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="rat.le_antisymm"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L99">rat.le_antisymm</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b → b ≤ a → a = b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.le_trans"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L103">rat.le_trans</a></span>  <span class="decl_args">:</span>       <div class="decl_type">a ≤ b → b ≤ c → a ≤ c</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b c : ℚ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="rat.decidable_linear_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L107">rat.decidable_linear_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#decidable_linear_order">decidable_linear_order</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.has_lt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L117">rat.has_lt</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#has_lt">has_lt</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.lattice.distrib_lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L118">rat.lattice.distrib_lattice</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.distrib_lattice">lattice.distrib_lattice</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.lattice.lattice"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L119">rat.lattice.lattice</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.lattice">lattice.lattice</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.lattice.semilattice_inf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L120">rat.lattice.semilattice_inf</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_inf">lattice.semilattice_inf</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.lattice.semilattice_sup"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L121">rat.lattice.semilattice_sup</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.semilattice_sup">lattice.semilattice_sup</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.lattice.has_inf"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L122">rat.lattice.has_inf</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.has_inf">lattice.has_inf</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.lattice.has_sup"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L123">rat.lattice.has_sup</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/order/lattice.html#lattice.has_sup">lattice.has_sup</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.linear_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L124">rat.linear_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#linear_order">linear_order</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.partial_order"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L125">rat.partial_order</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#partial_order">partial_order</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.preorder"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L126">rat.preorder</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/order.html#preorder">preorder</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="rat.le_def'"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L128">rat.le_def'</a></span>  <span class="decl_args">:</span>       <div class="decl_type">p ≤ q ↔ p.num * ↑(q.denom) ≤ q.num * ↑(p.denom)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{p q : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.lt_def"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L135">rat.lt_def</a></span>  <span class="decl_args">:</span>       <div class="decl_type">p < q ↔ p.num * ↑(q.denom) < q.num * ↑(p.denom)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{p q : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.nonneg_iff_zero_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L145">rat.nonneg_iff_zero_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.nonneg">rat.nonneg</a> a ↔ 0 ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.num_nonneg_iff_zero_le"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L148">rat.num_nonneg_iff_zero_le</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 ≤ a.num ↔ 0 ≤ a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.add_le_add_left"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L151">rat.add_le_add_left</a></span>  <span class="decl_args">:</span>       <div class="decl_type">c + a ≤ c + b ↔ a ≤ b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b c : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.mul_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L154">rat.mul_nonneg</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 ≤ a → 0 ≤ b → 0 ≤ a * b</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b : ℚ}</span></li>
-
-
-
-</ul></div><div class="def"><a id="rat.discrete_linear_ordered_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L157">rat.discrete_linear_ordered_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#discrete_linear_ordered_field">discrete_linear_ordered_field</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.linear_ordered_field"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L169">rat.linear_ordered_field</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_field.html#linear_ordered_field">linear_ordered_field</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.decidable_linear_ordered_comm_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L170">rat.decidable_linear_ordered_comm_ring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#decidable_linear_ordered_comm_ring">decidable_linear_ordered_comm_ring</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.linear_ordered_comm_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L171">rat.linear_ordered_comm_ring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_comm_ring">linear_ordered_comm_ring</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.linear_ordered_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L172">rat.linear_ordered_ring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_ring">linear_ordered_ring</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.ordered_ring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L173">rat.ordered_ring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#ordered_ring">ordered_ring</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.decidable_linear_ordered_semiring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L174">rat.decidable_linear_ordered_semiring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#decidable_linear_ordered_semiring">decidable_linear_ordered_semiring</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.linear_ordered_semiring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L175">rat.linear_ordered_semiring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#linear_ordered_semiring">linear_ordered_semiring</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.ordered_semiring"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L176">rat.ordered_semiring</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_ring.html#ordered_semiring">ordered_semiring</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.decidable_linear_ordered_comm_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L177">rat.decidable_linear_ordered_comm_group</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#decidable_linear_ordered_comm_group">decidable_linear_ordered_comm_group</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.ordered_comm_group"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L178">rat.ordered_comm_group</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#ordered_comm_group">ordered_comm_group</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.ordered_cancel_comm_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L179">rat.ordered_cancel_comm_monoid</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/ordered_group.html#ordered_cancel_comm_monoid">ordered_cancel_comm_monoid</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="def"><a id="rat.ordered_comm_monoid"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L180">rat.ordered_comm_monoid</a></span>  <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/algebra/ordered_group.html#ordered_comm_monoid">ordered_comm_monoid</a> ℚ</div>
-<p></p>
-       <ul>
-
-<li>Attributes: instance</li>
-
-
-</ul></div><div class="thm"><a id="rat.num_pos_iff_pos"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L184">rat.num_pos_iff_pos</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < a.num ↔ 0 < a</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.div_lt_div_iff_mul_lt_mul"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L189">rat.div_lt_div_iff_mul_lt_mul</a></span>  <span class="decl_args">:</span>       <div class="decl_type">0 < b → 0 < d → (↑a / ↑b < ↑c / ↑d ↔ a * d < c * b)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{a b c d : ℤ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.lt_one_iff_num_lt_denom"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L198">rat.lt_one_iff_num_lt_denom</a></span>  <span class="decl_args">:</span>       <div class="decl_type">q < 1 ↔ q.num < ↑(q.denom)</div>
-<p></p>
-       <ul>
-<li>Implicit arguments: <span class="impl_arg">{q : ℚ}</span></li>
-
-
-
-</ul></div><div class="thm"><a id="rat.abs_def"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L210">rat.abs_def</a></span> <span class="decl_args">(q : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> q = <a href="https://robertylewis.com/mathlib_docs/data/rat/basic.html#rat.mk">rat.mk</a> ↑(<a href="https://robertylewis.com/mathlib_docs/core/init/data/int/basic.html#int.nat_abs">int.nat_abs</a> (q.num)) ↑(q.denom)</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="def"><a id="rat.sqrt"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L226">rat.sqrt</a></span>  <span class="decl_args">:</span>       <div class="decl_type">ℚ → ℚ</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="rat.sqrt_eq"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L228">rat.sqrt_eq</a></span> <span class="decl_args">(q : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt">rat.sqrt</a> (q * q) = <a href="https://robertylewis.com/mathlib_docs/core/init/algebra/functions.html#abs">abs</a> q</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="rat.exists_mul_self"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L231">rat.exists_mul_self</a></span> <span class="decl_args">(x : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">(∃ (q : ℚ), q * q = x) ↔ <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt">rat.sqrt</a> x * <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt">rat.sqrt</a> x = x</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div><div class="thm"><a id="rat.sqrt_nonneg"></a>      <span class="decl_name"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean#L235">rat.sqrt_nonneg</a></span> <span class="decl_args">(q : ℚ)</span> <span class="decl_args">:</span>       <div class="decl_type">0 ≤ <a href="https://robertylewis.com/mathlib_docs/data/rat/order.html#rat.sqrt">rat.sqrt</a> q</div>
-<p></p>
-       <ul>
-
-
-
-
-</ul></div>
-</div></div>
-<div class="column right"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">order</a></h2><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/3f9c4d886493afe2dbaada17d25e486b1872e047/src/data/rat/order.lean">(view source on GitHub)</a></div><a href="#rat.abs_def">rat.abs_def</a><br>
-<a href="#rat.add_le_add_left">rat.add_le_add_left</a><br>
-<a href="#rat.decidable_le">rat.decidable_le</a><br>
-<a href="#rat.decidable_linear_order">rat.decidable_linear_order</a><br>
-<a href="#rat.decidable_linear_ordered_comm_group">rat.decidable_linear_ordered_comm_group</a><br>
-<a href="#rat.decidable_linear_ordered_comm_ring">rat.decidable_linear_ordered_comm_ring</a><br>
-<a href="#rat.decidable_linear_ordered_semiring">rat.decidable_linear_ordered_semiring</a><br>
-<a href="#rat.decidable_nonneg">rat.decidable_nonneg</a><br>
-<a href="#rat.discrete_linear_ordered_field">rat.discrete_linear_ordered_field</a><br>
-<a href="#rat.div_lt_div_iff_mul_lt_mul">rat.div_lt_div_iff_mul_lt_mul</a><br>
-<a href="#rat.exists_mul_self">rat.exists_mul_self</a><br>
-<a href="#rat.has_le">rat.has_le</a><br>
-<a href="#rat.has_lt">rat.has_lt</a><br>
-<a href="#rat.lattice.distrib_lattice">rat.lattice.distrib_lattice</a><br>
-<a href="#rat.lattice.has_inf">rat.lattice.has_inf</a><br>
-<a href="#rat.lattice.has_sup">rat.lattice.has_sup</a><br>
-<a href="#rat.lattice.lattice">rat.lattice.lattice</a><br>
-<a href="#rat.lattice.semilattice_inf">rat.lattice.semilattice_inf</a><br>
-<a href="#rat.lattice.semilattice_sup">rat.lattice.semilattice_sup</a><br>
-<a href="#rat.le">rat.le</a><br>
-<a href="#rat.le_antisymm">rat.le_antisymm</a><br>
-<a href="#rat.le_def">rat.le_def</a><br>
-<a href="#rat.le_def'">rat.le_def'</a><br>
-<a href="#rat.le_refl">rat.le_refl</a><br>
-<a href="#rat.le_total">rat.le_total</a><br>
-<a href="#rat.le_trans">rat.le_trans</a><br>
-<a href="#rat.linear_order">rat.linear_order</a><br>
-<a href="#rat.linear_ordered_comm_ring">rat.linear_ordered_comm_ring</a><br>
-<a href="#rat.linear_ordered_field">rat.linear_ordered_field</a><br>
-<a href="#rat.linear_ordered_ring">rat.linear_ordered_ring</a><br>
-<a href="#rat.linear_ordered_semiring">rat.linear_ordered_semiring</a><br>
-<a href="#rat.lt_def">rat.lt_def</a><br>
-<a href="#rat.lt_one_iff_num_lt_denom">rat.lt_one_iff_num_lt_denom</a><br>
-<a href="#rat.mk_nonneg">rat.mk_nonneg</a><br>
-<a href="#rat.mul_nonneg">rat.mul_nonneg</a><br>
-<a href="#rat.nonneg">rat.nonneg</a><br>
-<a href="#rat.nonneg_add">rat.nonneg_add</a><br>
-<a href="#rat.nonneg_antisymm">rat.nonneg_antisymm</a><br>
-<a href="#rat.nonneg_iff_zero_le">rat.nonneg_iff_zero_le</a><br>
-<a href="#rat.nonneg_mul">rat.nonneg_mul</a><br>
-<a href="#rat.nonneg_total">rat.nonneg_total</a><br>
-<a href="#rat.num_nonneg_iff_zero_le">rat.num_nonneg_iff_zero_le</a><br>
-<a href="#rat.num_pos_iff_pos">rat.num_pos_iff_pos</a><br>
-<a href="#rat.ordered_cancel_comm_monoid">rat.ordered_cancel_comm_monoid</a><br>
-<a href="#rat.ordered_comm_group">rat.ordered_comm_group</a><br>
-<a href="#rat.ordered_comm_monoid">rat.ordered_comm_monoid</a><br>
-<a href="#rat.ordered_ring">rat.ordered_ring</a><br>
-<a href="#rat.ordered_semiring">rat.ordered_semiring</a><br>
-<a href="#rat.partial_order">rat.partial_order</a><br>
-<a href="#rat.preorder">rat.preorder</a><br>
-<a href="#rat.sqrt">rat.sqrt</a><br>
-<a href="#rat.sqrt_eq">rat.sqrt_eq</a><br>
-<a href="#rat.sqrt_nonneg">rat.sqrt_nonneg</a><br>
 </div></div>
 
         </div>
