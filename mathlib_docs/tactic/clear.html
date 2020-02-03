@@ -5,10 +5,22 @@
         <link rel="shortcut icon" href="https://leanprover-community.github.io/assets/img/lean.ico">
         <title>mathlib docs: tactic.clear</title>
         <meta charset="UTF-8">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\(', '\)']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </head>
     <body>
         <div class="row"><div class="column left"><div class="internal_nav">
-<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">tactic.clear</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/clear.lean">View source</a></div><a href="#tactic.clear'">tactic.clear'</a><br>
+<h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">tactic.clear</a></h2><div class="gh_nav_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1/src/tactic/clear.lean">View source</a></div><a href="#tactic.clear'">tactic.clear'</a><br>
 <a href="#tactic.interactive.clear'">tactic.interactive.clear'</a><br>
 <a href="#tactic.interactive.clear_dependent">tactic.interactive.clear_dependent</a><br>
 </div></div>
@@ -31,21 +43,21 @@ depend on the given hypotheses.</p></li>
 <p>The implementation (ab)uses the native <code>revert_lst</code>, which can figure out
 dependencies between hypotheses. This implementation strategy was suggested by
 Simon Hudon.</p>
-</div><div class="decl def" id="tactic.clear'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/clear.lean#L36">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/clear.html#tactic.clear'">tactic.clear'</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr_set">expr_set</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
+</div><div class="decl def" id="tactic.clear'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1/src/tactic/clear.lean#L36">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/clear.html#tactic.clear'">tactic.clear'</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/core.html#bool">bool</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/expr.html#expr_set">expr_set</a> → <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
    <p>Clears all the hypotheses in <code>hyps</code>. The tactic fails if any of the <code>hyps</code>
 is not a local or if the target depends on any of the <code>hyps</code>.</p>
 
 <p>If there are local hypotheses or definitions, say <code>H</code>, which are not in <code>hyps</code>
 but depend on one of the <code>hyps</code>, what we do depends on <code>clear_dependent</code>. If it
 is true, <code>H</code> is implicitly also cleared. If it is false, <code>clear'</code> fails.</p>
-  </ul></div><div class="decl def" id="tactic.interactive.clear'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/clear.lean#L67">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/clear.html#tactic.interactive.clear'">tactic.interactive.clear'</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a>
+  </ul></div><div class="decl def" id="tactic.interactive.clear'"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1/src/tactic/clear.lean#L67">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/clear.html#tactic.interactive.clear'">tactic.interactive.clear'</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a>
   <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many" title="lean.parser.many">many</a> →
 <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
    <p>Clears the given hypotheses. In contrast to <code>clear</code>, the order of hypotheses
 does not matter, even if there are dependencies between them. Fails if the
 target or any local hypotheses (other than the given ones) depend on the given
 hypotheses.</p>
-  </ul></div><div class="decl def" id="tactic.interactive.clear_dependent"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1372328b29131af3868ceedcc67e7a8c59/src/tactic/clear.lean#L74">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/clear.html#tactic.interactive.clear_dependent">tactic.interactive.clear_dependent</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a>
+  </ul></div><div class="decl def" id="tactic.interactive.clear_dependent"><div class="gh_link"><a href="https://github.com/leanprover-community/mathlib/blob/601d5b1/src/tactic/clear.lean#L74">view source</a></div>      <div class="decl_header impl_collapsed">       <span class="decl_meta">meta</span> <span class="decl_kind">def</span>       <span class="decl_name"><a href="https://robertylewis.com/mathlib_docs/tactic/clear.html#tactic.interactive.clear_dependent">tactic.interactive.clear_dependent</a></span>  <span class="decl_args">:</span>     <div class="decl_type"><a href="https://robertylewis.com/mathlib_docs/core/init/meta/interactive_base.html#interactive.parse">interactive.parse</a>
   <a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.ident">lean.parser.ident</a>.<a href="https://robertylewis.com/mathlib_docs/core/init/meta/lean/parser.html#lean.parser.many" title="lean.parser.many">many</a> →
 <a href="https://robertylewis.com/mathlib_docs/core/init/meta/tactic.html#tactic">tactic</a> <a href="https://robertylewis.com/mathlib_docs/core/init/core.html#unit">unit</a></div></div>
    <p>Clears the given hypotheses and any other hypotheses that depend on them.
