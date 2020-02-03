@@ -9,11 +9,20 @@
         <script>
         MathJax = {
           tex: {
-            inlineMath: [['$', '$'], ['\(', '\)']]
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
           },
-          svg: {
-            fontCache: 'global'
-          }
+          options: {
+              skipHtmlTags: [
+                  'script', 'noscript', 'style', 'textarea', 'pre',
+                  'code', 'annotation', 'annotation-xml',
+                  'decl', 'decl_meta', 'attributes', 'decl_args', 'decl_header', 'decl_name',
+                  'decl_type', 'equation', 'equations', 'structure_field', 'structure_fields',
+                  'constructor', 'constructors', 'instances'
+              ],
+              ignoreHtmlClass: 'tex2jax_ignore',
+              processHtmlClass: 'tex2jax_process',
+          },
         };
         </script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -86,6 +95,13 @@
 <p>In addition to the <a href="https://leanprover.github.io/reference/tactics.html">tactics found in the core library</a>,
 mathlib provides a number of specific interactive tactics.
 Here we document the mostly commonly used ones, as well as some underdocumented tactics from core.</p>
+
+<pre><code>f $ g $ h a
+</code></pre>
+
+<p>and inline <code>f $ g $ h a</code></p>
+
+<p>and otherwise f $ g $ h a $\mathbb{R}$</p>
 <div class="tactic">
 <h2 id="abel"><a href="#abel">abel</a></h2>
 <p>Evaluate expressions in the language of <em>additive</em>, commutative monoids and groups.
