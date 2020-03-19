@@ -33,7 +33,7 @@
 <h1>Lean <a href="https://leanprover-community.github.io">mathlib</a> docs</h1><h2><a href="#top">attributes</a></h2>
 <br>Filter by tag:<br>
 <select id="tagfilter" multiple>
-<option value="category theory">category theory</option>
+<option value="category-theory">category theory</option>
 <option value="coercions">coercions</option>
 <option value="linting">linting</option>
 <option value="rewrite">rewrite</option>
@@ -47,7 +47,7 @@
 <div class="taclink linting"><a href="#linter">linter</a></div>
 <div class="taclink linting"><a href="#nolint">nolint</a></div>
 <div class="taclink coercions"><a href="#norm_cast attributes">norm_cast attributes</a></div>
-<div class="taclink category theory"><a href="#reassoc">reassoc</a></div>
+<div class="taclink category-theory"><a href="#reassoc">reassoc</a></div>
 <div class="taclink simplification"><a href="#simps">simps</a></div>
 <div class="taclink search"><a href="#tidy">tidy</a></div>
 </div></div>
@@ -152,14 +152,13 @@ x.x = y.x → x.y = y.y → x.z == y.z → x.k = y.k → x = y
 lemma foo.ext_iff : ∀ {α : Type u_1} (x y : foo α),
 x = y ↔ x.x = y.x ∧ x.y = y.y ∧ x.z == y.z ∧ x.k = y.k
 </code></pre>
-<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/ext.html#extensional_attribute">extensional_attribute</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.ext</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/ext.html#extensional_attribute">extensional_attribute</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.ext</li></ul></div>
 <div class="tactic untagged">
 <h2 id="higher_order"><a href="#higher_order">higher_order</a></h2>
 <p>A user attribute that applies to lemmas of the shape <code>∀ x, f (g x) = h x</code>.
 It derives an auxiliary lemma of the form <code>f ∘ g = h</code> for reasoning about higher-order functions.</p>
-<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/core.html#tactic.higher_order_attr">tactic.higher_order_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li>
-<li>import tactic.core</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/core.html#tactic.higher_order_attr">tactic.higher_order_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li></ul></div>
 <div class="tactic rewrite search">
 <h2 id="hint_tactic"><a href="#hint_tactic">hint_tactic</a></h2>
 <p>An attribute marking a <code>tactic unit</code> or <code>tactic string</code> which should be used by the <code>hint</code>
@@ -173,13 +172,13 @@ tactic.</p>
 Linters should be defined in the <code>linter</code> namespace.
 A linter <code>linter.my_new_linter</code> is referred to as <code>my_new_linter</code> (without the <code>linter</code> namespace)
 when used in <code>#lint</code>.</p>
-<details class="tags"><summary>Tags</summary><ul><li>linting</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#linter_attr">linter_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.lint</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>linting</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#linter_attr">linter_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.lint</li></ul></div>
 <div class="tactic linting">
 <h2 id="nolint"><a href="#nolint">nolint</a></h2>
 <p>Defines the user attribute <code>nolint</code> for skipping <code>#lint</code></p>
-<details class="tags"><summary>Tags</summary><ul><li>linting</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#nolint_attr">nolint_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.lint</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>linting</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#nolint_attr">nolint_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.lint</li></ul></div>
 <div class="tactic coercions">
 <h2 id="norm_cast attributes"><a href="#norm_cast attributes">norm_cast attributes</a></h2>
 <p>The <code>norm_cast</code> family of tactics works with three attributes,
@@ -212,7 +211,7 @@ int.cats_id : int.cast_id : ∀ (n : ℤ), ↑n = n
 <li><a href="https://robertylewis.com/mathlib_docs/tactic/norm_cast.html#norm_cast.elim_cast_attr">norm_cast.elim_cast_attr</a></li>
 <li><a href="https://robertylewis.com/mathlib_docs/tactic/norm_cast.html#norm_cast.squash_cast_attr">norm_cast.squash_cast_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.norm_cast</li>
 <li>import tactic.default</li></ul></div>
-<div class="tactic category theory">
+<div class="tactic category-theory">
 <h2 id="reassoc"><a href="#reassoc">reassoc</a></h2>
 <p>The <code>reassoc</code> attribute can be applied to a lemma</p>
 
@@ -227,8 +226,8 @@ lemma some_lemma : foo ≫ bar = baz := ...
 
 <p>The name of the produced lemma can be specified with <code>@[reassoc other_lemma_name]</code>. If
 <code>simp</code> is added first, the generated lemma will also have the <code>simp</code> attribute.</p>
-<details class="tags"><summary>Tags</summary><ul><li>category theory</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/reassoc_axiom.html#tactic.reassoc_attr">tactic.reassoc_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.reassoc_axiom</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>category theory</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/reassoc_axiom.html#tactic.reassoc_attr">tactic.reassoc_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.reassoc_axiom</li></ul></div>
 <div class="tactic simplification">
 <h2 id="simps"><a href="#simps">simps</a></h2>
 <p>The <code>@[simps]</code> attribute automatically derives lemmas specifying the projections of this
@@ -267,14 +266,14 @@ coercion.</li>
 <li>If one of the fields is a partially applied constructor, we will eta-expand it
 (this likely never happens).</li>
 </ul>
-<details class="tags"><summary>Tags</summary><ul><li>simplification</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/simps.html#simps_attr">simps_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.simps</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>simplification</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/simps.html#simps_attr">simps_attr</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.simps</li></ul></div>
 <div class="tactic search">
 <h2 id="tidy"><a href="#tidy">tidy</a></h2>
 <p>Tag interactive tactics (locally) with <code>[tidy]</code> to add them to the list of default tactics
 called by <code>tidy</code>.</p>
-<details class="tags"><summary>Tags</summary><ul><li>search</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/tidy.html#tactic.tidy.tidy_attribute">tactic.tidy.tidy_attribute</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.tidy</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>search</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/tidy.html#tactic.tidy.tidy_attribute">tactic.tidy.tidy_attribute</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.tidy</li></ul></div>
 
 </div></div>
 <div class="column right"><div class="nav">

@@ -34,23 +34,23 @@
 <br>Filter by tag:<br>
 <select id="tagfilter" multiple>
 <option value="arithmetic">arithmetic</option>
-<option value="category theory">category theory</option>
-<option value="decision procedure">decision procedure</option>
+<option value="category-theory">category theory</option>
+<option value="decision-procedure">decision procedure</option>
 <option value="documentation">documentation</option>
 <option value="environment">environment</option>
 <option value="expensive">expensive</option>
 <option value="linting">linting</option>
 <option value="localized">localized</option>
 <option value="notation">notation</option>
-<option value="proof display">proof display</option>
+<option value="proof-display">proof display</option>
 <option value="renaming">renaming</option>
 <option value="rewrite">rewrite</option>
 <option value="search">search</option>
 <option value="simplification">simplification</option>
-<option value="type classes">type classes</option>
+<option value="type-classes">type classes</option>
 <option value="untagged">untagged</option>
 </select><br><br>
-<div class="taclink proof display"><a href="##explode">#explode</a></div>
+<div class="taclink proof-display"><a href="##explode">#explode</a></div>
 <div class="taclink search"><a href="##find">#find</a></div>
 <div class="taclink environment"><a href="##where">#where</a></div>
 <div class="taclink rewrite search"><a href="#add_hint_tactic">add_hint_tactic</a></div>
@@ -59,12 +59,12 @@
 <div class="taclink untagged"><a href="#def_replacer">def_replacer</a></div>
 <div class="taclink untagged"><a href="#import_private">import_private</a></div>
 <div class="taclink documentation"><a href="#library_note">library_note</a></div>
-<div class="taclink expensive arithmetic decision procedure"><a href="#linarith">linarith</a></div>
+<div class="taclink expensive arithmetic decision-procedure"><a href="#linarith">linarith</a></div>
 <div class="taclink linting"><a href="#linting commands">linting commands</a></div>
-<div class="taclink localized notation type classes"><a href="#localized notation">localized notation</a></div>
+<div class="taclink localized notation type-classes"><a href="#localized notation">localized notation</a></div>
 <div class="taclink simplification"><a href="#mk_simp_attribute">mk_simp_attribute</a></div>
 <div class="taclink untagged"><a href="#new cmd">new cmd</a></div>
-<div class="taclink category theory"><a href="#reassoc_axiom">reassoc_axiom</a></div>
+<div class="taclink category-theory"><a href="#reassoc_axiom">reassoc_axiom</a></div>
 <div class="taclink untagged"><a href="#restate_axiom">restate_axiom</a></div>
 <div class="taclink untagged"><a href="#setup_tactic_parser">setup_tactic_parser</a></div>
 </div></div>
@@ -99,7 +99,7 @@ run_cmd tactic.skip -- this serves as a "barrier" between `import` and `#find`
 
 #find _ + _ = _ + _
 </code></pre>
-<div class="tactic proof display">
+<div class="tactic proof-display">
 <h2 id="#explode"><a href="##explode">#explode</a></h2>
 <p><code>#explode decl_name</code> displays a proof term in a line by line format somewhat akin to a Fitch style
 proof or the Metamath proof style.</p>
@@ -147,8 +147,8 @@ including the active namespace, open namespaces, and declared variables.</p>
 <p>This information is not "officially" accessible in the metaprogramming environment;
 <code>#where</code> retrieves it via a number of hacks that are not always reliable.
 While it is very useful as a quick reference, users should not assume its output is correct.</p>
-<details class="tags"><summary>Tags</summary><ul><li>environment</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/where.html#where.where_cmd">where.where_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.where</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>environment</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/where.html#where.where_cmd">where.where_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.where</li></ul></div>
 <div class="tactic rewrite search">
 <h2 id="add_hint_tactic"><a href="#add_hint_tactic">add_hint_tactic</a></h2>
 <p><code>add_hint_tactic t</code> runs the tactic <code>t</code> whenever <code>hint</code> is invoked.
@@ -198,8 +198,8 @@ and then the doc entry.</p>
 <p>Note that providing a badly formed <code>tactic_doc_entry</code> to the command can result in strange error
 messages.</p>
 <details class="tags"><summary>Tags</summary><ul><li>documentation</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/doc_commands.html#add_tactic_doc_command">add_tactic_doc_command</a></li>
-<li><a href="https://robertylewis.com/mathlib_docs/tactic/doc_commands.html#tactic.add_tactic_doc">tactic.add_tactic_doc</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.doc_commands</li>
-<li>import tactic.core</li></ul></div>
+<li><a href="https://robertylewis.com/mathlib_docs/tactic/doc_commands.html#tactic.add_tactic_doc">tactic.add_tactic_doc</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li>
+<li>import tactic.doc_commands</li></ul></div>
 <div class="tactic renaming">
 <h2 id="alias"><a href="#alias">alias</a></h2>
 <p>The <code>alias</code> command can be used to create copies
@@ -250,8 +250,8 @@ this is the first definition tagged with <code>@[foo]</code> since <code>def_rep
 custom input and output types. In this case all subsequent redefinitions must have the
 same type, or the type <code>α → β → tactic γ → tactic γ</code> or
 <code>α → β → option (tactic γ) → tactic γ</code> analogously to the previous cases.</p>
-<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/replacer.html#tactic.def_replacer_cmd">tactic.def_replacer_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.replacer</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/replacer.html#tactic.def_replacer_cmd">tactic.def_replacer_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.replacer</li></ul></div>
 <div class="tactic untagged">
 <h2 id="import_private"><a href="#import_private">import_private</a></h2>
 <p><code>import_private foo from bar</code> finds a private declaration <code>foo</code> in the same file as <code>bar</code>
@@ -260,8 +260,7 @@ and creates a local notation to refer to it.</p>
 <p><code>import_private foo</code> looks for <code>foo</code> in all imported files.</p>
 
 <p>When possible, make <code>foo</code> non-private rather than using this feature.</p>
-<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/core.html#tactic.import_private_cmd">tactic.import_private_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li>
-<li>import tactic.core</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/core.html#tactic.import_private_cmd">tactic.import_private_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li></ul></div>
 <div class="tactic documentation">
 <h2 id="library_note"><a href="#library_note">library_note</a></h2>
 <p>At various places in mathlib, we leave implementation notes that are referenced from many other
@@ -296,15 +295,15 @@ quicker than `mk_local_pis` (when applied to the type of all imported declaratio
 def f := pi_binders ...
 </code></pre>
 <details class="tags"><summary>Tags</summary><ul><li>documentation</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/doc_commands.html#library_note">library_note</a></li>
-<li><a href="https://robertylewis.com/mathlib_docs/tactic/doc_commands.html#tactic.add_library_note">tactic.add_library_note</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.doc_commands</li>
-<li>import tactic.core</li></ul></div>
-<div class="tactic expensive arithmetic decision procedure">
+<li><a href="https://robertylewis.com/mathlib_docs/tactic/doc_commands.html#tactic.add_library_note">tactic.add_library_note</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li>
+<li>import tactic.doc_commands</li></ul></div>
+<div class="tactic expensive arithmetic decision-procedure">
 <h2 id="linarith"><a href="#linarith">linarith</a></h2>
 <p>the linarith tactic</p>
 <details class="tags"><summary>Tags</summary><ul><li>expensive</li>
 <li>arithmetic</li>
-<li>decision procedure</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/linarith.html#tactic.interactive.linarith">tactic.interactive.linarith</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.linarith</li>
-<li>import tactic.default</li></ul></div>
+<li>decision procedure</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/linarith.html#tactic.interactive.linarith">tactic.interactive.linarith</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.linarith</li></ul></div>
 <div class="tactic linting">
 <h2 id="linting commands"><a href="#linting commands">linting commands</a></h2>
 <p>User commands to spot common mistakes in the code</p>
@@ -366,9 +365,9 @@ omits it from only the specified linter checks.</p>
 <li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#lint_mathlib_cmd">lint_mathlib_cmd</a></li>
 <li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#lint_all_cmd">lint_all_cmd</a></li>
 <li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#list_linters">list_linters</a></li>
-<li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#apply_nolint_cmd">apply_nolint_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.lint</li>
-<li>import tactic.default</li></ul></div>
-<div class="tactic localized notation type classes">
+<li><a href="https://robertylewis.com/mathlib_docs/tactic/lint.html#apply_nolint_cmd">apply_nolint_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.lint</li></ul></div>
+<div class="tactic localized notation type-classes">
 <h2 id="localized notation"><a href="#localized notation">localized notation</a></h2>
 <p>This consists of two user-commands which allow you to declare notation and commands localized to a
 namespace.</p>
@@ -431,13 +430,12 @@ not available, you should use</p>
 <pre><code>run_cmd mk_simp_attr `simp_name
 run_cmd add_doc_string `simp_attr.simp_name "Description of the simp set here"
 </code></pre>
-<details class="tags"><summary>Tags</summary><ul><li>simplification</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/core.html#tactic.mk_simp_attribute_cmd">tactic.mk_simp_attribute_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li>
-<li>import tactic.core</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>simplification</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/core.html#tactic.mk_simp_attribute_cmd">tactic.mk_simp_attribute_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li></ul></div>
 <div class="tactic untagged">
 <h2 id="new cmd"><a href="#new cmd">new cmd</a></h2>
 <p>new cmd description</p>
 <details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/core/system/io.html#io.fs.read">io.fs.read</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import system.io</li></ul></div>
-<div class="tactic category theory">
+<div class="tactic category-theory">
 <h2 id="reassoc_axiom"><a href="#reassoc_axiom">reassoc_axiom</a></h2>
 <p>When declaring a class of categories, the axioms can be reformulated to be more amenable
 to manipulation in right associated expressions:</p>
@@ -460,8 +458,8 @@ reassoc_axiom some_class.bar
 
 <pre><code>attribute [simp, reassoc] some_class.bar
 </code></pre>
-<details class="tags"><summary>Tags</summary><ul><li>category theory</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/reassoc_axiom.html#tactic.reassoc_cmd">tactic.reassoc_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.reassoc_axiom</li>
-<li>import tactic.default</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>category theory</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/reassoc_axiom.html#tactic.reassoc_cmd">tactic.reassoc_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.default</li>
+<li>import tactic.reassoc_axiom</li></ul></div>
 <div class="tactic untagged">
 <h2 id="restate_axiom"><a href="#restate_axiom">restate_axiom</a></h2>
 <p><code>restate_axiom</code> makes a new copy of a structure field, first definitionally simplifying the type.
@@ -494,8 +492,7 @@ example (z : A) : z.x = 1 := by rw A.f
 interactive tactics, and declares the local postfix notation <code>?</code> for <code>optional</code> and <code>*</code> for <code>many</code>.
 It does <em>not</em> use the <code>namespace</code> command, so it will typically be used after
 <code>namespace tactic.interactive</code>.</p>
-<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/core.html#tactic.setup_tactic_parser_cmd">tactic.setup_tactic_parser_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li>
-<li>import tactic.core</li></ul></div>
+<details class="tags"><summary>Tags</summary><ul><li>untagged</li></ul></details><details class="rel_decls"><summary>Related declarations</summary><ul><li><a href="https://robertylewis.com/mathlib_docs/tactic/core.html#tactic.setup_tactic_parser_cmd">tactic.setup_tactic_parser_cmd</a></li></ul></details><details class="imports"><summary>Import using</summary><ul><li>import tactic.core</li></ul></div>
 
 </div></div>
 <div class="column right"><div class="nav">

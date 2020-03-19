@@ -67,16 +67,20 @@ for (const impl_collapsed of document.getElementsByClassName('impl_collapsed')) 
 
 
 
-function filterSelectionClass(c, classname) {
-    var x, i;
-    x = document.getElementsByClassName(classname);
-    //if (c == "all") c = "";
-    //cs = c.split(",");
-    // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-    for (i = 0; i < x.length; i++) {
-      w3AddClass(x[i], "hide");
-      for (j = 0; j < c.length; j++) { 
-          if (x[i].className.indexOf(c[j]) > -1) w3RemoveClass(x[i], "hide");
+function filterSelectionClass(tagNames, classname) {
+    if (tagNames.length == 0) {
+      for (const elem of document.getElementsByClassName(classname)) {
+        elem.classList.remove("hide");
+      }
+    } else {
+      // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+      for (const elem of document.getElementsByClassName(classname)) {
+        elem.classList.add("hide");
+        for (const tagName of tagNames) { 
+            if (elem.classList.contains(tagName)) {
+              elem.classList.remove("hide");
+            }
+        }
       }
     }
   }
@@ -86,32 +90,7 @@ function filterSelectionClass(c, classname) {
     filterSelectionClass(c, "taclink");
   }
 
-// Show filtered elements
-function w3AddClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-      if (arr1.indexOf(arr2[i]) == -1) {
-        element.className += " " + arr2[i];
-      }
-    }
-  }
-  
-  // Hide elements that are not selected
-  function w3RemoveClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-      while (arr1.indexOf(arr2[i]) > -1) {
-        arr1.splice(arr1.indexOf(arr2[i]), 1);
-      }
-    }
-    element.className = arr1.join(" ");
-  }
-
-  document.multiselect('#tagfilter')
+document.multiselect('#tagfilter')
 var select = document.getElementById("tagfilter");
 
 function updateDisplay() {
@@ -122,10 +101,10 @@ function updateDisplay() {
 function getSelectValues(select) {
     var result = [];
     var options = select && select.options;
-    var opt;
+    //var opt;
   
-    for (var i=0, iLen=options.length; i<iLen; i++) {
-      opt = options[i];
+    for (const opt of options) {
+      //opt = options[i];
   
       if (opt.selected) {
         result.push(opt.value || opt.text);
