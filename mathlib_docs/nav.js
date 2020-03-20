@@ -90,33 +90,41 @@ function filterSelectionClass(tagNames, classname) {
     filterSelectionClass(c, "taclink");
   }
 
-document.multiselect('#tagfilter')
-var select = document.getElementById("tagfilter");
+var filterBoxes = document.getElementsByClassName("tagfilter");
 
 function updateDisplay() {
     //alert(getSelectValues(select));
-    filterSelection(getSelectValues(select));
+    filterSelection(getSelectValues());
 }
 
-function getSelectValues(select) {
+function getSelectValues() {
     var result = [];
-    var options = select && select.options;
-    //var opt;
   
-    for (const opt of options) {
-      //opt = options[i];
+    for (const opt of filterBoxes) {
   
-      if (opt.selected) {
-        result.push(opt.value || opt.text);
+      if (opt.checked) {
+        result.push(opt.value);
       }
     }
     return result;
   }
 
+function setSelectVal(val) {
+  for (const opt of filterBoxes) {
+    opt.checked = val;
+  }
+}
 
+updateDisplay();
+
+for (const opt of filterBoxes) {
+  opt.addEventListener('change', updateDisplay);
+}
+
+document.getElementById("tagfilter-selectall").addEventListener('change', function() {
+  setSelectVal(this.checked);
   updateDisplay();
-
-select_input = document.getElementById("tagfilter_itemList")
+});
 
 //select.addEventListener("click", function() { updateDisplay(); });
 
