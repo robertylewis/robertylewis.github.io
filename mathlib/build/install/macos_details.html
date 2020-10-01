@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://robertylewis.com/mathlib//css/lean.css" >
+  <link rel="shortcut icon" href="https://robertylewis.com/mathlib//img/favicon.ico">
+	<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Merriweather:700">
+    
+
+	<script>
+                function buildShortcutsForStructures(names) {
+                        const o = {}
+                        names.forEach(name => o[name] = `\\mathbb\{${name}\}`)
+                        return o
+                }
+		MathJax = {
+			  tex: {
+                                  macros: {
+                                          ...buildShortcutsForStructures(["R", "Q", "Z", "N", "C"]),
+                                  },
+				      inlineMath: [['$', '$'], ['\\(', '\\)']]
+				    },
+		};
+	</script>
+	<script type="text/javascript" id="MathJax-script" async
+		  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+	</script>
+
+	<title>Controlled installation of Lean and mathlib on MacOS</title>
+  </head>
+  <body>
+  <div id="wrapper">
+  <nav class="navbar navbar-expand-lg navbar-light bg-gradient-light d-md-none">
+    <div class="d-flex flex-grow-1">
+		<a class="navbar-brand" href="https://robertylewis.com/mathlib/index.html">Lean Community
+    </a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  <div class="container-fluid"><div class="row">
+    <nav id="navbar" class="col-md-3 col-xl-2 d-md-block bg-light sidebar collapse navbar navbar-light pb-4">
+      <div class="d-sm-none d-md-block"><a class="navbar-brand" href="https://robertylewis.com/mathlib/index.html">Lean Community</a></div>
+      <div>
+        <h6 class="sidebar-heading px-3 mt-4 mb-1">Installation</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/get_started.html">Get started</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/install/linux.html">Linux installation</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/install/debian.html">Debian installation</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/install/macos.html">MacOS installation</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/install/windows.html">Windows installation</a></li>
+        
+          <li class="nav-item"><a href="https://leanprover-community.github.io/lean-web-editor">Online version (no installation)</a></li>
+        </ul>
+      </div><div>
+        <h6 class="sidebar-heading px-3 mt-4 mb-1">Documentation</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/learn.html">Big list of docs (start here)</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/extras/calc.html">calc mode</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/extras/conv.html">conv mode</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/extras/simp.html">simplifier</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/extras/tactic_writing.html">tactic writing tutorial</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/extras/well_founded_recursion.html">well-founded recursion</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/leanproject.html">leanproject</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/toolchain.html">How pieces fit together</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/mwe.html">About MWEs</a></li>
+        
+          <li class="nav-item"><a href="https://leanprover-community.github.io/mathlib_docs">API documentation</a></li>
+        </ul>
+      </div><div>
+        <h6 class="sidebar-heading px-3 mt-4 mb-1">Library overviews</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/mathlib-overview.html">Library overview</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/100.html">Wiedijk's 100 theorems</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/undergrad.html">Undergraduate maths</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/lean_projects.html">Other Lean projects</a></li>
+        </ul>
+      </div><div>
+        <h6 class="sidebar-heading px-3 mt-4 mb-1">Theory docs</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/theories/category_theory.html">Category theory</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/theories/linear_algebra.html">Linear algebra</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/theories/naturals.html">Natural numbers</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/theories/padics.html">p-adic numbers</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/theories/sets.html">Sets and set-like objects</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/theories/topology.html">Topology</a></li>
+        </ul>
+      </div><div>
+        <h6 class="sidebar-heading px-3 mt-4 mb-1">Contributing</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/contribute/index.html">Pull request lifecycle</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/contribute/naming.html">Naming conventions</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/contribute/style.html">Code style guideline</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/contribute/doc.html">Documentation style</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/ci.html">CI for 3rd party projects</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/mathlib_stats.html">Contribution statistics</a></li>
+        </ul>
+      </div><div>
+        <h6 class="sidebar-heading px-3 mt-4 mb-1">Community</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/meet.html">Maintainers</a></li>
+        
+          <li class="nav-item"><a href="https://robertylewis.com/mathlib/papers.html">Papers about Lean</a></li>
+        
+          <li class="nav-item"><a href="https://leanprover.zulipchat.com/">Zulip chat</a></li>
+        </ul>
+      </div>
+    </nav>
+  <main class="col-md-9 col-xl-8 px-md-4">
+    <div class="mt-5 mx-auto" style="max-width: 60em">
+	  
+<h1 id="controlled-installation-of-lean-and-mathlib-on-macos" class="markdown-heading">Controlled installation of Lean and mathlib on MacOS <a class="hover-link" href="#controlled-installation-of-lean-and-mathlib-on-macos">#</a></h1>
+<p>This document explains a more controlled installation procedure for Lean and
+mathlib on MacOS. There is a quicker way described in the main
+<a href="macos.html">install page</a> but it requires more trust.  Of course you can get
+even more details about what is going on by reading the bash script that will
+be downloaded below:
+<a href="https://github.com/Kha/elan/blob/master/elan-init.sh">elan_init</a>.</p>
+<p>If you get stuck, please come to <a href="https://leanprover.zulipchat.com/">the chat room</a> to ask for
+assistance.</p>
+<p>We'll need to set up Lean, an editor that knows about Lean, and <code>mathlib</code> (the standard library).</p>
+<p>Rather than installing Lean directly, we'll install a small program called <code>elan</code> which
+automatically provides the correct version of Lean on a per-project basis. This is recommended for
+all users.</p>
+<h2 id="installing-codeelancode" class="markdown-heading">Installing <code>elan</code> <a class="hover-link" href="#installing-codeelancode">#</a></h2>
+<ol>
+<li>
+<p>We'll need a terminal, along with some basic prerequisites.
+Install <a href="https://brew.sh/">homebrew</a>, then run <code>brew install gmp coreutils</code> in a terminal
+(<code>gmp</code> is required by <code>lean</code>, <code>coreutils</code> by <code>leanpkg</code>).</p>
+</li>
+<li>
+<p>At a terminal, run the command</p>
+<p><code>curl https://raw.githubusercontent.com/Kha/elan/master/elan-init.sh -sSf | sh</code></p>
+<p>and hit enter when a question is asked.</p>
+<p>It is recommended that you re-login, so that your environment knows about <code>elan</code>.
+(Alternatively, type <code>source $HOME/.elan/env</code> to update the current terminal.)</p>
+</li>
+</ol>
+<h2 id="installing-mathlib-supporting-tools" class="markdown-heading">Installing mathlib supporting tools <a class="hover-link" href="#installing-mathlib-supporting-tools">#</a></h2>
+<p>At a terminal, run the command</p>
+<div class="highlight"><pre><span></span>brew install python3 pipx
+pipx ensurepath
+pipx install mathlibtools
+</pre></div>
+
+<p>This will install tools that, amongst other things, let you download compiled binaries for mathlib.</p>
+<h2 id="installing-and-configuring-an-editor" class="markdown-heading">Installing and configuring an editor <a class="hover-link" href="#installing-and-configuring-an-editor">#</a></h2>
+<p>There are two editors you can use with Lean, VS Code and emacs.
+This document describes using VS Code (for emacs, look at https://github.com/leanprover/lean-mode).</p>
+<ol>
+<li>Install <a href="https://code.visualstudio.com/">VS Code</a>.</li>
+<li>Launch VS Code.</li>
+<li>Click on the extension icon <img src="https://robertylewis.com/mathlib//img/new-extensions-icon.png" alt="(image of icon)" />
+(or <img src="https://robertylewis.com/mathlib//img/extensions-icon.png" alt="(image of icon)" /> in older versions) in the side bar on the left edge of
+the screen (or press <kbd>⇧ Shift</kbd><kbd>⌘ Command</kbd><kbd>X</kbd>) and search for <code>leanprover</code>.</li>
+<li>Click &quot;install&quot; (In old versions of VS Code, you might need to click &quot;reload&quot; afterwards)</li>
+<li>Verify Lean is working, for example by saving a file <code>test.lean</code> and entering <code>#eval 1+1</code>.
+A green line should appear underneath <code>#eval 1+1</code>, and hovering the mouse over it you should see <code>2</code>
+displayed.</li>
+</ol>
+<h2 id="lean-projects" class="markdown-heading">Lean Projects <a class="hover-link" href="#lean-projects">#</a></h2>
+<p>You can now read instructions about creating and working on <a href="project.html">Lean projects</a></p>
+
+    </div>
+  </main>
+  </div></div>
+</div>
+
+  <nav class="footer navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="https://github.com/leanprover-community/leanprover-community.github.io/blob/newsite/templates/install/macos_details.md">Suggest edits to this page on GitHub</a>
+    </li>
+  </ul>
+</nav>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://robertylewis.com/mathlib//js/bootstrap.min.js"></script>
+    
+  </body>
+</html>
