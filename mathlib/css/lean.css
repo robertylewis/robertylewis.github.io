@@ -8153,16 +8153,45 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px
   color: #666666; }
 
 /* Literal.Number.Integer.Long */
-html {
-  height: 100%; }
-
-body {
-  min-height: 100%; }
-
 .navbar-brand {
   font-family: "Merriweather", sans-serif;
   display: block;
   white-space: unset; }
+
+@media (min-width: 576px) {
+  html {
+    height: 100%; }
+    html body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%; }
+    html #mainbox {
+      flex-grow: 1; } }
+#mainbox {
+  display: flex;
+  justify-content: space-between; }
+  @media (max-width: 767.98px) {
+    #mainbox {
+      flex-direction: column-reverse; }
+      #mainbox > * {
+        padding: 0 1rem; } }
+  @media (min-width: 576px) {
+    #mainbox {
+      flex-direction: row-reverse; }
+      #mainbox > #navbar {
+        flex: 0 2 20em; }
+      #mainbox > main {
+        flex: 0 1 60em;
+        max-width: 60em; }
+      #mainbox > * {
+        padding: 0 1.5rem; }
+      #mainbox::before {
+        display: block;
+        content: ' ';
+        flex: 0 100 20em; } }
+
+#mainbox > * {
+  padding: 0 1rem; }
 
 #navbar li a {
   display: block; }
@@ -8171,6 +8200,10 @@ body {
     padding: 1em 0; }
   #navbar li:not(:first-child) {
     border-top: 1px solid #dee2e6; } }
+@media (min-width: 576px) {
+  #navbar li a {
+    text-indent: -1em;
+    padding-left: 1em; } }
 
 h1, h2, h3, h4 {
   font-family: "Merriweather", sans-serif;

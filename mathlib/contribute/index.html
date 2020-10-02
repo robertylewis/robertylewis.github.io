@@ -42,8 +42,90 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   </nav>
-  <div class="container-fluid"><div class="row">
-    <nav id="navbar" class="col-md-3 col-xl-2 d-md-block bg-light sidebar collapse navbar-light pb-4">
+
+<div id="mainbox">
+
+  <main>
+	  
+<h1 id="how-to-contribute-to-mathlib" class="markdown-heading">How to contribute to mathlib <a class="hover-link" href="#how-to-contribute-to-mathlib">#</a></h1>
+<p>Here are some tips and tricks
+to make the process of contributing as smooth as possible.</p>
+<ol>
+<li>Use <a href="https://leanprover.zulipchat.com/">Zulip</a> to
+discuss your contribution before and while you are working on it.</li>
+<li>Adhere to the guidelines:
+<ul>
+<li>The <a href="style.html">style guide</a> for contributors.</li>
+<li>The explanation of <a href="naming.html">naming conventions</a>.</li>
+<li>The <a href="doc.html">documentation guidelines</a>.</li>
+</ul>
+</li>
+</ol>
+<p>Once you have code that you'd like to contribute, you should open a PR.
+There is a <a href="https://www.youtube.com/watch?v=Bnc8w9lxe8A">video tutorial</a> walking you through the process of making a PR on YouTube.</p>
+<h2 id="making-a-pull-request-pr" class="markdown-heading">Making a Pull Request (PR) <a class="hover-link" href="#making-a-pull-request-pr">#</a></h2>
+<ol start="3">
+<li>
+<p>Introduce yourself on Zulip and ask for write access to non-master branches of the mathlib repository. Please include your GitHub username in your request. Make your changes on a branch of the main repository.</p>
+</li>
+<li>
+<p>If you've made a lot of changes/additions, try to make many PRs containing small, self-contained pieces. This helps you get feedback as you go along, and it is much easier to review. This is especially important for new contributors.</p>
+</li>
+<li>
+<p>The title of the PR should follow our <a href="https://github.com/leanprover-community/lean/blob/master/doc/commit_convention.md">commit conventions</a>.</p>
+</li>
+<li>
+<p>You can use <code>leanproject</code> to manage your work. Here are some detailed steps for for sharing your shiny new lemmas about sets:</p>
+<ul>
+<li><code>leanproject get -b mathlib:shiny_lemma</code> This will create a (local) branch called <code>shiny_lemma</code> and also create a local folder called <code>mathlib_shiny_lemma</code> with a copy of mathlib for you to work on.</li>
+<li><code>cd mathlib_shiny_lemma</code>, so that your working directory is at the root of the git repository.</li>
+<li>edit the necessary files, e.g. <code>src/data/set/basic.lean</code></li>
+<li>If you are anxious, <code>leanproject build</code> to check you didn't break anything. This will be long because you edit a fundamental file, imported by pretty much everything else.</li>
+<li><code>git commit -a</code></li>
+<li><code>git push origin</code> This pushes your branch to GitHub. You might get a complaint from git that the remote is not configured. In that case, follow the advice, and run <code>git push --set-upstream origin shiny_lemma</code>.</li>
+<li>Visit <a href="https://github.com/leanprover/mathlib">mathlib on GitHub</a> to see an invitation to open a PR based on what you just did.</li>
+<li>Wait for continuous integration to build your branch if you didn't do it locally, <code>leanproject get-cache</code> will then download what was built by CI (Continuous Integration)</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>See <a href="#caching-compilation">Caching compilation</a> for commands to automatically call <code>leanproject get-cache</code>.</li>
+</ul>
+<h2 id="lifecycle-of-a-pr" class="markdown-heading">Lifecycle of a PR <a class="hover-link" href="#lifecycle-of-a-pr">#</a></h2>
+<p>We use GitHub &quot;labels&quot; to manage review. (Labels can only be edited by &quot;GitHub collaborators&quot;, which is approximately the same as &quot;people who have completed step 3 above&quot;.)</p>
+<p>On the main page for a PR, on the right-hand side,
+there should be a sidebar with panels &quot;reviewers&quot;, &quot;assignees&quot;, &quot;labels&quot;, etc.
+Click on the &quot;labels&quot; header to add or remove labels from the current project.</p>
+<p>The most important labels are &quot;awaiting-review&quot; and &quot;awaiting-author&quot;. If you label your PR with <strong>&quot;awaiting-review&quot;</strong>, someone will probably &quot;review&quot; it within a few days (depending on the size of the PR; smaller PRs will get quicker responses). The reviewer will probably leave comments and change the label to <strong>&quot;awaiting-author&quot;</strong>. You should address each comment, clicking the &quot;resolve conversation&quot; button once the problem is resolved. Ideally each problem is resolved with a new commit, but there is no hard rule here. Once all requested changes are implemented, you should change the label back to &quot;awaiting-review&quot; to start the process over again.</p>
+<p>After some iteration, a reviewer will &quot;approve&quot; the PR and the &quot;ready-to-merge&quot; label will be automatically applied to the PR. A bot called <code>bors</code> will take it from here. (See <a href="https://github.com/leanprover-community/mathlib/blob/master/docs/contribute/bors.md">here</a> for more detail about bors.)
+After responding appropriately to bors (if necessary), the PR will get added to the <a href="https://app.bors.tech/repositories/24316">&quot;merge queue&quot;</a>. The merge queue gets cleared automatically, but this takes some finite amount of time as it requires building branches of mathlib.</p>
+<p>Here are some other frequently-used labels:</p>
+<ul>
+<li>
+<p>A <strong>&quot;WIP&quot;</strong> (= work in progress) PR still needs some foundational work (e.g. maybe it still contains <code>sorry</code>s) before getting reviewed. Post a WIP if you want to announce that you're working on something you expect to finish soon.</p>
+</li>
+<li>
+<p>Consider adding the <strong>&quot;help wanted&quot;</strong> label to directly solicit contributions.</p>
+</li>
+<li>
+<p>The <strong>&quot;blocked-by-other-PR&quot;</strong> label means that some specific other PR(s) should be resolved before addressing this one. If you add the &quot;blocked-by-other-PR&quot; label to your PR, please include the PR numbers of the dependencies in the title and PR comment so that others can see at a glance which PRs should be reviewed first.</p>
+</li>
+</ul>
+<h2 id="caching-compilation" class="markdown-heading">Caching compilation <a class="hover-link" href="#caching-compilation">#</a></h2>
+<p>In the <code>mathlib</code> git repository, you can run the following in a terminal:</p>
+<div class="highlight"><pre><span></span>sudo pip3 install mathlibtools
+leanproject hooks
+</pre></div>
+
+<p>This will install the <code>leanproject</code> tool.  The call to <code>leanproject hooks</code>
+sets up git hooks that will call cache the olean files when making a commit
+and fetching the olean files when checking out a branch.
+See the <a href="https://github.com/leanprover-community/mathlib-tools/blob/master/README.md">mathlib-tools documentation</a>
+for more information.</p>
+
+  </main>
+
+    <nav id="navbar" class="d-md-block bg-light sidebar collapse navbar-light pb-4">
       <div class="d-none d-md-block mt-4"><a class="navbar-brand" href="https://robertylewis.com/mathlib/index.html">Lean Community</a></div>
       
         <h6 class="sidebar-heading mt-4">Community</h6>
@@ -135,88 +217,9 @@
         </ul>
       
     </nav>
-  <main class="col-md-9 col-xl-8 px-md-4">
-    <div class="mx-auto mt-4" style="max-width: 60em">
-	  
-<h1 id="how-to-contribute-to-mathlib" class="markdown-heading">How to contribute to mathlib <a class="hover-link" href="#how-to-contribute-to-mathlib">#</a></h1>
-<p>Here are some tips and tricks
-to make the process of contributing as smooth as possible.</p>
-<ol>
-<li>Use <a href="https://leanprover.zulipchat.com/">Zulip</a> to
-discuss your contribution before and while you are working on it.</li>
-<li>Adhere to the guidelines:
-<ul>
-<li>The <a href="style.html">style guide</a> for contributors.</li>
-<li>The explanation of <a href="naming.html">naming conventions</a>.</li>
-<li>The <a href="doc.html">documentation guidelines</a>.</li>
-</ul>
-</li>
-</ol>
-<p>Once you have code that you'd like to contribute, you should open a PR.
-There is a <a href="https://www.youtube.com/watch?v=Bnc8w9lxe8A">video tutorial</a> walking you through the process of making a PR on YouTube.</p>
-<h2 id="making-a-pull-request-pr" class="markdown-heading">Making a Pull Request (PR) <a class="hover-link" href="#making-a-pull-request-pr">#</a></h2>
-<ol start="3">
-<li>
-<p>Introduce yourself on Zulip and ask for write access to non-master branches of the mathlib repository. Please include your GitHub username in your request. Make your changes on a branch of the main repository.</p>
-</li>
-<li>
-<p>If you've made a lot of changes/additions, try to make many PRs containing small, self-contained pieces. This helps you get feedback as you go along, and it is much easier to review. This is especially important for new contributors.</p>
-</li>
-<li>
-<p>The title of the PR should follow our <a href="https://github.com/leanprover-community/lean/blob/master/doc/commit_convention.md">commit conventions</a>.</p>
-</li>
-<li>
-<p>You can use <code>leanproject</code> to manage your work. Here are some detailed steps for for sharing your shiny new lemmas about sets:</p>
-<ul>
-<li><code>leanproject get -b mathlib:shiny_lemma</code> This will create a (local) branch called <code>shiny_lemma</code> and also create a local folder called <code>mathlib_shiny_lemma</code> with a copy of mathlib for you to work on.</li>
-<li><code>cd mathlib_shiny_lemma</code>, so that your working directory is at the root of the git repository.</li>
-<li>edit the necessary files, e.g. <code>src/data/set/basic.lean</code></li>
-<li>If you are anxious, <code>leanproject build</code> to check you didn't break anything. This will be long because you edit a fundamental file, imported by pretty much everything else.</li>
-<li><code>git commit -a</code></li>
-<li><code>git push origin</code> This pushes your branch to GitHub. You might get a complaint from git that the remote is not configured. In that case, follow the advice, and run <code>git push --set-upstream origin shiny_lemma</code>.</li>
-<li>Visit <a href="https://github.com/leanprover/mathlib">mathlib on GitHub</a> to see an invitation to open a PR based on what you just did.</li>
-<li>Wait for continuous integration to build your branch if you didn't do it locally, <code>leanproject get-cache</code> will then download what was built by CI (Continuous Integration)</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>See <a href="#caching-compilation">Caching compilation</a> for commands to automatically call <code>leanproject get-cache</code>.</li>
-</ul>
-<h2 id="lifecycle-of-a-pr" class="markdown-heading">Lifecycle of a PR <a class="hover-link" href="#lifecycle-of-a-pr">#</a></h2>
-<p>We use GitHub &quot;labels&quot; to manage review. (Labels can only be edited by &quot;GitHub collaborators&quot;, which is approximately the same as &quot;people who have completed step 3 above&quot;.)</p>
-<p>On the main page for a PR, on the right-hand side,
-there should be a sidebar with panels &quot;reviewers&quot;, &quot;assignees&quot;, &quot;labels&quot;, etc.
-Click on the &quot;labels&quot; header to add or remove labels from the current project.</p>
-<p>The most important labels are &quot;awaiting-review&quot; and &quot;awaiting-author&quot;. If you label your PR with <strong>&quot;awaiting-review&quot;</strong>, someone will probably &quot;review&quot; it within a few days (depending on the size of the PR; smaller PRs will get quicker responses). The reviewer will probably leave comments and change the label to <strong>&quot;awaiting-author&quot;</strong>. You should address each comment, clicking the &quot;resolve conversation&quot; button once the problem is resolved. Ideally each problem is resolved with a new commit, but there is no hard rule here. Once all requested changes are implemented, you should change the label back to &quot;awaiting-review&quot; to start the process over again.</p>
-<p>After some iteration, a reviewer will &quot;approve&quot; the PR and the &quot;ready-to-merge&quot; label will be automatically applied to the PR. A bot called <code>bors</code> will take it from here. (See <a href="https://github.com/leanprover-community/mathlib/blob/master/docs/contribute/bors.md">here</a> for more detail about bors.)
-After responding appropriately to bors (if necessary), the PR will get added to the <a href="https://app.bors.tech/repositories/24316">&quot;merge queue&quot;</a>. The merge queue gets cleared automatically, but this takes some finite amount of time as it requires building branches of mathlib.</p>
-<p>Here are some other frequently-used labels:</p>
-<ul>
-<li>
-<p>A <strong>&quot;WIP&quot;</strong> (= work in progress) PR still needs some foundational work (e.g. maybe it still contains <code>sorry</code>s) before getting reviewed. Post a WIP if you want to announce that you're working on something you expect to finish soon.</p>
-</li>
-<li>
-<p>Consider adding the <strong>&quot;help wanted&quot;</strong> label to directly solicit contributions.</p>
-</li>
-<li>
-<p>The <strong>&quot;blocked-by-other-PR&quot;</strong> label means that some specific other PR(s) should be resolved before addressing this one. If you add the &quot;blocked-by-other-PR&quot; label to your PR, please include the PR numbers of the dependencies in the title and PR comment so that others can see at a glance which PRs should be reviewed first.</p>
-</li>
-</ul>
-<h2 id="caching-compilation" class="markdown-heading">Caching compilation <a class="hover-link" href="#caching-compilation">#</a></h2>
-<p>In the <code>mathlib</code> git repository, you can run the following in a terminal:</p>
-<div class="highlight"><pre><span></span>sudo pip3 install mathlibtools
-leanproject hooks
-</pre></div>
 
-<p>This will install the <code>leanproject</code> tool.  The call to <code>leanproject hooks</code>
-sets up git hooks that will call cache the olean files when making a commit
-and fetching the olean files when checking out a branch.
-See the <a href="https://github.com/leanprover-community/mathlib-tools/blob/master/README.md">mathlib-tools documentation</a>
-for more information.</p>
+</div>
 
-    </div>
-  </main>
-  </div></div>
 
   <nav class="footer navbar navbar-expand-lg navbar-light bg-light justify-content-end">
   <ul class="nav">

@@ -42,8 +42,67 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   </nav>
-  <div class="container-fluid"><div class="row">
-    <nav id="navbar" class="col-md-3 col-xl-2 d-md-block bg-light sidebar collapse navbar-light pb-4">
+
+<div id="mainbox">
+
+  <main>
+	  
+<h1 id="controlled-installation-of-lean-and-mathlib-on-macos" class="markdown-heading">Controlled installation of Lean and mathlib on MacOS <a class="hover-link" href="#controlled-installation-of-lean-and-mathlib-on-macos">#</a></h1>
+<p>This document explains a more controlled installation procedure for Lean and
+mathlib on MacOS. There is a quicker way described in the main
+<a href="macos.html">install page</a> but it requires more trust.  Of course you can get
+even more details about what is going on by reading the bash script that will
+be downloaded below:
+<a href="https://github.com/Kha/elan/blob/master/elan-init.sh">elan_init</a>.</p>
+<p>If you get stuck, please come to <a href="https://leanprover.zulipchat.com/">the chat room</a> to ask for
+assistance.</p>
+<p>We'll need to set up Lean, an editor that knows about Lean, and <code>mathlib</code> (the standard library).</p>
+<p>Rather than installing Lean directly, we'll install a small program called <code>elan</code> which
+automatically provides the correct version of Lean on a per-project basis. This is recommended for
+all users.</p>
+<h2 id="installing-codeelancode" class="markdown-heading">Installing <code>elan</code> <a class="hover-link" href="#installing-codeelancode">#</a></h2>
+<ol>
+<li>
+<p>We'll need a terminal, along with some basic prerequisites.
+Install <a href="https://brew.sh/">homebrew</a>, then run <code>brew install gmp coreutils</code> in a terminal
+(<code>gmp</code> is required by <code>lean</code>, <code>coreutils</code> by <code>leanpkg</code>).</p>
+</li>
+<li>
+<p>At a terminal, run the command</p>
+<p><code>curl https://raw.githubusercontent.com/Kha/elan/master/elan-init.sh -sSf | sh</code></p>
+<p>and hit enter when a question is asked.</p>
+<p>It is recommended that you re-login, so that your environment knows about <code>elan</code>.
+(Alternatively, type <code>source $HOME/.elan/env</code> to update the current terminal.)</p>
+</li>
+</ol>
+<h2 id="installing-mathlib-supporting-tools" class="markdown-heading">Installing mathlib supporting tools <a class="hover-link" href="#installing-mathlib-supporting-tools">#</a></h2>
+<p>At a terminal, run the command</p>
+<div class="highlight"><pre><span></span>brew install python3 pipx
+pipx ensurepath
+pipx install mathlibtools
+</pre></div>
+
+<p>This will install tools that, amongst other things, let you download compiled binaries for mathlib.</p>
+<h2 id="installing-and-configuring-an-editor" class="markdown-heading">Installing and configuring an editor <a class="hover-link" href="#installing-and-configuring-an-editor">#</a></h2>
+<p>There are two editors you can use with Lean, VS Code and emacs.
+This document describes using VS Code (for emacs, look at https://github.com/leanprover/lean-mode).</p>
+<ol>
+<li>Install <a href="https://code.visualstudio.com/">VS Code</a>.</li>
+<li>Launch VS Code.</li>
+<li>Click on the extension icon <img src="https://robertylewis.com/mathlib//img/new-extensions-icon.png" alt="(image of icon)" />
+(or <img src="https://robertylewis.com/mathlib//img/extensions-icon.png" alt="(image of icon)" /> in older versions) in the side bar on the left edge of
+the screen (or press <kbd>⇧ Shift</kbd><kbd>⌘ Command</kbd><kbd>X</kbd>) and search for <code>leanprover</code>.</li>
+<li>Click &quot;install&quot; (In old versions of VS Code, you might need to click &quot;reload&quot; afterwards)</li>
+<li>Verify Lean is working, for example by saving a file <code>test.lean</code> and entering <code>#eval 1+1</code>.
+A green line should appear underneath <code>#eval 1+1</code>, and hovering the mouse over it you should see <code>2</code>
+displayed.</li>
+</ol>
+<h2 id="lean-projects" class="markdown-heading">Lean Projects <a class="hover-link" href="#lean-projects">#</a></h2>
+<p>You can now read instructions about creating and working on <a href="project.html">Lean projects</a></p>
+
+  </main>
+
+    <nav id="navbar" class="d-md-block bg-light sidebar collapse navbar-light pb-4">
       <div class="d-none d-md-block mt-4"><a class="navbar-brand" href="https://robertylewis.com/mathlib/index.html">Lean Community</a></div>
       
         <h6 class="sidebar-heading mt-4">Community</h6>
@@ -135,65 +194,9 @@
         </ul>
       
     </nav>
-  <main class="col-md-9 col-xl-8 px-md-4">
-    <div class="mx-auto mt-4" style="max-width: 60em">
-	  
-<h1 id="controlled-installation-of-lean-and-mathlib-on-macos" class="markdown-heading">Controlled installation of Lean and mathlib on MacOS <a class="hover-link" href="#controlled-installation-of-lean-and-mathlib-on-macos">#</a></h1>
-<p>This document explains a more controlled installation procedure for Lean and
-mathlib on MacOS. There is a quicker way described in the main
-<a href="macos.html">install page</a> but it requires more trust.  Of course you can get
-even more details about what is going on by reading the bash script that will
-be downloaded below:
-<a href="https://github.com/Kha/elan/blob/master/elan-init.sh">elan_init</a>.</p>
-<p>If you get stuck, please come to <a href="https://leanprover.zulipchat.com/">the chat room</a> to ask for
-assistance.</p>
-<p>We'll need to set up Lean, an editor that knows about Lean, and <code>mathlib</code> (the standard library).</p>
-<p>Rather than installing Lean directly, we'll install a small program called <code>elan</code> which
-automatically provides the correct version of Lean on a per-project basis. This is recommended for
-all users.</p>
-<h2 id="installing-codeelancode" class="markdown-heading">Installing <code>elan</code> <a class="hover-link" href="#installing-codeelancode">#</a></h2>
-<ol>
-<li>
-<p>We'll need a terminal, along with some basic prerequisites.
-Install <a href="https://brew.sh/">homebrew</a>, then run <code>brew install gmp coreutils</code> in a terminal
-(<code>gmp</code> is required by <code>lean</code>, <code>coreutils</code> by <code>leanpkg</code>).</p>
-</li>
-<li>
-<p>At a terminal, run the command</p>
-<p><code>curl https://raw.githubusercontent.com/Kha/elan/master/elan-init.sh -sSf | sh</code></p>
-<p>and hit enter when a question is asked.</p>
-<p>It is recommended that you re-login, so that your environment knows about <code>elan</code>.
-(Alternatively, type <code>source $HOME/.elan/env</code> to update the current terminal.)</p>
-</li>
-</ol>
-<h2 id="installing-mathlib-supporting-tools" class="markdown-heading">Installing mathlib supporting tools <a class="hover-link" href="#installing-mathlib-supporting-tools">#</a></h2>
-<p>At a terminal, run the command</p>
-<div class="highlight"><pre><span></span>brew install python3 pipx
-pipx ensurepath
-pipx install mathlibtools
-</pre></div>
 
-<p>This will install tools that, amongst other things, let you download compiled binaries for mathlib.</p>
-<h2 id="installing-and-configuring-an-editor" class="markdown-heading">Installing and configuring an editor <a class="hover-link" href="#installing-and-configuring-an-editor">#</a></h2>
-<p>There are two editors you can use with Lean, VS Code and emacs.
-This document describes using VS Code (for emacs, look at https://github.com/leanprover/lean-mode).</p>
-<ol>
-<li>Install <a href="https://code.visualstudio.com/">VS Code</a>.</li>
-<li>Launch VS Code.</li>
-<li>Click on the extension icon <img src="https://robertylewis.com/mathlib//img/new-extensions-icon.png" alt="(image of icon)" />
-(or <img src="https://robertylewis.com/mathlib//img/extensions-icon.png" alt="(image of icon)" /> in older versions) in the side bar on the left edge of
-the screen (or press <kbd>⇧ Shift</kbd><kbd>⌘ Command</kbd><kbd>X</kbd>) and search for <code>leanprover</code>.</li>
-<li>Click &quot;install&quot; (In old versions of VS Code, you might need to click &quot;reload&quot; afterwards)</li>
-<li>Verify Lean is working, for example by saving a file <code>test.lean</code> and entering <code>#eval 1+1</code>.
-A green line should appear underneath <code>#eval 1+1</code>, and hovering the mouse over it you should see <code>2</code>
-displayed.</li>
-</ol>
-<h2 id="lean-projects" class="markdown-heading">Lean Projects <a class="hover-link" href="#lean-projects">#</a></h2>
-<p>You can now read instructions about creating and working on <a href="project.html">Lean projects</a></p>
+</div>
 
-    </div>
-  </main>
-  </div></div>
 
   <nav class="footer navbar navbar-expand-lg navbar-light bg-light justify-content-end">
   <ul class="nav">
