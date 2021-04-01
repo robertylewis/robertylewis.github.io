@@ -59,15 +59,13 @@ def write_lecture(lec):
             with open(f'{root}/lecture_{lec}/{num}.html', 'w') as single_file:
                 write_header(single_file, f'Logic and Modeling 2021: Lecture {lec} video {num}')
                 single_file.write(f'<h1><a href="../index.html">Logic and Modeling 2021</a>: Lecture {lec}</h1>\n\n')
-                if is_int(num):
-                    prev = str(int(num)-1)
-                    if prev in vids:
-                        single_file.write(f'<h2><a href="{prev}.html">Video {prev}: {vids[prev]["title"]}</a></h2>\n\n')
+                prev = str(int(num)-1)
+                if prev in vids:
+                    single_file.write(f'<h2><a href="{prev}.html">Video {prev}: {vids[prev]["title"]}</a></h2>\n\n')
                 single_file.write(vid_str + "\n\n")
-                if is_int(num):
-                    next = str(int(num)+1)
-                    if next in vids:
-                        single_file.write(f'<h2><a href="{next}.html">Video {next}: {vids[next]["title"]}</a></h2>\n\n')
+                next = str(int(num)+1)
+                if next in vids:
+                    single_file.write(f'<h2><a href="{next}.html">Video {next}: {vids[next]["title"]}</a></h2>\n\n')
                 write_footer(single_file)
         write_footer(all_file)
 
