@@ -1,0 +1,629 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Metaprogramming in Lean tutorial - Robert Y. Lewis</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Robert Y. Lewis">
+<meta property="og:title" content="Metaprogramming in Lean tutorial">
+
+
+  <link rel="canonical" href="http://localhost:4000/pages-test/lean/metaprogramming/">
+  <meta property="og:url" content="http://localhost:4000/pages-test/lean/metaprogramming/">
+
+
+
+  <meta property="og:description" content="Johan Commelin and Patrick Massot are organizing the workshop Lean for the Curious Mathematician,taking place virtually July 13-17, 2020.The workshop aims to give working mathematiciansa hands-on introduction to formal proof.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-07-13T02:30:00-07:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Robert Y. Lewis",
+      "url" : "http://localhost:4000/pages-test",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/pages-test/feed.xml" type="application/atom+xml" rel="alternate" title="Robert Y. Lewis Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/pages-test/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/pages-test/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/pages-test/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/pages-test/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/pages-test/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/pages-test/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/pages-test/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/pages-test/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/pages-test/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/pages-test/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/pages-test/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/pages-test/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/pages-test/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/pages-test/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/pages-test/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/pages-test/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/pages-test/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/pages-test/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/pages-test/assets/css/academicons.css"/>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/pages-test/">Robert Y. Lewis</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pages-test/teaching/">Teaching</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pages-test/research/">Research</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pages-test/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pages-test/files/cv.pdf">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pages-test/news/">News</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pages-test/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/pages-test/images/rob.jpg" class="author__avatar" alt="Robert Y. Lewis">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Robert Y. Lewis</h3>
+    <p class="author__bio">Lecturer at Brown University. Proof assistants, formal mathematics, logic, computation.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Providence, RI, USA</li>
+      
+      
+      
+      
+        <li><a href="mailto:robert_lewis@brown.edu"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+      
+      
+       
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/robertylewis"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=vHa-CAkAAAAJ&hl=en"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
+      
+      
+      
+        <li><a href="https://orcid.org/0000-0002-5266-1121"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Metaprogramming in Lean tutorial">
+    <meta itemprop="description" content="Johan Commelin and Patrick Massot are organizing the workshop Lean for the Curious Mathematician,taking place virtually July 13-17, 2020.The workshop aims to give working mathematiciansa hands-on introduction to formal proof.">
+    <meta itemprop="datePublished" content="July 13, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Metaprogramming in Lean tutorial
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2020-07-13T02:30:00-07:00">July 13, 2020</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Johan Commelin and Patrick Massot are organizing the workshop 
+<a href="https://leanprover-community.github.io/lftcm2020/">Lean for the Curious Mathematician</a>,
+taking place virtually July 13-17, 2020.
+The workshop aims to give working mathematicians
+a hands-on introduction to formal proof.</p>
+
+<p>As part of the “intermediate track” of this workshop,
+for users who have some experience with formal proof,
+I recorded a <a href="https://www.youtube.com/playlist?list=PLlF-CfQhukNnq2kDCw2P_vI5AfXN7egP2">series of videos</a>
+about metaprogramming in Lean:
+how do we use the system to introspect on its own syntax
+and write and evaluate programs to prove theorems?</p>
+
+<p>Since the workshop is aimed at a novice audience,
+I wasn’t expecting a large live audience,
+so I prerecorded the videos and put them on YouTube. 
+The first two videos in the series are accessible to people 
+who have had any introduction to Lean, for instance through the <a href="https://wwwf.imperial.ac.uk/~buzzard/xena/natural_number_game/">Natural Number Game</a>.
+The later videos assume some more familiarity with the system 
+and with functional programming.</p>
+
+<p>Feedback on these recordings is very welcome!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/pages-test/categories/#lean" class="page__taxonomy-item" rel="tag">lean</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/pages-test/lean/metaprogramming/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/pages-test/lean/metaprogramming/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pages-test/lean/metaprogramming/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/pages-test/teaching/logic-modeling/" class="pagination--pager" title="Logic and Modeling course information
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/pages-test/lean/witt-vectors/" class="pagination--pager" title="Formalizing the Ring of Witt Vectors
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/pages-test/lean/witt-vectors/" rel="permalink">Formalizing the Ring of Witt Vectors
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2020-10-07T02:30:00-07:00">October 07, 2020</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Johan Commelin and I have released a preprint of our new paper,
+<a href="http://robertylewis.com/files/witt-vectors.pdf">Formalizing the Ring of Witt Vectors</a>!
+(Update, Nov 25: the paper has been accepted at <a href="https://popl21.sigplan.org/home/CPP-2021#event-overview">CPP ‘21</a>.)
+We describe the construction of the <a href="https://en.wikipedia.org/wiki/Witt_vector">p-typical Witt vectors</a>
+and their ring structure in Lean, and show that the ring of Witt vectors over the integers modulo p
+is isomorphic to the ring of p-adic integers.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/pages-test/teaching/logic-modeling/" rel="permalink">Logic and Modeling course information
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2020-07-05T02:30:00-07:00">July 05, 2020</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>In Spring 2020, I taught the course Logic and Modeling at the VU.
+The course was held entirely online due to the COVID-19 pandemic.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/pages-test/lean/mathlib-paper/" rel="permalink">The Lean mathematical library
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2019-10-21T05:30:00-07:00">October 21, 2019</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Along with a number of other contributors, I have written <a href="https://leanprover-community.github.io/papers/mathlib-paper.pdf">a paper</a> about the Lean mathematical library. The paper describes a large-scale, open project to which 68 people (and counting) have contributed. Rather than attribute the paper to some subset of this group, we decided to release it as a community effort. (Update, Nov 28: our paper has been accepted at <a href="https://popl20.sigplan.org/home/CPP-2020">CPP</a>!)</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/pages-test/lean/cap-set/" rel="permalink">Formalizing the solution to the cap set problem
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2019-06-09T05:30:00-07:00">June 09, 2019</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p><a href="http://www.few.vu.nl/~sdn249/">Sander Dahmen</a>, <a href="https://www.cs.vu.nl/~jhl890/">Johannes Hölzl</a>, and
+I have formalized <a href="https://arxiv.org/abs/1605.09223">Ellenberg and Gijswijt’s solution to the cap set
+problem</a> in Lean. <a href="https://lean-forward.github.io/e-g/">Our paper about this
+project</a> will appear at ITP 2019. <a href="http://localhost:4000/files/capset_long_slides.pdf">Here are some
+slides</a> from a talk I gave about this formalization.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/robertylewis"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/pages-test/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Robert Y. Lewis. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/pages-test/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+
