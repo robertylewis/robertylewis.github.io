@@ -7,7 +7,7 @@ author_profile: true
 
 ### At Brown:
 
-* 2021 Fall: Formal Proof and Verification
+* 2021 Fall: [Formal Proof and Verification](https://cs.brown.edu/courses/cs1951x/)
 
 ### at VU Amsterdam:
 

@@ -11,7 +11,7 @@ author_profile: true
 ### Office:
 Brown University
 
-Center for Information Techology 555
+Center for Information Techology 433
 
 115 Waterman St
 
