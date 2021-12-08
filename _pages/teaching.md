@@ -7,7 +7,9 @@ author_profile: true
 
 ### At Brown:
 
+* 2022 Spring: Discrete Structures and Probability
 * 2021 Fall: [Formal Proof and Verification](https://cs.brown.edu/courses/cs1951x/)
+* 2021 Fall: [Computing Foundations: Program Organization](https://cs.brown.edu/courses/csci0112/fall-2021/) (second instructor)
 
 ### at VU Amsterdam:
 

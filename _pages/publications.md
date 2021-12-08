@@ -9,6 +9,12 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
 
 ### Peer Reviewed Publications:
 
+* Robert Y. Lewis and Minchao Wu.
+
+  [A bi-directional extensible ad hoc interface between Lean and Mathematica.]({{site.url}}/leanmm/lean_mm.pdf)
+
+  To appear in the Journal of Automated Reasoning.
+
 
 * Johan Commelin and Robert Y. Lewis.
 
@@ -64,10 +70,3 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
   [Logic and Proof.](https://leanprover.github.io/logic_and_proof)
 
   A textbook using the Lean theorem prover.
-
-* Robert Y. Lewis and Minchao Wu.
-
-  [A bi-directional extensible ad hoc interface between Lean and Mathematica.]({{site.url}}/leanmm/lean_mm.pdf)
-
-  Under review.
-
