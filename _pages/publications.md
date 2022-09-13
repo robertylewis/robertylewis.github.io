@@ -9,11 +9,13 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
 
 ### Peer Reviewed Publications:
 
+* Frédéric Dupuis, Robert Y. Lewis, and Heather Macbeth. 
+
+  [Formalized Functional Analysis with Semilinear Maps.](https://drops.dagstuhl.de/opus/volltexte/2022/16719/) ITP, 2022. 
+
 * Robert Y. Lewis and Minchao Wu.
 
-  [A bi-directional extensible ad hoc interface between Lean and Mathematica.]({{site.url}}/leanmm/lean_mm.pdf)
-
-  To appear in the Journal of Automated Reasoning.
+  [A bi-directional extensible ad hoc interface between Lean and Mathematica.]({{site.url}}/leanmm/lean_mm.pdf) Journal of Automated Reasoning, 2022.
 
 
 * Johan Commelin and Robert Y. Lewis.
