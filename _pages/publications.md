@@ -59,11 +59,18 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
   [Energy minimizing unit vector fields.](http://msp.org/involve/2010/3-4/p07.xhtml)  Involve, 2010.
 
 
-### Books and Drafts:
+### Books, Drafts, Other:
 
+* Robert Y. Lewis and Heather Macbeth.
+
+  [Classification of one-dimensional isocrystals.](https://leanprover-community.github.io/blog/posts/classification-of-one-dimensional-isocrystals/)
+
+  A blog post on the Lean community website.
+
+<!-- 
 * Jeremy Avigad, Kevin Buzzard, Robert Y. Lewis, and Patrick Massot.
 
-  [Mathematics in Lean.](https://leanprover-community.github.io/mathematics_in_lean/)
+  [Mathematics in Lean.](https://leanprover-community.github.io/mathematics_in_lean/) -->
 
   A tutorial about formalizing mathematics in Lean. In preparation.
 

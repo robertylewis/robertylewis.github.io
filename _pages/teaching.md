@@ -7,9 +7,13 @@ author_profile: true
 
 ### At Brown:
 
+* 2024 Spring: [Discrete Structures and Probability](https://cs22.io/)
+* 2023 Fall: [Formal Proof and Verification](https://browncs1951x.github.io/)
+* 2023 Fall: [Compilers and Program Analysis](https://browncs1260.github.io/)
+* 2023 Spring: [Discrete Structures and Probability](https://cs22.io/)
 * 2022 Fall: [Formal Proof and Verification](https://browncs1951x.github.io/)
 * 2022 Fall: [Compilers and Program Analysis](https://browncs1260.github.io/)
-* 2022 Spring: [Discrete Structures and Probability](https://cs22.cafe/)
+* 2022 Spring: [Discrete Structures and Probability](https://cs22.io/)
 * 2021 Fall: [Formal Proof and Verification](https://cs.brown.edu/courses/cs1951x/)
 * 2021 Fall: [Computing Foundations: Program Organization](https://cs.brown.edu/courses/csci0112/fall-2021/) (second instructor)
 
@@ -36,7 +40,7 @@ author_profile: true
 
 ### Logic and Proof
 
-I am helping develop an open-source course and text on mathematical proof and argument. The course
+I have developed an open-source course and text on mathematical proof and argument. The course
 uses examples from the [Lean](https://leanprover.github.io) proof assistant. We have designed the
 course to encourage students to think about mathematics from three perspectives: the formal (logic
 and natural deduction), the informal (natural-language concepts and proofs), and the semi-formal
@@ -48,5 +52,3 @@ development is tracked on [GitHub](https://github.com/avigad/logic_and_proof).
 
 In Fall 2016, Jeremy Avigad and I co-taught a sophomore-level course at CMU using these notes.
 In 2019 and 2020 I taught a second-year CS course at the VU using these notes.
-The 2020 edition of this class is being held online; I am recording [video lectures]({{site.url}}/logic_and_modeling)
-that will cover the first ~10 chapters of the text.
