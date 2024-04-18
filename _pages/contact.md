@@ -8,6 +8,8 @@ author_profile: true
 ### Email:
 [{{ site.author.email }}](mailto:{{ site.author.email }})
 
+I find it very dehumanizing to read emails that have been written or formatted by LLMs. I don't care if your messages are short, informal, or ungrammatical: I would rather hear your own voice than GPT's robot voice!
+
 ### Office:
 Brown University
 
