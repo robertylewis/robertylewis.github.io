@@ -11,6 +11,11 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
 
 * Frédéric Dupuis, Robert Y. Lewis, and Heather Macbeth. 
 
+  [Formalized Functional Analysis with Semilinear Maps.](https://drops.dagstuhl.de/opus/volltexte/2022/16719/) (expanded version), Journal of Automated Reasoning, 2024. 
+
+
+* Frédéric Dupuis, Robert Y. Lewis, and Heather Macbeth. 
+
   [Formalized Functional Analysis with Semilinear Maps.](https://drops.dagstuhl.de/opus/volltexte/2022/16719/) ITP, 2022. 
 
 * Robert Y. Lewis and Minchao Wu.
@@ -20,7 +25,7 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
 
 * Johan Commelin and Robert Y. Lewis.
 
-  [Formalizing the Ring of Witt Vectors.](http://robertylewis.com/files/witt-vectors.pdf)  CPP, 2021. (Distinguished Paper Award)
+  [Formalizing the Ring of Witt Vectors.]({{site.url}}/files/witt-vectors.pdf)  CPP, 2021. (Distinguished Paper Award)
 
 * Robert Y. Lewis and Paul-Nicolas Madelaine.
 
@@ -59,7 +64,11 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
   [Energy minimizing unit vector fields.](http://msp.org/involve/2010/3-4/p07.xhtml)  Involve, 2010.
 
 
-### Books, Drafts, Other:
+### Other Publications:
+
+* Robert Lewis.
+
+  [The art of formal proof.]({{site.url}}/files/mathorizons.pdf) Math Horizons, 2024.
 
 * Robert Y. Lewis and Heather Macbeth.
 
