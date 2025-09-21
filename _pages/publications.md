@@ -68,7 +68,7 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
 
 * Robert Lewis.
 
-  [The art of formal proof.]({{site.url}}/files/mathorizons.pdf) Math Horizons, 2024.
+  [The art of formal proof.]({{site.url}}/files/mathhorizons.pdf) Math Horizons, 2024.
 
 * Robert Y. Lewis and Heather Macbeth.
 
@@ -88,3 +88,4 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
   [Logic and Proof.](https://leanprover.github.io/logic_and_proof)
 
   A textbook using the Lean theorem prover.
+
