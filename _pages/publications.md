@@ -11,7 +11,7 @@ My [CV]({{site.url}}/files/cv.pdf) is often more up-to-date than this page.
 
 * Frédéric Dupuis, Robert Y. Lewis, and Heather Macbeth. 
 
-  [Formalized Functional Analysis with Semilinear Maps.](https://drops.dagstuhl.de/opus/volltexte/2022/16719/) (expanded version), Journal of Automated Reasoning, 2024. 
+  [Formalized Functional Analysis with Semilinear Maps.]({{site.url}}/files/semilinear-jar.pdf) (expanded version), Journal of Automated Reasoning, 2024. 
 
 
 * Frédéric Dupuis, Robert Y. Lewis, and Heather Macbeth. 
